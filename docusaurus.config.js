@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'spacexcode',
-  tagline: 'Dinosaurs are cool',
+  title: '太空编程',
+  tagline: '分享硬核的前端编程知识。',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -18,7 +18,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
+  organizationName: 'Fan Tingsheng', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -64,9 +64,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: '太空编程',
         logo: {
-          alt: 'My Site Logo',
+          alt: '太空编程',
           src: 'img/logo.svg',
         },
         items: [
@@ -76,48 +76,56 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/fantingsheng',
-            label: 'GitHub',
-            position: 'right',
-          },
+          {to: '/blog', label: '博客', position: 'left'},
+          // {
+          //   href: 'https://github.com/fantingsheng',
+          //   label: 'GitHub',
+          //   position: 'right',
+          // },
         ],
       },
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: '相关站点',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: '前端开发笔记',
+                to: 'https://i-fanr.com/',
               },
             ],
           },
           {
-            title: 'Community',
+            title: '知识平台',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: '简书',
+                href: 'https://www.jianshu.com/u/0d4441e81795',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: '知乎',
+                href: 'https://www.zhihu.com/people/timfan',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: '掘金',
+                href: 'https://juejin.cn/user/1372604177862088',
+              },
+              {
+                label: '开发者头条',
+                href: 'https://toutiao.io/u/578387',
+              },
+              {
+                label: 'CSDN',
+                href: 'https://blog.csdn.net/u013919171',
               },
             ],
           },
           {
-            title: 'More',
+            title: '友链',
             items: [
               {
-                label: 'Blog',
+                label: '博客',
                 to: '/blog',
               },
               {
@@ -127,7 +135,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Spacexcode, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} SpaceXcode, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
