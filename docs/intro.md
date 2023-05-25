@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 资源分享
 
-平时收集的一些比较好的开源的学习资料
+平时收集的一些比较好的在线开源的学习资料
 
 ### JavaScript资源
 - [JavaScript 秘密花园](http://bonsaiden.github.io/JavaScript-Garden/zh/)

@@ -5,7 +5,9 @@ authors: [timfan]
 tags: [侦听, Capslock]
 ---
 
-网页中检测键盘大小写状态很有必要，尤其在输入密码的时候
+开发中为了提升网页的可用性，在网页中检测键盘大小写键 `caps lock` 开启状态很有必要，尤其在输入密码的时候，我们并不能看见输入的字符是什么，如果是由于大小写错误我们并不能第一时间感知到。
+
+如下实例演示，当我们在密码输入框中输入内容时，如果我们的大小写键是开启的状态，就会得到“Caps lock is on”这样的提示信息。
 
 import { useState } from 'react'
 export const CapsLockDetect = () => {
@@ -26,7 +28,7 @@ export const CapsLockDetect = () => {
         padding: '10px',
         margin: '0 0 20px'
       }}>
-      <input type='text' />
+      <input type='password' placeholder="Password" />
       { locked ? <div>Caps lock is on</div> : '' }
     </div>
   )
@@ -34,6 +36,8 @@ export const CapsLockDetect = () => {
 
 <CapsLockDetect />
 
+虽然目前浏览器还没有提供现成的 API 来查询 `caps lock` 键的开启的状态，但是我们可以采用对按键 `keyup` 和 `keydown` 事件的监听，然后通过 `KeyboardEvent` 对象的
+ [getModifierState](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState) 方法来获取。
 
 
 ``` js
@@ -48,3 +52,9 @@ function detectCapsLock(e) {
   }
 }
 ```
+
+我们必须同时监听 `keyup` 和 `keydown` 按键事件，因为，通常情况下，浏览器会在某个按键按下时触发 `keydown` 事件，在释放该键时触发 `keyup` 事件，但是对于键盘上的 `caps lock` 键而言，
+每次按下只会触发其中的一个事件。
+
+当我们按下 `caps lock` 键以打开大写锁定时，所有浏览器仅发送一个 keydown 事件。当我们按下 `caps lock` 键以关闭大写锁定时，Firefox 浏览器只触发了 `keydown` 事件，但是 Chrome、Safari 和
+ Edge 只会触发 `keyup` 事件（其实就相当于在大写开启状态下，`Shift` 键被同时按下）。
