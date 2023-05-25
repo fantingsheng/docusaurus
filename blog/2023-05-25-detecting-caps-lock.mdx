@@ -1,0 +1,50 @@
+---
+slug: detecting-caps-lock
+title: JavaScript 实现键盘大写键的侦听
+authors: [timfan]
+tags: [侦听, Capslock]
+---
+
+网页中检测键盘大小写状态很有必要，尤其在输入密码的时候
+
+import { useState } from 'react'
+export const CapsLockDetect = () => {
+  const [ locked, setLocked ] = useState(false);
+  window.addEventListener('keydown', detect)
+  window.addEventListener('keyup', detect)
+  function detect (e) {
+    if (e.getModifierState('CapsLock')) {
+      setLocked(true)
+    } else {
+      setLocked(false)
+    }
+  }
+  return (
+    <div
+      style={{
+        backgroundColor: '#eee',
+        padding: '10px',
+        margin: '0 0 20px'
+      }}>
+      <input type='text' />
+      { locked ? <div>Caps lock is on</div> : '' }
+    </div>
+  )
+};
+
+<CapsLockDetect />
+
+
+
+``` js
+window.addEventListener('keydown', detectCapsLock)
+window.addEventListener('keyup', detectCapsLock)
+
+function detectCapsLock(e) {
+  if (e.getModifierState('CapsLock')) {
+    // caps lock is on
+  } else {
+    // caps lock is off
+  }
+}
+```
