@@ -1,28 +1,81 @@
-.tree{
+/* 重置树状视图样式 */
+.tree::after {
+  display: block;
+  content: none;
+}
+.tree details {
+  border: none;
+  background-color: #fff;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+.tree summary {
+  position: initial !important;
+  padding: 0 !important;
+  list-style: disclosure-closed !important;
+  list-style-position: inside !important;
+}
+
+.tree details[open] > summary {
+  list-style: disclosure-open !important;
+  list-style-position: inside !important;
+}
+
+.tree summary::before{
+  border : none !important;
+  transform: none !important;
+  transform: rotate(0);
+  padding: 0;
+  top: 0 !important;
+  transition: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.tree summary::marker {
+  position: initial !important;
+  list-style-position: inside !important;
+}
+
+.tree div {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tree li {
+  list-style-position: initial !important;
+}
+
+/* 完整样式开始 */
+.displaytree{
   --spacing : 1.5rem;
   --radius  : 10px;
+  display: block;
 }
 
-.tree li{
+.displaytree li{
   display      : block;
   position     : relative;
-  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+  line-height: var(--spacing);
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px) !important;
 }
 
-.tree ul{
-  margin-left  : calc(var(--radius) - var(--spacing));
-  padding-left : 0;
+.displaytree ul{
+  margin-left  : calc(var(--radius) - var(--spacing)) !important;
+  padding-left : 0 !important;
 }
 
-.tree ul li{
+.displaytree ul li{
   border-left : 2px solid #ddd;
 }
 
-.tree ul li:last-child{
+.displaytree ul li:last-child{
   border-color : transparent;
 }
 
-.tree ul li::before{
+.displaytree ul li::before{
   content      : '';
   display      : block;
   position     : absolute;
@@ -34,46 +87,253 @@
   border-width : 0 0 2px 2px;
 }
 
-.tree summary{
+.displaytree summary{
   display : block;
   cursor  : pointer;
+  padding: 0 !important;
 }
 
-.tree summary::marker,
-.tree summary::-webkit-details-marker{
+.displaytree summary::marker,
+.displaytree summary::-webkit-details-marker{
   display : none;
 }
 
-.tree summary:focus{
+.displaytree summary:focus{
   outline : none;
 }
 
-.tree summary:focus-visible{
+.displaytree summary:focus-visible{
   outline : 1px dotted #000;
 }
 
-.tree li::after,
-.tree summary::before{
-  content       : '';
+.displaytree li::after,
+.displaytree summary::before{
+  content: '';
   display       : block;
   position      : absolute;
-  top           : calc(var(--spacing) / 2 - var(--radius));
-  left          : calc(var(--spacing) - var(--radius) - 1px);
+  top           : calc(var(--spacing) / 2 - var(--radius)) !important;
+  left          : calc(var(--spacing) - var(--radius) - 1px) !important;
   width         : calc(2 * var(--radius));
   height        : calc(2 * var(--radius));
   border-radius : 50%;
   background    : #ddd;
+  border: none;
 }
 
-.tree summary::before{
-  content     : '+';
+.displaytree summary::before{
+  content     : '+' !important;
   z-index     : 1;
   background  : #696;
   color       : #fff;
   line-height : calc(2 * var(--radius) - 2px);
   text-align  : center;
+  border: none !important;
+}
+ 
+.displaytree details[open] > summary::before{
+  content : '−' !important;
 }
 
-.tree details[open] > summary::before{
-  content : '−';
+/* 初步设置样式 */
+.displayPaddingTree{
+  --spacing : 1.5rem;
+  --radius  : 10px;
+}
+.displayPaddingTree li{
+  display      : block;
+  position     : relative;
+  line-height: var(--spacing);
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.displayPaddingTree ul{
+  margin-left  : calc(var(--radius) - var(--spacing));
+  padding-left : 0;
+}
+
+/* 垂直线 */
+.displayLineTree{
+  --spacing : 1.5rem;
+  --radius  : 10px;
+}
+.displayLineTree li{
+  display      : block;
+  position     : relative;
+  line-height: var(--spacing);
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.displayLineTree ul{
+  margin-left  : calc(var(--radius) - var(--spacing));
+  padding-left : 0;
+}
+.displayLineTree ul li{
+  border-left : 2px solid #ddd;
+}
+
+.displayLineTree ul li:last-child{
+  border-color : transparent;
+}
+
+/* 水平线 */
+.displayVLineTree{
+  --spacing : 1.5rem;
+  --radius  : 10px;
+}
+.displayVLineTree li{
+  display      : block;
+  position     : relative;
+  line-height: var(--spacing);
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.displayVLineTree ul{
+  margin-left  : calc(var(--radius) - var(--spacing));
+  padding-left : 0;
+}
+.displayVLineTree ul li{
+  border-left : 2px solid #ddd;
+}
+
+.displayVLineTree ul li:last-child{
+  border-color : transparent;
+}
+.displayVLineTree ul li::before{
+  content      : '';
+  display      : block;
+  position     : absolute;
+  top          : calc(var(--spacing) / -2);
+  left         : -2px;
+  width        : calc(var(--spacing) + 2px);
+  height       : calc(var(--spacing) + 1px);
+  border       : solid #ddd;
+  border-width : 0 0 2px 2px;
+}
+
+/* 隐藏默认箭头 */
+.displayArrowTree{
+  --spacing : 1.5rem;
+  --radius  : 10px;
+}
+.displayArrowTree li{
+  display      : block;
+  position     : relative;
+  line-height: var(--spacing);
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.displayArrowTree ul{
+  margin-left  : calc(var(--radius) - var(--spacing));
+  padding-left : 0;
+}
+.displayArrowTree ul li{
+  border-left : 2px solid #ddd;
+}
+
+.displayArrowTree ul li:last-child{
+  border-color : transparent;
+}
+.displayArrowTree ul li::before{
+  content      : '';
+  display      : block;
+  position     : absolute;
+  top          : calc(var(--spacing) / -2);
+  left         : -2px;
+  width        : calc(var(--spacing) + 2px);
+  height       : calc(var(--spacing) + 1px);
+  border       : solid #ddd;
+  border-width : 0 0 2px 2px;
+}
+.displayArrowTree summary{
+  display : block;
+  cursor  : pointer;
+}
+
+.displayArrowTree summary::marker,
+.displayArrowTree summary::-webkit-details-marker{
+  display : none;
+}
+
+.displayArrowTree summary:focus{
+  outline : none;
+}
+
+.displayArrowTree summary:focus-visible{
+  outline : 1px dotted #000;
+}
+
+/* 添加指示器 */
+.displayDotTree{
+  --spacing : 1.5rem;
+  --radius  : 10px;
+}
+.displayDotTree{
+  --spacing : 1.5rem;
+  --radius  : 10px;
+  display: block;
+}
+
+.displayDotTree li{
+  display      : block;
+  position     : relative;
+  line-height: var(--spacing);
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px) !important;
+}
+
+.displayDotTree ul{
+  margin-left  : calc(var(--radius) - var(--spacing)) !important;
+  padding-left : 0 !important;
+}
+
+.displayDotTree ul li{
+  border-left : 2px solid #ddd;
+}
+
+.displayDotTree ul li:last-child{
+  border-color : transparent;
+}
+
+.displayDotTree ul li::before{
+  content      : '';
+  display      : block;
+  position     : absolute;
+  top          : calc(var(--spacing) / -2);
+  left         : -2px;
+  width        : calc(var(--spacing) + 2px);
+  height       : calc(var(--spacing) + 1px);
+  border       : solid #ddd;
+  border-width : 0 0 2px 2px;
+}
+
+.displayDotTree summary{
+  display : block;
+  cursor  : pointer;
+  padding: 0 !important;
+}
+
+.displayDotTree summary::marker,
+.displayDotTree summary::-webkit-details-marker{
+  display : none;
+}
+
+.displayDotTree summary:focus{
+  outline : none;
+}
+
+.displayDotTree summary:focus-visible{
+  outline : 1px dotted #000;
+}
+
+.displayDotTree ul li::after,
+.displayDotTree summary::before{
+  content: '';
+  display       : block;
+  position      : absolute;
+  top           : calc(var(--spacing) / 2 - var(--radius)) !important;
+  left          : calc(var(--spacing) - var(--radius) - 1px) !important;
+  width         : calc(2 * var(--radius));
+  height        : calc(2 * var(--radius));
+  border-radius : 50%;
+  background    : #ddd;
+  border: none;
 }
