@@ -15,7 +15,10 @@ export default function BlogPostItemWrapper(props) {
   return (
     <>
       <BlogPostItem {...props} />
-      <WeChatFollowCard />
+      {
+        isBlogPostPage && (
+          <WeChatFollowCard />
+      )}
       {(enableComments && isBlogPostPage) && (
         <GiscusComponent />
       )}

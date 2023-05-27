@@ -1,0 +1,338 @@
+---
+sidebar_position: 1
+slug: tree-views
+title: 用 CSS 实现树状视图
+tags: [树状, 视图]
+---
+
+一个树状结构的视图可以仅仅由 HTML 和 CSS 代码来实现而不用借助 JavaScript。网页的无障碍访问功能会将树状视图视为嵌套的并包含其它组件内容的列表，并且自动支持标准键盘交互。
+
+import styles from "./style.module.css"
+import clsx from 'clsx';
+export const TreeViews = ({ ulClsName, expandAll }) => (
+  <ul className={clsx(styles.tree, styles[ulClsName])}>
+    <li>
+      <details open>
+        <summary>Giant planets</summary>
+        <ul>
+          <li>
+            <details open={ expandAll }>
+              <summary>Gas giants</summary>
+              <ul>
+                <li>Jupiter</li>
+                <li>Saturn</li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details open={ expandAll }>
+              <summary>Ice giants</summary>
+              <ul>
+                <li>Uranus</li>
+                <li>Neptune</li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </details>
+    </li>
+  </ul>
+)
+
+<TreeViews ulClsName='displaytree' />
+
+### HTML 代码结构
+
+首先添加如下的嵌套的列表结构代码：
+
+``` html
+<ul>
+  <li>
+    Giant planets
+    <ul>
+      <li>
+        Gas giants
+        <ul>
+          <li>Jupiter</li>
+          <li>Saturn</li>
+        </ul>
+      </li>
+      <li>
+        Ice giants
+        <ul>
+          <li>Uranus</li>
+          <li>Neptune</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+```
+
+为了方便设置样式，我们给最外层的 `<ul>` 元素添加一个类名。第一层的 `<li>` 元素下面都嵌套了一个列表，为了实现展开的效果，我们将 `<li>` 里面的元素都放在 `<details>` 和 `<summary>` 下面。
+然后通过 `open` 属性来设置默认展开的嵌套列表。
+
+``` html
+<ul class="tree">
+  <li>
+    <details open>
+      <summary>Giant planets</summary>
+      <ul>
+        <li>
+          <details>
+            <summary>Gas giants</summary>
+            <ul>
+              <li>Jupiter</li>
+              <li>Saturn</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>Ice giants</summary>
+            <ul>
+              <li>Uranus</li>
+              <li>Neptune</li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </details>
+  </li>
+</ul>
+```
+
+如下，这是没有添加任何样式的：
+
+<TreeViews ulClsName='none' />
+
+浏览器为 `<details>` 元素提供了提供展开和折叠嵌套列表的能力，但是项目符号和箭头符号都显示容易让人产生困惑。我们进行组合改变下样式。
+
+### 自定义样式
+
+有两个维度会影响树视图的布局：行间距（等于文本的行高）和列表符号的半径。 首先我们给这两个维度的数据通过 CSS 自定义属性定义常量供后面使用：
+
+``` css
+.tree{
+  --spacing : 1.5rem;
+  --radius  : 10px;
+}
+```
+
+虽然我们通常会根据文本大小使用相对单位来缩放用户界面控件，但对于列表符号还是使用了合理的固定大小，避免太大后者太小。
+
+#### 左边距
+
+接着我们来给列表改变下样式，在左侧添加一个内边距，为树状的线条和展开收缩符号腾出空间。
+
+``` css
+.tree li{
+  display      : block;
+  position     : relative;
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.tree ul{
+  margin-left  : calc(var(--radius) - var(--spacing));
+  padding-left : 0;
+}
+```
+
+为 `li` 标签设置 `display: block` 消除默认的列表符号，左边距的值是通过上面的常量计算而来。下面对嵌套的 `ul` 设置负边距来补偿对 `li` 设置的缩进。
+
+有了上面的样式，在给所有的默认列表展开，就是下面的样式：
+
+<TreeViews ulClsName='displayPaddingTree' expandAll={ true } />
+
+#### 垂直线
+
+接下来我们添加树结构的垂直线，这些垂直线构成将每个列表项从垂直方向串联起来：
+
+<TreeViews ulClsName='displayLineTree' expandAll={ true } />
+
+#### 水平线
+
+我们使用 CSS 生成一条水平线将垂直线和列表前的符号进行连接：
+
+``` css
+.tree ul li::before{
+  content      : '';
+  display      : block;
+  position     : absolute;
+  top          : calc(var(--spacing) / -2);
+  left         : -2px;
+  width        : calc(var(--spacing) + 2px);
+  height       : calc(var(--spacing) + 1px);
+  border       : solid #ddd;
+  border-width : 0 0 2px 2px;
+}
+```
+
+这段 CSS 代码同时也生成了一小段垂直方向的线条和之前的垂直线条重合了，弥补了垂直线和水平线之间的一小段间隙。线条是通过伪元素设置成矩形，然后添加左侧和底部边框实现的。
+
+<TreeViews ulClsName='displayVLineTree' expandAll={ true } />
+
+#### 展开项
+
+下面我们移除 `summary` 元素自带默认的箭头图标
+
+``` css
+.tree summary{
+  display : block;
+  cursor  : pointer;
+}
+
+.tree summary::marker,
+.tree summary::-webkit-details-marker{
+  display : none;
+}
+
+.tree summary:focus{
+  outline : none;
+}
+
+.tree summary:focus-visible{
+  outline : 1px dotted #000;
+}
+```
+
+为元素 `summary` 设置 `display: block` 是为了移除默认的前面的箭头符号。下面那段给 `::marker` 设置的 `display: none` 为解决 Safari 浏览器的兼容性。Safari 浏览器在 `summary` 
+周围显示了焦点指示器，即使鼠标指针而不是键盘导航时也是如此，因此我们删除了它的 `focus` 状态样式，然后使用 `:focus-visible` 伪类为使用键盘导航的访问者添加回来。
+
+添加后的样式：
+
+<TreeViews ulClsName='displayArrowTree' expandAll={ true } />
+
+#### 添加树节点符号
+
+我们使用 [CSS 生成内容](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Generated_Content)来创建树节点的指示符号
+
+``` css
+.tree li::after,
+.tree summary::before{
+  content       : '';
+  display       : block;
+  position      : absolute;
+  top           : calc(var(--spacing) / 2 - var(--radius));
+  left          : calc(var(--spacing) - var(--radius) - 1px);
+  width         : calc(2 * var(--radius));
+  height        : calc(2 * var(--radius));
+  border-radius : 50%;
+  background    : #ddd;
+}
+```
+
+这里我们利用伪元素同时给 `li` 和 `summary` 两个元素添加了圆形符号，由于使用了绝对定位，他们重合在一起。top 和 left 的值正好让这个圆点的圆心处于垂直和水平相交线的角上。
+
+应用样式后显示如下：
+
+<TreeViews ulClsName='displayDotTree' expandAll={ true } />
+
+#### 展开收缩按钮
+
+最后我们实现展开收缩按钮
+
+``` css
+.tree summary::before{
+  content     : '+';
+  z-index     : 1;
+  background  : #696;
+  color       : #fff;
+  line-height : calc(2 * var(--radius) - 2px);
+  text-align  : center;
+}
+
+.tree details[open] > summary::before{
+  content : '−';
+}
+```
+
+应用完上面样式后，效果如下：
+
+<TreeViews ulClsName='displaytree' expandAll={ true } />
+
+### 最后
+
+完整的样式代码
+
+``` css
+.tree{
+  --spacing : 1.5rem;
+  --radius  : 10px;
+}
+
+.tree li{
+  display      : block;
+  position     : relative;
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.tree ul{
+  margin-left  : calc(var(--radius) - var(--spacing));
+  padding-left : 0;
+}
+
+.tree ul li{
+  border-left : 2px solid #ddd;
+}
+
+.tree ul li:last-child{
+  border-color : transparent;
+}
+
+.tree ul li::before{
+  content      : '';
+  display      : block;
+  position     : absolute;
+  top          : calc(var(--spacing) / -2);
+  left         : -2px;
+  width        : calc(var(--spacing) + 2px);
+  height       : calc(var(--spacing) + 1px);
+  border       : solid #ddd;
+  border-width : 0 0 2px 2px;
+}
+
+.tree summary{
+  display : block;
+  cursor  : pointer;
+}
+
+.tree summary::marker,
+.tree summary::-webkit-details-marker{
+  display : none;
+}
+
+.tree summary:focus{
+  outline : none;
+}
+
+.tree summary:focus-visible{
+  outline : 1px dotted #000;
+}
+
+.tree li::after,
+.tree summary::before{
+  content       : '';
+  display       : block;
+  position      : absolute;
+  top           : calc(var(--spacing) / 2 - var(--radius));
+  left          : calc(var(--spacing) - var(--radius) - 1px);
+  width         : calc(2 * var(--radius));
+  height        : calc(2 * var(--radius));
+  border-radius : 50%;
+  background    : #ddd;
+}
+
+.tree summary::before{
+  content     : '+';
+  z-index     : 1;
+  background  : #696;
+  color       : #fff;
+  line-height : calc(2 * var(--radius) - 2px);
+  text-align  : center;
+}
+
+.tree details[open] > summary::before{
+  content : '−';
+}
+```
