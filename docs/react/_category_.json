@@ -3,6 +3,6 @@
   "position": 5,
   "link": {
     "type": "generated-index",
-    "description": "React 框架"
+    "description": "用于构建 Web 和原生交互界面的库"
   }
 }

@@ -2,7 +2,6 @@
   "label": "JavaScript",
   "position": 2,
   "link": {
-    "type": "generated-index",
-    "description": "世界上最好的语言"
+    "type": "generated-index"
   }
 }

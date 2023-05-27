@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[381],{5045:s=>{s.exports=JSON.parse('{"label":"Capslock","permalink":"/blog/tags/capslock","allTagsPath":"/blog/tags","count":2}')}}]);
