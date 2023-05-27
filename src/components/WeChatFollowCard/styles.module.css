@@ -1,0 +1,13 @@
+.qrcodeImg {
+  width: 6.4rem;
+  height: 6.4rem;
+  display: block;
+  overflow: hidden;
+}
+.qrcard {
+  border: 1px solid #dadde1;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  padding: 5px 10px 5px 5px;
+  margin: 15px auto;
+}
