@@ -76,9 +76,13 @@ const config = {
         {
           name: 'keywords',
           content: '太空编程, 前端, 教程, 案例'
+        },
+        {
+          name: 'author',
+          content: 'timfan'
         }
       ],
-      image: 'img/coding.png',
+      image: 'img/spacexcode.png',
       navbar: {
         title: '太空编程',
         logo: {
@@ -158,6 +162,9 @@ const config = {
         maxHeadingLevel: 5,
       }
     }),
+  scripts: [
+    { src: 'https://hm.baidu.com/hm.js?ed54759479dfa9517f230a4aa834059c', async: true }
+  ]
 };
 
 module.exports = config;
