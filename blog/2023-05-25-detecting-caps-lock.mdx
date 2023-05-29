@@ -36,12 +36,15 @@ export const CapsLockDetect = () => {
           { locked ? <div>Caps lock is on</div> : '' }
         </div>
       )
-    }}
+    }
+    }
     </BrowserOnly>
   )
 };
 
 <CapsLockDetect />
+
+<!--truncate-->
 
 虽然目前浏览器还没有提供现成的 API 来查询 `caps lock` 键的开启的状态，但是我们可以采用对按键 `keyup` 和 `keydown` 事件的监听，然后通过 `KeyboardEvent` 对象的
  [getModifierState](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState) 方法来获取。
