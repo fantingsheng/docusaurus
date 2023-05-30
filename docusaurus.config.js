@@ -97,6 +97,7 @@ const config = {
             label: '知识库',
           },
           {to: '/blog', label: '博客', position: 'left'},
+          {to: '/source', label: '资源', position: 'right'},
           {to: '/about', label: '关于', position: 'right'}
         ],
       },
