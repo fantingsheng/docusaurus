@@ -7,10 +7,10 @@
     <path d="M664.7429198226796 3078.2739073780544Q728.3877049778711 3079.2337408282 786.6451513380281 3110.1071573008903" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <path d="M1160.3331254619504 3079.1629038835017Q1025.7210485743806 2902.082815542778 980.0240415213857 2710.016603653832" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <path d="M1224.283614931972 2427.5739840310457Q1191.5131272694437 2471.719609643333 1133.0381596674274 2471.878639219534" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
-    <path d="M564 2959Q565.1428198748554 3202.0608567169297 564 3423.4848484848485" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="undefined"></path>
+    <path d="M564 2959Q565.1428198748554 3202.0608567169297 564 3123.4848484848485" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="undefined"></path>
     <path d="M665.4461454079691 3063.806413462441Q734.3118922265552 3063.6907252785913 824.7751756755747 3060" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <path d="M647.7429198226796 3054.2739073780544Q718.0486881215802 3053.389429803896 790 3011" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
-    <path d="M565 3558Q563.7695282555643 3522.162638938688 565 3470" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
+    <path d="M565 3158Q563.7695282555643 3522.162638938688 565 3170" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <g class="clickable-group" data-group-id="122-desktop-applications">
         <rect x="442.35" y="3041.35" width="238.3" height="47.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="481" y="3072" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
@@ -236,15 +236,6 @@
         <circle cx="1170" cy="758" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1170" cy="758" r="10" fill="rgb(153,0,255)"></circle>
         <path d="M1164.5 758L1168.5 762 1175 755.5" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
-    </g>
-    <rect x="974.35" y="172.35" width="321.3" height="192.3" rx="2" fill="rgb(255,255,255)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-    <text x="991" y="209.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="18px">
-        <tspan>For resources and other roadmaps</tspan>
-    </text>
-    <g class="clickable-group" data-group-id="ext_link:roadmap.sh">
-        <text x="991" y="244.5" fill="rgb(153,0,255)" font-style="normal" font-weight="normal" font-size="20px">
-            <tspan>https://roadmap.sh</tspan>
-        </text>
     </g>
     <g class="clickable-group" data-group-id="102-css:responsive-design-and-media-queries">
         <rect x="895.35" y="806.35" width="277.3" height="40.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
