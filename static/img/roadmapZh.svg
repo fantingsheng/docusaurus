@@ -68,8 +68,8 @@
     <path d="M730.3216244302677 1547.5026931357795Q793.2946853884686 1548.3427403961427 863 1545" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <g class="clickable-group" data-group-id="102-build-tools:linters-formatters">
         <rect x="832.35" y="1462.35" width="222.3" height="47.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="856" y="1492.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Linters and Formatters</tspan>
+        <text x="876" y="1492.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>代码检查和格式化</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="100-build-tools:linters-formatters:prettier">
@@ -150,13 +150,13 @@
     </g>
     <g class="clickable-group" data-group-id="ext_link:roadmap.sh/frontend">
         <text x="644" y="324.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="32px">
-            <tspan>Front-end</tspan>
+            <tspan>前端知识体系</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="100-html:learn-the-basics">
         <rect x="181.35" y="580.35" width="293.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="262" y="605.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Learn the basics</tspan>
+            <tspan>学习基础知识</tspan>
         </text>
         <circle cx="182" cy="582" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="182" cy="582" r="10" fill="rgb(153,0,255)"></circle>
@@ -165,7 +165,7 @@
     <g class="clickable-group" data-group-id="101-html:writing-semantic-html">
         <rect x="181.35" y="627.35" width="293.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="235" y="653" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Writing Semantic HTML</tspan>
+            <tspan>编写语义化的 HTML 代码</tspan>
         </text>
         <circle cx="182" cy="631" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="182" cy="631" r="10" fill="rgb(153,153,153)"></circle>
@@ -174,7 +174,7 @@
     <g class="clickable-group" data-group-id="102-html:forms-and-validations">
         <rect x="181.35" y="673.35" width="293.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="243" y="699" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Forms and Validations</tspan>
+            <tspan>表单及表单验证</tspan>
         </text>
         <circle cx="182" cy="677" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="182" cy="677" r="10" fill="rgb(153,0,255)"></circle>
@@ -182,8 +182,8 @@
     </g>
     <g class="clickable-group" data-group-id="103-html:conventions-and-best-practices">
         <rect x="181.35" y="720.35" width="293.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="205" y="746" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Conventions and Best Practices</tspan>
+        <text x="245" y="746" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>惯例和最佳实践</tspan>
         </text>
         <circle cx="182" cy="720" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="182" cy="720" r="10" fill="rgb(153,0,255)"></circle>
@@ -198,22 +198,22 @@
     <g class="clickable-group" data-group-id="101-css:making-layouts">
         <rect x="1204.35" y="681.35" width="113.3" height="182.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="1238" y="711.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Floats</tspan>
+            <tspan>浮动</tspan>
         </text>
-        <text x="1219" y="739" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Positioning</tspan>
+        <text x="1238" y="739" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>定位</tspan>
         </text>
-        <text x="1233" y="765.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Display</tspan>
+        <text x="1225" y="765.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>显示方式</tspan>
         </text>
-        <text x="1222" y="792.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Box Model</tspan>
+        <text x="1225" y="792.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>盒子模型</tspan>
         </text>
         <text x="1225" y="820" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>CSS Grid</tspan>
+            <tspan>网格系统</tspan>
         </text>
-        <text x="1229" y="846.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Flex Box</tspan>
+        <text x="1225" y="846.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>Flex 布局</tspan>
         </text>
         <circle cx="1312" cy="682" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1312" cy="682" r="10" fill="rgb(153,0,255)"></circle>
@@ -222,7 +222,7 @@
     <g class="clickable-group" data-group-id="100-css:learn-the-basics">
         <rect x="896.35" y="704.35" width="277.3" height="40.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="965" y="730.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Learn the basics</tspan>
+            <tspan>学习基础知识</tspan>
         </text>
         <circle cx="1170" cy="709" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1170" cy="709" r="10" fill="rgb(153,0,255)"></circle>
@@ -231,7 +231,7 @@
     <g class="clickable-group" data-group-id="101-css:making-layouts">
         <rect x="895.35" y="753.35" width="278.3" height="44.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="970" y="781.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Making Layouts</tspan>
+            <tspan>学习 CSS 布局操作</tspan>
         </text>
         <circle cx="1170" cy="758" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1170" cy="758" r="10" fill="rgb(153,0,255)"></circle>
@@ -239,8 +239,8 @@
     </g>
     <g class="clickable-group" data-group-id="102-css:responsive-design-and-media-queries">
         <rect x="895.35" y="806.35" width="277.3" height="40.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="912" y="831.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="14px">
-            <tspan>Responsive design and Media Queries</tspan>
+        <text x="952" y="831.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>响应式设计和媒体查询</tspan>
         </text>
         <circle cx="1168" cy="813" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1168" cy="813" r="10" fill="rgb(153,0,255)"></circle>
@@ -254,8 +254,8 @@
     </g>
     <g class="clickable-group" data-group-id="100-javascript:syntax-and-basic-constructs">
         <rect x="181.35" y="782.35" width="293.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="215" y="807.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Syntax and Basic Constructs</tspan>
+        <text x="245" y="807.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>语法和基本结构</tspan>
         </text>
         <circle cx="182" cy="783" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="182" cy="783" r="10" fill="rgb(153,0,255)"></circle>
@@ -264,7 +264,7 @@
     <g class="clickable-group" data-group-id="101-javascript:learn-dom-manipulation">
         <rect x="181.35" y="828.35" width="294.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="231" y="853.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Learn DOM Manipulation</tspan>
+            <tspan>学习常见的 DOM 操作</tspan>
         </text>
         <circle cx="182" cy="832" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="182" cy="832" r="10" fill="rgb(153,0,255)"></circle>
@@ -273,13 +273,13 @@
     <g class="clickable-group" data-group-id="104-javascript:concepts">
         <rect x="181.35" y="972.35" width="293.3" height="110.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="205" y="1034.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Hoisting, Event Bubbling, Scope,</tspan>
+            <tspan>变量提升, 事件冒泡, 作用域,</tspan>
         </text>
         <text x="207" y="1064" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Prototype, Shadow DOM, strict</tspan>
+            <tspan>原型, Shadow DOM, 严格模式</tspan>
         </text>
-        <text x="228" y="1004.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Understand the concepts</tspan>
+        <text x="208" y="1004.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>理解这些概念：</tspan>
         </text>
         <circle cx="181" cy="977" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="181" cy="977" r="10" fill="rgb(153,0,255)"></circle>
@@ -288,7 +288,7 @@
     <g class="clickable-group" data-group-id="102-javascript:learn-fetch-api-ajax-xhr">
         <rect x="181.35" y="875.35" width="293.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="212" y="901" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Learn Fetch API / Ajax (XHR)</tspan>
+            <tspan>学习 Fetch API / Ajax (XHR)</tspan>
         </text>
         <circle cx="182" cy="879" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="182" cy="879" r="10" fill="rgb(153,0,255)"></circle>
@@ -297,7 +297,7 @@
     <g class="clickable-group" data-group-id="103-javascript:es6-and-modular-javascript">
         <rect x="181.35" y="923.35" width="293.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="212" y="949" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>ES6+ and modular JavaScript</tspan>
+            <tspan>ES6+ 和模块化 JavaScript</tspan>
         </text>
         <circle cx="181" cy="925" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="181" cy="925" r="10" fill="rgb(153,0,255)"></circle>
@@ -315,7 +315,7 @@
     <g class="clickable-group" data-group-id="100-internet:how-does-the-internet-work">
         <rect x="181.35" y="421.35" width="296.3" height="41.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="218" y="448.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>How does the internet work?</tspan>
+            <tspan>互联网的运行原理？</tspan>
         </text>
         <circle cx="183" cy="421" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="183" cy="421" r="10" fill="rgb(153,0,255)"></circle>
@@ -323,7 +323,7 @@
     </g>
     <g class="clickable-group" data-group-id="101-internet:what-is-http">
         <rect x="181.35" y="471.35" width="296.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="270" y="497" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+        <text x="220" y="497" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
             <tspan>什么是 HTTP?</tspan>
         </text>
         <circle cx="182" cy="473" r="10" fill="rgb(255,255,255)"></circle>
@@ -341,8 +341,8 @@
     </g>
     <g class="clickable-group" data-group-id="103-internet:dns-and-how-it-works">
         <rect x="896.35" y="418.35" width="277.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="946" y="444" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>DNS and how it works?</tspan>
+        <text x="905" y="444" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>什么是 DNS 以及它是如何工作的？</tspan>
         </text>
         <circle cx="1170" cy="418" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1170" cy="418" r="10" fill="rgb(153,0,255)"></circle>
@@ -350,7 +350,7 @@
     </g>
     <g class="clickable-group" data-group-id="104-internet:what-is-domain-name">
         <rect x="895.35" y="464.35" width="277.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="945" y="490" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+        <text x="975" y="490" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
             <tspan>什么是域名？</tspan>
         </text>
         <circle cx="1169" cy="468" r="10" fill="rgb(255,255,255)"></circle>
@@ -360,7 +360,7 @@
     <g class="clickable-group" data-group-id="105-internet:what-is-hosting">
         <rect x="896.35" y="510.35" width="277.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="969" y="536" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>What is hosting?</tspan>
+            <tspan>什么是网络托管服务？</tspan>
         </text>
         <circle cx="1169" cy="513" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1169" cy="513" r="10" fill="rgb(153,0,255)"></circle>
@@ -387,7 +387,7 @@
     <g class="clickable-group" data-group-id="100-version-control-systems:basic-usage-of-git">
         <rect x="543.35" y="1001.35" width="213.3" height="51.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="578" y="1034" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Basic Usage of Git</tspan>
+            <tspan>Git 的基本用法</tspan>
         </text>
         <circle cx="543" cy="1002" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="543" cy="1002" r="10" fill="rgb(153,0,255)"></circle>
@@ -404,20 +404,20 @@
     </g>
     <g class="clickable-group" data-group-id="105-repo-hosting-services">
         <rect x="906.35" y="903.35" width="349.3" height="75.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="995" y="935.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Repo hosting services</tspan>
+        <text x="1005" y="935.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>仓库托管服务</tspan>
         </text>
-        <text x="937" y="960" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="15px">
-            <tspan>Create account and Learn to use GitHub</tspan>
+        <text x="947" y="960" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="15px">
+            <tspan>创建 GitHub 账号学习如何使用</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="104-version-control-systems">
         <rect x="543.35" y="903.35" width="333.3" height="74.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="617" y="936" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Version Control Systems</tspan>
+            <tspan>版本控制系统</tspan>
         </text>
         <text x="561" y="959" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="15px">
-            <tspan>What are they and why you should use one</tspan>
+            <tspan>了解什么是版本控制系统以及为什么要使用它</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="107-package-managers">
@@ -458,7 +458,7 @@
     <g class="clickable-group" data-group-id="106-web-security-knowledge">
         <rect x="594.35" y="1094.35" width="369.3" height="51.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="684" y="1127" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Web Security Knowledge</tspan>
+            <tspan>网络安全知识</tspan>
         </text>
         <circle cx="594" cy="1095" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="594" cy="1095" r="10" fill="rgb(153,153,153)"></circle>
@@ -470,20 +470,20 @@
         <circle cx="205" cy="202" r="10" fill="rgb(153,0,255)"></circle>
         <path d="M199.5 202L203.5 206 210 199.5" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
         <text x="231" y="210.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>Personal Recommendation / Opinion</tspan>
+            <tspan>个人推荐选项</tspan>
         </text>
         <text x="231" y="307" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>I wouldn't recommend</tspan>
+            <tspan>不建议选项</tspan>
         </text>
         <circle cx="205" cy="299" r="10" fill="rgb(153,153,153)"></circle>
         <text x="232" y="275" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>Order in roadmap not strict (Learn anytime)</tspan>
+            <tspan>可随意不按路线图中的顺序进行学习</tspan>
         </text>
         <circle cx="205" cy="267" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="205" cy="267" r="10" fill="rgb(153,153,153)"></circle>
         <path d="M199.5 267L203.5 271 210 264.5" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
         <text x="231" y="243.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>Alternative Option - Pick this or purple</tspan>
+            <tspan>可选项 - 在紫色选项直接选择</tspan>
         </text>
         <circle cx="205" cy="234" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="205" cy="234" r="10" fill="rgb(255,255,255)"></circle>
@@ -506,17 +506,17 @@
     <g class="clickable-group" data-group-id="101-web-security-knowledge:content-security-policy">
         <rect x="982.35" y="1229.35" width="254.3" height="46.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="1022" y="1259" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Content Security Policy</tspan>
+            <tspan>内容安全策略</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="103-web-security-knowledge:owasp-security-risks">
         <rect x="982.35" y="1283.35" width="254.3" height="46.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="1025" y="1313" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>OWASP Security Risks</tspan>
+            <tspan>OWASP 安全风险</tspan>
         </text>
     </g>
     <text x="812" y="1216" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-        <tspan>Get at least a basic knowledge of all of these</tspan>
+        <tspan>至少了解下面知识的一种：</tspan>
     </text>
     <g>
         <circle cx="1248" cy="1185" r="10" fill="rgb(255,255,255)"></circle>
@@ -564,7 +564,7 @@
     <g class="clickable-group" data-group-id="100-build-tools:task-runners">
         <rect x="832.35" y="1518.35" width="222.3" height="47.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="891" y="1549.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Task Runners</tspan>
+            <tspan>任务运行器</tspan>
         </text>
     </g>
     <path d="M864 2380Q809.1393874589476 2381.025729622703 749 2380" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="undefined"></path>
@@ -619,8 +619,8 @@
     </g>
     <g class="clickable-group" data-group-id="101-build-tools:module-bundlers">
         <rect x="833.35" y="1575.35" width="222.3" height="47.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="879" y="1605.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Module Bundlers</tspan>
+        <text x="889" y="1605.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>模块打包器</tspan>
         </text>
     </g>
     <path d="M1128.9794474596536 2382Q1071.616034259329 2383.500709071008 1010.3421790426642 2382" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
@@ -663,15 +663,15 @@
     <g class="clickable-group" data-group-id="112-modern-css">
         <rect x="829.35" y="1693.35" width="200.3" height="47.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="881" y="1723.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Modern CSS</tspan>
+            <tspan>现代 CSS</tspan>
         </text>
     </g>
     <path d="M1155 2533Q1185.8690828402366 2533.6878698224855 1219 2530" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <path d="M1156 2580Q1186.7359467455622 2582.610946745562 1220 2581" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <g class="clickable-group" data-group-id="100-modern-css:styled-components">
         <rect x="830.35" y="1785.35" width="199.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="854" y="1809.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Styled Components</tspan>
+        <text x="884" y="1809.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>样式组件</tspan>
         </text>
         <circle cx="1026" cy="1802" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1026" cy="1802" r="10" fill="rgb(153,0,255)"></circle>
@@ -680,7 +680,7 @@
     <g class="clickable-group" data-group-id="101-modern-css:css-modules">
         <rect x="830.35" y="1830.35" width="199.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="878" y="1854.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>CSS Modules</tspan>
+            <tspan>CSS 模块化</tspan>
         </text>
         <circle cx="1027" cy="1847" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1027" cy="1847" r="10" fill="rgb(153,0,255)"></circle>
@@ -690,8 +690,8 @@
     <path d="M306 2912Q374.802467792898 2927.790908731621 466 2945" fill="none" stroke="rgb(43,120,228)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <g class="clickable-group" data-group-id="103-modern-css:emotion">
         <rect x="830.35" y="1920.35" width="198.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="898" y="1944.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Emotion</tspan>
+        <text x="838" y="1944.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>Emotion（样式 JS 库）</tspan>
         </text>
         <circle cx="1025" cy="1937" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1025" cy="1937" r="10" fill="rgb(255,255,255)"></circle>
@@ -766,23 +766,23 @@
     </g>
     <g class="clickable-group" data-group-id="114-css-frameworks">
         <rect x="298.35" y="1745.35" width="209.3" height="47.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="337" y="1775.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>CSS Frameworks</tspan>
+        <text x="357" y="1775.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>CSS 框架</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="114-css-frameworks:css-first">
         <rect x="176.35" y="2062.35" width="332.3" height="134.3" rx="2" fill="rgb(221,221,221)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="329" y="2096" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>CSS first frameworks</tspan>
+            <tspan>纯 CSS 框架</tspan>
         </text>
         <text x="329" y="2123" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>that don't come with</tspan>
+            <tspan>不含任何 JS 框架</tspan>
         </text>
         <text x="329" y="2150" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>JS framework</tspan>
+            <tspan>代码的样式库</tspan>
         </text>
         <text x="328" y="2177" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>components by default.</tspan>
+            <tspan>默认组件</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="100-css-frameworks:css-first:bootstrap">
@@ -800,10 +800,10 @@
     <g class="clickable-group" data-group-id="115-testing-your-apps">
         <rect x="1089.35" y="1883.35" width="229.3" height="273.3" rx="2" fill="rgb(255,255,255)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="1106" y="2108" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>You can fill all your testing</tspan>
+            <tspan>这些测试工具足够满足你所</tspan>
         </text>
         <text x="1106" y="2130" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>needs with just these.</tspan>
+            <tspan>有的测试需求</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="101-testing-your-apps:react-testing-library">
@@ -836,22 +836,22 @@
     <g class="clickable-group" data-group-id="115-testing-your-apps">
         <rect x="630.35" y="2001.35" width="402.3" height="155.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="754" y="2038.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="18px">
-            <tspan>Testing your Apps</tspan>
+            <tspan>应用程序测试</tspan>
         </text>
         <text x="651" y="2104.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>and</tspan>
-            <tspan fill="#2b78e4">Functional</tspan>
-            <tspan>tests and learn how to write</tspan>
+            <tspan>和 </tspan>
+            <tspan fill="#2b78e4">功能测试，</tspan>
+            <tspan>并学习如何使用右边的测试工具</tspan>
         </text>
         <text x="650" y="2133.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>them with the tools listed on the right.</tspan>
+            <tspan>编写测试代码</tspan>
         </text>
         <text x="650" y="2074.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Learn the difference between</tspan>
-            <tspan fill="#2b78e4">Unit</tspan>
-            <tspan>,</tspan>
-            <tspan fill="#2b78e4">Integration</tspan>
-            <tspan>,</tspan>
+            <tspan>了解这几种测试的区别：</tspan>
+            <tspan fill="#2b78e4">单元测试</tspan>
+            <tspan>，</tspan>
+            <tspan fill="#2b78e4">集成测试</tspan>
+            <tspan>，</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="116-type-checkers">
@@ -934,10 +934,10 @@
         </text>
     </g>
     <text x="199" y="2739" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-        <tspan>Learn different Web</tspan>
+        <tspan>学习 WPA 程序中各种</tspan>
     </text>
     <text x="203" y="2765" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-        <tspan>APIs used in PWAs</tspan>
+        <tspan>不同 API 的使用</tspan>
     </text>
     <circle cx="164" cy="2358" r="10" fill="rgb(255,255,255)"></circle>
     <circle cx="164" cy="2358" r="10" fill="rgb(153,153,153)"></circle>
@@ -963,27 +963,27 @@
     </g>
     <g class="clickable-group" data-group-id="111-progressive-web-apps:performance-metrics">
         <rect x="436.35" y="2530.35" width="222.3" height="29.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="462.18009185791016" y="2552" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="18px">
-            <tspan>Performance Metrics</tspan>
+        <text x="492.18009185791016" y="2552" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="18px">
+            <tspan>性能数据分析</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="112-progressive-web-apps:lighthouse">
         <rect x="436.35" y="2567.35" width="222.3" height="29.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="476.54407501220703" y="2588.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="18px">
-            <tspan>Using Lighthouse</tspan>
+            <tspan>使用 Lighthouse</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="113-progressive-web-apps:browser-devtools">
         <rect x="436.35" y="2605.35" width="222.3" height="29.3" rx="2" fill="rgb(255,255,0)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="484.4550476074219" y="2626.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="18px">
-            <tspan>Using DevTools</tspan>
+            <tspan>使用 DevTools</tspan>
         </text>
     </g>
-    <text x="455" y="2667.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-        <tspan>Calculating, Measuring</tspan>
+    <text x="465" y="2677.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+        <tspan>计算, 测量和性能提升</tspan>
     </text>
     <text x="435" y="2694.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-        <tspan>and improving performance</tspan>
+        <tspan></tspan>
     </text>
     <circle cx="418" cy="2435" r="10" fill="rgb(255,255,255)"></circle>
     <circle cx="418" cy="2435" r="10" fill="rgb(153,153,153)"></circle>
@@ -1135,7 +1135,7 @@
     <g class="clickable-group" data-group-id="100-web-components:html-templates">
         <rect x="1128.35" y="2212.35" width="187.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="1157" y="2236.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>HTML Templates</tspan>
+            <tspan>HTML 模板</tspan>
         </text>
         <circle cx="1312" cy="2229" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1312" cy="2229" r="10" fill="rgb(153,153,153)"></circle>
@@ -1144,7 +1144,7 @@
     <g class="clickable-group" data-group-id="101-web-components:custom-elements">
         <rect x="1128.35" y="2258.35" width="187.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
         <text x="1157" y="2282.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Custom Elements</tspan>
+            <tspan>自定义组件</tspan>
         </text>
         <circle cx="1312" cy="2275" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1312" cy="2275" r="10" fill="rgb(153,153,153)"></circle>
@@ -1152,7 +1152,7 @@
     </g>
     <g class="clickable-group" data-group-id="102-web-components:shadow-dom">
         <rect x="1128.35" y="2303.35" width="187.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="1165" y="2327.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+        <text x="1155" y="2327.5" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
             <tspan>Shadow DOM</tspan>
         </text>
         <circle cx="1312" cy="2320" r="10" fill="rgb(255,255,255)"></circle>
@@ -1179,8 +1179,8 @@
     </g>
     <g class="clickable-group" data-group-id="102-modern-css:styled-jsx">
         <rect x="830.35" y="1875.35" width="198.3" height="37.3" rx="2" fill="rgb(255,229,153)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="885" y="1900" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Styled JSX</tspan>
+        <text x="870" y="1900" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>带样式的 JSX</tspan>
         </text>
         <circle cx="1027" cy="1892" r="10" fill="rgb(255,255,255)"></circle>
         <circle cx="1027" cy="1892" r="10" fill="rgb(255,255,255)"></circle>
@@ -1329,11 +1329,11 @@
     </g>
     <g class="clickable-group" data-group-id="114-css-frameworks:js-first">
         <rect x="177.35" y="1825.35" width="330.3" height="225.3" rx="2" fill="rgb(255,255,255)" fill-opacity="1" stroke="rgb(0,0,0)" stroke-width="2.7"></rect>
-        <text x="195" y="2005" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>JS based and better to use with your</tspan>
+        <text x="188" y="2005" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
+            <tspan>基于JavaScript 语言的 CSS 框架，更适合结</tspan>
         </text>
-        <text x="195" y="2031" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
-            <tspan>framework based JavaScript apps.</tspan>
+        <text x="188" y="2031" fill="rgb(0,0,0)" font-style="normal" font-weight="normal" font-size="16px">
+            <tspan>合基于框架的 JavaScript 应用程序一起使用。</tspan>
         </text>
     </g>
     <g class="clickable-group" data-group-id="100-css-frameworks:js-first:tailwind-css">
@@ -1399,8 +1399,8 @@
     <path d="M1029 3607.090909090909Q1028.0618924097173 3579.7686234883795 1029 3540" fill="none" stroke="rgb(255,255,255)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.8 12"></path>
     <g class="clickable-group" data-group-id="ext_link:roadmap.sh/best-practices/frontend-performance">
         <rect x="416.35" y="2721.35" width="259.3" height="44.3" rx="2" fill="rgb(65,53,214)" fill-opacity="1" stroke="rgb(65,53,214)" stroke-width="2.7"></rect>
-        <text x="438" y="2750" fill="rgb(255,255,255)" font-style="normal" font-weight="normal" font-size="17px">
-            <tspan>Performance Best Practices</tspan>
+        <text x="458" y="2750" fill="rgb(255,255,255)" font-style="normal" font-weight="normal" font-size="17px">
+            <tspan>网页性能最佳实践</tspan>
         </text>
     </g>
 </svg>
