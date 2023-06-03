@@ -1,0 +1,63 @@
+.outDiv {
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+  font-size: 1.8rem;
+  background-color: #f4f4f6;
+  margin-bottom: 1.25rem;
+}
+.defaultALink {
+  text-decoration: underline !important;
+}
+/* 设置边框 */
+.outDiv a {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+}
+.outDiv:hover {
+  color: #000;
+}
+.borderALink::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.outDiv a:hover::before {
+  transform: scaleX(1);
+}
+.animatingLeftALink::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 0.3s ease;
+}
+
+.animatingRightALink::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: top right;
+  transition: transform 0.3s ease;
+}

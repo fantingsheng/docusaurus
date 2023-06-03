@@ -7,6 +7,72 @@ enableComments: true
 draft: true
 ---
 
-Hover This Text
+网页中 `<a>` 标签是带有如下这样一个下划线的样式，我们也可以通过 `text-decoration` 属性去设置成别的样式。
+
+import styles from './style.module.css'
+import clsx from 'clsx'
+
+export const GenerateLinkText = ({ cln, text='Hover This Text' }) => (
+  <div className={clsx(styles.outDiv)}>
+    <a className={clsx(styles[cln])}>{ text }</a>
+  </div>
+);
+
+<GenerateLinkText cln='defaultALink' />
+
+而我们今天要讨论的下划线动画，是无法直接通过哪个 CSS 属性设置的。我们只能通过伪造的方式模拟出一个下划线的效果。
+
+首先我们将 `<a>` 标签的默认下划线去掉，然后将鼠标 hover 后的字体颜色保持一致。
+
+``` css
+a {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+}
+```
+
+接下来我们通过伪元素 `::before` 设置它的高度，并且填充颜色来模拟成边框，将它绝对定位在文字的底部。
+
+``` css
+a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+```
+
+我们通过 CSS 的动画属性 `transform` 将边框 `X` 轴上的规模从 0 变到 1 模拟出从无到有的过程。
+
+``` css
+a:hover::before {
+  transform: scaleX(1);
+}
+```
+
+最后的效果如下（将鼠标指针移动到文字上）：
+
+<GenerateLinkText cln='borderALink' />
+
+现在动画的起始位置默认是从中间向左右两边展开的。`transform` 里还有这样一个属性 `transform-orgin`，作用就是指定动画是从哪里开始的。如果从
+左边开始，即 `transform-orgin: top left`。
+
+<GenerateLinkText cln='animatingLeftALink' text='Hover me (from left)' />
+
+右边则是：`transform-orgin: top right`。
+
+<GenerateLinkText cln='animatingRightALink' text='Hover me (from right)' />
+
 
 
