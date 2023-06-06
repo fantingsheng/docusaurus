@@ -87,8 +87,9 @@ const config = {
             position: 'left',
             label: '知识库',
           },
-          {to: '/blog', label: '博客', position: 'left'},
-          {to: '/about', label: '关于', position: 'right'}
+          { to: '/blog', label: '博客', position: 'left' },
+          // { label: 'Links', position: 'right', items: [{ to: '/blog', label: '博客' }] },
+          { to: '/about', label: '关于', position: 'right' }
         ],
       },
       footer: {
