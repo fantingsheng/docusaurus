@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-export default function FooterLayout({style, links, logo, copyright, safedomain }) {
+export default function FooterLayout({style, links, logo, copyright, safedomain, statistics }) {
   return (
     <footer
       className={clsx('footer', {
@@ -12,6 +12,7 @@ export default function FooterLayout({style, links, logo, copyright, safedomain 
           <div className="footer__bottom text--center">
             {logo && <div className="margin-bottom--sm">{logo}</div>}
             {copyright}
+            {statistics}
             { safedomain }
           </div>
         )}
