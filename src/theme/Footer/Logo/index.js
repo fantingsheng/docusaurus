@@ -22,14 +22,21 @@ function LogoImage({logo}) {
   );
 }
 export default function FooterLogo({logo}) {
-  return logo.href ? (
-    <Link
-      href={logo.href}
-      className={styles.footerLogoLink}
-      target={logo.target}>
-      <LogoImage logo={logo} />
-    </Link>
-  ) : (
-    <LogoImage logo={logo} />
-  );
+  return (
+    <div>
+      <span
+        className="domain-text-gradient"
+        style={{ fontSize: '36px', fontWeight: 'bold' }}>SPACEXCODE</span>
+    </div>
+  )
+  // return logo.href ? (
+  //   <Link
+  //     href={logo.href}
+  //     className={styles.footerLogoLink}
+  //     target={logo.target}>
+  //     <LogoImage logo={logo} />
+  //   </Link>
+  // ) : (
+  //   <LogoImage logo={logo} />
+  // );
 }

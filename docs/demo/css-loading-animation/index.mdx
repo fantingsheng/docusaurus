@@ -9,13 +9,10 @@ title: 用 CSS 实现的各种加载动画
 
 #### 实现效果
 
-import styles from "./style.module.css"
-import clsx from 'clsx'
-export const CssLoadingAnimation1 = () => (
-  <div className={styles.loadingWrapper}>
-    <div className={styles.spinner1}></div>
-  </div>
-);
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { CssLoadingAnimation1 } from './index'
 
 <CssLoadingAnimation1 />
 
@@ -62,20 +59,7 @@ export const CssLoadingAnimation1 = () => (
 
 #### 实现效果
 
-export const CssLoadingAnimation2 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-chase']}>
-        <div className={styles['sk-chase-dot']}></div>
-        <div className={styles['sk-chase-dot']}></div>
-        <div className={styles['sk-chase-dot']}></div>
-        <div className={styles['sk-chase-dot']}></div>
-        <div className={styles['sk-chase-dot']}></div>
-        <div className={styles['sk-chase-dot']}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation2 } from './index'
 
 <CssLoadingAnimation2 />
 
@@ -155,16 +139,7 @@ export const CssLoadingAnimation2 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation3 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner2']}>
-        <div className={styles['double-bounce1']}></div>
-        <div className={styles['double-bounce2']}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation3 } from './index'
 
 <CssLoadingAnimation3 />
 
@@ -227,19 +202,7 @@ export const CssLoadingAnimation3 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation4 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner4']}>
-        <div className={styles['rect1']}></div>
-        <div className={styles['rect2']}></div>
-        <div className={styles['rect3']}></div>
-        <div className={styles['rect4']}></div>
-        <div className={styles['rect5']}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation4 } from './index'
 
 <CssLoadingAnimation4 />
 
@@ -316,16 +279,7 @@ export const CssLoadingAnimation4 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation5 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner5']}>
-        <div className={styles['cube1']}></div>
-        <div className={styles['cube2']}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation5 } from './index'
 
 <CssLoadingAnimation5 />
 
@@ -396,13 +350,7 @@ export const CssLoadingAnimation5 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation6 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner6']}></div>
-    </div>
-  )
-};
+import { CssLoadingAnimation6 } from './index'
 
 <CssLoadingAnimation6 />
 
@@ -450,16 +398,7 @@ export const CssLoadingAnimation6 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation7 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner7']}>
-        <div className={styles['dot1']}></div>
-        <div className={styles['dot2']}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation7 } from './index'
 
 <CssLoadingAnimation7 />
 
@@ -529,17 +468,7 @@ export const CssLoadingAnimation7 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation8 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner8']}>
-        <div className={styles['bounce1']}></div>
-        <div className={styles['bounce2']}></div>
-        <div className={styles['bounce3']}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation8 } from './index'
 
 <CssLoadingAnimation8 />
 
@@ -603,26 +532,7 @@ export const CssLoadingAnimation8 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation9 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-circle']}>
-        <div className={clsx(styles['sk-child'], styles['sk-circle1'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle2'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle3'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle4'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle5'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle6'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle7'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle8'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle9'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle10'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle11'])}></div>
-        <div className={clsx(styles['sk-child'], styles['sk-circle12'])}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation9 } from './index'
 
 <CssLoadingAnimation9 />
 
@@ -775,23 +685,7 @@ export const CssLoadingAnimation9 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation10 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-cube-grid']}>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube1'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube2'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube3'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube4'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube5'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube6'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube7'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube8'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube9'])}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation10 } from './index'
 
 <CssLoadingAnimation10 />
 
@@ -881,26 +775,7 @@ export const CssLoadingAnimation10 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation11 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-fading-circle']}>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle1'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle2'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle3'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle4'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle5'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle6'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle7'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle8'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle9'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle10'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle11'])}></div>
-        <div className={clsx(styles['sk-circle'], styles['sk-circle12'])}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation11 } from './index'
 
 <CssLoadingAnimation11 />
 
@@ -1067,18 +942,7 @@ export const CssLoadingAnimation11 = () => {
 
 #### 实现效果
 
-export const CssLoadingAnimation12 = () => {
-  return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-folding-cube']}>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube1'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube2'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube3'])}></div>
-        <div className={clsx(styles['sk-cube'], styles['sk-cube4'])}></div>
-      </div>
-    </div>
-  )
-};
+import { CssLoadingAnimation12 } from './index'
 
 <CssLoadingAnimation12 />
 
