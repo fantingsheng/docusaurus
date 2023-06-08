@@ -94,6 +94,7 @@ const config = {
       },
       footer: {
         style: 'dark',
+        logo: { src: "/" },
         links: [
           {
             title: '相关站点',

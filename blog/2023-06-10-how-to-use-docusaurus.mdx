@@ -1,0 +1,236 @@
+---
+slug: how-to-use-docusaurus
+title: 我是如何使用 Docusaurus 来搭建我的网站的？
+authors: [timfan]
+tags: [网站, Docusaurus]
+---
+
+在使用 Docusaurus 过程中，我逐步摸索出一些不常用但是很实用的特性，有些是通过一些简单的配置，有的则需要增加或修改一些代码来实现。
+
+
+## 博客
+
+### 1. 设置草稿状态
+
+未撰写好的博客，在打包的时候不希望显示在博客列表中，可设置该篇博客为草稿状态，默认 `draft` 为 `true`
+
+```mdx
+---
+title: 我是如何使用 Docusaurus 来搭建我的网站的？
+slug: how-to-use-docusaurus
+authors:
+  - name: Timfan
+    title: 高级前端开发
+    url: https://github.com/fantingsheng
+    image_url: https://spacexcode.com/img/avatar.png
+    email: fants0230@sina.com
+tags: [使用指南]
+hide_table_of_contents: false
+// highlight-next-line
+draft: true
+---
+```
+
+### 2. 列表中博客显示摘要
+
+博客列表中默认是显示文章全部内容的，列表页一般是为了快速预览有哪些文章，这个时候只需要关注标题和简介即可，而看文章的详情则可以进入文章详情页进行预览。
+我们根据文章内容的具体设定，将 `<!--truncate-->` 代码放置在合适的位置，它前面的内容即为摘要的内容。
+
+```mdx
+博客正文。。。
+
+// highlight-next-line
+<!--truncate-->
+
+博客正文。。。
+```
+
+### 3. 文章详情页添加自定义模块
+
+如果你想要在每篇博客的底部增加这样一个显示个人微信公众号的卡片，这是无法直接通过配置来实现的，需要我们添加一些代码，修改原有的博客页面布局。
+
+我们首先在 `src/components` 目录下新建 `WechatFollowCard` 全局组件，组件代码如下：
+
+```jsx
+import React from 'react';
+import clsx from 'clsx';
+import styles from "./styles.module.css"
+
+export default function WeChatFollowCard() {
+  const wechatTitle = "太空编程"
+  return (
+    <div className={clsx('avatar', styles.qrcard)}>
+      <img
+        className={styles.qrcodeImg}
+        src={require('@site/static/img/qrcode.png').default} />
+      <div className="avatar__intro">
+        <div className="avatar__name">{ wechatTitle }</div>
+        <small className="avatar__subtitle">
+          分享硬核的前端编程知识。<br />想及时了解前端相关资讯，请关注作者公众号
+          “<span style={{color: 'red'}}>太空编程</span>”，回复关键字，获取丰富的学习资料。
+        </small>
+      </div>
+    </div>
+  )
+}
+```
+
+这里我们要使用 Swizzle 来完成自定义布局
+
+首先，我们将主题下面的博客内容组件 `BlogPostItem` 安装到目录 `src/theme` 下
+
+```
+npm run swizzle @docusaurus/theme-classic BlogPostItem -- --wrap
+```
+
+然后修改里面的代码，将前面封装的带有微信公众号卡片信息的组件引入进来：
+
+```jsx {4,16-19}
+import React from 'react';
+import BlogPostItem from '@theme-original/BlogPostItem';
+import { useBlogPost } from '@docusaurus/theme-common/internal';
+import WeChatFollowCard from '@site/src/components/WeChatFollowCard';
+import useIsBrowser from '@docusaurus/useIsBrowser';
+
+export default function BlogPostItemWrapper(props) {
+  const { metadata, isBlogPostPage } = useBlogPost()
+  const isBrowser = useIsBrowser();
+
+  const { frontMatter } = metadata
+  const { enableComments } = frontMatter
+  return (
+    <>
+      <BlogPostItem {...props} />
+      {
+        isBlogPostPage && (
+          <WeChatFollowCard />
+      )}
+    </>
+  );
+}
+```
+
+
+## 文档
+
+### 1. 将某个文档定义为内部文件
+
+我们知道所有 `docs` 下面的 `.md` 或 `.mdx` 后缀的文件都将作为文档里面的页面显示出来，如果某个文档只是被其它的文档所引用，我们只需将该文档的命名前面加上 `_` 的前缀，
+就好比我们命名私有变量一样。
+
+## 页面
+
+## Markdown
+
+### 1. 代码块中行高亮
+
+代码块中将某一行设置为高亮，只需将 `// highlight-next-line` 这段代码放置在它的上面；如果要设置多行，则将 `// highlight-start` 和 `// highlight-end`
+分别放置在它的前一行和后一行，包裹起来。
+
+```
+function HighlightSomeText(highlight) {
+  if (highlight) {
+    // highlight-next-line
+    return '这行被高亮了！';
+  }
+
+  return '这里不会';
+}
+
+function HighlightMoreText(highlight) {
+  // highlight-start
+  if (highlight) {
+    return '这块被高亮了！';
+  }
+  // highlight-end
+
+  return '这里不会';
+}
+```
+
+实际效果为：
+
+```js
+function HighlightSomeText(highlight) {
+  if (highlight) {
+    // highlight-next-line
+    return '这行被高亮了！';
+  }
+
+  return '这里不会';
+}
+
+function HighlightMoreText(highlight) {
+  // highlight-start
+  if (highlight) {
+    return '这块被高亮了！';
+  }
+  // highlight-end
+
+  return '这里不会';
+}
+```
+
+除了以上说的两种方式外，还可以使用元数据指定高亮行的方式，在代码块第一行标注语言种类后空一格 `jsx {1,4-6,11}`，高亮多行内容，请使用英文半角逗号来分隔行号，
+或使用范围语法来选择多行代码块以高亮。
+
+```jsx {1,4-6,11}
+import React from 'react';
+
+function MyComponent(props) {
+  if (props.isBar) {
+    return <div>Bar</div>;
+  }
+
+  return <div>Foo</div>;
+}
+
+export default MyComponent;
+```
+
+### 2. 代码设置行号
+
+默认代码块是不显示行号的，只需要在第一行符号标签上添加 `showLineNumbers` 即可
+
+```jsx {1,4-6,11} showLineNumbers
+import React from 'react';
+
+function MyComponent(props) {
+  if (props.isBar) {
+    return <div>Bar</div>;
+  }
+
+  return <div>Foo</div>;
+}
+
+export default MyComponent;
+```
+
+### 3. 在内容 mdx 中插入标题目录
+
+默认博客和文档右侧会自动生成带标题的树状目录结构，这个可以通过配置项 `hide_table_of_contents: false` 来进行设置。
+
+显示的标题层级，默认只显示 h2 和 h3，如果要改变显示的标题层级，只需要设置最大和最小的标题层级即可：
+
+```mdx
+---
+# 显示 h2 到 h5 标题
+toc_min_heading_level: 2
+toc_max_heading_level: 5
+---
+```
+
+如果要想在某个 MDX 文档正文中也显示内联标题目录怎么办？只需添加如下代码：
+
+```jsx
+import TOCInline from '@theme/TOCInline';
+
+<TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={4} />
+```
+
+传给参数 `toc` 的变量是可以从任何一个 MDX 文档中直接获取到的，它是一个包含id, value, level属性的值的对象数组。当然你也可以通过参数 `minHeadingLevel` 和 
+`maxHeadingLevel` 来控制显示的标题层级。
+
+import TOCInline from '@theme/TOCInline';
+
+<TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={3} />
