@@ -12,7 +12,155 @@ tags: [响应式, Vue3, 框架]
 <details>
 <summary> 1. 为什么 Vue2 组件中只能有一个根节点，而到了 Vue3 可以支持多个根节点？ </summary>
 
-其实本质上 Vue3 每个组件还是有一个根节点，因为 DOM 树只能是树状结构的，只是 Vue3 在编译阶段新增了判断，如果当前组件不只一个根元素，就添加一个 `fragment` 组件作为最外层组件将其的包裹
-起来，相当于这个组件还是只有一个根节点。而 `fragment` 跟 `keep-alive` 一样是一个不会被渲染出来的内置组件。
+其实本质上 Vue3 每个组件还是有一个根节点，因为 DOM 树只能是树状结构的，只是 Vue3 在编译阶段新增了判断，如果当前组件不只一个根元素，就添加一个 `fragment` 组件作为最外层组件将其
+的包裹起来，相当于这个组件还是只有一个根节点。而 `fragment` 跟 `keep-alive` 一样是一个不会被渲染出来的内置组件。
 
 </details>
+
+<!--truncate-->
+
+<details>
+<summary> 2. 为什么在 Vue3 中写 CSS 样式穿透 /deep/ 不起作用了？ </summary>
+
+在 Vue2 中我们要修改一个组件库中组件的样式，直接用它的类名写样式去覆盖往往不生效，这时候可以借助样式穿透 `/deep/` 写法，不管是在 Less 还是 SASS 中都是支持的。
+而在 Vue3 中，写法发生了变化，特性还是一样，改成了 `:deep` 语法了。
+
+</details>
+
+<details>
+<summary> 3. 全局注册(属性/方法)上有何不同 </summary>
+
+Vue2 我们在全局上挂载任何东西是直接在 Vue 原型上添加属性，然后赋值的方式。在其它组件获取直接通过 `this.xxx` 就可以。
+
+```
+Vue.prototype.xxx = xxx
+```
+
+而 Vue3 换成了注册一个能被所有组件访问到的全局实例，然后在实例的 `config` 属性下面有个名为 `globalProperties` 的全局属性，默认这个属性下面的所有属性或方法皆为
+全局的。
+
+首先我们在 `main.js` 中注册
+
+```js title='main.js'
+
+import { createApp } from 'vue'
+import App from './App.vue'
+const app = createApp(App)
+// 添加全局属性
+app.config.globalProperties.siteName = '太空编程'
+```
+
+然后在其它组件中调用
+
+```js
+<script setup>
+import { getCurrentInstance } from 'vue'
+const { appContext } = getCurrentInstance()
+
+const global = appContext.config.globalProperties
+console.log(global.siteName) // 太空编程
+</script>
+```
+
+</details>
+
+<details>
+<summary> 4. Vue3 中新增的 watchEffect API 解决了什么问题？ </summary>
+
+在介绍 watchEffect 之前我们先看看和它有很多相似之处的 watch 的语法和用途：
+
+对传入的某个或多个值的变化进行监听；触发时会返回新值和旧值；默认第一次不会执行（也可通过参数配置立即执行），只有监听的值发生变化时才会触发重新执行回调。
+
+```
+const siteName = ref('太空编程')
+watch(siteName,
+  (newValue, oldValue) => { ...  }, 
+  { immediate: true, deep:true }
+)
+
+// 响应式对象
+const site = reactive(
+  {
+    name: '太空编程',
+    url: 'https://spacexcode.com'
+  }
+)
+watch(
+  ()=> boy.age,
+  (newValue, oldValue) => { ... }
+)
+
+// 监听多个
+watch([name, () => site.url],
+  (newValue, oldValue)=>{ ... }
+)
+```
+
+`watchEffect` 是传入一个立即执行函数，所以默认第一次也会执行一次；不需要传入监听内容，会自动收集函数内的数据源作为依赖，在依赖变化的时候又会重新执行该函数，
+如果没有依赖就不会执行；而且不会返回变化前后的新值和旧值。
+
+```
+const Id = ref(0);
+// params 中有响应式依赖
+watchEffect(() => {
+  const res = await fetch(`https://spacexcode.com/xxx/${Id}`)
+  // ...
+})
+```
+
+`watch` 和 `watchEffect` 的共同点是会共享以下四种行为：
+- 停止监听：组件卸载时都会自动停止监听
+- 清除副作用：onInvalidate 会作为回调的第三个参数传入
+- 副作用刷新时机：响应式系统会缓存副作用函数，并异步刷新，避免同一个 tick 中多个状态改变导致的重复调用
+- 监听器调试：开发模式下可以用 onTrack 和 onTrigger 进行调试
+
+> 详情见[官方文档](https://cn.vuejs.org/guide/essentials/watchers.html#watcheffect)
+
+</details>
+
+<details>
+<summary> 5. Vue3 和 Vue2 中响应式原理的区别？ </summary>
+
+Vue2 数据响应式是通过对象的 `defineProperty` 劫持各个属性 `getter` 和 `setter` 方法，在数据变化时发布消息给订阅者，触发相应的监听回调，而这之间存在几个问题
+
+- 初始化时需要遍历对象所有 key，如果对象层次较深，性能不好
+- 通知更新过程需要维护大量 dep 实例和 watcher 实例，额外占用内存较多
+- Object.defineProperty 无法监听到数组元素的变化，只能通过劫持重写数组方法
+- 动态新增，删除对象属性无法拦截，只能用特定 set/delete API 代替
+- 不支持 Map、Set 等数据结构
+
+而在 Vue3 中使用的是原生 proxy 代替，支持监听对象和数组的变化，并且多达13种拦截方法，动态属性增删都可以拦截，对于新增的几种数据结构也都全部支持，对象嵌套属性只代理第一层，
+运行时递归，用到才代理，也不需要维护特别多的依赖关系，性能上有很大改善。
+
+总结一下，使用 Proxy 代替 defineProperty 有以下几点好处：
+
+- Object.defineProperty 是 Es5 的方法，Proxy 是 Es6 的方法
+- defineProperty 不能监听到数组下标变化和对象新增属性，Proxy 可以
+- defineProperty 是劫持对象属性，Proxy 是代理整个对象
+- defineProperty 局限性大，只能针对单属性监听，所以在一开始就要全部递归监听。Proxy 对象嵌套属性运行时递归，用到才代理，也不需要维护特别多的依赖关系，性能提升很大，且首次渲染更快
+- defineProperty 会污染原对象，修改时是修改原对象，Proxy 是对原对象进行代理并会返回一个新的代理对象，修改的是代理对象
+- defineProperty 不兼容 IE8，Proxy 不兼容 IE11
+
+</details>
+
+<details>
+<summary>6. Vue3 Diff 算法和 Vue2 有什么区别？</summary>
+
+我们知道在数据发生变更时会触发页面重新渲染，在渲染之前会生成虚拟 DOM 并进行 patch 过程，这一过程在 Vue3 中的优化有如下
+编译阶段的优化：
+
+- 事件缓存：将事件缓存（如: @click），可以理解为变成静态的了
+- 静态提升：第一次创建静态节点时保存，后续直接复用
+- 添加静态标记：给节点添加静态标记，以优化 Diff 过程
+
+由于编译阶段的优化，除了能更快的生成虚拟 DOM 以外，还使得 Diff 时可以跳过“永远不会变化的节点”，Diff 优化如下
+
+- Vue2 是全量 Diff，Vue3 是静态标记 + 非全量 Diff
+- 使用最长递增子序列优化了对比流程
+
+最终的数据是：根据官方作者公布的结果是 Vue3 update 性能提升了 1.3 ~ 2 倍
+
+</details>
+
+
+
