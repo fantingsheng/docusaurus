@@ -1,0 +1,63 @@
+---
+title: 鼠标位置追踪
+hide_table_of_contents: true
+---
+
+## useMousePosition 
+
+```jsx
+import React from 'react';
+const useMousePosition = () => {
+  const [
+    mousePosition,
+    setMousePosition
+  ] = React.useState({ x: null, y: null });
+  React.useEffect(() => {
+    const updateMousePosition = ev => {
+      setMousePosition({ x: ev.clientX, y: ev.clientY });
+    };
+    window.addEventListener('mousemove', updateMousePosition);
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
+  return mousePosition;
+};
+export default useMousePosition;
+```
+
+### 介绍
+
+一个封装了获取鼠标在网页当前位置的 React hook，返回值为包含横纵坐标位置 `x`，`y` 属性的对象。
+
+### 使用方法
+
+
+```jsx live
+function App() {
+  const useMousePosition = () => {
+    const [
+      mousePosition,
+      setMousePosition
+    ] = React.useState({ x: null, y: null });
+    React.useEffect(() => {
+      const updateMousePosition = ev => {
+        setMousePosition({ x: ev.clientX, y: ev.clientY });
+      };
+      window.addEventListener('mousemove', updateMousePosition);
+      return () => {
+        window.removeEventListener('mousemove', updateMousePosition);
+      };
+    }, []);
+    return mousePosition;
+  };
+  const mousePosition = useMousePosition();
+  return (
+    <p>
+      Your cursor position:
+      <br />
+      {JSON.stringify(mousePosition)}
+    </p>
+  );
+}
+```
