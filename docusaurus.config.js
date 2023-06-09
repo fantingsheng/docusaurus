@@ -45,7 +45,7 @@ const config = {
           blogDescription: '前端开发知识总结分享',
           blogSidebarTitle: '最近文章',
           showReadingTime: true,
-          postsPerPage: 10,
+          postsPerPage: 8,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -154,8 +154,9 @@ const config = {
       tableOfContents: {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
-      }
+      },
     }),
+  themes: ['@docusaurus/theme-live-codeblock'],
   scripts: [
     { src: 'https://hm.baidu.com/hm.js?ed54759479dfa9517f230a4aa834059c', async: true },
     { src: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async: true }

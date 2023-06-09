@@ -212,7 +212,7 @@ function MyComponent(props) {
 export default MyComponent;
 ```
 
-### 3. 在内容 mdx 中插入标题目录
+### 3. 在 mdx 文档中插入标题目录
 
 默认博客和文档右侧会自动生成带标题的树状目录结构，这个可以通过配置项 `hide_table_of_contents: false` 来进行设置。
 
@@ -242,3 +242,74 @@ import TOCInline from '@theme/TOCInline';
 import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={3} />
+
+### 4. 实现交互式代码编辑器
+
+有时我们需要在博客或者文档里展示一些代码的实际运行效果，常见的行为是给个链接跳转到第三方在线代码运行器里，比如“[码上掘金](https://code.juejin.cn/)”或者“[CODEPEN](https://codepen.io/)”等，
+这样可能觉得不够专注，还可以将实时展示代码运行结果的功能集成进来。
+
+利用 `@docusaurus/theme-live-codeblock` 这个官方插件就可以实现，首先安装插件到项目里：
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="npm" label="npm" default>
+
+```shell
+npm install --save @docusaurus/theme-live-codeblock
+```
+
+</TabItem>
+<TabItem value="yarn" label="yarn">
+
+```shell
+yarn add @docusaurus/theme-live-codeblock
+```
+
+</TabItem>
+<TabItem value="pnpm" label="pnpm">
+
+```shell
+pnpm add @docusaurus/theme-live-codeblock
+```
+
+</TabItem>
+</Tabs>
+
+然后需要到 `docusaurus.config.js` 配置文件里添加插件：
+
+```
+module.exports = {
+  // ...
+  themes: ['@docusaurus/theme-live-codeblock'],
+  // ...
+};
+```
+
+使用的时候，在代码块标签的后面加上 `live` 属性即可，实际效果如下：
+
+```jsx live
+function Clock(props) {
+  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+  useEffect(() => {
+    const timerID = setInterval(() => tick(), 1000);
+
+    return function cleanup() {
+      clearInterval(timerID);
+    };
+  });
+
+  function tick() {
+    setDate(new Date());
+  }
+
+  return (
+    <div>
+      <h4>你是在 {startDate.toLocaleTimeString()} 进入本页的</h4>
+      <h5>你已经在本页待了 {Math.floor((date.getTime() - startDate.getTime()) / 1000)} 秒了</h5>
+    </div>
+  );
+}
+```
