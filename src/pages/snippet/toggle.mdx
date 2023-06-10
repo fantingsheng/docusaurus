@@ -1,0 +1,42 @@
+---
+title: 在一个布尔值类型之间快速切换
+hide_table_of_contents: true
+---
+
+# useToggle
+
+```jsx
+import React from 'react';
+
+export default function useToggle(initialValue = false) {
+  const [value, setValue] = React.useState(initialValue);
+
+  const toggle = React.useCallback(() => {
+    setValue(v => !v);
+  }, []);
+
+  return [value, toggle];
+}
+```
+
+## 介绍
+
+我们在开发中经常要将一个布尔类型的值在 `true` 和 `false` 之间来回切换操作，你可能会写很多将一个值取反，然后又将取反的值 `set` 回去的代码。这里像一个语法糖，帮你便捷复用
+这样的逻辑代码。
+
+## 使用方法
+
+```jsx live
+function App () {
+  const [isOn, toggleIsOn] = useToggle();
+
+  return (
+    <>
+      <p>{isOn ? '灯被谁打开了！' : '是谁把灯关闭了！'}</p>
+      <button class='' onClick={toggleIsOn}>
+        按钮
+      </button>
+    </>
+  )
+}
+```

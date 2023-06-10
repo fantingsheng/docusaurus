@@ -1,0 +1,59 @@
+---
+title: 防抖函数
+hide_table_of_contents: true
+---
+
+# debounce
+
+```js
+const debounce = (callback, wait) => {
+  let timeoutId = null;
+
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args);
+    }, wait);
+  };
+}
+```
+
+## 介绍
+
+防抖功能是我们前端必不可少经常使用的一个功能。尤其是防止表单重复提交的场景。
+
+## 使用方法
+
+```jsx
+const handleMouseMove = debounce((ev) => {
+  // Do stuff with the event!
+}, 250);
+
+window.addEventListener('mousemove', handleMouseMove);
+```
+
+## 演示
+
+将鼠标放在“结果”区域移动，你将会看到值的变化，这个变化是有一定延迟的。
+
+我们都知道如果不加 `debounce` 函数处理的话，这个值的变化是及时很快的。
+
+```jsx live
+function App() {
+  const [mouseX, setMouseX] = React.useState(null);
+
+  const handleMouseMove = React.useMemo(
+    () => debounce((ev) => {
+      setMouseX(ev.clientX);
+    }, 250),
+    []
+  );
+  
+  return (
+    <div class='padding-vert--lg' onMouseMove={handleMouseMove}>
+      鼠标位置（X 轴方向）： {mouseX}
+    </div>
+  );
+}
+```
