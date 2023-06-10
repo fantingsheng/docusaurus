@@ -3,6 +3,7 @@ slug: how-to-use-docusaurus
 title: 我是如何使用 Docusaurus 来搭建网站的
 authors: [timfan]
 tags: [网站, Docusaurus, 指南]
+enableComments: true
 ---
 
 在使用 [Docusaurus](https://www.docusaurus.cn/) 过程中，我逐步摸索出一些不常用但是很实用的特性，有些是通过一些简单的配置，有的则需要增加或修改一些代码来实现。
@@ -122,7 +123,7 @@ export default function BlogPostItemWrapper(props) {
 
 ## 页面
 
-## Markdown
+## MDX
 
 ### 1. 代码块中行高亮
 
@@ -243,7 +244,7 @@ import TOCInline from '@theme/TOCInline';
 
 <TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={3} />
 
-### 4. 实现交互式代码编辑器
+### 4. 实现交互式代码区
 
 有时我们需要在博客或者文档里展示一些代码的实际运行效果，常见的行为是给个链接跳转到第三方在线代码运行器里，比如“[码上掘金](https://code.juejin.cn/)”或者“[CODEPEN](https://codepen.io/)”等，
 这样可能觉得不够专注，还可以将实时展示代码运行结果的功能集成进来。
@@ -313,3 +314,32 @@ function Clock(props) {
   );
 }
 ```
+
+### 5. 在代码区块中引入外部包
+
+代码块在设置了实时预览模式时，对于除 React 以外的其它组件是无法直接导入使用的。
+
+这时我们需要覆盖（swizzle）主题中相应的组件并调整 `react-live` 导入组件的范围：
+
+```shell
+npm run swizzle @docusaurus/theme-live-codeblock ReactLiveScope -- --eject
+```
+
+这时主题目录（theme）下面多了一个 `ReactLiveScope` 目录，打开 `index.js` 文件，添加需要的外部导入的组件
+
+
+```js {2,8}
+import React from 'react';
+import useMousePosition from './useMousePosition';
+
+// Add react-live imports you need here
+const ReactLiveScope = {
+  React,
+  ...React,
+  useMousePosition,
+};
+
+export default ReactLiveScope;
+```
+
+后面其它代码区块中可不导入直接使用 `useMousePosition` 组件。
