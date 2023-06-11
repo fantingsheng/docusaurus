@@ -25,8 +25,8 @@ export default function FooterLogo({logo}) {
   return (
     <div>
       <span
-        className="domain-text-gradient"
-        style={{ fontSize: '36px', fontWeight: 'bold' }}>SPACEXCODE</span>
+        className={clsx('domain-text-gradient', styles.logoText)}
+        >SPACEXCODE</span>
     </div>
   )
   // return logo.href ? (
