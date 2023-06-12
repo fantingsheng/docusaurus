@@ -1,7 +1,32 @@
 import React from 'react';
 import CodeBlock from '@theme/CodeBlock';
-import clsx from 'clsx';
-import styles from './styles.module.css';
+import useTypewriter from 'react-typewriter-hook' // https://github.com/haowen737/react-typewriter-hook
+
+const codeStr = `import React from 'react';
+import ReactDOM from 'react-dom';
+​
+const Headline = () => {
+  return <h1>Welcome to Spacexcode.</h1>;
+}
+​
+const Greeting = (props) => {
+  return <p>Please remember the only link: {props.link}!</p>;
+}
+export const App = () => {
+  return (
+    <div>
+      <Headline />
+      <Greeting link="https://spacexcode.com" />
+    </div>
+  )
+}
+var mount = document.querySelector('#root');
+ReactDOM.render(<App />, mount);`
+
+function MagicWriter() {
+  const typing = useTypewriter(codeStr)
+  return typing
+}
 
 export default function HomepageCodeBlock() {
   return (
@@ -10,18 +35,8 @@ export default function HomepageCodeBlock() {
         <div className='col col--8 col--offset-2'>
           <CodeBlock
             language="jsx"
-            live
-            showLineNumbers>
-            {`
-function Welcome() {
-  return (
-    <div>
-      <p>Welcome to SPACEXCODE! </p>
-      <p>You can study front-end knowledges from here with me.</p>
-    </div>
-  );
-}
-            `}
+          >
+            { MagicWriter() }
           </CodeBlock>
         </div>
       </div>
