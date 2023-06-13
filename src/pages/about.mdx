@@ -25,11 +25,25 @@ Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提�
 - 文章底部显示评论功能，基于 [giscus](https://giscus.app/zh-CN) 搭建，[教程](https://m19v.github.io/blog/how-to-add-giscus-to-docusaurus)
 - 文章底部显示微信公众号卡片，基于 Swizzle 特性对博客页面进行自定义布局，参考[Swizzle](https://www.docusaurus.io/zh-CN/docs/swizzling)
 
+#### 服务器
 
-> 本站部署在私人阿里云服务器 ECS 上，配置为：  
-> CPU&内存：1核(vCPU)1 GiB  
-> 操作系统：CentOS 7.7 64位  
-> 为了缓解服务器压力（存储和请求速度），文章中的图片存放在阿里云对象存储 OSS 上。
+本站部署在私人阿里云服务器 ECS 上，远程通过 SSH 工具进行管理。
+
+配置为：  
+- CPU&内存：1核(vCPU)1 GiB
+- 操作系统：CentOS 7.7 64位
+
+#### 存储
+
+为了缓解服务器压力（存储和请求速度），文章中的图片存放在阿里云对象存储 OSS 上。
+
+#### 域名
+
+本站域名 `spacexcode.com` 于 2021年01月购买自[万网](https://wanwang.aliyun.com/)，已备案。
+
+#### SSL 证书
+
+为了支持 HTTPS 访问，使用 DigiCert 免费版 SSL 证书，有效期一年，一年后需要重新申请生成新的证书上传。
 
 ### 数据统计
 
