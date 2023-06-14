@@ -66,7 +66,7 @@ const config = {
       metadata: [
         {
           name: 'keywords',
-          content: '太空编程, 前端, 教程, 案例'
+          content: '太空编程, 前端, React, Vue, 教程, 案例, 学习路径, 动态演示'
         },
         {
           name: 'author',
