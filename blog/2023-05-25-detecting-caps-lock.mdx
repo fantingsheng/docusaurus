@@ -14,29 +14,30 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 export const CapsLockDetect = () => {
   return (
     <BrowserOnly>
-    {() => {
-      const [ locked, setLocked ] = useState(false);
-      window.addEventListener('keydown', detect)
-      window.addEventListener('keyup', detect)
-      function detect (e) {
-        if (e.getModifierState('CapsLock')) {
-          setLocked(true)
-        } else {
-          setLocked(false)
+    {
+      () => {
+        const [ locked, setLocked ] = useState(false);
+        window.addEventListener('keydown', detect)
+        window.addEventListener('keyup', detect)
+        function detect (e) {
+          if (e.getModifierState('CapsLock')) {
+            setLocked(true)
+          } else {
+            setLocked(false)
+          }
         }
+        return (
+          <div
+            style={{
+              backgroundColor: '#eee',
+              padding: '10px',
+              margin: '0 0 20px'
+            }}>
+            <input type='password' placeholder="Password" />
+            { locked ? <div>Caps lock is on</div> : '' }
+          </div>
+        )
       }
-      return (
-        <div
-          style={{
-            backgroundColor: '#eee',
-            padding: '10px',
-            margin: '0 0 20px'
-          }}>
-          <input type='password' placeholder="Password" />
-          { locked ? <div>Caps lock is on</div> : '' }
-        </div>
-      )
-    }
     }
     </BrowserOnly>
   )
