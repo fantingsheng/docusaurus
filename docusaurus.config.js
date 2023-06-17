@@ -88,7 +88,10 @@ const config = {
             label: '知识库',
           },
           { to: '/blog', label: '博客', position: 'left' },
-          { label: '实战', position: 'right', items: [{ to: '/snippet', label: '代码片段' }] },
+          { label: '实战', position: 'right', items: [
+            { to: '/snippet', label: '代码片段' },
+            { to: '//visitor.spacexcode.com', label: '统计工具' }
+          ] },
           { to: '/about', label: '关于', position: 'right' }
         ],
       },
