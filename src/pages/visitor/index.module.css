@@ -16,3 +16,10 @@
   margin: 0 auto;
   display: block;
 }
+.introList {
+  list-style: none;
+  padding-left: 10px;
+}
+.introList li {
+  margin-bottom: 6px;
+}
