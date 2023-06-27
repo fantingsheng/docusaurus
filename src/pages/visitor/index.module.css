@@ -23,3 +23,6 @@
 .introList li {
   margin-bottom: 6px;
 }
+.introList li strong {
+  font-style: oblique;
+}

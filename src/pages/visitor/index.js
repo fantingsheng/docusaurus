@@ -4,6 +4,7 @@ import Layout from '@theme/Layout';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
+import { TextField, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
 import Banner from './banner';
 import styles from './index.module.css';
 
@@ -15,8 +16,8 @@ function Form () {
     label: '',
     labelColor: '',
     color: '',
-    type: 'pv',
-    style: 'plat'
+    type: '',
+    style: ''
   })
   const onChangeHandle = (val, key) => {
     setParams((prev) => ({ ...prev, [key]: val }))
@@ -34,41 +35,55 @@ function Form () {
       <div className='col col--6 col--offset-3'>
         <form className='margin-vert--lg'>
           <div className='row'>
-            <div className='col col--6'>
-              <input className={styles.input} placeholder='id' value={params.id} onChange={ e => onChangeHandle(e.target.value, 'id')} />
+            <div className='col col--6 margin-vert--md'>
+              <TextField label='id' size='small' value={params.id} onChange={ e => onChangeHandle(e.target.value, 'id')} fullWidth></TextField>
             </div>
-            <div className='col col--6'>
-              <input className={styles.input} placeholder='label' value={params.label} onChange={ e => onChangeHandle(e.target.value, 'label')} />
-            </div>
-          </div>
-          <div className='row margin-vert--md'>
-            <div className='col col--6'>
-              <input className={styles.input} placeholder='labelColor' value={params.labelColor} onChange={ e => onChangeHandle(e.target.value, 'labelColor') } />
-            </div>
-            <div className='col col--6'>
-              <input className={styles.input} placeholder='color' value={params.color} onChange={ e => onChangeHandle(e.target.value, 'color')} />
+            <div className='col col--6 margin-vert--md'>
+              <TextField label='label' size='small' value={params.label} onChange={ e => onChangeHandle(e.target.value, 'label')} fullWidth></TextField>
             </div>
           </div>
-          <div className='row margin-vert--md'>
-            <div className='col col--6'>
-              <select className={styles.select} placeholder='' value={params.type} onChange={ e => onChangeHandle(e.target.value, 'type')}>
-                <option value='pv'>pv</option>
-                <option value='uv'>uv</option>
-              </select>
+          <div className='row'>
+            <div className='col col--6 margin-vert--md'>
+              <TextField label='labelColor' size='small' value={params.labelColor} onChange={ e => onChangeHandle(e.target.value, 'labelColor')} fullWidth></TextField>
             </div>
-            <div className='col col--6'>
-              <select className={styles.select} placeholder='' value={params.style} onChange={ e => onChangeHandle(e.target.value, 'style')}>
-                <option value='plastic'>plastic</option>
-                <option value='flat'>flat</option>
-                <option value='flat-square'>flat-square</option>
-                <option value='for-the-badge'>for-the-badge</option>
-                <option value='social'>social</option>
-              </select>
+            <div className='col col--6 margin-vert--md'>
+              <TextField label='color' size='small' value={params.color} onChange={ e => onChangeHandle(e.target.value, 'color')} fullWidth></TextField>
             </div>
           </div>
-          <div className='row margin-vert--md'>
-            <div className='col col--4 col--offset-4'>
-              <button className={styles.button} type='button' onClick={onSubmit}>生成</button>
+          <div className='row'>
+            <div className='col col--6 margin-vert--md'>
+              <FormControl size='small' fullWidth>
+                <InputLabel>type</InputLabel>
+                <Select
+                  value={params.type}
+                  label='type'
+                  onChange={ e => onChangeHandle(e.target.value, 'type')}
+                >
+                  <MenuItem value='pv'>pv</MenuItem>
+                  <MenuItem value='uv'>uv</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className='col col--6 margin-vert--md'>
+              <FormControl size='small' fullWidth>
+                <InputLabel>style</InputLabel>
+                <Select
+                  value={params.style}
+                  label='style'
+                  onChange={ e => onChangeHandle(e.target.value, 'style')}
+                >
+                  <MenuItem value='plastic'>plastic</MenuItem>
+                  <MenuItem value='flat'>flat</MenuItem>
+                  <MenuItem value='flat-square'>flat-square</MenuItem>
+                  <MenuItem value='for-the-badge'>for-the-badge</MenuItem>
+                  <MenuItem value='social'>social</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col col--4 col--offset-4 margin-vert--md'>
+              <Button variant='contained' onClick={onSubmit} fullWidth>生成</Button>
             </div>
           </div>
         </form>
