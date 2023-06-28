@@ -9,8 +9,9 @@ import Banner from './banner';
 import styles from './index.module.css';
 
 function Form () {
-  const baseUrl = 'https://visitor.spacexcode.com'
-  const [ srcValue, setSrcValue ] = useState(baseUrl + '/preview')
+  const baseUrl = 'https://visitor.spacexcode.com';
+  const [ srcValue, setSrcValue ] = useState(baseUrl + '/preview');
+  const [idError, setIdError] = useState(false);
   const [params, setParams] = useState({
     id: '',
     label: '',
@@ -24,9 +25,10 @@ function Form () {
   }
   const onSubmit = () => {
     if (!params.id) {
-      alert('id mustn\'t empty')
+      setIdError(true);
       return;
     }
+    setIdError(false);
     const parstr = Object.keys(params).map(el => `${el}=${params[el]}`).join('&');
     setSrcValue(baseUrl + '/?' + parstr);
   }
@@ -35,23 +37,45 @@ function Form () {
       <div className='col col--6 col--offset-3'>
         <form className='margin-vert--lg'>
           <div className='row'>
-            <div className='col col--6 margin-vert--md'>
-              <TextField label='id' size='small' value={params.id} onChange={ e => onChangeHandle(e.target.value, 'id')} fullWidth></TextField>
+            <div className='col col--6 margin-vert--sm'>
+              <TextField 
+                label='id'
+                size='small'
+                value={params.id}
+                error={idError}
+                onChange={ e => onChangeHandle(e.target.value, 'id')}
+                required
+                fullWidth />
             </div>
-            <div className='col col--6 margin-vert--md'>
-              <TextField label='label' size='small' value={params.label} onChange={ e => onChangeHandle(e.target.value, 'label')} fullWidth></TextField>
+            <div className='col col--6 margin-vert--sm'>
+              <TextField
+                label='label'
+                size='small'
+                value={params.label}
+                onChange={ e => onChangeHandle(e.target.value, 'label')}
+                fullWidth />
             </div>
           </div>
           <div className='row'>
-            <div className='col col--6 margin-vert--md'>
-              <TextField label='labelColor' size='small' value={params.labelColor} onChange={ e => onChangeHandle(e.target.value, 'labelColor')} fullWidth></TextField>
+            <div className='col col--6 margin-vert--sm'>
+              <TextField
+                label='labelColor'
+                size='small'
+                value={params.labelColor}
+                onChange={ e => onChangeHandle(e.target.value, 'labelColor')}
+                fullWidth />
             </div>
-            <div className='col col--6 margin-vert--md'>
-              <TextField label='color' size='small' value={params.color} onChange={ e => onChangeHandle(e.target.value, 'color')} fullWidth></TextField>
+            <div className='col col--6 margin-vert--sm'>
+              <TextField
+                label='color'
+                size='small'
+                value={params.color}
+                onChange={ e => onChangeHandle(e.target.value, 'color')}
+                fullWidth />
             </div>
           </div>
           <div className='row'>
-            <div className='col col--6 margin-vert--md'>
+            <div className='col col--6 margin-vert--sm'>
               <FormControl size='small' fullWidth>
                 <InputLabel>type</InputLabel>
                 <Select
@@ -64,7 +88,7 @@ function Form () {
                 </Select>
               </FormControl>
             </div>
-            <div className='col col--6 margin-vert--md'>
+            <div className='col col--6 margin-vert--sm'>
               <FormControl size='small' fullWidth>
                 <InputLabel>style</InputLabel>
                 <Select
@@ -83,7 +107,7 @@ function Form () {
           </div>
           <div className='row'>
             <div className='col col--4 col--offset-4 margin-vert--md'>
-              <Button variant='contained' onClick={onSubmit} fullWidth>生成</Button>
+              <Button variant='contained' onClick={onSubmit} disableElevation fullWidth>生成</Button>
             </div>
           </div>
         </form>
@@ -117,12 +141,12 @@ function Introduction() {
       <div className='col col--8 col--offset-2'>
         <h4 className='margin-top--sm'>参数介绍：</h4>
         <ul className={styles.introList}>
-          <li><strong className='margin-right--sm'>id: </strong>作为统计页面的唯一标识</li>
-          <li><strong className='margin-right--sm'>label: </strong>显示在左侧的说明性文字，不填默认为 visitors</li>
-          <li><strong className='margin-right--sm'>labelColor: </strong>左侧说明性文字的背景颜色</li>
-          <li><strong className='margin-right--sm'>color: </strong>右侧统计数字的背景颜色</li>
-          <li><strong className='margin-right--sm'>type: </strong>统计值类型，目前有两种：pv, uv</li>
-          <li><strong className='margin-right--sm'>style: </strong>统计标签的样式有五种，分别为：plastic, flat, flat-square, for-the-badge, social</li>
+          <li><i>id: </i>作为统计页面的唯一标识</li>
+          <li><i>label: </i>显示在左侧的说明性文字，不填默认为 visitors</li>
+          <li><i>labelColor: </i>左侧说明性文字的背景颜色</li>
+          <li><i>color: </i>右侧统计数字的背景颜色</li>
+          <li><i>type: </i>统计值类型，目前有两种：pv, uv</li>
+          <li><i>style: </i>统计标签的样式有五种，分别为：plastic, flat, flat-square, for-the-badge, social</li>
         </ul>
       </div>
     </div>
