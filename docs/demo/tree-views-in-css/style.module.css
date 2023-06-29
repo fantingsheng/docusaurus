@@ -5,10 +5,15 @@
 }
 .tree details {
   border: none;
-  background-color: #fff;
   box-shadow: none;
   padding: 0;
   margin: 0;
+}
+[data-theme='light'] .tree details {
+  background-color: #fff;
+}
+[data-theme='dark'] .tree details {
+  background-color: transparent;
 }
 .tree summary {
   position: initial !important;
