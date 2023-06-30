@@ -1,0 +1,113 @@
+---
+slug: demo-area-component
+title: 制作一个演示区的标识组件
+authors: [timfan]
+tags: [演示, Demo]
+---
+
+经常要在文章中贴一些配合讲解的演示效果，为了强调功能区块的标识性，特别制作了如下这样一个组件：
+
+import DemoArea from '@site/src/components/DemoArea';
+
+<DemoArea title='demo'>内容区域</DemoArea>
+
+<!-- truncate -->
+
+主要结构和样式代码分享出来：
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="html" label="HTML" default>
+
+```html
+<div class="demoArea">
+  <div class="demoRibbon">
+    <span class="demoTitle">demo</span>
+  </div>
+  <div class="demoContent">内容区域</div>
+</div>
+```
+
+</TabItem>
+<TabItem value="css" label="CSS">
+
+```css
+.demoArea {
+  position: relative;
+  border: 1px solid #dadde1;
+  margin: 20px 0;
+}
+.demoRibbon {
+  height: 8rem;
+  width: 8rem;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  top: -0.5rem;
+  right: -0.5rem;
+}
+.demoTitle {
+  background-color: #6366f1;
+  color: #fff;
+  padding: 0.5rem 0;
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  width: 181px;
+  display: block;
+  letter-spacing: 0.15rem;
+  transform: translate(-13px, 30px) rotate(45deg);
+}
+.demoRibbon::before, .demoRibbon::after {
+  border: .25rem solid #4338ca;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  content: "";
+  position: absolute;
+  z-index: -1;
+}
+.demoRibbon::before {
+  top: 0;
+  left: 0;
+}
+.demoRibbon::after {
+  bottom: 0;
+  right: 0;
+}
+.demoContent {
+  padding: 1rem;
+  min-height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+</TabItem>
+</Tabs>
+
+效果实现了，原理不是很难，主要有几点：
+- 将标题所在的矩形长条旋转 45°，再利用父元素超出隐藏，实现一个梯形结构
+- 利用伪元素的 `border` 属性实现一个三角形角标
+
+为了方便在整个网站里应用，特地封装了一个全局组件：
+
+```jsx
+import React from 'react';
+import clsx from 'clsx';
+import styles from "./styles.module.css"
+
+export default function DemoArea({ title, children }) {
+  const demoTitle = title || "DEMO"
+  return (
+    <div className={styles.demoArea}>
+      <div className={styles.demoRibbon}>
+        <span className={styles.demoTitle}>{demoTitle}</span>
+      </div>
+      <div className={styles.demoContent}>{children}</div>
+    </div>
+  )
+}
+```
