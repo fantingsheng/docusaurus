@@ -1,0 +1,9 @@
+.bannerbg {
+  /* background-image: -webkit-gradient(linear,left top,right top,from(#383c93),to(#43a756));
+  background-image: linear-gradient(90deg,#383c93,#43a756); */
+  background: linear-gradient(#383c93 10%, #43a756 100%);
+  color: #fff;
+}
+.formWrap {
+  margin-top: -4rem;
+}
