@@ -1,0 +1,51 @@
+---
+title: 迭代一个空数组
+hide_table_of_contents: true
+---
+
+# 迭代一个空数组
+
+```js
+const arr = Array.apply(null, new Array(4));
+```
+
+### 介绍
+
+在 JavaScript 中直接通过 `new Array()` 创建的数组是松散的
+
+```sh
+> const arr = new Array(4);
+[undefined, undefined, undefined, undefined]
+```
+
+你会发现，通过一个松散的数组去遍历其中的元素和索引就会出现问题
+
+```sh
+> const arr = new Array(4);
+> arr.map((elem, index) => index);
+[undefined, undefined, undefined, undefined]
+```
+
+想要解决这个问题，我们可以在初始化一个新数组后使用 `Array.apply` 处理一下
+
+```sh
+> const arr = Array.apply(null, new Array(4));
+> arr.map((elem, index) => index);
+[0, 1, 2, 3]
+```
+
+### 使用方法
+
+```js live
+function demo () {
+  const arr = Array.apply(null, new Array(4));
+  return (
+    <div>
+      { arr.map((el, index) => {
+        return <span>{index}</span>
+        })
+      }
+    </div>
+  );
+}
+```
