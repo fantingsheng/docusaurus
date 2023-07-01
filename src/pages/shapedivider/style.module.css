@@ -6,4 +6,29 @@
 }
 .formWrap {
   margin-top: -4rem;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  background-color: #fff !important;
+  box-shadow: 11px 0 38px 0 rgba(0,0,0,.1);
+}
+.label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.previewWrap img {
+  vertical-align: top;
+}
+.previewArea {
+  position: relative;
+}
+.shapeDivider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.shapeDivider svg {
+  vertical-align: top;
 }
