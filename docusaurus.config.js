@@ -91,7 +91,8 @@ const config = {
           { to: '/blog', label: '博客', position: 'left' },
           { label: '实战', position: 'right', items: [
             { to: '/snippet', label: '代码片段' },
-            { to: '/visitor', label: '统计工具' }
+            { to: '/visitor', label: '统计工具' },
+            { to: '/shapedivider', label: '分隔线工具' }
           ] },
           { to: '/about', label: '关于', position: 'right' }
         ],

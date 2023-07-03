@@ -155,7 +155,7 @@ function Introduction() {
 
 export default function () {
   return (
-    <Layout>
+    <Layout title='统计工具' description='一行代码搞定统计'>
       <Banner />
       <Form />
       <Introduction />

@@ -129,6 +129,31 @@ export default function BlogPostItemWrapper(props) {
 
 详见文章 -> [如何将 Material UI 引入到 Docusaurus 中使用](/blog/use-material-ui-in-docusaurus)
 
+### 2. 在 jsx 页面中修改或增加 `meta` 信息
+
+为了方便搜索引擎优化，我们可以为单独的页面配置和全局站点不一样的 meta 信息，比如我们在 page 目录下新建一个页面的入口文件，如果你想要这个页面有共同的头部和底部，
+就将这个页面用 Layout 组件包裹住：
+
+> 这里 `Layout` 组件接受两个参数：`title` 和 `description`
+
+另外如果要修改更多的信息，可以引进 Head 组件，进行 `keywords` 等其它信息的修改
+
+```jsx
+import React from 'react';
+import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
+
+export default function page() {
+  return (
+    <Layout title="统计工具" description="一行代码搞定统计">
+      <Head>
+        <meta name="keywords" content="编程, 案例, 前端, 架构" />
+      </Head>
+      {/* ... */}
+    </Layout>
+  );
+}
+```
 
 ## MDX
 
