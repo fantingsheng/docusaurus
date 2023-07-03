@@ -133,16 +133,19 @@ export default function Form () {
   }
 
   const downloadSvg = () => {
-    console.log('svg')
     const svgBlob = document.querySelector('#divider').outerHTML;
     var blob = new Blob([svgBlob], { type: 'image/svg' });
     var href = window.URL.createObjectURL(blob);
     var a = document.createElement('a');
+    a.style.display = 'none';
     a.href = href;
-    a.download = 'bg.svg';
+    a.download = 'shapedivider.svg';
+    a.rel = 'noopener noreferrer';
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
+    setTimeout(() => {
+      a.remove();
+    }, 1000);
     URL.revokeObjectURL(href);
   }
 

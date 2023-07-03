@@ -1,0 +1,103 @@
+---
+title: 通过 a 标签下载文件
+hide_table_of_contents: true
+---
+
+# a download
+
+```js
+const downloadByUrl = (url: string, filename: string) => {
+    if (!url) throw new Error('当前没有下载链接');
+
+    const a = document.createElement("a");
+    a.style.display = "none";
+    a.href = url;
+    a.download = filename;
+    // 使用 target="_blank"时，添加 rel="noopener noreferrer" 堵住钓鱼安全漏洞 防止新页面 window 指向之前的页面
+    a.rel = "noopener noreferrer";
+    document.body.append(a);
+    a.click();
+
+    setTimeout(() => {
+        a.remove();
+    }, 1000);
+};
+```
+
+## 介绍
+
+我们常常需要通过按钮点击去下载文件，通过接口去请求文件，然后以 blob 文件流的形式返回，前端通过动态创建 `a` 标签本身具有的 download 属性进行下载。
+
+## 使用说明
+
+`URL.createObjectURL` 可以给 File 或 Blob 生成一个URL，形式为 `blob:<origin>/<uuid>`，此时浏览器内部就会为每个这样的 URL 存储一个 URL 到 Blob 的映射。
+这里我们需要注意用完释放掉，以免占用内存。
+
+```jsx
+const download = async () => {
+  const blob = await fetchFile();
+
+  // 生成访问 blob 的 URL
+  const url = window.URL.createObjectURL(blob);
+
+  // 调用刚刚封装的 a 标签下载方法
+  downloadByUrl(url, '文件名.格式');
+  
+  // 删除映射，释放内存
+  window.URL.revokeObjectURL(url);
+};
+```
+
+**拓展**
+
+还有一种方式是将获取到的 blob 流转化为 Base64 编码的字符串，然后在 `data-url` 中使用此编码。`data-url` 的格式为：
+ `data:[<mediatype>][;base64],<data>` 。接着声明一个 FileReader 对象，然后使用它的 readAsDataURL 方法将 Blob 读取为 base64。
+
+```js
+const download = async () => {
+  const blob = await fetchFile();
+
+  // 声明一个 fileReader
+  const fileReader = new FileReader();
+  
+  // 将 blob 读取成 base64
+  fileReader.readAsDataURL(blob);
+  
+  // 读取成功后 下载资源
+  fileReader.onload = function () {
+      downloadByUrl(fileReader.result, '文件名.格式');
+  };
+};
+```
+
+两种方式对比：
+- URL.createObjectURL(blob) 可以直接访问，无需“编码/解码”，但需要记得撤销（revoke）释放内存；
+- Data URL 无需撤销（revoke）操作，但对数据量比较大的 Blob 进行编码时，性能和内存会有损耗；
+
+## 演示
+
+```jsx live
+function aDownload () {
+
+  const handleClick = () => {
+    const blob = new Blob(['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" id="divider" style="width: calc(100% + 1.3px); height: 150px; transform: none;"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" opacity="1" class="shape-fill" style="fill: rgb(255, 255, 255);"></path></svg>'], {
+     type: "image/svg",
+    });
+
+    // 生成访问 blob 的 URL
+    const url = window.URL.createObjectURL(blob);
+
+    // 调用刚刚封装的 a 标签下载方法
+    downloadByUrl(url, 'spacexcode.svg');
+    
+    // 删除映射，释放内存
+    window.URL.revokeObjectURL(url);
+  }
+
+  return (
+    <button className='button button--link' onClick={handleClick}>点击下载</button>
+  )
+}
+```
+
+
