@@ -5,11 +5,13 @@ import BrowserOnly from '@docusaurus/BrowserOnly'
 
 export default function () {
   const [Excalidraw, setExcalidraw] = useState(null);
+  const [Mod, setMod] = useState(null);
 
   useEffect(
     () => {
       import('@excalidraw/excalidraw').then((comp) => {
         console.log(comp);
+        setMod(comp);
         setExcalidraw(comp.Excalidraw)
       }
     );
@@ -38,8 +40,26 @@ export default function () {
             appState: { zenModeEnabled: false },
             scrollToContent: true
           }}
+          renderTopRightUI={() => {
+            return (
+              <button
+                className='library-button'
+                onClick={() => window.location.href = '/'}
+              >
+                回到首页
+              </button>
+            );
+          }}
           langCode='zh-CN'
         >
+          <Mod.MainMenu>
+            <Mod.MainMenu.DefaultItems.LoadScene />
+            <Mod.MainMenu.DefaultItems.Export />
+            <Mod.MainMenu.DefaultItems.SaveAsImage />
+            <Mod.MainMenu.DefaultItems.ClearCanvas />
+            <Mod.MainMenu.DefaultItems.ToggleTheme />
+            <Mod.MainMenu.DefaultItems.ChangeCanvasBackground />
+          </Mod.MainMenu>
         </Excalidraw>
       )
     }
