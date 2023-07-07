@@ -229,7 +229,7 @@ export default function Form () {
           <div className={styles.previewWrap}>
             <img src='/page/browser.png' />
             <div className={styles.previewArea}>
-              <img src={bg} />
+              <img src={bg} loading="lazy" />
               <div
                 className={styles.shapeDivider}
                 style={{transform: formData.invert ? 'rotate(180deg)' : 'none'}}>

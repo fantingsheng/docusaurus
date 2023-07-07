@@ -9,35 +9,42 @@ tags: [侦听, Capslock]
 
 如下实例演示，当我们在密码输入框中输入内容时，如果我们的大小写键是开启的状态，就会得到“Caps lock is on”这样的提示信息。
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BrowserOnly from '@docusaurus/BrowserOnly'
 export const CapsLockDetect = () => {
+  function InputDetect () {
+    const [ locked, setLocked ] = useState(false);
+    const detect = (e) => {
+      let isLocked = false;
+      if (e.getModifierState('CapsLock')) {
+        isLocked = true;
+      }
+      setLocked(isLocked);
+    }
+    useEffect(() => {
+      window.addEventListener('keydown', detect)
+      window.addEventListener('keyup', detect)
+      return () => {
+        window.removeEventListener('keydown', detect)
+        window.removeEventListener('keyup', detect)
+      }
+    }, [])
+    return (
+      <div
+        style={{
+          backgroundColor: '#eee',
+          padding: '10px',
+          margin: '0 0 20px'
+        }}>
+        <input type='password' placeholder="Password" />
+        { locked ? <div>Caps lock is on</div> : '' }
+      </div>
+    )
+  }
   return (
     <BrowserOnly>
     {
-      () => {
-        const [ locked, setLocked ] = useState(false);
-        window.addEventListener('keydown', detect)
-        window.addEventListener('keyup', detect)
-        function detect (e) {
-          if (e.getModifierState('CapsLock')) {
-            setLocked(true)
-          } else {
-            setLocked(false)
-          }
-        }
-        return (
-          <div
-            style={{
-              backgroundColor: '#eee',
-              padding: '10px',
-              margin: '0 0 20px'
-            }}>
-            <input type='password' placeholder="Password" />
-            { locked ? <div>Caps lock is on</div> : '' }
-          </div>
-        )
-      }
+      () => <InputDetect />
     }
     </BrowserOnly>
   )
