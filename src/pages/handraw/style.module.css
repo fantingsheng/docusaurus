@@ -1,3 +1,3 @@
-.handrawApp {
-  
+.handrawApp .excalidraw .Modal__content {
+  z-index: 201;
 }

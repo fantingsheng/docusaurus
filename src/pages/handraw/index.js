@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import BrowserOnly from '@docusaurus/BrowserOnly'
 import Head from '@docusaurus/Head';
+import Layout from '@theme/Layout';
+import { publishedLib, unpublishedLib } from '../../config/data/excalidraw/libraries'
 
 export default function () {
   const [Excalidraw, setExcalidraw] = useState(null);
@@ -25,17 +27,8 @@ export default function () {
           initialData={{
             elements: [],
             appState: { zenModeEnabled: false },
+            libraryItems: [...publishedLib, ...unpublishedLib],
             scrollToContent: true
-          }}
-          renderTopRightUI={() => {
-            return (
-              <button
-                className='library-button'
-                onClick={() => window.location.href = '/'}
-              >
-                回到首页
-              </button>
-            );
           }}
           langCode='zh-CN'
         >
@@ -53,17 +46,19 @@ export default function () {
     return <></>
   }
   return (
-    <div style={{ height: '100vh'}} className={styles.handrawApp}>
+    <Layout>
       <Head>
         <title>手绘做图工具 | 太空编程</title>
         <meta name='description' content='一款带手写效果白板做图工具，可导出 SVG、PNG 等格式' />
         <meta name="keywords" content='手绘, 画图, 导出, 白板工具, 画布' />
       </Head>
-      <BrowserOnly>
-      {
-        () => <RenderExcalidraw />
-      }
-      </BrowserOnly>
-    </div>
+      <div style={{ height: 'calc(100vh - 60px)'}} className={styles.handrawApp}>
+        <BrowserOnly>
+        {
+          () => <RenderExcalidraw />
+        }
+        </BrowserOnly>
+      </div>
+    </Layout>
   )
 }
