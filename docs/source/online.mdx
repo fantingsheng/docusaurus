@@ -4,7 +4,86 @@ sidebar_position: 1
 
 # 在线资源
 
-在线的免费资源
+在线的免费资源收集
+
+## 国内下载
+
+解决一些资源在国内下载慢的问题
+
+### VScode
+如果我们从官网下载跳转过去，最终大概是这么个地址：
+
+```
+https://az764295.vo.msecnd.net/stable/660393deaaa6d1996740ff4880f1bad43768c814/VSCodeUserSetup-x64-1.80.0.exe
+```
+
+下载速度会很慢，这里有个方法，将前面的域名做个替换，改成这个 `https://vscode.cdn.azure.cn`
+
+或者输入一个原始下载地址，我们帮你转换
+
+import { useState }  from 'react';
+import { Box, TextField, Button } from '@mui/material';
+export function BuildFastUrl () {
+  const [link, setLink] = useState('');
+  const [helpText, setHelpText] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [downloadLink, setDownloadLink] = useState('');
+  const buildUrl = () => {
+    setIsError(false);
+    if (!link.length) return;
+    if (link.includes('vo.msecnd.net') && link.includes('.exe')) {
+      const index = link.indexOf('/stable');
+      const newUrl = 'https://vscode.cdn.azure.cn' + link.substring(index, link.length);
+      setDownloadLink(link.split().splice(0, index, 'https://vscode.cdn.azure.cn').join(''))
+    } else {
+      setIsError(true);
+      setHelpText('这是一个错误的下载链接');
+      setDownloadLink('');
+    }
+  }
+  return (
+    <div>
+      <Box
+        component='div'
+        sx={{
+          width: 800,
+          maxWidth: '100%',
+          mb: '10px'
+        }}
+      >
+        <TextField
+          value={link}
+          error={isError}
+          onChange={e => setLink(e.target.value)}
+          label='下载链接'
+          helperText={helpText}
+          placeholder='https://az764295.vo.msecnd.net/stable/***********.exe'
+          size='small'
+          fullWidth />
+      </Box>
+      <Box
+        component='div'
+        sx={{
+          width: 800,
+          maxWidth: '100%'
+        }}
+      >
+        <Button variant='contained' onClick={buildUrl}>生成</Button>
+        { downloadLink ? <a href={downloadLink} style={{ marginLeft: '10px'}}>下载</a> : '' }
+      </Box>
+    </div>
+  )
+}
+
+<BuildFastUrl />
+
+### Git for Windows
+
+国内直接从官网（[http://git-scm.com/download/win](http://git-scm.com/download/win)）下载比较慢。这里提供一个国内的下载站，方便网友下载
+
+访问 [淘宝 NPM 的 Git for Windows 索引页](https://registry.npmmirror.com/binary.html?path=git-for-windows/) 来下载
+
+![](http://i-fanr.oss-cn-hangzhou.aliyuncs.com/1688806090480-f056bbb9-6b71-410d-9dad-631c76454b74.png)
 
 ## 图片
 

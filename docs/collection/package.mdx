@@ -1,0 +1,35 @@
+---
+sidebar_position: 1
+---
+
+# 常见安装包及命令
+
+## NRM
+
+nrm（npm registry manager）是 `npm` 的镜像源管理工具。它可以快速在让你在本地源之间切换。类似 `node` 版本管理工具 `nvm`
+
+### 安装
+
+```shell
+npm install -g nrm
+```
+
+### 查看当前可使用的镜像源
+
+```shell
+> nrm ls
+
+* npm ---------- https://registry.npmjs.org/
+  yarn --------- https://registry.yarnpkg.com/
+  tencent ------ https://mirrors.cloud.tencent.com/npm/
+  cnpm --------- https://r.cnpmjs.org/
+  taobao ------- https://registry.npmmirror.com/
+  npmMirror ---- https://skimdb.npmjs.com/registry/
+```
+
+### 切换镜像源
+
+```shell
+nrm use taobao
+```
+
