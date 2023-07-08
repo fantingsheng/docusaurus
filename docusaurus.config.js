@@ -165,6 +165,18 @@ const config = {
   themes: ['@docusaurus/theme-live-codeblock'],
   scripts: [
     { src: 'https://hm.baidu.com/hm.js?ed54759479dfa9517f230a4aa834059c', async: true }
+  ],
+  plugins: [
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 85,
+        max: 860,
+        min: 300,
+        steps: 3,
+        disableInDev: false
+      }
+    ]
   ]
 };
 

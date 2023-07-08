@@ -5,7 +5,12 @@ import { FormControl, Avatar, SpeedDial, SpeedDialAction, Select,
 import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import { ColorPicker } from 'material-ui-color';
+import Image from '@theme/IdealImage';
 import styles from './style.module.css';
+import Image1 from '/page/shapedivider-1.png';
+import Image2 from '/page/shapedivider-2.png';
+import Image3 from '/page/shapedivider-3.png';
+import Image4 from '/page/shapedivider-4.png';
 
 export default function Form () {
 
@@ -98,7 +103,7 @@ export default function Form () {
   })
   const [flipDisabled, setFlipDisabled] = useState(false);
   const [invertDisabled, setInvertDisabled] = useState(false);
-  const [bg, setBg] = useState('/page/shapedivider-1.png');
+  const [bg, setBg] = useState(1);
   const [mapKey, setMapKey] = useState('waves');
 
   const actions = [
@@ -107,6 +112,8 @@ export default function Form () {
     { icon: '/page/shapedivider-3-small.png', name: '背景三' },
     { icon: '/page/shapedivider-4-small.png', name: '背景四' }
   ];
+
+  const Images = [Image1, Image2, Image3, Image4];
 
   const handleChange = (val, key) => {
     setFormData((prev) => ({ ...prev, [key]: val }))
@@ -226,10 +233,12 @@ export default function Form () {
       </div>
       <div className='row margin-top--xl'>
         <div className='col col--12'>
-          <div className={styles.previewWrap}>
-            <img src='/page/browser.png' />
+          <div className={styles.previewWrap}>            
+            <img src={'/page/browser.png'} />
             <div className={styles.previewArea}>
-              <img src={bg} loading="lazy" />
+              {
+                [bg].map(el => <Image key={el} img={Images[el - 1]} />)
+              }
               <div
                 className={styles.shapeDivider}
                 style={{transform: formData.invert ? 'rotate(180deg)' : 'none'}}>
@@ -265,12 +274,12 @@ export default function Form () {
         size='small'
         icon={<WallpaperIcon />}
       >
-        {actions.map((action) => (
+        {actions.map((action, index) => (
           <SpeedDialAction
             key={action.name}
             icon={<Avatar src={action.icon} />}
             tooltipTitle={action.name}
-            onClick={() => setBg(action.icon.replace('-small', ''))}
+            onClick={() => setBg(index + 1)}
           />
         ))}
       </SpeedDial>
