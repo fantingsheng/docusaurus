@@ -93,7 +93,8 @@ const config = {
             { to: '/snippet', label: '代码片段' },
             { to: '/visitor', label: '统计工具' },
             { to: '/shapedivider', label: '分隔线工具' },
-            { to: '/handraw', label: '手绘做图工具' }
+            { to: '/handraw', label: '手绘做图工具' },
+            { to: '/codeimage', label: '代码图片生成' }
           ] },
           { to: '/about', label: '关于', position: 'right' }
         ],
@@ -155,6 +156,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        defaultLanguage: 'javascript',
         additionalLanguages: ['powershell']
       },
       tableOfContents: {

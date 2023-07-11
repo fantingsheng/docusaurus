@@ -131,7 +131,8 @@ export default function Form () {
       setMapKey(formData.invert ? val + '-invert' : val);
     }
     if (key === 'invert') {
-      if (['waves', 'curve', 'curve-asymmetrical', 'triangle', 'triangle-asymmetrical', 'arrow', 'split', 'book'].includes(formData.shape) && val === true) {
+      if (['waves', 'curve', 'curve-asymmetrical', 'triangle', 'triangle-asymmetrical', 'arrow',
+        'split', 'book'].includes(formData.shape) && val === true) {
         setMapKey(formData.shape + '-invert');
       } else {
         setMapKey(formData.shape)
