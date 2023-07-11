@@ -42,6 +42,7 @@
   min-width: 520px;
   max-width: 920px;
   transition: padding .2s;
+  box-sizing: border-box;
 }
 .frameWindow {
   border-radius: 10px;
@@ -106,4 +107,5 @@
 .codeEditor {
   background-color: transparent !important;
   margin: 10px;
+  margin-bottom: 10px !important;
 }
