@@ -53,7 +53,24 @@
   margin: 0 5px;
 }
 
-/* 博客标题 */
-.title_node_modules-\@docusaurus-theme-classic-lib-theme-BlogPostItem-Header-Title-styles-module {
-  font-size: 2.5rem !important;
+/* a 标签带特殊下划线样式 */
+a.decoration {
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+}
+a.decoration:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 68%;
+  left: -0.1em;
+  right: -0.1em;
+  bottom: 0;
+  transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
+  background-color: var(--ifm-color-primary-lightest);
+}
+a.decoration:hover::after {
+  top: 0%;
 }
