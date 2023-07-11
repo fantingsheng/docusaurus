@@ -8,27 +8,33 @@ import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import {useColorMode} from '@docusaurus/theme-common';
 
 export default function Main () {
-  const {colorMode, setColorMode} = useColorMode();
+  const {setColorMode} = useColorMode();
   useEffect(() => {
     setColorMode('dark')
   }, [])
   const maxWidth = 920;
   const minWidth = 520;
-  const [code, setCode] = useState(`function Hello () {
-  return "Welcome to Spacexcode";
-}`);
+  const [code, setCode] = useState(
+`function Hello () {
+  const name = "Spacexcode";
+  return "Welcome to Spacexcode.";
+}`
+  );
   const [settings, setSettings] = useState({
     darkMode: true,
     hasBg: true,
     theme: 'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
     pad: 64,
-    lang: 'js'
+    lang: 'tsx'
   })
+  const [fileName, setFileName] = useState('');
+  const [focus, setFocus] = useState(false);
   const [blockWidth, setBlockWidth] = useState(520);
   const [handSide, setHandSide] = useState('left');
   const [clientX, setClientX] = useState(0)
   // 是否在拖动
   const [isResizing, setIsResizing] = useState(false)
+
   const handleStartResize = useCallback((e, side) => {
     setHandSide(side)
     setIsResizing(true)
@@ -51,7 +57,6 @@ export default function Main () {
     if (width > maxWidth) width = maxWidth;
     if (width < minWidth) width = minWidth;
     setClientX(e.clientX);
-    console.log(offset);
     setBlockWidth(width);
   }, 0)
 
@@ -94,8 +99,16 @@ export default function Main () {
                             <span></span>
                           </div>
                           <div className={styles.fileName}>
-                            <input type='text' value='' onChange={() => {}}></input>
-                            <span>Untitled-1</span>
+                            <input
+                              type='text'
+                              value={fileName}
+                              onFocus={() => setFocus(true)}
+                              onBlur={() => setFocus(false)}
+                              onChange={(e) => setFileName(e.target.value)} />
+                              {
+                                fileName || focus ? '' : <span>Untitled-1</span>
+                              }
+                            
                           </div>
                         </div>
                         <div className={styles.codeArea}>
@@ -112,9 +125,19 @@ export default function Main () {
             <div className={styles.setBar}>
               <div className={styles.setItem}>
                 <div className={styles.label}>主题</div>
-                <Select value={settings.theme} size='small' onChange={e => handleSetting(e.target.value, 'theme')}>
+                <Select
+                  value={settings.theme}
+                  size='small'
+                  onChange={e => handleSetting(e.target.value, 'theme')}
+                >
                   <MenuItem value='linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))'>Breeze</MenuItem>
                   <MenuItem value='linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))'>Candy</MenuItem>
+                  <MenuItem value='linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))'>Crimson</MenuItem>
+                  <MenuItem value='linear-gradient(140deg, rgb(189, 227, 236), rgb(54, 54, 84))'>FaIcon</MenuItem>
+                  <MenuItem value='linear-gradient(140deg, rgb(89, 212, 153), rgb(160, 135, 45))'>Meadow</MenuItem>
+                  <MenuItem value='linear-gradient(140deg, rgb(76, 200, 200), rgb(32, 32, 51))'>Midnight</MenuItem>
+                  <MenuItem value='linear-gradient(140deg, rgb(142, 199, 251), rgb(28, 85, 170))'>Raindrop</MenuItem>
+                  <MenuItem value='linear-gradient(140deg, rgb(255, 207, 115), rgb(255, 122, 47))'>Sunset</MenuItem>
                 </Select>
               </div>
               <div className={styles.setItem}>
@@ -152,8 +175,33 @@ export default function Main () {
               <div className={styles.setItem}>
                 <div className={styles.label}>语言</div>
                 <Select size='small' value={settings.lang} onChange={e => handleSetting(e.target.value, 'lang')}>
-                  <MenuItem value='js'>JavaScript</MenuItem>
+                  <MenuItem value='javascript'>JavaScript</MenuItem>
+                  <MenuItem value='css'>CSS</MenuItem>
+                  <MenuItem value='html'>HTML</MenuItem>
+                  <MenuItem value='typescript'>TypeScript</MenuItem>
+                  <MenuItem value='bash'>Bash</MenuItem>
+                  <MenuItem value='cpp'>C++</MenuItem>
+                  <MenuItem value='c'>C</MenuItem>
+                  <MenuItem value='go'>Go</MenuItem>
+                  <MenuItem value='graphql'>GraphQL</MenuItem>
+                  <MenuItem value='git'>Git</MenuItem>
+                  <MenuItem value='diff'>Diff</MenuItem>
+                  <MenuItem value='markdown'>Markdown</MenuItem>
+                  <MenuItem value='shell'>Powershell</MenuItem>
+                  <MenuItem value='json'>JSON</MenuItem>
+                  <MenuItem value='objectivec'>Objective C</MenuItem>
+                  <MenuItem value='rust'>Rust</MenuItem>
                   <MenuItem value='java'>Java</MenuItem>
+                  <MenuItem value='python'>Python</MenuItem>
+                  <MenuItem value='php'>PHP</MenuItem>
+                  <MenuItem value='tsx'>TSX</MenuItem>
+                  <MenuItem value='objectivec'>Objective C</MenuItem>
+                  <MenuItem value='objectivec'>Objective C</MenuItem>
+                  <MenuItem value='sql'>SQL</MenuItem>
+                  <MenuItem value='sass'>SASS</MenuItem>
+                  <MenuItem value='scss'>SCSS</MenuItem>
+                  <MenuItem value='yaml'>YAML</MenuItem>
+                  <MenuItem value='coffeescript'>Coffee Script</MenuItem>
                 </Select>
               </div>
               <div className={styles.setItem}>
