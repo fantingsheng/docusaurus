@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-import React from 'react';
-import { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import styles from './style.module.css';
 import CodeBlock from '@theme/CodeBlock';
 import debounce from '../../theme/ReactLiveScope/debounce';
@@ -8,24 +7,19 @@ import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import {useColorMode} from '@docusaurus/theme-common';
 
 export default function Main () {
-  const {setColorMode} = useColorMode();
-  useEffect(() => {
-    setColorMode('dark')
-  }, [])
+  // const {setColorMode} = useColorMode();
+
+  // useEffect(() => {
+  //   setColorMode('dark')
+  // }, [])
   const maxWidth = 920;
   const minWidth = 520;
-  const [code, setCode] = useState(
-`function Hello () {
-  const name = "Spacexcode";
-  return "Welcome to Spacexcode.";
-}`
-  );
   const [settings, setSettings] = useState({
     darkMode: true,
     hasBg: true,
     theme: 'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
     pad: 64,
-    lang: 'tsx'
+    lang: 'js'
   })
   const [fileName, setFileName] = useState('');
   const [focus, setFocus] = useState(false);
@@ -61,6 +55,7 @@ export default function Main () {
   }, 0)
 
   const handleResize = useCallback(didHandleResize, [isResizing, clientX, didHandleResize])
+
   useEffect(() => {
     document.addEventListener('mouseup', handleStopResize)
     document.addEventListener('mousemove', handleResize)
@@ -69,6 +64,7 @@ export default function Main () {
       document.removeEventListener('mousemove', handleResize)
     }
   }, [handleStopResize, handleResize])
+  
   const handleSetting = (val, key) => {
     setSettings((prev) => ({ ...prev, [key]: val }))
   }
@@ -105,18 +101,11 @@ export default function Main () {
                               onFocus={() => setFocus(true)}
                               onBlur={() => setFocus(false)}
                               onChange={(e) => setFileName(e.target.value)} />
-                              {
-                                fileName || focus ? '' : <span>Untitled-1</span>
-                              }
-                            
+                              {fileName || focus ? '' : <span>Untitled-1</span>}
                           </div>
                         </div>
                         <div className={styles.codeArea}>
-                          <CodeBlock
-                            className={styles.codeEditor}
-                            language={settings.lang}>
-                            {code}
-                          </CodeBlock>
+                          
                         </div>
                       </div>
                   </div>
@@ -191,12 +180,8 @@ export default function Main () {
                   <MenuItem value='json'>JSON</MenuItem>
                   <MenuItem value='objectivec'>Objective C</MenuItem>
                   <MenuItem value='rust'>Rust</MenuItem>
-                  <MenuItem value='java'>Java</MenuItem>
                   <MenuItem value='python'>Python</MenuItem>
-                  <MenuItem value='php'>PHP</MenuItem>
                   <MenuItem value='tsx'>TSX</MenuItem>
-                  <MenuItem value='objectivec'>Objective C</MenuItem>
-                  <MenuItem value='objectivec'>Objective C</MenuItem>
                   <MenuItem value='sql'>SQL</MenuItem>
                   <MenuItem value='sass'>SASS</MenuItem>
                   <MenuItem value='scss'>SCSS</MenuItem>

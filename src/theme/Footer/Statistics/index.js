@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 export default function Statistics() {
+  useEffect(() => {
+    const script = require('busuanzi.pure.js');
+    script.fetch();
+  }, [])
+  
   return (
     <div>
       <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

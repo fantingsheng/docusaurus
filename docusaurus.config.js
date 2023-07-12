@@ -166,8 +166,7 @@ const config = {
     }),
   themes: ['@docusaurus/theme-live-codeblock'],
   scripts: [
-    { src: 'https://hm.baidu.com/hm.js?ed54759479dfa9517f230a4aa834059c', async: true },
-    { src: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async: true }
+    { src: 'https://hm.baidu.com/hm.js?ed54759479dfa9517f230a4aa834059c', async: true }
   ],
   plugins: [
     [
