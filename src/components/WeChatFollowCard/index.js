@@ -8,7 +8,7 @@ export default function WeChatFollowCard() {
     <div className={clsx('avatar', styles.qrcard)}>
       <img
         className={styles.qrcodeImg}
-        src={require('@site/static/img/qrcode.png').default} />
+        src={'/img/qrcode.png'} />
       <div className="avatar__intro">
         <div className="avatar__name">{ wechatTitle }</div>
         <small className="avatar__subtitle">

@@ -1,20 +1,19 @@
 import clsx from 'clsx';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styles from './style.module.css';
 import CodeBlock from '@theme/CodeBlock';
 import debounce from '../../theme/ReactLiveScope/debounce';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
-import {useColorMode} from '@docusaurus/theme-common';
 import BrowserWindow from '@site/src/theme/BrowserWindow';
+import hljs from '../../config/highlight';
+import 'highlight.js/styles/default.css';
 
 export default function Main () {
-  // const {setColorMode} = useColorMode();
+  const codeRef = useRef(null);
 
-  // useEffect(() => {
-  //   setColorMode('dark')
-  // }, [])
   const maxWidth = 920;
   const minWidth = 520;
+
   const [settings, setSettings] = useState({
     darkMode: true,
     hasBg: true,
@@ -22,6 +21,11 @@ export default function Main () {
     pad: 64,
     lang: 'jsx'
   })
+  const [code, setCode] = useState(`
+  function Hello() {
+    return;
+  }
+  `)
   const [fileName, setFileName] = useState('');
   const [focus, setFocus] = useState(false);
   const [blockWidth, setBlockWidth] = useState(520);
@@ -60,11 +64,18 @@ export default function Main () {
   useEffect(() => {
     document.addEventListener('mouseup', handleStopResize)
     document.addEventListener('mousemove', handleResize)
+
     return () => {
       document.removeEventListener('mouseup', handleStopResize)
       document.removeEventListener('mousemove', handleResize)
     }
   }, [handleStopResize, handleResize])
+
+  useEffect(() => {
+    if (codeRef.current) {
+      hljs.highlightBlock(codeRef.current);
+    }
+  }, [code])
   
   const handleSetting = (val, key) => {
     setSettings((prev) => ({ ...prev, [key]: val }))
@@ -106,7 +117,13 @@ export default function Main () {
                             </div>
                           </div>
                           <div className={styles.codeArea}>
-                            
+                            <div className={clsx(styles.codeEditor, 'code-image-editor')}>
+                              <pre>
+                                <code id='javascript' ref={codeRef} className='javascript'>
+                                  {code}
+                                </code>
+                              </pre>
+                            </div>
                           </div>
                         </div>
                     </div>
