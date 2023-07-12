@@ -5,6 +5,7 @@ import CodeBlock from '@theme/CodeBlock';
 import debounce from '../../theme/ReactLiveScope/debounce';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import {useColorMode} from '@docusaurus/theme-common';
+import BrowserWindow from '@site/src/theme/BrowserWindow';
 
 export default function Main () {
   // const {setColorMode} = useColorMode();
@@ -19,7 +20,7 @@ export default function Main () {
     hasBg: true,
     theme: 'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
     pad: 64,
-    lang: 'js'
+    lang: 'jsx'
   })
   const [fileName, setFileName] = useState('');
   const [focus, setFocus] = useState(false);
@@ -74,43 +75,44 @@ export default function Main () {
       <div className='row'>
         <div className='col col--12'>
           <div className={styles.mainWrap}>
-            <div
-              className={styles.resizeFrame}>
-                <div className={clsx(styles.handDrag, styles.dragLeft)} onMouseDown={e => handleStartResize(e, 'left')}></div>
-                <div className={clsx(styles.handDrag, styles.dragRight)} onMouseDown={e => handleStartResize(e, 'right')}></div>
-                <div style={{ width: blockWidth ? blockWidth + 'px': 'auto'}}>
-                  <div
-                    className={styles.codeMain}
-                    style={{
-                      padding: `${settings.pad}px`,
-                      backgroundImage: settings.hasBg ? settings.theme : ''
-                    }}>
-                      <div className={styles.frameNoBg}></div>
-                      <div className={clsx(styles.frameWindow, {[styles.darkTheme]: settings.darkMode})}
-                        style={{ background: settings.darkMode ? 'rgba(0, 0, 0, 0.75)' : 'hsla(0, 0%, 100%, 0.75)' }}>
-                        <div className={styles.winHeader}>
-                          <div className={styles.controller}>
-                            <span></span>
-                            <span></span>
-                            <span></span>
+            <BrowserWindow>
+              <div className={styles.resizeFrame}>
+                  <div className={clsx(styles.handDrag, styles.dragLeft)} onMouseDown={e => handleStartResize(e, 'left')}></div>
+                  <div className={clsx(styles.handDrag, styles.dragRight)} onMouseDown={e => handleStartResize(e, 'right')}></div>
+                  <div style={{ width: blockWidth ? blockWidth + 'px': 'auto'}}>
+                    <div
+                      className={styles.codeMain}
+                      style={{
+                        padding: `${settings.pad}px`,
+                        backgroundImage: settings.hasBg ? settings.theme : ''
+                      }}>
+                        <div className={styles.frameNoBg}></div>
+                        <div className={clsx(styles.frameWindow, {[styles.darkTheme]: settings.darkMode})}
+                          style={{ background: settings.darkMode ? 'rgba(0, 0, 0, 0.75)' : 'hsla(0, 0%, 100%, 0.75)' }}>
+                          <div className={styles.winHeader}>
+                            <div className={styles.controller}>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                            </div>
+                            <div className={styles.fileName}>
+                              <input
+                                type='text'
+                                value={fileName}
+                                onFocus={() => setFocus(true)}
+                                onBlur={() => setFocus(false)}
+                                onChange={(e) => setFileName(e.target.value)} />
+                                {fileName || focus ? '' : <span>Untitled-1</span>}
+                            </div>
                           </div>
-                          <div className={styles.fileName}>
-                            <input
-                              type='text'
-                              value={fileName}
-                              onFocus={() => setFocus(true)}
-                              onBlur={() => setFocus(false)}
-                              onChange={(e) => setFileName(e.target.value)} />
-                              {fileName || focus ? '' : <span>Untitled-1</span>}
+                          <div className={styles.codeArea}>
+                            
                           </div>
                         </div>
-                        <div className={styles.codeArea}>
-                          
-                        </div>
-                      </div>
+                    </div>
                   </div>
-                </div>
-            </div>
+              </div>
+            </BrowserWindow>
             <div className={styles.setBar}>
               <div className={styles.setItem}>
                 <div className={styles.label}>主题</div>
@@ -181,6 +183,7 @@ export default function Main () {
                   <MenuItem value='objectivec'>Objective C</MenuItem>
                   <MenuItem value='rust'>Rust</MenuItem>
                   <MenuItem value='python'>Python</MenuItem>
+                  <MenuItem value='jsx'>JSX</MenuItem>
                   <MenuItem value='tsx'>TSX</MenuItem>
                   <MenuItem value='sql'>SQL</MenuItem>
                   <MenuItem value='sass'>SASS</MenuItem>

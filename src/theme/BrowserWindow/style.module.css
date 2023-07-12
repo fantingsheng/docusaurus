@@ -1,0 +1,52 @@
+.browserWindow {
+  border: 3px solid #ebedf0;
+  border-radius: .4rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+  margin-bottom: 1.25rem;
+}
+.browserWindow .header {
+  background: #ebedf0;
+  display: flex;
+  align-items: center;
+  padding: .5rem 1rem;
+}
+.browserWindow .header .button {
+  white-space: nowrap;
+}
+.browserWindow .header .button span {
+  border-radius: 50%;
+  display: inline-block;
+  height: 12px;
+  margin-right: 6px;
+  margin-top: 4px;
+  width: 12px;
+}
+.browserWindow .header .address {
+  background-color: var(--ifm-background-color);
+  border-radius: 12.5px;
+  color: var(--ifm-color-gray-800);
+  flex: 1 0;
+  font: 400 13px Arial,sans-serif;
+  margin: 0 1rem 0 0.5rem;
+  padding: 5px 15px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.browserWindow .header .menu {
+  margin-left: auto;
+}
+.browserWindow .header .menu span {
+  background-color: #aaa;
+  display: block;
+  height: 3px;
+  margin: 3px 0;
+  width: 17px;
+}
+.browserWindow .body {
+  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: inherit;
+  padding: 1px;
+  background-color: #fff;
+}
