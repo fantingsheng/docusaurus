@@ -5,9 +5,11 @@ import debounce from '../../theme/ReactLiveScope/debounce';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import BrowserWindow from '@site/src/theme/BrowserWindow';
 import hljs from '../../config/highlight';
+import html2canvas from 'html2canvas'
 
 export default function Main () {
   const codeRef = useRef(null);
+  const imgCode = useRef(null);
 
   const maxWidth = 920;
   const minWidth = 520;
@@ -80,6 +82,26 @@ export default function Main () {
     setSettings((prev) => ({ ...prev, [key]: val }))
   }
   
+  const exportImg = () => {
+    if (!imgCode.current) return;
+    html2canvas(imgCode.current, { useCORS: true}).then((canvas) => {
+      const dataURL = canvas.toDataURL('image/png');
+      let newImg = new Image()
+      const date = new Date()
+      newImg.src = canvas.toDataURL('image/png')
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = newImg.src;
+      a.download = `spacexcode-${date.getMinutes()}${date.getSeconds()}.png`;
+      a.rel = "noopener noreferrer";
+      document.body.append(a);
+      a.click();
+
+      setTimeout(() => {
+          a.remove();
+      }, 1000);
+    })
+  }
   return (
     <div className='container'>
       <div className='row'>
@@ -89,7 +111,7 @@ export default function Main () {
               <div className={styles.resizeFrame}>
                   <div className={clsx(styles.handDrag, styles.dragLeft)} onMouseDown={e => handleStartResize(e, 'left')}></div>
                   <div className={clsx(styles.handDrag, styles.dragRight)} onMouseDown={e => handleStartResize(e, 'right')}></div>
-                  <div style={{ width: blockWidth ? blockWidth + 'px': 'auto'}}>
+                  <div ref={imgCode} style={{ width: blockWidth ? blockWidth + 'px': 'auto'}}>
                     <div
                       className={styles.codeMain}
                       style={{
@@ -234,7 +256,7 @@ export default function Main () {
                 </Select>
               </div>
               <div className={styles.setItem}>
-                <Button variant='contained' disabled>导出图片</Button>
+                <Button variant='contained' onClick={exportImg}>导出图片</Button>
               </div>
             </div>
           </div>
