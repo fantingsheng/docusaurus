@@ -234,7 +234,7 @@ export default function Main () {
                 </Select>
               </div>
               <div className={styles.setItem}>
-                <Button variant='contained'>导出图片</Button>
+                <Button variant='contained' disabled>导出图片</Button>
               </div>
             </div>
           </div>
