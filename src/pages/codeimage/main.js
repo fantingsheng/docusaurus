@@ -1,12 +1,10 @@
 import clsx from 'clsx';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styles from './style.module.css';
-import CodeBlock from '@theme/CodeBlock';
 import debounce from '../../theme/ReactLiveScope/debounce';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import BrowserWindow from '@site/src/theme/BrowserWindow';
 import hljs from '../../config/highlight';
-import 'highlight.js/styles/default.css';
 
 export default function Main () {
   const codeRef = useRef(null);
@@ -19,18 +17,19 @@ export default function Main () {
     hasBg: true,
     theme: 'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
     pad: 64,
-    lang: 'jsx'
+    lang: 'javascript'
   })
-  const [code, setCode] = useState(`
-  function Hello() {
-    return;
-  }
-  `)
+  const [code, setCode] = useState(`function toObject (arr, key) {
+  arr.reduce((a, b) => (
+    { ...a, [b[key]]: b }
+  ), {});
+}`)
   const [fileName, setFileName] = useState('');
   const [focus, setFocus] = useState(false);
   const [blockWidth, setBlockWidth] = useState(520);
   const [handSide, setHandSide] = useState('left');
   const [clientX, setClientX] = useState(0)
+  const [editorHeight, setEditorHeight] = useState(180);
   // 是否在拖动
   const [isResizing, setIsResizing] = useState(false)
 
@@ -73,9 +72,9 @@ export default function Main () {
 
   useEffect(() => {
     if (codeRef.current) {
-      hljs.highlightBlock(codeRef.current);
+      hljs.highlightElement(codeRef.current);
     }
-  }, [code])
+  }, [code, settings.lang])
   
   const handleSetting = (val, key) => {
     setSettings((prev) => ({ ...prev, [key]: val }))
@@ -116,13 +115,26 @@ export default function Main () {
                                 {fileName || focus ? '' : <span>Untitled-1</span>}
                             </div>
                           </div>
-                          <div className={styles.codeArea}>
-                            <div className={clsx(styles.codeEditor, 'code-image-editor')}>
-                              <pre>
-                                <code id='javascript' ref={codeRef} className='javascript'>
-                                  {code}
-                                </code>
-                              </pre>
+                          <div className={styles.codeEditor}>
+                            <textarea
+                              className={styles.editorTextarea}
+                              spellCheck={false}
+                              autoComplete='off'
+                              tabIndex={-1}
+                              autoCorrect='off'
+                              autoCapitalize='off'
+                              value={code}
+                              onChange={e => setCode(e.target.value)}
+                              style={{ height: editorHeight + 'px' }}
+                              onInput={e => setEditorHeight(e.target.scrollHeight)}>
+                            </textarea>
+                            <div
+                              id={settings.lang}
+                              ref={codeRef}
+                              className={clsx(styles.codeFormatted, settings.lang)}
+                              style={{ color: '#fefdfd', background: 'transparent' }}
+                            >
+                              {code}
                             </div>
                           </div>
                         </div>
@@ -184,12 +196,14 @@ export default function Main () {
                 <div className={styles.label}>语言</div>
                 <Select size='small' value={settings.lang} onChange={e => handleSetting(e.target.value, 'lang')}>
                   <MenuItem value='javascript'>JavaScript</MenuItem>
+                  <MenuItem value='java'>Java</MenuItem>
                   <MenuItem value='css'>CSS</MenuItem>
-                  <MenuItem value='html'>HTML</MenuItem>
                   <MenuItem value='typescript'>TypeScript</MenuItem>
                   <MenuItem value='bash'>Bash</MenuItem>
                   <MenuItem value='cpp'>C++</MenuItem>
+                  <MenuItem value='csharp'>C#</MenuItem>
                   <MenuItem value='c'>C</MenuItem>
+                  <MenuItem value='python'>Python</MenuItem>
                   <MenuItem value='go'>Go</MenuItem>
                   <MenuItem value='graphql'>GraphQL</MenuItem>
                   <MenuItem value='git'>Git</MenuItem>
@@ -197,13 +211,23 @@ export default function Main () {
                   <MenuItem value='markdown'>Markdown</MenuItem>
                   <MenuItem value='shell'>Powershell</MenuItem>
                   <MenuItem value='json'>JSON</MenuItem>
+                  <MenuItem value='swift'>Swift</MenuItem>
+                  <MenuItem value='kotlin'>Kotlin</MenuItem>
                   <MenuItem value='objectivec'>Objective C</MenuItem>
                   <MenuItem value='rust'>Rust</MenuItem>
-                  <MenuItem value='python'>Python</MenuItem>
+                  <MenuItem value='ruby'>Ruby</MenuItem>
+                  <MenuItem value='php'>PHP</MenuItem>
+                  <MenuItem value='lua'>Lua</MenuItem>
+                  <MenuItem value='erlang'>Erlang</MenuItem>
+                  <MenuItem value='plaintext'>Plain Text</MenuItem>
+                  <MenuItem value='xml'>XML</MenuItem>
+                  <MenuItem value='lisp'>Lisp</MenuItem>
+                  <MenuItem value='scala'>Scala</MenuItem>
+                  <MenuItem value='dockerfile'>Dockerfile</MenuItem>
+                  <MenuItem value='crystal'>Crystal</MenuItem>
+                  <MenuItem value='elixir'>Elixir</MenuItem> 
                   <MenuItem value='jsx'>JSX</MenuItem>
-                  <MenuItem value='tsx'>TSX</MenuItem>
                   <MenuItem value='sql'>SQL</MenuItem>
-                  <MenuItem value='sass'>SASS</MenuItem>
                   <MenuItem value='scss'>SCSS</MenuItem>
                   <MenuItem value='yaml'>YAML</MenuItem>
                   <MenuItem value='coffeescript'>Coffee Script</MenuItem>

@@ -3,7 +3,6 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-@import url('highlight.js/styles/github.css');
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #383c93;
@@ -74,8 +73,57 @@ a.decoration:after {
 a.decoration:hover::after {
   top: 0%;
 }
-.code-image-editor .hljs {
-  color: #e4f2ff !important;
-  background-color: transparent !important;
-  padding: 5px 10px;
+/* 自定义代码区样式 */
+.codeFormatted {
+  --syntax-text: #FEFDFD;
+  --syntax-background: rgba(0,0,0,0.75);
+  --syntax-string: #EBB99D;
+  --syntax-comment: #895E60;
+  --syntax-variable: #C88E8E;
+  --syntax-variable-2: #FFE4E4;
+  --syntax-variable-3: #E97598;
+  --syntax-number: #FDA97A;
+  --syntax-atom: #FDA97A;
+  --syntax-keyword: #EB6F6F;
+  --syntax-property: #D15510;
+  --syntax-definition: #C88E8E;
+  --syntax-meta: #FFE4E4;
+  --syntax-operator: #EB6F6F;
+  --syntax-attribute: #C88E8E;
+  --syntax-tag: #EB6F6F;
+}
+.hljs-attr,
+.hljs-code,
+.hljs-section,
+.hljs-selector-class,
+.hljs-title {
+  color: var(--syntax-definition);
+}
+.hljs-class .hljs-title,
+.hljs-params,
+.hljs-title.class_ {
+  color: var(--syntax-definition);
+}
+.hljs-keyword,
+.hljs-name,
+.hljs-selector-tag {
+  color: var(--syntax-keyword)
+}
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: var(--syntax-variable);
+}
+.hljs-addition,
+.hljs-built_in,
+.hljs-selector-attr,
+.hljs-selector-id,
+.hljs-selector-pseudo,
+.hljs-string {
+  color: var(--syntax-string);
+}
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: var(--syntax-comment);
 }
