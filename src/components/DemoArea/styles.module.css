@@ -1,7 +1,7 @@
 .demoArea {
   position: relative;
   border: 1px solid #dadde1;
-  margin: 20px 0;
+  margin: 40px 0 20px;
 }
 .demoRibbon {
   height: 8rem;

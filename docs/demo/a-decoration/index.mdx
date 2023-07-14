@@ -1,0 +1,112 @@
+---
+sidebar_position: 3
+title: A 标签有趣的样式
+---
+
+在网上看到很多对 `<a>` 标签样式的设计，觉得很有趣，做了个实现原理和 demo 的整理收集。
+
+import DemoArea from '@site/src/components/DemoArea'
+import { AStyleExample } from './index';
+
+## 浏览器默认，Hover 状态有下划线
+
+<DemoArea>
+  <AStyleExample text='SPACEXCODE' clsName='default' />
+</DemoArea>
+
+### 实现原理
+
+A 标签在浏览器默认样式下是有下划线的，可以通过 `text-decoration` 属性进行设置，当值为 `none` 时隐藏。常见网站的处理都是隐藏它，但为了突出它是一个超链接，
+会给它一个区别其它文本的颜色。
+
+### 样式代码
+
+```css
+a {
+  color: #383c93;
+  text-decoration: none;
+}
+```
+
+## 底部边框，Hover 状态移动遮罩效果
+
+<DemoArea>
+  <AStyleExample text='SPACEXCODE' clsName='bottomBorder' />
+</DemoArea>
+
+### 实现原理
+
+第一步：清除 A 标签默认下划线和 Hover 状态下的下划线样式。将它的颜色继承和其它文本颜色一致。这里会利用样式让它区别于其它文本；
+
+第二步：然后利用伪元素 `:after` 设置特殊背景色，相较于 `<a>` 元素做绝对定位，模拟出位于底部的边框；
+
+第三步：鼠标移动上去的时候，改变 `:after` 形成的颜色边框的位置，然后利用 `transition` 增加过度动画，让它有一个移动拉伸的效果。
+
+### 样式代码
+
+```css
+a {
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+}
+a:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 68%;
+  left: -0.1em;
+  right: -0.1em;
+  bottom: 0;
+  transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
+  background-color: #4d52bb;
+}
+a:hover::after {
+  top: 0%;
+}
+```
+
+## Hover 状态滑动的下划线
+
+<DemoArea>
+  <AStyleExample text='SPACEXCODE' clsName='animateLine' />
+</DemoArea>
+
+### 实现原理
+
+第一步：清除 A 标签默认下划线和 Hover 状态下的下滑线显示，设置有别于其它文本的颜色做区分；
+
+第二步：利用伪元素 `:before` 把它设置成和字体颜色一致的底部边框，然后将它的长度通过 `scale` 变换设置成 0；
+
+第三步：增加鼠标移动上去的样式，将边框的长度恢复，再增加个过度效果，模拟出动态伸展的效果。
+
+
+### 样式代码
+
+```css
+a {
+  position: relative;
+}
+a:hover {
+  text-decoration: none;
+}
+a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 10%;
+  left: 0;
+  background-color: #4d52bb;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+a:hover::before {
+  transform: scaleX(1);
+}
+```
