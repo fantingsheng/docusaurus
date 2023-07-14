@@ -1,5 +1,5 @@
 .mainWrap {
-  margin: 8rem auto;
+  margin: 6rem auto;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -48,10 +48,10 @@
   position: absolute;
   z-index: -1;
   background-image:
-    linear-gradient(45deg,#1d1d1d 25%,transparent 0),
-    linear-gradient(-45deg,#1d1d1d 25%,transparent 0),
-    linear-gradient(45deg,transparent 75%,#1d1d1d 0),
-    linear-gradient(-45deg,transparent 75%,#1d1d1d 0);
+    linear-gradient(45deg,#8d8b8b 25%,transparent 0),
+    linear-gradient(-45deg,#8d8b8b 25%,transparent 0),
+    linear-gradient(45deg,transparent 75%,#8d8b8b 0),
+    linear-gradient(-45deg,transparent 75%,#8d8b8b 0);
   background-position: 0 0, 0 10px, 10px -10px, -10px 0;
   background-size: 20px 20px;
   inset: 0;
@@ -176,7 +176,7 @@
   padding: 15px 24px;
   border: 1px solid var(--ifm-color-primary);
   border-radius: 8px;
-  gap: 32px;
+  gap: 42px;
 }
 .setItem {
   font-size: 13px;

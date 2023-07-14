@@ -4,6 +4,7 @@ import styles from './style.module.css';
 export default function BrowserWindow(props) {
   const url = props.url || 'https://spacexcode.com'
   const bodyPad = props.bodyPad || '1rem'
+  const bodyBg = props.bodyBg || 'transparent'
   return (
     <div className={styles.browserWindow}>
       <div className={styles.header}>
@@ -21,7 +22,7 @@ export default function BrowserWindow(props) {
           </div>
         </div>
       </div>
-      <div className={styles.body} style={{ padding: bodyPad }}>
+      <div className={styles.body} style={{ padding: bodyPad, backgroundColor: bodyBg }}>
         {props.children}
       </div>
     </div>

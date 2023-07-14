@@ -84,7 +84,11 @@ export default function Main () {
   
   const exportImg = () => {
     if (!imgCode.current) return;
-    html2canvas(imgCode.current, { useCORS: true}).then((canvas) => {
+    html2canvas(imgCode.current, {
+      useCORS: true,
+      scale: 2,
+      backgroundColor: 'transparent'
+    }).then((canvas) => {
       const dataURL = canvas.toDataURL('image/png');
       let newImg = new Image()
       const date = new Date()
@@ -96,7 +100,6 @@ export default function Main () {
       a.rel = "noopener noreferrer";
       document.body.append(a);
       a.click();
-
       setTimeout(() => {
           a.remove();
       }, 1000);
@@ -107,7 +110,7 @@ export default function Main () {
       <div className='row'>
         <div className='col col--12'>
           <div className={styles.mainWrap}>
-            <BrowserWindow url='https://spacexcode.com/codeimage' bodyPad='1px'>
+            <BrowserWindow url='https://spacexcode.com/codeimage' bodyPad='0' bodyBg=''>
               <div className={styles.resizeFrame}>
                   <div className={clsx(styles.handDrag, styles.dragLeft)} onMouseDown={e => handleStartResize(e, 'left')}></div>
                   <div className={clsx(styles.handDrag, styles.dragRight)} onMouseDown={e => handleStartResize(e, 'right')}></div>
@@ -118,9 +121,11 @@ export default function Main () {
                         padding: `${settings.pad}px`,
                         backgroundImage: settings.hasBg ? settings.theme : ''
                       }}>
-                        <div className={styles.frameNoBg}></div>
+                        {
+                          settings.hasBg ? "" : <div data-html2canvas-ignore={true} className={styles.frameNoBg}></div>
+                        }
                         <div className={clsx(styles.frameWindow, {[styles.darkTheme]: settings.darkMode})}
-                          style={{ background: settings.darkMode ? 'rgba(0, 0, 0, 0.75)' : 'hsla(0, 0%, 100%, 0.75)' }}>
+                          style={{ background: settings.darkMode ? 'rgba(0, 0, 0, .75)' : 'hsla(0, 0%, 100%, 0.75)' }}>
                           <div className={styles.winHeader}>
                             <div className={styles.controller}>
                               <span></span>
