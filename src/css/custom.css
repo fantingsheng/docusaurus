@@ -92,6 +92,26 @@ a.decoration:hover::after {
   --syntax-attribute: #C88E8E;
   --syntax-tag: #EB6F6F;
 }
+.hljs {
+  color: var(--syntax-text)
+}
+.hljs-subst, .hljs-tag {
+  color: var(--syntax-tag)
+}
+.hljs-strong {
+  font-weight: 700
+}
+.hljs-emphasis {
+  font-style: italic
+}
+.hljs-bullet,
+.hljs-link,
+.hljs-literal,
+.hljs-number,
+.hljs-quote,
+.hljs-regexp {
+  color: var(--syntax-number)
+}
 .hljs-attr,
 .hljs-code,
 .hljs-section,
@@ -126,4 +146,9 @@ a.decoration:hover::after {
 .hljs-deletion,
 .hljs-meta {
   color: var(--syntax-comment);
+}
+.hljs-attribute,
+.hljs-property,
+.hljs-symbol {
+  color: var(--syntax-property)
 }

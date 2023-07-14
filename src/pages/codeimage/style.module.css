@@ -1,3 +1,7 @@
+@font-face{
+  font-family: 'JetBrains Mono';
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v17/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8-qxTOlOTk6OThhvA.woff');
+}
 .mainWrap {
   margin: 6rem auto;
   width: 100%;
@@ -144,6 +148,7 @@
   margin: 0;
   font: var(--ifm-font-size-base) / var(--ifm-line-height-base) var(--ifm-font-family-base);
   font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
   font-variant-ligatures: none;
   grid-column: 1/1;
   grid-row: 1/1;
