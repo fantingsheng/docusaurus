@@ -104,12 +104,37 @@ const config = {
         logo: { src: "/" },
         links: [
           {
-            title: '相关站点',
+            title: '其它站点',
             items: [
               {
                 label: '前端开发笔记',
                 to: 'https://i-fanr.com/',
               },
+              {
+                label: '博客',
+                to: 'https://blog.i-fanr.com/'
+              }
+            ],
+          },
+          {
+            title: '作品集',
+            items: [
+              {
+                label: '站点统计工具',
+                to: '/visitor',
+              },
+              {
+                label: '优美的分隔线',
+                to: '/shapedivider',
+              },
+              {
+                label: '手绘白板工具',
+                to: '/handraw',
+              },
+              {
+                label: '代码图片',
+                to: '/codeimage',
+              }
             ],
           },
           {
@@ -141,13 +166,17 @@ const config = {
             title: '友链',
             items: [
               {
-                label: '博客',
-                to: '/blog',
+                label: 'Vue',
+                href: 'https://cn.vuejs.org/',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/fantingsheng',
+                label: 'React',
+                href: 'https://zh-hans.react.dev/',
               },
+              {
+                label: 'Next.js',
+                href: 'https://nextjs.org/'
+              }
             ],
           },
         ],

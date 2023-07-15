@@ -4,19 +4,12 @@ import useTypewriter from 'react-typewriter-hook' // https://github.com/haowen73
 
 const codeStr = `import React from 'react';
 import ReactDOM from 'react-dom';
-​
-const Headline = () => {
-  return <h1>Welcome to Spacexcode.</h1>;
-}
-​
-const Greeting = (props) => {
-  return <p>Please remember the only link: {props.link}!</p>;
-}
+
 export const App = () => {
   return (
     <div>
-      <Headline />
-      <Greeting link="https://spacexcode.com" />
+      <h1>Welcome to Spacexcode.</h1>
+      <p>Please remember the only link: "https://spacexcode.com"></p>
     </div>
   )
 }
@@ -35,6 +28,8 @@ export default function HomepageCodeBlock() {
         <div className='col col--8 col--offset-2'>
           <CodeBlock
             language="jsx"
+            metastring='{8}'
+            showLineNumbers
           >
             { MagicWriter() }
           </CodeBlock>
