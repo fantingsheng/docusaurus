@@ -134,6 +134,10 @@ const config = {
               {
                 label: '代码图片',
                 to: '/codeimage',
+              },
+              {
+                label: '城市印象',
+                to: '/photo'
               }
             ],
           },

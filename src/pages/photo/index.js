@@ -27,7 +27,7 @@ export default function AlbumGallery () {
       </Head>
       <div className='container'>
         <div className='row'>
-          <div className='col col--12'>
+          <div className='col col--12 margin-top--md'>
             <ImageList variant="masonry" cols={3} gap={8}>
               {itemData.map((item) => (
                 <ImageListItem key={item.img}>
