@@ -46,7 +46,7 @@ const config = {
           blogSidebarTitle: '最近文章',
           showReadingTime: true,
           postsPerPage: 8,
-          blogSidebarCount: 10
+          blogSidebarCount: 15
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

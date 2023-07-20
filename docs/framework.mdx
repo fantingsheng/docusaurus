@@ -26,13 +26,13 @@ UI = f(state)
 
 ## 虚拟（Virtual） DOM
 
-Virtual DOM 也就是虚拟节点。通过 JS 的 Object 对象模拟 DOM 中的真实节点对象，再通过特定的 render 方法将其渲染成真实的 DOM 节点。
+Virtual DOM 也就是虚拟节点。通过 JS 的 `Object` 对象模拟 DOM 中的真实节点对象，再通过特定的 `render` 方法将其渲染成真实的 DOM 节点。
 
 ## AOT 预编译优化
 
 现代前端框架一般都有编译这一步骤，用于：
 
-- 代码转换，如：ts 编译为 js，Vue 中将 vue 文件转换成 js
+- 代码转换，如：`ts` 编译为 `js`，Vue 中将 `vue` 文件转换成 `js`
 - 编译优化
 - 代码压缩、打包
 
@@ -43,7 +43,8 @@ Virtual DOM 也就是虚拟节点。通过 JS 的 Object 对象模拟 DOM 中的
 
 ## 路由
 
-在单页应用中，“路由”是在客户端执行的。一个客户端路由器的职责就是利用 History API 或 hashchange 事件这样的浏览器 API 来管理当前应该渲染的视图。
+在单页应用中，“路由”是在客户端执行的。一个客户端路由器的职责就是利用 [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) 或 
+[hashchange](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/hashChange) 事件这样的浏览器 API 来管理当前应该渲染的视图。
 
 模式分为：
 - HTML5 history 模式
@@ -53,21 +54,21 @@ Virtual DOM 也就是虚拟节点。通过 JS 的 Object 对象模拟 DOM 中的
 
 以组件作为基本的抽象单元，组件从类型上分为：
 
-**展示型组件**
+### 展示型组件
 
 展示型组件是最直接也是最常用的组件，就是用数据渲染视图，“数据进，DOM出”。
 
-**接入型组件**
+### 接入型组件
 
 接入型组件通常会跟接入数据的 service 层打交道。包含一些和服务器或数据源打交道的逻辑，然后接入型组件会将数据往下传，传给比较简单的展示型组件。在 React 中这种类型的组件被称
 为“容器组件（container component）”。
 
-**交互型组件**
+### 交互型组件
 
 交互型组件典型的例子是对表单组件的封装和增强。大部分组件库，像 ElementUI 都是以交互型组件为主。这一类组件会有比较复杂的交互逻辑，但是它是一个非常通用的逻辑，所以它
 强调复用。
 
-**功能型组件**
+### 功能型组件
 
 功能型组件是比较抽象的组件。用Vue举例，路由的 `<router-view>` 和 Vue 自带的 `<transition>` 都属于功能型组件。它本身不渲染任何内容，它是一个逻辑型的组件。它通常作为一个扩
 展或一种抽象机制存在。
