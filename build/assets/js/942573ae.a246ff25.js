@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[2657],{49905:s=>{s.exports=JSON.parse('{"title":"CSS","slug":"/category/css","permalink":"/docs/category/css","navigation":{"previous":{"title":"\u6838\u5fc3\u77e5\u8bc6\u70b9","permalink":"/docs/JavaScript/concept"},"next":{"title":"\u5b66\u4e60\u8d44\u6e90","permalink":"/docs/css/source"}}}')}}]);

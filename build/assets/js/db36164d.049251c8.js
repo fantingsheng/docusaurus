@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[8267],{47928:a=>{a.exports=JSON.parse('{"title":"JavaScript","slug":"/category/javascript","permalink":"/docs/category/javascript","navigation":{"previous":{"title":"\u4ecb\u7ecd","permalink":"/docs/"},"next":{"title":"\u5b66\u4e60\u8d44\u6e90","permalink":"/docs/JavaScript/source"}}}')}}]);
