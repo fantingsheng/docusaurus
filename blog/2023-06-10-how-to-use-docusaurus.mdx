@@ -375,3 +375,42 @@ export default ReactLiveScope;
 ```
 
 后面其它代码区块中可不导入直接使用 `useMousePosition` 组件。
+
+## 其它
+
+### 1. 增加网站的本地搜索
+
+网站的搜索功能官方推荐的是在线方案 [Algolia](https://docsearch.algolia.com/)，觉得比较麻烦。于是我找到可以
+使用插件 [docusaurus-lunr-search](https://github.com/praveenn77/docusaurus-lunr-search) 可实现本地搜索。
+
+安装插件
+
+```shell
+npm i docusaurus-lunr-search  --save
+```
+
+在配置中引入插件
+
+```js
+module.exports = {
+  // ...
+  plugins: [
+    [
+      require.resolve('docusaurus-lunr-search'),
+      {
+        languages: ['en', 'de'], // language codes
+        excludeRoutes: [
+          'docs/changelogs/**/*', // exclude changelogs from indexing
+        ],
+        indexBaseUrl: true // Base url will not indexed by default, if you want to index the base url set this option to true
+      }
+    ]
+  ]
+}
+```
+
+然后通过 Swizzle 引入自定义的搜索组件
+
+```shell
+npm run swizzle docusaurus-lunr-search SearchBar -- --eject --danger
+```

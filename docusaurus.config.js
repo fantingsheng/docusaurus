@@ -211,6 +211,13 @@ const config = {
         steps: 3,
         disableInDev: false
       }
+    ],
+    [
+      require.resolve('docusaurus-lunr-search'),
+      {
+        languages: ['en', 'zh'],
+        indexBaseUrl: true
+      }
     ]
   ]
 };
