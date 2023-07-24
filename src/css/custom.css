@@ -45,6 +45,7 @@
 /* 搜索栏 */
 .navbar__search-input {
   width: 600px;
+  height: 2.4rem;
 }
 
 @media (max-width: 996px) {
