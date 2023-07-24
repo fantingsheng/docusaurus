@@ -5,6 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from '@docusaurus/useGlobalData';
 import useIsBrowser from "@docusaurus/useIsBrowser";
 const Search = props => {
+  
   const initialized = useRef(false);
   const searchBarRef = useRef(null);
   const [indexReady, setIndexReady] = useState(false);
@@ -74,41 +75,42 @@ const Search = props => {
     [props.isSearchBarExpanded]
   );
 
-  if (isBrowser) {
+  if (isBrowser && props.show) {
     loadAlgolia();
-  }
 
-  return (
-    <div className="navbar__search" key="search-box">
-      <span
-        aria-label="expand searchbar"
-        role="button"
-        className={classnames("search-icon", {
-          "search-icon-hidden": props.isSearchBarExpanded
-        })}
-        onClick={toggleSearchIconClick}
-        onKeyDown={toggleSearchIconClick}
-        tabIndex={0}
-      />
-      <input
-        id="search_input_react"
-        type="search"
-        placeholder={indexReady ? 'Search' : 'Loading...'}
-        aria-label="Search"
-        className={classnames(
-          "navbar__search-input",
-          { "search-bar-expanded": props.isSearchBarExpanded },
-          { "search-bar": !props.isSearchBarExpanded }
-        )}
-        onClick={loadAlgolia}
-        onMouseOver={loadAlgolia}
-        onFocus={toggleSearchIconClick}
-        onBlur={toggleSearchIconClick}
-        ref={searchBarRef}
-        disabled={!indexReady}
-      />
-    </div>
-  );
+    return (
+      <div className="navbar__search" key="search-box">
+        <span
+          aria-label="expand searchbar"
+          role="button"
+          className={classnames("search-icon", {
+            "search-icon-hidden": props.isSearchBarExpanded
+          })}
+          onClick={toggleSearchIconClick}
+          onKeyDown={toggleSearchIconClick}
+          tabIndex={0}
+        />
+        <input
+          id="search_input_react"
+          type="search"
+          placeholder={indexReady ? '请输入你要搜索内容' : '加载中...'}
+          aria-label="Search"
+          className={classnames(
+            "navbar__search-input",
+            { "search-bar-expanded": props.isSearchBarExpanded },
+            { "search-bar": !props.isSearchBarExpanded }
+          )}
+          onClick={loadAlgolia}
+          onMouseOver={loadAlgolia}
+          onFocus={toggleSearchIconClick}
+          onBlur={toggleSearchIconClick}
+          ref={searchBarRef}
+          disabled={!indexReady}
+        />
+      </div>
+    );
+  }
+  return <></>
 };
 
 export default Search;
