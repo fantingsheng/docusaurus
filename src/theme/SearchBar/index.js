@@ -93,7 +93,7 @@ const Search = props => {
         <input
           id="search_input_react"
           type="search"
-          placeholder={indexReady ? '请输入你要搜索内容' : '加载中...'}
+          placeholder={indexReady ? '请输入你要搜索的内容' : '加载中...'}
           aria-label="Search"
           className={classnames(
             "navbar__search-input",
