@@ -2,14 +2,14 @@
 sidebar_position: 3
 ---
 
-# 解决方案
+# 常见解决方案
 
 ## 前端按钮权限控制的实现方式
 
-要做到按钮的权限控制，首先要找到定义按钮的唯一标识，也就是我们要通过配置给按钮定义一个 Code 码，并且可以在服务端对该 Code 码进行权限的分配。
-我们进入系统前首先获取权限配置。存储在本地缓存中或全局 `store` 中。
+要做到按钮的权限控制，首先要找到定义按钮的唯一标识，也就是我们要通过配置给按钮定义一个 `code` 码，并且可以在服务端对该 `code` 码进行权限的分配。
+我们进入系统前首先要获取权限配置信息，存储在本地缓存中或全局 `store` 中。
 
-后面我们就可以在前端进行按钮权限的处理，控制是否要显示该按钮，或者按钮的操作状态。
+后面我们就可以在前端进行按钮权限的处理，控制是否要显示该按钮，或者控制按钮的操作状态。
 
 这里有三种实现方法：
 
@@ -17,7 +17,9 @@ sidebar_position: 3
 
 > 这里前端组件以使用 Element UI 为例
 
-```js title='hooks/usePermission'
+定义全局的权限判断的 hook
+
+```js title='/hooks/usePermission'
 export function usePermission() {
   function hasPermission(value, def = true) {
     // 默认视为有权限
@@ -25,40 +27,131 @@ export function usePermission() {
         return def;
     }
 
-    const allCodeList = permissionStore.getAuthCodeList;
+    const codeList = permissionStore.getAuthCodeList;
     if (!isArray(value)) {
-        return allCodeList.includes(value);
+        return codeList.includes(value);
     }
-    // intersection是lodash提供的一个方法，用于返回一个所有给定数组都存在的元素组成的数组
-    return (intersection(value, allCodeList)).length > 0;
+    // intersection 是 lodash 提供的一个方法，用于返回一个所有给定数组都存在的元素组成的数组
+    return (intersection(value, codeList)).length > 0;
 
     return true;
   }
 }
 ```
-```
+
+在组件中调用 `usePermission` hook 中的 `hasPermission` 函数
+
+```js
 <template>
-  <el-button v-if="hasPermission(['20000', '2000010'])" color="error" class="mx-4">
-    拥有[20000,2000010]code可见
+  <el-button v-if="hasPermission(['Edit', 'Add'])" type="primary">
+    编辑
   </el-button>
 </template>
 
-<script lang="ts">
-  import { usePermission } from '/@/hooks/web/usePermission';
-
-  export default defineComponent({
-    setup() {
-      const { hasPermission } = usePermission();
-      return { hasPermission };
-    },
-  });
+<script lang="ts" setup>
+  import { usePermission } from '/@/hooks/usePermission';
+  const { hasPermission } = usePermission();
 </script>
 ```
 
 ### 组件方式
 
+组件方式是首先封装一个权限控制的组件，然后在需要权限控制的地方包裹一层
+
+```js title='/components/AuthWrapper'
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { usePermission } from '/@/hooks/usePermission';
+import { getSlot } from '/@/utils/helper/tsxHelper';
+
+export default defineComponent({
+  name: 'Authority',
+  props: {
+    value: {
+      type: [Number, Array, String],
+      default: '',
+    },
+  },
+  setup(props, { slots }) {
+    const { hasPermission } = usePermission();
+
+    function renderAuth() {
+      const { value } = props;
+      if (!value) {
+        return getSlot(slots);
+      }
+      return hasPermission(value) ? getSlot(slots) : null;
+    }
+
+    return () => {
+      return renderAuth();
+    };
+  },
+});
+</script>
+```
+
+在组件中套用权限控制组件
+
+```js
+<template>
+  <div>
+    <AuthWrapper :value="RoleEnum.ADMIN">
+      <el-button type="primary"> 只有admin角色可见 </a-button>
+    </AuthWrapper>
+  </div>
+</template>
+<script>
+  import AuthWrapper from '/@/components/AuthWrapper';
+</script>
+```
+
 ### 指令方式
 
+指令方式原理其实和函数方式差不多，就是简化了而已
 
+```js
+<script>
+import { usePermission } from '/@/hooks/usePermission';
 
-https://juejin.cn/post/7209648356530896953
+const { hasPermission } = usePermission();
+app.directive("auth", {
+  updated(el, binding) {
+    let update = () => {
+      let valueNotChange = binding.value === binding.oldValue
+      let oldHasPermission = hasPermission(binding.oldValue)
+      let newHasPermission = hasPermission(binding.value)
+      let permissionNotChange = oldHasPermission === newHasPermission
+      if (valueNotChange && permissionNotChange) return
+      if (newHasPermission) {
+          addEl(el)
+      } else {
+          removeEl(el)
+      }
+    };
+    if (el._watchEffect) {
+      update()
+    } else {
+      el._watchEffect = watchEffect(() => {
+        update()
+      })
+    }
+  },
+})
+const removeEl = (el) => {
+  el._parentNode = el.parentNode
+  el._placeholderNode = document.createComment("auth")
+  el.parentNode?.replaceChild(el._placeholderNode, el)
+}
+
+const addEl = (el) => {
+  el._parentNode?.replaceChild(el, el._placeholderNode)
+}
+</script>
+```
+
+在组件中使用自定义的 `auth` 指令
+
+```html
+<el-button v-auth="Edit" type="primary"> 编辑 </el-button>
+```
