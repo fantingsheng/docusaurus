@@ -4,11 +4,13 @@ title: 关于本站
 
 # 关于本站
 
+本站建立的初衷作为自己前端知识系统结构化总结和平时收集的一些有用的资料，作为备忘。如果有幸帮助到访问网站的你，那么它建立的意义又多了一些。
+
 ### 品牌相关
 
 #### Logo
 
-本站的 Logo SVG文件 由网站 [**Free Logo Maker**](https://logomakerr.ai/) 提供的 AI 自动生成技术创建。创意来源于本站域名 [spacexcode.com](https://spacexcode.com) 几个字母和首字母 **S** 的形似图标组建而成。
+本站的 Logo SVG文件 由网站 [**Free Logo Maker**](https://logomakerr.ai/) 提供的 AI 自动生成技术创建。创意来源于本站域名 [spacexcode.com](https://spacexcode.com) 几个字母和首字母 **S** 的象形图标组建而成。
 
 ![Logo](../../static/img/logo.svg)
 
@@ -16,6 +18,7 @@ title: 关于本站
 
 Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提供的转化工具 `svg -> favicon` 生成而来。
 
+![Logo](../../static/img/favicon.svg)
 
 ### 建站技术
 
@@ -24,12 +27,13 @@ Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提�
 在基础功能上添加了如下拓展功能：
 - 文章底部显示评论功能，基于 [giscus](https://giscus.app/zh-CN) 搭建，[教程](https://m19v.github.io/blog/how-to-add-giscus-to-docusaurus)
 - 文章底部显示微信公众号卡片，基于 Swizzle 特性对博客页面进行自定义布局，参考[Swizzle](https://www.docusaurus.io/zh-CN/docs/swizzling)
+- 首页 Banner 位置增加本地搜索功能，依赖[docusaurus-lunr-search](https://github.com/praveenn77/docusaurus-lunr-search)
 
 #### 服务器
 
 本站部署在私人阿里云服务器 ECS 上，远程通过 SSH 工具进行管理。
 
-配置为：  
+基础配置：  
 - CPU&内存：1核(vCPU)1 GiB
 - 操作系统：CentOS 7.7 64位
 
@@ -45,15 +49,19 @@ Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提�
 
 为了支持 HTTPS 访问，使用 DigiCert 免费版 SSL 证书，有效期一年，一年后需要重新申请生成新的证书上传。
 
+因免费证书不支持二级域名，购买了 Rapid 普通版 DV SSL 证书，支持特定单个二级域名 `visitor.spacexcode.com`
+
 ### 数据统计
 
 1. 使用[百度统计](https://tongji.baidu.com/)作为网站的数据统计工具，后台配置邮箱可接收每天推送的统计报告。  
 2. 网站底部总 PV、UV 量使用[不蒜子](https://busuanzi.ibruce.info/)进行统计。
-3. 文章中的阅读统计使用自建的 [Visitor Badge](https://visitor.spacexcode.com) 工具进行统计。
+3. 文章中的阅读统计使用自建的工具 [Visitor Badge](https://visitor.spacexcode.com) 进行统计。
 
-### 网站收益
+### 网站运营
 
 本站接受广告投放，内容需要与互联网技术领域相关，本站目前流量有限，但网站专业性强，主要针对前端领域，分享一些优质的前端学习资源，在前端领域有一定的受众。
-暂定收益方向：
-- 谷歌广告平台
-- 私人广告主
+另外感兴趣的朋友们可以在评论区留言交换友链。
+
+import GiscusComponent from '@site/src/components/GiscusComponent';
+
+<GiscusComponent />

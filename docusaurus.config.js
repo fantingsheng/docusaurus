@@ -178,6 +178,10 @@ const config = {
                 href: 'https://zh-hans.react.dev/',
               },
               {
+                label: 'Svelte',
+                href: 'https://www.svelte.cn/'
+              },
+              {
                 label: 'Next.js',
                 href: 'https://nextjs.org/'
               }
