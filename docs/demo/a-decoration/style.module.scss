@@ -1,0 +1,160 @@
+.aDemo {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+/* 带下边框，移动拉伸效果 */
+.bottomBorder {
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+}
+.bottomBorder:hover {
+  text-decoration: none;
+}
+.bottomBorder:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 68%;
+  left: -0.1em;
+  right: -0.1em;
+  bottom: 0;
+  transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
+  background-color: var(--ifm-color-primary-lightest);
+}
+.bottomBorder:hover::after {
+  top: 0%;
+}
+/* 滑动的下划线样式 */
+.animateLine {
+  position: relative;
+}
+.animateLine:hover {
+  text-decoration: none;
+}
+.animateLine::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 10%;
+  left: 0;
+  background-color: var(--ifm-color-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.animateLine:hover::before {
+  transform: scaleX(1);
+}
+/* 波纹 */
+@function fact($number) {
+  $value: 1;
+  @if $number>0 {
+      @for $i from 1 through $number {
+          $value: $value * $i;
+      }
+  }
+  @return $value;
+}
+
+@function pow($number, $exp) {
+  $value: 1;
+  @if $exp>0 {
+      @for $i from 1 through $exp {
+          $value: $value * $number;
+      }
+  }
+  @else if $exp < 0 {
+      @for $i from 1 through -$exp {
+          $value: $value / $number;
+      }
+  }
+  @return $value;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  @if $unit==deg {
+      $unitless: $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+@function pi() {
+  @return 3.14159265359;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 15 {
+      $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+  @return $sin;
+}
+
+@function cos($angle) {
+  $cos: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 15 {
+      $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+  }
+  @return $cos;
+}
+
+@function tan($angle) {
+  @return sin($angle) / cos($angle);
+}
+@function shadowSet($vx, $vy, $direction, $count, $color) {
+  $shadow : 0 0 0 0 $color;
+  
+  @for $i from 0 through $count { 
+      $x: sin($i / 8) * $vx * $direction;
+      $y: $i * $vy;
+      
+      $shadow: $shadow, #{$x} #{$y} 0 0 $color;
+  }
+  
+  @return $shadow;
+}
+
+@function shadowSetColor($vx, $vy, $direction, $count, $color) {
+  $shadow : 0 0 0 0 $color;
+  
+  @for $i from 0 through $count { 
+      
+      $color: lighten($color, .5);
+      
+      $x: sin($i / 8) * $vx * $direction;
+      $y: $i * $vy;
+      
+      $shadow: $shadow, #{$x} #{$y} 0 0 $color;
+  }
+  
+  @return $shadow;
+}
+.waveLine {
+  position: relative;
+}
+.waveLine:hover {
+  text-decoration: none;
+}
+
+.waveLine::before {
+  content: "";
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  display: block;
+  width: 2px;
+  height: 2px;
+  background: var(--ifm-color-primary);
+  border-radius: 50%;
+  box-shadow: shadowSetColor(6px, 2px, -1, 100, green);
+  transform: rotate(-90deg);
+}

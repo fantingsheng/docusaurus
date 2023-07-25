@@ -235,7 +235,8 @@ const config = {
         languages: ['en', 'zh'],
         indexBaseUrl: true
       }
-    ]
+    ],
+    'docusaurus-plugin-sass'
   ]
 };
 

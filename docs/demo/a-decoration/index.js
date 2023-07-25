@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './style.module.css';
+import styles from './style.module.scss';
 
 export function AStyleExample ({
   text = 'SPACEXCODE',
