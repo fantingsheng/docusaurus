@@ -167,7 +167,7 @@ const config = {
             ],
           },
           {
-            title: '友链',
+            title: '常用技术',
             items: [
               {
                 label: 'Vue',
@@ -184,11 +184,24 @@ const config = {
               {
                 label: 'Next.js',
                 href: 'https://nextjs.org/'
+              },
+              {
+                label: 'Nuxt',
+                href: 'https://nuxt.com/'
               }
             ],
           },
+          {
+            title: '友链',
+            items: [
+              {
+                label: 'Raycast',
+                href: 'https://www.raycast.com/'
+              }
+            ]
+          }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Spacexcode, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Spacexcode Owner. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
