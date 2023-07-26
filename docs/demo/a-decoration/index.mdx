@@ -172,19 +172,6 @@ a:hover::before {
   @return $sin;
 }
 
-@function cos($angle) {
-  $cos: 0;
-  $angle: rad($angle);
-  // Iterate a bunch of times.
-  @for $i from 0 through 15 {
-      $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
-  }
-  @return $cos;
-}
-
-@function tan($angle) {
-  @return sin($angle) / cos($angle);
-}
 @function shadowSetColor($vx, $vy, $direction, $count, $color) {
   $shadow : 0 0 0 0 $color;
   
