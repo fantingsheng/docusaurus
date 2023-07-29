@@ -4,10 +4,28 @@
         <title>太空编程 Blog</title>
         <link>https://spacexcode.com/blog</link>
         <description>太空编程 Blog</description>
-        <lastBuildDate>Fri, 07 Jul 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 26 Jul 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-Hans</language>
+        <item>
+            <title><![CDATA[人生不必要精彩，但得有故事]]></title>
+            <link>https://spacexcode.com/blog/i-have-a-story</link>
+            <guid>https://spacexcode.com/blog/i-have-a-story</guid>
+            <pubDate>Wed, 26 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[今年已然过半了，乘着中午午休时间，写点感想吧，或许可作为今年的年中总结。]]></description>
+            <content:encoded><![CDATA[<p>今年已然过半了，乘着中午午休时间，写点感想吧，或许可作为今年的年中总结。</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="目前现状">目前现状<a href="#目前现状" class="hash-link" aria-label="目前现状的直接链接" title="目前现状的直接链接">​</a></h3><p>话题来源于中午吃饭和同事的闲聊，问及平时都有些什么爱好。我们双方细想了一阵后都噗嗤一笑，发现人到了中年好像很难再有真正的兴趣爱好。
+平时除了工作，下班后回家陪陪孩子，再加上处理一些家庭琐事。几乎抽不出什么时间做一些自己感兴趣的事了。</p><p><img loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1690610151635-5eb30d37-168b-4464-ba9a-4bd36114c8a0.png" class="img_ev3q"></p><p>究其原因，我觉得有两点：</p><ol><li>精力不足，时间不够用</li><li>随着时间的消磨，渐渐对曾经感兴趣的事没有了热情</li></ol><p>如果是第一点，我觉得还好，时间不够用，还可以通过规划，提高效率来解决。但如果一旦是对生活和工作没有了激情，那就很危险了。需要我们来做个自我反思了。</p><p>都说上班工作的人，每天的生活按部就班，年复一年，眼里渐渐没有了光。</p><p>遥想当年毕业时我们信心满满，踌躇满志。可如今我们却被曾今挚爱的工作折磨的毫无斗志，是我们选择了向生活妥协。</p><p>生活和理想之间出现了一道鸿沟。我们需要重新拾起那份挚爱，找寻失去的那道光。</p><p>时间从来不以人的意志为转移，不管你怎么对待你的生活，它都是稍纵即逝。为何不让自己的生活过的更丰富些！</p><p><strong>人生不必要精彩，但得有故事</strong>，这就是今天要聊的主题。</p><p>作为程序员的自己，还是有点折腾的劲在的。看了很多互联网技术从业者的职业打怪升级之路。好像很多都与写作有关，再就是自由开发者那一类，他们有的后来转到了自媒体，
+有的做出了很不错的 side project，最终被收购实现财务自由。人生有很多的可能性，不要被自己的职业工作所裹挟。</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="业余工作">业余工作<a href="#业余工作" class="hash-link" aria-label="业余工作的直接链接" title="业余工作的直接链接">​</a></h3><p>今年除了工作在有条不紊的进行，我的业余时间一部分被孩子占了，周末会带着她出去玩玩，下班后回家也会陪着她玩会。睡觉前跟她互动直到睡着。这么一看，留给自己的时间
+也不多了。虽然时间比较紧凑，但也还是产出了点成果。</p><p>主要内容有：</p><ol><li>前端开发笔记的博客每月都有持续地更新，期间会同步一些好的文章到各个知识平台（掘金、简书、CSDN、开发者头条）；</li><li>从五月份开始，重构了“<a href="https://spacexcode.com/" target="_blank" rel="noopener noreferrer">太空编程</a>” 站点，陆陆续续在完善和新增了一部分内容：<ul><li>十几篇博客文章</li><li>四五个独立页面，有工具和代码示例的介绍</li><li>知识库作为前端知识体系的梳理和总结</li></ul></li><li>学习 React 框架开发，作为实战产出了几个应用小工具：<ul><li><a href="https://spacexcode.com/visitor" target="_blank" rel="noopener noreferrer">VISITOR BADGE</a></li><li><a href="https://spacexcode.com/shapedivider" target="_blank" rel="noopener noreferrer">分割线工具</a></li><li><a href="https://spacexcode.com/codeimage" target="_blank" rel="noopener noreferrer">代码图片生成工具</a></li></ul></li><li>公众号偶有推送认为写的比较好的文章</li></ol><h3 class="anchor anchorWithStickyNavbar_LWe7" id="收获成果">收获成果<a href="#收获成果" class="hash-link" aria-label="收获成果的直接链接" title="收获成果的直接链接">​</a></h3><p>另外出乎意料的是，“<a href="https://i-fanr.com" target="_blank" rel="noopener noreferrer"><strong>前端开发笔记</strong></a>” 博客关于 <a href="https://i-fanr.com/tag/%E7%A3%81%E5%8A%9B%E7%8C%AB/" target="_blank" rel="noopener noreferrer">磁力猫</a> 的关键字搜索每天都有可观的流量进来，
+后来竟然有广告主主动找来，买下了广告链接。这样就有了一份意外的收入。</p><p><img loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1690600260555-e78b0689-a5f7-4245-b3b9-316da1048ba9.png" alt="百度统计" class="img_ev3q"></p><p>从三月份到现在持续在续费，没想到会这么久。</p><p><img loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1690600741484-75c3d39c-ae9a-4c46-ad1a-bb9d22d2c9bd.png" class="img_ev3q"></p><p>网站上挂了 Google Ads 平台广告，目前收入情况：</p><p><img loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1690561002722-8699de24-e127-417d-be0a-1212e6fa86d5.png" class="img_ev3q"></p><p>公众号粉丝量也已经达到了 <code>1269</code>，虽然目前每月只有少得可怜的流量主广告收入。</p><p>掘金上有两篇高赞收藏量很高的文章，截止目前：</p><ul><li><a href="https://juejin.cn/post/7244505316234985528" target="_blank" rel="noopener noreferrer">如何让自己的前端知识更全面</a> <code>赞 842</code>， <code>收藏 2905</code></li><li><a href="https://juejin.cn/post/7199191689150906423" target="_blank" rel="noopener noreferrer">前端 UI 组件库有哪些选择</a> <code>赞 246</code>，<code>收藏 685</code></li></ul><p>掘金账号等级到了 <code>LV.5</code>，粉丝突破 <code>200</code>，网站很大一部分流量来自掘金，所以让我坚信要用很长一段时间好好把账号养起来。</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="总结">总结<a href="#总结" class="hash-link" aria-label="总结的直接链接" title="总结的直接链接">​</a></h3><p>今年会围绕以上四点内容持续发力，努力产出优质的分享内容。把自己的前端知识体系打牢，深入 React 开发实践是目前的主要任务。现在在写作方面是能写了，但是质量不高，要想写出通俗易懂的
+技术文章还有很长的一段路要走。</p><p>生命不息，折腾不止！</p>]]></content:encoded>
+            <author>fants0230@sina.com (Timfan)</author>
+            <category>故事</category>
+            <category>人生</category>
+            <category>兴趣</category>
+            <category>写作</category>
+        </item>
         <item>
             <title><![CDATA[最近做了两款小工具]]></title>
             <link>https://spacexcode.com/blog/two-small-tools</link>
