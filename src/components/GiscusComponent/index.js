@@ -21,6 +21,7 @@ export default function GiscusComponent() {
       lang="zh-Hans"
       loading="lazy"
       crossorigin="anonymous"
+      defaultCommentOrder="newest" // 默认显示最新
       async
     />
   );
