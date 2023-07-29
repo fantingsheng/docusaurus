@@ -6,7 +6,7 @@ export default function GiscusComponent() {
   const { colorMode } = useColorMode();
 
   return (
-    <Giscus    
+    <Giscus
       repo="fantingsheng/spacexcode-discus"
       repoId="R_kgDOJoGL9w"
       category="General"
@@ -21,7 +21,6 @@ export default function GiscusComponent() {
       lang="zh-Hans"
       loading="lazy"
       crossorigin="anonymous"
-      defaultCommentOrder="newest" // 默认显示最新
       async
     />
   );
