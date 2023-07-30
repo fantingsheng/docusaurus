@@ -27,6 +27,7 @@ export default function HomepageCodeBlock() {
       <div className='row'>
         <div className='col col--8 col--offset-2'>
           <CodeBlock
+            title='每段代码都有一个故事，以下代码来自网友 Jean 投稿'
             language="jsx"
             metastring='{8}'
             showLineNumbers
