@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { ImageList, ImageListItem }  from '@mui/material';
+import { ImageList, ImageListItem, ToggleButtonGroup, ToggleButton, ImageListItemBar,
+  FormControlLabel, IconButton, Checkbox }  from '@mui/material';
+import Map from '@mui/icons-material/Map';
 
 export default function AlbumGallery () {
   const itemData = [
@@ -20,15 +22,44 @@ export default function AlbumGallery () {
     { title: '大悦城', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689411672709-236a3755-f646-44fd-8ba4-35d48bd5436d.jpg' },
     { title: '长广溪', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689411672750-5fd2b742-8290-4fab-9995-52bd21607a9a.jpg' },
   ];
+  const [col, setCol] = useState(4);
+  const [showTitle, setShowTitle] = useState(true);
+
   return (
     <Layout title='城市印象' description='记录自己的城市风景，居一城，爱一城'>
       <Head>
-        <meta name="keywords" content='城市, 风景, 无锡, 随手拍' />
+        <meta name='keywords' content='城市, 风景, 无锡, 随手拍' />
       </Head>
       <div className='container'>
         <div className='row'>
+          <div className='col col--6 margin-top--md'>
+            <ToggleButtonGroup
+              color='primary'
+              value={col}
+              exclusive
+              onChange={(event, val) => setCol(val)}
+            >
+              <ToggleButton value={6}>Small</ToggleButton>
+              <ToggleButton value={4}>Medium</ToggleButton>
+              <ToggleButton value={3}>Large</ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+          <div className='col col--6 margin-top--md'>
+            <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+              <FormControlLabel control={
+                <Checkbox
+                  checked={showTitle}
+                  onChange={(event, val) => setShowTitle(val)}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />}
+                label='显示地点'
+              />
+            </div>
+          </div>
+        </div>
+        <div className='row'>
           <div className='col col--12 margin-top--md'>
-            <ImageList variant="masonry" cols={3} gap={8}>
+            <ImageList variant="masonry" cols={col} gap={10}>
               {itemData.map((item) => (
                 <ImageListItem key={item.img}>
                   <img
@@ -37,6 +68,26 @@ export default function AlbumGallery () {
                     alt={item.title}
                     loading="lazy"
                   />
+                  {
+                    showTitle ? <ImageListItemBar
+                      sx={{
+                        background:
+                          'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                          'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+                      }}
+                      title={item.title}
+                      position="top"
+                      actionIcon={
+                        <IconButton
+                          sx={{ color: 'white' }}
+                          aria-label={`star ${item.title}`}
+                        >
+                          <Map />
+                        </IconButton>
+                      }
+                      actionPosition="left"
+                    /> : ''
+                  }
                 </ImageListItem>
               ))}
             </ImageList>
