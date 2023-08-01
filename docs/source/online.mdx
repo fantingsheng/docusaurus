@@ -98,6 +98,29 @@ export function BuildFastUrl () {
 - [chrome_linux 下载](https://www.chromedownloads.net/chrome64linux/)
 - [chrome 插件下载](https://www.chromedownloads.net/extensions/)
 
+### node-sass
+
+`node-sass` 是我们开发中很常见的依赖包，也是安装时间冗长和最常见到报错的依赖。
+
+1. 设置 npm 源为国内镜像
+
+```shell
+npm config set registry https://registry.npm.taobao.org
+
+// 或者仅设置 node-sass 下载源为淘宝镜像
+npm config set sass-binary-site http://npm.taobao.org/mirrors/node-sass
+```
+
+2. 解决二进制文件下载慢
+
+`node-sass` 除了 `npm` 部分的代码，还会下载二进制文件，但是默认源是 github，在国内 github 的访问总是不稳定且很慢。
+
+```shell
+set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ && npm install node-sass
+```
+
+> 如果有梯子可以直接设置系统代理解决
+
 ## 程序员英语学习
 
 - 程序员英语词汇宝典 - [https://learn-english.dev/](https://learn-english.dev/)
