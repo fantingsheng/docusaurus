@@ -33,7 +33,7 @@ export default function AlbumGallery () {
   return (
     <Layout title='城市印象' description='记录自己的城市风景，居一城，爱一城'>
       <Head>
-        <meta name='keywords' content='城市, 风景, 无锡, 随手拍' />
+        <meta name='keywords' content='城市, 风景, 无锡, 随手拍, 江南, 太湖' />
       </Head>
       <div className='container'>
         <div className='row'>
