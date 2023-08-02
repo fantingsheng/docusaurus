@@ -74,7 +74,7 @@ const config = {
           content: 'timfan'
         }
       ],
-      image: 'img/spacexcode.png',
+      image: 'img/share.png',
       navbar: {
         title: '太空编程',
         logo: {
