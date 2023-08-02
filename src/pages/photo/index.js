@@ -25,6 +25,11 @@ export default function AlbumGallery () {
   const [col, setCol] = useState(4);
   const [showTitle, setShowTitle] = useState(true);
 
+  const handleScale = (event, val) => {
+    if (val !== null) {
+      setCol(val)
+    }
+  };
   return (
     <Layout title='城市印象' description='记录自己的城市风景，居一城，爱一城'>
       <Head>
@@ -37,7 +42,7 @@ export default function AlbumGallery () {
               color='primary'
               value={col}
               exclusive
-              onChange={(event, val) => setCol(val)}
+              onChange={handleScale}
             >
               <ToggleButton value={6}>Small</ToggleButton>
               <ToggleButton value={4}>Medium</ToggleButton>
@@ -45,7 +50,7 @@ export default function AlbumGallery () {
             </ToggleButtonGroup>
           </div>
           <div className='col col--6 margin-top--md'>
-            <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+            <div style={{ height: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end'}}>
               <FormControlLabel control={
                 <Checkbox
                   checked={showTitle}
