@@ -197,6 +197,10 @@ const config = {
               {
                 label: 'Raycast',
                 href: 'https://www.raycast.com/'
+              },
+              {
+                label: 'Alan',
+                href: 'https://www.alanwang.site/'
               }
             ]
           }
