@@ -1,6 +1,7 @@
 import styles from "./style.module.css"
 import React from 'react';
-import clsx from 'clsx'
+import clsx from 'clsx';
+import BrowserWindow from '@site/src/components/BrowserWindow';
 
 const generateChildrenEle = (length, cls, clsHasIndex = false, bothCls = false) => {
   let childEles = [];
@@ -18,116 +19,140 @@ const generateChildrenEle = (length, cls, clsHasIndex = false, bothCls = false) 
 
 export const CssLoadingAnimation1 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles.spinner1}></div>
-    </div>
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles.spinner1}></div>
+      </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation2 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-chase']}>
-        { generateChildrenEle(6, 'sk-chase-dot') }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['sk-chase']}>
+          { generateChildrenEle(6, 'sk-chase-dot') }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation3 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner2']}>
-        { generateChildrenEle(2, 'double-bounce', true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['spinner2']}>
+          { generateChildrenEle(2, 'double-bounce', true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation4 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner4']}>
-        { generateChildrenEle(5, 'rect', true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['spinner4']}>
+          { generateChildrenEle(5, 'rect', true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation5 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner5']}>
-        { generateChildrenEle(2, 'cube', true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['spinner5']}>
+          { generateChildrenEle(2, 'cube', true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation6 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner6']}></div>
-    </div>
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['spinner6']}></div>
+      </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation7 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner7']}>
-        { generateChildrenEle(2, 'dot', true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['spinner7']}>
+          { generateChildrenEle(2, 'dot', true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation8 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['spinner8']}>
-        { generateChildrenEle(3, 'bounce', true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['spinner8']}>
+          { generateChildrenEle(3, 'bounce', true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation9 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-circle-wrap']}>
-        { generateChildrenEle(12, 'sk-circle', true, true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['sk-circle-wrap']}>
+          { generateChildrenEle(12, 'sk-circle', true, true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation10 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-cube-grid']}>
-        { generateChildrenEle(9, 'sk-cube', true, true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['sk-cube-grid']}>
+          { generateChildrenEle(9, 'sk-cube', true, true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation11 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-fading-circle']}>
-        { generateChildrenEle(12, 'sk-circle', true, true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['sk-fading-circle']}>
+          { generateChildrenEle(12, 'sk-circle', true, true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
 
 export const CssLoadingAnimation12 = () => {
   return (
-    <div className={styles.loadingWrapper}>
-      <div className={styles['sk-folding-cube']}>
-        { generateChildrenEle(4, 'sk-cube', true, true) }
+    <BrowserWindow>
+      <div className={styles.loadingWrapper}>
+        <div className={styles['sk-folding-cube']}>
+          { generateChildrenEle(4, 'sk-cube', true, true) }
+        </div>
       </div>
-    </div>
+    </BrowserWindow>
   )
 };
