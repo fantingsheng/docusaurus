@@ -36,7 +36,7 @@ function useDocTOC() {
 export default function DocItemLayout({children}) {
   const docTOC = useDocTOC();
   const { frontMatter } = useDoc();
-  const { enableComments } = frontMatter;
+  const { enable_comment: enableComment } = frontMatter;
   return (
     <div className="row">
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
@@ -51,7 +51,7 @@ export default function DocItemLayout({children}) {
           </article>
           <DocItemPaginator />
         </div>
-        { enableComments && <GiscusComponent /> }
+        { enableComment && <GiscusComponent /> }
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
     </div>

@@ -3,7 +3,7 @@ slug: how-to-use-docusaurus
 title: 我是如何使用 Docusaurus 来搭建网站的
 authors: [timfan]
 tags: [网站, Docusaurus, 指南]
-enableComments: true
+enable_comment: true
 ---
 
 在使用 [Docusaurus](https://www.docusaurus.cn/) 过程中，我逐步摸索出一些不常用但是很实用的特性，有些是通过一些简单的配置，有的则需要增加或修改一些代码来实现。
@@ -100,14 +100,13 @@ export default function BlogPostItemWrapper(props) {
   const isBrowser = useIsBrowser();
 
   const { frontMatter } = metadata
-  const { enableComments } = frontMatter
+  const { enable_comment: enableComment } = frontMatter
   return (
     <>
       <BlogPostItem {...props} />
       {
-        isBlogPostPage && (
-          <WeChatFollowCard />
-      )}
+        (enableComment && isBlogPostPage) && <WeChatFollowCard />
+      }
     </>
   );
 }
