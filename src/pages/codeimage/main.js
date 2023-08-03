@@ -3,7 +3,7 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styles from './style.module.css';
 import debounce from '../../theme/ReactLiveScope/debounce';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
-import BrowserWindow from '@site/src/theme/BrowserWindow';
+import BrowserWindow from '@site/src/components/BrowserWindow';
 import hljs from '../../config/highlight';
 import html2canvas from 'html2canvas'
 
