@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { ImageList, ImageListItem, ToggleButtonGroup, ToggleButton, ImageListItemBar,
   FormControlLabel, IconButton, Checkbox }  from '@mui/material';
 import Map from '@mui/icons-material/Map';
+import {useWindowSize} from '@docusaurus/theme-common';
 
 export default function AlbumGallery () {
+  const windowSize = useWindowSize();
+  const isMobile = windowSize === 'mobile';
   const itemData = [
     { title: '苏宁悦城', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689408969633-035197b8-c646-45bc-a43c-9350ced51585.jpg'},
     { title: '宜家家居', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689408969569-82b40cf0-61ae-424a-b0ab-be54140e446d.jpg'},
@@ -24,6 +27,21 @@ export default function AlbumGallery () {
   ];
   const [col, setCol] = useState(4);
   const [showTitle, setShowTitle] = useState(true);
+  const sizeOptions = isMobile ? [
+    { value: 3, label: 'Small' },
+    { value: 2, label: 'Medium' },
+    { value: 1, label: 'Large' }
+  ] : [
+    { value: 6, label: 'Small' },
+    { value: 4, label: 'Medium' },
+    { value: 3, label: 'Large' }
+  ];
+
+  useEffect(() => {
+    if (isMobile) {
+      setCol(2)
+    }
+  }, [isMobile]);
 
   const handleScale = (event, val) => {
     if (val !== null) {
@@ -37,25 +55,28 @@ export default function AlbumGallery () {
       </Head>
       <div className='container'>
         <div className='row'>
-          <div className='col col--6 margin-top--md'>
-            <ToggleButtonGroup
-              color='primary'
-              value={col}
-              exclusive
-              onChange={handleScale}
-            >
-              <ToggleButton value={6}>Small</ToggleButton>
-              <ToggleButton value={4}>Medium</ToggleButton>
-              <ToggleButton value={3}>Large</ToggleButton>
-            </ToggleButtonGroup>
-          </div>
-          <div className='col col--6 margin-top--md'>
-            <div style={{ height: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+          <div className='col col--12 margin-top--md'>
+            <div style={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end'}}>
+              <ToggleButtonGroup
+                value={col}
+                exclusive
+                onChange={handleScale}
+                size={isMobile ? 'small' : 'medium'}
+                aria-label='Photo Size'
+              >
+                {
+                  sizeOptions.map(item => (
+                    <ToggleButton value={item.value} key={item.value}>{item.label}</ToggleButton>
+                  ))
+                }
+              </ToggleButtonGroup>
               <FormControlLabel control={
                 <Checkbox
                   checked={showTitle}
+                  size={isMobile ? 'small' : 'medium'}
                   onChange={(event, val) => setShowTitle(val)}
                   inputProps={{ 'aria-label': 'controlled' }}
+                  color='default'
                 />}
                 label='显示地点'
               />
