@@ -27,19 +27,22 @@ export default function AlbumGallery () {
   ];
   const [col, setCol] = useState(4);
   const [showTitle, setShowTitle] = useState(true);
-  const sizeOptions = isMobile ? [
-    { value: 3, label: 'Small' },
-    { value: 2, label: 'Medium' },
-    { value: 1, label: 'Large' }
-  ] : [
+  const [size, setSize] = useState('medium');
+  const [sizeOptions, setSizeOptions] = useState([
     { value: 6, label: 'Small' },
     { value: 4, label: 'Medium' },
     { value: 3, label: 'Large' }
-  ];
+  ]);
 
   useEffect(() => {
     if (isMobile) {
-      setCol(2)
+      setCol(2);
+      setSize('small');
+      setSizeOptions([
+        { value: 3, label: 'Small' },
+        { value: 2, label: 'Medium' },
+        { value: 1, label: 'Large' }
+      ]);
     }
   }, [isMobile]);
 
@@ -61,7 +64,7 @@ export default function AlbumGallery () {
                 value={col}
                 exclusive
                 onChange={handleScale}
-                size={isMobile ? 'small' : 'medium'}
+                size={size}
                 aria-label='Photo Size'
               >
                 {
