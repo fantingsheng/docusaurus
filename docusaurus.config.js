@@ -111,11 +111,11 @@ const config = {
                 to: 'https://i-fanr.com/',
               },
               {
-                label: '博客',
+                label: '个人主页',
                 to: 'https://blog.i-fanr.com/'
               },
               {
-                label: 'Yugere',
+                label: '悦己工作室',
                 to: 'http://yugere.com'
               }
             ],
