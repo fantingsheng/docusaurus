@@ -71,7 +71,7 @@ const config = {
         },
         {
           name: 'author',
-          content: 'timfan'
+          content: 'Timfan'
         }
       ],
       image: 'img/share.png',

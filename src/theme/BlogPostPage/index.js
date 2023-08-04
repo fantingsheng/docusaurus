@@ -8,6 +8,8 @@ import BlogPostPaginator from '@theme/BlogPostPaginator';
 import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import GiscusComponent from '@site/src/components/GiscusComponent';
 import WeChatFollowCard from '@site/src/components/WeChatFollowCard';
+import DonateButton from '@site/src/components/DonateButton';
+
 import TOC from '@theme/TOC';
 function BlogPostPageContent({sidebar, children}) {
   const {metadata, toc, isBlogPostPage} = useBlogPost();
@@ -16,7 +18,8 @@ function BlogPostPageContent({sidebar, children}) {
     hide_table_of_contents: hideTableOfContents,
     toc_min_heading_level: tocMinHeadingLevel,
     toc_max_heading_level: tocMaxHeadingLevel,
-    enable_comment: enableComment
+    enable_comment: enableComment,
+    enable_donate: enableDonate
   } = frontMatter;
   return (
     <BlogLayout
@@ -31,6 +34,10 @@ function BlogPostPageContent({sidebar, children}) {
         ) : undefined
       }>
       <BlogPostItem>{children}</BlogPostItem>
+
+      {
+        (enableDonate && isBlogPostPage) && <DonateButton />
+      }
 
       {
         isBlogPostPage && <WeChatFollowCard />

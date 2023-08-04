@@ -13,6 +13,7 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import styles from './styles.module.css';
 // 评论组件
 import GiscusComponent from '@site/src/components/GiscusComponent';
+import DonateButton from '@site/src/components/DonateButton';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -36,7 +37,10 @@ function useDocTOC() {
 export default function DocItemLayout({children}) {
   const docTOC = useDocTOC();
   const { frontMatter } = useDoc();
-  const { enable_comment: enableComment } = frontMatter;
+  const { 
+    enable_comment: enableComment,
+    enable_donate: enableDonate
+  } = frontMatter;
   return (
     <div className="row">
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
@@ -48,6 +52,7 @@ export default function DocItemLayout({children}) {
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
             <DocItemFooter />
+            { enableDonate && <DonateButton /> }
           </article>
           <DocItemPaginator />
         </div>
