@@ -113,6 +113,10 @@ const config = {
               {
                 label: '博客',
                 to: 'https://blog.i-fanr.com/'
+              },
+              {
+                label: 'Yugere',
+                to: 'http://yugere.com'
               }
             ],
           },
