@@ -69,7 +69,9 @@ export default function () {
       >
         <div className={styles.popoverCont}>
           <Typography variant="h6" gutterBottom>{payMethod.name}</Typography>
-          <Image img={payMethod.qrcode} />
+          <div style={{ width: '200px', height: '200px'}}>
+            <Image img={payMethod.qrcode} />
+          </div>
         </div>
       </Popover>
     </div>
