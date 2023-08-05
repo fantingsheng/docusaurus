@@ -221,8 +221,14 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
+      mermaid: {
+        theme: { light: 'default', dark: 'dark' },
+      }
     }),
-  themes: ['@docusaurus/theme-live-codeblock'],
+  themes: ['@docusaurus/theme-live-codeblock', '@docusaurus/theme-mermaid'],
+  markdown: {
+    mermaid: true
+  },
   scripts: [
     { src: 'https://hm.baidu.com/hm.js?ed54759479dfa9517f230a4aa834059c', async: true }
   ],
