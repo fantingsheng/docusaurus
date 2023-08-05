@@ -4,15 +4,42 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 4rem 0 100px;
   text-align: center;
   position: relative;
   overflow: visible;
 }
-
+.bottomCover {
+  overflow: hidden;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+  z-index: 3;
+  transform: translateY(1px);
+}
+.waveSvg {
+  position: absolute;
+  left: -3%;
+  right: -3%;
+  bottom: 0;
+  width: 106%;
+  min-width: 600px;
+  max-width: unset;
+}
+.waveSvg path {
+  fill: #fff;
+  transition: fill 350ms ease 0s;
+}
+[data-theme='dark'] .waveSvg path {
+  fill: #1b1b1d;
+}
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 2rem 0 100px;
   }
 }
 
