@@ -57,16 +57,6 @@ export default function () {
             )
           })
         }
-      {/* <IconButton aria-describedby={id} aria-label='Alipay' onClick={e => handleClick(e, 'alipay')}>
-        <svg stroke='currentColor' fill='currentColor' strokeWidth='0' viewBox='0 0 448 512' color='#00a0e9' height={svgSize} width={svgSize} xmlns='http://www.w3.org/2000/svg' style={{color: 'rgb(0, 160, 233)'}}>
-          <path d=''></path>
-        </svg>
-      </IconButton>
-      <IconButton aria-describedby={id} aria-label='Wechat Pay' onClick={e => handleClick(e, 'wechat_pay')}>
-        <svg stroke='currentColor' fill='currentColor' strokeWidth='0' viewBox='0 0 576 512' color='#07c160' height={svgSize} width={svgSize} xmlns='http://www.w3.org/2000/svg' style={{color: 'rgb(7, 193, 96)'}}>
-          <path d=''></path>
-        </svg>
-      </IconButton> */}
       <Popover
         id={id}
         open={open}
