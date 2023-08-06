@@ -79,18 +79,23 @@ const config = {
         title: '太空编程',
         logo: {
           alt: '太空编程',
-          src: 'img/logo.svg',
+          src: 'img/logo.svg'
         },
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'knSidebar',
             position: 'left',
-            label: '知识库',
+            label: '知识库'
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'snipSidebar',
+            position: 'left',
+            label: '代码片段'
           },
           { to: '/blog', label: '博客', position: 'left' },
           { label: '实战', position: 'right', items: [
-            { to: '/snippet', label: '代码片段' },
             { to: '/visitor', label: '统计工具' },
             { to: '/shapedivider', label: '分隔线工具' },
             { to: '/handraw', label: '手绘做图工具' },
