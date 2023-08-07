@@ -4,21 +4,26 @@ sidebar_position: 2
 
 # 小组件
 
-以下是我制作的一些小组件
+以下是我制作的一些小组件，有的已经在本站中使用。
 
 import BrowserWindow from '@site/src/components/BrowserWindow';
 
 ## 浏览器窗口
 
 <BrowserWindow>
-  <h3 className='text--center'>Hello World!</h3>
+  <div className='text--center'>
+    <h3>Hello World!</h3>
+    <p>Welcome to spacexcode.com</p>
+  </div>
 </BrowserWindow>
 
 ## 演示区域
 
 import DemoArea from '@site/src/components/DemoArea';
 
-<DemoArea />
+<DemoArea>
+  <div className='button button--secondary'>点击</div>
+</DemoArea>
 
 ## 跑动的光影
 
@@ -27,6 +32,6 @@ import AnimateLinear from '@site/src/components/AnimateLinear';
 <AnimateLinear>
   <div>
     <h3>太空编程</h3>
-    <p>欢迎一起学习前端编程技术。</p>
+    <p>欢迎与我一起学习前端编程技术。</p>
   </div>
 </AnimateLinear>
