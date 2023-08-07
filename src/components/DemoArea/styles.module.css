@@ -1,6 +1,7 @@
 .demoArea {
   position: relative;
-  border: 1px solid #dadde1;
+  border: 2px solid #ebedf0;
+  border-radius: 0.4rem;
   margin: 40px 0 20px;
 }
 .demoRibbon {
