@@ -24,6 +24,7 @@ export default function AlbumGallery () {
     { title: '苏宁悦城A区', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689411672728-b3cfd8b9-8edf-47e4-bb4e-414b2f6b03f8.jpg' },
     { title: '大悦城', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689411672709-236a3755-f646-44fd-8ba4-35d48bd5436d.jpg' },
     { title: '长广溪', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689411672750-5fd2b742-8290-4fab-9995-52bd21607a9a.jpg' },
+    { title: '高浪路大桥', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691453492290-10718d13-b73f-4baa-802d-08bf03d13be9.jpg' }
   ];
   const [col, setCol] = useState(4);
   const [showTitle, setShowTitle] = useState(true);
