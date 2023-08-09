@@ -15,13 +15,15 @@ export default function FlareCursor(props) {
   const handleMouseMove = (e) => {
     // Update the cursor position based on the mouse coordinates.
     const el = document.getElementById(props.id);
+    const scrollY = document.documentElement.scrollTop || document.body.scrollTop
     let inner = false;
-    console.log(el.offsetLeft)
-    if (e.clientX > el.offsetLeft && e.clientX < el.offsetLeft + el.offsetWidth && e.clientY > el.offsetTop && e.clientY < el.offsetTop + el.offsetHeight) {
+    if (e.clientX > el.offsetLeft &&
+      e.clientX < el.offsetLeft + el.offsetWidth &&
+      e.clientY > el.offsetTop - scrollY &&
+      e.clientY < el.offsetTop + el.offsetHeight - scrollY) {
       inner = true;
     }
     setIsInner(inner);
-    console.log(inner)
     setPosition({ x: e.clientX, y: e.clientY });
 
     // Get the target element that the cursor is currently over.
@@ -49,21 +51,19 @@ export default function FlareCursor(props) {
 
   // Render the custom cursor element with dynamic styles based on cursor state.
   return (
-    { isInner ?
-    <div
-      className={clsx(styles.flare,  isPointer ? styles.pointer : '')}
-      style={{
-        ...cursorStyle,
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        width: `${flareSize}px`,
-        height: `${flareSize}px`,
-      }}
-    ></div>
-    : <></>
-    
-  };
+    <>
+    {
+      isInner ? <div
+        className={clsx(styles.flare,  isPointer ? styles.pointer : '')}
+        style={{
+          ...cursorStyle,
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          width: `${flareSize}px`,
+          height: `${flareSize}px`,
+        }}
+      ></div> : ''
+    }
+  </>
   )
-
-// Export the FlareCursor component to be used in other parts of the application.
-// export default FlareCursor;
+}
