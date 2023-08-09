@@ -35,3 +35,16 @@ import AnimateLinear from '@site/src/components/AnimateLinear';
     <p>欢迎与我一起学习前端编程技术。</p>
   </div>
 </AnimateLinear>
+
+## 自定义鼠标样式
+
+import CustomCursor from '@site/src/components/CustomCursor';
+
+export const DisplayCursor = () => (
+  <div id='wrapperId' className='text--center' style={{ padding: '4rem 0', border: '1px solid #eee'}}>
+    <a className='button button--secondary'>move you mouse here</a>
+    <CustomCursor id={'wrapperId'} />
+  </div>
+)
+
+<DisplayCursor />
