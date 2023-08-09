@@ -25,7 +25,7 @@ import DemoArea from '@site/src/components/DemoArea';
   <div className='button button--secondary'>点击</div>
 </DemoArea>
 
-## 跑动的光影
+## 边框上跑动的光影
 
 import AnimateLinear from '@site/src/components/AnimateLinear';
 
@@ -36,12 +36,12 @@ import AnimateLinear from '@site/src/components/AnimateLinear';
   </div>
 </AnimateLinear>
 
-## 自定义鼠标样式
+## 局部自定义鼠标样式
 
 import CustomCursor from '@site/src/components/CustomCursor';
 
 export const DisplayCursor = () => (
-  <div id='wrapperId' className='text--center' style={{ padding: '4rem 0', border: '1px solid #eee'}}>
+  <div id='wrapperId' className='text--center' style={{ padding: '4rem 0', border: '2px solid #ebedf0', borderRadius: '0.4rem'}}>
     <a className='button button--secondary'>move you mouse here</a>
     <CustomCursor id={'wrapperId'} />
   </div>

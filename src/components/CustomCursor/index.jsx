@@ -53,7 +53,8 @@ export default function FlareCursor(props) {
   return (
     <>
     {
-      isInner ? <div
+      isInner ? 
+      <div
         className={clsx(styles.flare,  isPointer ? styles.pointer : '')}
         style={{
           ...cursorStyle,
@@ -64,6 +65,6 @@ export default function FlareCursor(props) {
         }}
       ></div> : ''
     }
-  </>
+    </>
   )
 }
