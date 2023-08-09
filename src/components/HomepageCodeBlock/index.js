@@ -27,7 +27,7 @@ export default function HomepageCodeBlock() {
     <div className='container'>
       <div className='row'>
         <div className='col col--6 col--offset-3 margin-bottom--lg'>
-          <AnimateLinear>
+          <AnimateLinear hasShadow={true}>
             <div className='text--center' style={{ width: '100%'}}>
               <h4 className='margin-bottom--md'>每段代码都有一个故事，分享你的故事</h4>
               <a className='button button--secondary ' href='/codestory'>投稿</a>

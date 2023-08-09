@@ -7,6 +7,10 @@
   background: linear-gradient(100.41deg, #6366f1 .52%, #43a756 100.52%);
   transform: translateZ(0);
 
+  &.shadow {
+    box-shadow: 0 5px 18px rgb(122 121 121 / 42%);
+  }
+
   .content {
     position: relative;
     z-index: 1;
