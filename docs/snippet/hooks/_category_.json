@@ -1,0 +1,8 @@
+{
+  "label": "小钩子",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "常用的封装好的 hooks，拿来即用"
+  }
+}

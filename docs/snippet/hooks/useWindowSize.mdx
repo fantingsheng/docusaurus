@@ -1,0 +1,52 @@
+---
+title: 获取当前浏览器窗口大小
+hide_table_of_contents: true
+---
+
+# useWindowSize
+
+```jsx
+const useWindowSize = () => {
+  const [windowSize, setWindowSize] = React.useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  React.useEffect(() => {
+    const handleResize = () =>
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return windowSize;
+};
+```
+
+### 介绍
+
+一个封装了获取当前浏览器窗口大小的钩子函数，返回值为包含长宽 `width`，`height` 属性的对象。
+
+### 使用方法
+
+```jsx live
+function App() {
+  const windowSize = useWindowSize();
+
+  return (
+    <p>
+      当前窗口：
+      <br />
+      {JSON.stringify(windowSize)}
+    </p>
+  );
+}
+```
+
+可以改变窗口的大小，观察输出结果的变化。
