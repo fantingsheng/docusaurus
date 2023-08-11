@@ -1,0 +1,65 @@
+---
+title: 复制内容到剪切板
+hide_table_of_contents: true
+---
+
+# useCopyToClipboard 
+
+```jsx
+import React from 'react';
+
+const useCopyToClipboard = text => {
+  const copyToClipboard = str => {
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    const selected =
+      document.getSelection().rangeCount > 0
+        ? document.getSelection().getRangeAt(0)
+        : false;
+    el.select();
+    const success = document.execCommand('copy');
+    document.body.removeChild(el);
+    if (selected) {
+      document.getSelection().removeAllRanges();
+      document.getSelection().addRange(selected);
+    }
+    return success;
+  };
+
+  const [copied, setCopied] = React.useState(false);
+
+  const copy = React.useCallback(() => {
+    if (!copied) setCopied(copyToClipboard(text));
+  }, [text]);
+  React.useEffect(() => () => setCopied(false), [text]);
+
+  return [copied, copy];
+};
+
+export default useCopyToClipboard;
+```
+
+### 介绍
+
+网页中经常需要点击某个按钮复制指定内容到剪切板中，而不是通过点击鼠标选中后复制操作，这样对于复制指定内容可方便用户一键复制。该 Hook 只接受唯一参数：要复制的内容，
+返回动作函数和成功与否状态。
+
+### 使用方法
+
+
+```jsx live
+function App() {
+  const [copied, copy] = useCopyToClipboard('spacexcode yyds');
+
+  return (
+    <div>
+      <button className='button button--secondary' onClick={copy}>Click to copy</button>
+      <span className='margin-left--sm'>{copied && '复制成功!'}</span>
+    </div>
+  );
+}
+```
