@@ -1,6 +1,9 @@
+.demo {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
 .aDemo {
-  font-size: 2.8rem;
-  font-weight: 500;
+  font-size: 2.4rem;
 }
 /* 带下边框，移动拉伸效果 */
 .bottomBorder {
@@ -39,7 +42,7 @@
   display: block;
   width: 100%;
   height: 2px;
-  bottom: 10%;
+  bottom: 2%;
   left: 0;
   background-color: var(--ifm-color-primary);
   transform: scaleX(0);
@@ -148,14 +151,14 @@
 .waveLine::before {
   content: "";
   position: absolute;
-  bottom: 20%;
+  bottom: 2%;
   left: 0;
   display: block;
   width: 2px;
   height: 2px;
   background: var(--ifm-color-primary);
   border-radius: 50%;
-  box-shadow: shadowSetColor(6px, 2px, -1, 100, green);
+  box-shadow: shadowSetColor(4px, 2px, -1, 60, green);
   transform: rotate(-90deg);
 }
 /* 鼠标悬停波纹动画*/

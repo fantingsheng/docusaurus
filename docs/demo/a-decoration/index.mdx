@@ -11,7 +11,7 @@ import { AStyleExample } from './index';
 ## 浏览器默认，Hover 状态有下划线
 
 <DemoArea>
-  <AStyleExample text='SPACEXCODE' clsName='default' />
+  <AStyleExample text='超链接' clsName='default' />
 </DemoArea>
 
 ### 实现原理
@@ -31,7 +31,7 @@ a {
 ## 底部边框，Hover 状态移动遮罩效果
 
 <DemoArea>
-  <AStyleExample text='SPACEXCODE' clsName='bottomBorder' />
+  <AStyleExample text='超链接' clsName='bottomBorder' />
 </DemoArea>
 
 ### 实现原理
@@ -73,7 +73,7 @@ a:hover::after {
 ## Hover 状态滑动的下划线
 
 <DemoArea>
-  <AStyleExample text='SPACEXCODE' clsName='animateLine' />
+  <AStyleExample text='超链接' clsName='animateLine' />
 </DemoArea>
 
 ### 实现原理
@@ -100,7 +100,7 @@ a::before {
   display: block;
   width: 100%;
   height: 2px;
-  bottom: 10%;
+  bottom: 5%;
   left: 0;
   background-color: #4d52bb;
   transform: scaleX(0);
@@ -114,7 +114,7 @@ a:hover::before {
 ## 波纹效果下划线
 
 <DemoArea>
-  <AStyleExample text='SPACEXCODE' clsName='waveLine' />
+  <AStyleExample text='超链接' clsName='waveLine' />
 </DemoArea>
 
 ### 实现原理
@@ -197,14 +197,14 @@ a:hover {
 a::before {
   content: "";
   position: absolute;
-  display: block;
-  bottom: 20%;
+  bottom: 2%;
   left: 0;
+  display: block;
   width: 2px;
   height: 2px;
   background: var(--ifm-color-primary);
   border-radius: 50%;
-  box-shadow: shadowSetColor(6px, 2px, -1, 100, green);
+  box-shadow: shadowSetColor(4px, 2px, -1, 60, green);
   transform: rotate(-90deg);
 }
 ```
@@ -212,7 +212,7 @@ a::before {
 ## 鼠标悬停波纹效果
 
 <DemoArea>
-  <AStyleExample text='SPACEXCODE' clsName='hoverAnimateWave' />
+  <AStyleExample text='超链接' clsName='hoverAnimateWave' />
 </DemoArea>
 
 ### 实现原理

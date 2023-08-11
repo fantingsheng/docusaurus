@@ -3,18 +3,20 @@ import clsx from 'clsx';
 import styles from './style.module.scss';
 
 export function AStyleExample ({
-  text = 'SPACEXCODE',
+  text = '超链接',
   link = 'https://spacexcode.com',
-  alt = '太空编程',
+  alt = 'spacexcode',
   clsName
 }) {
   return (
-    <a
-      className={clsx(styles.aDemo, styles[clsName])}
-      href={link}
-      alt={alt}
-    >
-      {text}
-    </a>
+    <span className={styles.demo}>我是一个
+      <a
+        className={clsx(styles.aDemo, styles[clsName])}
+        href={link}
+        alt={alt}
+      >
+        {text}
+      </a>
+    </span>
   )
 }
