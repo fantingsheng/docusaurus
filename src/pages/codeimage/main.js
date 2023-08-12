@@ -4,6 +4,7 @@ import styles from './style.module.css';
 import debounce from '../../theme/ReactLiveScope/debounce';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import BrowserWindow from '@site/src/components/BrowserWindow';
+import AnimateLinear from '@site/src/components/AnimateLinear';
 import hljs from '../../config/highlight';
 import html2canvas from 'html2canvas'
 
@@ -28,7 +29,7 @@ export default function Main () {
 }`)
   const [fileName, setFileName] = useState('');
   const [focus, setFocus] = useState(false);
-  const [blockWidth, setBlockWidth] = useState(520);
+  const [blockWidth, setBlockWidth] = useState(680);
   const [handSide, setHandSide] = useState('left');
   const [clientX, setClientX] = useState(0)
   const [editorHeight, setEditorHeight] = useState(180);
@@ -110,7 +111,7 @@ export default function Main () {
       <div className='row'>
         <div className='col col--12'>
           <div className={styles.mainWrap}>
-            <BrowserWindow url='https://spacexcode.com/codeimage' bodyPad='0' bodyBg=''>
+            <AnimateLinear pad='0' borderBg={settings.theme}>
               <div className={styles.resizeFrame}>
                   <div className={clsx(styles.handDrag, styles.dragLeft)} onMouseDown={e => handleStartResize(e, 'left')}></div>
                   <div className={clsx(styles.handDrag, styles.dragRight)} onMouseDown={e => handleStartResize(e, 'right')}></div>
@@ -168,7 +169,7 @@ export default function Main () {
                     </div>
                   </div>
               </div>
-            </BrowserWindow>
+            </AnimateLinear>
             <div className={styles.setBar}>
               <div className={styles.setItem}>
                 <div className={styles.label}>主题</div>

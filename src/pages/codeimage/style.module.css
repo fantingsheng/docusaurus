@@ -12,6 +12,7 @@
 }
 .resizeFrame {
   position: relative;
+  width: 100%;
 }
 .handDrag {
   position: absolute;
