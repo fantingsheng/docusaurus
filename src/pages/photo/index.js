@@ -24,7 +24,15 @@ export default function AlbumGallery () {
     { title: '苏宁悦城A区', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689411672728-b3cfd8b9-8edf-47e4-bb4e-414b2f6b03f8.jpg' },
     { title: '大悦城', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689411672709-236a3755-f646-44fd-8ba4-35d48bd5436d.jpg' },
     { title: '长广溪', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689411672750-5fd2b742-8290-4fab-9995-52bd21607a9a.jpg' },
-    { title: '高浪路大桥', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691453492290-10718d13-b73f-4baa-802d-08bf03d13be9.jpg' }
+    { title: '高浪路大桥', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691453492290-10718d13-b73f-4baa-802d-08bf03d13be9.jpg' },
+    { title: '太湖新城-落日', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691823880195-89da9942-9665-4b8d-b113-41eb498f21cd.jpg'},
+    { title: '软件园双子座', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691823975286-df751ccf-adcc-4595-a92c-d25c41441735.jpg' },
+    { title: '金匮公园', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824055242-26ea485a-cf61-4c8e-a205-fac8cde53a7a.jpg' },
+    { title: '苏宁悦城', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824116308-79726dde-454b-43e9-9b8c-588ad141f12a.jpg' },
+    { title: '太科园网红树', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824199596-7fd873ad-1059-41f9-a4c5-62c4f972cd04.jpg' },
+    { title: '3W Coffee', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824270197-622c538f-c845-499c-b426-955a4fd0861d.jpg' },
+    { title: '苏宁悦城新家', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824348337-14b4c10a-fba8-4a3b-9fa0-61a062e3a4db.jpg' },
+    { title: '西红柿', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824407811-577ca32c-28bc-482f-9fa9-9b9c0f26d9fc.jpg' },
   ];
   const [col, setCol] = useState(4);
   const [showTitle, setShowTitle] = useState(true);
