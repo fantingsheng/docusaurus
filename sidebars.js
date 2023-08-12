@@ -140,7 +140,7 @@ const sidebars = {
       link: {
         type: 'generated-index',
         title: '小功能',
-        description: '总有一个小功能是你能用到的。',
+        description: '小功能，大用处。',
         slug: '/snippet/function',
         keywords: ['小功能', '封装', '常用函数'],
       }
@@ -157,7 +157,7 @@ const sidebars = {
       link: {
         type: 'generated-index',
         title: '小组件',
-        description: '制作的一些小组件，有的已经在本站中使用。',
+        description: '收集制作的一些小组件，有的已经在本站中使用。',
         slug: '/snippet/component',
         keywords: ['组件', '封装', '常用函数'],
       }

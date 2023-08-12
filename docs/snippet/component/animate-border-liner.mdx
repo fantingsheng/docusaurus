@@ -1,0 +1,107 @@
+---
+title: 边框上跑动的光影
+sidebar_position: 4
+hide_table_of_contents: true
+enable_donate: true
+---
+
+# 边框上跑动的光影
+
+这个组件的灵感是来源于 Raycast 网站，刚开始看到很好奇，这个跑动的光影是怎么实现的，难道是 svg 做成的动画？
+
+这时你会禁不住打开开发者工具，找到对应的元素，绝对会超出你的想象。
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import AnimateLinear from '@site/src/components/AnimateLinear';
+
+<AnimateLinear>
+  <div className='text--center' style={{ width: '100%' }}>
+    <h3>太空编程</h3>
+    <p>欢迎与我一起学习前端编程技术。</p>
+  </div>
+</AnimateLinear>
+
+## 代码实现
+
+<Tabs>
+<TabItem value="jsx" label="JSX" default>
+
+```jsx
+import React from 'react';
+
+export default function (props) {
+  return (
+    <div className='outer'>
+      <div className='gradient'></div>
+      <div className='content'>
+        {props.children}
+      </div>
+    </div>
+  )
+}
+```
+
+</TabItem>
+<TabItem value="css" label="CSS" default>
+
+```css
+.outer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  padding: 4px;
+  width: 100%;
+  background: linear-gradient(100.41deg, #6366f1 .52%, #43a756 100.52%);
+  transform: translateZ(0);
+
+  &.shadow {
+    box-shadow: 0 5px 18px rgb(122 121 121 / 42%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    min-height: 50px;
+    border-radius: 0.3rem;
+    background:  #fff;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+
+  @keyframes running_shadow {
+    0% {
+      transform: translateY(-25%) translateX(40%) rotate(0deg);
+    }
+    30% {
+      transform: translateY(0) translateX(0) rotate(90deg) scaleX(.7);
+    }
+    50% {
+      transform: translateY(-25%) translateX(-40%) rotate(180deg);
+    }
+    70% {
+      transform: translateY(0) translateX(0) rotate(270deg) scaleX(.7);
+    }
+    100% {
+      transform: translateY(-25%) translateX(40%) rotate(1turn);
+    }
+  }
+
+  .gradient {
+    position: absolute;
+    height: 100%;
+    border-radius: 0.4rem;
+    filter: blur(8px);
+    inset: 0;
+    transform-origin: center;
+    will-change: transform;
+    background: conic-gradient(transparent 50deg,rgba(255, 255, 255, 0.6) 80deg, transparent 100deg);
+    animation: running_shadow -.64s linear 4s infinite;
+  }
+}
+```
+
+</TabItem>
+</Tabs>

@@ -17,11 +17,13 @@ export default function FlareCursor(props) {
     const el = document.getElementById(props.id);
     const scrollY = document.documentElement.scrollTop || document.body.scrollTop
     let inner = false;
-    if (e.clientX > el.offsetLeft &&
-      e.clientX < el.offsetLeft + el.offsetWidth &&
-      e.clientY > el.offsetTop - scrollY &&
-      e.clientY < el.offsetTop + el.offsetHeight - scrollY) {
-      inner = true;
+    if (el) {
+      if (e.clientX > el.offsetLeft &&
+        e.clientX < el.offsetLeft + el.offsetWidth &&
+        e.clientY > el.offsetTop - scrollY &&
+        e.clientY < el.offsetTop + el.offsetHeight - scrollY) {
+        inner = true;
+      }
     }
     setIsInner(inner);
     setPosition({ x: e.clientX, y: e.clientY });

@@ -16,7 +16,7 @@ title: 关于本站
 
 #### 2. 网页图标
 
-Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提供的转化工具 `svg -> favicon` 生成而来。
+图标 Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提供的转化工具 `svg -> favicon` 生成而来。
 
 ![Favicon](../../static/img/share.png)
 
@@ -25,9 +25,9 @@ Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提�
 本站由 Facebook 开源的静态网站生成器 [Docusaurus](https://www.docusaurus.cn/) 程序搭建而成。
 
 在基础功能上添加了如下拓展功能：
-- 文章底部显示评论功能，基于 [giscus](https://giscus.app/zh-CN) 搭建，[教程](https://m19v.github.io/blog/how-to-add-giscus-to-docusaurus)
-- 文章底部显示微信公众号卡片，版权说明打赏组件，基于 Swizzle 特性对博客页面进行自定义布局，参考[Swizzle](https://www.docusaurus.io/zh-CN/docs/swizzling)
-- 首页 Banner 位置增加本地搜索功能，依赖[docusaurus-lunr-search](https://github.com/praveenn77/docusaurus-lunr-search)
+- 文章底部显示评论功能，基于 [giscus](https://giscus.app/zh-CN) 搭建，参考教程：[How to add Giscus comments to Docusaurus](https://m19v.github.io/blog/how-to-add-giscus-to-docusaurus)
+- 文章底部显示微信公众号卡片，版权说明打赏组件，基于 Swizzle 特性对博客页面进行自定义布局，参考 [Swizzle](https://www.docusaurus.io/zh-CN/docs/swizzling)。
+- 首页 Banner 位置增加本地搜索功能，依赖 [docusaurus-lunr-search](https://github.com/praveenn77/docusaurus-lunr-search) 插件。
 
 #### 1. 服务器
 
@@ -37,7 +37,7 @@ Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提�
 - CPU&内存：1核(vCPU)1 GiB
 - 操作系统：CentOS 7.7 64位
 
-#### 2. 存储
+#### 2. 文件存储
 
 为了缓解服务器压力（存储和请求速度），文章中的图片存放在阿里云对象存储 OSS 上。
 
@@ -47,22 +47,25 @@ Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提�
 
 #### 4. SSL 证书
 
-为了支持 HTTPS 访问，使用 DigiCert 免费版 SSL 证书，有效期一年，一年后需要重新申请生成新的证书上传。
-
+为了支持 HTTPS 访问，使用 DigiCert 免费版 SSL 证书，有效期一年，一年后需要重新申请生成新的证书上传。  
 因免费证书不支持二级域名，购买了 Rapid 普通版 DV SSL 证书，支持特定单个二级域名 `visitor.spacexcode.com`
+
+#### 5. 部署方案
+
+代码托管在 Github 上，为了使得国内服务器上拉代码速度快点，在 Gitee 上做了备份；目前还是采用的本地打包，后面研究自动化部署。
 
 ### 数据统计
 
-1. 使用[百度统计](https://tongji.baidu.com/)作为网站的数据统计工具，后台配置邮箱可接收每天推送的统计报告。  
-2. 网站底部总 PV、UV 量使用[不蒜子](https://busuanzi.ibruce.info/)进行统计。
+1. 使用 [百度统计](https://tongji.baidu.com/) 作为网站的数据统计和分析工具，后台针对不同维度数据配置了邮箱接收每天推送的统计报告。  
+2. 网站底部的 PV 和 UV 量使用 [不蒜子](https://busuanzi.ibruce.info/) 进行统计。
 3. 文章中的阅读统计使用自建的工具 [Visitor Badge](https://visitor.spacexcode.com) 进行统计。
 
 ### 网站运营
 
-本站接受广告投放，内容需要与互联网技术领域相关，本站目前流量有限，但网站专业性强，主要针对前端领域，分享一些优质的前端学习资源，在前端领域有一定的受众。
-如果觉得写的好的内容对你有帮助，也可以在文章底部请作者喝杯咖啡。
+本站接受广告投放，内容需要与互联网技术领域相关，本站目前流量有限，但网站专业性强，主要针对前端领域，分享一些优质的前端学习资源，在前端领域有一定的目标粉丝群体。
+另外如果觉得写的好的内容对你有帮助，也可以在文章底部请作者喝杯咖啡。
 
-另外感兴趣的朋友们可以在评论区留言交换友链。
+同时感兴趣的朋友们可以在评论区留言和本站交换友链。
 
 import DonateButton from '@site/src/components/DonateButton';
 

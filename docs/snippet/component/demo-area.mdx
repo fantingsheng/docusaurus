@@ -1,0 +1,102 @@
+---
+title: 演示区域
+sidebar_position: 3
+hide_table_of_contents: true
+enable_donate: true
+---
+
+# 演示区域
+
+由于我的网站上经常要使用到一些展示效果，为了和其它正文内容块做区分，特地设计和封装了一个演示区域的组件。
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import DemoArea from '@site/src/components/DemoArea';
+
+<DemoArea>
+  <div className='button button--secondary'>点击</div>
+</DemoArea>
+
+## 代码实现
+
+<Tabs>
+<TabItem value="jsx" label="JSX" default>
+
+```jsx
+import React from 'react';
+
+export default function DemoArea({ title, children }) {
+  const demoTitle = title || "DEMO"
+  return (
+    <div className='demoArea'>
+      <div className='demoRibbon'>
+        <span className='demoTitle'>{demoTitle}</span>
+      </div>
+      <div className='demoContent'>{children}</div>
+    </div>
+  )
+}
+
+```
+
+</TabItem>
+<TabItem value="css" label="CSS" default>
+
+```css
+.demoArea {
+  position: relative;
+  border: 2px solid #ebedf0;
+  border-radius: 0.4rem;
+  margin: 40px 0 20px;
+}
+.demoRibbon {
+  height: 8rem;
+  width: 8rem;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  top: -0.5rem;
+  right: -0.5rem;
+}
+.demoTitle {
+  background-color: #6366f1;
+  color: #fff;
+  padding: 0.5rem 0;
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  width: 181px;
+  display: block;
+  letter-spacing: 0.15rem;
+}
+.demoRibbon .demoTitle {
+  transform: translate(-13px, 30px) rotate(45deg);
+}
+.demoRibbon::before, .demoRibbon::after {
+  border: .25rem solid #4338ca;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  content: "";
+  position: absolute;
+  z-index: -1;
+}
+.demoRibbon::before {
+  top: 0;
+  left: 0;
+}
+.demoRibbon::after {
+  bottom: 0;
+  right: 0;
+}
+.demoContent {
+  padding: 1rem;
+  min-height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+</TabItem>
+</Tabs>

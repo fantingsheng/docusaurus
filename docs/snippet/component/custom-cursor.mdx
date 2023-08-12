@@ -1,0 +1,131 @@
+---
+title: 局部自定义鼠标样式
+sidebar_position: 5
+hide_table_of_contents: true
+enable_donate: true
+---
+
+# 局部自定义鼠标样式
+
+如果你想在页面中局部实现自定义鼠标指针的样式，这个组件可以帮到你。另外你也可以根据组件代码，了解网页中实现自定义鼠标指针所涉及的知识和原理。
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import CustomCursor from '@site/src/components/CustomCursor';
+
+export const DisplayCursor = () => (
+  <div id='wrapperId' className='text--center' style={{ padding: '4rem 0', border: '2px solid #ebedf0', borderRadius: '0.4rem'}}>
+    <a className='button button--secondary'>move you mouse here</a>
+    <CustomCursor id={'wrapperId'} />
+  </div>
+)
+
+<DisplayCursor />
+
+## 代码实现
+
+<Tabs>
+<TabItem value="jsx" label="JSX" default>
+
+```jsx
+import React, { useState, useEffect } from "react";
+import styles from './style.module.scss';
+import clsx from 'clsx';
+
+// 参数 id 为 页面中某个元素的id
+export default function FlareCursor(props) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const [isPointer, setIsPointer] = useState(false);
+  const [isInner, setIsInner] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const el = document.getElementById(props.id);
+    const scrollY = document.documentElement.scrollTop || document.body.scrollTop
+    let inner = false;
+    if (el) {
+      if (e.clientX > el.offsetLeft &&
+        e.clientX < el.offsetLeft + el.offsetWidth &&
+        e.clientY > el.offsetTop - scrollY &&
+        e.clientY < el.offsetTop + el.offsetHeight - scrollY) {
+        inner = true;
+      }
+    }
+    setIsInner(inner);
+    setPosition({ x: e.clientX, y: e.clientY });
+
+    const target = e.target;
+
+    inner && setIsPointer(
+      window.getComputedStyle(target).getPropertyValue("cursor") === "pointer"
+    );
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  const flareSize = isPointer ? 0 : 30;
+
+  const cursorStyle = isPointer ? { left: "-100px", top: "-100px" } : {};
+
+  return (
+    <>
+    {
+      isInner ? 
+      <div
+        className={clsx(styles.flare,  isPointer ? styles.pointer : '')}
+        style={{
+          ...cursorStyle,
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          width: `${flareSize}px`,
+          height: `${flareSize}px`,
+        }}
+      ></div> : ''
+    }
+    </>
+  )
+}
+```
+
+</TabItem>
+<TabItem value="css" label="CSS" default>
+
+```css
+.flare {
+  position: fixed;
+  border: 2px solid #ffffff2b;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999999999 !important ;
+  backdrop-filter: blur(1px);
+  background-color: #0000005e;
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  cursor: none !important; /* Let's hide the default cursor so it looks way better */
+}
+
+/* We need to remove this custom cursor in mobile devices */
+@media screen and (max-width: 768px) {
+  .flare {
+    width: 0;
+    height: 0;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
+  }
+}
+.flare.pointer {
+  opacity: 0 !important;
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+```
+
+</TabItem>
+</Tabs>

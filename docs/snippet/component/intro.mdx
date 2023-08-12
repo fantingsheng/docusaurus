@@ -1,50 +1,84 @@
 ---
-sidebar_position: 2
+title: 介绍
+sidebar_position: 1
+hide_table_of_contents: true
+enable_comment: true
+enable_donate: true
 ---
 
 # 介绍
 
-以下是我制作的一些小组件，有的已经在本站中使用。
+以下是我制作的一些小组件，灵感和创意来自网上资源，有的已经在本站中使用。
 
 import BrowserWindow from '@site/src/components/BrowserWindow';
-
-## 浏览器窗口
-
-<BrowserWindow>
-  <div className='text--center'>
-    <h3>Hello World!</h3>
-    <p>Welcome to spacexcode.com</p>
-  </div>
-</BrowserWindow>
-
-## 演示区域
-
 import DemoArea from '@site/src/components/DemoArea';
-
-<DemoArea>
-  <div className='button button--secondary'>点击</div>
-</DemoArea>
-
-## 边框上跑动的光影
-
 import AnimateLinear from '@site/src/components/AnimateLinear';
-
-<AnimateLinear>
-  <div>
-    <h3>太空编程</h3>
-    <p>欢迎与我一起学习前端编程技术。</p>
-  </div>
-</AnimateLinear>
-
-## 局部自定义鼠标样式
-
 import CustomCursor from '@site/src/components/CustomCursor';
 
-export const DisplayCursor = () => (
-  <div id='wrapperId' className='text--center' style={{ padding: '4rem 0', border: '2px solid #ebedf0', borderRadius: '0.4rem'}}>
-    <a className='button button--secondary'>move you mouse here</a>
-    <CustomCursor id={'wrapperId'} />
+export const ShowAllComps = () => (
+  <div className='row'>
+    <div className='col col--6 margin-bottom--md'>
+      <div className='card'>
+        <div className='card__header'>浏览器窗口</div>
+        <div className='card__body'>
+          <BrowserWindow>
+            <div className='text--center'>
+              <h3>Hello World!</h3>
+              <p>Welcome to spacexcode.com</p>
+            </div>
+          </BrowserWindow>
+        </div>
+        <div className='card__footer'>
+          <a className='button button--secondary button--block' href='/docs/snippet/component/browser-window'>查看详情</a>
+        </div>
+      </div>
+    </div>
+    <div className='col col--6 margin-bottom--md'>
+      <div className='card'>
+        <div className='card__header'>演示区域</div>
+        <div className='card__body'>
+          <div style={{ margin: '-40px 0 -20px'}}>
+            <DemoArea>
+              <div className='button button--secondary'>点击</div>
+            </DemoArea>
+          </div>
+        </div>
+        <div className='card__footer'>
+          <a className='button button--secondary button--block' href='/docs/snippet/component/demo-area'>查看详情</a>
+        </div>
+      </div>
+    </div>
+    <div className='col col--6 margin-bottom--md'>
+      <div className='card'>
+        <div className='card__header'>边框上跑动的光影</div>
+        <div className='card__body'>
+          <AnimateLinear>
+            <div>
+              <h3>太空编程</h3>
+              <p>欢迎与我一起学习前端编程技术。</p>
+            </div>
+          </AnimateLinear>
+        </div>
+        <div className='card__footer'>
+          <a className='button button--secondary button--block' href='/docs/snippet/component/animate-border-liner'>查看详情</a>
+        </div>
+      </div>
+    </div>
+    <div className='col col--6 margin-bottom--md'>
+      <div className='card'>
+        <div className='card__header'>局部自定义鼠标样式</div>
+        <div className='card__body'>
+          <div id='wrapperId' className='text--center' style={{ padding: '50px 10px', border: '2px solid #ebedf0', borderRadius: '0.4rem'}}>
+            <a className='button button--secondary'>move you mouse here</a>
+            <CustomCursor id={'wrapperId'} />
+          </div>
+        </div>
+        <div className='card__footer'>
+          <a className='button button--secondary button--block' href='/docs/snippet/component/custom-cursor'>查看详情</a>
+        </div>
+      </div>
+    </div>
   </div>
 )
 
-<DisplayCursor />
+<ShowAllComps />

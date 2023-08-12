@@ -1,0 +1,119 @@
+---
+title: 浏览器窗口
+sidebar_position: 2
+hide_table_of_contents: true
+enable_donate: true
+---
+
+# 浏览器窗口
+
+当你想要在网页中模拟一个浏览器的窗口时，这个组件可以帮到你，当然它是模拟 Mac 系统浏览器的样式。
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
+<BrowserWindow>
+  <div className='text--center'>
+    <h3>Hello World!</h3>
+    <p>Welcome to spacexcode.com</p>
+  </div>
+</BrowserWindow>
+
+## 代码实现
+
+<Tabs>
+<TabItem value="jsx" label="JSX" default>
+
+```jsx
+import React from 'react';
+
+export default function BrowserWindow(props) {
+  const url = props.url || 'https://spacexcode.com'
+  const bodyPad = props.bodyPad || '1rem'
+  const bodyBg = props.bodyBg || 'transparent'
+  return (
+    <div className='browserWindow'>
+      <div className='header'>
+        <div className='button'>
+          <span style={{ background: 'rgb(242, 95, 88)'}}></span>
+          <span style={{ background: 'rgb(251, 190, 60)'}}></span>
+          <span style={{ background: 'rgb(88, 203, 66)'}}></span>
+        </div>
+        <div className='address'>{url}</div>
+        <div className='menu'>
+          <div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div className='body' style={{ padding: bodyPad, backgroundColor: bodyBg }}>
+        {props.children}
+      </div>
+    </div>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="css" label="CSS" default>
+
+```css
+.browserWindow {
+  border: 3px solid #ebedf0;
+  border-radius: .4rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+  margin-bottom: 1.25rem;
+}
+.browserWindow .header {
+  background: #ebedf0;
+  display: flex;
+  align-items: center;
+  padding: .5rem 1rem;
+}
+.browserWindow .header .button {
+  white-space: nowrap;
+}
+.browserWindow .header .button span {
+  border-radius: 50%;
+  display: inline-block;
+  height: 12px;
+  margin-right: 6px;
+  margin-top: 4px;
+  width: 12px;
+}
+.browserWindow .header .address {
+  background-color: #fff;
+  border-radius: 12.5px;
+  color: var(--ifm-color-gray-800);
+  flex: 1 0;
+  font: 400 13px Arial,sans-serif;
+  margin: 0 1rem 0 0.5rem;
+  padding: 5px 15px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.browserWindow .header .menu {
+  margin-left: auto;
+}
+.browserWindow .header .menu span {
+  background-color: #aaa;
+  display: block;
+  height: 3px;
+  margin: 3px 0;
+  width: 17px;
+}
+.browserWindow .body {
+  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: inherit;
+  padding: 1px;
+}
+```
+
+</TabItem>
+</Tabs>
