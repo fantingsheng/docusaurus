@@ -70,7 +70,7 @@ export default function Form () {
     var a = document.createElement('a');
     a.style.display = 'none';
     a.href = href;
-    a.download = 'shapedivider.svg';
+    a.download = 'shapedivider-' + formData.shape + '.svg';
     a.rel = 'noopener noreferrer';
     document.body.appendChild(a);
     a.click();
@@ -85,7 +85,7 @@ export default function Form () {
       <div className='row'>
         <div className='col col--8 col--offset-2'>
           <Card variant="outlined" className={styles.formWrap}>
-            <CardContent sx={{ position: 'relative', overflow: 'visible', paddingBottom: '2.2rem !important' }}>
+            <CardContent sx={{ position: 'relative', overflow: 'visible', paddingTop: '10px', paddingBottom: '20px !important' }}>
               <div className='row padding-horiz--md'>
                 <div className='col col--4 margin-top--md'>
                   <div className={styles.label}>形状</div>
@@ -103,7 +103,9 @@ export default function Form () {
                 </div>
                 <div className='col col--4 margin-top--md'>
                   <div className={styles.label}>颜色</div>
-                  <div style={{ display: 'flex' }}><ColorPicker value={formData.color} onChange={val => handleChange(`#${val.hex}`, 'color')} fullWidth /></div>
+                  <div style={{ display: 'flex' }}>
+                    <ColorPicker value={formData.color} onChange={val => handleChange(`#${val.hex}`, 'color')} fullWidth />
+                  </div>
                 </div>
                 <div className='col col--2 margin-top--md'>
                   <div className={styles.label}>翻转</div>
@@ -127,10 +129,10 @@ export default function Form () {
                   <div className={styles.label}>高度（px）</div>
                   <Slider
                     value={formData.height}
-                    aria-label="Default"
+                    aria-label='Default'
                     min={0}
                     max={500}
-                    valueLabelDisplay="auto"
+                    valueLabelDisplay='auto'
                     onChange={e => handleChange(e.target.value, 'height')}
                     />
                 </div>
@@ -138,17 +140,17 @@ export default function Form () {
                   <div className={styles.label}>宽度（%）</div>
                   <Slider
                     value={formData.width}
-                    aria-label="Default"
+                    aria-label='Default'
                     min={100}
                     max={300}
-                    valueLabelDisplay="auto"
+                    valueLabelDisplay='auto'
                     onChange={e => handleChange(e.target.value, 'width')}
                   />
                 </div>
               </div>
               <div className={styles.downloadBtn}>
                 <IconButton onClick={downloadSvg}>
-                  <CloudDownloadOutlinedIcon sx={{ fontSize: 42 }} color="primary" />
+                  <CloudDownloadOutlinedIcon sx={{ fontSize: 38 }} color='primary' />
                 </IconButton>
               </div>
             </CardContent>
@@ -157,7 +159,7 @@ export default function Form () {
       </div>
       <div className='row margin-top--xl'>
         <div className='col col--12'>
-          <BrowserWindow bodyPad='0'>
+          <BrowserWindow bodyPad='0' url='https://spacexcode.com/shapedivider'>
             <div className={styles.previewArea}>
               {
                 [bg].map(el => <Image key={el} img={Images[el - 1]} />)
@@ -166,8 +168,8 @@ export default function Form () {
                 className={styles.shapeDivider}
                 style={{transform: formData.invert ? 'rotate(180deg)' : 'none'}}>
                 <svg
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" 
-                  preserveAspectRatio="none"
+                  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'
+                  preserveAspectRatio='none'
                   id='divider'
                   style={{
                     width: 'calc(' + formData.width + '% + 1.3px)',
@@ -208,5 +210,4 @@ export default function Form () {
       </SpeedDial>
     </div>
   )
-
 }
