@@ -8,9 +8,11 @@
   margin-top: -4rem;
   border: none !important;
   border-radius: 0.5rem !important;
-  background-color: #fff !important;
   box-shadow: 11px 0 38px 0 rgba(0,0,0,.1);
   overflow: visible !important;
+}
+[data-theme='light'] .formWrap {
+  background-color: #fff !important;
 }
 .label {
   font-weight: 600;

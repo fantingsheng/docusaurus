@@ -26,7 +26,7 @@ export default function Form () {
   })
   const [flipDisabled, setFlipDisabled] = useState(false);
   const [invertDisabled, setInvertDisabled] = useState(false);
-  const [bg, setBg] = useState(1);
+  const [bg, setBg] = useState(4);
   const [mapKey, setMapKey] = useState('waves');
 
   const actions = [
@@ -85,7 +85,7 @@ export default function Form () {
       <div className='row'>
         <div className='col col--8 col--offset-2'>
           <Card variant="outlined" className={styles.formWrap}>
-            <CardContent sx={{ position: 'relative', overflow: 'visible', paddingTop: '10px', paddingBottom: '20px !important' }}>
+            <CardContent sx={{ position: 'relative', overflow: 'visible', paddingTop: '10px', paddingBottom: '40px !important' }}>
               <div className='row padding-horiz--md'>
                 <div className='col col--4 margin-top--md'>
                   <div className={styles.label}>形状</div>

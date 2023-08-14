@@ -235,7 +235,8 @@ const config = {
     mermaid: true
   },
   scripts: [
-    { src: 'https://hm.baidu.com/hm.js?ed54759479dfa9517f230a4aa834059c', async: true }
+    { src: 'https://hm.baidu.com/hm.js?ed54759479dfa9517f230a4aa834059c', async: true },
+    { src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1398727179052429', async: true }
   ],
   plugins: [
     [
