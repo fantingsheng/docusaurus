@@ -9,6 +9,7 @@ import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import GiscusComponent from '@site/src/components/GiscusComponent';
 import WeChatFollowCard from '@site/src/components/WeChatFollowCard';
 import DonateButton from '@site/src/components/DonateButton';
+import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
 
 import TOC from '@theme/TOC';
 function BlogPostPageContent({sidebar, children}) {
@@ -19,7 +20,8 @@ function BlogPostPageContent({sidebar, children}) {
     toc_min_heading_level: tocMinHeadingLevel,
     toc_max_heading_level: tocMaxHeadingLevel,
     enable_comment: enableComment,
-    enable_donate: enableDonate
+    enable_donate: enableDonate,
+    enable_adsense: enableAdsense
   } = frontMatter;
   return (
     <BlogLayout
@@ -46,6 +48,11 @@ function BlogPostPageContent({sidebar, children}) {
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
       )}
+
+      {
+        (enableAdsense && isBlogPostPage) && 
+        <GoogleAdsBlock height='12rem' slot='5871969971' format='autorelaxed' styles={{ display: 'block', height: '12rem' }} />
+      }
 
       {
         (enableComment && isBlogPostPage) && <GiscusComponent />
