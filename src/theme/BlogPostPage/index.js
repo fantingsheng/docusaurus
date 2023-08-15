@@ -20,8 +20,7 @@ function BlogPostPageContent({sidebar, children}) {
     toc_min_heading_level: tocMinHeadingLevel,
     toc_max_heading_level: tocMaxHeadingLevel,
     enable_comment: enableComment,
-    enable_donate: enableDonate,
-    enable_adsense: enableAdsense
+    enable_donate: enableDonate
   } = frontMatter;
   return (
     <BlogLayout
@@ -48,11 +47,6 @@ function BlogPostPageContent({sidebar, children}) {
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />
       )}
-
-      {
-        (enableAdsense && isBlogPostPage) && 
-        <GoogleAdsBlock height='12rem' slot='5871969971' format='autorelaxed' styles={{ display: 'block', height: '12rem' }} />
-      }
 
       {
         (enableComment && isBlogPostPage) && <GiscusComponent />
