@@ -5,9 +5,40 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import HomepageCodeBlock from '@site/src/components/HomepageCodeBlock';
-import Search from "@site/src/theme/SearchBar";
-
+import { Paper, InputBase, Divider, IconButton } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import DirectionsIcon from '@mui/icons-material/Directions';
+import {Redirect} from '@docusaurus/router';
 import styles from './index.module.css';
+
+function SearchBar () {
+  const handleInput = () => {
+    console.log("onddd")
+    window.location.href = '/search';
+  }
+  return (
+    <Paper
+      component="form"
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%', margin: '0 auto' }}
+    >
+      <InputBase
+        sx={{ ml: 1, flex: 1 }}
+        placeholder="输入你想搜索的任何内容"
+        inputProps={{ 'aria-label': 'search everything you want' }}
+        onFocus={handleInput}
+      />
+      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+        <SearchIcon />
+      </IconButton>
+      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+      <Link to='/search'>
+        <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+          <DirectionsIcon />
+        </IconButton>
+      </Link>
+    </Paper>
+  );
+}
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -23,8 +54,12 @@ function HomepageHeader() {
             快速了解前端知识体系
           </Link>
         </div>
-        <div className='margin-top--lg'>
-          <Search show={true} />
+        <div className='row'>
+          <div className='col col--8 col--offset-2'>
+            <div className='margin-top--lg'>
+              <SearchBar />
+            </div>
+          </div>
         </div>
       </div>
       <div className={styles.bottomCover}>

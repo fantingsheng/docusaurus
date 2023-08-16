@@ -46,14 +46,8 @@
 
 /* 搜索栏 */
 .navbar__search-input {
-  width: 600px;
-  height: 2.4rem;
-}
-
-@media (max-width: 996px) {
-  .navbar__search-input {
-    width: 100% !important;
-  }
+  width: 100%;
+  height: 2.8rem;
 }
 
 /* 导航栏毛玻璃效果 */
