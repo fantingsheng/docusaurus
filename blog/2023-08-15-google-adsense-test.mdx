@@ -21,6 +21,8 @@ enable_donate: true
 
 1. 点击新建网站按钮，将你的网站域名输入进去。
 
+<!-- truncate -->
+
 ![](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1692164277764-13c909e5-f423-40f9-9982-f5df161fc621.png)
 
 2. 点击网站，进入审核流程。关联网站，这里有两种验证方式：
@@ -66,39 +68,19 @@ google.com, pub-1398727179052429, DIRECT, f08c47fec0942fa0
 
 新建不同的广告单元，设置好样式后，将代码封装成组件，自定义在网站的页面中。以下是我在后台新建的一些广告单元。
 
+广告单元有五种形式：
+
+- 展示广告
+- 信息流广告
+- 文章内嵌广告
+- 多重广告
+- 搜索引擎
+
 import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
 
-#### 展示广告
-
 <GoogleAdsBlock
-  slot='3879505103'
-  format='auto'
-  styles={{ display: 'block' }}
-/>
-
-#### 信息流广告
-
-<GoogleAdsBlock
-  slot='5860948418'
-  format='fluid'
-  layoutKey='-fb+5w+4e-db+86'
-  styles={{ display: 'block' }}
-/>
-
-#### 文章内嵌广告
-
-<GoogleAdsBlock
-  height='8rem'
   layout='in-article'
   slot='7779646697'
   format='fluid'
   styles={{ display: 'block', textAlign: 'center' }}
-/>
-
-#### 多重广告
-
-<GoogleAdsBlock
-  slot='5871969971'
-  format='autorelaxed'
-  styles={{ display: 'block' }}
 />
