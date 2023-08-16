@@ -1,38 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import { useHistory } from "@docusaurus/router";
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import HomepageCodeBlock from '@site/src/components/HomepageCodeBlock';
 import { Paper, InputBase, Divider, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
-import {Redirect} from '@docusaurus/router';
 import styles from './index.module.css';
 
 function SearchBar () {
+  const [searchVal, setSearchVal] = useState('')
+  const history = useHistory()
   const handleInput = () => {
-    console.log("onddd")
-    window.location.href = '/search';
+    history.push(`/search?value=${searchVal}`)
+  }
+  const handleKeyEnter = (e) => {
+    if (e.key === 'Enter') {
+      handleInput()
+    }
   }
   return (
     <Paper
-      component="form"
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%', margin: '0 auto' }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="输入你想搜索的任何内容"
+        placeholder='输入你想搜索的任何内容'
+        value={searchVal}
         inputProps={{ 'aria-label': 'search everything you want' }}
-        onFocus={handleInput}
+        onChange={e => setSearchVal(e.target.value)}
+        onKeyDown={handleKeyEnter}
       />
-      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+      <IconButton type='button' sx={{ p: '10px' }} aria-label='search' onClick={handleInput}>
         <SearchIcon />
       </IconButton>
-      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+      <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
       <Link to='/search'>
-        <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+        <IconButton color='primary' sx={{ p: '10px' }} aria-label='directions'>
           <DirectionsIcon />
         </IconButton>
       </Link>

@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useState } from "react";
 import classnames from "classnames";
-import { useHistory } from "@docusaurus/router";
+import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from '@docusaurus/useGlobalData';
 import useIsBrowser from "@docusaurus/useIsBrowser";
@@ -10,6 +10,7 @@ const Search = props => {
   const searchBarRef = useRef(null);
   const [indexReady, setIndexReady] = useState(false);
   const history = useHistory();
+  const location = useLocation();
   const { siteConfig = {} } = useDocusaurusContext();
   const isBrowser = useIsBrowser();
   const { baseUrl } = siteConfig;
@@ -59,8 +60,14 @@ const Search = props => {
         }
         initAlgolia(searchDocs, searchIndex, DocSearch);
         setIndexReady(true);
+        if (location.search && location.search.includes('?value=')) {
+          const val = location.search.replace('?value=', '')
+          console.log(val)
+          searchBarRef.current.value = val;
+        }
       });
       initialized.current = true;
+      searchBarRef
     }
   };
 
