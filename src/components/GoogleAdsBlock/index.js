@@ -6,8 +6,8 @@ export default function GoogleAdsBlock({ model }) {
     switch(model) {
       case "inFluid":
         return (
-          <ins class="adsbygoogle"
-            style="display:block"
+          <ins className="adsbygoogle"
+            style={{display: 'block' }}
             data-ad-format="fluid"
             data-ad-layout-key="-fb+5w+4e-db+86"
             data-ad-client="ca-pub-1398727179052429"
@@ -16,8 +16,8 @@ export default function GoogleAdsBlock({ model }) {
         );
       case "inArticle":
         return (
-          <ins class="adsbygoogle"
-            style="display:block; text-align:center;"
+          <ins className="adsbygoogle"
+            style={{ display: 'block', textAlign: 'center'}}
             data-ad-layout="in-article"
             data-ad-format="fluid"
             data-ad-client="ca-pub-1398727179052429"
@@ -26,8 +26,8 @@ export default function GoogleAdsBlock({ model }) {
         );
       case "multiStyle":
         return (
-          <ins class="adsbygoogle"
-            style="display:block"
+          <ins className="adsbygoogle"
+            style={{ display: 'block' }}
             data-ad-format="autorelaxed"
             data-ad-client="ca-pub-1398727179052429"
             data-ad-slot="5871969971">
@@ -35,8 +35,8 @@ export default function GoogleAdsBlock({ model }) {
         )
       case "pureShow":
         return (
-          <ins class="adsbygoogle"
-            style="display:block"
+          <ins className="adsbygoogle"
+            style={{ display: 'block' }}
             data-ad-client="ca-pub-1398727179052429"
             data-ad-slot="3879505103"
             data-ad-format="auto"
@@ -55,7 +55,7 @@ export default function GoogleAdsBlock({ model }) {
 
   return (
     <div className='adsense' style={{ height: 'auto', width: '100%', margin: '20px 0'}}>
-      <adsenseBuilder />
+      { model && adsenseBuilder() }
     </div>
   );
 }
