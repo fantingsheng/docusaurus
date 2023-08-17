@@ -36,7 +36,7 @@ export default function GoogleAdsBlock({ model }) {
       case "pureShow":
         return (
           <ins className="adsbygoogle"
-            style={{ display: 'block' }}
+            style={{ display: 'block', height: '100px', width: '100%' }}
             data-ad-client="ca-pub-1398727179052429"
             data-ad-slot="3879505103"
             data-ad-format="auto"
