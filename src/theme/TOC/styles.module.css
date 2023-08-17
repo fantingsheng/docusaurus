@@ -18,4 +18,7 @@
 .adsWrap {
   margin-top: 0.5rem;
   padding-left: var(--ifm-toc-padding-horizontal);
+  width: 100%;
+  overflow: hidden;
+  height: 100px;
 }
