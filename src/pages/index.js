@@ -24,7 +24,7 @@ function SearchBar () {
   }
   return (
     <Paper
-      sx={{ p: '0 2px', display: 'flex', alignItems: 'center', width: '100%', margin: '0 auto' }}
+      sx={{ p: '2px 2px 0', display: 'flex', alignItems: 'center', width: '100%', margin: '0 auto' }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
@@ -57,7 +57,7 @@ function HomepageHeader() {
         <p className='hero__subtitle'>{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className='button button--secondary button--md'
+            className='button button--secondary button--lg'
             to='/docs/intro'>
             快速了解前端知识体系
           </Link>

@@ -1,14 +1,14 @@
-import React, { useRef, useCallback, useState } from "react";
+import React, { useRef, useCallback, forwardRef, useState, useImperativeHandle } from "react";
 import classnames from "classnames";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from '@docusaurus/useGlobalData';
 import useIsBrowser from "@docusaurus/useIsBrowser";
-import useForkRef from "./useForkRef";
-const Search = (props, inputRef) => {
+
+const Search = forwardRef((props, ref) => {
   
   const initialized = useRef(false);
-  const searchBarRef = useRef(inputRef);
+  const searchBarRef = useRef();
   const [indexReady, setIndexReady] = useState(false);
   const history = useHistory();
   const location = useLocation();
@@ -37,7 +37,11 @@ const Search = (props, inputRef) => {
       });
   };
 
-  // const { forkRef } = useForkRef()
+  useImperativeHandle(ref, () => ({
+    get input() {
+      return searchBarRef.current;
+    }
+  }))
 
   const pluginData = usePluginData('docusaurus-lunr-search');
   const getSearchDoc = () =>
@@ -65,7 +69,6 @@ const Search = (props, inputRef) => {
         setIndexReady(true);
         if (location.search && location.search.includes('?value=')) {
           const val = location.search.replace('?value=', '')
-          console.log(val)
           searchBarRef.current.value = val;
         }
       });
@@ -83,9 +86,6 @@ const Search = (props, inputRef) => {
     },
     [props.isSearchBarExpanded]
   );
-  const transRef = () => {
-    return useForkRef(searchBarRef, inputRef);
-  }
 
   if (isBrowser && props.show) {
     loadAlgolia();
@@ -116,13 +116,13 @@ const Search = (props, inputRef) => {
           onMouseOver={loadAlgolia}
           onFocus={toggleSearchIconClick}
           onBlur={toggleSearchIconClick}
-          ref={useForkRef(searchBarRef, inputRef)}
+          ref={searchBarRef}
           disabled={!indexReady}
         />
       </div>
     );
   }
   return <></>
-};
+});
 
 export default Search;

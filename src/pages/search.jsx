@@ -18,7 +18,7 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const searchRef = useRef(null)
+  const searchRef = useRef()
   const searchList = [
     'React',
     'CSS Loading 加载效果',
@@ -31,13 +31,12 @@ export default function Home() {
     '函数式编程'
   ];
 
-  const SearchTool = forwardRef((props, ref) => {
-    return <Search {...props} ref={ref} />
-  });
+  // const SearchTool = forwardRef((props, ref) => {
+  //   return <Search {...props} ref={ref} />
+  // });
 
   const handleClick = (val) => {
-    console.log(val)
-    searchRef.current.value = val;
+    searchRef.current.input.value = val;
   };
   return (
     <Layout
@@ -49,7 +48,7 @@ export default function Home() {
           <div className='row'>
             <div className='col col--8 col--offset-2'>
               <div className='padding-top--xl padding-bottom--lg'>
-                <SearchTool show={true} ref={searchRef} />
+                <Search show={true} ref={searchRef} />
               </div>
             </div>
             <div className='col col--8 col--offset-2'>
