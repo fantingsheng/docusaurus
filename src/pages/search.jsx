@@ -18,6 +18,7 @@ function HomepageHeader() {
 }
 
 export default function Home() {
+  const searchRef = useRef(null)
   const searchList = [
     'React',
     'CSS Loading 加载效果',
@@ -30,6 +31,14 @@ export default function Home() {
     '函数式编程'
   ];
 
+  const SearchTool = forwardRef((props, ref) => {
+    return <Search {...props} ref={ref} />
+  });
+
+  const handleClick = (val) => {
+    console.log(val)
+    searchRef.current.value = val;
+  };
   return (
     <Layout
       title='全站搜索'
@@ -40,7 +49,7 @@ export default function Home() {
           <div className='row'>
             <div className='col col--8 col--offset-2'>
               <div className='padding-top--xl padding-bottom--lg'>
-                <Search show={true} />
+                <SearchTool show={true} ref={searchRef} />
               </div>
             </div>
             <div className='col col--8 col--offset-2'>
@@ -48,10 +57,10 @@ export default function Home() {
               他们经常搜索的内容：
             </Typography>
               <div className='margin-bottom--xl'>
-                <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
+                <Stack direction="row" spacing={2} useFlexGap flexWrap='wrap'>
                   {
                     searchList.map((item, index) => (
-                      <Chip label={item} key={index} variant="outlined" />
+                      <Chip label={item} key={index} variant='outlined' onClick={() => handleClick(item)} />
                     ))
                   }
                 </Stack>

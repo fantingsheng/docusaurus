@@ -24,22 +24,23 @@ function SearchBar () {
   }
   return (
     <Paper
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%', margin: '0 auto' }}
+      sx={{ p: '0 2px', display: 'flex', alignItems: 'center', width: '100%', margin: '0 auto' }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder='输入你想搜索的任何内容'
         value={searchVal}
+        size='small'
         inputProps={{ 'aria-label': 'search everything you want' }}
         onChange={e => setSearchVal(e.target.value)}
         onKeyDown={handleKeyEnter}
       />
-      <IconButton type='button' sx={{ p: '10px' }} aria-label='search' onClick={handleInput}>
+      <IconButton size='small' type='button' sx={{ p: '10px' }} aria-label='search' onClick={handleInput}>
         <SearchIcon />
       </IconButton>
       <Divider sx={{ height: 28, m: 0.5 }} orientation='vertical' />
       <Link to='/search'>
-        <IconButton color='primary' sx={{ p: '10px' }} aria-label='directions'>
+        <IconButton size='small' color='primary' sx={{ p: '10px' }} aria-label='directions'>
           <DirectionsIcon />
         </IconButton>
       </Link>

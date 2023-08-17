@@ -4,10 +4,11 @@ import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from '@docusaurus/useGlobalData';
 import useIsBrowser from "@docusaurus/useIsBrowser";
-const Search = props => {
+import useForkRef from "./useForkRef";
+const Search = (props, inputRef) => {
   
   const initialized = useRef(false);
-  const searchBarRef = useRef(null);
+  const searchBarRef = useRef(inputRef);
   const [indexReady, setIndexReady] = useState(false);
   const history = useHistory();
   const location = useLocation();
@@ -36,16 +37,18 @@ const Search = props => {
       });
   };
 
+  // const { forkRef } = useForkRef()
+
   const pluginData = usePluginData('docusaurus-lunr-search');
   const getSearchDoc = () =>
     process.env.NODE_ENV === "production"
       ? fetch(`${baseUrl}${pluginData.fileNames.searchDoc}`).then((content) => content.json())
-      : Promise.resolve([]);
+      : fetch(`${baseUrl}search-doc.json`).then((content) => content.json());
 
   const getLunrIndex = () =>
     process.env.NODE_ENV === "production"
       ? fetch(`${baseUrl}${pluginData.fileNames.lunrIndex}`).then((content) => content.json())
-      : Promise.resolve([]);
+      : fetch(`${baseUrl}lunr-index.json`).then((content) => content.json());
 
   const loadAlgolia = () => {
     if (!initialized.current) {
@@ -67,7 +70,6 @@ const Search = props => {
         }
       });
       initialized.current = true;
-      searchBarRef
     }
   };
 
@@ -81,6 +83,9 @@ const Search = props => {
     },
     [props.isSearchBarExpanded]
   );
+  const transRef = () => {
+    return useForkRef(searchBarRef, inputRef);
+  }
 
   if (isBrowser && props.show) {
     loadAlgolia();
@@ -111,7 +116,7 @@ const Search = props => {
           onMouseOver={loadAlgolia}
           onFocus={toggleSearchIconClick}
           onBlur={toggleSearchIconClick}
-          ref={searchBarRef}
+          ref={useForkRef(searchBarRef, inputRef)}
           disabled={!indexReady}
         />
       </div>
