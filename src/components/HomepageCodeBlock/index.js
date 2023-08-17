@@ -35,11 +35,10 @@ export default function HomepageCodeBlock() {
           </AnimateLinear>
         </div>
         <div className='col col--8 col--offset-2'>
+          {/* showLineNumbers 显示行号 metastring='{8}' */}
           <CodeBlock
             title=''
             language="jsx"
-            metastring='{8}'
-            showLineNumbers
           >
             { MagicWriter() }
           </CodeBlock>
