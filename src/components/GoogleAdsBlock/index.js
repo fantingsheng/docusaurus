@@ -39,7 +39,7 @@ export default function GoogleAdsBlock({ model }) {
             style={{ display: 'block', height: '100px', width: '100%' }}
             data-ad-client="ca-pub-1398727179052429"
             data-ad-slot="3879505103"
-            data-ad-format="auto"
+            data-ad-format="true"
             data-full-width-responsive="true"></ins>
         )
       default:
