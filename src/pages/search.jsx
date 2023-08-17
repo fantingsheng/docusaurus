@@ -1,5 +1,5 @@
 import React from 'react';
-import { forwardRef, useRef } from 'react';
+import { useRef } from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Search from "@site/src/theme/SearchBar";
@@ -28,12 +28,9 @@ export default function Home() {
     '响应式原理',
     '常见 UI 框架',
     '代码在线运行工具',
-    '函数式编程'
+    '虚拟DOM',
+    '受控组件和非受控组件'
   ];
-
-  // const SearchTool = forwardRef((props, ref) => {
-  //   return <Search {...props} ref={ref} />
-  // });
 
   const handleClick = (val) => {
     searchRef.current.input.value = val;
