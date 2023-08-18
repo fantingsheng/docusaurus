@@ -72,11 +72,12 @@ const Search = forwardRef((props, ref) => {
         }
         initAlgolia(searchDocs, searchIndex, DocSearch);
         setIndexReady(true);
+        let searchVal = "Vue"
         if (location.search && location.search.includes('?value=')) {
-          const val = location.search.replace('?value=', '')
-          setSearchVal(val)
-          docSearch.setAutocompleteVal(val);
+          searchVal = location.search.replace('?value=', '')
         }
+        setSearchVal(searchVal)
+        docSearch.setAutocompleteVal(searchVal);
       });
       initialized.current = true;
     }
