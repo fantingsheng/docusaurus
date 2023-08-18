@@ -70,6 +70,48 @@ a:hover::after {
 }
 ```
 
+## 底部边框向右伸展效果
+
+<DemoArea>
+  <AStyleExample text='超链接' clsName='bottomBgExpand' />
+</DemoArea>
+
+### 实现原理
+
+第一步：清除 A 标签默认下划线和 Hover 状态下的下划线样式。将它的颜色继承和其它文本颜色一致。这里会利用样式让它区别于其它文本；
+
+第二步：然后利用伪元素 `::before` 设置特殊背景色，相较于 `<a>` 元素做绝对定位，模拟出位于底部的边框；
+
+第三步：鼠标移动上去的时候，改变 `::before` 形成的颜色边框在X轴方向进行伸展，然后利用 `transition` 增加过度动画，让它有一个移动拉伸的效果。
+
+### 样式代码
+
+```css
+a {
+  position: relative;
+}
+a:hover {
+  text-decoration: none;
+}
+a::before {
+  content: '';
+  width: 80%;
+  position: absolute;
+  top: 68%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(45deg, #ee2d29, #f8ae2c);
+  transition: transform 0.8s cubic-bezier(0.2,1,0.3,1);
+  transform: scale3d(1,1,1);
+  transform-origin: 0 0;
+}
+a:hover::before {
+  transition: transform 0.8s cubic-bezier(0.2,1,0.3,1);
+  transform: scale3d(1.2,1,1);
+}
+```
+
 ## Hover 状态滑动的下划线
 
 <DemoArea>

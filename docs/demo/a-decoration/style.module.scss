@@ -29,6 +29,31 @@
 .bottomBorder:hover::after {
   top: 0%;
 }
+/* 向右伸展的底部背景边框 */
+.bottomBgExpand {
+  position: relative;
+  letter-spacing: 2px;
+}
+.bottomBgExpand:hover {
+  text-decoration: none;
+}
+.bottomBgExpand::before {
+  content: '';
+  width: 80%;
+  position: absolute;
+  top: 68%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(45deg, #ee2d29, #f8ae2c);
+  transition: transform 0.8s cubic-bezier(0.2,1,0.3,1);
+  transform: scale3d(1,1,1);
+  transform-origin: 0 0;
+}
+.bottomBgExpand:hover::before {
+  transition: transform 0.8s cubic-bezier(0.2,1,0.3,1);
+  transform: scale3d(1.2,1,1);
+}
 /* 滑动的下划线样式 */
 .animateLine {
   position: relative;
