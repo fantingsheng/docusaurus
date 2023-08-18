@@ -49,9 +49,9 @@ export default function Home() {
               </div>
             </div>
             <div className='col col--8 col--offset-2'>
-            <Typography variant="subtitle1" gutterBottom>
-              他们经常搜索的内容：
-            </Typography>
+              <Typography variant="subtitle1" gutterBottom>
+                他们经常搜索的内容：
+              </Typography>
               <div className='margin-bottom--xl'>
                 <Stack direction="row" spacing={2} useFlexGap flexWrap='wrap'>
                   {
