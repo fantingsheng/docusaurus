@@ -13,7 +13,7 @@
   --ifm-color-primary-lighter: #4045a9;
   --ifm-color-primary-lightest: #4d52bb;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgb(255 251 221/1);
   --ifm-footer-link-hover-color: #585ebf;
   /* --ifm-code-background: rgba(221, 30, 30, 0.2); */
 }
@@ -28,7 +28,7 @@
   --ifm-color-primary-lighter: #53ba67;
   --ifm-color-primary-lightest: #6cc47d;
   --ifm-footer-link-hover-color: #43a756;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --docusaurus-highlighted-code-line-bg: rgb(255 251 221/0.1);
 }
 
 /* 域名文字渐变 */
