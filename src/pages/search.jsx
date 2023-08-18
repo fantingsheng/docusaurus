@@ -33,7 +33,7 @@ export default function Home() {
   ];
 
   const handleClick = (val) => {
-    searchRef.current.input.value = val;
+    searchRef.current.changeSearchVal(val)
   };
   return (
     <Layout

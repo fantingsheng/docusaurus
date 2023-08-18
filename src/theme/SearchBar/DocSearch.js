@@ -16,7 +16,8 @@ class DocSearch {
         autocompleteOptions = {
             debug: false,
             hint: false,
-            autoselect: true
+            autoselect: true,
+            openOnFocus: true
         },
         transformData = false,
         queryHook = false,
@@ -79,7 +80,7 @@ class DocSearch {
 
         this.autocomplete.on(
             "autocomplete:shown",
-            this.handleShown.bind(null, this.input)
+            this.handleShown.bind(this, this.input)
         );
 
         if (enhancedSearchInput) {
@@ -112,6 +113,7 @@ class DocSearch {
                 reset.className += " hide";
             }
         });
+
     }
 
     /**
@@ -154,6 +156,10 @@ class DocSearch {
                 callback(DocSearch.formatHits(hits));
             });
         };
+    }
+
+    setAutocompleteVal (val) {
+        this.autocomplete.autocomplete.setVal(val);
     }
 
     // Given a list of hits returned by the API, will reformat them to be used in
@@ -268,6 +274,10 @@ class DocSearch {
     }
 
     handleShown(input) {
+        if (this.autocomplete.autocomplete.getVal() !== input[0].value) {
+            this.autocomplete.autocomplete.setVal(input[0].value)
+        }
+
         const middleOfInput = input.offset().left + input.width() / 2;
         let middleOfWindow = $(document).width() / 2;
 

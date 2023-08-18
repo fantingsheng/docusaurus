@@ -15,8 +15,10 @@ const Search = forwardRef((props, ref) => {
   const { siteConfig = {} } = useDocusaurusContext();
   const isBrowser = useIsBrowser();
   const { baseUrl } = siteConfig;
+  const [searchVal, setSearchVal] = useState("")
+  let docSearch = null;
   const initAlgolia = (searchDocs, searchIndex, DocSearch) => {
-      new DocSearch({
+      docSearch = new DocSearch({
         searchDocs,
         searchIndex,
         baseUrl,
@@ -40,6 +42,9 @@ const Search = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     get input() {
       return searchBarRef.current;
+    },
+    changeSearchVal (val) {
+      setSearchVal(val)
     }
   }))
 
@@ -69,7 +74,8 @@ const Search = forwardRef((props, ref) => {
         setIndexReady(true);
         if (location.search && location.search.includes('?value=')) {
           const val = location.search.replace('?value=', '')
-          searchBarRef.current.value = val;
+          setSearchVal(val)
+          docSearch.setAutocompleteVal(val);
         }
       });
       initialized.current = true;
@@ -81,11 +87,15 @@ const Search = forwardRef((props, ref) => {
       if (!searchBarRef.current.contains(e.target)) {
         searchBarRef.current.focus();
       }
-
+      
       props.handleSearchBarToggle && props.handleSearchBarToggle(!props.isSearchBarExpanded);
     },
     [props.isSearchBarExpanded]
   );
+
+  const handleChange = (e) => {
+    setSearchVal(e.target.value)
+  }
 
   if (isBrowser && props.show) {
     loadAlgolia();
@@ -112,10 +122,12 @@ const Search = forwardRef((props, ref) => {
             { "search-bar-expanded": props.isSearchBarExpanded },
             { "search-bar": !props.isSearchBarExpanded }
           )}
+          value={searchVal}
           onClick={loadAlgolia}
           onMouseOver={loadAlgolia}
           onFocus={toggleSearchIconClick}
           onBlur={toggleSearchIconClick}
+          onChange={handleChange}
           ref={searchBarRef}
           disabled={!indexReady}
         />
