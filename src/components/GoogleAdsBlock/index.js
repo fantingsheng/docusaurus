@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
-export default function GoogleAdsBlock({ model }) {
-
+export default function GoogleAdsBlock({ model, height }) {
+  const adsHeight = height || '285px'; 
   const adsenseBuilder = () => {
     switch(model) {
       case "inFluid":
@@ -36,7 +36,7 @@ export default function GoogleAdsBlock({ model }) {
       case "pureShow":
         return (
           <ins className="adsbygoogle"
-            style={{ display: 'block', height: '285px', width: '100%' }}
+            style={{ display: 'block', height: adsHeight, width: '100%' }}
             data-ad-client="ca-pub-1398727179052429"
             data-ad-slot="3879505103"
             data-ad-format="true"
