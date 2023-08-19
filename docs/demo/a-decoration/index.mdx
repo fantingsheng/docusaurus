@@ -279,3 +279,29 @@ a:hover {
   text-decoration: none;
 }
 ```
+
+## 向右展开的滑动的下划线
+
+<DemoArea>
+  <div style={{ width: '60%', textAlign: 'center' }}>
+    <AStyleExample text='带有超链接的超长文字标题并且有换行' clsName='slideRightLine' />
+  </div>
+</DemoArea>
+
+### 实现原理
+
+设置 A 元素的背景色，背景色的高度为元素高度的 40%，长度为 0， 利用鼠标放上去的时候背景色大小做变换，长度变为 97%。
+
+### 样式代码
+
+```css
+a {
+  padding-bottom: .2%;
+  transition: background-size .6s ease-out;
+  background: linear-gradient(var(--ifm-color-primary-lightest),var(--ifm-color-primary-lightest)) no-repeat left 123%/0 40%
+}
+a:hover {
+  text-decoration: none;
+  background-size: 97% 40%;
+}
+```
