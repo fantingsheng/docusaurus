@@ -15,7 +15,9 @@ function SearchBar () {
   const [searchVal, setSearchVal] = useState('')
   const history = useHistory()
   const handleInput = () => {
-    history.push(`/search?value=${searchVal}`)
+    if (searchVal) {
+      history.push(`/search?value=${searchVal}`)
+    }
   }
   const handleKeyEnter = (e) => {
     if (e.key === 'Enter') {
