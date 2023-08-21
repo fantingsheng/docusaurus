@@ -1,0 +1,59 @@
+---
+title: 将一个异步方法调用转为同步
+hide_table_of_contents: true
+---
+
+# useAsync
+
+```jsx
+import { useCallback, useEffect, useState } from 'react'
+
+export default function useAsync(callback, dependencies = []) {
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState()
+    const [value, setValue] = useState()
+
+    const callbackMemoized = useCallback(() => {
+        setLoading(true)
+        setError(undefined)
+        setValue(undefined)
+        callback()
+            .then(setValue)
+            .catch(setError)
+            .finally(() => setLoading(false))
+    }, dependencies)
+
+    useEffect(() => {
+        callbackMemoized()
+    }, [callbackMemoized])
+
+    return { loading, error, value }
+}
+```
+
+## 介绍
+
+将一个异步方法的调用封装为 hook，参数为该异步方法和依赖项，返回加载状态，错误信息或者返回值。
+
+## 使用方法
+
+```jsx live
+function AsyncComponent() {
+  const { loading, error, value } = useAsync(() => {
+    return new Promise((resolve, reject) => {
+        const success = false
+        setTimeout(() => {
+            success ? resolve("Success") : reject("Error")
+        }, 1000)
+    })
+  })
+
+  return (
+    <div>
+      <div>Loading: {loading.toString()}</div>
+      <div>{error}</div>
+      <div>{value}</div>
+    </div>
+  )
+}
+```

@@ -5,6 +5,7 @@ import useMousePosition from './useMousePosition';
 import downloadByUrl from './download';
 import useWindowSize from './useWindowSize';
 import useCopyToClipboard from './useCopyToClipboard';
+import useAsync from './useAsync';
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
@@ -14,6 +15,7 @@ const ReactLiveScope = {
   useMousePosition,
   downloadByUrl,
   useWindowSize,
-  useCopyToClipboard
+  useCopyToClipboard,
+  useAsync
 };
 export default ReactLiveScope;
