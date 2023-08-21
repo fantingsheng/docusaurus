@@ -6,6 +6,7 @@ import downloadByUrl from './download';
 import useWindowSize from './useWindowSize';
 import useCopyToClipboard from './useCopyToClipboard';
 import useAsync from './useAsync';
+import useGeolocation from './useGeolocation';
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
@@ -16,6 +17,7 @@ const ReactLiveScope = {
   downloadByUrl,
   useWindowSize,
   useCopyToClipboard,
-  useAsync
+  useAsync,
+  useGeolocation
 };
 export default ReactLiveScope;
