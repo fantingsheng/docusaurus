@@ -88,7 +88,7 @@ export default function Index() {
   return (
     <Layout
       title='打造高效的生物钟'
-      description='追求效率，借助杠杆'>
+      description='生物钟是控制你的身体在一天内不同时间段活动和休息的内部机制，它受到自然光线、饮食、锻炼等各种外在因素的影响。'>
       <main>
         <div className='container padding-vert--lg'>
           <div className='text--center'><h3>一天的时间安排</h3></div>
