@@ -7,6 +7,7 @@ import useWindowSize from './useWindowSize';
 import useCopyToClipboard from './useCopyToClipboard';
 import useAsync from './useAsync';
 import useGeolocation from './useGeolocation';
+import useEventListener from './useEventListener'
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
@@ -18,6 +19,7 @@ const ReactLiveScope = {
   useWindowSize,
   useCopyToClipboard,
   useAsync,
-  useGeolocation
+  useGeolocation,
+  useEventListener
 };
 export default ReactLiveScope;
