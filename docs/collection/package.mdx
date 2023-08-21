@@ -50,4 +50,47 @@ npx 是 npm v5.2 版本后引入的一条命令，用于运行本地或远程的
 npm install -g npx
 ```
 
+## NVM
 
+Node Version Manager（NVM）是一个用于管理和切换不同版本 Node.js 的工具。它允许您在同一台计算机上同时安装多个不同版本的 Node.js，并且可以轻松地在这些版本之间切换，
+可以轻松解决不同项目或应用程序对不同版本 Node.js 的需要。
+
+### 安装 NVM
+
+如果你使用的是 Mac 或 Linux 系统，可以在终端执行：
+
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+// or
+
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+```
+
+或者如果你使用的是 Windows 系统，你可以 `nvm-windows` 的 GitHub 仓库下载安装包。您可以在以下链接中找到最新的安装包：https://github.com/coreybutler/nvm-windows/releases
+
+安装好之后记得设置环境变量。
+
+### 使用 nvm 安装 nodejs
+
+安装完 NVM 后，您可以使用以下命令来安装 Node.js 的特定版本：
+
+```shell
+nvm install <node_version>
+```
+
+### 使用特定版本
+
+安装完不同版本的 Node.js 后，您可以使用以下命令切换到特定版本：
+
+```shell
+nvm use <node_version>
+```
+
+### 设置默认版本
+
+您还可以设置一个默认的 Node.js 版本，以便每次打开终端时自动加载该版本：
+
+```shell
+nvm alias default <node_version>
+```
