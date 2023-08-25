@@ -39,7 +39,7 @@ export const TreeViews = ({ ulClsName, expandAll }) => (
 
 <TreeViews ulClsName='displaytree' />
 
-### HTML 代码结构
+## HTML 代码结构
 
 首先添加如下的嵌套的列表结构代码：
 
@@ -106,7 +106,7 @@ export const TreeViews = ({ ulClsName, expandAll }) => (
 
 浏览器为 `<details>` 元素提供了提供展开和折叠嵌套列表的能力，但是项目符号和箭头符号都显示容易让人产生困惑。我们进行组合改变下样式。
 
-### 自定义样式
+## 自定义样式
 
 有两个维度会影响树视图的布局：行间距（等于文本的行高）和列表符号的半径。 首先我们给这两个维度的数据通过 CSS 自定义属性定义常量供后面使用：
 
@@ -119,7 +119,7 @@ export const TreeViews = ({ ulClsName, expandAll }) => (
 
 虽然我们通常会根据文本大小使用相对单位来缩放用户界面控件，但对于列表符号还是使用了合理的固定大小，避免太大后者太小。
 
-#### 左边距
+### 左边距
 
 接着我们来给列表改变下样式，在左侧添加一个内边距，为树状的线条和展开收缩符号腾出空间。
 
@@ -142,13 +142,13 @@ export const TreeViews = ({ ulClsName, expandAll }) => (
 
 <TreeViews ulClsName='displayPaddingTree' expandAll={ true } />
 
-#### 垂直线
+### 垂直线
 
 接下来我们添加树结构的垂直线，这些垂直线构成将每个列表项从垂直方向串联起来：
 
 <TreeViews ulClsName='displayLineTree' expandAll={ true } />
 
-#### 水平线
+### 水平线
 
 我们使用 CSS 生成一条水平线将垂直线和列表前的符号进行连接：
 
@@ -170,7 +170,7 @@ export const TreeViews = ({ ulClsName, expandAll }) => (
 
 <TreeViews ulClsName='displayVLineTree' expandAll={ true } />
 
-#### 展开项
+### 展开项
 
 下面我们移除 `summary` 元素自带默认的箭头图标
 
@@ -201,7 +201,7 @@ export const TreeViews = ({ ulClsName, expandAll }) => (
 
 <TreeViews ulClsName='displayArrowTree' expandAll={ true } />
 
-#### 添加树节点符号
+### 添加树节点符号
 
 我们使用 [CSS 生成内容](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Generated_Content)来创建树节点的指示符号
 
@@ -226,7 +226,7 @@ export const TreeViews = ({ ulClsName, expandAll }) => (
 
 <TreeViews ulClsName='displayDotTree' expandAll={ true } />
 
-#### 展开收缩按钮
+### 展开收缩按钮
 
 最后我们实现展开收缩按钮
 
@@ -249,7 +249,7 @@ export const TreeViews = ({ ulClsName, expandAll }) => (
 
 <TreeViews ulClsName='displaytree' expandAll={ true } />
 
-### 最后
+## 最后
 
 完整的样式代码
 

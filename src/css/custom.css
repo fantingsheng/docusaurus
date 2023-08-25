@@ -33,18 +33,19 @@
   --docusaurus-highlighted-code-line-bg: rgb(255 251 221/0.1);
 }
 
-.markdown h1 {
+.markdown > h1,
+.markdown > header > h1 {
   padding: 0.8rem 0 0.6rem;
   border-bottom: 1px solid var(--ifm-color-primary-opacity);
 }
-.markdown h2 {
+.markdown > h2 {
   position: relative;
   padding: 0.2rem 0.6rem 0.4rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
-.markdown h2::after {
+.markdown > h2::after {
   content: '';
   position: absolute;
   z-index: -1;
@@ -54,7 +55,7 @@
   bottom: 0;
   background-color: var(--ifm-color-primary-opacity);
 }
-.markdown h3 {
+.markdown > h3 {
   padding-left: 1rem;
   border-left: 3px solid var(--ifm-color-primary-opacity);
 }
