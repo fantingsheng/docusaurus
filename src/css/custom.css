@@ -12,6 +12,7 @@
   --ifm-color-primary-light: #3e42a2;
   --ifm-color-primary-lighter: #4045a9;
   --ifm-color-primary-lightest: #4d52bb;
+  --ifm-color-primary-opacity: #4d53bbe5;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgb(255 251 221/1);
   --ifm-footer-link-hover-color: #585ebf;
@@ -27,9 +28,34 @@
   --ifm-color-primary-light: #4bb75f;
   --ifm-color-primary-lighter: #53ba67;
   --ifm-color-primary-lightest: #6cc47d;
+  --ifm-color-primary-opacity: #6cc47ee5;
   --ifm-footer-link-hover-color: #43a756;
   --docusaurus-highlighted-code-line-bg: rgb(255 251 221/0.1);
 }
+
+/* h1 {
+  padding: 0.8rem 0 0.6rem;
+  border-bottom: 1px solid var(--ifm-color-primary-opacity);
+}
+h2 {
+  position: relative;
+  padding: 0.2rem 0.6rem 0.4rem;
+  display: inline-block;
+}
+h2::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 58%;
+  left: -0.1em;
+  right: 1rem;
+  bottom: 0;
+  background-color: var(--ifm-color-primary-opacity);
+}
+h3 {
+  padding-left: 1rem;
+  border-left: 3px solid var(--ifm-color-primary-opacity);
+} */
 
 /* 域名文字渐变 */
 .domain-text-gradient {
