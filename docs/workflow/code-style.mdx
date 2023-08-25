@@ -1,0 +1,55 @@
+---
+sidebar_position: 1
+title: 代码规范
+---
+
+如何统一代码风格，规范提交？
+
+推荐使用：ESLint + Prettier + husky + lint-staged
+
+https://mp.weixin.qq.com/s/7eRlGztcXcSmaZ1Fo_-WFg
+
+- eslint (https://github.com/eslint/eslint) JavaScript 代码检测工具，检测并提示错误或警告信息
+- prettier (https://github.com/prettier/prettier) 代码自动格式化工具，提供更好的代码风格效果
+- husky (https://github.com/typicode/husky) Git hooks 工具, 可以在执行 git 命令时，执行自定义的脚本程序
+- lint-staged (https://github.com/okonet/lint-staged) 对暂存区 (git add) 文件执行脚本检测校验
+- Commitizen (https://github.com/commitizen-tools/commitizen) 检测 git commit 内容是否符合定义的规范
+- eslint-config-prettier (https://github.com/prettier/eslint-config-prettier/) 解决 eslint 和 prettier 冲突
+
+## ESlint
+
+ESLint 是一个执行静态代码分析的工具，用于识别和修复代码中的问题、约定和错误。它可以帮助开发团队维持一致的代码风格，减少错误和潜在的 bug，并提高代码的可维护性。
+
+### 安装
+
+```shell
+# 使用 npm
+npm install eslint --save-dev
+
+# 或者使用 yarn
+yarn add eslint --dev
+```
+
+### 构建配置文件
+
+```shell
+npm init @eslint/config
+```
+
+执行完成后，自动生成 eslint 配置文件 `.eslintrc.js`，然后编辑配置文件中 rules 定义校验规则
+
+```
+rules: {
+  indent: ['error', 4], // 用于指定代码缩进的方式，这里配置为使用四个空格进行缩进。
+  'linebreak-style': [0, 'error', 'windows'], // 用于指定换行符的风格，这里配置为使用 Windows 风格的换行符（\r\n）。
+  quotes: ['error', 'single'], // 用于指定字符串的引号风格，这里配置为使用单引号作为字符串的引号。
+  semi: ['error', 'always'], //用于指定是否需要在语句末尾添加分号，这里配置为必须始终添加分号。
+  '@typescript-eslint/no-explicit-any': ['off'] // 用于配置 TypeScript 中的 "any" 类型的使用规则，这里配置为关闭禁止显式使用 "any" 类型的检查。
+}
+```
+
+## husky
+
+
+## prettier
+
