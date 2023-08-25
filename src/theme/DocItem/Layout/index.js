@@ -14,6 +14,7 @@ import styles from './styles.module.css';
 // 评论组件
 import GiscusComponent from '@site/src/components/GiscusComponent';
 import DonateButton from '@site/src/components/DonateButton';
+import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -39,7 +40,8 @@ export default function DocItemLayout({children}) {
   const { frontMatter } = useDoc();
   const { 
     enable_comment: enableComment,
-    enable_donate: enableDonate
+    enable_donate: enableDonate,
+    enable_adsense: enableAdsense
   } = frontMatter;
   return (
     <div className="row">
@@ -53,6 +55,9 @@ export default function DocItemLayout({children}) {
             <DocItemContent>{children}</DocItemContent>
             <DocItemFooter />
             { enableDonate && <DonateButton /> }
+            {
+              enableAdsense && <GoogleAdsBlock model='inFluid' height='80px' />
+            }
           </article>
           <DocItemPaginator />
         </div>

@@ -20,7 +20,8 @@ function BlogPostPageContent({sidebar, children}) {
     toc_min_heading_level: tocMinHeadingLevel,
     toc_max_heading_level: tocMaxHeadingLevel,
     enable_comment: enableComment,
-    enable_donate: enableDonate
+    enable_donate: enableDonate,
+    enable_adsense: enableAdsense
   } = frontMatter;
   return (
     <BlogLayout
@@ -42,6 +43,10 @@ function BlogPostPageContent({sidebar, children}) {
 
       {
         isBlogPostPage && <WeChatFollowCard />
+      }
+
+      {
+        enableAdsense && <GoogleAdsBlock model='inFluid' height='80px' />
       }
 
       {(nextItem || prevItem) && (

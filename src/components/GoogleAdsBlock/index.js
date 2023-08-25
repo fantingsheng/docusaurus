@@ -7,7 +7,7 @@ export default function GoogleAdsBlock({ model, height }) {
       case "inFluid":
         return (
           <ins className="adsbygoogle"
-            style={{display: 'block' }}
+            style={{display: 'block', height: adsHeight, width: '100%' }}
             data-ad-format="fluid"
             data-ad-layout-key="-fb+5w+4e-db+86"
             data-ad-client="ca-pub-1398727179052429"
