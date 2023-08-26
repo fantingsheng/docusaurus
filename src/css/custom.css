@@ -12,10 +12,12 @@
   --ifm-color-primary-light: #3e42a2;
   --ifm-color-primary-lighter: #4045a9;
   --ifm-color-primary-lightest: #4d52bb;
-  --ifm-color-primary-opacity: #4d53bbda;
+  --ifm-color-primary-opacity: #4d53bbc7;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgb(255 251 221/1);
   --ifm-footer-link-hover-color: #585ebf;
+  --ifm-code-padding-horizontal: 0.2rem;
+  --ifm-code-border-radius: 0.3rem;
   /* --ifm-code-background: rgba(221, 30, 30, 0.2); */
 }
 
@@ -28,7 +30,7 @@
   --ifm-color-primary-light: #4bb75f;
   --ifm-color-primary-lighter: #53ba67;
   --ifm-color-primary-lightest: #6cc47d;
-  --ifm-color-primary-opacity: #6cc47eda;
+  --ifm-color-primary-opacity: #6cc47ec7;
   --ifm-footer-link-hover-color: #43a756;
   --docusaurus-highlighted-code-line-bg: rgb(255 251 221/0.1);
 }
@@ -40,7 +42,7 @@
 }
 .markdown > h2 {
   position: relative;
-  padding: 0.2rem 0.6rem 0.4rem;
+  padding: 0.2rem 0.6rem 0.34rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -49,7 +51,7 @@
   content: '';
   position: absolute;
   z-index: -1;
-  top: 58%;
+  top: 62%;
   left: 0;
   right: 1.4rem;
   bottom: 0;
