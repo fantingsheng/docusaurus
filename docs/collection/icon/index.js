@@ -1,17 +1,19 @@
 import React from 'react';
-import { ImageList, ImageListItem, ImageListItemBar }  from '@mui/material';
+import { ImageList, ImageListItem }  from '@mui/material';
 import { Tailwindcss, Otom, Npm, Jenkins, Coffeescript, Ionic,
   Babel, Sdeno, Flutter, Figma, Electron, Reactjs, Azure, Stylus,
   Javascript, Nodejs, Bootstrap, Git, Vscode, Typescript, Sass, Nuxtjs,
   Html5, Vue, Docker, Chrome, Graphql, Gulp, Jquery, Redis, Sourcetree, Webpack,
   Github, Gitlab, Less, Css3, Angularjs, Dart, Redux, Svelte
-} from "./svg";
+} from "./devicon";
 
-export const IconExample = () => {
+import { AcademicCap, AdjustmentsHorizontal, ArchiveBoxArrowDown, ArrowDownCircle, ArrowPathRoundedSquare } from "./heroicon";
+
+export const DevIconExample = () => {
   return (
     <div className='row'>
       <div className='col col--12'>
-        <ImageList variant="masonry" cols={8} gap={20}>
+        <ImageList variant="masonry" cols={12} gap={20}>
           <ImageListItem>
             <Reactjs />
           </ImageListItem>
@@ -131,6 +133,32 @@ export const IconExample = () => {
           </ImageListItem>
           <ImageListItem>
             <Nuxtjs />
+          </ImageListItem>
+        </ImageList>
+      </div>
+    </div>
+  )
+}
+
+export const HeroiconExample = () => {
+  return (
+    <div className='row'>
+      <div className='col col--12'>
+        <ImageList variant="masonry" cols={12} gap={20}>
+          <ImageListItem>
+            <AcademicCap />
+          </ImageListItem>
+          <ImageListItem>
+            <AdjustmentsHorizontal />
+          </ImageListItem>
+          <ImageListItem>
+            <ArchiveBoxArrowDown />
+          </ImageListItem>
+          <ImageListItem>
+            <ArrowDownCircle />
+          </ImageListItem>
+          <ImageListItem>
+            <ArrowPathRoundedSquare />
           </ImageListItem>
         </ImageList>
       </div>
