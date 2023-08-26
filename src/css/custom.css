@@ -46,16 +46,9 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-}
-.markdown > h2::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 62%;
-  left: 0;
-  right: 1.4rem;
-  bottom: 0;
-  background-color: var(--ifm-color-primary-opacity);
+  background: linear-gradient(var(--ifm-color-primary-opacity),
+    var(--ifm-color-primary-opacity)) no-repeat left 123%/100% 48%;
+  background-size: 100% 48%;
 }
 .markdown > h3 {
   padding-left: 1rem;
