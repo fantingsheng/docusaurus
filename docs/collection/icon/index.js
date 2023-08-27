@@ -7,7 +7,11 @@ import { Tailwindcss, Otom, Npm, Jenkins, Coffeescript, Ionic,
   Github, Gitlab, Less, Css3, Angularjs, Dart, Redux, Svelte
 } from "./devicon";
 
-import { AcademicCap, AdjustmentsHorizontal, ArchiveBoxArrowDown, ArrowDownCircle, ArrowPathRoundedSquare } from "./heroicon";
+import { AcademicCap, AdjustmentsHorizontal, ArchiveBoxArrowDown, ArrowDownCircle, ArrowPathRoundedSquare,
+  ArrowDownOnSquareStack, ArrowTopRightOnSquare, ArrowTrendingDown, ArrowUturnLeft, ArrowsPointingIn, ArrowsRightLeft,
+  BellAlert, Battery50, BarsArrowDown, BriefCase, ChartBar, ChatBubbleOvalLeftEllipsis, CodeBracketSquare,
+  BookOpen, Cog6Tooth, DocumentArrowDown, FingerPrint, EnvelopeOpen, Forward
+} from "./heroicon";
 
 export const DevIconExample = () => {
   return (
@@ -159,6 +163,63 @@ export const HeroiconExample = () => {
           </ImageListItem>
           <ImageListItem>
             <ArrowPathRoundedSquare />
+          </ImageListItem>
+          <ImageListItem>
+            <ArrowDownOnSquareStack />
+          </ImageListItem>
+          <ImageListItem>
+            <ArrowTopRightOnSquare />
+          </ImageListItem>
+          <ImageListItem>
+            <ArrowTrendingDown />
+          </ImageListItem>
+          <ImageListItem>
+            <ArrowUturnLeft />
+          </ImageListItem>
+          <ImageListItem>
+            <ArrowsPointingIn />
+          </ImageListItem>
+          <ImageListItem>
+            <ArrowsRightLeft />
+          </ImageListItem>
+          <ImageListItem>
+            <BellAlert />
+          </ImageListItem>
+          <ImageListItem>
+            <Battery50 />
+          </ImageListItem>
+          <ImageListItem>
+            <BarsArrowDown />
+          </ImageListItem>
+          <ImageListItem>
+            <BookOpen />
+          </ImageListItem>
+          <ImageListItem>
+            <BriefCase />
+          </ImageListItem>
+          <ImageListItem>
+            <ChartBar />
+          </ImageListItem>
+          <ImageListItem>
+            <ChatBubbleOvalLeftEllipsis />
+          </ImageListItem>
+          <ImageListItem>
+            <CodeBracketSquare />
+          </ImageListItem>
+          <ImageListItem>
+            <Cog6Tooth />
+          </ImageListItem>
+          <ImageListItem>
+            <DocumentArrowDown />
+          </ImageListItem>
+          <ImageListItem>
+            <FingerPrint />
+          </ImageListItem>
+          <ImageListItem>
+            <EnvelopeOpen />
+          </ImageListItem>
+          <ImageListItem>
+            <Forward />
           </ImageListItem>
         </ImageList>
       </div>
