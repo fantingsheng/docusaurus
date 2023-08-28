@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## NRM
 
-nrm（npm registry manager）是 `npm` 的镜像源管理工具。它可以快速在让你在本地源之间切换。类似 `node` 版本管理工具 `nvm`
+nrm（npm registry manager）是 `npm` 的镜像源管理工具。它可以快速在让你在本地源之间切换。类似 `node` 版本管理工具 `nvm`，官方的默认的源地址为 `https://registry.npmjs.com`。
 
 ### 安装
 
@@ -63,11 +63,18 @@ Node Version Manager（NVM）是一个用于管理和切换不同版本 Node.js 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 // or
-
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 ```
 
-或者如果你使用的是 Windows 系统，你可以 `nvm-windows` 的 GitHub 仓库下载安装包。您可以在以下链接中找到最新的安装包：https://github.com/coreybutler/nvm-windows/releases
+### 设置环境变量
+
+```shell
+$ echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
+$ echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm' >> ~/.zshrc
+$ source ~/.zshrc
+```
+
+或者如果你使用的是 Windows 系统，你可以通过 `nvm-windows` 的 GitHub 仓库下载安装包。您可以在以下链接中找到最新的安装包：https://github.com/coreybutler/nvm-windows/releases
 
 安装好之后记得设置环境变量。
 
