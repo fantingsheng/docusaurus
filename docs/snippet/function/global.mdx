@@ -1,0 +1,39 @@
+---
+title: 兼容多种环境获取执行环境的全局对象
+hide_table_of_contents: true
+---
+
+```js
+var root = (typeof self == 'object' && self.self == self && self) ||
+  (typeof global == 'object' && global.global == global && global) ||
+  this ||
+  {}; 
+```
+
+## 介绍
+
+这段代码是一个常见的 JavaScript 代码片段，用于在不同的执行环境中获取全局对象。它的作用是为了确保在浏览器环境、Node.js 环境以及其他可能的执行环境中都能获取到全局对象。
+
+- `typeof self == 'object' && self.self == self && self`：这部分首先检查 `self` 是否为一个对象，然后确保 `self.self` 的值等于 `self`，这是为了排除某些不符合预期的情况。
+最后，如果这些条件都满足，那么 `self` 就被认为是全局对象。
+
+- `(typeof global == 'object' && global.global == global && global)`：这部分是检查 global 是否为一个对象，然后类似地检查 `global.global` 是否等于 `global`。如果这些条件都满足，
+那么 `global` 就被认为是全局对象。这部分主要用于 Node.js 环境。
+
+- `this`：这部分是检查当前上下文中的 `this` 关键字是否指向全局对象。这在一些特定的环境中也可以用于获取全局对象。
+
+- `root = ...`：最后，使用逻辑运算符 OR (||) 将这些检查按顺序排列，以便在多个环境中选择第一个满足条件的全局对象，然后将其赋值给变量 `root`。
+
+总之，这段代码的目的是为了跨多个执行环境获取全局对象，并将其赋值给变量 `root`，以便在后续代码中可以统一地使用这个变量来访问全局对象。这样做的好处是可以在不同的环境中保持一致的代码行为。
+
+```js live
+function test () {
+  var root = (typeof self == 'object' && self.self == self && self) ||
+  (typeof global == 'object' && global.global == global && global) ||
+  this ||
+  {}; 
+  return (
+    <div>此时执行环境的全局对象是：{root.toString()}</div>
+  )
+}
+```
