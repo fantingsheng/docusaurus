@@ -3,7 +3,7 @@ import CodeBlock from '@theme/CodeBlock';
 import useTypewriter from 'react-typewriter-hook' // https://github.com/haowen737/react-typewriter-hook
 import AnimateLinear from '@site/src/components/AnimateLinear';
 
-const codeStr = `import React from 'react';
+const codeList = [`import React from 'react';
 import ReactDOM from 'react-dom';
 
 export const App = () => {
@@ -15,7 +15,30 @@ export const App = () => {
   )
 }
 var mount = document.querySelector('#root');
-ReactDOM.render(<App />, mount);`
+ReactDOM.render(<App />, mount);`,
+`import React from 'react';
+
+const withLogger = (WrappedComponent) => {
+  return class extends React.Component {
+    render() {
+      return <WrappedComponent {...this.props} />;
+    }
+  };
+};
+
+const MyComponent = (props) => {
+  return <div>Hello, {props.name}!</div>;
+};
+
+const MyComponentWithLogger = withLogger(MyComponent);
+
+export default MyComponentWithLogger;`
+]
+
+const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
+const codeIndex = random(0, 2);
+const codeStr = codeList[codeIndex]
 
 function MagicWriter() {
   const typing = useTypewriter(codeStr)
@@ -37,7 +60,7 @@ export default function HomepageCodeBlock() {
         <div className='col col--8 col--offset-2'>
           {/* showLineNumbers 显示行号 metastring='{8}' */}
           <CodeBlock
-            title=''
+            title='本代码段由 ChatGPT 生成'
             language="jsx"
           >
             { MagicWriter() }
