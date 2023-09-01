@@ -1,0 +1,66 @@
+.linkCard {
+  display: block;
+  padding: 1rem;
+  color: var(--ifm-font-color-base);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 8rem;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--ifm-font-color-base);
+  }
+
+  .rightButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 0.25rem;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 80px;
+      background-color: #e5e7eb;
+      margin-bottom: 0.5rem;
+      margin-top: -1rem;
+      transform: rotate(30deg) scaleX(5);
+    }
+
+    .icon {
+      display: block;
+      width: 60px;
+      height: 60px;
+      padding: 10px;
+    }
+  }
+
+  article {
+    padding-top: 1rem;
+
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+
+      dt {
+        margin-right: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      dd {
+        margin-right: 1rem;
+        margin-left: 0;
+        font-weight: 700;
+      }
+    }
+  }
+}

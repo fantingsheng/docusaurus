@@ -14,6 +14,7 @@ import BrowserWindow from '@site/src/components/BrowserWindow';
 import DemoArea from '@site/src/components/DemoArea';
 import AnimateLinear from '@site/src/components/AnimateLinear';
 import CustomCursor from '@site/src/components/CustomCursor';
+import GithubRepoCard from '@site/src/components/GithubRepoCard';
 
 export const ShowAllComps = () => (
   <div className='row'>
@@ -72,6 +73,23 @@ export const ShowAllComps = () => (
             <a className='button button--secondary'>move you mouse here</a>
             <CustomCursor id={'wrapperId'} />
           </div>
+        </div>
+        <div className='card__footer'>
+          <a className='button button--secondary button--block' href='/docs/snippet/component/custom-cursor'>查看详情</a>
+        </div>
+      </div>
+    </div>
+    <div className='col col--6 margin-bottom--md'>
+      <div className='card'>
+        <div className='card__header'>开源项目仓库信息卡片</div>
+        <div className='card__body'>
+          <GithubRepoCard 
+            repoName='facebook/docusaurus'
+            intro='Easy to maintain open source documentation websites.'
+            starCount='47.3K'
+            lang='React'
+            link='https://github.com/facebook/docusaurus'
+          />
         </div>
         <div className='card__footer'>
           <a className='button button--secondary button--block' href='/docs/snippet/component/custom-cursor'>查看详情</a>
