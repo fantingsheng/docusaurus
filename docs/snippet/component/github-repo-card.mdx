@@ -34,7 +34,7 @@ import styles from './style.module.scss';
 
 export default function GithubRepoCard ({ link, repoName, starCount, lang }) {
   return (
-    <a className='linkCard' href={link}>
+    <a className='linkCard' href={link} target='_blank' rel='noopener noreferrer'>
       <article>
         <span className='rightButton'>
           <span className='icon'>
