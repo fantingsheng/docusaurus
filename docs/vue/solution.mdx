@@ -155,3 +155,39 @@ const addEl = (el) => {
 ```html
 <el-button v-auth="Edit" type="primary"> 编辑 </el-button>
 ```
+
+## 动态样式赋值
+
+当某个样式的值动态变化时，我们需要绑定一个变量，通常的做法是直接在 `template` 中写行内样式，比如：
+
+```js
+<template>
+  <div :style="{ backgroundColor: color }">Spacexcode</div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const color = ref("#f00")
+</script>
+```
+
+其实也可以通过 CSS 绑定 JS 变量来实现同样的效果，在样式代码中使用 `v-bind`：
+
+```
+<template>
+  <div class="site-name">Spacexcode</div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const color = ref("#f00")
+</script>
+
+<style scoped lang="scss">
+.site-name {
+    background-color: v-bind(color); // JS 中的色值变量绑定
+}
+</style>
+```
