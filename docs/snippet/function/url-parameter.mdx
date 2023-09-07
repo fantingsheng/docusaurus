@@ -1,0 +1,34 @@
+---
+title: 将 URL 中参数转成对象
+hide_table_of_contents: true
+---
+
+# getURLParameters
+
+```js
+const getURLParameters = url =>
+  (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+    (a, v) => (
+      (a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a
+    ),
+    {}
+  );
+```
+
+## 介绍
+
+将一个 URL 链接中的参数提取出来组成一个对象。
+
+分为以下步骤：
+
+1. 使用适当的正则表达式结合 `String.prototype.match()` 来获取所有的键值对；
+2. 使用 `Array.prototype.reduce()` 来映射并将它们组合成一个单一的对象。
+3. 将 `location.search` 作为参数传递以应用于当前的 URL。
+
+## 使用方法
+
+```js
+getURLParameters('https://spacexcode.com'); // {}
+getURLParameters('https://spacexcode.com/search?name=timfan&job=developer');
+// {name: 'timfan', job: 'developer'}
+```
