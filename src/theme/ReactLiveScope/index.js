@@ -8,6 +8,7 @@ import useCopyToClipboard from './useCopyToClipboard';
 import useAsync from './useAsync';
 import useGeolocation from './useGeolocation';
 import useEventListener from './useEventListener'
+import useForm from './useForm';
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
@@ -20,6 +21,7 @@ const ReactLiveScope = {
   useCopyToClipboard,
   useAsync,
   useGeolocation,
-  useEventListener
+  useEventListener,
+  useForm
 };
 export default ReactLiveScope;

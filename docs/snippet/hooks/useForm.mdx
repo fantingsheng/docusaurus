@@ -1,0 +1,61 @@
+---
+title: 表单数据响应式处理
+hide_table_of_contents: true
+---
+
+# useForm
+
+```jsx
+import { useState } from "react"
+
+export default function useForm (initialValues) {
+  const [values, setValues] = useState(initialValues);
+
+  return [
+    values,
+    e => {
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value
+      });
+    }
+  ];
+};
+```
+
+## 介绍
+
+表单中的数据往往被我们定义为一个对象，而我们要想将表单字段和对象属性进行动态绑定，需要监听每个输入框或选框值的变化触发方法进行值的变更处理，有没有好的办法，进行一次性处理。
+
+特地封装了一个 hook ，原理如下：
+
+1. 首先使用 `useState()` 钩子来创建一个用于存储表单值的状态变量;
+2. 创建一个函数，该函数在表单的值变化的监听函数中调用，并相应地更新状态变量中的属性值
+
+## 使用方法
+
+```jsx live
+function Form() {
+  const initialState = { email: '', password: '' };
+  const [values, setValues] = useForm(initialState);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(values);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="email">账号：</label>
+        <input type="text" id="email" name="email" onChange={setValues} />
+      </div>
+      <div>
+        <label htmlFor="password">密码：</label>
+        <input type="password" id="password" name="password" onChange={setValues} />
+      </div>
+      <div>{ JSON.stringify(values)}</div>
+    </form>
+  )
+}
+```
