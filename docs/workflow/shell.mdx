@@ -1,0 +1,134 @@
+---
+title: Shell 脚本编写指南
+sidebar_position: 2
+---
+
+当您需要执行一系列命令或自动化任务时，Shell 脚本是一种非常有用的工具。Shell 脚本是由一系列 Shell 命令组成的文本文件，可以在命令行或终端中运行。
+
+## 格式
+
+文件名以 `myscript.sh` 为后缀，文件中首行声明了脚本使用的是 Bash。
+
+```shell title='myscript.sh'
+#!/bin/bash
+
+local_directory="/usr/share/nginx/docusaurus"
+
+cd $local_directory
+
+git pull
+
+if [ $? -eq 0 ]; then
+  echo "代码拉取成功！"
+else
+  echo "代码拉取失败。"
+fi
+```
+
+## 语法
+
+### 定义变量
+
+```shell
+local_directory="/usr/share/nginx/myapp"
+```
+
+### 目录切换
+
+```shell
+cd "/usr/share/nginx/myapp"
+
+// 或者使用变量
+cd $local_directory
+```
+
+变量引用前面加 `$` 符号
+
+### 信息输出
+
+```shell
+echo "你要输出的内容"
+```
+
+### 接受输入
+
+```shell
+read -s -p "请输入密码: " password
+```
+
+- `-s` 参数用于隐藏用户的输入。用户输入的内容存储在 `password` 变量中，然后你可以在下面的执行脚本中使用它。
+- `-p` 选项用于指定要显示给用户的提示消息（prompt）。
+
+### 条件判断
+
+#### 判断上一条命令的执行结果
+
+```shell
+if [ $? -eq 0 ]; then
+  echo "代码拉取成功！"
+else
+  echo "代码拉取失败。"
+fi
+```
+
+`$?` 在 shell 脚本中表示上一个命令的退出状态码，当一个命令执行成功时，它会返回退出状态码 0，失败时即为非 0。因此，你可以使用 `if [ $? -eq 0 ]; then` 来判断上一条命令
+是否执行成功。
+
+#### 判断文件是否存在
+
+```shell
+file="/usr/local/nginx/tmp.conf"
+if [ -e "$file" ]; then
+  echo "File $file exists."
+else
+  echo "File $file does not exist."
+fi
+```
+
+### 循环
+
+```shell
+for i in {1..5}; do
+  echo "Iteration $i"
+done
+
+// 或者使用 while
+
+while [ "$count" -lt 10 ]; do
+  echo "Count: $count"
+  ((count++))
+done
+```
+
+### 退出
+
+```shell
+# 表示成功
+exit 0
+
+# 表示发生了某种错误
+exit 1
+
+# 使用其他非零状态码表示不同类型的错误或情况
+exit 2
+```
+
+### 注释
+
+```shell
+# 需要注释的内容
+```
+
+## 执行
+
+需要授予脚本执行权限
+
+```shell
+chmod +x myscript.sh
+```
+
+运行脚本
+
+```shell
+./myscript.sh
+```
