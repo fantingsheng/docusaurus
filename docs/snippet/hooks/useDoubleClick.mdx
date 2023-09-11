@@ -1,0 +1,54 @@
+---
+title: 鼠标双击事件
+hide_table_of_contents: true
+---
+
+# useDoubleClick
+
+```jsx
+import { useEffect, useState } from "react"
+
+export default function useDoubleClick(callback, interval) {
+  const [clickCount, setClickCount] = useState(0);
+
+  useEffect(() => {
+    if (clickCount === 2) {
+      callback();
+      setClickCount(0);
+    }
+
+    const timer = setTimeout(() => {
+      setClickCount(0);
+    }, interval);
+
+    return () => clearTimeout(timer);
+  }, [clickCount, callback, interval]);
+
+  const handleClick = () => {
+    setClickCount(clickCount + 1);
+  };
+
+  return handleClick;
+}
+```
+
+## 介绍
+
+双击的事件是没有原生浏览器的接口支持的，所以只能模拟监听，通过在规定时间间隔内记录点击次数来实现。
+
+## 使用方法
+
+```jsx live
+function demoClick () {
+  const handleDoubleClick = useDoubleClick(() => {
+    alert('双击事件触发！');
+  }, 500); // 设置双击的时间间隔为500毫秒
+
+  return (
+    <div
+      className='button button--primary'
+      onClick={handleDoubleClick}
+    >双击测试</div>
+  )
+}
+```

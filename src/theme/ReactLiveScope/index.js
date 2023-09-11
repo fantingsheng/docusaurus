@@ -9,6 +9,7 @@ import useAsync from './useAsync';
 import useGeolocation from './useGeolocation';
 import useEventListener from './useEventListener'
 import useForm from './useForm';
+import useDoubleClick from './useDoubleClick';
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
@@ -22,6 +23,7 @@ const ReactLiveScope = {
   useAsync,
   useGeolocation,
   useEventListener,
-  useForm
+  useForm,
+  useDoubleClick
 };
 export default ReactLiveScope;
