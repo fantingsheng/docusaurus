@@ -24,3 +24,14 @@ React 有类组件和函数组件两种写法。在没有 Hooks 以前，需要 
 ## 合成事件
 
 合成事件（SyntheticEvent）是 React 模拟原生 DOM 事件所有能力的一个事件对象，即浏览器原生事件的跨浏览器包装器。React 根据 W3C 规范 定义了合成事件。
+
+
+## React Fiber
+
+Fiber 是 React 16 中采用的新协调（reconciliation）引擎，主要目标是支持虚拟 DOM 的渐进式渲染。
+
+Fiber 将原有的 Stack Reconciler 替换为 Fiber Reconciler，提高了复杂应用的可响应性和性能。主要通过以下方式达成目标：
+
+- 对大型复杂任务的分片；
+- 对任务划分优先级，优先调度高优先级的任务；
+- 调度过程中，可以对任务进行挂起、恢复、终止等操作。
