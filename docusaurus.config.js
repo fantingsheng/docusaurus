@@ -94,6 +94,12 @@ const config = {
             position: 'left',
             label: '代码片段'
           },
+          {
+            label: '专题',
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'topicSidebar'
+          },
           { to: '/blog', label: '博客', position: 'left' },
           { label: '实战', position: 'right', items: [
             { to: '/visitor', label: '统计工具' },
