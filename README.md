@@ -1,41 +1,37 @@
-# Website
+# 介绍
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+一个采用 Docusaurus 2 搭建的个人知识站点。
 
-### Installation
+### 预览
 
-```
-$ yarn
-```
+**Web 端**
 
-### Local Development
+![spacexcode](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1694759335925-72ca94d6-4e66-4a03-b50c-002e1a0d716a.png)
 
-```
-$ yarn start
-```
+**移动端**
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+![spacexcode](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1694759368605-eb5e130d-7475-48c3-85df-dddf9ee5ddec.png)
 
-### Build
+**网址**：https://spacexcode.com
+
+### 安装
 
 ```
-$ yarn build
+$ npm
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
+### 本地开发
 
 ```
-$ USE_SSH=true yarn deploy
+$ npm start
 ```
 
-Not using SSH:
+代码修改及时响应，浏览器实时刷新。
+
+### 打包
 
 ```
-$ GIT_USER=<Your GitHub username> yarn deploy
+$ npm build
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+将生成的静态文件存放在 `build` 目录下。

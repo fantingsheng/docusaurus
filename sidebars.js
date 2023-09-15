@@ -191,6 +191,7 @@ const sidebars = {
     }
   ],
   topicSidebar: [
+    'topic/intro',
     {
       type: 'category',
       label: 'Docusaurus',
