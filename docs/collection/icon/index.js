@@ -282,7 +282,7 @@ export const IconbuddyExample = () => {
   return (
     <div>{
       iconList.map(el => (
-        <a className="button button--outline button--secondary margin-right--sm margin-bottom--sm" href={el.link} target='_blank' key={name}>
+        <a className="button button--outline button--secondary margin-right--sm margin-bottom--sm" href={el.link} target='_blank' key={el.count}>
           {el.name}
           <span style={{ color: '#666', fontWeight: '400', marginLeft: '5px' }}>({el.count})</span>
         </a>
