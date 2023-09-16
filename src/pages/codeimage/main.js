@@ -3,8 +3,8 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styles from './style.module.css';
 import debounce from '../../theme/ReactLiveScope/debounce';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
-import BrowserWindow from '@site/src/components/BrowserWindow';
 import AnimateLinear from '@site/src/components/AnimateLinear';
+import { colorBgList } from '@site/src/config/data/codeimage';
 import hljs from '../../config/highlight';
 import html2canvas from 'html2canvas'
 
@@ -178,14 +178,11 @@ export default function Main () {
                   size='small'
                   onChange={e => handleSetting(e.target.value, 'theme')}
                 >
-                  <MenuItem value='linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))'>Breeze</MenuItem>
-                  <MenuItem value='linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))'>Candy</MenuItem>
-                  <MenuItem value='linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))'>Crimson</MenuItem>
-                  <MenuItem value='linear-gradient(140deg, rgb(189, 227, 236), rgb(54, 54, 84))'>FaIcon</MenuItem>
-                  <MenuItem value='linear-gradient(140deg, rgb(89, 212, 153), rgb(160, 135, 45))'>Meadow</MenuItem>
-                  <MenuItem value='linear-gradient(140deg, rgb(76, 200, 200), rgb(32, 32, 51))'>Midnight</MenuItem>
-                  <MenuItem value='linear-gradient(140deg, rgb(142, 199, 251), rgb(28, 85, 170))'>Raindrop</MenuItem>
-                  <MenuItem value='linear-gradient(140deg, rgb(255, 207, 115), rgb(255, 122, 47))'>Sunset</MenuItem>
+                  {colorBgList.map(el => (
+                    <MenuItem value={el.theme} key={el.name}>
+                      <span className={styles.colorDot} style={{ backgroundImage: el.theme}}></span>{el.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </div>
               <div className={styles.setItem}>
