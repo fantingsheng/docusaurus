@@ -4,10 +4,22 @@
         <title>太空编程 Blog</title>
         <link>https://spacexcode.com/blog</link>
         <description>太空编程 Blog</description>
-        <lastBuildDate>Sat, 09 Sep 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 16 Sep 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-Hans</language>
+        <item>
+            <title><![CDATA[Docusaurus V3.0 Beta 版本发布了 🎉]]></title>
+            <link>https://spacexcode.com/blog/docusaurus-v3-beta</link>
+            <guid>https://spacexcode.com/blog/docusaurus-v3-beta</guid>
+            <pubDate>Sat, 16 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[今天 Docusaurus v3 的 beta 版本发布了，意味着离正式版本发布不远了。很期待！]]></description>
+            <content:encoded><![CDATA[<p>今天 Docusaurus v3 的 beta 版本发布了，意味着离正式版本发布不远了。很期待！</p><p>关注 Docusaurus 也快小半年了，个人体验特别好，是我目前使用过的最好的建站工具了。会一直持续下去。</p><p>下面是官方的一些 release 信息，我也没有做特别的解读，简单翻译了下，等正式版出来，我会做个升级，然后分享详细的升级指南和新版本的特性以及功能点。</p><p>Docusaurus v3 目前已经至少被3个主要的站点使用：Docusaurus (<a href="https://docusaurus.io" target="_blank" rel="noopener noreferrer">https://docusaurus.io</a>)、Jest (<a href="https://jestjs.io" target="_blank" rel="noopener noreferrer">https://jestjs.io</a>)
+和 React - Native (<a href="https://reactnative.dev" target="_blank" rel="noopener noreferrer">https://reactnative.dev</a>)。</p><p>在这个过程中，我们解决了遇到的所有小问题。</p><p>现在是时候将 v3 移至 beta 阶段了！</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="主要变化">主要变化<a href="#主要变化" class="hash-link" aria-label="主要变化的直接链接" title="主要变化的直接链接">​</a></h3><p>Docusaurus v3 主要是基础设施升级，特别是：</p><ul><li>MDX 2</li><li>React 18</li><li>TS 5</li><li>Mermaid 10</li></ul><p>还有其他一些”功能性“破坏性变化，应该相对容易处理。UI 基本保持和最新的 v2.x 中一致。</p><p>新功能并没有做详细介绍，而是等到最终版本发布的时候公布。</p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="发布链接">发布链接<a href="#发布链接" class="hash-link" aria-label="发布链接的直接链接" title="发布链接的直接链接">​</a></h3><ul><li>GitHub discussions: <a href="https://github.com/facebook/docusaurus/discussions/9312" target="_blank" rel="noopener noreferrer">3.0.0-beta.0</a></li><li>GitHub release: <a href="https://github.com/facebook/docusaurus/releases/tag/v3.0.0-beta.0" target="_blank" rel="noopener noreferrer">https://github.com/facebook/docusaurus/releases/tag/v3.0.0-beta.0</a></li><li>Docs PR: <a href="https://github.com/facebook/docusaurus/pull/9311" target="_blank" rel="noopener noreferrer">chore: v3.0.0-beta.0 release</a></li><li>Tweet: <a href="https://twitter.com/sebastienlorber/status/1702742311514275978" target="_blank" rel="noopener noreferrer">https://twitter.com/sebastienlorber/status/1702742311514275978</a></li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="重大变更">重大变更<a href="#重大变更" class="hash-link" aria-label="重大变更的直接链接" title="重大变更的直接链接">​</a></h3><p>MDX v2 是 Docusaurus v3 中最令人困扰的重大变更：它可能需要您更新一些 <code>md/mdx</code> 文件，以确保它们仍然能够顺利编译。请阅读专用的 MDX v2 PR 以获取更多详细信息。</p><p>特别是，诸如 <code>{</code> 和 <code>&lt;</code> 等字符可能会引发新的 MDX 编译错误。MDX v2 Playground 是您解决这些问题的新帮手。</p><p>我们还创建了一个专用的支持讨论：<a href="https://github.com/facebook/docusaurus/discussions/9053" target="_blank" rel="noopener noreferrer">MDX v2 - Upgrade Support</a></p><p>很快将会推出一个命令行工具。它应该提供一种方便的方法来检测哪些文档在 MDX v2 下无法编译。您可以运行 <code>npx docusaurus-mdx-checker</code> 来进行预览。</p><p>如果你想了解详细的变更，请查看 -&gt; <a href="https://github.com/facebook/docusaurus/discussions/9312" target="_blank" rel="noopener noreferrer">https://github.com/facebook/docusaurus/discussions/9312</a></p>]]></content:encoded>
+            <author>fants0230@sina.com (Timfan)</author>
+            <category>Docusuarus</category>
+            <category>更新</category>
+        </item>
         <item>
             <title><![CDATA[学好英语真的很有必要]]></title>
             <link>https://spacexcode.com/blog/benefit-from-english</link>
