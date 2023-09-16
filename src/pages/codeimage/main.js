@@ -4,7 +4,7 @@ import styles from './style.module.css';
 import debounce from '../../theme/ReactLiveScope/debounce';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import AnimateLinear from '@site/src/components/AnimateLinear';
-import { colorBgList } from '@site/src/config/data/codeimage';
+import { colorBgList, langList } from '@site/src/config/data/codeimage';
 import hljs from '../../config/highlight';
 import html2canvas from 'html2canvas'
 
@@ -220,42 +220,9 @@ export default function Main () {
               <div className={styles.setItem}>
                 <div className={styles.label}>语言</div>
                 <Select size='small' value={settings.lang} onChange={e => handleSetting(e.target.value, 'lang')}>
-                  <MenuItem value='javascript'>JavaScript</MenuItem>
-                  <MenuItem value='java'>Java</MenuItem>
-                  <MenuItem value='css'>CSS</MenuItem>
-                  <MenuItem value='typescript'>TypeScript</MenuItem>
-                  <MenuItem value='bash'>Bash</MenuItem>
-                  <MenuItem value='cpp'>C++</MenuItem>
-                  <MenuItem value='csharp'>C#</MenuItem>
-                  <MenuItem value='c'>C</MenuItem>
-                  <MenuItem value='python'>Python</MenuItem>
-                  <MenuItem value='go'>Go</MenuItem>
-                  <MenuItem value='graphql'>GraphQL</MenuItem>
-                  <MenuItem value='git'>Git</MenuItem>
-                  <MenuItem value='diff'>Diff</MenuItem>
-                  <MenuItem value='markdown'>Markdown</MenuItem>
-                  <MenuItem value='shell'>Powershell</MenuItem>
-                  <MenuItem value='json'>JSON</MenuItem>
-                  <MenuItem value='swift'>Swift</MenuItem>
-                  <MenuItem value='kotlin'>Kotlin</MenuItem>
-                  <MenuItem value='objectivec'>Objective C</MenuItem>
-                  <MenuItem value='rust'>Rust</MenuItem>
-                  <MenuItem value='ruby'>Ruby</MenuItem>
-                  <MenuItem value='php'>PHP</MenuItem>
-                  <MenuItem value='lua'>Lua</MenuItem>
-                  <MenuItem value='erlang'>Erlang</MenuItem>
-                  <MenuItem value='plaintext'>Plain Text</MenuItem>
-                  <MenuItem value='xml'>XML</MenuItem>
-                  <MenuItem value='lisp'>Lisp</MenuItem>
-                  <MenuItem value='scala'>Scala</MenuItem>
-                  <MenuItem value='dockerfile'>Dockerfile</MenuItem>
-                  <MenuItem value='crystal'>Crystal</MenuItem>
-                  <MenuItem value='elixir'>Elixir</MenuItem> 
-                  <MenuItem value='jsx'>JSX</MenuItem>
-                  <MenuItem value='sql'>SQL</MenuItem>
-                  <MenuItem value='scss'>SCSS</MenuItem>
-                  <MenuItem value='yaml'>YAML</MenuItem>
-                  <MenuItem value='coffeescript'>Coffee Script</MenuItem>
+                  {langList.map(el => (
+                    <MenuItem value={el.key} key={el.key}>{el.name}</MenuItem>
+                  ))}
                 </Select>
               </div>
               <div className={styles.setItem}>
