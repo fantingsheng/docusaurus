@@ -1,0 +1,154 @@
+---
+title: 可左右拖拽改变大小的区块
+sidebar_position: 7
+hide_table_of_contents: true
+enable_donate: true
+---
+
+# 可左右拖拽改变大小的区块
+
+可以通过左右两边的拖动区域按下鼠标来改变区块的宽度，对于演示响应式布局非常必要，所有做了这个组件。
+
+你将会在这个网站的其它地方看到这个组件的使用。✨
+
+将鼠标放到区块的左右边缘，容许 `5px` 的误差内，鼠标指针会变成 `col-resize` 的样式，此时按住鼠标左右移动可以改变区域的宽度。
+
+import ResizeBlock from '@site/src/components/ResizeBlock';
+
+<ResizeBlock>
+  <div
+    style={{ 
+      height: '300px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#ebf0fa',
+      backgroundImage: 'linear-gradient(90deg,#ffffff 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(#ffffff 10%, rgba(0, 0, 0, 0) 10%)',
+      backgroundSize: '10px 10px'
+  }}>Resize Block</div>
+</ResizeBlock>
+
+## 代码实现
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="jsx" label="JSX" default>
+
+```jsx
+import React, { useState, useCallback, useEffect } from 'react';
+import debounce from '@/site/utils/debounce';
+
+export default function ResizeBlock ({ maxWidth, minWidth, defaultWidth, children }) {
+  const maxW = maxWidth || 920;
+  const minW = minWidth || 320;
+  const defaultW = defaultWidth || 600;
+
+  const [blockWidth, setBlockWidth] = useState(defaultW);
+  const [handSide, setHandSide] = useState('left');
+  const [clientX, setClientX] = useState(0)
+  // 是否在拖动
+  const [isResizing, setIsResizing] = useState(false)
+
+  const handleStartResize = useCallback((e, side) => {
+    setHandSide(side)
+    setIsResizing(true)
+    setClientX(e.clientX)
+  }, [])
+  const handleStopResize = useCallback(() => {
+    setIsResizing(false);
+  }, [])
+
+  const didHandleResize = debounce(e => {
+    if (!isResizing) return
+    const offset = e.clientX - clientX;
+    let width = blockWidth
+    if (handSide === 'left') {
+      width -= offset
+    }
+    if (handSide === 'right') {
+      width += offset
+    }
+    if (width > maxW) width = maxW;
+    if (width < minW) width = minW;
+    setClientX(e.clientX);
+    setBlockWidth(width);
+  }, 0)
+
+  const handleResize = useCallback(didHandleResize, [isResizing, clientX, didHandleResize])
+
+  useEffect(() => {
+    document.addEventListener('mouseup', handleStopResize)
+    document.addEventListener('mousemove', handleResize)
+
+    return () => {
+      document.removeEventListener('mouseup', handleStopResize)
+      document.removeEventListener('mousemove', handleResize)
+    }
+  }, [handleStopResize, handleResize])
+
+  return (
+    <div className='wrapper'>
+      <div className='resizeFrame'>
+        <div className='handDrag dragLeft' onMouseDown={e => handleStartResize(e, 'left')}></div>
+        <div className='handDrag dragRight' onMouseDown={e => handleStartResize(e, 'right')}></div>
+        <div className='blockInner' style={{ width: blockWidth ? blockWidth + 'px': 'auto'}}>
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}
+```
+
+</TabItem>
+<TabItem value="css" label="CSS" default>
+
+```css
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.resizeFrame {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.handDrag {
+  position: absolute;
+  z-index: 2;
+  width: 12px;
+  height: auto;
+  cursor: col-resize;
+  top: 0;
+  bottom: 0;
+}
+.handDrag::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: rgb(235, 237, 240);
+  border-radius: 50%;
+  content: "";
+  transform: translate(-50%, -50%);
+}
+.handDrag.dragLeft {
+  left: 0;
+  transform: translate(-50%, 0);
+}
+.handDrag.dragRight {
+  right: 0;
+  transform: translate(50%, 0);
+}
+.blockInner {
+  min-height: 150px;
+  border: 1px solid rgb(235, 237, 240);
+}
+```
+
+</TabItem>
+</Tabs>
