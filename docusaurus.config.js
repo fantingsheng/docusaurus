@@ -217,6 +217,10 @@ const config = {
               {
                 label: 'Alan',
                 href: 'https://www.alanwang.site/'
+              },
+              {
+                label: 'Macin',
+                href: 'https://www.macin.org/'
               }
             ]
           }
