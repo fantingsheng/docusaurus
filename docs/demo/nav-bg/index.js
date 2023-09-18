@@ -19,7 +19,7 @@ export function NavBgPage (props) {
         <h3>标题部分</h3>
         <p>正文开始。。。</p>
         <p>为了演示导航透明背景的设置，我写了这篇文章，力求让所有人都能明白其中的原理。</p>
-        <img src='https://spacexcode.com/assets/images/logo-cbafe4552177ee60c2afb37903007c8f.svg' width='300' />
+        <img src='/img/logo.svg' width='300' />
         <ul>
           <li>写完 html 标签结构</li>
           <li>CSS 实现样式</li>
