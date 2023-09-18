@@ -1,0 +1,53 @@
+---
+sidebar_position: 4
+title: 导航栏透视背景设置
+---
+
+导航栏有一种流行的做法是设置一定的透明度背景，滚动时让处于底下的内容有种透视模糊的效果。
+
+这里需要用到两个核心的 CSS 属性 `backdrop-filter` 和 `background-image`：
+
+:::info
+[`backdrop-filter`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter) CSS 属性可以让你为一个元素后面区域添加图形效果（如模糊或颜色偏移）。
+因为它适用于元素背后的所有元素，为了看到效果，必须使元素或其背景至少部分透明。
+:::
+
+import BrowserWindow from '@site/src/components/BrowserWindow';
+import { NavBgPage, DotGrid } from './index';
+
+### 正常的模糊效果
+
+通过给导航栏的背景设置白色，添加一点透明度，透明度的值推荐在 `0.7 ~ 0.9` 的范围内。这时的模糊效果最佳。
+
+此时看到的效果就跟你冬天带着眼镜吃火锅、从寒冷的室外突然走进温暖的室内一样。🧐
+
+<BrowserWindow bodyPad='0px' url='https://spacexcode/docs/demo/nav-bg'>
+  <NavBgPage />
+</BrowserWindow>
+
+```css {2}
+.nav-wrapper {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(50%) blur(4px);
+  -webkit-backdrop-filter: saturate(50%) blur(4px);
+}
+```
+
+### 带像素点模糊效果
+
+原理是设置间隔透明的网格背景，这里为了演示效果，将透明区域用色值 `#ebedf0` 代替：
+
+<DotGrid height={100} size={4} color='#ebedf0' />
+
+<BrowserWindow bodyPad='0px' url='https://spacexcode/docs/demo/nav-bg'>
+  <NavBgPage dot={true} />
+</BrowserWindow>
+
+```css {2-3}
+.nav-wrapper {
+  background-image: radial-gradient(transparent 1px, #fff 1px);
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(4px);
+  -webkit-backdrop-filter: saturate(50%) blur(4px);
+}
+```

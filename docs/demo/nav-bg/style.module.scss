@@ -1,0 +1,57 @@
+.page {
+  position: relative;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+.navWrapper {
+  position: relative;
+  border-bottom: 1px solid #ebedf0;
+  height: 55px;
+  padding: 0 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(50%) blur(4px);
+  -webkit-backdrop-filter: saturate(50%) blur(4px);
+  top: 0;
+
+  &.dotBg {
+    background-image: radial-gradient(transparent 1px,#fff 1px);
+    background-size: 4px 4px;
+  }
+
+  .logo {
+    display: inline-block;
+    height: 55px;
+    line-height: 55px;
+  }
+
+  ul {
+    list-style: none;
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      height: 55px;
+      line-height: 55px;
+      padding: 0 15px;
+      margin: 0 5px;
+    }
+  }
+}
+.mainBody {
+  padding: 20px 2rem;
+}
+
+.gridLand {
+  width: 100%;
+  margin: 20px auto;
+  height: 100px;
+  background-image: radial-gradient(#ebedf0 1px,#fff 1px);
+  background-size: 4px 4px;
+}
