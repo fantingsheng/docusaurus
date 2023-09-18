@@ -16,7 +16,7 @@ export function NavBgPage (props) {
         </div>
       </div>
       <div className={styles.mainBody}>
-        <h2>标题部分</h2>
+        <h3>标题部分</h3>
         <p>正文开始。。。</p>
         <p>为了演示导航透明背景的设置，我写了这篇文章，力求让所有人都能明白其中的原理。</p>
         <img src='https://spacexcode.com/assets/images/logo-cbafe4552177ee60c2afb37903007c8f.svg' width='300' />
@@ -30,7 +30,9 @@ export function NavBgPage (props) {
         <p><code>backdrop-filter</code> CSS 属性可以让你为一个元素后面区域添加图形效果（如模糊或颜色偏移）。因为它适用于元素背后的所有元素，为了看到效果，必须使元素或其背景至少部分透明。</p>
         <p>在来点内容撑开，显示出纵向的滚动条</p>
         <pre>
+          <code>
           console.log("hello world")
+          </code>
         </pre>
       </div>
     </div>

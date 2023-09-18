@@ -13,12 +13,13 @@
 .navWrapper {
   position: relative;
   border-bottom: 1px solid #ebedf0;
-  height: 55px;
+  height: 50px;
   padding: 0 1rem;
   background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: saturate(50%) blur(4px);
   -webkit-backdrop-filter: saturate(50%) blur(4px);
   top: 0;
+  overflow: hidden;
 
   &.dotBg {
     background-image: radial-gradient(transparent 1px,#fff 1px);
@@ -27,20 +28,25 @@
 
   .logo {
     display: inline-block;
-    height: 55px;
-    line-height: 55px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4rem;
   }
 
   ul {
     list-style: none;
     display: inline-block;
+    margin-left: 10px;
+    padding: 0;
+    vertical-align: top;
 
     li {
       display: inline-block;
-      height: 55px;
-      line-height: 55px;
+      height: 50px;
+      line-height: 50px;
       padding: 0 15px;
       margin: 0 5px;
+      font-size: 1rem;
     }
   }
 }
