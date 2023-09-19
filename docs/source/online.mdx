@@ -45,14 +45,7 @@ export function BuildFastUrl () {
   }
   return (
     <div>
-      <Box
-        component='div'
-        sx={{
-          width: 800,
-          maxWidth: '100%',
-          mb: '10px'
-        }}
-      >
+      <Box component='div' sx={{ width: 800, maxWidth: '100%', mb: '10px' }}>
         <TextField
           value={link}
           error={isError}
@@ -63,13 +56,7 @@ export function BuildFastUrl () {
           size='small'
           fullWidth />
       </Box>
-      <Box
-        component='div'
-        sx={{
-          width: 800,
-          maxWidth: '100%'
-        }}
-      >
+      <Box component='div' sx={{ width: 800, maxWidth: '100%' }}>
         <Button variant='contained' onClick={buildUrl}>生成</Button>
         { downloadLink ? <a href={downloadLink} style={{ marginLeft: '10px'}}>下载</a> : '' }
       </Box>
