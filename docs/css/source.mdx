@@ -11,3 +11,37 @@ sidebar_position: 1
 - [学习CSS布局](http://zh.learnlayout.com/)
 - [深入浅出CSS布局](http://layout.imweb.io/)
 - [CSS Layout](https://csslayout.io/)
+
+## 自定义样式
+
+### 文本选中
+
+通过 CSS 伪元素 `::selection` 可以修改选中文本的样式，可修改的部分属性：`color`， `background-color`， `cursor`， `caret-color`， `outline`，`text-decoration`， `text-shadow` 等
+
+```css
+::selection {
+  background: deeppink;
+  color: white;
+}
+```
+
+### 滚动条
+
+![](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1695118740824-3a4d1e67-0ec3-4c04-89c1-a24874a497e4.png)
+
+
+```css
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1E3F20;
+  border-radius: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4A7856;
+  border-radius: 12px;
+}
+```
