@@ -1,5 +1,6 @@
 ---
 sidebar_position: 7
+slug: /collection/charactor
 enable_comment: true
 ---
 
@@ -7,22 +8,9 @@ enable_comment: true
 
 文档中搭配一些表情字符会使得文字**生动可爱**，收集了一些经常使用的字符图标。
 
-import { Box, Grid }  from '@mui/material';
-export const EmojiGallery = ({ emojiList }) => {
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        {
-          emojiList.map((el, index) => (
-            <Grid item xs={2} md={1} key={index}>
-              <div style={{ textAlign: 'center', fontSize: '3rem', width: '100%', borderRadius: '10px' }}>{el}</div>
-            </Grid>
-          ))
-        }
-      </Grid>
-    </Box>
-  )
-}
+> 鼠标点击图标即可复制
+
+import EmojiGallery from './index';
 
 ### 表情
 
@@ -75,11 +63,11 @@ export const EmojiGallery = ({ emojiList }) => {
 ### 其它
 
 <EmojiGallery emojiList={
-  [ '✨', '🔨', '🛠', '🌟', '💰', '☁️', '⭐', '⚡️', '🏳️‍🌈', '🔍', '🗑️', '🔄', '🧼', '🧹', '🎯', '📍', '🌍', '🎩', '✅',
+  ['✨', '🔨', '🛠', '🌟', '💰', '☁️', '⭐', '⚡️', '🏳️‍🌈', '🔍', '🗑️', '🔄', '🧼', '🧹', '🎯', '📍', '🌍', '🎩', '✅',
   '❎', '📦', '🌱', '☘️', '🌈', '🔗', '💨', '🔌', '♨️', '🌛', '☀️', '🧬', '💍', '💡', '🛡️', '🦺', '⚛️', '📷', '🔋',
   '💎', '🎄', '🎅', '🍰', '🖼', '💦', '💫', '⏳', '🏠', '☪️', '✔️', '❌', '🔭', '🏰', '📬', '🏀', '🎈', '🔊', '🗂',
   '📫', '🍨', '🔧', '🌐', '🧪', '🔢', '🧩', '➗', '🌌', '🛢️', '🔔', '⛔', '⚓', '⚙️', '💥', '💸', '💅', '🌑', '📲',
-  '🦾', '✂️', '🏗️', '🔌', '⛓️' ]
+  '🦾', '✂️', '🏗️', '🔌', '⛓️']
 } />
 
 
