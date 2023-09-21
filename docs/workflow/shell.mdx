@@ -9,6 +9,21 @@ sidebar_position: 2
 
 文件名以 `myscript.sh` 为后缀，文件中首行声明了脚本使用的是 Bash。
 
+`#!` 告诉系统其后路径所指定的程序即是解释此脚本文件的 Shell 程序，`/bin/bash` 指定使用的是哪种。
+
+:::info拓展
+在 Linux 系统上主流的 CLI Shell 实现是 Bash，是许多 Linux 发行版默认的 Shell。还有许多 Unix 上的 Shell。
+
+Shell 分类
+```
+* Bourne Shell（/usr/bin/sh 或 /bin/sh）
+* Bourne Again Shell（/bin/bash）
+* C Shell（/usr/bin/csh）
+* K Shell（/usr/bin/ksh）
+* Shell for Root（/sbin/sh）
+```
+:::
+
 ```shell title='myscript.sh'
 #!/bin/bash
 
