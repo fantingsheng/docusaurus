@@ -1,0 +1,157 @@
+---
+slug: pure-css-grid-line
+title: 用纯 CSS 实现网格背景 📈
+authors: [timfan]
+tags: [网格, 背景, 重复]
+enable_comment: true
+enable_donate: true
+---
+
+是不是在日常开发中经常遇到实现网格的需求，网格通常对网页中展示的元素能起到很好的定位和对齐作用。
+
+这里介绍如何只通过 CSS 来实现这个需求？
+
+## 使用背景图
+
+这里我们的背景图使用 SVG 来创建，首先，创建绘出一个正方形，填充白色；然后通过矩形实现垂直和水平的线条，进而分别对它们进行定位居中。
+
+```
+<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>
+  <rect width='40' height='40' fill='#fff'></rect>
+  <rect x='50%' width='1' height='100%' fill='rgb(203 213 225)'></rect>
+  <rect y='50%' width='100%' height='1' fill='rgb(203 213 225)'></rect>
+</svg>
+```
+
+<!-- truncate -->
+
+效果如下：
+
+<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>
+  <rect width='40' height='40' fill='#fff'></rect>
+  <rect x='50%' width='1' height='100%' fill='rgb(203 213 225)'></rect>
+  <rect y='50%' width='100%' height='1' fill='rgb(203 213 225)'></rect>
+</svg>
+
+有了背景图片，我们对给定的区域设置背景
+
+```css
+.grid {
+  background-image: url('/path/to/grid.svg');
+}
+```
+
+如果要避免加载额外的资源，我们也可以通过图片二进制数据的方式嵌入：
+
+```css
+.grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23fff' /%3E%3Crect x='50%' width='1' height='100%' fill='rgb(203 213 225)' /%3E%3Crect y='50%' width='100%' height='1' fill='rgb(203 213 225)' /%3E%3C/svg%3E%0A");
+}
+```
+
+默认情况下，背景图像会在垂直和水平方向上重复，这样实现的网格是40个像素。我们也可以通过 `background-size` 属性来自定义背景图的尺寸
+
+export const GridExample = ({ size }) => {
+  const styleObj = {
+    width: '100%',
+    height: '200px',
+    marginBottom: '20px',
+    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23fff' /%3E%3Crect x='50%' width='1' height='100%' fill='rgb(203 213 225)' /%3E%3Crect y='50%' width='100%' height='1' fill='rgb(203 213 225)' /%3E%3C/svg%3E%0A\")",
+    backgroundSize: size ? size : '40px'
+  }
+  return (
+    <div style={styleObj}></div>
+  )
+}
+
+<GridExample />
+
+```css
+.grid {
+  background-size: 20px;
+}
+```
+
+<GridExample size={20} />
+
+## 使用线性渐变
+
+另一种使用 CSS 创建网格背景的方式是通过 `linear-gradient()` 函数来实现的。
+
+首先选择要为其添加网格背景的元素，并设置 `background-image` 属性。然后，使用 `linear-gradient()` 函数
+指定两种颜色，这两种颜色可以是相似或相同的，它们之间由线条粗细、宽度相同的透明部分分隔开来。
+
+```css
+.grid {
+  background-image: linear-gradient(to right, gray 1px, transparent 1px);
+}
+```
+
+这里的 `1px` 代表网格的线条宽度，你也可以设置成你想要的宽度。
+
+如果要实现水平线条，只需要把 `to right` 改为 `to botton` 。而网格实现既需要横向的线条，也需要纵向的线条。
+
+```css
+.grid {
+  background-image:
+    linear-gradient(to right, gray 1px, transparent 1px),
+    linear-gradient(to bottom, gray 1px, transparent 1px);
+}
+```
+
+最终的样式：
+
+```css
+.grid {
+  height: 200px;
+  background-image:
+      linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(203 213 225) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+```
+
+export const LinearGridLayout = () => {
+  const styleObj = {
+    width: '100%',
+    height: '200px',
+    backgroundImage: 'linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px),linear-gradient(to bottom, rgb(203 213 225) 1px, transparent 1px)',
+    backgroundSize: '20px 20px',
+    backgroundPosition: 'center center'
+  }
+  return (
+    <div style={styleObj}></div>
+  )
+}
+
+<LinearGridLayout />
+
+## 网状点阵背景
+
+由相同原理，我们来实现一个网状点阵背景，这里需要用到 `radial-gradient` 函数，创建圆形填充背景色。
+
+
+```css
+.grid {
+  height: 200px;
+  background-image: radial-gradient(circle, rgb(203 213 225) 2px, #fff 2px);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+```
+
+
+export const DotGridLayout = () => {
+  const styleObj = {
+    height: '200px',
+    backgroundImage: 'radial-gradient(circle, rgb(203 213 225) 2px, #fff 2px)',
+    backgroundSize: '20px 20px',
+    backgroundPostion: 'center center'
+  }
+  return (
+    <div style={styleObj}></div>
+  )
+}
+
+<DotGridLayout />
