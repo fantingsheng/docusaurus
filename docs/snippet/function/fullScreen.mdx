@@ -1,0 +1,146 @@
+---
+title: 实现网页全屏
+hide_table_of_contents: true
+---
+
+```js
+const container = document.getElementById('container');
+const fullScreenButton = document.getElementById('full-screen');
+
+fullScreenButton.addEventListener('click', () => {
+  if (document.fullscreenEnabled) {
+    container.requestFullscreen();
+  }
+});
+```
+
+## 介绍
+
+操作网页的全屏，浏览器直接提供了接口 `requestFullscreen()` 和 `exitFullscreen()`，我们唯一需要注意就是解决一些边缘问题，例如浏览器的兼容，解决全屏背景色等问题。
+
+### 退出全屏
+
+```js
+document.exitFullscreen();
+```
+
+### 监听全屏模式切换
+
+```js
+document.addEventListener('fullscreenchange', (event) => {
+  if (document.fullscreenElement) {
+    fullScreenButton.innerHTML = 'Exit Full screen';
+  } else {
+    fullScreenButton.innerHTML = 'Full screen';
+  }
+});
+```
+
+### 解决浏览器兼容问题
+
+```js
+fullScreenButton.addEventListener('click', () => {
+  if (document.fullscreenEnabled) {
+    if (containerEle.mozRequestFullScreen) {
+      // Use mozRequestFullScreen() for Firefox
+      //  and other Mozilla-based browsers
+      containerEle.mozRequestFullScreen();
+    } else if (containerEle.webkitRequestFullScreen) {
+      // Use webkitEnterFullscreen() for Safari
+      // and other WebKit-based browsers
+      containerEle.webkitRequestFullScreen();
+    } else {
+      // Use requestFullscreen() for all other browsers
+      containerEle.requestFullscreen();
+    }
+  }
+});
+```
+
+### 全屏后黑色背景问题
+
+我们需要给全屏的区域对应的元素增加背景色，例如白色
+
+```css
+.fullArea {
+    background: #fff;
+}
+```
+
+## 效果演示
+
+```jsx live
+function FullScreenPage() {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const fullArea = useRef();
+
+  // 进入全屏模式
+    function enterFullScreen() {
+      if (fullArea.current.requestFullscreen) {
+        fullArea.current.requestFullscreen();
+      } else if (fullArea.current.mozRequestFullScreen) {
+        fullArea.current.mozRequestFullScreen();
+      } else if (fullArea.current.webkitRequestFullscreen) {
+        fullArea.current.webkitRequestFullscreen();
+      } else if (fullArea.current.msRequestFullscreen) {
+        fullArea.current.msRequestFullscreen();
+      }
+      setIsFullScreen(true);
+    }
+
+    // 退出全屏模式
+    function exitFullScreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setIsFullScreen(false);
+    }
+
+    // 监听全屏变化事件
+    function handleFullScreenChange() {
+      if (
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement
+      ) {
+        setIsFullScreen(true);
+      } else {
+        setIsFullScreen(false);
+      }
+    }
+
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullScreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
+    document.addEventListener('msfullscreenchange', handleFullScreenChange);
+
+    // 清理副作用
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
+      document.removeEventListener('msfullscreenchange', handleFullScreenChange);
+    };
+  }, []);
+
+  return (
+    <div style={{ background: '#fff', padding: '2rem' }} ref={fullArea}>
+      {isFullScreen ? (
+        <button onClick={exitFullScreen}>退出全屏</button>
+      ) : (
+        <button onClick={enterFullScreen}>进入全屏</button>
+      )}
+      <h1>这是全屏网页</h1>
+      <p>在全屏模式下可以显示更多内容。</p>
+    </div>
+  );
+}
+```

@@ -5,6 +5,12 @@
 .aDemo {
   font-size: 2.4rem;
 }
+
+.cssDefaultWave:hover {
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-decoration-style: wavy;
+}
 /* 带下边框，移动拉伸效果 */
 .bottomBorder {
   position: relative;
