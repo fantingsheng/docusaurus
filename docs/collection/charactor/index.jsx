@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './style.module.scss';
-import { Box, Grid }  from '@mui/material';
+import { Box, Grid, Alert, AlertTitle, Snackbar }  from '@mui/material';
 
 export default function EmojiGallery ({ emojiList }) {
-  
-  const onCopyHandle = (icon) => {
-    console.log("click", icon)
-    navigator.clipboard.writeText(icon)
+  const [copied, setCopied] = useState(false);
+  const [icon, setIcon] = useState('');
+  const onCopyHandle = (iconText) => {
+    console.log("click", iconText)
+    navigator.clipboard.writeText(iconText)
     .then(() => {
+      setCopied(true);
+      setIcon(iconText);
       console.log("已成功复制到剪贴板");
     })
     .catch((error) => {
@@ -25,6 +28,9 @@ export default function EmojiGallery ({ emojiList }) {
           ))
         }
       </Grid>
+      <Snackbar open={copied} autoHideDuration={1500} anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }} onClose={() => setCopied(false)}>
+        <Alert severity="success"><AlertTitle>复制成功 {icon}</AlertTitle></Alert>
+      </Snackbar>
     </Box>
   )
 }
