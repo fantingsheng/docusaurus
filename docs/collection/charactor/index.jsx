@@ -17,6 +17,9 @@ export default function EmojiGallery ({ emojiList }) {
       console.error("复制时出错: ", error);
     });
   }
+  const handleClose = () => {
+    setCopied(false);
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -28,7 +31,7 @@ export default function EmojiGallery ({ emojiList }) {
           ))
         }
       </Grid>
-      <Snackbar open={copied} autoHideDuration={1500} anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }} onClose={() => setCopied(false)}>
+      <Snackbar open={copied} autoHideDuration={1500} anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }} onClose={handleClose}>
         <Alert severity="success"><AlertTitle>复制成功 {icon}</AlertTitle></Alert>
       </Snackbar>
     </Box>
