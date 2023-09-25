@@ -1,0 +1,68 @@
+---
+title: 判断点击事件是否在某个元素上
+hide_table_of_contents: true
+---
+
+# useClickInside
+
+```jsx
+import React from 'react';
+
+export default function useClickInside (ref, callback) {
+  const handleClick = e => {
+    if (ref.current && ref.current.contains(e.target)) {
+      callback();
+    }
+  };
+  React.useEffect(() => {
+    document.addEventListener('click', handleClick);
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  });
+};
+```
+
+## 介绍
+
+当我们要判断点击事件是否发生在某个元素上的时候，我们首先使用事件监听器 `addEventListener` 来为DOM元素添加点击事件，并在事件回调函数中访问事件对象（通常以参数的形式传递给回调函数）。
+事件对象包含有关事件的信息，这里以 `event` 来命名参数，我们可以访问属性 `event.target`、`event.clientX`、`event.clientY` 等。
+
+然后我们通过 `useRef` 来绑定点击元素的访问对象，判断是否和点击事件的回调参数 `target` 相等。 
+
+## 使用方法
+
+```jsx {5} live
+function ClickEventPlay () {
+  const [count, setCount] = useState(0);
+
+  const ClickBox = ({ onClickInside }) => {
+    const clickRef = React.useRef();
+    useClickInside(clickRef, onClickInside);
+
+    return (
+      <div
+        className="click-box"
+        ref={clickRef}
+        style={{
+          border: '2px dashed orangered',
+          height: 200,
+          width: 380,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          userSelect: 'none'
+        }}
+      >
+        <p>Click inside this element {count}</p>
+      </div>
+    );
+  };
+
+  return (
+    <ClickBox onClickInside={() => setCount(count + 1)} />
+  )
+}
+```
+
+当点击橙色边框里面的时候数值会递增，而点击外面区域则不会触发 `onClickInside` 事件。
