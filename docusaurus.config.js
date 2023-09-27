@@ -67,7 +67,7 @@ const config = {
       metadata: [
         {
           name: 'keywords',
-          content: '太空编程, 前端, React, Vue, 教程, 案例, 学习路径, 动态演示'
+          content: '太空编程, 前端, React, Vue, 教程, 案例, 动画, 学习路径, 动态演示'
         },
         {
           name: 'author',
@@ -105,7 +105,7 @@ const config = {
             { to: '/visitor', label: '统计工具' },
             { to: '/shapedivider', label: '分隔线工具' },
             { to: '/handraw', label: '手绘做图工具' },
-            { to: '/codeimage', label: '代码图片生成' },
+            { to: '/codeimage', label: '代码图片生成器' },
             { to: '/lifebalence', label: '高效的生物钟' }
           ] },
           { to: '/about', label: '关于', position: 'right' }
