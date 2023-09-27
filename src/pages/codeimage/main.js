@@ -203,7 +203,7 @@ export default function Main () {
               </div>
               <div className={styles.setItem}>
                 <div className={styles.label}>内边距</div>
-                <Box sx={{ width: 300 }}>
+                <Box sx={{ width: 250 }}>
                   <Slider
                     aria-label='内边距'
                     value={settings.pad}

@@ -1,19 +1,203 @@
 ---
 title: 代码图片生成器
-hide_table_of_contents: true
 position: 1
 ---
 
 import Main from '@site/src/pages/codeimage/main';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <Main />
 
 ## 介绍
 
-要学好一门技术，最好的方式就是**实践**。上面这样一个代码图片生成器，就是当初为了学习 React 技术开发，特地找了一个功能不是很复杂，但是涉及的技术点又不能过于单一，
-于是找了这样一个工具型的项目（UI 参照 [ray.so](https://ray.so)），从零实现来检验自己学的知识是否牢固。
+要学好一门技术，最好的方式就是**实践**。上面这样一个代码图片生成器，就是当初为了学习 React 技术开发，特地找的一个功能不是很复杂，但是涉及的技术点又不至于太单一，
+于是找了这样一个工具型的项目（UI 参照 [ray.so](https://ray.so)），代码从零开始实现来检验自己学的知识是否牢固。
 
 简单来讲解下，实现这个项目用到的一些技术点和背后的原理：
 
-- html2canvas
-- highlight.js
+- 代码高亮选择了最主流的 `highlight.js` 库；
+- 网页元素界面转图片使用了 `html2canvas` 工具；
+- 代码编辑器实时高亮是上层使用了 `textarea` 输入框，设置字体和背景透明，下层使用 `div` 显示代码，并结合 `highlight.js` 做代码高亮；
+- 透明背景通过 CSS 属性背景图片设置线性渐变 `linear-gradient` 模拟实现；
+- 代码背景框的左右拖拽来改变宽度功能。
+
+## 实现详解
+
+### 代码编辑器
+
+这里的难点，可能有人就想如何实现一个代码实时编辑的区域，又能让代码高亮显示？
+
+代码编辑区域我们使用文本输入框 `textarea`， 代码高亮我们使用 `highlight.js` 帮助实现，但是如何对输入框中的代码进行高亮是个难点。这里我们实现的思路是通过绝对定位
+，上层使用输入框，设置背景透明和其中的文字颜色透明，然后下层放置一个 `div` 层做代码的显示。上层输入，下层显示。
+
+<Tabs>
+<TabItem value="html" label="HTML" default>
+
+```jsx
+export default function Main () {
+  // ...
+return (
+  <div className="codeEditor">
+    <textarea
+      className="editorTextarea"
+      spellCheck={false}
+      autoComplete='off'
+      tabIndex={-1}
+      autoCorrect='off'
+      autoCapitalize='off'
+      value={code}
+      onChange={e => setCode(e.target.value)}
+      style={{ height: editorHeight + 'px' }}
+      onInput={e => setEditorHeight(e.target.scrollHeight)}>
+    </textarea>
+    <div
+      id={settings.lang}
+      ref={codeRef}
+      className={clsx("codeFormatted", settings.lang)}
+      style={{ color: '#fefdfd', background: 'transparent' }}
+    >
+      {code}
+    </div>
+  </div>
+)
+```
+
+</TabItem>
+<TabItem value="css" label="CSS" default>
+
+```css {15}
+.codeEditor {
+  display: grid;
+  width: 100%;
+  grid-template: 1fr/1fr;
+}
+.editorTextarea {
+  border: none;
+  resize: none;
+  background: transparent;
+  z-index: 2;
+  color: transparent;
+  caret-color: white;
+  text-size-adjust: none;
+}
+.editorTextarea, .codeFormatted {
+  padding: 16px 16px 21px 16px;
+  margin: 0;
+  font: var(--ifm-font-size-base) / var(--ifm-line-height-base) var(--ifm-font-family-base);
+  font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-ligatures: none;
+  grid-column: 1/1;
+  grid-row: 1/1;
+  tab-size: 2;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+}
+```
+
+</TabItem>
+</Tabs>
+
+从 CSS 代码中高亮的部分我们可以看出，针对 `editorTextarea` 和 `codeFormatted` 两个类设置了相同的字体类型、大小相同的样式，就是保证
+代码的输入层和显示层上下相同文字处于完全重合的状态，来模拟看到的代码就是你实时输入的代码。
+
+`highlight.js` 实现代码高亮部分代码：
+
+```jsx
+import hljs from '../../config/highlight';
+
+useEffect(() => {
+  if (codeRef.current) {
+    hljs.highlightElement(codeRef.current);
+  }
+}, [code, settings.lang])
+```
+
+### 代码背景区域拖拽改变宽度
+
+本功能我已经将核心代码抽出来，实现成了小组件。原理不难懂，就是通过添加页面元素的监听事件，按下鼠标之后跟随鼠标移动位置，来计算区块宽度改变后的大小。
+
+详细实现参考：【[可左右拖拽改变大小的区块](/docs/snippet/component/resize-block)】
+
+### 将页面元素转成图片导出
+
+得益于 `html2canvas` 工具库的帮助，我们很轻松将网页中某一部分通过 `canvas` 中转导出成图片。
+
+```jsx
+const exportImg = () => {
+  if (!imgCode.current) return;
+  html2canvas(imgCode.current, {
+    useCORS: true,
+    scale: 2,
+    backgroundColor: 'transparent'
+  }).then((canvas) => {
+    const dataURL = canvas.toDataURL('image/png');
+    let newImg = new Image()
+    const date = new Date()
+    newImg.src = canvas.toDataURL('image/png')
+    const a = document.createElement("a");
+    a.style.display = "none";
+    a.href = newImg.src;
+    a.download = `spacexcode-${date.getMinutes()}${date.getSeconds()}.png`;
+    a.rel = "noopener noreferrer";
+    document.body.append(a);
+    a.click();
+    setTimeout(() => {
+        a.remove();
+    }, 1000);
+  })
+}
+```
+
+### 透明背景的模拟实现
+
+当我们将设置区域的背景按钮切换置灰时，显示出透明的样式：
+
+export const TransBgLayout = () => {
+  const styleObj = {
+    height: '200px',
+    marginBottom: '20px',
+    backgroundImage: 'linear-gradient(45deg,#8d8b8b 25%,transparent 0),linear-gradient(-45deg,#8d8b8b 25%,transparent 0),linear-gradient(45deg,transparent 75%,#8d8b8b 0),linear-gradient(-45deg,transparent 75%,#8d8b8b 0)',
+    backgroundSize: '20px 20px',
+    backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0',
+    inset: '0'
+  }
+  return (
+    <div style={styleObj}></div>
+  )
+}
+
+<TransBgLayout />
+
+这个其实是 通过 CSS 模拟出来的
+
+```css
+.grid {
+  height: 200px;
+  background-image:
+    linear-gradient(45deg, #8d8b8b 25%, transparent 0),
+    linear-gradient(-45deg, #8d8b8b 25%, transparent 0),
+    linear-gradient(45deg, transparent 75%, #8d8b8b 0),
+    linear-gradient(-45deg, transparent 75%, #8d8b8b 0);
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  background-size: 20px 20px;
+}
+```
+
+### 最后
+
+核心的功能实现的思路都讲解了，然后剩下细节部分需要完善的，比如主题，我们制作了8种好看的渐变颜色背景。通过改变内边距，来改变代码区域占整个图片的比例。
+
+## 总结
+
+实现一款好用的小工具，不仅仅要掌握实现的基本思路，核心代码的实现。后期的细节完善，页面的样式和用户的操作体验都是值得细细推敲的。经过这个工具的制作，基本掌握了一个框架
+的大部分语法的使用。
+
+比如：
+
+- react 样式代码的几种写法
+- 表单中变量的响应式
+- 常见 hooks 的使用
+- 组件化的代码
+
