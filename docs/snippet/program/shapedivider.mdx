@@ -3,3 +3,46 @@ title: 优美的分隔线
 hide_table_of_contents: true
 position: 2
 ---
+
+import Form from '@site/src/pages/shapedivider/form';
+
+export const ShapeDivider = () => {
+  return (
+    <div className='padding-top--xl'>
+      <Form />
+    </div>
+  )
+}
+
+<ShapeDivider />
+
+## 介绍
+
+在网页设计师的眼里不应该只有直线，那网页看起来实在太糟糕了！
+
+当我们要在区块之间增加一条有弧度的曲线分隔线的时候，我们能想到的实现方式是什么？
+
+上面的案例为我们提供了一个灵感，通过绘制一定路径的 SVG 并且设置背景色再重合在某个网页元素上而形成一个整体。
+
+## 实现过程
+
+export const SvgShape = () => (
+  <div style={{ marginBottom: '20px' }}>
+    <div style={{ position: 'relative', height: '90px', overflow: 'hidden' }}>
+      <svg preserveAspectRatio='none' width='1440' height='74' viewBox='0 0 1440 74' fill='#EFB354'
+        style={{ position: 'absolute', left: '-3%', right: '-3%', bottom: 0, width: '106%', minWidth: '600px' }}>
+        <path d='M456.464 0.0433865C277.158 -1.70575 0 50.0141 0 50.0141V74H1440V50.0141C1440 50.0141 1320.4 31.1925 1243.09 27.0276C1099.33 19.2816 1019.08 53.1981 875.138 50.0141C710.527 46.3727 621.108 1.64949 456.464 0.0433865Z'></path>
+      </svg>
+    </div>
+  </div>
+);
+
+<SvgShape />
+
+```
+<svg preserveAspectRatio='none' width='1440' height='74' viewBox='0 0 1440 74' fill='#EFB354'>
+  <path d='M456.464 0.0433865C277.158 -1.70575 0 50.0141 0 50.0141V74H1440V50.0141C1440 50.0141 1320.4 31.1925 
+    1243.09 27.0276C1099.33 19.2816 1019.08 53.1981 875.138 50.0141C710.527 46.3727 621.108 1.64949 456.464 0.0433865Z'>
+  </path>
+</svg>
+```
