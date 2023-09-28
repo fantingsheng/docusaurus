@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[4121],{88070:a=>{a.exports=JSON.parse('[{"label":"\u4eba\u5de5\u667a\u80fd","permalink":"/docs/tags/\u4eba\u5de5\u667a\u80fd","count":1},{"label":"ChatGPT","permalink":"/docs/tags/chat-gpt","count":1},{"label":"AI","permalink":"/docs/tags/ai","count":1}]')}}]);
