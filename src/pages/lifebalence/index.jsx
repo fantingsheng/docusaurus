@@ -84,6 +84,21 @@ function OneDayTimeline () {
   );
 }
 
+function Banner () {
+  return (
+    <div className='card margin-bottom--lg'>
+      <div className='card__body'>
+        <div className='text--center'>
+          <p style={{ lineHeight: '2rem', marginBottom: '10px' }}>世界上唯一公平的事是每个人一天24小时<br />
+            而如何度过这24小时，却有千万种方式<br />
+            选择什么样的生物钟，决定了你将拥有什么样的人生
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Index() {
   return (
     <Layout
@@ -91,8 +106,19 @@ export default function Index() {
       description='生物钟是控制你的身体在一天内不同时间段活动和休息的内部机制，它受到自然光线、饮食、锻炼等各种外在因素的影响。'>
       <main>
         <div className='container padding-vert--lg'>
-          <div className='text--center'><h3>一天的时间安排</h3></div>
-          <OneDayTimeline />
+          <div className='row'>
+            <div className='col col--6 col--offset-3'>
+              <Banner />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col col--10 col--offset-1'>
+              <div className='text--center'>
+                <h3>一天的时间安排</h3>
+              </div>
+              <OneDayTimeline />
+            </div>
+          </div>
         </div>
       </main>
     </Layout>
