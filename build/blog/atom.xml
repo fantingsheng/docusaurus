@@ -8,7 +8,7 @@
     <subtitle>太空编程 Blog</subtitle>
     <icon>https://spacexcode.com/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[网站这件事我是认真的]]></title>
+        <title type="html"><![CDATA[节前把我的网站重构了一遍]]></title>
         <id>https://spacexcode.com/blog/refactor-my-website</id>
         <link href="https://spacexcode.com/blog/refactor-my-website"/>
         <updated>2023-09-28T00:00:00.000Z</updated>

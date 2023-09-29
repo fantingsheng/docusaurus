@@ -9,7 +9,7 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-Hans</language>
         <item>
-            <title><![CDATA[网站这件事我是认真的]]></title>
+            <title><![CDATA[节前把我的网站重构了一遍]]></title>
             <link>https://spacexcode.com/blog/refactor-my-website</link>
             <guid>https://spacexcode.com/blog/refactor-my-website</guid>
             <pubDate>Thu, 28 Sep 2023 00:00:00 GMT</pubDate>
