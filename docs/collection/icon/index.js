@@ -13,6 +13,9 @@ import { AcademicCap, AdjustmentsHorizontal, ArchiveBoxArrowDown, ArrowDownCircl
   BookOpen, Cog6Tooth, DocumentArrowDown, FingerPrint, EnvelopeOpen, Forward
 } from "./heroicon";
 
+import { Account, ActivateBreakpoints, Add, Archive, ArrowBoth, Beaker, BellDot, Book, BookMark, BriefCaseVs, BroadCast,
+  Browser, Bug, Build, Calendar, CallIncoming, CaseSensitive, Checklist } from './vscode';
+
 export const DevIconExample = () => {
   return (
     <div className='row'>
@@ -222,6 +225,70 @@ export const HeroiconExample = () => {
             <Forward />
           </ImageListItem>
         </ImageList>
+      </div>
+    </div>
+  )
+}
+
+export const VscodeIconExample = () => {
+  return (
+    <div className='row'>
+      <div className='col col--12'>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Account />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <ActivateBreakpoints />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Add />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Archive />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <ArrowBoth />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Beaker />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <BellDot />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Book />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <BookMark />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <BriefCaseVs />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <BroadCast />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Browser />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Bug />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Build />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Calendar />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CallIncoming />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CaseSensitive />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Checklist />
+        </div>
+        
       </div>
     </div>
   )
