@@ -16,7 +16,7 @@ import { AcademicCap, AdjustmentsHorizontal, ArchiveBoxArrowDown, ArrowDownCircl
 import { Account, ActivateBreakpoints, Add, Archive, ArrowBoth, Beaker, BellDot, Book, BookMark, BriefCaseVs, BroadCast,
   Browser, Bug, Build, Calendar, CallIncoming, CaseSensitive, Checklist, ChromeClose, ChromeRestore, CircleSlash,
   CircuitBoard, ClearAll, Clippy, CloseAll, CloudDownload, Code, CollapseAll, ColorMode, CommentDiscussion, CommentDiscussionQuote,
-  Dashboard, Database } from './vscode';
+  Dashboard, Database, DebugAltSmall } from './vscode';
 
 export const DevIconExample = () => {
   return (
@@ -334,6 +334,9 @@ export const VscodeIconExample = () => {
         </div>
         <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
           <Database />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <DebugAltSmall />
         </div>
       </div>
     </div>
