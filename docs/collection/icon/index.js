@@ -14,7 +14,9 @@ import { AcademicCap, AdjustmentsHorizontal, ArchiveBoxArrowDown, ArrowDownCircl
 } from "./heroicon";
 
 import { Account, ActivateBreakpoints, Add, Archive, ArrowBoth, Beaker, BellDot, Book, BookMark, BriefCaseVs, BroadCast,
-  Browser, Bug, Build, Calendar, CallIncoming, CaseSensitive, Checklist } from './vscode';
+  Browser, Bug, Build, Calendar, CallIncoming, CaseSensitive, Checklist, ChromeClose, ChromeRestore, CircleSlash,
+  CircuitBoard, ClearAll, Clippy, CloseAll, CloudDownload, Code, CollapseAll, ColorMode, CommentDiscussion, CommentDiscussionQuote,
+  Dashboard, Database } from './vscode';
 
 export const DevIconExample = () => {
   return (
@@ -288,7 +290,51 @@ export const VscodeIconExample = () => {
         <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
           <Checklist />
         </div>
-        
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <ChromeClose />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <ChromeRestore />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CircleSlash />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CircuitBoard />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <ClearAll />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Clippy />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CloseAll />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CloudDownload />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Code />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CollapseAll />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <ColorMode />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CommentDiscussion />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <CommentDiscussionQuote />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Dashboard />
+        </div>
+        <div className='text--center' style={{ display: 'inline-block', margin: '0 10px' }}>
+          <Database />
+        </div>
       </div>
     </div>
   )
