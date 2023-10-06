@@ -19,9 +19,11 @@ import ResizeBlock from '@site/src/components/ResizeBlock';
 
 export const ShowAllComps = () => (
   <div className='row'>
-    <div className='col col--6 margin-bottom--md'>
+    <div className='col col--6 margin-bottom--lg'>
       <div className='card'>
-        <div className='card__header'>浏览器窗口</div>
+        <div className='card__header'>
+          <h4>浏览器窗口</h4>
+        </div>
         <div className='card__body'>
           <BrowserWindow>
             <div className='text--center'>
@@ -31,13 +33,15 @@ export const ShowAllComps = () => (
           </BrowserWindow>
         </div>
         <div className='card__footer'>
-          <a className='button button--secondary button--block' href='/docs/snippet/component/browser-window'>查看详情</a>
+          <a className='button button--secondary button--block button--outline' href='/docs/snippet/component/browser-window'>查看详情</a>
         </div>
       </div>
     </div>
-    <div className='col col--6 margin-bottom--md'>
+    <div className='col col--6 margin-bottom--lg'>
       <div className='card'>
-        <div className='card__header'>演示区域</div>
+        <div className='card__header'>
+          <h4>演示区域</h4>
+        </div>
         <div className='card__body'>
           <div style={{ margin: '-40px 0 -20px'}}>
             <DemoArea>
@@ -46,13 +50,15 @@ export const ShowAllComps = () => (
           </div>
         </div>
         <div className='card__footer'>
-          <a className='button button--secondary button--block' href='/docs/snippet/component/demo-area'>查看详情</a>
+          <a className='button button--secondary button--block button--outline' href='/docs/snippet/component/demo-area'>查看详情</a>
         </div>
       </div>
     </div>
-    <div className='col col--6 margin-bottom--md'>
+    <div className='col col--6 margin-bottom--lg'>
       <div className='card'>
-        <div className='card__header'>边框上跑动的光影</div>
+        <div className='card__header'>
+          <h4>边框上跑动的光影</h4>
+        </div>
         <div className='card__body'>
           <AnimateLinear>
             <div>
@@ -62,13 +68,15 @@ export const ShowAllComps = () => (
           </AnimateLinear>
         </div>
         <div className='card__footer'>
-          <a className='button button--secondary button--block' href='/docs/snippet/component/animate-border-liner'>查看详情</a>
+          <a className='button button--secondary button--block button--outline' href='/docs/snippet/component/animate-border-liner'>查看详情</a>
         </div>
       </div>
     </div>
-    <div className='col col--6 margin-bottom--md'>
+    <div className='col col--6 margin-bottom--lg'>
       <div className='card'>
-        <div className='card__header'>局部自定义鼠标样式</div>
+        <div className='card__header'>
+          <h4>局部自定义鼠标样式</h4>
+        </div>
         <div className='card__body'>
           <div id='wrapperId' className='text--center' style={{ padding: '50px 10px', border: '2px solid #ebedf0', borderRadius: '0.4rem'}}>
             <a className='button button--secondary'>move you mouse here</a>
@@ -76,13 +84,15 @@ export const ShowAllComps = () => (
           </div>
         </div>
         <div className='card__footer'>
-          <a className='button button--secondary button--block' href='/docs/snippet/component/custom-cursor'>查看详情</a>
+          <a className='button button--secondary button--block button--outline' href='/docs/snippet/component/custom-cursor'>查看详情</a>
         </div>
       </div>
     </div>
-    <div className='col col--6 margin-bottom--md'>
+    <div className='col col--6 margin-bottom--lg'>
       <div className='card'>
-        <div className='card__header'>开源项目仓库信息卡片</div>
+        <div className='card__header'>
+          <h4>开源项目仓库信息卡片</h4>
+        </div>
         <div className='card__body'>
           <GithubRepoCard 
             repoName='facebook/docusaurus'
@@ -93,13 +103,15 @@ export const ShowAllComps = () => (
           />
         </div>
         <div className='card__footer'>
-          <a className='button button--secondary button--block' href='/docs/snippet/component/custom-cursor'>查看详情</a>
+          <a className='button button--secondary button--block button--outline' href='/docs/snippet/component/custom-cursor'>查看详情</a>
         </div>
       </div>
     </div>
-    <div className='col col--6 margin-bottom--md'>
+    <div className='col col--6 margin-bottom--lg'>
       <div className='card'>
-        <div className='card__header'>可拖拽改变大小的区块</div>
+        <div className='card__header'>
+          <h4>可拖拽改变大小的区块</h4>
+        </div>
         <div className='card__body'>
           <ResizeBlock>
             <div style={{ 
@@ -114,7 +126,7 @@ export const ShowAllComps = () => (
           </ResizeBlock>
         </div>
         <div className='card__footer'>
-          <a className='button button--secondary button--block' href='/docs/snippet/component/custom-cursor'>查看详情</a>
+          <a className='button button--secondary button--block button--outline' href='/docs/snippet/component/custom-cursor'>查看详情</a>
         </div>
       </div>
     </div>
