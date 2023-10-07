@@ -1,0 +1,18 @@
+.flashing {
+  animation: breathe 1s infinite;
+}
+
+@keyframes breathe {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
