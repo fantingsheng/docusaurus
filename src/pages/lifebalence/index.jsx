@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineOppositeContent, TimelineDot } from '@mui/lab';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
@@ -84,11 +84,18 @@ function OneDayTimeline () {
   );
 }
 
-function Banner () {
+function Banner ({ timeStr }) {
   return (
     <div className='card margin-bottom--lg'>
       <div className='card__body'>
         <div className='text--center'>
+          <p style={{
+            fontSize: '20px',
+            display: 'border-box',
+            lineHeight: '1rem',
+            letterSpacing: '0.2rem',
+            webkitBoxReflect: 'below 1px linear-gradient(transparent, rgba(0, 0, 0, .3))'
+          }}>{ timeStr }</p>
           <p style={{ lineHeight: '2rem', marginBottom: '10px' }}>世界上唯一公平的事是每个人一天24小时<br />
             而如何度过这24小时，却有千万种方式<br />
             选择什么样的生物钟，决定了你将拥有什么样的人生
@@ -100,6 +107,17 @@ function Banner () {
 }
 
 export default function Index() {
+  const [ntime, setNtime] = useState(new Date())
+
+  const tick = () => {
+    setNtime(new Date());
+  }
+
+  useEffect(() => {
+    const intervalId = setInterval(() => tick(), 1000);
+    return () => clearInterval(intervalId);
+  }, [])
+
   return (
     <Layout
       title='打造高效的生物钟'
@@ -108,7 +126,7 @@ export default function Index() {
         <div className='container padding-vert--lg'>
           <div className='row'>
             <div className='col col--6 col--offset-3'>
-              <Banner />
+              <Banner timeStr={ntime.toLocaleTimeString() } />
             </div>
           </div>
           <div className='row'>
