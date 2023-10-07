@@ -18,6 +18,8 @@ import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 import AirlineSeatFlatAngledIcon from '@mui/icons-material/AirlineSeatFlatAngled';
 import LocalLibrarySharpIcon from '@mui/icons-material/LocalLibrarySharp';
 import { Typography } from '@mui/material';
+import GiscusComponent from '@site/src/components/GiscusComponent';
+import Divider from '@mui/material/Divider';
 
 function OneDayTimeline () {
   // color: ['success', 'error', 'primary', 'secondary', 'info', 'warning']
@@ -135,6 +137,16 @@ export default function Index() {
                 <h3>一天的时间安排</h3>
               </div>
               <OneDayTimeline />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col col--12 margin-top--lg'>
+              <Divider>您有什么好的建议，欢迎留言</Divider>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col col--10 col--offset-1'>
+              <GiscusComponent />
             </div>
           </div>
         </div>
