@@ -95,8 +95,8 @@ function Banner ({ timeStr }) {
             fontSize: '20px',
             display: 'border-box',
             lineHeight: '1rem',
-            letterSpacing: '0.2rem',
-            webkitBoxReflect: 'below 1px linear-gradient(transparent, rgba(0, 0, 0, .3))'
+            letterSpacing: '0.1rem',
+            webkitBoxReflect: 'below 3px linear-gradient(transparent, rgba(0, 0, 0, .3))'
           }}>{ timeStr }</p>
           <p style={{ lineHeight: '2rem', marginBottom: '10px' }}>世界上唯一公平的事是每个人一天24小时<br />
             而如何度过这24小时，却有千万种方式<br />
@@ -128,7 +128,7 @@ export default function Index() {
         <div className='container padding-vert--lg'>
           <div className='row'>
             <div className='col col--6 col--offset-3'>
-              <Banner timeStr={ntime.toLocaleTimeString() } />
+              <Banner timeStr={ntime.toLocaleTimeString().split(':').join(' : ') } />
             </div>
           </div>
           <div className='row'>
