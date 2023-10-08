@@ -36,7 +36,7 @@ function OneDayTimeline ({ timeStr }) {
     { id: 8, time: '13:00 pm', icon: <LaptopMacIcon />, color: 'success', variant: 'filled', align: 'right', title: '工作', intro: '午睡过后，身体解乏，可以好好地进行工作了'},
     { id: 9, time: '15:00 pm', icon: <EmojiPeopleIcon />, color: 'primary', variant: 'filled', align: 'right', title: '间歇休息', intro: '起来活动下吧'},
     { id: 10, time: '17:30 pm', icon: <DirectionsBikeIcon />, color: 'primary', variant: 'outlined', align: 'right', title: '下班', intro: '结束了一天的工作，利用路上的通勤时间，好好呼吸户外的空气'},
-    { id: 11, time: '18:30 pm', icon: <EscalatorWarningIcon />, color: 'secondary', variant: 'filled', align: 'right', title: '遛娃', intro: '回到家中，陪伴家人孩子'},
+    { id: 11, time: '18:35 pm', icon: <EscalatorWarningIcon />, color: 'secondary', variant: 'filled', align: 'right', title: '遛娃', intro: '回到家中，陪伴家人孩子'},
     { id: 12, time: '19:30 pm', icon: <RamenDiningIcon />, color: 'warning', variant: 'filled', align: 'right', title: '晚餐', intro: '晚餐是三餐中唯一可以和家人好好聚在一起吃饭的时候，要尽可能营造温馨的氛围'},
     { id: 13, time: '20:30 pm', icon: <FitnessCenterIcon />, color: 'info', variant: 'filled', align: 'right', title: '娱乐 + 锻炼', intro: '和孩子一起做些运动'},
     { id: 14, time: '21:30 pm', icon: <BathtubIcon />, color: 'secondary', variant: 'filled', align: 'right', title: '冲澡', intro: '冲去一天的疲惫'},
