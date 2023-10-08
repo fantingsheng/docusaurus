@@ -4,3 +4,57 @@ sidebar_position: 2
 
 # 博客
 
+Docusaurus 中的功能如博客、文档或页面都是由插件提供，而博客功能由插件 `plugin-content-blog` 提供支持。
+
+它的安装命令：
+
+```shell
+npm install --save @docusaurus/plugin-content-blog
+```
+
+一般安装 Docusaurus 应用默认自带博客插件的。
+
+默认项目根目录下有个 `blog` 目录，然后在配置文件中添加访问，或者直接通过 `https://域名/blog` 访问博客列表页面
+
+```
+module.exports = {
+  themeConfig: {
+    // ...
+    navbar: {
+      items: [
+        // ...
+        {to: 'blog', label: 'Blog', position: 'left'}, // or position: 'right'
+      ],
+    },
+  },
+};
+```
+
+## 添加博文
+
+在 `blog` 目录下创建 `my-first-blog.md` 文件，也可以是 `mdx` 后缀文件，以下是一篇博文的内容格式简介：
+
+```text title=my-first-blog.md
+---
+title: 我的第一篇博文
+description: 这是关于本篇博文的描述文字。
+slug: my-first-blog
+authors:
+  - name: Timfan
+    title: 高级前端开发
+    url: https://github.com/fantingsheng
+    image_url: https://spacexcode.com/img/avatar.png
+tags: [标签一, 标签二]
+image: https://i.imgur.com/mErPwqL.png
+hide_table_of_contents: false
+---
+
+这是文章的正文部分。。。
+
+<!-- truncate -->
+
+这段文字只有在文章详情页才能看到
+```
+
+`<!-- truncate -->` 这个标签的作用是在正文中截取一部分文字作为列表页的文章简介显示。
+
