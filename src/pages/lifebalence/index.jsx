@@ -113,7 +113,7 @@ function Banner ({ timeStr }) {
           <p style={{ lineHeight: '2rem', marginBottom: '10px' }}>
             世界上唯一公平的事是每个人一天24小时<br />
             而如何度过这24小时，却有千万种方式<br />
-            选择什么样的生物钟，决定了你将拥有什么样的人生
+            选择什么样的生物钟，将决定你拥有什么样的人生
           </p>
         </div>
       </div>
@@ -147,7 +147,7 @@ export default function Index() {
           <div className='row'>
             <div className='col col--10 col--offset-1'>
               <div className='text--center'>
-                <h3>一天的时间安排</h3>
+                <h3>我一天的时间安排</h3>
               </div>
               <OneDayTimeline timeStr={ntime.toLocaleTimeString()} />
             </div>
