@@ -6,6 +6,8 @@ sidebar_position: 2
 
 Docusaurus 中的功能如博客、文档或页面都是由插件提供，而博客功能由插件 `plugin-content-blog` 提供支持。
 
+## 安装博客功能插件
+
 它的安装命令：
 
 ```shell
@@ -14,7 +16,7 @@ npm install --save @docusaurus/plugin-content-blog
 
 一般安装 Docusaurus 应用默认自带博客插件的。
 
-默认项目根目录下有个 `blog` 目录，然后在配置文件中添加访问，或者直接通过 `https://域名/blog` 访问博客列表页面
+安装好之后，项目根目录下有个 `blog` 目录，然后在配置文件中添加导航菜单，或者直接通过 `https://域名/blog` 访问博客首页列表页面。
 
 ```
 module.exports = {
@@ -23,7 +25,7 @@ module.exports = {
     navbar: {
       items: [
         // ...
-        {to: 'blog', label: 'Blog', position: 'left'}, // or position: 'right'
+        {to: 'blog', label: '博客', position: 'left'}, // or position: 'right'
       ],
     },
   },
@@ -56,5 +58,60 @@ hide_table_of_contents: false
 这段文字只有在文章详情页才能看到
 ```
 
-`<!-- truncate -->` 这个标签的作用是在正文中截取一部分文字作为列表页的文章简介显示。
+`<!-- truncate -->` 这个标签的作用是在正文中截取一部分文字作为列表页的文章简介显示。没有该标签，列表页面会显示全文。
+
+文章的前置部分参数更多的详见 [API 文档](https://www.docusaurus.cn/docs/api/plugins/@docusaurus/plugin-content-blog#markdown-front-matter)
+
+这里讲解几个有代表性的
+
+- `date`：文章的创建时间，默认从文件名或者目录名中获取，比如：`2023-10-09-blog-post.md`, `2023-10-09-blog-post/index.md`, `2023/10/09/blog-post.md`，
+如果文章前置部分没有定义 `date` 参数，文件和目录名中也不包含日期，则从该文件的创建时间推断出。
+- `draft`：该参数一旦设置为 `true` ，则文章只会在开发模式中显示，也就是常见的草稿状态。
+- `unlisted`：设置该参数为 `true` 时，在开发环境和发布环境的列表页中都无法显示该文章，区别于 `draft` 参数，它可以通过文章链接访问，同时在 `sitemaps` 文件中
+也不包含该文章。
+- `hide_table_of_contents`：隐藏右侧的标题目录。
+
+## 博客列表页
+
+博客列表页的左侧最近文章标题通过 `blogSidebarTitle` 参数设置，数量通过 `blogSidebarCount` 配置。
+
+```js title=docusaurus.config.js
+module.exports = {
+  // ...
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
+        },
+        blog: {
+          blogTitle: '博客',
+          blogDescription: '前端开发知识总结分享',
+          blogSidebarTitle: '最近文章',
+          showReadingTime: true,
+          postsPerPage: 8,
+          blogSidebarCount: 15
+        }
+      }
+    ]
+  ]
+}
+```
+
+默认列表页每页显示10篇文章，如果你设置 `postsPerPage: 'ALL'`，则所有的文章都在第一页显示，也就没有了所谓的分页导航。
+
+## 文章发布时间
+
+上面已经提到文章的发布时间可以通过 `date` 参数设置或者从文件名或者目录名推断。如果我们不想让所有的文章都处在 `blog` 目录下，可以把文章
+`YYYY/MM/DD/my-blog-post-title.md` 这样按 `年/月/日` 分目录存放。
+
+这里有个问题，列表页的文章排列顺序是通过发布日期来排列的，如果在某一天发布多篇文章，那么如何决定这几篇文章的排列顺序呢？可以设置 `date` 参数格式日期到时间。
+
+```md title=blog-post.md
+---
+date: 2021-09-13T10:00
+---
+```
+
 
