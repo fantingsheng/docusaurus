@@ -69,11 +69,25 @@ export default function Home() {
                 </Stack>
               </div>
             </div>
+          </div>
+          <div className='row'>
             <div className='col col--8 col--offset-2'>
-              <div className='margin-bottom--xl'>
-                <h3>强大的本地搜索</h3>
+              <div className='margin-bottom--lg'>
+                <h4>强大的本地搜索</h4>
                 <p>只需加载一次，即可快速响应您的搜索。<br />
                   搜索功能由<a href="https://github.com/praveenn77/docusaurus-lunr-search"> docusaurus-lunr-search </a>提供技术支持。</p>
+              </div>
+            </div>
+            <div className='col col--8 col--offset-2'>
+              <div className='margin-bottom--lg'>
+                <h4>精准的模糊匹配</h4>
+                <p>根据你搜索的内容进行全站内容的关键字匹配</p>
+              </div>
+            </div>
+            <div className='col col--8 col--offset-2'>
+              <div className='margin-bottom--lg'>
+                <h4>快速触达目标页</h4>
+                <p>支持上下按键进行搜索内容条目的切换，点击或 Enter 键即可到达内容页面</p>
               </div>
             </div>
           </div>
