@@ -10,7 +10,7 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.searchBanner)}>
       <div className='container'>
-        <h1 className='hero__title'>找不到你想要的？</h1>
+        <h1 className='hero__title'>找不到你想要的？🔍</h1>
         <p className='hero__subtitle'>为什么不搜一搜</p>
       </div>
     </header>
@@ -21,12 +21,17 @@ export default function Home() {
   const searchRef = useRef()
   const searchList = [
     'React',
-    'CSS Loading 加载效果',
+    'CSS 加载动画	',
     'Vue 解决方案',
     '代码片段',
     '下载资源',
+    'CSS 网格背景',
     '响应式原理',
     '常见 UI 框架',
+    '网页图标',
+    '像素网格背景',
+    '键盘大写锁定',
+    'css 树状图',
     '代码在线运行工具',
     '虚拟DOM',
     '受控组件和非受控组件'
