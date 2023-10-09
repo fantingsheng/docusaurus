@@ -10,8 +10,10 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.searchBanner)}>
       <div className='container'>
-        <h1 className='hero__title'>找不到你想要的？🔍</h1>
-        <p className='hero__subtitle'>为什么不搜一搜</p>
+        <div className='padding-vert--lg'>
+          <h1 className='hero__title'>找不到你想要的？</h1>
+          <p className='hero__subtitle'>为什么不搜一搜 🔍</p>
+        </div>
       </div>
     </header>
   );
@@ -65,6 +67,13 @@ export default function Home() {
                     ))
                   }
                 </Stack>
+              </div>
+            </div>
+            <div className='col col--8 col--offset-2'>
+              <div className='margin-bottom--xl'>
+                <h3>强大的本地搜索</h3>
+                <p>只需加载一次，即可快速响应您的搜索。<br />
+                  搜索功能由<a href="https://github.com/praveenn77/docusaurus-lunr-search"> docusaurus-lunr-search </a>提供技术支持。</p>
               </div>
             </div>
           </div>
