@@ -68,6 +68,21 @@
   display: none;
 }
 
+/* 导航标新 */
+/* .navbar .navbar__items:nth-child(1) .navbar__item.navbar__link:nth-child(5) {
+  position: relative;
+  padding-right: 1.4rem;
+}
+.navbar .navbar__items:nth-child(1) .navbar__item.navbar__link:nth-child(5)::after {
+  content: 'new';
+  position: absolute;
+  right: -3px;
+  top: -5px;
+  font-size: 12px;
+  color: red;
+  font-style: italic;
+} */
+
 /* 搜索栏 */
 .navbar__search-input {
   width: 100%;
