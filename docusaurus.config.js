@@ -95,7 +95,7 @@ const config = {
             label: '代码片段'
           },
           {
-            label: '专题',
+            label: '📚 专题',
             type: 'docSidebar',
             position: 'left',
             sidebarId: 'topicSidebar'
