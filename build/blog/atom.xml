@@ -46,9 +46,8 @@
             <email>fants0230@sina.com</email>
             <uri>https://github.com/fantingsheng</uri>
         </author>
-        <category label="网格" term="网格"/>
-        <category label="背景" term="背景"/>
-        <category label="重复" term="重复"/>
+        <category label="网格背景" term="网格背景"/>
+        <category label="像素背景" term="像素背景"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Docusaurus V3.0 Beta 版本发布了 🎉]]></title>
