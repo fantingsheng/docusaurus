@@ -55,6 +55,11 @@
   border-left: 3px solid var(--ifm-color-primary-opacity);
 }
 
+code {
+  background: #f7f7f7;
+  border: 1px solid #ededed;
+}
+
 /* 域名文字渐变 */
 .domain-text-gradient {
   background: linear-gradient(120deg, #383c93 30%, #43a756);
