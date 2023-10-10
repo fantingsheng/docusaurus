@@ -21,7 +21,7 @@ export default function EmojiGallery ({ emojiList }) {
     setCopied(false);
   }
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, marginBottom: '4rem' }}>
       <Grid container spacing={2}>
         {
           emojiList.map((el, index) => (
