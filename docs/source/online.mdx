@@ -13,6 +13,9 @@ enable_donate: true
 解决一些资源在国内下载慢的问题
 
 ### VScode
+
+官网下载页面：[https://code.visualstudio.com/download](https://code.visualstudio.com/download)
+
 如果我们从官网下载跳转过去，最终大概是这么个地址：
 
 ```bash
@@ -36,7 +39,7 @@ export function BuildFastUrl () {
     if (link.includes('vo.msecnd.net') && link.includes('.exe')) {
       const index = link.indexOf('/stable');
       const newUrl = 'https://vscode.cdn.azure.cn' + link.substring(index, link.length);
-      setDownloadLink(link.split().splice(0, index, 'https://vscode.cdn.azure.cn').join(''))
+      setDownloadLink(newUrl)
     } else {
       setIsError(true);
       setHelpText('这是一个错误的下载链接');
