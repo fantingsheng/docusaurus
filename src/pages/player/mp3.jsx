@@ -80,15 +80,23 @@ const TinyText = styled(Typography)({
 export default function Main () {
   const audioPlayer = React.useRef();
   const theme = useTheme();
-  const duration = 240; // seconds
+  const [duration, setDuration] = React.useState(0); // seconds
   const [position, setPosition] = React.useState(0);
   const [paused, setPaused] = React.useState(true);
   const [volume, setVolume] = React.useState(0.3);
+  const [timer, setTimer] = React.useState(null);
 
-  function formatDuration(value) {
-    const minute = Math.floor(value / 60);
-    const secondLeft = value - minute * 60;
-    return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
+  function formatDuration(seconds) {
+    seconds = Math.floor(seconds);
+    let minutes = Math.floor(seconds / 60);
+    seconds %= 60;
+    if (minutes < 10) {
+      minutes =`0${minutes}`;
+    }
+    if (seconds < 10) {
+      seconds =`0${seconds}`;
+    }
+    return `${minutes}:${seconds}`;
   }
   const mainIconColor = theme.palette.mode === 'dark' ? '#fff' : '#000';
   const lightIconColor =
@@ -109,6 +117,31 @@ export default function Main () {
     setPosition(val);
     audioPlayer.current.currentTime = val;
   }
+
+  React.useEffect(() => {
+    audioPlayer.current.addEventListener('loadeddata', () => {
+      setDuration(audioPlayer.current.duration)
+    });
+    audioPlayer.current.addEventListener('play', () => {
+      if (timer) {
+        clearInterval(timer);
+      }
+      setTimer(setInterval(() => {
+        setPosition(audioPlayer.current.currentTime)
+      }, 1000));
+    });
+    audioPlayer.current.addEventListener('pause', () => {
+      if (timer) {
+        clearInterval(timer);
+      }
+    });
+    audioPlayer.current.addEventListener('ended', () => {
+      clearInterval(timer);
+      setPosition(audioPlayer.current.currentTime);
+    }, () => {
+      // next song
+    });
+  }, []);
 
   return (
     <div style={{ height: '100%', margin: 'auto' }}>
