@@ -11,6 +11,8 @@ import FastForwardRounded from '@mui/icons-material/FastForwardRounded';
 import FastRewindRounded from '@mui/icons-material/FastRewindRounded';
 import VolumeUpRounded from '@mui/icons-material/VolumeUpRounded';
 import VolumeDownRounded from '@mui/icons-material/VolumeDownRounded';
+import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 
 const WallPaper = styled('div')({
   position: 'absolute',
@@ -77,6 +79,15 @@ const TinyText = styled(Typography)({
   letterSpacing: 0.2,
 });
 
+const songList = [
+  {
+    artists: '林俊杰',
+    name: '那女孩对我说',
+    avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png',
+    link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3'
+  }
+]
+
 export default function Main () {
   const audioPlayer = React.useRef();
   const theme = useTheme();
@@ -85,6 +96,7 @@ export default function Main () {
   const [paused, setPaused] = React.useState(true);
   const [volume, setVolume] = React.useState(0.3);
   const [timer, setTimer] = React.useState(null);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
 
   function formatDuration(seconds) {
     seconds = Math.floor(seconds);
@@ -118,6 +130,20 @@ export default function Main () {
     audioPlayer.current.currentTime = val;
   }
 
+  const onPreview = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1); 
+    }
+  }
+
+  const onNext = () => {
+    if (currentIndex < songList.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(0);
+    }
+  }
+
   React.useEffect(() => {
     audioPlayer.current.addEventListener('loadeddata', () => {
       setDuration(audioPlayer.current.duration)
@@ -144,22 +170,26 @@ export default function Main () {
   }, []);
 
   return (
+    <Layout title='聆听音乐' description='闲暇时，让音乐作伴 🎵'>
+      <Head>
+        <meta name='keywords' content='音乐, mp3' />
+      </Head>
     <div style={{ height: '100%', margin: 'auto' }}>
       <Box sx={{ width: '100%', overflow: 'hidden' }}>
         <Widget>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <CoverImage>
               <img
-                alt='那女孩对我说 -- 林俊杰'
-                src='https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png'
+                alt={`${songList[currentIndex].name} -- ${songList[currentIndex].artists}`}
+                src={songList[currentIndex].avatar}
               />
             </CoverImage>
             <Box sx={{ ml: 1.5, minWidth: 0 }}>
               <Typography variant="caption" color="text.secondary" fontWeight={500}>
-                林俊杰
+                {songList[currentIndex].artists}
               </Typography>
               <Typography noWrap>
-                <b>那女孩对我说</b>
+                <b>{songList[currentIndex].name}</b>
               </Typography>
               <Typography noWrap letterSpacing={-0.25}>
                 心很空 天很大 云很重 我很孤单
@@ -220,8 +250,8 @@ export default function Main () {
               mt: -1,
             }}
           >
-            <audio ref={audioPlayer} src='https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3' />
-            <IconButton aria-label="previous song">
+            <audio ref={audioPlayer} src={songList[currentIndex].link} />
+            <IconButton aria-label="previous song" onClick={onPreview}>
               <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
             </IconButton>
             <IconButton
@@ -237,7 +267,7 @@ export default function Main () {
                 <PauseRounded sx={{ fontSize: '3rem' }} htmlColor={mainIconColor} />
               )}
             </IconButton>
-            <IconButton aria-label="next song">
+            <IconButton aria-label="next song" onClick={onNext}>
               <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
             </IconButton>
           </Box>
@@ -274,5 +304,6 @@ export default function Main () {
         <WallPaper />
       </Box>
     </div>
+    </Layout>
   );
 }
