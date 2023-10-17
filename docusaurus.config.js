@@ -154,6 +154,10 @@ const config = {
               {
                 label: '城市印象',
                 to: '/photo'
+              },
+              {
+                label: '音乐作伴',
+                to: '/player/mp3'
               }
             ],
           },
