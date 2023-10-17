@@ -157,7 +157,7 @@ const config = {
               },
               {
                 label: '音乐作伴',
-                to: '/player/mp3'
+                to: '/player'
               }
             ],
           },
