@@ -111,6 +111,7 @@ function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }) {
     }
     return `${minutes}:${seconds}`;
   }
+
   const mainIconColor = theme.palette.mode === 'dark' ? '#fff' : '#000';
   const lightIconColor =
     theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)';
@@ -121,7 +122,6 @@ function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }) {
   }
 
   const onChangeVolume = (val) => {
-    console.log(val)
     setVolume(val);
     audioPlayer.current.volume = val;
   };
@@ -147,14 +147,17 @@ function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }) {
 
   React.useEffect(() => {
     audioPlayer.current.addEventListener('loadeddata', () => {
-      setDuration(audioPlayer.current.duration)
+      setDuration(audioPlayer.current?.duration)
+      if (!paused) {
+        audioPlayer.current.play()
+      }
     });
     audioPlayer.current.addEventListener('play', () => {
       if (timer) {
         clearInterval(timer);
       }
       setTimer(setInterval(() => {
-        setPosition(audioPlayer.current.currentTime)
+        setPosition(audioPlayer.current?.currentTime)
       }, 1000));
     });
     audioPlayer.current.addEventListener('pause', () => {
@@ -164,11 +167,11 @@ function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }) {
     });
     audioPlayer.current.addEventListener('ended', () => {
       clearInterval(timer);
-      setPosition(audioPlayer.current.currentTime);
-    }, () => {
-      // next song
+      setPosition(audioPlayer.current?.currentTime);
+      setPaused(true);
+      onNext();
     });
-  }, []);
+  }, [songList, currentIndex]);
 
   return (
     <div style={{ height: '100%', margin: 'auto' }}>
@@ -318,6 +321,7 @@ function MusicQueue({ songList, currentIndex, changeCurrentIndex }) {
       <List>
         {songList.map((item, index) => (
           <ListItem
+            sx={{ backgroundColor: currentIndex === index ? '#F0F7FF' : '' }}
             key={index} 
             secondaryAction={
               currentIndex === index ? <Checkbox
@@ -374,6 +378,20 @@ export default function () {
       avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697503257045-7a262b7d-0df0-4005-a69c-2a645ac24c27.png',
       link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/饿狼传说-张靓颖.mp3',
       lyric: '她熄掉晚灯 幽幽掩两肩 交织了火花 拘禁在沉淀'
+    },
+    {
+      artists: '田馥甄',
+      name: '小幸运',
+      avatar: 'https://i-fanr.oss-cn-hangzhou.aliyuncs.com/1697555700510-b01089f9-9e54-421b-b8eb-19f1864733c8.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/小幸运-田馥甄.mp3',
+      lyric: '我听见雨滴落在青青草地 我听见远方下课钟声响起'
+    },
+    {
+      artists: '吉克隽逸',
+      name: '被动',
+      avatar: 'https://i-fanr.oss-cn-hangzhou.aliyuncs.com/1697556417576-73272e5e-03ed-4a1e-98a2-70fbb954823d.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/被动-吉克隽逸.mp3',
+      lyric: '我可以很久 不和你联络 任日子一天天这么过'
     }
   ];
 
