@@ -1,0 +1,80 @@
+---
+title: 音乐播放器
+position: 3
+enable_comment: true
+---
+
+import Form from '@site/src/pages/player/index';
+import Drawer from '@mui/material/Drawer';
+import { Player, MusicQueue } from '@site/src/pages/player/index'
+
+export function MyMp3Player () {
+  const songList = [
+    {
+      artists: '林俊杰',
+      name: '那女孩对我说',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3',
+      lyric: '心很空 天很大 云很重 我很孤单'
+    },
+    {
+      artists: '张靓颖',
+      name: '终于等到你',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697503257045-7a262b7d-0df0-4005-a69c-2a645ac24c27.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/终于等到你-张靓颖.mp3',
+      lyric: '到了某个年纪你就会知道 一个人的日子真的难熬'
+    },
+    {
+      artists: '张靓颖',
+      name: '饿狼传说',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697503257045-7a262b7d-0df0-4005-a69c-2a645ac24c27.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/饿狼传说-张靓颖.mp3',
+      lyric: '她熄掉晚灯 幽幽掩两肩 交织了火花 拘禁在沉淀'
+    }
+  ];
+  const [open, setOpen] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  return (
+    <div style={{ height: '325px', padding: '30px 0', position: 'relative', display: 'flex', alignItems: 'center' }}>
+      <Player
+        openDraw={() => setOpen(true)}
+        songList={songList}
+        currentIndex={currentIndex}
+        changeCurrentIndex={ val => setCurrentIndex(val)} 
+      />
+      <Drawer
+        anchor='bottom'
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <MusicQueue
+          currentIndex={currentIndex}
+          songList={songList}
+          changeCurrentIndex={ val => setCurrentIndex(val)}
+        />
+      </Drawer>
+    </div>
+  )
+}
+
+<MyMp3Player />
+
+
+## 介绍
+
+这是为自己制作的一个在线 Web 版的音乐播放器。众所周知，现在市面上的所有的音乐平台都是会员制。而免费的资源却分散在网络上的各个角落，为此，我收集了自己
+喜欢的音乐，放到自己的服务器上，并制作了这样一个专属歌单的简单的音乐播放器。
+
+
+## 实现讲解
+
+播放器虽然简单，但也是五脏俱全，该有的功能一个都没少。比如常见的音乐播放器，都有哪些功能？
+
+- 调节播放进度的进度条
+- 调节声音大小的按键
+- 暂停/开始播放按键
+- 切换下一首/上一首按键
+- 查看歌单的界面
+
+
+

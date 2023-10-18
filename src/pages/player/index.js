@@ -90,7 +90,7 @@ const TinyText = styled(Typography)({
   letterSpacing: 0.2,
 });
 
-function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }) {
+export function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }) {
   const audioPlayer = React.useRef();
   const theme = useTheme();
   const [duration, setDuration] = React.useState(0); // seconds
@@ -312,7 +312,7 @@ function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }) {
   );
 }
 
-function MusicQueue({ songList, currentIndex, changeCurrentIndex }) {
+export function MusicQueue({ songList, currentIndex, changeCurrentIndex }) {
   return (
     <Box
       sx={{ width: 'auto' }}
@@ -407,7 +407,8 @@ export default function () {
         openDraw={() => setOpen(true)}
         songList={songList}
         currentIndex={currentIndex}
-        changeCurrentIndex={ val => setCurrentIndex(val)} />
+        changeCurrentIndex={ val => setCurrentIndex(val)} 
+      />
       <Drawer
         anchor='bottom'
         open={open}
@@ -416,7 +417,8 @@ export default function () {
         <MusicQueue
           currentIndex={currentIndex}
           songList={songList}
-          changeCurrentIndex={ val => setCurrentIndex(val)} />
+          changeCurrentIndex={ val => setCurrentIndex(val)}
+        />
       </Drawer>
     </Layout>
   )
