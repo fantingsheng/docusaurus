@@ -68,13 +68,320 @@ export function MyMp3Player () {
 
 ## 实现讲解
 
-播放器虽然简单，但也是五脏俱全，该有的功能一个都没少。比如常见的音乐播放器，都有哪些功能？
+该播放器虽然简单，但也是五脏俱全，该有的功能一个都没少。比如常见的音乐播放器，我们能想到的功能有：
 
+- 暂停/开始播放按键
 - 调节播放进度的进度条
 - 调节声音大小的按键
-- 暂停/开始播放按键
 - 切换下一首/上一首按键
 - 查看歌单的界面
+
+### 界面
+
+如果不考虑界面， Web 端的音频播放有现成的标签 `audio` 支持
+
+```
+<audio controls src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3" />
+```
+
+这是浏览器渲染的默认样式，各个浏览器可能会有差异。我们要实现一个音乐播放器，当然要所有端的样式统一。这个时候，我们就移除 `controls` 属性，让
+实际的播放组件在页面上什么都不显示。然后我们自己去实现上面的所有控件。
+
+<audio controls src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3" />
+
+由于这个站点引入的是 Material UI，为了统一视觉，就使用里面现成的组件去实现。
+
+```jsx live
+function player () {
+  const [paused, setPaused] = React.useState(true);
+
+  return (
+    <Box sx={{ width: '100%', overflow: 'hidden' }}>
+      <div style={{
+        padding: 16,
+        borderRadius: 16,
+        width: 343,
+        maxWidth: '100%',
+        margin: 'auto',
+        position: 'relative',
+        zIndex: 1,
+        backgroundColor: 'rgba(255,255,255,0.4)',
+        backdropFilter: 'blur(40px)'
+      }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+          <div style={{
+            width: 100,
+            height: 100,
+            objectFit: 'cover',
+            overflow: 'hidden',
+            flexShrink: 0,
+            borderRadius: 8,
+            backgroundColor: 'rgba(0,0,0,0.08)',
+            '& > img': {
+              width: '100%',
+            }
+          }}>
+            <img alt='那女孩对我说' src='https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png' />
+          </div>
+          <Box sx={{ position: 'absolute', top: 0, right: 0 }}>
+            <IconButton aria-label="music queue">
+              <QueueMusicIcon fontSize="small" htmlColor='rgba(0,0,0,0.4)' />
+            </IconButton>
+          </Box>
+          <Box sx={{ ml: 1.5, minWidth: 0 }}>
+            <Typography variant="caption" color="text.secondary" fontWeight={500}> 林俊杰 </Typography>
+            <Typography noWrap> <b>那女孩对我说</b> </Typography>
+            <Typography noWrap letterSpacing={-0.25}> 心很空 天很大 云很重 我很孤单 </Typography>
+          </Box>
+        </Box>
+        <Slider aria-label="time-indicator" size="small" value={30} min={0} step={1} max={405}
+          sx={{
+            color: 'rgba(0,0,0,0.87)',
+            height: 4,
+            '& .MuiSlider-thumb': {
+              width: 8,
+              height: 8,
+              transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
+              '&:before': {
+                boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)',
+              },
+              '&:hover, &.Mui-focusVisible': {
+                boxShadow: `0px 0px 0px 8px ${
+                  'rgb(0 0 0 / 16%)'
+                }`,
+              },
+              '&.Mui-active': {
+                width: 20,
+                height: 20,
+              },
+            },
+            '& .MuiSlider-rail': {
+              opacity: 0.28,
+            },
+          }}
+        />
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: -2 }}
+        >
+          <div style={{ fontSize: '0.75rem', opacity: 0.38, fontWeight: 500, letterSpacing: 0.2 }}>00:30</div>
+          <div style={{ fontSize: '0.75rem', opacity: 0.38, fontWeight: 500, letterSpacing: 0.2 }}>-04:00</div>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: -1 }}
+        >
+          <audio src='https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3' />
+          <IconButton aria-label="previous song">
+            <FastRewindRounded fontSize="large" htmlColor='#000' />
+          </IconButton>
+          <IconButton aria-label='pause'>
+            <PauseRounded sx={{ fontSize: '3rem' }} htmlColor='#000' />
+          </IconButton>
+          <IconButton aria-label="next song">
+            <FastForwardRounded fontSize="large" htmlColor='#000' />
+          </IconButton>
+        </Box>
+        <Stack spacing={2} direction="row" sx={{ mb: 1, px: 1 }} alignItems="center">
+          <VolumeDownRounded htmlColor='rgba(0,0,0,0.4)' />
+          <Slider aria-label="Volume" value={0.3} min={0} step={0.01} max={1}
+            sx={{
+              color: 'rgba(0,0,0,0.87)',
+              '& .MuiSlider-track': {
+                border: 'none',
+              },
+              '& .MuiSlider-thumb': {
+                width: 16,
+                height: 16,
+                backgroundColor: '#fff',
+                '&:before': {
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.4)',
+                },
+                '&:hover, &.Mui-focusVisible, &.Mui-active': {
+                  boxShadow: 'none',
+                },
+              },
+            }}
+          />
+          <VolumeUpRounded htmlColor='rgba(0,0,0,0.4)' />
+        </Stack>
+      </div>
+    </Box>
+  )
+}
+```
+
+至此以上代码，初步实现了基本的播放器界面，然后我们需要对每个功能控件添加事件实现它应该有的功能。
+
+### 播放按钮
+
+控制播放器的播放，我们可以通过 `audio` 提供的 `play()` 和 `pause()` 接口，首先我们使用 `useRef` 获取音频组件的实例，然后通过判断
+当前的播放状态，调用播放和暂停接口。
+
+```jsx
+function Player () {
+  const audioPlayer = useRef();
+  const [paused, setPaused] = useState(true);
+  const onPlayOrPause = () => {
+    paused ? audioPlayer.current.play() : audioPlayer.current.pause();
+    setPaused(!paused)
+  }
+}
+```
+
+> 下面所有使用的变量 `audioPlayer` 代表获取的 `<audio ref="audioPlayer" />` 播放器实例
+
+### 调节进度
+
+在 `Slider` 组件上绑定 `onChange` 事件，此时 `Slider` 组件中的最大值即为该音频资源的最大时长。回调中拿到设置的进度值后赋值给 `currentTime` 属性。
+
+```jsx
+const [position, setPosition] = useState(0); // 表示当前的播放进度值
+
+const onChangeProgress = (val) => {
+  setPosition(val);
+  audioPlayer.current.currentTime = val;
+}
+```
+
+这个音频的资源时长，可以通过监听资源加载完成事件，通过 `duration` 属性获取。它单位为**毫秒(ms)**。
+
+```jsx
+audioPlayer.current.addEventListener('loadeddata', () => {
+  setDuration(audioPlayer.current?.duration)
+});
+```
+
+### 调节音量
+
+音量的调节和进度同样使用的是 `Slider` 组件，不过它的最大值为 `1`，步长为 `0.01`。
+
+改变音量时，将获取到的音量值赋给 `audioPlayer` 实例的 `volumn` 属性。
+
+```jsx
+const onChangeVolume = (val) => {
+  setVolume(val);
+  audioPlayer.current.volume = val;
+};
+```
+
+### 切换歌单
+
+切换上一首/下一首，无非就是改变当前播放的音频资源。该音频资源对应到资源列表的索引值，我们通过控制索引值去列表中获取不同的音乐素材。
+
+这里要考虑边界值的情况，当切换的时候碰到最大值和最小值，如果允许循环，那么在索引值等于数组长度时，将它的值重置为 `0`。
+
+```jsx
+// 上一首
+const onPreview = () => {
+  if (currentIndex > 0) {
+    changeCurrentIndex(currentIndex - 1); 
+  }
+}
+
+// 下一首
+const onNext = () => {
+  if (currentIndex < songList.length - 1) {
+    changeCurrentIndex(currentIndex + 1);
+  } else {
+    changeCurrentIndex(0);
+  }
+}
+```
+
+### 查看歌单
+
+除了所有的功能按钮，右上角还有一个查看歌单的按钮，点击从底部弹出一个 `drawer` 抽屉组件。里面列出了一个收藏的音乐列表。
+
+```jsx live
+function MusicQueue() {
+  const songList = [
+    {
+      artists: '林俊杰',
+      name: '那女孩对我说',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3',
+      lyric: '心很空 天很大 云很重 我很孤单'
+    },
+    {
+      artists: '张靓颖',
+      name: '终于等到你',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697503257045-7a262b7d-0df0-4005-a69c-2a645ac24c27.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/终于等到你-张靓颖.mp3',
+      lyric: '到了某个年纪你就会知道 一个人的日子真的难熬'
+    },
+    {
+      artists: '张靓颖',
+      name: '饿狼传说',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697503257045-7a262b7d-0df0-4005-a69c-2a645ac24c27.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/饿狼传说-张靓颖.mp3',
+      lyric: '她熄掉晚灯 幽幽掩两肩 交织了火花 拘禁在沉淀'
+    }
+  ];
+  return (
+    <Box sx={{ width: 'auto' }} role="presentation">
+      <List>
+        {songList.map((item, index) => (
+          <ListItem
+            key={index} 
+            disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Avatar alt={item.artists} src={item.avatar} />
+              </ListItemIcon>
+              <ListItemText secondary={
+                <React.Fragment>
+                  <Typography sx={{ display: 'inline' }} component="span" variant="body1" color="text.primary">
+                    {item.name}
+                  </Typography>
+                  {' -- ' + item.artists}
+                </React.Fragment>
+              } />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+}
+```
+
+至此我们已经实现了界面上所有的控制按钮的功能。最后需要完善下一些边界和初始情况的处理。
+
+当音频在播放的时候，进度条需要随着当前播放时间变化而变化。这里采用定时器，每隔一秒获取播放资源的当前播放时间点，同步给 `Slider` 组件的 `value` 属性来定位。
+
+```jsx
+const [timer, setTimer] = useState(null);
+
+audioPlayer.current.addEventListener('play', () => {
+  if (timer) {
+    clearInterval(timer);
+  }
+  setTimer(setInterval(() => {
+    setPosition(audioPlayer.current?.currentTime)
+  }, 1000));
+});
+audioPlayer.current.addEventListener('pause', () => {
+  if (timer) {
+    clearInterval(timer);
+  }
+});
+```
+
+还有歌词的显示，下一步计划加上~
+
+## 总结
+
+实现一个定制的音乐播放器不复杂，控制功能的实现都有现成的接口：
+
+- 播放 `play()`
+- 暂停 `pause()`
+- 播放进度通过 `currentTime` 获取
+- 音量控制通过 `volumn` 的值控制
+- 音频的自动播放通过 `autoplay` 属性
+- 控制音频播放的时候为静音 `muted`
+- 当前音频资源循环播放通过属性 `loop`
+
+我们需要考虑的是如何优化界面，毕竟一款颜值高的播放器和动听的音乐才能给我们带来内心的愉悦。
+
+
+
 
 
 
