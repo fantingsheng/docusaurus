@@ -16,7 +16,7 @@ export default function NotFound() {
           <div className="container">
             <div className="row">
               <div className="col col--6 col--offset-3">
-                <div className='margin-vert--xl'>
+                <div style={{ margin: '80px 0' }}>
                   <h1 className="hero__title">
                     <Translate
                       id="theme.NotFound.title"
