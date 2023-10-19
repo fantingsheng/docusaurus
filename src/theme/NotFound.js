@@ -16,7 +16,7 @@ export default function NotFound() {
           <div className="container">
             <div className="row">
               <div className="col col--6 col--offset-3">
-                <h1 className="hero__title">
+                <h1 className="hero__title margin-top--xl">
                   <Translate
                     id="theme.NotFound.title"
                     description="The title of the 404 page">
