@@ -68,7 +68,7 @@ export default function AlbumGallery () {
       <div className='container'>
         <div className='row'>
           <div className='col col--12 margin-top--md'>
-            <div style={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end'}}>
+            <div style={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
               <ToggleButtonGroup
                 value={col}
                 exclusive
@@ -132,7 +132,6 @@ export default function AlbumGallery () {
           </div>
         </div>
       </div>
-      
     </Layout>
   )
 }

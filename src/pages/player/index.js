@@ -174,7 +174,7 @@ export function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }
   }, [songList, currentIndex]);
 
   return (
-    <div style={{ height: '100%', margin: 'auto' }}>
+    <div style={{ height: 'calc(100vh - 60px)', display: 'flex', alignItems: 'center', position: 'relative' }}>
       <Box sx={{ width: '100%', overflow: 'hidden' }}>
         <Widget>
           <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
@@ -387,11 +387,11 @@ export default function () {
       lyric: '我听见雨滴落在青青草地 我听见远方下课钟声响起'
     },
     {
-      artists: '吉克隽逸',
-      name: '被动',
-      avatar: 'https://i-fanr.oss-cn-hangzhou.aliyuncs.com/1697556417576-73272e5e-03ed-4a1e-98a2-70fbb954823d.png',
-      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/被动-吉克隽逸.mp3',
-      lyric: '我可以很久 不和你联络 任日子一天天这么过'
+      artists: '陈楚生',
+      name: '思念一个荒废的名字',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697877607095-d3b63545-7b0f-4af0-b317-49360d65a341.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/思念一个荒废的名字-陈楚生.mp3',
+      lyric: '留下最后一盏月的光 因为孤单 害怕夜的黑'
     }
   ];
 
