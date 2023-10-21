@@ -3,3 +3,30 @@ sidebar_position: 4
 ---
 
 # 页面
+
+页面功能由插件 `plugin-content-pages` 提供支持。它也是 Docusaurus 的默认插件。
+
+在位于项目的根目录下有个 `pages` 目录，你不仅可以使用 `md/mdx` 格式的文件来生成独立页面，更可以使用 React 代码来建立页面。
+
+## 页面布局
+
+如果你的页面是以 `mdx` 文件生成的，则它是默认包含网站公共的头部导航和底部的。
+
+而如果你的页面是通过新建的 `jsx` 代码生成的，它是不包含公共部分的。你需要导入 `Layout` 和 `Head` 组件。
+
+```jsx title=/src/pages/photo.jsx
+import React from 'react';
+import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
+
+export default function () {
+  return (
+    <Layout title='城市印象' description='记录自己的城市风景，居一城，爱一城'>
+      <Head>
+        <meta name='keywords' content='城市, 风景, 无锡, 随手拍, 江南, 太湖' />
+      </Head>
+    </Layout>
+    {/* ... */}
+  )
+}
+```
