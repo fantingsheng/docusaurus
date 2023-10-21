@@ -174,141 +174,139 @@ export function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }
   }, [songList, currentIndex]);
 
   return (
-    <div style={{ height: 'calc(100vh - 60px)', display: 'flex', alignItems: 'center', position: 'relative' }}>
-      <Box sx={{ width: '100%', overflow: 'hidden' }}>
-        <Widget>
-          <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-            <CoverImage>
-              <img
-                alt={`${songList[currentIndex].name} -- ${songList[currentIndex].artists}`}
-                src={songList[currentIndex].avatar}
-              />
-            </CoverImage>
-            <Box sx={{ position: 'absolute', top: 0, right: 0 }}>
-              <IconButton aria-label="music queue" onClick={openDraw}>
-                <QueueMusicIcon fontSize="small" htmlColor={lightIconColor} />
-              </IconButton>
-            </Box>
-            <Box sx={{ ml: 1.5, minWidth: 0 }}>
-              <Typography variant="caption" color="text.secondary" fontWeight={500}>
-                {songList[currentIndex].artists}
-              </Typography>
-              <Typography noWrap>
-                <b>{songList[currentIndex].name}</b>
-              </Typography>
-              <Typography noWrap letterSpacing={-0.25}>
-                {songList[currentIndex].lyric}
-              </Typography>
-            </Box>
+    <Box sx={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+      <Widget>
+        <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+          <CoverImage>
+            <img
+              alt={`${songList[currentIndex].name} -- ${songList[currentIndex].artists}`}
+              src={songList[currentIndex].avatar}
+            />
+          </CoverImage>
+          <Box sx={{ position: 'absolute', top: 0, right: 0 }}>
+            <IconButton aria-label="music queue" onClick={openDraw}>
+              <QueueMusicIcon fontSize="small" htmlColor={lightIconColor} />
+            </IconButton>
           </Box>
+          <Box sx={{ ml: 1.5, minWidth: 0 }}>
+            <Typography variant="caption" color="text.secondary" fontWeight={500}>
+              {songList[currentIndex].artists}
+            </Typography>
+            <Typography noWrap>
+              <b>{songList[currentIndex].name}</b>
+            </Typography>
+            <Typography noWrap letterSpacing={-0.25}>
+              {songList[currentIndex].lyric}
+            </Typography>
+          </Box>
+        </Box>
+        <Slider
+          aria-label="time-indicator"
+          size="small"
+          value={position}
+          min={0}
+          step={1}
+          max={duration}
+          onChange={(_, value) => onChangeProgress(value)}
+          sx={{
+            color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
+            height: 4,
+            '& .MuiSlider-thumb': {
+              width: 8,
+              height: 8,
+              transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
+              '&:before': {
+                boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)',
+              },
+              '&:hover, &.Mui-focusVisible': {
+                boxShadow: `0px 0px 0px 8px ${
+                  theme.palette.mode === 'dark'
+                    ? 'rgb(255 255 255 / 16%)'
+                    : 'rgb(0 0 0 / 16%)'
+                }`,
+              },
+              '&.Mui-active': {
+                width: 20,
+                height: 20,
+              },
+            },
+            '& .MuiSlider-rail': {
+              opacity: 0.28,
+            },
+          }}
+        />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            mt: -2,
+          }}
+        >
+          <TinyText>{formatDuration(position)}</TinyText>
+          <TinyText>-{formatDuration(duration - position)}</TinyText>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            mt: -1,
+          }}
+        >
+          <audio ref={audioPlayer} src={songList[currentIndex].link} />
+          <IconButton aria-label="previous song" onClick={onPreview}>
+            <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
+          </IconButton>
+          <IconButton
+            aria-label={paused ? 'play' : 'pause'}
+            onClick={onPlayOrPause}
+          >
+            {paused ? (
+              <PlayArrowRounded
+                sx={{ fontSize: '3rem' }}
+                htmlColor={mainIconColor}
+              />
+            ) : (
+              <PauseRounded sx={{ fontSize: '3rem' }} htmlColor={mainIconColor} />
+            )}
+          </IconButton>
+          <IconButton aria-label="next song" onClick={onNext}>
+            <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
+          </IconButton>
+        </Box>
+        <Stack spacing={2} direction="row" sx={{ mb: 1, px: 1 }} alignItems="center">
+          <VolumeDownRounded htmlColor={lightIconColor} />
           <Slider
-            aria-label="time-indicator"
-            size="small"
-            value={position}
+            aria-label="Volume"
+            value={volume}
             min={0}
-            step={1}
-            max={duration}
-            onChange={(_, value) => onChangeProgress(value)}
+            step={0.01}
+            max={1}
+            onChange={(_, value) => onChangeVolume(value)}
             sx={{
               color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
-              height: 4,
-              '& .MuiSlider-thumb': {
-                width: 8,
-                height: 8,
-                transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
-                '&:before': {
-                  boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)',
-                },
-                '&:hover, &.Mui-focusVisible': {
-                  boxShadow: `0px 0px 0px 8px ${
-                    theme.palette.mode === 'dark'
-                      ? 'rgb(255 255 255 / 16%)'
-                      : 'rgb(0 0 0 / 16%)'
-                  }`,
-                },
-                '&.Mui-active': {
-                  width: 20,
-                  height: 20,
-                },
+              '& .MuiSlider-track': {
+                border: 'none',
               },
-              '& .MuiSlider-rail': {
-                opacity: 0.28,
+              '& .MuiSlider-thumb': {
+                width: 16,
+                height: 16,
+                backgroundColor: '#fff',
+                '&:before': {
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.4)',
+                },
+                '&:hover, &.Mui-focusVisible, &.Mui-active': {
+                  boxShadow: 'none',
+                },
               },
             }}
           />
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              mt: -2,
-            }}
-          >
-            <TinyText>{formatDuration(position)}</TinyText>
-            <TinyText>-{formatDuration(duration - position)}</TinyText>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mt: -1,
-            }}
-          >
-            <audio ref={audioPlayer} src={songList[currentIndex].link} />
-            <IconButton aria-label="previous song" onClick={onPreview}>
-              <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
-            </IconButton>
-            <IconButton
-              aria-label={paused ? 'play' : 'pause'}
-              onClick={onPlayOrPause}
-            >
-              {paused ? (
-                <PlayArrowRounded
-                  sx={{ fontSize: '3rem' }}
-                  htmlColor={mainIconColor}
-                />
-              ) : (
-                <PauseRounded sx={{ fontSize: '3rem' }} htmlColor={mainIconColor} />
-              )}
-            </IconButton>
-            <IconButton aria-label="next song" onClick={onNext}>
-              <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
-            </IconButton>
-          </Box>
-          <Stack spacing={2} direction="row" sx={{ mb: 1, px: 1 }} alignItems="center">
-            <VolumeDownRounded htmlColor={lightIconColor} />
-            <Slider
-              aria-label="Volume"
-              value={volume}
-              min={0}
-              step={0.01}
-              max={1}
-              onChange={(_, value) => onChangeVolume(value)}
-              sx={{
-                color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
-                '& .MuiSlider-track': {
-                  border: 'none',
-                },
-                '& .MuiSlider-thumb': {
-                  width: 16,
-                  height: 16,
-                  backgroundColor: '#fff',
-                  '&:before': {
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.4)',
-                  },
-                  '&:hover, &.Mui-focusVisible, &.Mui-active': {
-                    boxShadow: 'none',
-                  },
-                },
-              }}
-            />
-            <VolumeUpRounded htmlColor={lightIconColor} />
-          </Stack>
-        </Widget>
-        <WallPaper />
-      </Box>
-    </div>
+          <VolumeUpRounded htmlColor={lightIconColor} />
+        </Stack>
+      </Widget>
+      <WallPaper />
+    </Box>
   );
 }
 
@@ -403,23 +401,25 @@ export default function () {
       <Head>
         <meta name='keywords' content='音乐, mp3' />
       </Head>
-      <Player
-        openDraw={() => setOpen(true)}
-        songList={songList}
-        currentIndex={currentIndex}
-        changeCurrentIndex={ val => setCurrentIndex(val)} 
-      />
-      <Drawer
-        anchor='bottom'
-        open={open}
-        onClose={() => setOpen(false)}
-      >
-        <MusicQueue
-          currentIndex={currentIndex}
+      <div style={{ height: 'calc(100vh - 60px)', display: 'flex', alignItems: 'center', position: 'relative' }}>
+        <Player
+          openDraw={() => setOpen(true)}
           songList={songList}
-          changeCurrentIndex={ val => setCurrentIndex(val)}
+          currentIndex={currentIndex}
+          changeCurrentIndex={ val => setCurrentIndex(val)} 
         />
-      </Drawer>
+        <Drawer
+          anchor='bottom'
+          open={open}
+          onClose={() => setOpen(false)}
+        >
+          <MusicQueue
+            currentIndex={currentIndex}
+            songList={songList}
+            changeCurrentIndex={ val => setCurrentIndex(val)}
+          />
+        </Drawer>
+      </div>
     </Layout>
   )
 }
