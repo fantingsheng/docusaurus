@@ -4,10 +4,31 @@
         <title>太空编程 Blog</title>
         <link>https://spacexcode.com/blog</link>
         <description>太空编程 Blog</description>
-        <lastBuildDate>Thu, 28 Sep 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 23 Oct 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-Hans</language>
+        <item>
+            <title><![CDATA[学会用数据说话，我的网站统计]]></title>
+            <link>https://spacexcode.com/blog/data-analysis</link>
+            <guid>https://spacexcode.com/blog/data-analysis</guid>
+            <pubDate>Mon, 23 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[我的站点从搭建之日就接入了统计工具，为什么我一直很在意网站数据的统计📊？因为我确确实实把自己的网站当产品在做，我需要关注网站每天的受访情况和当前访问用户的在网页上的一些]]></description>
+            <content:encoded><![CDATA[<p>我的站点从搭建之日就接入了统计工具，为什么我一直很在意网站数据的统计📊？因为我确确实实把自己的网站当产品在做，我需要关注网站每天的受访情况和当前访问用户的在网页上的一些
+行为来作为反馈，来验证自己的文章和作品在网上产生的关注度和影响力。</p><p>有人可能会说，你写个博客为什么要那么功利心？我觉得做凡事都要有个目的性，不达目的不罢休，这样你才能获得长久的动力。有功利心也没什么不好，至少在你成功之前，你需要通过一些手段
+来证明你的能力。不要一开始就那么佛系，觉得我写了就好了，给了自己心理安慰，发布出去然后扔在那里不管了。</p><p>对于我的作品，我一定要长期关注它的动态，并持续地做跟进，这也是我对文章开放评论的一个目的。根据网友的反馈，我能知道自己写的东西对哪些人产生了共鸣，以及哪些方面还需要改进。</p><p>最近一直在关注网站的一组统计数据，<strong>平均访问时长</strong>和<strong>新老访客</strong>。忽然发现我对统计数据的关注点也在发生改变，以前我太过关注网站的 <code>PV</code> 和 <code>UV</code>，会被一时突破的数字冲昏头脑，觉得自己的网站开始行了，
+而那一时很高的访问量可能是通过社交平台分享所带来的。也可能仅仅是起了一个很好的标题恰恰被人看到了而已💁‍♂️，并不是文章的质量的内核有多丰富。</p><p>平均访问时长和新老访客这两个数据维度都能直接反映你的网站受欢迎程度。用户进入网站可能跟某单一因素有关，而访问时长直接说明了用户有没有耐心看完你的文章，或进一步查看网站上的其它内容。如果他们在网站上发现
+了其它有价值的内容，一时无法看完，还会将你的网站放入收藏夹，再次进行访问。</p><p>下面我分析了百度后台我的网站的统计数据，分别以当前日期往前推最近的两个月新老访客的访问时长的变化：📈</p><p><img loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1698043872731-344d88bf-3a7b-4c34-8c75-0db925baa93c.png" class="img_ev3q"></p><p>从以上表格数据可以看出：</p><ul><li>平均访问时长这个月 <code>00:04:14</code> 比上个月的 <code>00:03:25</code> 有所增加。</li><li>跳出率这个月 <code>67.27%</code> 也比上个月的 <code>78.22%</code> 减少了 <code>11%</code> 的样子。</li></ul><p>虽然目前的网站的留存有所改观，但是我不知道访客看了内容在想什么？如何让作者和访客之间建立有效的沟通，评论不可少。现在评论功能用的是 <a href="https://giscus.app/zh-CN" target="_blank" rel="noopener noreferrer">Giscus</a>，它是基于
+Github Discussion 功能开发的开源的插件。用户要评论，首先得用 Github 账号登录下。我不知道有多少开发人员有 Github 账号，这个评论还是有点门槛的，除非用户有很强的评论意愿，否则这个
+注册和登录的流程就会让很多人在评论时打退堂鼓。</p><p>一时的访问量可以通过一些推广手段获得，但是这个评论反馈真的没有什么好的办法，还是放稳心态，持续创作高质量的内容📝，只有对别人产生价值，这样才会收获一批忠实的关注者。</p><p>再回过头来，谈谈关于网站的数据统计工具。如果你不想使用百度统计或 Google Analytics 这样的第三方集成的统计工具，还可以自己搭建私有的，比如：Umami，它的优点就是代码可控，数据私有。可根据自己的需要
+进行统计和数据分析。</p><p><strong>Umami</strong><br>
+<a href="https://umami.is" target="_blank" rel="noopener noreferrer">https://umami.is</a></p><blockquote><p>Umami makes it easy to collect, analyze, and understand your web data — while maintaining visitor privacy and data ownership.</p></blockquote><p>这个项目根据自己的需要进行站点统计数据的收集和分析，数据存储在自己的服务器上，可以有效保护网站数据的隐私。</p><p>统计界面简洁美观，可对外展示，<a href="https://analytics.umami.is/share/LGazGOecbDtaIwDr/umami.is" target="_blank" rel="noopener noreferrer">Demo</a></p><p>开源仓库信息：</p><a class="linkCard_sQvP" href="https://github.com/umami-software/umami" target="_blank"><article><span class="rightButton_GvBE"><span class="icon_zatK"><svg viewBox="0 0 128 128"><g fill="#181616"><path fill-rule="evenodd" clip-rule="evenodd" d="M64 5.103c-33.347 0-60.388 27.035-60.388 60.388 0 26.682 17.303 49.317 41.297 57.303 3.017.56 4.125-1.31 4.125-2.905 0-1.44-.056-6.197-.082-11.243-16.8 3.653-20.345-7.125-20.345-7.125-2.747-6.98-6.705-8.836-6.705-8.836-5.48-3.748.413-3.67.413-3.67 6.063.425 9.257 6.223 9.257 6.223 5.386 9.23 14.127 6.562 17.573 5.02.542-3.903 2.107-6.568 3.834-8.076-13.413-1.525-27.514-6.704-27.514-29.843 0-6.593 2.36-11.98 6.223-16.21-.628-1.52-2.695-7.662.584-15.98 0 0 5.07-1.623 16.61 6.19C53.7 35 58.867 34.327 64 34.304c5.13.023 10.3.694 15.127 2.033 11.526-7.813 16.59-6.19 16.59-6.19 3.287 8.317 1.22 14.46.593 15.98 3.872 4.23 6.215 9.617 6.215 16.21 0 23.194-14.127 28.3-27.574 29.796 2.167 1.874 4.097 5.55 4.097 11.183 0 8.08-.07 14.583-.07 16.572 0 1.607 1.088 3.49 4.148 2.897 23.98-7.994 41.263-30.622 41.263-57.294C124.388 32.14 97.35 5.104 64 5.104z"></path><path d="M26.484 91.806c-.133.3-.605.39-1.035.185-.44-.196-.685-.605-.543-.906.13-.31.603-.395 1.04-.188.44.197.69.61.537.91zm2.446 2.729c-.287.267-.85.143-1.232-.28-.396-.42-.47-.983-.177-1.254.298-.266.844-.14 1.24.28.394.426.472.984.17 1.255zM31.312 98.012c-.37.258-.976.017-1.35-.52-.37-.538-.37-1.183.01-1.44.373-.258.97-.025 1.35.507.368.545.368 1.19-.01 1.452zm3.261 3.361c-.33.365-1.036.267-1.552-.23-.527-.487-.674-1.18-.343-1.544.336-.366 1.045-.264 1.564.23.527.486.686 1.18.333 1.543zm4.5 1.951c-.147.473-.825.688-1.51.486-.683-.207-1.13-.76-.99-1.238.14-.477.823-.7 1.512-.485.683.206 1.13.756.988 1.237zm4.943.361c.017.498-.563.91-1.28.92-.723.017-1.308-.387-1.315-.877 0-.503.568-.91 1.29-.924.717-.013 1.306.387 1.306.88zm4.598-.782c.086.485-.413.984-1.126 1.117-.7.13-1.35-.172-1.44-.653-.086-.498.422-.997 1.122-1.126.714-.123 1.354.17 1.444.663zm0 0"></path></g></svg></span></span><header><h3>umami-software/umami</h3><p>Umami is a simple, fast, privacy-focused alternative to Google Analytics.</p><dl><dt>Stars</dt><dd>17.3K</dd><dt>LANGUAGE</dt><dd>Next.js</dd></dl></header></article></a>]]></content:encoded>
+            <author>fants0230@sina.com (Timfan)</author>
+            <category>数据</category>
+            <category>统计</category>
+            <category>分析</category>
+            <category>留存</category>
+        </item>
         <item>
             <title><![CDATA[双节前把我的网站重构了一遍]]></title>
             <link>https://spacexcode.com/blog/refactor-my-website</link>
