@@ -174,7 +174,7 @@ export function Player ({ songList, openDraw, currentIndex, changeCurrentIndex }
   }, [songList, currentIndex]);
 
   return (
-    <Box sx={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+    <Box sx={{ width: '100%', margin: 'auto', overflow: 'hidden' }}>
       <Widget>
         <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
           <CoverImage>
