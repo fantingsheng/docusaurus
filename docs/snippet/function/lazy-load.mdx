@@ -1,0 +1,129 @@
+---
+title: 图片懒加载
+hide_table_of_contents: true
+---
+
+# 图片懒加载
+
+```js
+// 创建 IntersectionObserver 实例
+const observer = new IntersectionObserver((entries, observer) => {
+  // 遍历观察的元素
+  entries.forEach(entry => {
+    // 如果元素可见
+    if (entry.isIntersecting) {
+      // 加载图片
+      const img = entry.target;
+      const src = img.getAttribute('data-src');
+      img.setAttribute('src', src);
+
+      // 停止观察该元素
+      observer.unobserve(img);
+    }
+  });
+});
+
+// 获取所有需要懒加载的图片元素
+const lazyImages = document.querySelectorAll('.lazy-img');
+
+// 观察每个图片元素
+lazyImages.forEach(image => {
+  observer.observe(image);
+});
+```
+
+## 介绍
+
+这个功能主要的底层逻辑是使用 [IntersectionObserver API](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)，`IntersectionObserver` 接口用于在浏览器中观察元素的
+可见性和位置变化。它可以帮助开发者实现一些动态行为，如图片的懒加载、无限滚动、进场出场动画等。
+
+实例方法：
+
+- `disconnect()`：使 `IntersectionObserver` 对象停止监听目标；
+- `observe()`：使 `IntersectionObserver` 开始监听一个目标元素；
+- `takeRecords()`：返回所有观察目标的 `IntersectionObserverEntry` 对象数组；
+- `unobserve()`：使 `IntersectionObserver` 停止监听特定目标元素。
+
+:::info
+`intersection` 中文有交叉的意思，`IntersectionObserver` 接口提供了一种异步观察目标元素与其祖先元素或顶级文档视口（viewport）交叉状态的方法。
+类似还有接口还有：
+[PerformanceObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceObserver)，
+[ResizeObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserver)，
+[MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver)
+:::
+
+## 使用方法
+
+```jsx live
+function ImageLazyLoad () {
+  const imgsRef = useRef([]);
+  const observer = new IntersectionObserver((entries, observer) => {
+    // 遍历观察的元素
+    entries.forEach(entry => {
+      console.log("entry", entry)
+      // 如果元素可见，或者 intersectionRatio 为 1
+      if (entry.isIntersecting) {
+        // 加载图片
+        const img = entry.target;
+        const src = img.getAttribute('data-src');
+        img.setAttribute('src', src);
+
+        // 停止观察该元素
+        observer.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: "0px", // 根元素的边距
+    threshold: 0.5, // 可见性比例阈值
+    once: true
+  });
+
+  useEffect(() => {
+    // 获取所有需要懒加载的图片元素
+
+    // 观察每个图片元素
+    Object.keys(imgsRef.current).forEach((e) => 
+      observer.observe(imgsRef.current[e])
+    );
+  }, []);
+
+  return (
+    <div style={{ height: '300px', overflowY: 'scroll' }}>
+      {
+        new Array(10).fill(10).map((_, idx) => (
+          <div style={{ textAlign: 'center' }} key={idx}>
+            <img
+              ref={el => imgsRef.current[idx] = el}
+              src="https://via.placeholder.com/200"
+              data-src={`https://picsum.photos/id/${idx + 1}/200`}
+              alt="image"
+            />
+          </div>
+        ))
+      }
+    </div>
+  )
+}
+```
+
+以上图片占位符用到了服务接口 `https://via.placeholder.com`，后面数字表示图片的长和宽，之间用 `x` 连接如果只有一个数字，则表示正方形的边长。
+
+```md
+![](https://via.placeholder.com/80x80)
+```
+
+![](https://via.placeholder.com/80x80)
+
+随机图片使用的是 `https://picsum.photos` 网站提供的服务，国内访问速度很慢不稳定。
+
+```md
+![](https://picsum.photos/200/300) // 长为 200 宽为 300 的图片
+![](https://picsum.photos/200) // 边长为 200 的图片
+```
+
+指定 id 的图片
+
+```md
+![](https://picsum.photos/id/1/200/300) // 长为 200 宽为 300 的图片
+![](https://picsum.photos/id/2/200) // 边长为 200 的图片
+```
