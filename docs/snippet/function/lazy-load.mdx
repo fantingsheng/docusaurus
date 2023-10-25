@@ -34,6 +34,8 @@ lazyImages.forEach(image => {
 
 ## 介绍
 
+当一个页面中的图片资源很多的时候，为了加载时有好的体验，优先加载出现在可视区域的图片，随着网页往下滚动，逐渐加载其它的图片资源，这就是所谓的懒加载。
+
 这个功能主要的底层逻辑是使用 [IntersectionObserver API](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)，`IntersectionObserver` 接口用于在浏览器中观察元素的
 可见性和位置变化。它可以帮助开发者实现一些动态行为，如图片的懒加载、无限滚动、进场出场动画等。
 
