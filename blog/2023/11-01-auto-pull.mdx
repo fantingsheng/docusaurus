@@ -1,0 +1,100 @@
+---
+slug: auto-pull
+title: 加个定时任务自动发布代码
+authors: [timfan]
+tags: [定时任务, 发布, Git]
+enable_comment: true
+enable_donate: true
+enable_adsense: true
+---
+
+现在我的网站代码发布的流程是这样的：
+
+```mermaid
+flowchart LR
+  Update["更新代码"] --> Build["打包后推送到 Git"]
+  Build --> SSH[" ssh 远程登录服务器"]
+  SSH --> Pull["执行 shell 脚本拉最新代码"]
+```
+
+从持续集成的自动化角度看，目前还远远不是最优方案，但是经过慢慢探索，尽量减少开发到发布过程中人为参与的部分，就很满意了。
+
+今天突然想把手动执行 shell 脚本这一步也干掉，我采用的是通过定时任务每隔半小时执行一次脚本，虽然还不能做到精准的推送代码到远程分支就立马触发线上发布，但对于自己的
+个人网站项目目前自动化程度也还是可以接受的，没必要搞一大堆高大上的工具来辅助。
+
+<!-- truncate -->
+
+### Crontab 命令介绍
+
+crontab 命令详解：
+
+```
+crontab –e     //修改 crontab 文件，如果文件不存在会自动创建。
+crontab –l      //显示 crontab 文件。
+crontab -r      //删除 crontab 文件。
+crontab -ir     //删除 crontab 文件前提醒用户。
+ 
+service crond status     //查看crontab服务状态
+service crond start     //启动服务 
+service crond stop     //关闭服务 
+service crond restart     //重启服务 
+service crond reload     //重新载入配置
+```
+
+格式说明：
+
+```
+*　　*　　*　　*　　*　　command
+分  时　 日　 月　 周　  命令
+```
+
+每分钟运行一次命令：
+
+```
+1 * * * * sh test.sh
+// 或者
+*/1 * * * * sh test.sh
+```
+
+每个工作日的 23:59 执行一次
+
+```
+59 23 * * 1,2,3,4,5 sh test.sh   
+// 或者  
+59 23 * * 1-5 sh test.sh
+```
+
+
+
+### 编辑定时任务
+
+这里我们使用 `crontab -e` 命令编辑文件，每隔半小时执行一次，并将执行脚本的输出日志记录到 `git-pull.log` 文件中。
+
+```
+30 * * * * sh /tmp/release.sh > /tmp/git-pull.log
+```
+
+重启定时任务，使之生效：
+
+```shell
+service crond restart
+```
+
+### 测试运行
+
+大约过个半小时（为了测试方便，也可以设置每分钟执行一次），查看日志文件：
+
+```
+[root@ifanr tmp]# cat /tmp/git-pull.log
+Already up-to-date.
+代码拉取成功！
+```
+
+### 拓展
+
+我目前有两套写代码的工作环境，在公司使用的惠普电脑，安装的 Windows 10 系统，家里用的 MacBook Pro，所以有些工具也会有些不同， 
+SSH 远程登录服务器 Win 端用的是一款名叫 [putty](https://www.putty.org) 的工具，Mac 端则用的是 [iTerm2](https://iterm2.com)，它们都是完全免费的，且都很好用。
+
+Git 的 GUI 工具则两端使用的都是 [SourceTree](https://www.sourcetreeapp.com)。
+
+代码目前还是 Gitee 和 Github 都各自保存一份，服务器在国内，还是优先从 Gitee 仓库同步代码吧。
