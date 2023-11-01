@@ -19,4 +19,5 @@
   padding-left: var(--ifm-toc-padding-horizontal);
   width: 100%;
   overflow: hidden;
+  border-left: 1px solid var(--ifm-toc-border-color);
 }
