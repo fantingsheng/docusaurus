@@ -32,12 +32,24 @@ const MyComponent = (props) => {
 
 const MyComponentWithLogger = withLogger(MyComponent);
 
-export default MyComponentWithLogger;`
+export default MyComponentWithLogger;`,
+`function Bookmark({ slug }) {
+  return (
+    <button
+      formAction={async () => {
+        "use server";
+        await sql \`INSERT INTO Bookmarks (slug) VALUES (\${slug});\`;
+      }}
+    >
+      <BookmarkIcon />
+    </button>
+  );
+}`
 ]
 
 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-const codeIndex = random(0, 2);
+const codeIndex = random(0, codeList.length);
 const codeStr = codeList[codeIndex]
 
 function MagicWriter() {
