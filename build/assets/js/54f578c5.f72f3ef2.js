@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[6572],{34651:s=>{s.exports=JSON.parse('{"label":"Vue3","permalink":"/blog/tags/vue-3","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

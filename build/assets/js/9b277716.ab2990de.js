@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[5655],{38868:a=>{a.exports=JSON.parse('{"label":"Material UI","permalink":"/blog/tags/material-ui","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
