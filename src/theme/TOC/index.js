@@ -17,7 +17,7 @@ export default function TOC({className, ...props}) {
         linkActiveClassName={LINK_ACTIVE_CLASS_NAME}
       />
       <div className={styles.adsWrap}>
-        <GoogleAdsBlock model='pureShow' />
+        <GoogleAdsBlock model='pureShow' height='90px' />
       </div>
     </div>
   );
