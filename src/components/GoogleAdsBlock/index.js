@@ -54,7 +54,7 @@ export default function GoogleAdsBlock({ model, height }) {
   }, [])
 
   return (
-    <div className='adsense' style={{ height: 'auto', width: '100%', margin: '20px 0'}}>
+    <div className='adsense' style={{ height: 'auto', width: '100%', margin: '20px 0', backgroundColor: '#f9f9f9' }}>
       { model && adsenseBuilder() }
     </div>
   );

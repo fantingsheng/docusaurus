@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkspacexcode_com=self.webpackChunkspacexcode_com||[]).push([[7118],{28682:e=>{e.exports=JSON.parse('{"label":"Nest","permalink":"/blog/tags/nest","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
