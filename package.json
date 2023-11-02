@@ -1,6 +1,6 @@
 {
-  "name": "docusaurus",
-  "version": "0.0.0",
+  "name": "spacexcode.com",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -25,13 +25,14 @@
     "@excalidraw/excalidraw": "^0.15.2",
     "@giscus/react": "^2.2.8",
     "@mdx-js/react": "^3.0.0",
-    "@mui/icons-material": "^5.11.16",
+    "@mui/icons-material": "^5.14.16",
     "@mui/lab": "^5.0.0-alpha.140",
-    "@mui/material": "^5.13.6",
+    "@mui/material": "^5.14.16",
     "@node-rs/jieba": "^1.7.2",
+    "@node-rs/jieba-win32-x64-msvc": "^1.7.2",
     "busuanzi.pure.js": "^1.0.3",
     "clsx": "^1.2.1",
-    "docusaurus-lunr-search": "^2.3.2",
+    "docusaurus-lunr-search": "^3.2.0",
     "docusaurus-plugin-sass": "^0.2.5",
     "highlight.js": "^11.8.0",
     "html2canvas": "^1.4.1",
@@ -46,6 +47,10 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.0.0",
     "@docusaurus/types": "3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "browserslist": {
     "production": [
