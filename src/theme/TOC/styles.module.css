@@ -28,7 +28,9 @@
   justify-content: space-around;
   align-items: center;
   border-radius: 2px;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem;
   color: rgba(60, 60, 60, 0.33);
   height: 40px;
+  margin-top: 10px;
 }

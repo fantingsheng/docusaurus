@@ -42,7 +42,8 @@ function a11yProps(index) {
 
 export function Main () {
   const functionList = [
-    'forEach', 'map', 'filter', 'reduce', 'find', 'findIndex', 'includes'
+    'forEach', 'map', 'filter', 'reduce', 'find', 'findIndex', 'findLast', 'findLastIndex', 'indexOf', 'lastIndexOf', 'includes', 'some', 'every', 'concat', 'slice', 
+    'join', 'entries', 'keys', 'values', 'flat', 'toString', 'Array.from'
   ]
   const [value, setValue] = React.useState(0);
 
