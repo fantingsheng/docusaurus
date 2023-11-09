@@ -149,7 +149,7 @@ const config = {
                 to: '/handraw',
               },
               {
-                label: '代码图片',
+                label: '代码图片生成器',
                 to: '/codeimage',
               },
               {
@@ -157,8 +157,12 @@ const config = {
                 to: '/photo'
               },
               {
-                label: '音乐作伴',
+                label: '音乐播放器',
                 to: '/player'
+              },
+              {
+                label: '更新日志',
+                to: '/release/log'
               }
             ],
           },
