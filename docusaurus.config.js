@@ -120,12 +120,12 @@ const config = {
             title: '其它站点',
             items: [
               {
-                label: '前端开发笔记',
-                to: 'https://i-fanr.com/',
-              },
-              {
                 label: '个人主页',
                 to: 'https://blog.i-fanr.com/'
+              },
+              {
+                label: '前端开发笔记',
+                to: 'https://i-fanr.com/',
               },
               {
                 label: '悦己工作室',
