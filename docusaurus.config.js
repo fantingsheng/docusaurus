@@ -196,23 +196,27 @@ const config = {
             items: [
               {
                 label: 'Vue',
-                href: 'https://cn.vuejs.org/',
+                href: 'https://cn.vuejs.org',
               },
               {
                 label: 'React',
-                href: 'https://zh-hans.react.dev/',
+                href: 'https://zh-hans.react.dev',
               },
               {
                 label: 'Svelte',
-                href: 'https://www.svelte.cn/'
+                href: 'https://www.svelte.cn'
+              },
+              {
+                label: 'NodeJS',
+                href: 'https://nodejs.org'
               },
               {
                 label: 'Next.js',
-                href: 'https://nextjs.org/'
+                href: 'https://nextjs.org'
               },
               {
                 label: 'Nuxt',
-                href: 'https://nuxt.com/'
+                href: 'https://nuxt.com'
               }
             ],
           },
