@@ -1,0 +1,38 @@
+---
+slug: box-shadow-and-drop-shadow
+title: box-shadow 和 drop-shadow 之间的区别
+authors: [timfan]
+tags: [阴影]
+draft: true
+enable_comment: true
+enable_donate: true
+enable_adsense: true
+---
+
+`box-shadow` 和 `drop-shadow` 都是用于给元素创建阴影的 CSS 属性，但它们之间存在一些区别。
+
+`box-shadow` 会在元素的整个框周围创建阴影，包括任何填充和边框。它有四个必需的值：水平偏移、垂直偏移、模糊半径和扩展半径。你还可以指定阴影的颜色。以下是一个示例：
+
+```css
+box-shadow: 2px 2px 5px #888888;
+```
+
+`drop-shadow` 会在元素后面创建一个阴影，使其看起来脱离页面。它仅适用于元素的实际形状，忽略任何填充和边框。`drop-shadow` 具有两个必需的值：水平偏移和垂直偏移，并允许
+你指定模糊半径、扩展半径以及阴影的颜色。以下是一个示例：
+
+<!-- truncate -->
+
+```css
+drop-shadow(2px 2px 5px #888888);
+```
+
+因此，总体而言，`box-shadow` 会在元素的整个框周围应用阴影，而 `drop-shadow` 只会在元素的形状上应用阴影。
+
+那么，使用 `drop-shadow` 还是 `box-shadow` 呢？
+决定使用 `box-shadow` 还是 `drop-shadow` 最终取决于你项目的具体设计需求和背景。
+
+如果你需要在包括填充和边框的元素周围创建阴影，那么选择 `box-shadow` 是更好的选择。另一方面，如果你想要创建一个使元素脱离页面的阴影，且不希望阴影包括填充和边框，那么选择 `drop-shadow` 是更合适的方式。
+
+需要注意的是，并非所有浏览器都支持 `drop-shadow`，并且在 Safari 和较早版本的 Chrome 中需要使用 -webkit 前缀。因此，如果需要支持较旧的浏览器或希望确保跨浏览器兼容性，那么 `box-shadow` 可能是更安全的选择。
+
+总的来说，`box-shadow` 和 `drop-shadow` 都有各自独特的优势和用途，最佳选择取决于你项目的具体设计要求。
