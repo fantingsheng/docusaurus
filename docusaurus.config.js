@@ -107,9 +107,13 @@ const config = {
             { to: '/shapedivider', label: '分隔线工具' },
             { to: '/handraw', label: '手绘做图工具' },
             { to: '/codeimage', label: '代码图片生成器' },
+            { to: '/cssglass', label: '制作毛玻璃效果' },
             { to: '/lifebalence', label: '高效的生物钟' }
           ] },
-          { to: '/about', label: '关于', position: 'right' }
+          { label: '关于', position: 'right', items: [
+            { to: '/about', label: '关于本站' },
+            { to: '/release/log', label: '更新日志' }
+          ] }
         ],
       },
       footer: {
@@ -159,10 +163,6 @@ const config = {
               {
                 label: '音乐播放器',
                 to: '/player'
-              },
-              {
-                label: '更新日志',
-                to: '/release/log'
               }
             ],
           },
