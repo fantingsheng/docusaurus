@@ -6,7 +6,7 @@ import styles from './style.module.scss';
 import { Box, Typography, Slider, Switch, Button, Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import CodeBlock from '@theme/CodeBlock';
-import html2canvas from 'html2canvas'
+import html2canvas from 'html2canvas';
 
 export const Main =  forwardRef(({ cssObj }, ref) => {
   return (
@@ -57,7 +57,7 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
           <Slider
             value={config.radius}
             min={0}
-            max={40}
+            max={25}
             onChange={e => handleFormChange(e.target.value, 'radius')}
             valueLabelDisplay="auto"
             aria-labelledby="width"
@@ -70,8 +70,8 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
           <Slider
             value={config.blur}
             min={0}
-            max={20}
-            step={1}
+            max={30}
+            step={0.5}
             onChange={e => handleFormChange(e.target.value, 'blur')}
             valueLabelDisplay="auto"
             aria-labelledby="width"
@@ -84,8 +84,8 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
           <Slider
             value={config.opacity}
             min={0}
-            max={1}
-            step={0.01}
+            max={0.8}
+            step={0.05}
             onChange={e => handleFormChange(e.target.value, 'opacity')}
             valueLabelDisplay="auto"
             aria-labelledby="width"
@@ -166,7 +166,6 @@ export default function () {
       scale: 2,
       backgroundColor: 'transparent'
     }).then((canvas) => {
-      const dataURL = canvas.toDataURL('image/png');
       let newImg = new Image()
       const date = new Date()
       newImg.src = canvas.toDataURL('image/png')
