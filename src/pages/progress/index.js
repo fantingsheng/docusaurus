@@ -28,7 +28,27 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
         <Typography sx={{ }} gutterBottom>
           背景色
         </Typography>
-        <ColorPicker onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} fullWidth />
+        <ColorPicker
+          value={config.bgColor}
+          onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
+          fullWidth
+        />
+      </Box>
+      <Box sx={{ marginBottom: '20px' }}>
+        <Typography sx={{ }} gutterBottom>
+          进度条类型
+        </Typography>
+        <Select
+          value={config.progressBarType}
+          onChange={val => handleConfigChange(val.target.value, 'progressBarType')}
+          label=""
+          size='small'
+          fullWidth
+        >
+          <MenuItem value='default'>默认</MenuItem>
+          <MenuItem value='bootstrap'>Bootstrap</MenuItem>
+          <MenuItem value='mui'>Material UI</MenuItem>
+        </Select>
       </Box>
       <Box sx={{ marginBottom: '20px' }}>
         <Typography sx={{ }} gutterBottom>
@@ -56,7 +76,6 @@ const Main = forwardRef(({ config }, ref) => {
   const desTime = new Date(2024, 0, 1, 7, 59);
   const fromTime = new Date(2023, 0, 1, 8);
 
-  const [nowTime, setNowTime] = useState(new Date());
   const [lstTime, setLstTime] = useState(0);
   const [percentage, setPercentage] = useState('');
   const [realPerct, setRealPerct] = useState('');
@@ -77,7 +96,6 @@ const Main = forwardRef(({ config }, ref) => {
   }
 
   const tick = () => {
-    setNowTime((new Date));
     setLstTime(desTime.getTime() - (new Date).getTime());
     caclPert();
   }
@@ -107,17 +125,17 @@ const Main = forwardRef(({ config }, ref) => {
 
   return (
     <div ref={ref} className={styles.card} style={{ background: config.bgColor }}>
-      <Typography variant="h5" sx={{ marginBottom: 4 }} gutterBottom>
+      <Typography variant="h4" sx={{ marginBottom: 4 }} gutterBottom>
         {config.title}
       </Typography>
       <div className={styles.progress}>
         <div className={styles.progressBar} style={{ width: realPerct }}>{percentage}</div>
       </div>
-      <Typography variant="body" sx={{ marginTop: 4 }} gutterBottom>
+      <Typography variant="h6" sx={{ marginTop: 4 }} gutterBottom>
         <LstTimeFormat lstInt={lstTime} config={config} />
       </Typography>
       <div>
-        <a href="https://weibo.com/" target="_blank">分享到微博</a>
+        <a href="https://weibo.com/" target="_blank">spacexcode.com</a>
       </div>
     </div>
   )
@@ -161,11 +179,11 @@ export default function () {
   }
   return (
     <Layout
-      title='距离 *** 还有多久'
+      title='年度进度显示'
       description='此工具生成测算距离某个日期还有多久'
     >
     <Head>
-      <meta name="keywords" content='多久, 中秋, 年底' />
+      <meta name="keywords" content='多久, 进度, 年底' />
     </Head>
       <div className={styles.main}>
         <div className={styles.left}>
