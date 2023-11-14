@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useState, forwardRef, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { Box, Typography, Slider, TextField, Select, MenuItem, Switch, Button, Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
+import { Box, Typography, Slider, LinearProgress, TextField, Select, MenuItem, Switch, Button, Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
 import styles from './style.module.scss';
 import { ColorPicker } from 'material-ui-color';
 import html2canvas from 'html2canvas'
@@ -46,7 +46,6 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           fullWidth
         >
           <MenuItem value='default'>默认</MenuItem>
-          <MenuItem value='bootstrap'>Bootstrap</MenuItem>
           <MenuItem value='mui'>Material UI</MenuItem>
         </Select>
       </Box>
@@ -128,9 +127,24 @@ const Main = forwardRef(({ config }, ref) => {
       <Typography variant="h4" sx={{ marginBottom: 4 }} gutterBottom>
         {config.title}
       </Typography>
-      <div className={styles.progress}>
-        <div className={styles.progressBar} style={{ width: realPerct }}>{percentage}</div>
-      </div>
+      {
+        config.progressBarType === 'default' ?
+        <div className={styles.progress}>
+          <div className={styles.progressBar} style={{ width: realPerct }}>{percentage}</div>
+        </div>
+        :
+        config.progressBarType === 'mui' ?
+        <Box sx={{ display: 'flex', width: '50%', alignItems: 'center' }}>
+          <Box sx={{ width: '100%', mr: 1 }}>
+            <LinearProgress variant="determinate" value={Number(realPerct.replace('%', ''))} />
+          </Box>
+          <Box sx={{ minWidth: 100 }}>
+            <Typography variant="body2" color="white">{percentage}</Typography>
+          </Box>
+        </Box>
+        :
+        <></>
+      }
       <Typography variant="h6" sx={{ marginTop: 4 }} gutterBottom>
         <LstTimeFormat lstInt={lstTime} config={config} />
       </Typography>
