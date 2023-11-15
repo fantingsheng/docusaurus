@@ -1,0 +1,133 @@
+---
+sidebar_position: 9
+---
+
+# Github 玩法
+
+import { useState } from 'react';
+import { Avatar, Box, Slider, Typography, Snackbar, Alert, AlertTitle, ToggleButtonGroup, ToggleButton, Grid, TextField, Button } from '@mui/material';
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## 用户头像
+
+export function GithubAvatar () {
+  const [copied, setCopied] = useState(false);
+  const [config, setConfig] = useState({
+    userId: '6924543',
+    size: 128
+  });
+  const handleFormChange = (val, key) => {
+    setConfig((prev) => ({ ...prev, [key]: val }));
+  };
+  const onCopyHandle = (iconText) => {
+    const link = `https://avatars.githubusercontent.com/u/${config.userId}?v=4&size=${config.size}`
+    navigator.clipboard.writeText(link)
+    .then(() => {
+      setCopied(true);
+      console.log("已成功复制到剪贴板");
+    })
+    .catch((error) => {
+      console.error("复制时出错: ", error);
+    });
+  }
+  return (
+    <Box sx={{ margin: '40px 0' }}>
+      <Grid container spacing={4}>
+        <Grid item xs={4}>
+          <Box>
+            <Typography sx={{ }} gutterBottom>
+              用户 ID
+            </Typography>
+            <TextField
+              value={config.userId}
+              onChange={e => handleFormChange(e.target.value, 'userId')}
+              placeholder='Github ID'
+              size='small'
+              fullWidth
+            />
+          </Box>
+        </Grid>
+        <Grid item xs={4}>
+          <Box>
+            <Typography sx={{ }} gutterBottom>
+              尺寸
+            </Typography>
+            <ToggleButtonGroup
+              value={config.size}
+              exclusive
+              onChange={(e, val) => handleFormChange(val, 'size')}
+              size='small'
+            >
+              <ToggleButton value={64}>64px</ToggleButton>
+              <ToggleButton value={128}>128px</ToggleButton>
+              <ToggleButton value={192}>192px</ToggleButton>
+              <ToggleButton value={256}>256px</ToggleButton>
+              <ToggleButton value={300}>300px</ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
+        </Grid>
+      </Grid>
+      <Avatar
+        alt="Github Avatar"
+        sx={{ width: config.size, height: config.size }}
+        src={`https://avatars.githubusercontent.com/u/${config.userId}?v=4&size=${config.size}`}
+      />
+      <Box sx={{ marginTop: '20px' }}>
+        <Button variant="outlined" onClick={onCopyHandle} disableElevation>复制链接</Button>
+      </Box>
+      <Snackbar open={copied} autoHideDuration={1500} anchorOrigin={{ horizontal: 'center', vertical: 'center' }} onClose={() => setCopied(false)}>
+        <Alert severity="success"><AlertTitle>复制成功</AlertTitle></Alert>
+      </Snackbar>
+    </Box>
+  )
+}
+
+<GithubAvatar />
+
+## 数据统计
+
+### 提交记录图
+
+![](https://ghchart.rshah.org/fantingsheng)
+
+<Tabs>
+  <TabItem value="markdown" label="Markdown" default>
+    
+```
+![](https://ghchart.rshah.org/fantingsheng)
+```
+
+  </TabItem>
+  <TabItem value="html" label="HTML">
+
+```
+<img src="https://ghchart.rshah.org/fantingsheng" alt="fantingsheng's Github Chart" />
+```
+
+  </TabItem>
+</Tabs>
+
+### 多维度数据统计
+
+![](https://github-readme-stats.vercel.app/api?username=fantingsheng&show_icons=true)
+
+<Tabs>
+  <TabItem value="markdown" label="Markdown" default>
+    
+```
+![](https://github-readme-stats.vercel.app/api?username=fantingsheng&show_icons=true)
+```
+
+  </TabItem>
+  <TabItem value="html" label="HTML">
+
+```
+<img src="https://github-readme-stats.vercel.app/api?username=fantingsheng&show_icons=true" alt="fantingsheng's Github Chart" />
+```
+
+  </TabItem>
+</Tabs>
+
+
