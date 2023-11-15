@@ -136,7 +136,7 @@ const Main = forwardRef(({ config }, ref) => {
         config.progressBarType === 'mui' ?
         <Box sx={{ display: 'flex', width: '50%', alignItems: 'center' }}>
           <Box sx={{ width: '100%', mr: 1 }}>
-            <LinearProgress variant="determinate" value={Number(realPerct.replace('%', ''))} />
+            <LinearProgress sx={{ height: '30px' }} variant="determinate" value={Number(realPerct.replace('%', ''))} />
           </Box>
           <Box sx={{ minWidth: 100 }}>
             <Typography variant="body2" color="white">{percentage}</Typography>
