@@ -134,7 +134,7 @@ const config = {
               },
               {
                 label: '悦己工作室',
-                to: 'http://yugere.com'
+                to: 'https://yugere.com'
               }
             ],
           },
