@@ -1,6 +1,6 @@
 ---
 slug: auto-pull
-title: 加个定时任务自动发布代码
+title: 加个定时任务实现自动发布
 authors: [timfan]
 tags: [定时任务, 发布, Git]
 enable_comment: true
@@ -32,7 +32,7 @@ crontab 命令详解：
 crontab –e     //修改 crontab 文件，如果文件不存在会自动创建。
 crontab –l      //显示 crontab 文件。
 crontab -r      //删除 crontab 文件。
-crontab -ir     //删除 crontab 文件前提醒用户。
+crontab -ir     //删除 crontab 文件前提醒用户。 
  
 service crond status     //查看crontab服务状态
 service crond start     //启动服务 
