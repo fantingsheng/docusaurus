@@ -133,6 +133,53 @@ export function GithubAvatar () {
 
 👉 [去体验](https://github1s.com)
 
+## RepoTracker
+
+获得更多维度仓库信息的展示，所有的信息汇集到一个页面，以图表的形式呈现。
+
+只需要在仓库地址域名后面加上 `-stats`，实际访问将会跳转到 `repo-tracker.com` 域名下。
+
+export function GithubRepoInfo() {
+  const [userName, setUserName] = useState('fantingsheng');
+  const [repoName, setRepoName] = useState('nextjs-dashboard');
+  return (
+    <Box sx={{ margin: '40px 0' }}>
+      <Grid container spacing={4}>
+        <Grid item xs={4}>
+          <TextField
+            label='Github 用户名'
+            value={userName}
+            onChange={e => setUserName(e.target.value)}
+            placeholder='Github User Name'
+            size='small'
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            label='仓库名'
+            value={repoName}
+            onChange={e => setRepoName(e.target.value)}
+            placeholder='Github Repo Name'
+            size='small'
+            fullWidth
+          />
+        </Grid>
+      </Grid>
+      <Box sx={{ marginTop: '15px' }}>
+        <Typography variant="caption" display="block" gutterBottom>
+          {`https://github-stats.com/${userName}/${repoName}`}
+        </Typography>
+        <a href={`https://github-stats.com/${userName}/${repoName}`} target='_blank'>
+          点击查看
+        </a>
+      </Box>
+    </Box>
+  )
+}
+
+<GithubRepoInfo />
+
 ## 评论系统
 
 利用 [GitHub issues](https://docs.github.com/en/issues) 或 [GitHub Discussions](https://docs.github.com/en/discussions) 可实现静态网站、博客或文档的评论系统。
