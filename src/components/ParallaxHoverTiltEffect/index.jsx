@@ -3,9 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 export default function (props) {
   const cardRef = useRef();
 
-  const [state, setState] = useState({
-    style: {}
-  })
+  const [style, setStyle] = useState({});
 
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
@@ -14,8 +12,6 @@ export default function (props) {
 
   const [transitionTimer, setTransitionTimer] = useState();
   const [updateCall, setUpdateCall] = useState();
-
-  const [reverse, setReverse] = useState();
 
   const [settings, setSettings] = useState({
     reverse: false,
@@ -29,24 +25,7 @@ export default function (props) {
     reset: true
   });
 
-  useEffect(() => {
-    setSettings(Object.assign({}, settings, props.options))
-
-    const element = cardRef.current;
-    setTimeout(() => {
-      if (element.parentElement.querySelector(':hover') === element) {
-        onMouseEnter()
-      }
-    }, 0)
-    return () => {
-      clearTimeout(transitionTimer)
-      window.cancelAnimationFrame(updateCall)
-    }
-  }, [])
-
-  useEffect(() => {
-    setReverse(settings.reverse ? -1 : 1)
-  }, [settings]);
+  const reverse = settings.reverse ? -1 : 1;
 
   const getValues = (e) => {
     const x = (e.nativeEvent.clientX - left) / width
@@ -67,10 +46,11 @@ export default function (props) {
   }
 
   const updateElementPosition = () => {
-    const rect = cardRef.current.getBoundingClientRect()
+    const element = cardRef.current;
+    const rect = element.getBoundingClientRect()
 
-    setWidth(cardRef.current.offsetWidth)
-    setHeight(cardRef.current.offsetHeight)
+    setWidth(element.offsetWidth)
+    setHeight(element.offsetHeight)
     setLeft(rect.left)
     setTop(rect.top)
   }
@@ -78,64 +58,59 @@ export default function (props) {
   const setTransition = () => {
     clearTimeout(transitionTimer)
 
-    setState(Object.assign({}, state, {
-      style: {
-        ...state.style,
-        transition: `${settings.speed}ms ${settings.easing}`,
-      },
-    }))
-
-    setTransitionTimer(setTimeout(() => {
-      setState(Object.assign({}, state, {
-        style: {
-          ...state.style,
+    setStyle({
+      ...style,
+      transition: `${settings.speed}ms ${settings.easing}`,
+    });
+    
+    setTransitionTimer(
+      setTimeout(() => {
+        console.log("stat")
+        setStyle({
+          ...style,
           transition: '',
-        },
-      }))
-    }, settings.speed))
+        });
+      }, settings.speed)
+    )
   }
 
   const reset = () => {
     window.requestAnimationFrame(() => {
-      setState(Object.assign({}, state, {
-        style: {
-          ...state.style,
-          transform: `perspective(${settings.perspective}px) ` + 'rotateX(0deg) ' + 'rotateY(0deg) ' + 'scale3d(1, 1, 1)',
-        },
-      }))
+      setStyle({
+        ...style,
+        transform: `perspective(${settings.perspective}px) ` + 'rotateX(0deg) ' + 'rotateY(0deg) ' + 'scale3d(1, 1, 1)',
+      });
     })
   }
 
   const update = (e) => {
     const values = getValues(e)
 
-    setState(Object.assign({}, state, {
-      style: {
-        ...state.style,
-        transform: `perspective(${settings.perspective}px) `
-          + `rotateX(${settings.axis === 'x' ? 0 : values.tiltY}deg) `
-          + `rotateY(${settings.axis === 'y' ? 0 : values.tiltX}deg) `
-          + `scale3d(${settings.scale}, ${settings.scale}, ${settings.scale})`,
-      },
-    }))
+    setStyle({
+      ...style,
+      transform: `perspective(${settings.perspective}px) `
+        + `rotateX(${settings.axis === 'x' ? 0 : values.tiltY}deg) `
+        + `rotateY(${settings.axis === 'y' ? 0 : values.tiltX}deg) `
+        + `scale3d(${settings.scale}, ${settings.scale}, ${settings.scale})`
+    })
 
     setUpdateCall(null)
   }
 
-  const onMouseEnter = (e) => {
-    updateElementPosition()
+  const onMouseEnter = (cb = () => {}, e) => {
+    updateElementPosition();
 
-    setState(Object.assign({}, state, {
-      style: {
-        ...state.style,
-        willChange: 'transform',
-      },
-    }))
+    setStyle({
+      ...style,
+      willChange: 'transform',
+    });
 
-    setTransition()
+    setTransition();
+
+    return cb(e);
   }
 
-  const onMouseMove = (e) => {
+  const onMouseMove = (cb = () => {}, e) => {
     e.persist()
 
     if (updateCall !== null) {
@@ -144,22 +119,48 @@ export default function (props) {
 
     // this.event = e
     setUpdateCall(window.requestAnimationFrame(() => update(e)))
+    // setUpdateCall(requestAnimationFrame(update.bind(this, e)));
+    return cb(e);
   }
 
-  const onMouseLeave = (e) => {
-    setTransition()
+  const onMouseLeave = (cb = () => {}, e) => {
+    setTransition();
+
     if (settings.reset) {
       reset()
+      console.log("reset")
     }
+
+    return cb(e);
   }
 
+  useEffect(() => {
+    setSettings(Object.assign({}, settings, props.options))
+    
+    setTimeout(() => {
+      if (cardRef.current.parentElement.querySelector(':hover') === cardRef.current) {
+        onMouseEnter()
+      }
+    }, 0);
+
+    return () => {
+      clearTimeout(transitionTimer)
+      cancelAnimationFrame(updateCall)
+    }
+  }, [])
+
+  const mergedStyle = {
+    ...props.style,
+    ...style,
+  };
+
   return (
-    <div style={state.style}
+    <div style={mergedStyle}
       ref={cardRef}
       className={props.className}
-      onMouseEnter={onMouseEnter}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={e => onMouseEnter(props.onMouseEnter, e)}
+      onMouseMove={e => onMouseMove(props.onMouseMove, e)}
+      onMouseLeave={e => onMouseLeave(props.onMouseLeave, e)}
     >
       {props.children}
     </div>
