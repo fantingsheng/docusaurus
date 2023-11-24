@@ -239,7 +239,7 @@ const config = {
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Spacexcode Owner. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} All in Spacexcode. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
