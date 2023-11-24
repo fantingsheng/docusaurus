@@ -232,6 +232,72 @@ export const HeroiconExample = () => {
   )
 }
 
+export const SimpleIconExample = () => {
+  return (
+    <div className='row'>
+      <div className='col col--12'>
+        <ImageList variant="masonry" cols={12} gap={20}>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/dotnet.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/500px.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/adobeacrobatreader.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/agora.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/airbnb.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/alibabacloud.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/anta.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/atom.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/codeigniter.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/dell.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discover.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/dji.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/coffeescript.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/codesignal.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/fedex.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/figma.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flutter.svg" />
+          </ImageListItem>
+        </ImageList>
+      </div>
+    </div>
+  )
+}
+
+
 export const VscodeIconExample = () => {
   return (
     <div className='row'>
