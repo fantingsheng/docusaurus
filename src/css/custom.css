@@ -102,6 +102,12 @@
   margin: 0 5px;
 }
 
+.safeDomain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* a 标签带特殊下划线样式 */
 a.decoration {
   position: relative;

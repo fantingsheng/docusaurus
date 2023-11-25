@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { ImageList, ImageListItem, ToggleButtonGroup, ToggleButton, ImageListItemBar,
+import { Box, Dialog, DialogContent, ImageList, ImageListItem, ToggleButtonGroup, ToggleButton, ImageListItemBar,
   FormControlLabel, IconButton, Checkbox }  from '@mui/material';
 import Map from '@mui/icons-material/Map';
 import {useWindowSize} from '@docusaurus/theme-common';
@@ -35,12 +35,15 @@ export default function AlbumGallery () {
     { title: '西红柿', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824407811-577ca32c-28bc-482f-9fa9-9b9c0f26d9fc.jpg' },
   ];
   const [col, setCol] = useState(4);
-  const [showTitle, setShowTitle] = useState(true);
+  const [showTitle, setShowTitle] = useState(false);
+  const [isFluid, setIsFluid] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [openImg, setOpenImg] = useState();
   const [size, setSize] = useState('medium');
   const [sizeOptions, setSizeOptions] = useState([
-    { value: 6, label: 'Small' },
-    { value: 4, label: 'Medium' },
-    { value: 3, label: 'Large' }
+    { value: 6, label: '小' },
+    { value: 4, label: '中' },
+    { value: 3, label: '大' }
   ]);
 
   useEffect(() => {
@@ -48,9 +51,9 @@ export default function AlbumGallery () {
       setCol(2);
       setSize('small');
       setSizeOptions([
-        { value: 3, label: 'Small' },
-        { value: 2, label: 'Medium' },
-        { value: 1, label: 'Large' }
+        { value: 3, label: '小' },
+        { value: 2, label: '中' },
+        { value: 1, label: '大' }
       ]);
     }
   }, [isMobile]);
@@ -60,6 +63,11 @@ export default function AlbumGallery () {
       setCol(val)
     }
   };
+
+  const handleOpenImg = (href) => {
+    setOpenImg(href);
+    setOpen(true);
+  }
   return (
     <Layout title='城市印象' description='记录自己的城市风景，居一城，爱一城'>
       <Head>
@@ -82,29 +90,50 @@ export default function AlbumGallery () {
                   ))
                 }
               </ToggleButtonGroup>
-              <FormControlLabel control={
-                <Checkbox
-                  checked={showTitle}
-                  size={isMobile ? 'small' : 'medium'}
-                  onChange={(event, val) => setShowTitle(val)}
-                  inputProps={{ 'aria-label': 'controlled' }}
-                  color='default'
-                />}
-                label='显示地点'
-              />
+              <Box>
+                <FormControlLabel control={
+                  <Checkbox
+                    checked={showTitle}
+                    size={size}
+                    onChange={(event, val) => setShowTitle(val)}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    color='default'
+                  />}
+                  label='显示地点'
+                />
+                <FormControlLabel control={
+                  <Checkbox
+                    checked={isFluid}
+                    size={size}
+                    onChange={(event, val) => setIsFluid(val)}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    color='default'
+                  />}
+                  label='瀑布流'
+                />
+              </Box>
             </div>
           </div>
         </div>
         <div className='row'>
           <div className='col col--12 margin-top--md'>
-            <ImageList variant="masonry" cols={col} gap={10}>
+            <ImageList
+              variant={isFluid ? 'masonry' : 'quilted'}
+              cols={col}
+              gap={10}
+              rowHeight={isFluid ? 'auto' : 200}
+            >
               {itemData.map((item) => (
-                <ImageListItem key={item.img}>
+                <ImageListItem
+                  sx={{ 
+                    '& > img': { cursor: 'zoom-in' }
+                  }} key={item.img}>
                   <img
                     src={`${item.img}?w=248&fit=crop&auto=format`}
                     srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
                     loading="lazy"
+                    onClick={() => handleOpenImg(item.img)}
                   />
                   {
                     showTitle ? <ImageListItemBar
@@ -131,6 +160,19 @@ export default function AlbumGallery () {
             </ImageList>
           </div>
         </div>
+        <Dialog
+          open={open}
+          onClose={() => setOpen(false)}
+          maxWidth='lg'
+        >
+          <DialogContent>
+            <img
+              style={{ width: '100%' }}
+              src={`${openImg}?w=248&fit=crop&auto=format`}
+              srcSet={`${openImg}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            />
+          </DialogContent>
+        </Dialog>
       </div>
     </Layout>
   )
