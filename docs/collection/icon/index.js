@@ -17,6 +17,7 @@ import { Account, ActivateBreakpoints, Add, Archive, ArrowBoth, Beaker, BellDot,
   Browser, Bug, Build, Calendar, CallIncoming, CaseSensitive, Checklist, ChromeClose, ChromeRestore, CircleSlash,
   CircuitBoard, ClearAll, Clippy, CloseAll, CloudDownload, Code, CollapseAll, ColorMode, CommentDiscussion, CommentDiscussionQuote,
   Dashboard, Database, DebugAltSmall } from './vscode';
+import { AuFlag, ChinaFlag, CaFlag, DkFlag, NeFlag, UaFlag } from './flag';
 
 export const DevIconExample = () => {
   return (
@@ -291,12 +292,23 @@ export const SimpleIconExample = () => {
           <ImageListItem>
             <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/flutter.svg" />
           </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/acer.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/acura.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/aerlingus.svg" />
+          </ImageListItem>
+          <ImageListItem>
+            <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apachetomcat.svg" />
+          </ImageListItem>
         </ImageList>
       </div>
     </div>
   )
 }
-
 
 export const VscodeIconExample = () => {
   return (
@@ -472,6 +484,35 @@ export const IconbuddyExample = () => {
     }<a className="button button--outline button--secondary margin-left--sm margin-bottom--sm" href='https://iconbuddy.app/' target='_blank'>
     <span style={{ color: '#666', fontWeight: '400', marginLeft: '5px' }}>...</span>
   </a></div>
+  )
+}
+
+export const FlagIconExample = () => {
+  return (
+    <div className='row'>
+      <div className='col col--12'>
+        <ImageList variant="masonry" cols={6} gap={20}>
+          <ImageListItem>
+            <ChinaFlag />
+          </ImageListItem>
+          <ImageListItem>
+            <AuFlag />
+          </ImageListItem>
+          <ImageListItem>
+            <CaFlag />
+          </ImageListItem>
+          <ImageListItem>
+            <NeFlag />
+          </ImageListItem>
+          <ImageListItem>
+            <DkFlag />
+          </ImageListItem>
+          <ImageListItem>
+            <UaFlag />
+          </ImageListItem>
+        </ImageList>
+      </div>
+    </div>
   )
 }
 
