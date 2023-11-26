@@ -165,8 +165,9 @@ const Main = forwardRef(({ config }, ref) => {
 
 export default function () {
   const progressBarRef = useRef();
+  const year = new Date().getFullYear();
   const [config, setConfig] = useState({
-    title: '2023 年度进度显示',
+    title: `${year} 年度进度显示`,
     bgColor: 'linear-gradient(-44deg, #262626 0%, #4b4b4b 100%)',
     progressBarType: 'default',
     format: ':'
