@@ -10,11 +10,13 @@ import html2canvas from 'html2canvas';
 
 export const Main =  forwardRef(({ cssObj }, ref) => {
   return (
-    <>
-      <div className={styles.circleBig}></div>
-      <div ref={ref} className={styles.glassBox} style={cssObj}></div>
-      <div className={styles.circleSmall}></div>
-    </>
+    <div className={styles.topMain}>
+      <div className={styles.boxCard}>
+        <div className={styles.circleBig}></div>
+        <div ref={ref} className={styles.glassBox} style={cssObj}></div>
+        <div className={styles.circleSmall}></div>
+      </div>
+    </div>
   );
 });
 
@@ -33,12 +35,18 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
 
   return (
     <>
-      <Box sx={{ width: '280px' }}>
-        <Typography variant="h5" sx={{ color: 'lightgrey', marginBottom: 4 }} gutterBottom>
-          设置
-        </Typography>
-        <Box sx={{ marginBottom: '20px' }}>
-          <Typography sx={{ color: 'lightgrey' }} gutterBottom>
+      <Box sx={{
+        width: 'fit-content',
+        margin: '0 auto 40px',
+        boxShadow: '0 1px 2px 1px #0000001a',
+        display: 'flex',
+        gap: '20px',
+        borderRadius: '8px',
+        padding: '30px 20px',
+        justifyContent: 'center'
+      }}>
+        <Box sx={{ width: '200px' }}>
+          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
             盒子长度
           </Typography>
           <Slider
@@ -50,8 +58,8 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
             aria-labelledby="width"
           />
         </Box>
-        <Box sx={{ marginBottom: '10px' }}>
-          <Typography sx={{ color: 'lightgrey' }} gutterBottom>
+        <Box sx={{ width: '200px' }}>
+          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
             圆角半径
           </Typography>
           <Slider
@@ -63,8 +71,8 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
             aria-labelledby="width"
           />
         </Box>
-        <Box sx={{ marginBottom: '10px' }}>
-          <Typography sx={{ color: 'lightgrey' }} gutterBottom>
+        <Box sx={{ width: '200px' }}>
+          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
             背景模糊度
           </Typography>
           <Slider
@@ -77,8 +85,8 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
             aria-labelledby="width"
           />
         </Box>
-        <Box sx={{ marginBottom: '10px' }}>
-          <Typography sx={{ color: 'lightgrey' }} gutterBottom>
+        <Box sx={{ width: '200px' }}>
+          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
             透明度
           </Typography>
           <Slider
@@ -91,8 +99,8 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
             aria-labelledby="width"
           />
         </Box>
-        <Box sx={{ marginBottom: '10px' }}>
-          <Typography sx={{ color: 'lightgrey' }} gutterBottom>
+        <Box sx={{ width: '100px' }}>
+          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
             显示边框
           </Typography>
           <Switch
@@ -101,9 +109,14 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
             onChange={e => handleFormChange(e.target.checked, 'hasBorder')}
           />
         </Box>
-        <Box sx={{ '& > button': { marginRight: 2 } }}>
-          <Button variant="contained" onClick={handleCodeBtn}>查看代码</Button>
-          <Button variant="contained" onClick={doExportImg}>导出图片</Button>
+        <Box sx={{ 
+          '& > button': { marginRight: 2 }, 
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px'
+        }}>
+          <Button variant="contained" size='small' onClick={handleCodeBtn}>查看代码</Button>
+          <Button variant="contained" size='small' onClick={doExportImg}>导出图片</Button>
         </Box>
       </Box>
       <Dialog open={open} maxWidth='lg'>
@@ -187,20 +200,23 @@ export default function () {
       title='在线生成 CSS 毛玻璃效果'
       description='此工具可在线制作玻璃形态，通过实时预览背景模糊、不透明度、轮廓等等就可以制作玻璃样式的盒子'
     >
-    <Head>
-      <meta name="keywords" content='毛玻璃, 透明度, 模糊' />
-    </Head>
-      <div className={styles.main}>
-        <div className={styles.left}>
-          <Tool
-            config={config}
-            cssObj={cssObj}
-            handleFormChange={handleFormChange}
-            doExportImg={exportImg}
-          />
-        </div>
-        <div className={styles.right}>
-          <Main cssObj={cssObj} ref={glassRef} />
+      <Head>
+        <meta name="keywords" content='毛玻璃, 透明度, 模糊' />
+      </Head>
+      <div className='container'>
+        <div className='row'>
+          <div className='col col--12'>
+            <Main cssObj={cssObj} ref={glassRef} />
+            <div className={styles.tool}>
+              <Tool
+                config={config}
+                cssObj={cssObj}
+                handleFormChange={handleFormChange}
+                doExportImg={exportImg}
+              />
+            </div>
+          </div>
+          
         </div>
       </div>
     </Layout>
