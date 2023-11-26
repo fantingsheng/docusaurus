@@ -2,20 +2,6 @@
   height: calc(100vh - 60px);
   display: flex;
 }
-.left {
-  width: 450px;
-  height: auto;
-  min-height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #1d1d1dee;
-}
-.right {
-  width: 100%;
-  height: auto;
-}
 .topMain {
   width: fit-content;
   margin: 0 auto;
@@ -27,7 +13,7 @@
   align-items: center;
   flex-direction: row;
   border-radius: 10px;
-  padding: 100px 200px 60px;
+  padding: 100px 160px 60px;
 }
 [data-theme='light'] .boxCard {
   background: linear-gradient(135deg, #a7cee0 50%, #d0dea7);

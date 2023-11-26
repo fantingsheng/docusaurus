@@ -40,26 +40,27 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
         margin: '0 auto 40px',
         boxShadow: '0 1px 2px 1px #0000001a',
         display: 'flex',
-        gap: '20px',
+        gap: '30px',
         borderRadius: '8px',
-        padding: '30px 20px',
-        justifyContent: 'center'
+        padding: '25px 20px',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
         <Box sx={{ width: '200px' }}>
-          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
+          <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
             盒子长度
           </Typography>
           <Slider
             value={config.width}
             min={200}
-            max={800}
+            max={700}
             onChange={e => handleFormChange(e.target.value, 'width')}
             valueLabelDisplay="auto"
             aria-labelledby="width"
           />
         </Box>
-        <Box sx={{ width: '200px' }}>
-          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
+        <Box sx={{ width: '160px' }}>
+          <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
             圆角半径
           </Typography>
           <Slider
@@ -71,8 +72,8 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
             aria-labelledby="width"
           />
         </Box>
-        <Box sx={{ width: '200px' }}>
-          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
+        <Box sx={{ width: '160px' }}>
+          <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
             背景模糊度
           </Typography>
           <Slider
@@ -85,8 +86,8 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
             aria-labelledby="width"
           />
         </Box>
-        <Box sx={{ width: '200px' }}>
-          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
+        <Box sx={{ width: '160px' }}>
+          <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
             透明度
           </Typography>
           <Slider
@@ -100,7 +101,7 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
           />
         </Box>
         <Box sx={{ width: '100px' }}>
-          <Typography sx={{ color: 'grey', marginBottom: '10px' }} gutterBottom>
+          <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
             显示边框
           </Typography>
           <Switch
