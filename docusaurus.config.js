@@ -107,9 +107,9 @@ const config = {
             { to: '/shapedivider', label: '分隔线工具' },
             { to: '/handraw', label: '手绘做图工具' },
             { to: '/codeimage', label: '代码图片生成器' },
-            { to: '/cssglass', label: '制作毛玻璃效果' },
+            { to: '/cssglass', label: '毛玻璃效果生成器' },
             { to: '/lifebalence', label: '高效的生物钟' },
-            { to: '/progress', label: '进度图生成器' }
+            { to: '/progress', label: '年度进度图' }
           ] },
           { label: '关于', position: 'right', items: [
             { to: '/about', label: '关于本站' },

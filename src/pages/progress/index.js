@@ -9,12 +9,19 @@ import html2canvas from 'html2canvas'
 
 const Tool = ({ config, handleConfigChange, doExportImg }) => {
   return (
-    <Box sx={{ width: '280px' }}>
-      <Typography variant="h5" sx={{ marginBottom: 4 }} gutterBottom>
-        设置
-      </Typography>
-      <Box sx={{ marginBottom: '20px' }}>
-        <Typography sx={{  }} gutterBottom>
+    <Box sx={{ 
+      width: 'fit-content',
+      margin: '60px auto',
+      boxShadow: '0 1px 2px 1px #0000001a',
+      display: 'flex',
+      gap: '30px',
+      borderRadius: '8px',
+      padding: '25px 20px',
+      justifyContent: 'center',
+      alignItems: 'center'
+     }}>
+      <Box sx={{ width: '240px' }}>
+        <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
           标题
         </Typography>
         <TextField
@@ -24,18 +31,18 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           size='small'
           fullWidth />
       </Box>
-      <Box sx={{ marginBottom: '20px' }}>
-        <Typography sx={{ }} gutterBottom>
+      <Box sx={{ width: '200px' }}>
+        <Typography sx={{ color: 'grey', marginBottom: '15px'}} gutterBottom>
           背景色
         </Typography>
         <ColorPicker
-          value={config.bgColor}
+          value={config.bgColor.includes('linear-gradient') ? '#262626' : config.bgColor}
           onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
           fullWidth
         />
       </Box>
-      <Box sx={{ marginBottom: '20px' }}>
-        <Typography sx={{ }} gutterBottom>
+      <Box sx={{ width: '140px' }}>
+        <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
           进度条类型
         </Typography>
         <Select
@@ -49,8 +56,8 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           <MenuItem value='mui'>Material UI</MenuItem>
         </Select>
       </Box>
-      <Box sx={{ marginBottom: '20px' }}>
-        <Typography sx={{ }} gutterBottom>
+      <Box sx={{ width: '180px' }}>
+        <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
           时间格式
         </Typography>
         <Select
@@ -72,8 +79,9 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
 }
 
 const Main = forwardRef(({ config }, ref) => {
-  const desTime = new Date(2024, 0, 1, 7, 59);
-  const fromTime = new Date(2023, 0, 1, 8);
+  const year = new Date().getFullYear();
+  const desTime = new Date(year + 1, 0, 1, 7, 59);
+  const fromTime = new Date(year, 0, 1, 8);
 
   const [lstTime, setLstTime] = useState(0);
   const [percentage, setPercentage] = useState('');
@@ -149,7 +157,7 @@ const Main = forwardRef(({ config }, ref) => {
         <LstTimeFormat lstInt={lstTime} config={config} />
       </Typography>
       <div>
-        <a href="https://weibo.com/" target="_blank">spacexcode.com</a>
+        <a href="https://spacexcode.com" target="_blank">spacexcode.com</a>
       </div>
     </div>
   )
@@ -196,15 +204,17 @@ export default function () {
       title='年度进度显示'
       description='此工具生成测算距离某个日期还有多久'
     >
-    <Head>
-      <meta name="keywords" content='多久, 进度, 年底' />
-    </Head>
-      <div className={styles.main}>
-        <div className={styles.left}>
-          <Tool config={config} handleConfigChange={handleConfigChange} doExportImg={exportImg} />
-        </div>
-        <div className={styles.right}>
-          <Main ref={progressBarRef} config={config} />
+      <Head>
+        <meta name="keywords" content='多久, 进度, 年底' />
+      </Head>
+      <div className='container'>
+        <div className='row'>
+          <div className='col col--12'>
+            <Main ref={progressBarRef} config={config} />
+            <div className={styles.tool}>
+              <Tool config={config} handleConfigChange={handleConfigChange} doExportImg={exportImg} />
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
