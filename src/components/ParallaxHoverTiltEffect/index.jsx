@@ -58,41 +58,40 @@ export default function (props) {
   const setTransition = () => {
     clearTimeout(transitionTimer)
 
-    setStyle({
+    setStyle(style => ({
       ...style,
       transition: `${settings.speed}ms ${settings.easing}`,
-    });
+    }));
     
     setTransitionTimer(
       setTimeout(() => {
-        console.log("stat")
-        setStyle({
+        setStyle(style => ({
           ...style,
           transition: '',
-        });
+        }));
       }, settings.speed)
     )
   }
 
   const reset = () => {
     window.requestAnimationFrame(() => {
-      setStyle({
+      setStyle(style => ({
         ...style,
         transform: `perspective(${settings.perspective}px) ` + 'rotateX(0deg) ' + 'rotateY(0deg) ' + 'scale3d(1, 1, 1)',
-      });
+      }));
     })
   }
 
   const update = (e) => {
     const values = getValues(e)
 
-    setStyle({
+    setStyle(style => ({
       ...style,
       transform: `perspective(${settings.perspective}px) `
         + `rotateX(${settings.axis === 'x' ? 0 : values.tiltY}deg) `
         + `rotateY(${settings.axis === 'y' ? 0 : values.tiltX}deg) `
         + `scale3d(${settings.scale}, ${settings.scale}, ${settings.scale})`
-    })
+    }))
 
     setUpdateCall(null)
   }
@@ -100,10 +99,10 @@ export default function (props) {
   const onMouseEnter = (cb = () => {}, e) => {
     updateElementPosition();
 
-    setStyle({
+    setStyle(style => ({
       ...style,
       willChange: 'transform',
-    });
+    }));
 
     setTransition();
 
@@ -117,9 +116,7 @@ export default function (props) {
       window.cancelAnimationFrame(updateCall)
     }
 
-    // this.event = e
     setUpdateCall(window.requestAnimationFrame(() => update(e)))
-    // setUpdateCall(requestAnimationFrame(update.bind(this, e)));
     return cb(e);
   }
 
@@ -127,8 +124,7 @@ export default function (props) {
     setTransition();
 
     if (settings.reset) {
-      reset()
-      console.log("reset")
+      reset();
     }
 
     return cb(e);
