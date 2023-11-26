@@ -491,7 +491,7 @@ export const FlagIconExample = () => {
   return (
     <div className='row'>
       <div className='col col--12'>
-        <ImageList variant="masonry" cols={6} gap={20}>
+        <ImageList variant="masonry" cols={8} gap={20}>
           <ImageListItem>
             <ChinaFlag />
           </ImageListItem>
