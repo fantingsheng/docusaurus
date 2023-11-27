@@ -203,7 +203,7 @@ export default function () {
   return (
     <Layout
       title='年度进度显示'
-      description='此工具生成测算距离某个日期还有多久'
+      description='实时显示当前年份的进度数据'
     >
       <Head>
         <meta name="keywords" content='多久, 进度, 年底' />
