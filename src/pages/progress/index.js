@@ -61,7 +61,7 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           <MenuItem value='mui'>Material UI</MenuItem>
         </Select>
       </Box>
-      <Box sx={{ width: '240px' }}>
+      <Box sx={{ width: '200px' }}>
         <Typography sx={{ color: 'grey', marginBottom: '15px'}} gutterBottom>
           背景色
         </Typography>
