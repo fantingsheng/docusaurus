@@ -37,7 +37,7 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
     <>
       <Box sx={{
         width: 'fit-content',
-        margin: '0 auto 40px',
+        margin: '80px auto',
         boxShadow: '0 1px 2px 1px #0000001a',
         display: 'flex',
         gap: '30px',
@@ -100,7 +100,7 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
             aria-labelledby="width"
           />
         </Box>
-        <Box sx={{ width: '100px' }}>
+        <Box sx={{ width: '80px' }}>
           <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
             显示边框
           </Typography>
@@ -111,6 +111,7 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
           />
         </Box>
         <Box sx={{ 
+          width: '100px',
           '& > button': { marginRight: 2 }, 
           display: 'flex',
           flexDirection: 'column',

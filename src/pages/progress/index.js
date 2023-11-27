@@ -11,10 +11,10 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
   return (
     <Box sx={{ 
       width: 'fit-content',
-      margin: '60px auto',
+      margin: '120px auto',
       boxShadow: '0 1px 2px 1px #0000001a',
       display: 'flex',
-      gap: '30px',
+      gap: '40px',
       borderRadius: '8px',
       padding: '25px 20px',
       justifyContent: 'center',
@@ -31,31 +31,6 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           size='small'
           fullWidth />
       </Box>
-      <Box sx={{ width: '200px' }}>
-        <Typography sx={{ color: 'grey', marginBottom: '15px'}} gutterBottom>
-          背景色
-        </Typography>
-        <ColorPicker
-          value={config.bgColor.includes('linear-gradient') ? '#262626' : config.bgColor}
-          onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
-          fullWidth
-        />
-      </Box>
-      <Box sx={{ width: '140px' }}>
-        <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
-          进度条类型
-        </Typography>
-        <Select
-          value={config.progressBarType}
-          onChange={val => handleConfigChange(val.target.value, 'progressBarType')}
-          label=""
-          size='small'
-          fullWidth
-        >
-          <MenuItem value='default'>默认</MenuItem>
-          <MenuItem value='mui'>Material UI</MenuItem>
-        </Select>
-      </Box>
       <Box sx={{ width: '180px' }}>
         <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
           时间格式
@@ -71,7 +46,32 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           <MenuItem value={'zh'}>DD天HH时mm分ss秒</MenuItem>
         </Select>
       </Box>
-      <Box sx={{ '& > button': { width: '100%' } }}>
+      <Box sx={{ width: '160px' }}>
+        <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
+          进度条类型
+        </Typography>
+        <Select
+          value={config.progressBarType}
+          onChange={val => handleConfigChange(val.target.value, 'progressBarType')}
+          label=""
+          size='small'
+          fullWidth
+        >
+          <MenuItem value='default'>默认</MenuItem>
+          <MenuItem value='mui'>Material UI</MenuItem>
+        </Select>
+      </Box>
+      <Box sx={{ width: '240px' }}>
+        <Typography sx={{ color: 'grey', marginBottom: '15px'}} gutterBottom>
+          背景色
+        </Typography>
+        <ColorPicker
+          value={config.bgColor.includes('linear-gradient') ? '#262626' : config.bgColor}
+          onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
+          fullWidth
+        />
+      </Box>
+      <Box sx={{ width: '100px', '& > button': { width: '100%' } }}>
         <Button variant="contained" onClick={doExportImg} disableElevation>导出图片</Button>
       </Box>
     </Box>
