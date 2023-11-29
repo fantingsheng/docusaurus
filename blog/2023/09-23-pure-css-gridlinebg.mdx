@@ -33,6 +33,8 @@ enable_donate: true
   <rect y='50%' width='100%' height='1' fill='rgb(203 213 225)'></rect>
 </svg>
 
+<br /><br />
+
 有了背景图片，我们对给定的区域设置背景
 
 ```css
@@ -87,6 +89,22 @@ export const GridExample = ({ size }) => {
 }
 ```
 
+export const HorizontalLine = () => {
+  const styleObj = {
+    width: '100%',
+    height: '200px',
+    margin: '20px 0',
+    backgroundImage: 'linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px)',
+    backgroundSize: '20px 20px',
+    backgroundPosition: 'center center'
+  }
+  return (
+    <div style={styleObj}></div>
+  )
+}
+
+<HorizontalLine />
+
 这里的 `1px` 代表网格的线条宽度，你也可以设置成你想要的宽度。
 
 如果要实现水平线条，只需要把 `to right` 改为 `to botton` 。而网格实现既需要横向的线条，也需要纵向的线条。
@@ -104,6 +122,7 @@ export const GridExample = ({ size }) => {
 ```css
 .grid {
   height: 200px;
+  width: 100%;
   background-image:
       linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px),
       linear-gradient(to bottom, rgb(203 213 225) 1px, transparent 1px);
