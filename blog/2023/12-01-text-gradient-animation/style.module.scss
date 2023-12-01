@@ -1,0 +1,33 @@
+.textAnimateGradient {
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, #8678f9, #c7d2fe);
+  background-size: 200% auto;
+  animation: textGradient 1.5s linear infinite;
+}
+
+@keyframes textGradient {
+  to {
+    background-position: 200%;
+  }
+}
+
+.textShine {
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(110deg,#939393,45%,#1e293b,55%,#939393);
+  background-size: 250% 100%;
+  animation: backgroundShine 2s linear infinite;
+}
+
+@keyframes backgroundShine {
+  from {
+    background-position: 0, 0;
+  }
+
+  to {
+    background-position: -200%, 0;
+  }
+}
