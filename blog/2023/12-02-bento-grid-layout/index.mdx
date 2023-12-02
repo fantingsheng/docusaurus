@@ -1,0 +1,236 @@
+---
+slug: bento-grid-layout
+title: 探讨便当网格布局
+authors: [timfan]
+tags: [布局, 便当盒子]
+enable_comment: true
+draft: true
+---
+
+当你在浏览网页的时候，您可能经常会遇到这样一种类型的布局。它被称为便当网格布局，这种布局的灵感来源于日本的传统便当盒子。🍱英文名为 `Bento` ，所以又叫 `Bento Grid`。
+
+Bento 网格用途广泛，非常适合显示图像、文本、混合媒体等各种内容。它们以紧凑且有组织的方式展示大量内容，使您的网页或应用程序界面看起来干净清爽且能快速抓住人的视线。
+
+这种设计的趋势可能最早来源于 Windows 8 和 [Metro Design](https://en.wikipedia.org/wiki/Metro_(design_language))。
+
+然而，近年来真正的引领这一设计潮流的是苹果。他们在视频演示和网站上广泛使用便当网格布局，使得越来越多的网站借鉴。
+
+![](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1701505991280-b02cbbe5-c728-47a8-9a50-a82289343ae8.jpg)
+
+如果您想获得更多关于便当盒子网格布局相关的灵感，可以去 [Bentogrids](https://bentogrids.com) 这个网站看看。 这是一个专门展示和收集网络上做的比较好的便当网格布局。
+
+![](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1701510538947-ae91b33e-77a0-4561-8cc7-6dde91de82a8.08)
+
+我个人也是便当网格布局的强烈爱好者。
+
+所以我特别研究了下这种布局的几种常规实现方式。
+
+## 构建便当（Bento）网格布局
+
+创建便当网格布局的方法有很多种，今天，我将介绍几种常见的实现方法，并附上详细的示例代码。你可以从中发现哪种方式最受你的喜爱，并在以后的开发者使用它。
+
+### 使用 CSS grid 布局
+
+Grid 布局由于其灵活，代码少等特点受到越来越多开发者的喜好，在实现 Bento 布局上更是最好的选择。
+
+import styles from './style.module.scss';
+
+export const BentoLayoutUseGrid = () => {
+  return (
+    <div className={styles.grid}>
+      {[...Array(7)].map((_, i) => (
+        <div
+          key={i}
+          className={`${styles['grid-item']} ${i === 3 || i === 6 ? styles['col-span-2'] : ''}`}
+        ></div>
+      ))}
+    </div>
+  )
+}
+
+<BentoLayoutUseGrid />
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="unique-tabs">
+<TabItem value="jsx" label="JSX" default>
+
+```jsx
+export const BentoLayoutUseGrid = () => {
+  return (
+    <div className='grid'>
+      {[...Array(7)].map((_, i) => (
+        <div
+          key={i}
+          className={`grid-item ${i === 3 || i === 6 ? 'col-span-2' : ''}`}
+        ></div>
+      ))}
+    </div>
+  )
+}
+```
+
+</TabItem>
+<TabItem value="css" label="CSS">
+
+```css
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-auto-rows: 192px;
+}
+.grid-item {
+  padding: 1rem;
+  background-color: rgb(245, 245, 245, 1);
+  border: 2px solid rgba(148, 163, 184, .1);
+  border-radius: .75rem;
+  grid-row: span 1/span 1;
+}
+.col-span-2 {
+  grid-column: span 2/span 2;
+}
+```
+
+</TabItem>
+</Tabs>
+
+### 使用多列布局
+
+如果项目的顺序并不重要，并且如果您需要在列中进行排列，则可以选择在项目上使用列数、列间隙和边距底部的多列布局。
+
+export const BentoLayoutUseColumn = () => {
+  return (
+    <div className={styles['grid-column']}>
+      {[28, 32, 36, 32, 32, 32, 16, 16, 64].map((height, index) => (
+        <div
+          key={index}
+          className={styles['grid-column-item']}
+          style={{ height: `${height/4}rem` }}
+        />
+      ))}
+    </div>
+  )
+}
+
+<BentoLayoutUseColumn />
+
+<Tabs className="unique-tabs">
+<TabItem value="jsx" label="JSX" default>
+
+```jsx
+export const BentoLayoutUseColumn = () => {
+  return (
+    <div className='grid'>
+      {[28, 32, 36, 32, 32, 32, 16, 16, 64].map((height, index) => (
+        <div
+          key={index}
+          className='grid-item'
+          style={{ height: `${height/4}rem` }}
+        />
+      ))}
+    </div>
+  )
+}
+```
+
+</TabItem>
+<TabItem value="css" label="CSS">
+
+```css
+.grid {
+  gap: 1rem;
+  column-count: 3;
+}
+.grid-item {
+  padding: 1rem;
+  background-color: rgb(245, 245, 245, 1);
+  border: 2px solid rgba(148, 163, 184, .1);
+  border-radius: .75rem;
+  margin-bottom: 1rem;
+}
+```
+
+</TabItem>
+</Tabs>
+
+### 使用 CSS flex 布局
+
+该代码使用一个数组来存储每列中卡片的高度。 数组的第一个元素是第一列中卡片高度的数组，第二个元素是第二列中卡片高度的数组，依此类推。
+
+export const BentoLayoutUseFlex = () => {
+  return (
+    <div className={styles['grid-flex']}>
+      {[
+        [24, 32, 32, 16, 16],
+        [32, 40, 56],
+        [64, 32, 32],
+      ].map((card, index) => (
+        <div className={styles['flex-1']} key={index}>
+          {card.map((height, index) => (
+            <div
+              className={`${styles['grid-flex-item']}`}
+              style={{ height: `${height/4}rem`}}
+              key={index}
+            ></div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+<BentoLayoutUseFlex />
+
+<Tabs className="unique-tabs">
+<TabItem value="jsx" label="JSX" default>
+
+```jsx
+export const BentoLayoutUseFlex = () => {
+  return (
+    <div className='flex'>
+      {[
+        [24, 32, 32, 16, 16],
+        [32, 40, 56],
+        [64, 32, 32],
+      ].map((card, index) => (
+        <div className='flex-1' key={index}>
+          {card.map((height, index) => (
+            <div
+              className='flex-item'
+              style={{ height: `${height/4}rem`}}
+              key={index}
+            ></div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
+}
+```
+
+</TabItem>
+<TabItem value="css" label="CSS">
+
+```css
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+.flex-1 {
+  flex: 1 1 0%;
+}
+.flex-item {
+  padding: 1rem;
+  background-color: rgb(245, 245, 245, 1);
+  border: 2px solid rgba(148, 163, 184, .1);
+  border-radius: .75rem;
+  margin-bottom: 1rem;
+}
+```
+
+</TabItem>
+</Tabs>
+
+## 总结
