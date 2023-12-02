@@ -253,6 +253,16 @@ const config = {
       },
       mermaid: {
         theme: { light: 'default', dark: 'dark' },
+      },
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        background: {
+          light: 'rgb(255, 255, 255)',
+          dark: 'rgb(0, 0, 0)'
+        },
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+        }
       }
     }),
   themes: ['@docusaurus/theme-live-codeblock', '@docusaurus/theme-mermaid'],
@@ -281,6 +291,7 @@ const config = {
         indexBaseUrl: true
       }
     ],
+    require.resolve('docusaurus-plugin-image-zoom'),
     'docusaurus-plugin-sass'
   ]
 };

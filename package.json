@@ -33,6 +33,7 @@
     "busuanzi.pure.js": "^1.0.3",
     "clsx": "^1.2.1",
     "docusaurus-lunr-search": "^3.2.0",
+    "docusaurus-plugin-image-zoom": "^1.0.1",
     "docusaurus-plugin-sass": "^0.2.5",
     "highlight.js": "^11.8.0",
     "html2canvas": "^1.4.1",
