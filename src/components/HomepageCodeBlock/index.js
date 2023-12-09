@@ -1,7 +1,9 @@
 import React from 'react';
+import { useRef } from 'react';
 import CodeBlock from '@theme/CodeBlock';
-import useTypewriter from 'react-typewriter-hook' // https://github.com/haowen737/react-typewriter-hook
 import AnimateLinear from '@site/src/components/AnimateLinear';
+import useTypeWriter from '@site/src/hooks/useTypeWriter';
+import confetti from 'canvas-confetti';
 
 const codeList = [`import React from 'react';
 import ReactDOM from 'react-dom';
@@ -52,12 +54,33 @@ const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 const codeIndex = random(0, codeList.length);
 const codeStr = codeList[codeIndex]
 
-function MagicWriter() {
-  const typing = useTypewriter(codeStr)
-  return typing
-}
+
 
 export default function HomepageCodeBlock() {
+  const blockRef = useRef();
+
+  function MagicWriter() {
+    const typing = useTypeWriter(codeStr, null, typeEnd)
+    return typing
+  }
+  
+  function typeEnd () {
+    confetti({
+      // shapes: [pineapple], // 粒子形状、类型
+      // colors: ['#303948'] // 粒子颜色
+      particleCount: 180, // 默认值：50，要发射的五彩纸屑的数量。
+      startVelocity: 30, // 默认值：45，五彩纸屑开始移动的速度，以像素为单位
+      angle: 90, // 发射的角度，0 表示水平向右；90 表示垂直向上；180 表示水平向左；270 表示垂直向下
+      spread: 150, //默认值：45，五彩纸屑在垂直方向扩散的角度，45 表示五彩纸屑以垂直方向正负 22.5 度角发射
+      ticks: 300, // 默认值: 200 ，值越小粒子消失得越快，值越大粒子消失得越慢
+      gravity: 0.5, // 默认值：1，粒子下落的速度。1 是全重力，0.5 是半重力，0 表示无重力；大于 1 表示加速下落，负值表示粒子会向上升起。
+      origin: {
+        x: 0.5,
+        y: (blockRef.current.getBoundingClientRect().top + blockRef.current.offsetHeight) / window.innerHeight
+      }
+    })
+  }
+
   return (
     <div className='container'>
       <div className='row'>
@@ -70,13 +93,15 @@ export default function HomepageCodeBlock() {
           </AnimateLinear>
         </div>
         <div className='col col--8 col--offset-2'>
-          {/* showLineNumbers 显示行号 metastring='{8}' */}
-          <CodeBlock
-            title='本代码段由 ChatGPT 生成'
-            language="jsx"
-          >
-            { MagicWriter() }
-          </CodeBlock>
+          <div ref={blockRef}>
+            {/* showLineNumbers 显示行号 metastring='{8}' */}
+            <CodeBlock
+              title='本代码段由 ChatGPT 生成'
+              language="jsx"
+            >
+              { MagicWriter() }
+            </CodeBlock>
+          </div>
         </div>
       </div>
     </div>

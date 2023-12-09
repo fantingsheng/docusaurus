@@ -30,7 +30,6 @@
     "@mui/material": "^5.14.16",
     "@node-rs/jieba": "^1.7.2",
     "@node-rs/jieba-win32-x64-msvc": "^1.7.2",
-    "busuanzi.pure.js": "^1.0.3",
     "canvas-confetti": "^1.9.2",
     "clsx": "^1.2.1",
     "docusaurus-lunr-search": "^3.2.0",
@@ -42,7 +41,6 @@
     "prism-react-renderer": "^2.1.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
-    "react-typewriter-hook": "^1.0.1",
     "sass": "^1.64.1",
     "sass-loader": "^13.3.2"
   },
