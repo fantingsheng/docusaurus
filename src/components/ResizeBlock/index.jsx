@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import debounce from '../../theme/ReactLiveScope/debounce';
+import { debounce } from '@site/src/utils';
 import clsx from 'clsx';
 import styles from './style.module.scss'; 
 

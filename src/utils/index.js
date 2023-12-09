@@ -1,4 +1,4 @@
-export default function debounce(callback, wait) {
+export function debounce(callback, wait) {
     let timeoutId = null;
   
     return (...args) => {
@@ -10,7 +10,7 @@ export default function debounce(callback, wait) {
     };
 }
 
-export default function downloadByUrl (url, filename) {
+export function downloadByUrl (url, filename) {
     if (!url) throw new Error('当前没有下载链接');
   
     const a = document.createElement("a");

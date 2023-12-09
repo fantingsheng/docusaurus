@@ -1,16 +1,15 @@
 import React from 'react';
-import useToggle from './useToggle';
-import debounce from './debounce';
-import useMousePosition from './useMousePosition';
-import downloadByUrl from './download';
-import useWindowSize from './useWindowSize';
-import useCopyToClipboard from './useCopyToClipboard';
-import useAsync from './useAsync';
-import useGeolocation from './useGeolocation';
-import useEventListener from './useEventListener'
-import useForm from './useForm';
-import useDoubleClick from './useDoubleClick';
-import useClickInside from './useClickInside';
+import useToggle from '@site/src/hooks/useToggle';
+import { debounce, downloadByUrl } from '@site/src/utils';
+import useMousePosition from '@site/src/hooks/useMousePosition';
+import useWindowSize from '@site/src/hooks/useWindowSize';
+import useCopyToClipboard from '@site/src/hooks/useCopyToClipboard';
+import useAsync from '@site/src/hooks/useAsync';
+import useGeolocation from '@site/src/hooks/useGeolocation';
+import useEventListener from '@site/src/hooks/useEventListener'
+import useForm from '@site/src/hooks/useForm';
+import useDoubleClick from '@site/src/hooks/useDoubleClick';
+import useClickInside from '@site/src/hooks/useClickInside';
 
 // Material UI Components
 import { Box, IconButton, Typography, Slider, Stack, List, ListItem, ListItemText, ListItemButton, ListItemIcon, Avatar } from '@mui/material';

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import styles from './style.module.css';
-import debounce from '../../theme/ReactLiveScope/debounce';
+import { debounce } from '@site/src/utils';
 import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import AnimateLinear from '@site/src/components/AnimateLinear';
 import { colorBgList, langList } from '@site/src/config/data/codeimage';
