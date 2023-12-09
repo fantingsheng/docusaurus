@@ -13,18 +13,17 @@ import styles from './index.module.css';
 
 function SearchBar () {
   const [searchVal, setSearchVal] = useState('')
-  const [styl, setStyl] = useState({})
+  const [shake, setShake] = useState(false)
   const history = useHistory()
+
   const handleInput = (e) => {
     if (searchVal) {
       history.push(`/search?value=${searchVal}`)
     } else {
       console.log(e)
-      setStyl(() => ({
-        animation: 'shake 800ms ease-in-out'
-      }));
+      setShake(true);
       setTimeout(() => {
-        setStyl(() => ({}));
+        setShake(false)
       }, 800)
     }
   }
@@ -38,7 +37,8 @@ function SearchBar () {
       sx={{ p: '2px 2px 0', display: 'flex', alignItems: 'center', width: '100%', margin: '0 auto' }}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1, ...styl }}
+        sx={{ ml: 1, flex: 1 }}
+        className={shake ? styles.searchInputShake : ''}
         placeholder='输入你想搜索的任何内容'
         value={searchVal}
         size='small'
