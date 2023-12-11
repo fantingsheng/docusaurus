@@ -1,8 +1,12 @@
 .bannerbg {
   /* background-image: -webkit-gradient(linear,left top,right top,from(#383c93),to(#43a756));
   background-image: linear-gradient(90deg,#383c93,#43a756); */
-  background: linear-gradient(#383c93 10%, #43a756 100%);
-  color: #fff;
+  /* background: linear-gradient(#383c93 10%, #43a756 100%); */
+  /* background: linear-gradient(230deg,rgba(133,190,255,.8) 5.75%,rgba(152,216,222,.4) 24.4%,hsla(45,96%,91%,.3) 88.45%,rgba(255,251,244,.8) 112.66%); */
+  /* color: #fff; */
+}
+[data-theme='light'] .bannerbg {
+  background: linear-gradient(230deg,rgba(133,190,255,.8) 5.75%,rgba(152,216,222,.4) 24.4%,hsla(45,96%,91%,.3) 88.45%,rgba(255,251,244,.8) 112.66%);
 }
 .formWrap {
   margin-top: -4rem;
@@ -22,6 +26,7 @@
   position: relative;
   vertical-align: top;
   font-size: 0;
+  overflow: hidden;
 }
 .shapeDivider {
   position: absolute;
