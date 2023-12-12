@@ -133,6 +133,7 @@ export default function Form () {
                     min={0}
                     max={500}
                     valueLabelDisplay='auto'
+                    size='small'
                     onChange={e => handleChange(e.target.value, 'height')}
                     />
                 </div>
@@ -143,6 +144,7 @@ export default function Form () {
                     aria-label='Default'
                     min={100}
                     max={300}
+                    size='small'
                     valueLabelDisplay='auto'
                     onChange={e => handleChange(e.target.value, 'width')}
                   />
@@ -195,7 +197,11 @@ export default function Form () {
       </div>
       <SpeedDial
         ariaLabel="背景切换"
-        sx={{ position: 'fixed', bottom: 50, right: 20 }}
+        sx={{ 
+          position: 'fixed',
+          bottom: 50,
+          right: 20,
+          '& > button': { background: 'linear-gradient(to right, #ec77ab 0%, #7873f5 100%)' } }}
         size='small'
         icon={<WallpaperIcon />}
       >
