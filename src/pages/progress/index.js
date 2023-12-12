@@ -210,8 +210,10 @@ export default function () {
       </Head>
       <div className='container'>
         <div className='row'>
-          <div className='col col--12'>
+          <div className='col col--10 col--offset-1'>
             <Main ref={progressBarRef} config={config} />
+          </div>
+          <div className='col col--12'>
             <div className={styles.tool}>
               <Tool config={config} handleConfigChange={handleConfigChange} doExportImg={exportImg} />
             </div>
