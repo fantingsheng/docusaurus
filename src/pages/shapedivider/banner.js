@@ -4,7 +4,7 @@ import styles from './style.module.css';
 
 export default function Banner () {
   return (
-    <div className={clsx('hero', styles.bannerbg)} style={{ height: '25rem' }}>
+    <div className={clsx('hero', styles.bannerbg)} style={{ height: '28rem' }}>
       <div className="container text--center">
         <h2 className="hero__title">优美的分隔线</h2>
         <p className="hero__subtitle">为你的网页生成一条独特的弧线分隔线</p>
