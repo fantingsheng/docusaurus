@@ -10,6 +10,7 @@ import useEventListener from '@site/src/hooks/useEventListener'
 import useForm from '@site/src/hooks/useForm';
 import useDoubleClick from '@site/src/hooks/useDoubleClick';
 import useClickInside from '@site/src/hooks/useClickInside';
+import useHover from '@site/src/hooks/useHover';
 
 // Material UI Components
 import { Box, IconButton, Typography, Slider, Stack, List, ListItem, ListItemText, ListItemButton, ListItemIcon, Avatar } from '@mui/material';
@@ -36,6 +37,7 @@ const ReactLiveScope = {
   useForm,
   useDoubleClick,
   useClickInside,
+  useHover,
   Box,
   IconButton,
   Typography,
