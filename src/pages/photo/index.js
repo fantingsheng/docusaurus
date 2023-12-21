@@ -33,6 +33,7 @@ export default function AlbumGallery () {
     { title: '3W Coffee', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824270197-622c538f-c845-499c-b426-955a4fd0861d.jpg' },
     { title: '苏宁悦城新家', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824348337-14b4c10a-fba8-4a3b-9fa0-61a062e3a4db.jpg' },
     { title: '西红柿', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1691824407811-577ca32c-28bc-482f-9fa9-9b9c0f26d9fc.jpg' },
+    { title: '尚贤河湿地公园', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1703126295574-0e1a48d8-6faa-4b4b-9add-44cd6ba45d97.jpg' }
   ];
   const [col, setCol] = useState(4);
   const [showTitle, setShowTitle] = useState(false);
@@ -86,7 +87,7 @@ export default function AlbumGallery () {
               >
                 {
                   sizeOptions.map(item => (
-                    <ToggleButton value={item.value} key={item.value}>{item.label}</ToggleButton>
+                    <ToggleButton sx={{ padding: '8px 16px' }} value={item.value} key={item.value}>{item.label}</ToggleButton>
                   ))
                 }
               </ToggleButtonGroup>
