@@ -6,6 +6,8 @@ import FooterCopyright from '@theme/Footer/Copyright';
 import FooterLayout from '@theme/Footer/Layout';
 import SafeDomain from '@theme/Footer/SafeDomain';
 import Statistics from '@theme/Footer/Statistics';
+import SocialLink from '@theme/Footer/SocialLink';
+
 const safedomain = {
   text: "苏ICP备16044739号-3",
   link: "http://beian.miit.gov.cn/"
@@ -24,6 +26,7 @@ function Footer() {
       copyright={copyright && <FooterCopyright copyright={copyright} />}
       safedomain={<SafeDomain {...safedomain} />}
       statistics={<Statistics />}
+      socialLink={<SocialLink />}
     />
   );
 }
