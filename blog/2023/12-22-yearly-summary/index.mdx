@@ -1,0 +1,24 @@
+---
+slug: yearly-summary
+title: 2023年度总结
+authors: [timfan]
+tags: [年度总结, 成长, 收获]
+enable_comment: true
+---
+
+2023年只剩下最后一周了，又到了一年一度做年末总结的时候。
+
+回想起去年，还有人专门开了一个关于年度总结文章的汇总的仓库。读了很多篇别人写的，给了我很多感想，每篇文章都是一个关于这一年的完整的生活轨迹啊。
+
+
+[https://github.com/saveweb/review-2022](https://github.com/saveweb/review-2022)
+
+
+import { Main } from '@site/src/pages/progress';
+
+<Main style={{ marginTop: 0, borderRadius: '8px' }} config={{
+  title: `${new Date().getFullYear()} 年度进度显示`,
+  bgColor: 'linear-gradient(-44deg, #262626 0%, #4b4b4b 100%)',
+  progressBarType: 'default',
+  format: ':'
+}} />

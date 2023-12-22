@@ -78,7 +78,7 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
   )
 }
 
-const Main = forwardRef(({ config }, ref) => {
+export const Main = forwardRef(({ config, style }, ref) => {
   const year = new Date().getFullYear();
   const desTime = new Date(year + 1, 0, 1, 7, 59);
   const fromTime = new Date(year, 0, 1, 8);
@@ -131,7 +131,7 @@ const Main = forwardRef(({ config }, ref) => {
   }, [])
 
   return (
-    <div ref={ref} className={styles.card} style={{ background: config.bgColor }}>
+    <div ref={ref} className={styles.card} style={{ background: config.bgColor, ...style }}>
       <Typography variant="h4" sx={{ marginBottom: 4 }} gutterBottom>
         {config.title}
       </Typography>
