@@ -120,7 +120,7 @@ export const Main = forwardRef(({ config, style }, ref) => {
       <>
         { config.format === ":" ?
           n + " : " + o + " : " + r + " : " + d :
-          n + "天" + o + "时" + r + "分" + d + "秒" }
+          n + " 天 " + o + " 时 " + r + " 分 " + d + " 秒 " }
       </>
     )
   }
@@ -156,9 +156,15 @@ export const Main = forwardRef(({ config, style }, ref) => {
       <Typography variant="h6" sx={{ marginTop: 4 }} gutterBottom>
         <LstTimeFormat lstInt={lstTime} config={config} />
       </Typography>
-      <div>
-        <a href="https://spacexcode.com" target="_blank">spacexcode.com</a>
-      </div>
+      {
+        config.copyright ? 
+        <div>
+          <a href="https://spacexcode.com" target="_blank">spacexcode.com</a>
+        </div>
+        :
+        ''
+      }
+      
     </div>
   )
 })
@@ -170,7 +176,8 @@ export default function () {
     title: `${year} 年度进度显示`,
     bgColor: 'linear-gradient(-44deg, #262626 0%, #4b4b4b 100%)',
     progressBarType: 'default',
-    format: ':'
+    format: ':',
+    copyright: true
   });
 
   const handleConfigChange = (val, key) => {
