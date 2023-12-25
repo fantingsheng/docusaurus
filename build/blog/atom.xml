@@ -24,7 +24,7 @@
 <p>鉴于我的很多平台 ID 名为“编程范儿”，故以此代表本人</p>
 </blockquote>
 <!-- -->
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="知识创作">知识创作<a href="https://spacexcode.com/blog/yearly-summary#%E7%9F%A5%EF%BF%BD%E8%AF%86%E5%88%9B%E4%BD%9C" class="hash-link" aria-label="知识创作的直接链接" title="知识创作的直接链接">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="知识创作">知识创作<a href="https://spacexcode.com/blog/yearly-summary#%E7%9F%A5%E8%AF%86%E5%88%9B%E4%BD%9C" class="hash-link" aria-label="知识创作的直接链接" title="知识创作的直接链接">​</a></h2>
 <p>其实对于程序员来说，Git 的提交记录无疑是这一年来自己的工作之余的代码和内容产出成功的有效说明：</p>
 <p><img loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1703309206459-feacec95-9dcc-42b8-8cc9-8f7f7442c891.png" alt="git commit log" class="img_ev3q"></p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="载体">载体<a href="https://spacexcode.com/blog/yearly-summary#%E8%BD%BD%E4%BD%93" class="hash-link" aria-label="载体的直接链接" title="载体的直接链接">​</a></h3>
@@ -623,7 +623,7 @@ Github Discussion 功能开发的开源的插件。用户要评论，首先得�
 <li>网站包含不合法的信息和内容</li>
 </ul>
 <p>很幸运，几天后我的网站顺利通过了审核。</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="管理广告">管理广告<a href="https://spacexcode.com/blog/google-adsense#%E7%AE%A1%E7%90%86%E5%B9%BF%E5%91%8A" class="hash-link" aria-label="管理广告的直接链接" title="管理广告的直接链接">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="��管理广告">管理广告<a href="https://spacexcode.com/blog/google-adsense#%E7%AE%A1%E7%90%86%E5%B9%BF%E5%91%8A" class="hash-link" aria-label="管理广告的直接链接" title="管理广告的直接链接">​</a></h2>
 <p>如何在网站上添加广告而不影响网站的体验。其实我并不想内容还没做起来，就让网站满屏的广告。这样就违背了我的初心。</p>
 <p>广告的两种设置形式：</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="全局设置">全局设置<a href="https://spacexcode.com/blog/google-adsense#%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE" class="hash-link" aria-label="全局设置的直接链接" title="全局设置的直接链接">​</a></h3>
@@ -785,7 +785,7 @@ Github Discussion 功能开发的开源的插件。用户要评论，首先得�
 </ul>
 <p>另外还提供了背景图的切换，通过不同的背景图来达到不同的演示效果。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="手绘板画图工具">手绘板画图工具<a href="https://spacexcode.com/blog/two-small-tools#%E6%89%8B%E7%BB%98%E6%9D%BF%E7%94%BB%E5%9B%BE%E5%B7%A5%E5%85%B7" class="hash-link" aria-label="手绘板画图工具的直接链接" title="手绘板画图工具的直接链接">​</a></h2>
-<p><a href="https://spacexcode.com/handraw">地址</a></p>
+<p><a href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer">地址</a></p>
 <p>程序员写文章经常需要讲解一些原理性的东西和过程演示需要借助一些做图工具，像 PhotoShop 这样的专业的做图工具有一定的门槛，而且做出来的图又太正式。不能体现我们程序员放荡不羁的性格。
 而这款手绘板画图工具就特别适合。有一种在纸上画草图书写的愉悦感。</p>
 <p>软件是借助 <a href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer">Excalidraw</a> 开源方案搭建出来的，稍有修改。</p>

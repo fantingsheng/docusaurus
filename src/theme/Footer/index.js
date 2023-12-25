@@ -5,7 +5,6 @@ import FooterLogo from '@theme/Footer/Logo';
 import FooterCopyright from '@theme/Footer/Copyright';
 import FooterLayout from '@theme/Footer/Layout';
 import SafeDomain from '@theme/Footer/SafeDomain';
-import Statistics from '@theme/Footer/Statistics';
 import SocialLink from '@theme/Footer/SocialLink';
 
 const safedomain = {
@@ -25,7 +24,6 @@ function Footer() {
       logo={logo && <FooterLogo logo={logo} />}
       copyright={copyright && <FooterCopyright copyright={copyright} />}
       safedomain={<SafeDomain {...safedomain} />}
-      statistics={<Statistics />}
       socialLink={<SocialLink />}
     />
   );

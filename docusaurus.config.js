@@ -105,11 +105,11 @@ const config = {
           { label: '实战', position: 'right', items: [
             { to: '/visitor', label: '统计工具' },
             { to: '/shapedivider', label: '分隔线工具' },
-            { to: '/handraw', label: '手绘做图工具' },
             { to: '/codeimage', label: '代码图片生成器' },
             { to: '/cssglass', label: '毛玻璃效果生成器' },
             { to: '/lifebalence', label: '高效的生物钟' },
-            { to: '/progress', label: '年度进度图' }
+            { to: '/progress', label: '年度进度图' },
+            { to: '/photo', label: '音乐播放器' }
           ] },
           { label: '关于', position: 'right', items: [
             { to: '/about', label: '关于本站' },
@@ -150,8 +150,8 @@ const config = {
                 to: '/shapedivider',
               },
               {
-                label: '手绘白板工具',
-                to: '/handraw',
+                label: '毛玻璃效果生成器',
+                to: '/cssglass',
               },
               {
                 label: '代码图片生成器',
