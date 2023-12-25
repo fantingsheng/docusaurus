@@ -21,11 +21,12 @@ function BlogPostPageContent({sidebar, children}) {
     toc_max_heading_level: tocMaxHeadingLevel,
     enable_comment: enableComment,
     enable_donate: enableDonate,
-    enable_adsense: enableAdsense
+    enable_adsense: enableAdsense,
+    hide_sidebar: hideSidebar
   } = frontMatter;
   return (
     <BlogLayout
-      sidebar={sidebar}
+      sidebar={hideSidebar ? null : sidebar}
       toc={
         !hideTableOfContents && toc.length > 0 ? (
           <TOC
