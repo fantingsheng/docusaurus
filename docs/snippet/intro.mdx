@@ -6,15 +6,27 @@ enable_comment: true
 
 # 介绍
 
-如果我只能给其他程序员一个建议，那就是编写小的代码块，你要多写**小方法**、**小功能**、**小程序**。
+import { RoughNotation, RoughNotationGroup } from 'react-rough-notation';
 
-小而美，短而精。健壮的代码是由一个个小的片段组成。
+export const SnippetDocIntro = () => {
+  return (
+    <>
+      <p>如果我只能给其他程序员一个建议，那就是编写小的代码块，你要多写&nbsp;
+        <RoughNotation type="highlight" color='rgb(255, 213, 79, 0.6)' animationDelay={200} show={true}>小方法</RoughNotation> 、
+        <RoughNotation type="highlight" color='rgb(255, 213, 79, 0.6)' animationDelay={1000} show={true}>小功能</RoughNotation> 、
+        <RoughNotation type="highlight" color='rgb(255, 213, 79, 0.6)' animationDelay={1800} show={true}>小程序</RoughNotation> 。
+      </p>
+      <p>小而美，短而精。健壮的代码是由一个个小的片段组成。</p>
+      <p>优秀的作家无不是从一个简单优美的句子开始学起，而入门编程也是从输出&nbsp;
+      <RoughNotation type="box" color='rgb(244, 67, 54, 0.85)' animationDelay={1100} show={true}>Hello World</RoughNotation> 开始。</p>
+      <p>下面跟着我一起从小的代码片段<RoughNotation type="underline" color='#383c93' animationDelay={1500} show={true}>敲起来</RoughNotation>吧！👨‍💻</p>
+    </>
+  )
+}
 
-优秀的作家无不是从一个简单优美的句子开始学起，而入门编程也是从输出“Hello World”开始。
+<SnippetDocIntro />
 
-下面跟着我一起从小的代码片段敲起来吧！👨‍💻
-
-**喜欢的几句名言** ✨
+**下面是我喜欢的几句名言** ✨
 
 > You don't have to be great to start, but you have to start to be great.  
 *-- Zig Ziglar*
