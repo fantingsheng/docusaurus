@@ -3,7 +3,7 @@ import { useColorMode } from '@docusaurus/theme-common';
 import styles from './style.module.scss';
 import clsx from 'clsx';
 
-export default function NavbarColorModeToggle({className}) {
+export default function GithubButton({className}) {
   const { colorMode } = useColorMode();
   return (
     <a

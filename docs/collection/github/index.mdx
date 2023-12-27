@@ -46,10 +46,13 @@ export function GithubUserInfo() {
 
 ## 用户头像
 
+拿到用户的头像有两种方式，第一种最直接，通过用户名；第二种是通过用户 ID。
+
 Github 账号的用户 ID 可通过上面的链接在用户信息里拿到。
 或者通过网站 [https://caius.github.io/github_id](https://caius.github.io/github_id) 直接查询
 
 export function GithubAvatar () {
+  const [userName, setUserName] = useState('facebook');
   const [copied, setCopied] = useState(false);
   const [config, setConfig] = useState({
     userId: '6924543',
@@ -71,6 +74,29 @@ export function GithubAvatar () {
   }
   return (
     <Box sx={{ margin: '40px 0' }}>
+      <Box sx={{ width: '50%' }}>
+        <TextField
+          label='Github 用户名'
+          value={userName}
+          onChange={e => setUserName(e.target.value)}
+          placeholder='Github User Name'
+          size='small'
+          fullWidth
+        />
+      </Box>
+      <Box sx={{ marginTop: '15px' }}>
+        <Avatar
+          alt="Github Avatar"
+          sx={{ width: config.size, height: config.size, margin: '20px 0' }}
+          src={`https://github.com/${userName}.png`}
+        />
+        <Typography variant="caption" display="block" gutterBottom>
+          {`https://github.com/${userName}.png`}
+        </Typography>
+      </Box>
+      <Typography variant="h5" sx={{ margin: '20px 0' }} gutterBottom>
+        或者通过用户 ID
+      </Typography>
       <Grid container spacing={4}>
         <Grid item xs={4}>
           <Box>
