@@ -6,7 +6,7 @@ slug: /collection/icon
 # 开源网页图标
 
 import { DevIconExample, HeroiconExample, VscodeIconExample, MapIconExample, IconbuddyExample, SimpleIconExample, 
-FlagIconExample, SchoolIconExample } from './index'
+FlagIconExample, SchoolIconExample, CssIconExample } from './index'
 
 ## Devicon
 
@@ -88,13 +88,21 @@ FlagIconExample, SchoolIconExample } from './index'
 
 ## ICONO
 
-纯 CSS 代码实现的图标，而且只使用了一个标签元素，借助伪元素实现。
+纯 CSS 代码实现的图标，并且只使用了一个 `<i>` 元素标签，然后借助 `::before` 和 `::after` 伪元素实现。
 
 [https://saeedalipoor.github.io/icono](https://saeedalipoor.github.io/icono)
 
+<CssIconExample />
+
 ## svgl
 
-漂亮的 SVG 格式的软件图标。被整理成分类并提供搜索和下载功能。
+漂亮的 SVG 格式的软件产品和公司图标。被整理成分类并提供搜索和下载功能。而且这个网站还提供了 API 服务，不需要授权即可使用
+
+```
+https://svgl.app/api/svgs
+# or
+https://svgl.app/api/categories
+```
 
 [https://svgl.vercel.app](https://svgl.vercel.app)
 
