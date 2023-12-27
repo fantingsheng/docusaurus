@@ -1,0 +1,13 @@
+.githubBtn {
+  width: 2rem;
+  height: 2rem;
+  margin: 0 6px;
+  border-radius: 50%;
+  color: currentcolor;
+  display: flex;
+  padding: 4px;
+}
+.githubBtn:hover {
+  color: currentColor;
+  background: var(--ifm-color-emphasis-200);
+}
