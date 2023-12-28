@@ -17,7 +17,8 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 import AirlineSeatFlatAngledIcon from '@mui/icons-material/AirlineSeatFlatAngled';
 import LocalLibrarySharpIcon from '@mui/icons-material/LocalLibrarySharp';
-import { Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import GiscusComponent from '@site/src/components/GiscusComponent';
 import Divider from '@mui/material/Divider';
 import styles from './style.module.scss';
@@ -121,6 +122,48 @@ function Banner ({ timeStr }) {
   )
 }
 
+function AskQuestion () {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+  return (
+    <div className='margin-vert--xl'>
+      <Accordion sx={{ backgroundColor: '#fff', boxShadow: 'none' }} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography>城市白领就像扫地机器人，每天按固定线路跑工作量，下班回出租屋充电</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
+            Aliquam eget maximus est, id dignissim quam.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion sx={{ backgroundColor: '#fff', boxShadow: 'none' }} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography>城市白领就像扫地机器人，每天按固定线路跑工作量，下班回出租屋充电</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
+            Aliquam eget maximus est, id dignissim quam.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  )
+}
+
 export default function Index() {
   const [ntime, setNtime] = useState(new Date())
 
@@ -150,6 +193,11 @@ export default function Index() {
                 <h3>我一天的时间安排</h3>
               </div>
               <OneDayTimeline timeStr={ntime.toLocaleTimeString()} />
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col col--12'>
+              {/* <AskQuestion /> */}
             </div>
           </div>
           <div className='row'>
