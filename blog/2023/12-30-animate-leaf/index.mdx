@@ -1,0 +1,134 @@
+---
+slug: animate-leaf
+title: CSS 实现风儿吹动的树叶
+authors: [fants0230]
+tags: [CSS 动画, 设计]
+enable_comment: true
+hide_sidebar: true
+---
+
+import React from 'react';
+import styles from './style.module.scss';
+
+如题，要实现树叶在风中摇摆的动画，首先准备主体：**树叶**。
+
+这里准备了两张矢量的高清版 SVG 格式的不同种类的树叶。
+
+export const LeafShow = () => {
+  return (
+    <div className="row">
+      <div className="col col--5">
+        <img src="/blog/virtual_safari_leaf.svg" alt="Leaf" />
+      </div>
+      <div className="col col--5">
+        <img src="/blog/virtual_safari_leaf2.svg" width="350" alt="Leaf" />
+      </div>
+    </div>
+  )
+}
+
+<LeafShow />
+
+<!--truncate-->
+
+首先我们使用 `img` 标签来在网页中显示树叶，然后给它一个名为 `leaf` 的类，好给它附加样式。
+
+```html
+<img class="leaf" src="/blog/virtual_safari_leaf.svg" alt="Leaf" />
+```
+
+接下来就是编写 CSS 动画代码，这里利用了 `tranform` 属性中的两个变换，`skew` 将元素在二维平面上倾斜角度进行拉伸，`rotate` 以中心为坐标轴进行旋转。
+
+```css
+.leaf {
+  transform: scale(0.8);
+  animation: leftRuffle 3s infinite alternate;
+}
+
+@keyframes leftRuffle {
+  50% {
+    transform: scale(0.8) skew(5deg) rotate(-5deg);
+  }
+  100% {
+    transform: scale(0.8) skew(0) rotate(0);
+  }
+}
+```
+
+export const LeafStepOne = ({ cln, path }) => {
+  return (
+    <img className={cln} src={path} width="400" alt="Leaf" />
+  )
+}
+
+我们先让第一个树叶动起来
+
+<LeafStepOne cln={styles.leafStep1} path="/blog/virtual_safari_leaf.svg" />
+
+第二个树叶我们将它左右翻转下，利用 `scaleX(-1)`，然后同理
+
+```
+```css
+.leaf {
+  transform: scale(0.7) scaleX(-1);
+  animation: rightRuffle 3s infinite alternate;
+}
+
+@keyframes rightRuffle {
+  0% {
+    transform: scale(0.7) scalex(-1) skew(0) rotate(0);
+  }
+  50% {
+    transform: scale(0.7) scalex(-1) skew(5deg) rotate(-5deg);
+  }
+  100% {
+    transform: scale(0.7) scalex(-1) skew(0) rotate(0);
+  }
+}
+```
+
+<LeafStepOne cln={styles.leafStep2} path="/blog/virtual_safari_leaf2.svg" />
+
+动是动起来了，可单独看是否觉得有点奇怪。
+
+我们给它增加一个场景：
+
+通常这种大树叶的绿植要么生长在热带雨林，要么被我们放在室内当做风景或者背景。
+
+
+export const VideoBg = () => {
+  const [ntime, setNtime] = React.useState(new Date())
+
+  const tick = () => {
+    setNtime(new Date());
+  }
+
+  React.useEffect(() => {
+    const intervalId = setInterval(() => tick(), 1000);
+    return () => clearInterval(intervalId);
+  }, [])
+  return (
+    <div className={styles.wall}>
+      <div className={styles.videoBgTop}>
+        <p>{ntime.toLocaleTimeString().split(':').join(' : ')}</p>
+      </div>
+      <div className={styles.container}>
+        <div className={styles.videoContainer}>
+           <video controls={true} src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" className={styles.video} autoplay></video>
+        </div>
+      </div>
+      <svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg>
+    </div>
+  )
+}
+
+<VideoBg />
+
+
+
+
+
+
+
+
+
