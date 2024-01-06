@@ -1,0 +1,33 @@
+.siteIcon {
+  padding: 0.5rem;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  min-width: 40px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+.photo {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.gridBg {
+  height: 100%;
+  width: 100%;
+  background-image:
+      linear-gradient(to right, rgb(203 213 225/0.25) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(203 213 225/0.25) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+  padding: 20px;
+}
+.bentoGrid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
