@@ -1,47 +1,14 @@
 import React from 'react';
+import { useState, useEffect } from 'react'
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import { styled } from '@mui/material/styles';
-import { Grid, Avatar, Paper, Box, Typography, Button } from '@mui/material';
-import Masonry from '@mui/lab/Masonry';
+import { Grid, Avatar, Paper, Box, Typography } from '@mui/material';
 import styles from './style.module.scss';
-import AMapLoader from "@amap/amap-jsapi-loader";
-import { Player, MusicQueue } from '@site/src/pages/player/index'
-
-function MapContainer() {
-  let map = null;
-
-  React.useEffect(() => {
-    AMapLoader.load({
-      key: "f92d916868bf43323d76c1f76702d2a6", // 申请好的Web端开发者Key，首次调用 load 时必填
-      version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
-      plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
-    })
-      .then((AMap) => {
-        map = new AMap.Map("container", {
-          // 设置地图容器id
-          viewMode: "3D", // 是否为3D地图模式
-          zoom: 11, // 初始化地图级别
-          center: [120.325121, 31.498017], // 初始化地图中心点位置
-        });
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-
-    return () => {
-      map?.destroy();
-    };
-  }, []);
-
-  return (
-    <div
-      id="container"
-      className={styles.container}
-      style={{ height: "400px" }}
-    ></div>
-  );
-}
+// import AMapLoader from "@amap/amap-jsapi-loader";
+import { Player } from '@site/src/pages/player/index'
 
 export default function Main () {
   const songList = [
@@ -78,6 +45,51 @@ export default function Main () {
     border: '1px solid rgba(0,0,0,.08)',
     overflow: 'hidden',
   }));
+
+  function MapContainer() {
+    let map = null;
+   
+    useEffect(() => {
+       if (ExecutionEnvironment.canUseDOM) {
+        import("@amap/amap-jsapi-loader").then(AMapLoader => {
+        AMapLoader.load({
+          key: "f92d916868bf43323d76c1f76702d2a6", // 申请好的Web端开发者Key，首次调用 load 时必填
+          version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+          plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+        })
+          .then((AMap) => {
+            map = new AMap.Map("container", {
+              viewMode: "3D", // 是否为3D地图模式
+              zoom: 11, // 初始化地图级别
+              center: [120.325121, 31.498017], // 初始化地图中心点位置
+            });
+            const marker = new AMap.Marker({
+              position: new AMap.LngLat(120.325121, 31.498017),
+              content: '<div class="custom-content-marker">' +
+              '   <img src="/img/poi-marker-red.png" width="30">' +
+              '</div>',
+              offset: new AMap.Pixel(-40, -20)
+            })
+            map.add(marker);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+        })
+      }
+      return () => {
+        map?.destroy();
+      };
+    }, []);
+  
+    return (
+      <div
+        id="container"
+        className={styles.container}
+        style={{ height: "100%", width: "100%" }}
+      ></div>
+    );
+  }
 
   return (
     <Layout title='个人主页' description='个人主页'>
