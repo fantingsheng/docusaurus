@@ -15,10 +15,11 @@ export default function BlogToolBar({}) {
   
   const [copied, setCopied] = React.useState(false);
   const { metadata, isBlogPostPage } = useBlogPost();
-  console.log('metadata', metadata)
   const { permalink } = metadata;
   const blogUrl = siteConfig.url + '' + useBaseUrl(permalink);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [alertText, setAlertText] = React.useState('');
+  const [alertType, setAlertType] = React.useState('success');
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
@@ -40,12 +41,23 @@ export default function BlogToolBar({}) {
   const onCopy = () => {
     navigator.clipboard.writeText(blogUrl)
     .then(() => {
+      setAlertText("复制链接成功");
+      setAlertType('success');
       setCopied(true);
     })
     .catch((error) => {
       console.error("复制时出错: ", error);
     });
   };
+  const onPlayAudio = () => {
+    if (metadata.frontMatter.audio) {
+      console.log("to play audio")
+    } else {
+      setAlertType('warning');
+      setAlertText("本文未上传音频");
+      setCopied(true);
+    }
+  }
 
   const onShare = (event) => {
     setAnchorEl(event.currentTarget);
@@ -69,7 +81,7 @@ export default function BlogToolBar({}) {
             </IconButton>
           </div>
           <div className={styles.rightSide}>
-            <IconButton aria-label="听全文">
+            <IconButton aria-label="听全文" onClick={onPlayAudio}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="#6B6B6B"><path fillRule="evenodd" clipRule="evenodd" d="M3 12a9 9 0 1 1 18 0 9 9 0 0 1-18 0zm9-10a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm3.38 10.42l-4.6 3.06a.5.5 0 0 1-.78-.41V8.93c0-.4.45-.63.78-.41l4.6 3.06c.3.2.3.64 0 .84z" fill="currentColor"></path></svg>
             </IconButton>
             <IconButton aria-label="分享" aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined} onClick={onShare}>
@@ -100,7 +112,7 @@ export default function BlogToolBar({}) {
             </IconButton>
           </div>
           <Snackbar open={copied} autoHideDuration={1500} anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }} onClose={() => setCopied(false)}>
-            <Alert severity="success"><AlertTitle>复制链接成功</AlertTitle></Alert>
+            <Alert severity={alertType}><AlertTitle>{alertText}</AlertTitle></Alert>
           </Snackbar>
         </div>)
     }
