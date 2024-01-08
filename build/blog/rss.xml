@@ -32,7 +32,7 @@
 <p>我们给它增加一个场景：</p>
 <p>通常这种大树叶的绿植要么生长在热带雨林，要么被我们放在室内当做风景或者背景。</p>
 <!-- -->
-<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>17 : 05 : 06</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF"></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content:encoded>
+<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>14 : 31 : 48</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF"></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content:encoded>
             <author>fants0230@sina.com (编程范儿)</author>
             <category>CSS 动画</category>
             <category>设计</category>
@@ -509,7 +509,7 @@ Github Discussion 功能开发的开源的插件。用户要评论，首先得�
 </ul>
 <p>还有其他一些”功能性“破坏性变化，应该相对容易处理。UI 基本保持和最新的 v2.x 中一致。</p>
 <p>新功能并没有做详细介绍，而是等到最终版本发布的时候公布。</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="发布链接">发布链接<a href="https://spacexcode.com/blog/docusaurus-v3-beta#%E5%8F%91%E5%B8%83%E9%93%BE%E6%8E%A5" class="hash-link" aria-label="发布链接的直接链接" title="发布链接的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="发布链接">发布链接<a href="https://spacexcode.com/blog/docusaurus-v3-beta#%E5%8F%91%E5%B8%83%E9%93%BE%E6%8E%A5" class="hash-link" aria-label="发布链接的直接链��接" title="发布链接的直接链接">​</a></h3>
 <ul>
 <li>GitHub discussions: <a href="https://github.com/facebook/docusaurus/discussions/9312" target="_blank" rel="noopener noreferrer">3.0.0-beta.0</a></li>
 <li>GitHub release: <a href="https://github.com/facebook/docusaurus/releases/tag/v3.0.0-beta.0" target="_blank" rel="noopener noreferrer">https://github.com/facebook/docusaurus/releases/tag/v3.0.0-beta.0</a></li>
