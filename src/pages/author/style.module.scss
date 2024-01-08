@@ -1,3 +1,11 @@
+.pageWrapper {
+  padding: 4rem;
+}
+@media screen and (max-width: 767px) {
+  .pageWrapper {
+    padding: 1.4rem;
+  }
+}
 .siteIcon {
   padding: 0.5rem;
   aspect-ratio: 1/1;
