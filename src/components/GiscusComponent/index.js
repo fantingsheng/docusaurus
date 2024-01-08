@@ -7,7 +7,7 @@ export default function GiscusComponent() {
   const { colorMode } = useColorMode();
 
   return (
-    <div className={styles.commentWrapper}>
+    <div className={styles.commentWrapper} id="Comment">
       <Giscus
         repo="fantingsheng/spacexcode-discus"
         repoId="R_kgDOJoGL9w"
