@@ -63,7 +63,15 @@ export default function DocItemLayout({children}) {
         </div>
         { enableComment && <GiscusComponent /> }
       </div>
-      {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
+      <div className="col col--3">
+        <div className={styles.sideBar}>
+          {docTOC.desktop}
+          <div className={styles.adsWrap}>
+            <div className={styles.adsTitle}>成为赞助商</div>
+            <GoogleAdsBlock model='pureShow' height='120px' />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
