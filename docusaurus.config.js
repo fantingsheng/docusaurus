@@ -252,6 +252,11 @@ const config = {
         minHeadingLevel: 2,
         maxHeadingLevel: 5,
       },
+      docs: {
+        sidebar: {
+          hideable: true
+        }
+      },
       mermaid: {
         theme: { light: 'default', dark: 'dark' },
       },
