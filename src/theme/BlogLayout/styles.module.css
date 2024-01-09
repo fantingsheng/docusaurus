@@ -1,0 +1,23 @@
+.sideBar {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+}
+.adsWrap {
+  padding-left: var(--ifm-toc-padding-horizontal);
+  width: 100%;
+  overflow: hidden;
+  border-left: 1px solid var(--ifm-toc-border-color);
+}
+
+.adsTitle {
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  letter-spacing: 0.05rem;
+  color: rgba(60, 60, 60, 0.33);
+  height: 40px;
+  margin-top: 10px;
+}
