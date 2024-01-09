@@ -64,13 +64,13 @@ export default function BlogToolBar({}) {
     setAnchorEl(event.currentTarget);
   }
   React.useEffect(() => {
-    audioRef.current.addEventListener('loadeddata', () => {
+    audioRef.current?.addEventListener('loadeddata', () => {
       //todo
     });
-    audioRef.current.addEventListener('play', () => {
+    audioRef.current?.addEventListener('play', () => {
       //todo
     });
-    audioRef.current.addEventListener('ended', () => {
+    audioRef.current?.addEventListener('ended', () => {
       setPaused(true);
     });
   }, []);
