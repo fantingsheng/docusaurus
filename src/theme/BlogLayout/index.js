@@ -23,15 +23,19 @@ export default function BlogLayout(props) {
             itemType="https://schema.org/Blog">
             {children}
           </main>
-          <div className="col col--2">
-            <div className={styles.sideBar}>
-              {toc}
-              <div className={styles.adsWrap}>
-                <div className={styles.adsTitle}>成为赞助商</div>
-                <GoogleAdsBlock model='pureShow' height='120px' />
+          {
+            toc && (
+              <div className="col col--2">
+                <div className={styles.sideBar}>
+                  {toc}
+                  <div className={styles.adsWrap}>
+                    <div className={styles.adsTitle}>成为赞助商</div>
+                    <GoogleAdsBlock model='pureShow' height='120px' />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            )
+          }
         </div>
       </div>
     </Layout>
