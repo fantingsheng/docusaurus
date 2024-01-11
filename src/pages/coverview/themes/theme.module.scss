@@ -16,6 +16,7 @@
 .font-anek {
   font-family: Anek Latin,sans-serif;
 }
+
 /* basic theme style */
 .basicTheme {
   // padding: 1rem;
@@ -82,6 +83,97 @@
           margin-right: 0.5rem;
           margin-left: auto;
           margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+/* background theme style */
+.backgroundTheme {
+  background-color: #fff;
+
+  .main {
+    overflow: hidden;
+    color: rga(31 41 55/1);
+    align-items: center;
+    // height: 100%;
+    height: 340px;
+
+    .content {
+      display: flex;
+      position: relative;
+      height: 100%;
+
+      .imgWrap {
+        width: 100%;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .textCover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background-color: rgba(31,41,55,.6);
+        backdrop-filter: blur(4px);
+
+        .textarea {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          color: #fff;
+          padding: 0 2.5rem;
+
+          h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.4;
+            overflow: hidden;
+            margin-bottom: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* 你想要显示的行数 */
+            -webkit-box-orient: vertical;
+          }
+          .bt {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            .customIcon {
+              width: 3rem;
+              height: 3rem;
+    
+              img {
+                padding: 0.25rem;
+                border-color: #fff;
+                background-color: #fff;
+                border-radius: 9999px;
+              }
+            }
+            .devicon {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 3rem;
+              height: 3rem;
+            }
+            .author {
+              font-weight: 600;
+              font-size: 1.25rem;
+              line-height: 1.75rem;
+              margin-bottom: 0;
+            }
+          }
         }
       }
     }

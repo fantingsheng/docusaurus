@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { Grid, Select, Button, MenuItem, TextField, Box, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
@@ -11,7 +11,9 @@ import styles from './style.module.scss';
 import clsx from 'clsx';
 import html2canvas from 'html2canvas'
 import { devicons } from './devicon';
-import BasicTheme from "./themeSkeleton/BasicTheme";
+
+import BasicTheme from './themeSkeleton/BasicTheme';
+import BackgroundTheme from './themeSkeleton/BackgroundTheme';
 
 const BootstrapButton = styled(Button)({
   boxShadow: 'none',
@@ -43,7 +45,8 @@ export default function () {
     ratio: '1/2',
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
-    theme: 'basic'
+    theme: 'basic',
+    bgImg: ''
   });
   const fontOptions = [
     { label: 'serif', value: 'serif' },
@@ -157,6 +160,8 @@ export default function () {
                   {/* 主题列表 */}
                   <div className={clsx(styles.themeItem, config.theme === 'basic' ? styles.on : '')}
                     onClick={() => handleConfigChange('basic', 'theme')}><BasicTheme /></div>
+                  <div className={clsx(styles.themeItem, config.theme === 'background' ? styles.on : '')}
+                    onClick={() => handleConfigChange('background', 'theme')}><BackgroundTheme /></div>
                 </Box>
               </Box>
               <Box className={styles.setItem}>
@@ -180,6 +185,12 @@ export default function () {
                   onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
                   fullWidth
                 />
+              </Box>
+              <Box className={styles.setItem} sx={{ marginTop: '15px' }}>
+                <Typography variant="h5">背景图</Typography>
+                <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<Image />}>
+                  上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
+                </Button>
               </Box>
               <Box className={styles.setItem} sx={{ marginTop: '15px' }}>
                 <Typography variant="h5">长宽比</Typography>
