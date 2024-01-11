@@ -3,7 +3,8 @@ import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { Grid, Select, Button, MenuItem, TextField, Box, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
-import Image from '@mui/icons-material/Image';
+// import Image from '@mui/icons-material/Image';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
@@ -148,7 +149,7 @@ export default function () {
                           <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
                         ))}
                       </Select>
-                      <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<Image />}>
+                      <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
                         上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'customIcon')} />
                       </Button>
                     </Box>
@@ -193,7 +194,7 @@ export default function () {
                   </Box>
                   <Box className={styles.setItem}>
                     <Typography variant="h5">背景图</Typography>
-                    <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<Image />}>
+                    <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
                       上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
                     </Button>
                   </Box>
