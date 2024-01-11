@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './style.module.scss';
 import { Skeleton } from '@mui/material';
+import PhotoIcon from '@mui/icons-material/Photo';
 
 const BackgroundTheme = () => {
     return (
       <div className={styles.backgroundTheme}>
-        <Skeleton animation={false} variant="rectangular" sx={{ paddingTop: '10px' }} width={120} height={72}>
+        <Skeleton animation={false} variant="rectangular" sx={{ paddingTop: '10px', position: 'relative' }} width={120} height={72}>
+          <div className={styles.bgIcon}><PhotoIcon /></div>
           <div className={styles.content}>
             <Skeleton animation={false} variant="text" sx={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }} width={66} height={10} />
             <Skeleton animation={false} variant="text" sx={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }} width={50} height={10} />
