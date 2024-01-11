@@ -5,7 +5,7 @@ import Head from '@docusaurus/Head';
 import { Box, Typography, Slider, LinearProgress, TextField, Select, MenuItem, Switch, Button, Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
 import styles from './style.module.scss';
 import { ColorPicker } from 'material-ui-color';
-import html2canvas from 'html2canvas'
+import html2canvas from 'html2canvas';
 
 const Tool = ({ config, handleConfigChange, doExportImg }) => {
   return (

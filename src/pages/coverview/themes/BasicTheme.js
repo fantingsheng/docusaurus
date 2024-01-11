@@ -1,0 +1,35 @@
+import React from 'react';
+import styles from './theme.module.scss';
+import clsx from 'clsx';
+import { selectDevicon } from '../devicon';
+
+const BasicTheme = ({ config }) => {
+    const { title, bgColor, fontFamily, pattern, author, icon, font, customIcon, platform } = config;
+
+    return (
+      <div className={styles.basicTheme}>
+        <div className={styles.main} style={{ backgroundColor: bgColor }}>
+          <div className={clsx(styles.content, styles['font-' + fontFamily])}>
+            <div style={{ padding: '0 3rem' }}>
+              <h1>{title}</h1>
+            </div>
+            <div className={styles.bt}>
+              {
+                customIcon ?
+                  <div className={styles.customIcon}>
+                    <img src={customIcon} alt="img" className="rounded-full bg-white p-1 border-white" />
+                  </div>
+                  :
+                  <div className={styles.devicon}>
+                    {selectDevicon(icon)}
+                  </div>
+              }
+              <h2 className={styles.author}>{author}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+}
+
+export default BasicTheme;

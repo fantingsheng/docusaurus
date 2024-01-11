@@ -1,0 +1,19 @@
+
+.setItem {
+  margin-top: 20px;
+
+  h5 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+}
+.coverWrap {
+  width: 100%;
+}
+.themeItem {
+  cursor: pointer;
+}
+.themeItem.on {
+  border: 1px solid var(--ifm-color-primary-lightest);
+}

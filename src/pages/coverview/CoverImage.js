@@ -1,0 +1,34 @@
+import React from "react";
+import BasicTheme from "./themes/BasicTheme";
+import styles from './style.module.scss';
+
+export default function CoverImage ({ config }) {
+  const { theme } = config;
+
+	const selectTheme = (theme) => {
+		switch (theme) {
+			case 'basic':
+        return <BasicTheme config={config} />
+			case 'modern':
+        return <ModernTheme config={config} />
+			case 'outline':
+        return <OutlineTheme config={config} />
+			case 'preview':
+        return <PreviewTheme config={config} />
+			case 'stylish':
+        return <StylishTheme config={config} />
+			case 'mobile':
+        return <MobileMockupTheme config={config} />
+			case 'background':
+        return <BackgroundTheme config={config} />
+			default:
+        return <BasicTheme config={config} />
+		}
+	};
+
+  return (
+    <div className={styles.coverWrap}>
+      {selectTheme(theme)}
+    </div>
+  )
+}

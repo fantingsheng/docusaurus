@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import { styled } from '@mui/material/styles';
 import { Grid, Avatar, Paper, Box, Typography } from '@mui/material';
@@ -91,9 +90,9 @@ export default function Main () {
   }
 
   return (
-    <Layout title='个人主页' description='个人主页'>
+    <Layout title='个人主页' description='编程范儿的个人主页'>
       <Head>
-        <meta name="keywords" content='主页' />
+        <meta name="keywords" content='主页,太空编程,前端开发,编程范儿' />
       </Head>
       <Box className={styles.pageWrapper} sx={{ flexGrow: 1 }}>
         <Grid container spacing={4}>

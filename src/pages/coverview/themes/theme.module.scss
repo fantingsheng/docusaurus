@@ -1,0 +1,89 @@
+.font-serif {
+  font-family: ui-serif,Georgia,Cambria,Times New Roman,Times,serif;
+}
+.font-sans {
+  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+}
+.font-mono {
+  font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+}
+.font-inter {
+  font-family: Inter,sans-serif;
+}
+.font-poppins {
+  font-family: Poppins,sans-serif;
+}
+.font-anek {
+  font-family: Anek Latin,sans-serif;
+}
+/* basic theme style */
+.basicTheme {
+  // padding: 1rem;
+  background-color: #fff;
+
+  .main {
+    overflow: hidden;
+    display: flex;
+    color: rga(31 41 55/1);
+    align-items: center;
+    // height: 100%;
+    height: 340px;
+
+    .content {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      width: 83.333333%;
+      border-radius: 0.75rem;
+      margin: auto;
+      padding-top: 3rem;
+
+      h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.4;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* 你想要显示的行数 */
+        -webkit-box-orient: vertical;
+      }
+      .bt {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        .customIcon {
+          width: 3rem;
+          height: 3rem;
+
+          img {
+            padding: 0.25rem;
+            border-color: #fff;
+            background-color: #fff;
+            border-radius: 9999px;
+          }
+        }
+        .devicon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 0.5rem;
+          margin-right: auto;
+          width: 3rem;
+          height: 3rem;
+        }
+        .author {
+          font-weight: 600;
+          font-size: 1.25rem;
+          line-height: 1.75rem;
+          margin-right: 0.5rem;
+          margin-left: auto;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
