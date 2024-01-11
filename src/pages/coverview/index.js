@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { Grid, Select, Button, MenuItem, TextField, Box, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import Image from '@mui/icons-material/Image';
+import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
 import { ColorPicker } from 'material-ui-color';
 import styles from './style.module.scss';
@@ -14,7 +16,7 @@ import BasicTheme from "./themeSkeleton/BasicTheme";
 export default function () {
   const coverRef = useRef();
   const [config, setConfig] = useState({
-    fontFamily: '',
+    font: '',
     bgColor: '#949ee5',
     icon: 'react',
     ratio: '1/2',
@@ -55,6 +57,17 @@ export default function () {
       }, 1000);
     })
   };
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+  });
   return (
     <Layout title='制作封面图' description='封面图神器，根据配置快速生成一张漂亮的文章封面图'>
       <Head>
@@ -96,17 +109,22 @@ export default function () {
                 </Box>
                 <Box className={styles.setItem}>
                   <Typography variant="h5">图标</Typography>
-                  <Select
-                    value={config.icon}
-                    onChange={val => handleConfigChange(val.target.value, 'icon')}
-                    label=""
-                    size='small'
-                    fullWidth
-                  >
-                    {devicons.map(el => (
-                      <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
-                    ))}
-                  </Select>
+                  <Box sx={{ display: 'flex', gap: '10px' }}>
+                    <Select
+                      value={config.icon}
+                      onChange={val => handleConfigChange(val.target.value, 'icon')}
+                      label=""
+                      size='small'
+                      fullWidth
+                    >
+                      {devicons.map(el => (
+                        <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
+                      ))}
+                    </Select>
+                    <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<Image />}>
+                      上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'customIcon')} />
+                    </Button>
+                  </Box>
                 </Box>
               </Box>
             </Grid>
@@ -123,8 +141,8 @@ export default function () {
               <Box className={styles.setItem}>
                 <Typography variant="h5">字体</Typography>
                 <Select
-                  value={config.fontFamily}
-                  onChange={val => handleConfigChange(val.target.value, 'fontFamily')}
+                  value={config.font}
+                  onChange={val => handleConfigChange(val.target.value, 'font')}
                   label=""
                   size='small'
                   fullWidth

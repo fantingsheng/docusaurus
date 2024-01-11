@@ -4,12 +4,12 @@ import clsx from 'clsx';
 import { selectDevicon } from '../devicon';
 
 const BasicTheme = ({ config }) => {
-    const { title, bgColor, fontFamily, pattern, author, icon, font, customIcon, platform } = config;
+    const { title, bgColor, author, icon, font, customIcon, platform } = config;
 
     return (
       <div className={styles.basicTheme}>
         <div className={styles.main} style={{ backgroundColor: bgColor }}>
-          <div className={clsx(styles.content, styles['font-' + fontFamily])}>
+          <div className={clsx(styles.content, styles['font-' + font])}>
             <div style={{ padding: '0 3rem' }}>
               <h1>{title}</h1>
             </div>
@@ -17,7 +17,7 @@ const BasicTheme = ({ config }) => {
               {
                 customIcon ?
                   <div className={styles.customIcon}>
-                    <img src={customIcon} alt="img" className="rounded-full bg-white p-1 border-white" />
+                    <img src={customIcon} alt="img" />
                   </div>
                   :
                   <div className={styles.devicon}>
