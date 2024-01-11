@@ -13,10 +13,31 @@ import html2canvas from 'html2canvas'
 import { devicons } from './devicon';
 import BasicTheme from "./themeSkeleton/BasicTheme";
 
+const BootstrapButton = styled(Button)({
+  boxShadow: 'none',
+  textTransform: 'none',
+  border: '1px solid',
+  backgroundColor: '#0063cc',
+  borderColor: '#0063cc',
+  '&:hover': {
+    backgroundColor: '#0069d9',
+    borderColor: '#0062cc',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: '#0062cc',
+    borderColor: '#005cbf',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+});
+
 export default function () {
   const coverRef = useRef();
   const [config, setConfig] = useState({
-    font: '',
+    font: 'serif',
     bgColor: '#949ee5',
     icon: 'react',
     ratio: '1/2',
@@ -174,7 +195,7 @@ export default function () {
                 </ToggleButtonGroup>
               </Box>
               <Box className={styles.setItem} sx={{ marginTop: '15px' }}>
-                <Button variant="contained" onClick={onDownload} disableElevation fullWidth>导出图片</Button>
+                <BootstrapButton variant="contained" onClick={onDownload} disableElevation fullWidth>导出图片</BootstrapButton>
               </Box>
             </Grid>
           </Grid>
