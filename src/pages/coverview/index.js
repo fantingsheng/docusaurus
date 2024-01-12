@@ -52,7 +52,7 @@ export default function () {
     ratio: 1,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
-    theme: 'preview',
+    theme: 'mobile',
     bgImg: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1704985651753-e2a2eb6d-71c6-4293-8d8c-49203c7410bb.jpeg'
   });
   const fontOptions = [

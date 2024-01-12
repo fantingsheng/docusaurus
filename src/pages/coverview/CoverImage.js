@@ -5,6 +5,8 @@ import StylishTheme from "./themes/StylishTheme";
 import OutlineTheme from './themes/OutlineTheme';
 import ModernTheme from './themes/ModernTheme';
 import PreviewTheme from './themes/PreviewTheme';
+import MobileTheme from './themes/MobileTheme';
+
 import styles from './style.module.scss';
 
 export default function CoverImage ({ config }) {
@@ -24,8 +26,8 @@ export default function CoverImage ({ config }) {
         return <PreviewTheme config={config} />;
 			case 'stylish':
         return <StylishTheme config={config} />;
-			// case 'mobile':
-      //   return <MobileMockupTheme config={config} />
+			case 'mobile':
+        return <MobileTheme config={config} />
 			default:
         return <BasicTheme config={config} />;
 		}

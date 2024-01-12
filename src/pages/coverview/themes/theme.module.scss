@@ -513,3 +513,90 @@
     }
   }
 }
+/* mobile theme style */
+.mobileTheme {
+  background-color: #fff;
+
+  .main {
+    overflow: hidden;
+    color: rga(31 41 55/1);
+    align-items: center;
+    height: 340px;
+    padding: 1rem;
+    padding-bottom: 0;
+
+    .content {
+      display: flex;
+      position: relative;
+      align-items: center;
+      height: 100%;
+
+      .left {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        h1 {
+          font-size: 2.25rem;
+          line-height: 2.85rem;
+          color: white;
+          padding: 0 1rem;
+        }
+      }
+
+      .right {
+        width: 50%;
+        height: 100%;
+
+        .mobile {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          width: 83.333333%;
+          border-top-left-radius: 1.5rem;
+          border-top-right-radius: 1.5rem;
+          background-color: white;
+          border: 8px solid rgb(31 41 55/1);
+          border-bottom: none;
+          margin-top: 2.5rem;
+
+          .header {
+            padding: 0.5rem;
+            padding-bottom: 0.75rem;
+            background-color: rgb(31 41 55/1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+
+            .microphone {
+              width: 0.75rem;
+              height: 0.75rem;
+              margin-left: 0.25rem;
+              margin-right: 0.25rem;
+              border-radius: 9999px;
+              background-color: #fff;
+            }
+            .receiver {
+              width: 5rem;
+              height: 0.5rem;
+              border-radius: 9999px;
+              background-color: #fff;
+              margin-left: 0.25rem;
+              margin-right: 0.25rem;
+            }
+          }
+          .preview {
+            img {
+              height: auto;
+              max-width: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
