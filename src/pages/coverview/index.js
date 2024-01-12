@@ -19,6 +19,7 @@ import StylishTheme from './themeSkeleton/StylishTheme';
 import OutlineTheme from './themeSkeleton/OutlineTheme';
 import ModernTheme from './themeSkeleton/ModernTheme';
 import PreviewTheme from './themeSkeleton/PreviewTheme';
+import MobileTheme from './themeSkeleton/MobileTheme';
 
 const BootstrapButton = styled(Button)({
   boxShadow: 'none',
@@ -191,6 +192,8 @@ export default function () {
                         onClick={() => handleConfigChange('modern', 'theme')}><ModernTheme /></div>
                       <div className={clsx(styles.themeItem, config.theme === 'preview' ? styles.on : '')}
                         onClick={() => handleConfigChange('preview', 'theme')}><PreviewTheme /></div>
+                      <div className={clsx(styles.themeItem, config.theme === 'mobile' ? styles.on : '')}
+                        onClick={() => handleConfigChange('mobile', 'theme')}><MobileTheme /></div>
                     </Box>
                   </Box>
                   <Box className={styles.setItem}>
