@@ -179,3 +179,96 @@
     }
   }
 }
+
+/* stylish theme style */
+.stylishTheme {
+  background-color: #fff;
+
+  .main {
+    overflow: hidden;
+    color: rga(31 41 55/1);
+    align-items: center;
+    // height: 100%;
+    height: 340px;
+    padding: 1rem;
+
+    .content {
+      display: flex;
+      position: relative;
+      height: 100%;
+
+      .right {
+        width: 50%;
+        height: 100%;
+
+        .preview {
+          height: inherit;
+
+          img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .left {
+        width: 50%;
+        height: 100%;
+        background-color: #fff;
+
+        .textCenter {
+          padding: 1rem 3rem;
+          height: 100%;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        h1 {
+          font-size: 2.4rem;
+          font-weight: 700;
+          text-align: center;
+          line-height: 1.4;
+          overflow: hidden;
+          margin-bottom: 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; /* 你想要显示的行数 */
+          -webkit-box-orient: vertical;
+        }
+        .bt {
+          margin-top: 2.5rem;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+  
+          .customIcon {
+            width: 3rem;
+            height: 3rem;
+  
+            img {
+              padding: 0.25rem;
+              border-color: #fff;
+              background-color: #fff;
+              border-radius: 9999px;
+            }
+          }
+          .devicon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 3rem;
+            height: 3rem;
+          }
+          .author {
+            font-weight: 600;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            margin-bottom: 0;
+          }
+        }
+        
+      }
+    }
+  }
+}

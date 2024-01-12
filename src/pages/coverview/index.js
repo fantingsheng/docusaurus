@@ -16,6 +16,7 @@ import { devicons, selectDevicon } from './devicon';
 
 import BasicTheme from './themeSkeleton/BasicTheme';
 import BackgroundTheme from './themeSkeleton/BackgroundTheme';
+import StylishTheme from './themeSkeleton/StylishTheme';
 
 const BootstrapButton = styled(Button)({
   boxShadow: 'none',
@@ -48,7 +49,7 @@ export default function () {
     ratio: 1,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
-    theme: 'basic',
+    theme: 'stylish',
     bgImg: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1704985651753-e2a2eb6d-71c6-4293-8d8c-49203c7410bb.jpeg'
   });
   const fontOptions = [
@@ -115,7 +116,7 @@ export default function () {
           <Box sx={{ padding: '40px' }}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={8}>
-                <Box>
+                <Box sx={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '2px 2px 50px -20px #00000080', padding: '10px' }}>
                   {/* 生成图显示 */}
                   <div ref={coverRef} className={styles.preview}>
                     <CoverImage config={config} />
@@ -180,6 +181,8 @@ export default function () {
                         onClick={() => handleConfigChange('basic', 'theme')}><BasicTheme /></div>
                       <div className={clsx(styles.themeItem, config.theme === 'background' ? styles.on : '')}
                         onClick={() => handleConfigChange('background', 'theme')}><BackgroundTheme /></div>
+                      <div className={clsx(styles.themeItem, config.theme === 'stylish' ? styles.on : '')}
+                        onClick={() => handleConfigChange('stylish', 'theme')}><StylishTheme /></div>
                     </Box>
                   </Box>
                   <Box className={styles.setItem}>

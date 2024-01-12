@@ -50,3 +50,35 @@
     margin-top: 5px;
   }
 }
+
+.stylishTheme {
+  .content {
+    width: 100%;
+    height: 52px;
+    visibility: visible;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .left {
+      width: 50%;
+      padding: 5px;
+      background-color: #fff;
+      height: 100%;
+      .bt {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2px;
+        margin-top: 5px;
+      }
+    }
+    .right {
+      width: 50%;
+      height: 100%;
+    }
+  }
+  
+}

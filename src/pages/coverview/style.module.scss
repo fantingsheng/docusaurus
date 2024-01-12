@@ -1,7 +1,5 @@
 .preview {
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 2px 2px 50px -20px #00000080;
+
 }
 .setItem {
   margin-top: 20px;
@@ -17,6 +15,8 @@
 }
 .themeItem {
   cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .themeItem.on {
   position: relative;

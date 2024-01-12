@@ -1,6 +1,7 @@
 import React from "react";
 import BasicTheme from "./themes/BasicTheme";
 import BackgroundTheme from "./themes/BackgroundTheme";
+import StylishTheme from "./themes/StylishTheme";
 import styles from './style.module.scss';
 
 export default function CoverImage ({ config }) {
@@ -9,21 +10,21 @@ export default function CoverImage ({ config }) {
 	const selectTheme = (theme) => {
 		switch (theme) {
 			case 'basic':
-        return <BasicTheme config={config} />
+        return <BasicTheme config={config} />;
 			// case 'modern':
       //   return <ModernTheme config={config} />
 			// case 'outline':
       //   return <OutlineTheme config={config} />
 			// case 'preview':
       //   return <PreviewTheme config={config} />
-			// case 'stylish':
-      //   return <StylishTheme config={config} />
+			case 'stylish':
+        return <StylishTheme config={config} />;
 			// case 'mobile':
       //   return <MobileMockupTheme config={config} />
 			case 'background':
-        return <BackgroundTheme config={config} />
+        return <BackgroundTheme config={config} />;
 			default:
-        return <BasicTheme config={config} />
+        return <BasicTheme config={config} />;
 		}
 	};
 
