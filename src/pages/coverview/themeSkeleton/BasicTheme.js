@@ -5,7 +5,7 @@ import { Skeleton } from '@mui/material';
 const BasicTheme = () => {
     return (
       <div className={styles.basicTheme}>
-        <Skeleton animation={false} variant="rectangular" sx={{ paddingTop: '10px' }} width={120} height={72}>
+        <Skeleton animation={false} variant="rectangular" sx={{ padding: '8px' }} width={100} height={65}>
           <div className={styles.content}>
             <Skeleton animation={false} variant="text" width={'100%'} height={10} />
             <Skeleton animation={false} variant="text" width={'70%'} height={10} />

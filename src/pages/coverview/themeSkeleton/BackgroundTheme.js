@@ -6,7 +6,7 @@ import PhotoIcon from '@mui/icons-material/Photo';
 const BackgroundTheme = () => {
     return (
       <div className={styles.backgroundTheme}>
-        <Skeleton animation={false} variant="rectangular" sx={{ paddingTop: '10px', position: 'relative' }} width={120} height={72}>
+        <Skeleton animation={false} variant="rectangular" sx={{ padding: '8px', position: 'relative' }} width={100} height={65}>
           <div className={styles.bgIcon}><PhotoIcon /></div>
           <div className={styles.content}>
             <Skeleton animation={false} variant="text" sx={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }} width={66} height={10} />
