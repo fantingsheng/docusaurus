@@ -2,8 +2,9 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { Grid, Select, Button, MenuItem, TextField, Box, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, TextField, Paper, Box, Grow, Typography, ClickAwayListener, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
@@ -44,15 +45,17 @@ const BootstrapButton = styled(Button)({
 
 export default function () {
   const coverRef = useRef();
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
   const [config, setConfig] = useState({
     font: 'serif',
     bgColor: '#949ee5',
     gradientBgColor: '',
     icon: 'react',
-    ratio: 1,
+    ratio: 1/2,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
-    theme: 'mobile',
+    theme: 'basic',
     bgImg: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1704985651753-e2a2eb6d-71c6-4293-8d8c-49203c7410bb.jpeg'
   });
   const fontOptions = [
@@ -76,20 +79,20 @@ export default function () {
   const handleConfigChange = (val, key) => {
     setConfig((prev) => ({ ...prev, [key]: val }));
   };
-  const onDownload = () => {
+  const downloadImage = (scale, format) => {
     if (!coverRef.current) return;
     html2canvas(coverRef.current, {
       useCORS: true,
-      scale: 2,
+      scale: scale,
       backgroundColor: 'transparent'
     }).then((canvas) => {
       let newImg = new Image()
       const date = new Date()
-      newImg.src = canvas.toDataURL('image/png')
+      newImg.src = canvas.toDataURL('image/' + format) // 'image/png'
       const a = document.createElement("a");
       a.style.display = "none";
       a.href = newImg.src;
-      a.download = `spacexcode-cover-${date.getMinutes()}${date.getSeconds()}.png`;
+      a.download = `spacexcode-cover-${date.getMinutes()}${date.getSeconds()}.${format}`;
       a.rel = "noopener noreferrer";
       document.body.append(a);
       a.click();
@@ -109,6 +112,21 @@ export default function () {
     whiteSpace: 'nowrap',
     width: 1,
   });
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const handleMenuItemClick = (event, scale, format) => {
+    downloadImage(scale, format);
+    setOpen(false);
+  };
   return (
     <Layout title='制作封面图' description='封面图神器，根据配置快速生成一张漂亮的文章封面图'>
       <Head>
@@ -232,20 +250,66 @@ export default function () {
                     </Button>
                   </Box>
                   <Box className={styles.setItem}>
-                    <Typography variant="h5">长宽比</Typography>
+                    <Typography variant="h5">长宽比<span style={{ fontSize: '0.8rem', color: '#fa383e' }}>（正在开发中）</span></Typography>
                     <ToggleButtonGroup
                       value={config.ratio}
                       exclusive
                       onChange={val => handleConfigChange(val, 'ratio')}
                       aria-label='Ratio'
                       size='small'
+                      disabled
                     >
-                      <ToggleButton sx={{ padding: '7px 12px' }} value={1}>1:1</ToggleButton>
                       <ToggleButton sx={{ padding: '7px 12px' }} value={1/2}>1:2</ToggleButton>
+                      <ToggleButton sx={{ padding: '7px 12px' }} value={3/4}>3:4</ToggleButton>
+                      <ToggleButton sx={{ padding: '7px 12px' }} value={5/8}>5:8</ToggleButton>
                     </ToggleButtonGroup>
                   </Box>
                   <Box className={styles.setItem}>
-                    <Button variant="contained" onClick={onDownload} startIcon={<SaveAltIcon />} disableElevation fullWidth>导出图片</Button>
+                    <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button" fullWidth>
+                      <Button startIcon={<SaveAltIcon />} onClick={() => {}} disableElevation>导出图片</Button>
+                      <Button
+                        size="small"
+                        aria-controls={open ? 'split-button-menu' : undefined}
+                        aria-expanded={open ? 'true' : undefined}
+                        aria-label="选择格式并导出图片"
+                        aria-haspopup="menu"
+                        onClick={handleToggle}
+                        disableElevation
+                        sx={{ width: 80 }}
+                      >
+                        <ArrowDropDownIcon />
+                      </Button>
+                    </ButtonGroup>
+                    <Popper sx={{ zIndex: 1 }} open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                      {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          style={{
+                            transformOrigin:
+                              placement === 'bottom' ? 'center top' : 'center bottom',
+                          }}
+                        >
+                          <Paper>
+                            <ClickAwayListener onClickAway={handleClose}>
+                              <MenuList autoFocusItem>
+                                <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'png')}>
+                                  1X / PNG
+                                </MenuItem>
+                                <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'png')}>
+                                  2X/PNG
+                                </MenuItem>
+                                <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'jpg')}>
+                                  1X/JPG
+                                </MenuItem>
+                                <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'jpg')}>
+                                  2X/JPG
+                                </MenuItem>
+                              </MenuList>
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>
                   </Box>
                 </Box>
               </Grid>

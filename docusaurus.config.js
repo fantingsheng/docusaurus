@@ -107,6 +107,7 @@ const config = {
             { to: '/shapedivider', label: '分隔线工具' },
             { to: '/codeimage', label: '代码图片生成器' },
             { to: '/cssglass', label: '毛玻璃效果生成器' },
+            { to: '/coverview', label: '封面图生成器' },
             { to: '/lifebalence', label: '高效的生物钟' },
             { to: '/progress', label: '年度进度图' },
             { to: '/photo', label: '音乐播放器' }
@@ -157,6 +158,10 @@ const config = {
               {
                 label: '代码图片生成器',
                 to: '/codeimage',
+              },
+              {
+                label: '封面图生成器',
+                to: '/coverview'
               },
               {
                 label: '城市印象',
