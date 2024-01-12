@@ -12,7 +12,7 @@ import { ColorPicker } from 'material-ui-color';
 import styles from './style.module.scss';
 import clsx from 'clsx';
 import html2canvas from 'html2canvas';
-import { devicons } from './devicon';
+import { devicons, selectDevicon } from './devicon';
 
 import BasicTheme from './themeSkeleton/BasicTheme';
 import BackgroundTheme from './themeSkeleton/BackgroundTheme';
@@ -146,7 +146,8 @@ export default function () {
                         fullWidth
                       >
                         {devicons.map(el => (
-                          <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
+                          <MenuItem value={el.value} key={el.value}>
+                            <div className={styles.selectIconRow}><span>{el.label}</span>{selectDevicon(el.value)}</div></MenuItem>
                         ))}
                       </Select>
                       <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
