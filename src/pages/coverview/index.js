@@ -12,7 +12,7 @@ import { ColorPicker } from 'material-ui-color';
 import styles from './style.module.scss';
 import clsx from 'clsx';
 import html2canvas from 'html2canvas';
-import { devicons, selectDevicon } from './devicon';
+import { devicons, selectDevicon } from './Devicon';
 
 import BasicTheme from './themeSkeleton/BasicTheme';
 import BackgroundTheme from './themeSkeleton/BackgroundTheme';
@@ -183,7 +183,7 @@ export default function () {
                             <div className={styles.selectIconRow}><span>{el.label}</span>{selectDevicon(el.value)}</div></MenuItem>
                         ))}
                       </Select>
-                      <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
+                      <Button component="label" size='small' variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
                         上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'customIcon')} />
                       </Button>
                     </Box>
@@ -268,7 +268,6 @@ export default function () {
                     <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button" fullWidth>
                       <Button startIcon={<SaveAltIcon />} onClick={() => {}} disableElevation>导出图片</Button>
                       <Button
-                        size="small"
                         aria-controls={open ? 'split-button-menu' : undefined}
                         aria-expanded={open ? 'true' : undefined}
                         aria-label="选择格式并导出图片"

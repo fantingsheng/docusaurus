@@ -77,3 +77,9 @@ export const selectDevicon = (icon) => {
       return <Reactjs />;
   }
 }
+
+export default function Index () {
+  return (
+    <></>
+  )
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './theme.module.scss';
 import clsx from 'clsx';
-import { selectDevicon } from '../devicon';
+import { selectDevicon } from '../Devicon';
 
 const BackgroundTheme = ({ config }) => {
   const { title, bgColor, bgImg, author, icon, font, customIcon, platform } = config;
