@@ -17,6 +17,7 @@ import BasicTheme from './themeSkeleton/BasicTheme';
 import BackgroundTheme from './themeSkeleton/BackgroundTheme';
 import StylishTheme from './themeSkeleton/StylishTheme';
 import OutlineTheme from './themeSkeleton/OutlineTheme';
+import ModernTheme from './themeSkeleton/ModernTheme';
 
 const BootstrapButton = styled(Button)({
   boxShadow: 'none',
@@ -49,7 +50,7 @@ export default function () {
     ratio: 1,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
-    theme: 'outline',
+    theme: 'modern',
     bgImg: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1704985651753-e2a2eb6d-71c6-4293-8d8c-49203c7410bb.jpeg'
   });
   const fontOptions = [
@@ -185,6 +186,8 @@ export default function () {
                         onClick={() => handleConfigChange('stylish', 'theme')}><StylishTheme /></div>
                       <div className={clsx(styles.themeItem, config.theme === 'outline' ? styles.on : '')}
                         onClick={() => handleConfigChange('outline', 'theme')}><OutlineTheme /></div>
+                      <div className={clsx(styles.themeItem, config.theme === 'modern' ? styles.on : '')}
+                        onClick={() => handleConfigChange('modern', 'theme')}><ModernTheme /></div>
                     </Box>
                   </Box>
                   <Box className={styles.setItem}>
@@ -204,9 +207,9 @@ export default function () {
                   <Box className={styles.setItem}>
                     <Typography variant="h5">背景色</Typography>
                     <Box sx={{ display: 'flex' }}>
-                      {bgColorOptions.map(el => (
+                      {bgColorOptions.map((el, index) => (
                         <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
-                          onClick={() => handleConfigChange(el, 'gradientBgColor')}></div>
+                          onClick={() => handleConfigChange(el, 'gradientBgColor')} key={index}></div>
                       ))}
                       <div className={clsx(styles.bgGradient, styles.clearColor)} onClick={() => handleConfigChange('', 'gradientBgColor')}></div>
                     </Box>

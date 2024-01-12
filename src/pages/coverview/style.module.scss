@@ -15,10 +15,21 @@
   border-radius: 5px;
   overflow: hidden;
 }
-.themeItem.on {
+.themeItem {
   position: relative;
-  border: 1px solid var(--ifm-color-primary-lightest);
-  box-sizing: border-box;
+
+  &.on::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--ifm-color-primary-lightest);
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
 }
 .bgGradient {
   width: 24px;

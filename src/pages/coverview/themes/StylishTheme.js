@@ -31,7 +31,7 @@ const StylishTheme = ({ config }) => {
             </div>
             <div className={styles.right}>
               <div className={styles.preview}>
-                <img src={bgImg} className=" object-cover h-96 w-96  " alt="preview" />
+                <img src={bgImg} alt="preview" />
               </div>
             </div>
           </div>
