@@ -2,6 +2,7 @@ import React from "react";
 import BasicTheme from "./themes/BasicTheme";
 import BackgroundTheme from "./themes/BackgroundTheme";
 import StylishTheme from "./themes/StylishTheme";
+import OutlineTheme from './themes/OutlineTheme';
 import styles from './style.module.scss';
 
 export default function CoverImage ({ config }) {
@@ -13,8 +14,8 @@ export default function CoverImage ({ config }) {
         return <BasicTheme config={config} />;
 			// case 'modern':
       //   return <ModernTheme config={config} />
-			// case 'outline':
-      //   return <OutlineTheme config={config} />
+			case 'outline':
+        return <OutlineTheme config={config} />
 			// case 'preview':
       //   return <PreviewTheme config={config} />
 			case 'stylish':

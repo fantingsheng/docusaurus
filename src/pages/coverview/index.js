@@ -3,7 +3,6 @@ import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { Grid, Select, Button, MenuItem, TextField, Box, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
-// import Image from '@mui/icons-material/Image';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import { styled } from '@mui/material/styles';
@@ -17,6 +16,7 @@ import { devicons, selectDevicon } from './devicon';
 import BasicTheme from './themeSkeleton/BasicTheme';
 import BackgroundTheme from './themeSkeleton/BackgroundTheme';
 import StylishTheme from './themeSkeleton/StylishTheme';
+import OutlineTheme from './themeSkeleton/OutlineTheme';
 
 const BootstrapButton = styled(Button)({
   boxShadow: 'none',
@@ -49,7 +49,7 @@ export default function () {
     ratio: 1,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
-    theme: 'stylish',
+    theme: 'outline',
     bgImg: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1704985651753-e2a2eb6d-71c6-4293-8d8c-49203c7410bb.jpeg'
   });
   const fontOptions = [
@@ -183,6 +183,8 @@ export default function () {
                         onClick={() => handleConfigChange('background', 'theme')}><BackgroundTheme /></div>
                       <div className={clsx(styles.themeItem, config.theme === 'stylish' ? styles.on : '')}
                         onClick={() => handleConfigChange('stylish', 'theme')}><StylishTheme /></div>
+                      <div className={clsx(styles.themeItem, config.theme === 'outline' ? styles.on : '')}
+                        onClick={() => handleConfigChange('outline', 'theme')}><OutlineTheme /></div>
                     </Box>
                   </Box>
                   <Box className={styles.setItem}>
@@ -203,7 +205,8 @@ export default function () {
                     <Typography variant="h5">背景色</Typography>
                     <Box sx={{ display: 'flex' }}>
                       {bgColorOptions.map(el => (
-                        <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }} onClick={() => handleConfigChange(el, 'gradientBgColor')}></div>
+                        <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
+                          onClick={() => handleConfigChange(el, 'gradientBgColor')}></div>
                       ))}
                       <div className={clsx(styles.bgGradient, styles.clearColor)} onClick={() => handleConfigChange('', 'gradientBgColor')}></div>
                     </Box>
