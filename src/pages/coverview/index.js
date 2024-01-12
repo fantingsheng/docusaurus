@@ -114,7 +114,7 @@ export default function () {
                   marginTop: '32px', borderRadius: '12px' }}>
                   {/* 内容设置 */}
                   <Box className={styles.setItem}>
-                    <Typography variant="h5">文章标题</Typography>
+                    <Typography variant="h5">标题</Typography>
                     <TextField
                       value={config.title}
                       onChange={e => handleConfigChange(e.target.value, 'title')}
