@@ -451,3 +451,65 @@
     }
   }
 }
+
+/* preview theme style */
+.previewTheme {
+  background-color: #fff;
+
+  .main {
+    overflow: hidden;
+    color: rga(31 41 55/1);
+    align-items: center;
+    height: 340px;
+    padding: 1rem;
+    padding-bottom: 0;
+
+    .content {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+
+      h1 {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        color: white;
+        text-align: center;
+        padding: 2.5rem;
+      }
+
+      .window {
+        display: flex;
+        flex-direction: column;
+        width: 83.333333%;
+        border-top-left-radius: 0.75rem;
+        border-top-right-radius: 0.75rem;
+        box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+        background-color: white;
+        overflow: hidden;
+
+        .searchBar {
+          padding: 0.5rem;
+          background-color: rgb(31 41 55/1);
+          display: flex;
+
+          .circle {
+            width: 0.75rem;
+            height: 0.75rem;
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+            border-radius: 9999px;
+          }
+        }
+        .preview {
+          img {
+            height: auto;
+            max-width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
