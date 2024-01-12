@@ -18,6 +18,7 @@ import BackgroundTheme from './themeSkeleton/BackgroundTheme';
 import StylishTheme from './themeSkeleton/StylishTheme';
 import OutlineTheme from './themeSkeleton/OutlineTheme';
 import ModernTheme from './themeSkeleton/ModernTheme';
+import PreviewTheme from './themeSkeleton/PreviewTheme';
 
 const BootstrapButton = styled(Button)({
   boxShadow: 'none',
@@ -50,7 +51,7 @@ export default function () {
     ratio: 1,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
-    theme: 'modern',
+    theme: 'preview',
     bgImg: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1704985651753-e2a2eb6d-71c6-4293-8d8c-49203c7410bb.jpeg'
   });
   const fontOptions = [
@@ -188,6 +189,8 @@ export default function () {
                         onClick={() => handleConfigChange('outline', 'theme')}><OutlineTheme /></div>
                       <div className={clsx(styles.themeItem, config.theme === 'modern' ? styles.on : '')}
                         onClick={() => handleConfigChange('modern', 'theme')}><ModernTheme /></div>
+                      <div className={clsx(styles.themeItem, config.theme === 'preview' ? styles.on : '')}
+                        onClick={() => handleConfigChange('preview', 'theme')}><PreviewTheme /></div>
                     </Box>
                   </Box>
                   <Box className={styles.setItem}>

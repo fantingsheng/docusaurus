@@ -144,3 +144,47 @@
     }
   }
 }
+.previewTheme {
+  .content {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    position: relative;
+
+    .preview {
+      width: 80%;
+      background-color: #fff;
+      padding: 3px;
+      height: 75%;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      .toolbar {
+        height: 8px;
+        width: 100%;
+        border-radius: 4px;
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+
+        span {
+          display: inline-block;
+          width: 4px;
+          height: 4px;
+          background-color: #fff;
+          border-radius: 50%;
+          margin: 0 2px;
+        }
+      }
+    }
+  }
+}
