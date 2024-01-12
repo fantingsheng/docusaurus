@@ -43,6 +43,7 @@ export default function () {
   const [config, setConfig] = useState({
     font: 'serif',
     bgColor: '#949ee5',
+    gradientBgColor: '',
     icon: 'react',
     ratio: 1,
     title: '欢迎来到太空编程站点',
@@ -57,6 +58,16 @@ export default function () {
     { label: 'Inter', value: 'inter' },
     { label: 'Poppins', value: 'poppins' },
     { label: 'Anek', value: 'anek' }
+  ];
+  const bgColorOptions = [
+    'linear-gradient(310deg,rgb(214,233,255),rgb(214,229,255),rgb(209,214,255),rgb(221,209,255),rgb(243,209,255),rgb(255,204,245),rgb(255,204,223),rgb(255,200,199),rgb(255,216,199),rgb(255,221,199))',
+    'linear-gradient(160deg,rgb(204,251,252),rgb(197,234,254),rgb(189,211,255))',
+    'linear-gradient(150deg,rgb(255,242,158),rgb(255,239,153),rgb(255,231,140),rgb(255,217,121),rgb(255,197,98),rgb(255,171,75),rgb(255,143,52),rgb(255,115,33),rgb(255,95,20),rgb(255,87,15))',
+    'linear-gradient(345deg,rgb(211,89,255),rgb(228,99,255),rgb(255,123,247),rgb(255,154,218),rgb(255,185,208),rgb(255,209,214),rgb(255,219,219))',
+    'linear-gradient(150deg,rgb(0,224,245),rgb(31,158,255),rgb(51,85,255))',
+    'linear-gradient(330deg,rgb(255,25,125),rgb(45,13,255),rgb(0,255,179))',
+    'linear-gradient(150deg,rgb(0,176,158),rgb(19,77,93),rgb(16,23,31))',
+    'linear-gradient(150deg,rgb(95,108,138),rgb(48,59,94),rgb(14,18,38))'
   ]
   const handleConfigChange = (val, key) => {
     setConfig((prev) => ({ ...prev, [key]: val }));
@@ -188,14 +199,10 @@ export default function () {
                   <Box className={styles.setItem}>
                     <Typography variant="h5">背景色</Typography>
                     <Box sx={{ display: 'flex' }}>
-                      <div className={styles.bgGradient} style={{ backgroundImage: 'linear-gradient(310deg,rgb(214,233,255),rgb(214,229,255),rgb(209,214,255),rgb(221,209,255),rgb(243,209,255),rgb(255,204,245),rgb(255,204,223),rgb(255,200,199),rgb(255,216,199),rgb(255,221,199))'}}></div>
-                      <div className={styles.bgGradient} style={{ backgroundImage: 'linear-gradient(160deg,rgb(204,251,252),rgb(197,234,254),rgb(189,211,255))'}}></div>
-                      <div className={styles.bgGradient} style={{ backgroundImage: 'linear-gradient(150deg,rgb(255,242,158),rgb(255,239,153),rgb(255,231,140),rgb(255,217,121),rgb(255,197,98),rgb(255,171,75),rgb(255,143,52),rgb(255,115,33),rgb(255,95,20),rgb(255,87,15))'}}></div>
-                      <div className={styles.bgGradient} style={{ backgroundImage: 'linear-gradient(345deg,rgb(211,89,255),rgb(228,99,255),rgb(255,123,247),rgb(255,154,218),rgb(255,185,208),rgb(255,209,214),rgb(255,219,219))'}}></div>
-                      <div className={styles.bgGradient} style={{ backgroundImage: 'linear-gradient(150deg,rgb(0,224,245),rgb(31,158,255),rgb(51,85,255))'}}></div>
-                      <div className={styles.bgGradient} style={{ backgroundImage: 'linear-gradient(330deg,rgb(255,25,125),rgb(45,13,255),rgb(0,255,179))'}}></div>
-                      <div className={styles.bgGradient} style={{ backgroundImage: 'linear-gradient(150deg,rgb(0,176,158),rgb(19,77,93),rgb(16,23,31))'}}></div>
-                      <div className={styles.bgGradient} style={{ backgroundImage: 'linear-gradient(150deg,rgb(95,108,138),rgb(48,59,94),rgb(14,18,38))'}}></div>
+                      {bgColorOptions.map(el => (
+                        <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }} onClick={() => handleConfigChange(el, 'gradientBgColor')}></div>
+                      ))}
+                      <div className={clsx(styles.bgGradient, styles.clearColor)} onClick={() => handleConfigChange('', 'gradientBgColor')}></div>
                     </Box>
                     <ColorPicker
                       value={config.bgColor}
