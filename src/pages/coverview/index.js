@@ -8,6 +8,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
+import RandomTheme from './RandomTheme';
 import { ColorPicker } from 'material-ui-color';
 import styles from './style.module.scss';
 import clsx from 'clsx';
@@ -21,27 +22,6 @@ import OutlineTheme from './themeSkeleton/OutlineTheme';
 import ModernTheme from './themeSkeleton/ModernTheme';
 import PreviewTheme from './themeSkeleton/PreviewTheme';
 import MobileTheme from './themeSkeleton/MobileTheme';
-
-const BootstrapButton = styled(Button)({
-  boxShadow: 'none',
-  textTransform: 'none',
-  border: '1px solid',
-  backgroundColor: '#0063cc',
-  borderColor: '#0063cc',
-  '&:hover': {
-    backgroundColor: '#0069d9',
-    borderColor: '#0062cc',
-    boxShadow: 'none',
-  },
-  '&:active': {
-    boxShadow: 'none',
-    backgroundColor: '#0062cc',
-    borderColor: '#005cbf',
-  },
-  '&:focus': {
-    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
-  },
-});
 
 export default function () {
   const coverRef = useRef();
@@ -233,13 +213,19 @@ export default function () {
                         <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
                           onClick={() => handleConfigChange(el, 'gradientBgColor')} key={index}></div>
                       ))}
-                      <div className={clsx(styles.bgGradient, styles.clearColor)} onClick={() => handleConfigChange('', 'gradientBgColor')}></div>
+                      <div className={clsx(styles.bgGradient, styles.clearColor)} onClick={() => handleConfigChange('', 'gradientBgColor')}>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>清除背景色</title>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                      </div>
                     </Box>
-                    <ColorPicker
-                      value={config.bgColor}
-                      onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
-                      fullWidth
-                    />
+                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                      <ColorPicker
+                        value={config.bgColor}
+                        onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
+                        sx={{ width: '60px' }}
+                      />
+                      <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
+                    </Box>
                   </Box>
                   <Box className={styles.setItem}>
                     <Typography variant="h5">背景图</Typography>
