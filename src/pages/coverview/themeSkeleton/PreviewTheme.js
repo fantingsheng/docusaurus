@@ -5,7 +5,7 @@ import { Skeleton } from '@mui/material';
 const PreviewTheme = () => {
     return (
       <div className={styles.previewTheme}>
-        <Skeleton animation={false} variant="rectangular" sx={{ paddingTop: '5px' }} width={100} height={65}>
+        <Skeleton animation={false} variant="rectangular" sx={{ paddingTop: '5px' }} width={116} height={68}>
           <div className={styles.content}>
             <Skeleton animation={false} variant="text" width={'60%'} sx={{ backgroundColor: 'rgba(255, 255, 255)' }} height={10} />
             <div className={styles.preview}>

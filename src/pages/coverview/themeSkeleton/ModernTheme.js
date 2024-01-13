@@ -5,7 +5,7 @@ import { Skeleton } from '@mui/material';
 const ModernTheme = () => {
     return (
       <div className={styles.modernTheme}>
-        <Skeleton animation={false} variant="rectangular" sx={{ padding: '8px', position: 'relative' }} width={100} height={65}>
+        <Skeleton animation={false} variant="rectangular" sx={{ padding: '8px', position: 'relative' }} width={116} height={68}>
           <div className={styles.content}>
             <div className={styles.left}>
               <div className={styles.icon}>

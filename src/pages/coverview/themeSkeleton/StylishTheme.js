@@ -5,7 +5,7 @@ import { Skeleton } from '@mui/material';
 const StylishTheme = () => {
     return (
       <div className={styles.stylishTheme}>
-        <Skeleton animation={false} variant="rectangular" sx={{ padding: '8px' }} width={100} height={65}>
+        <Skeleton animation={false} variant="rectangular" sx={{ padding: '8px' }} width={116} height={68}>
           <div className={styles.content}>
             <div className={styles.left}>
               <Skeleton animation={false} variant="text" width={'100%'} height={10} />
@@ -16,7 +16,7 @@ const StylishTheme = () => {
               </div>
             </div>
             <div className={styles.right}>
-              <Skeleton animation={false} variant="rectangular" width={40} height={'100%'} />
+              <Skeleton animation={false} variant="rectangular" width={'100%'} height={'100%'} />
             </div>
           </div>
         </Skeleton>
