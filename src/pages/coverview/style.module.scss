@@ -1,3 +1,12 @@
+.card {
+  border-radius: 12px;
+  box-shadow: 2px 2px 50px -20px #00000080;
+  background-color: #fff;
+}
+[data-theme='dark'] .card {
+  background-color: #222;
+}
+
 .setItem {
   margin-top: 20px;
 

@@ -137,14 +137,13 @@ export default function () {
           <Box sx={{ padding: '40px 0' }}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={8}>
-                <Box sx={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '2px 2px 50px -20px #00000080', padding: '10px' }}>
+                <Box className={styles.card} sx={{ overflow: 'hidden', padding: '14px' }}>
                   {/* 生成图显示 */}
                   <div ref={coverRef} className={styles.preview}>
                     <CoverImage config={config} />
                   </div>
                 </Box>
-                <Box sx={{ boxShadow: '2px 2px 50px -20px #00000080', padding: '10px 20px 40px',
-                  marginTop: '32px', borderRadius: '12px' }}>
+                <Box className={styles.card} sx={{ padding: '10px 20px 40px', marginTop: '32px' }}>
                   {/* 内容设置 */}
                   <Box className={styles.setItem}>
                     <Typography variant="h5">标题</Typography>
@@ -192,8 +191,7 @@ export default function () {
               </Grid>
               <Grid item xs={12} md={4}>
                 {/* 配置 */}
-                <Box sx={{ boxShadow: '2px 2px 50px -20px #00000080', padding: '10px 20px 40px',
-                borderRadius: '12px' }}>
+                <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
                   <Box className={styles.setItem}>
                     <Typography variant="h5">主题</Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
@@ -266,7 +264,7 @@ export default function () {
                   </Box>
                   <Box className={styles.setItem}>
                     <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button" fullWidth>
-                      <Button startIcon={<SaveAltIcon />} onClick={() => {}} disableElevation>导出图片</Button>
+                      <Button startIcon={<SaveAltIcon />} onClick={handleToggle} disableElevation>导出图片</Button>
                       <Button
                         aria-controls={open ? 'split-button-menu' : undefined}
                         aria-expanded={open ? 'true' : undefined}
@@ -295,13 +293,13 @@ export default function () {
                                   1X / PNG
                                 </MenuItem>
                                 <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'png')}>
-                                  2X/PNG
+                                  2X / PNG
                                 </MenuItem>
                                 <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'jpg')}>
-                                  1X/JPG
+                                  1X / JPG
                                 </MenuItem>
                                 <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'jpg')}>
-                                  2X/JPG
+                                  2X / JPG
                                 </MenuItem>
                               </MenuList>
                             </ClickAwayListener>

@@ -15,7 +15,6 @@ export const devicons = [
   { label: 'Redux', value: 'redux' },
   { label: 'Angularjs', value: 'angularjs' },
   { label: 'Electron', value: 'electron' },
-  { label: 'Tailwindcss', value: 'tailwindcss'},
   { label: 'Dart', value: 'dart' },
   { label: 'Flutter', value: 'flutter' },
   { label: 'Nuxtjs', value: 'nuxtjs' },
@@ -26,15 +25,15 @@ export const devicons = [
   { label: 'Chrome', value: 'chrome' },
   { label: 'Github', value: 'github' },
   { label: 'Gitlab', value: 'gitlab' },
-  { label: 'Sourcetree', value: 'sourcetree' }
+  { label: 'Docker', value: 'docker' },
+  { label: 'Sourcetree', value: 'sourcetree' },
+  { label: 'Figma', value: 'figma' }
 ];
 
 export const selectDevicon = (icon) => {
   switch (icon) {
     case 'react':
       return <Reactjs />;
-    case 'tailwindcss':
-      return <Tailwindcss />;
     case 'otom':
       return <Otom />;
     case 'npm':
@@ -77,8 +76,12 @@ export const selectDevicon = (icon) => {
       return <Gitlab />;
     case 'svelte':
       return <Svelte />;
+    case 'docker':
+      return <Docker />;
     case 'sourcetree':
       return <Sourcetree />;
+    case 'figma':
+      return <Figma />;
     default: 
       return <Reactjs />;
   }
