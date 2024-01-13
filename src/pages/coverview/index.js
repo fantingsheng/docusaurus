@@ -276,16 +276,16 @@ export default function () {
                             <ClickAwayListener onClickAway={handleClose}>
                               <MenuList autoFocusItem>
                                 <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'png')}>
-                                  1X / PNG
+                                  PNG / 1X 
                                 </MenuItem>
                                 <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'png')}>
-                                  2X / PNG
+                                  PNG / 2X 
                                 </MenuItem>
                                 <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'jpg')}>
-                                  1X / JPG
+                                  JPG / 1X 
                                 </MenuItem>
                                 <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'jpg')}>
-                                  2X / JPG
+                                  JPG / 2X
                                 </MenuItem>
                               </MenuList>
                             </ClickAwayListener>
