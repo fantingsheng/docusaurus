@@ -132,10 +132,10 @@ export default function () {
       <Head>
         <meta name="keywords" content='封面图' />
       </Head>
-      <div style={{  }}>
+      <div style={{ backgroundColor: 'rgba(229, 231, 235, 0.3)' }}>
         <div className="container">
           <Box sx={{ padding: '40px 0' }}>
-            <Grid container spacing={4}>
+            <Grid container spacing={3}>
               <Grid item xs={12} md={8}>
                 <Box className={styles.card} sx={{ overflow: 'hidden', padding: '14px' }}>
                   {/* 生成图显示 */}
@@ -143,7 +143,7 @@ export default function () {
                     <CoverImage config={config} />
                   </div>
                 </Box>
-                <Box className={styles.card} sx={{ padding: '10px 20px 40px', marginTop: '32px' }}>
+                <Box className={styles.card} sx={{ padding: '10px 20px 40px', marginTop: '24px' }}>
                   {/* 内容设置 */}
                   <Box className={styles.setItem}>
                     <Typography variant="h5">标题</Typography>
