@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './theme.module.scss';
 import clsx from 'clsx';
-import { selectDevicon } from '../Devicon';
+import { selectDevicon } from '../DevIcon';
 
 const OutlineTheme = ({ config }) => {
   const { title, bgColor, gradientBgColor, author, icon, font, customIcon, platform } = config;

@@ -134,7 +134,7 @@ export default function () {
       </Head>
       <div style={{  }}>
         <div className="container">
-          <Box sx={{ padding: '40px' }}>
+          <Box sx={{ padding: '40px 0' }}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={8}>
                 <Box sx={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '2px 2px 50px -20px #00000080', padding: '10px' }}>
@@ -230,7 +230,7 @@ export default function () {
                   </Box>
                   <Box className={styles.setItem}>
                     <Typography variant="h5">背景色</Typography>
-                    <Box sx={{ display: 'flex' }}>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                       {bgColorOptions.map((el, index) => (
                         <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
                           onClick={() => handleConfigChange(el, 'gradientBgColor')} key={index}></div>

@@ -17,8 +17,10 @@ export const devicons = [
   { label: 'Electron', value: 'electron' },
   { label: 'Tailwindcss', value: 'tailwindcss'},
   { label: 'Dart', value: 'dart' },
+  { label: 'Flutter', value: 'flutter' },
   { label: 'Nuxtjs', value: 'nuxtjs' },
   { label: 'Git', value: 'git' },
+  { label: 'Webpack', value: 'webpack' },
   { label: 'Vscode', value: 'vscode' },
   { label: 'Otom', value: 'otom'},
   { label: 'Chrome', value: 'chrome' },
@@ -61,6 +63,10 @@ export const selectDevicon = (icon) => {
       return <Angularjs />;
     case 'electron':
       return <Electron />;
+    case 'flutter':
+      return <Flutter />;
+    case 'webpack':
+      return <Webpack />;
     case 'dart':
       return <Dart />;
     case 'chrome':
