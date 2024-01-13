@@ -12,7 +12,7 @@ import { ColorPicker } from 'material-ui-color';
 import styles from './style.module.scss';
 import clsx from 'clsx';
 import html2canvas from 'html2canvas';
-import { devicons, selectDevicon } from './Devicon';
+import { devicons, selectDevicon } from './DevIcons';
 
 import BasicTheme from './themeSkeleton/BasicTheme';
 import BackgroundTheme from './themeSkeleton/BackgroundTheme';

@@ -27,7 +27,7 @@ export default function CoverImage ({ config }) {
 			case 'stylish':
         return <StylishTheme config={config} />;
 			case 'mobile':
-        return <MobileTheme config={config} />
+        return <MobileTheme config={config} />;
 			default:
         return <BasicTheme config={config} />;
 		}

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './theme.module.scss';
 import clsx from 'clsx';
-import { selectDevicon } from '../DevIcon';
+import { selectDevicon } from '../DevIcons';
 
 const StylishTheme = ({ config }) => {
     const { title, bgColor, bgImg, gradientBgColor, author, icon, font, customIcon, platform } = config;
