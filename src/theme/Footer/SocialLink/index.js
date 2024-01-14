@@ -74,19 +74,21 @@ export default function SocialLink() {
             <div className="col col--6">
               <div className="card">
                 <div className="card__header">
-                  <h3>订阅号</h3>
+                  <h4 className="text--center">订阅号</h4>
                 </div>
-                <div className="card__body text--center">
-                  <img src="/img/qrcode.png" width="200" height="200" alt="公众号" />
+                <div className="card__body text--center" style={{padding: '5px'}}>
+                  <div style={{ width: '200px', height: '200px', margin: '0 auto'}}>
+                    <img src="/img/qrcode.png" width="200" height="200" alt="公众号" />
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col col--6">
               <div className="card">
                 <div className="card__header">
-                  <h3>微信号</h3>
+                  <h4 className="text--center">微信号</h4>
                 </div>
-                <div className="card__body text--center">
+                <div className="card__body text--center" style={{padding: '5px'}}>
                   <div style={{ width: '200px', height: '200px', padding: '10px', margin: '0 auto' }}>
                     <img src="/img/wechat.png" alt="微信号" /></div>
                 </div>
