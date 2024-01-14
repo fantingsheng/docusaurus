@@ -195,6 +195,24 @@ const onCopy = () => {
 
 或者使用 [useCopyToClipboard](https://spacexcode.com/docs/snippet/hooks/useCopyToClipboard/) Hooks 实现。两种不同的实现方法。
 
+### 二维码扫描手机端阅读
+
+为了便于在手机端阅读，或者通过二维码分享文章，使用 `qrcode.react` 库为每篇文章的 URL 生成对应的二维码。
+
+```shell
+npm install qrcode.react
+```
+
+安装好之后，在页面中调用
+
+```js
+import QRCode from 'qrcode.react';
+
+<QRCode value="https://spacexcode.com/blog" renderAs="svg" />
+```
+
+更多使用参数详见：[https://www.npmjs.com/package/qrcode.react](https://www.npmjs.com/package/qrcode.react)
+
 ### 文字的音频收听
 
 这里的核心实现是将文字转成音频，有在线转和提前准备音频文件两种，在线转有点难，暂时没实现思路，可能市场上相关的服务。我本着尽快实现的原则，首先我将博客文章中的文字通过
