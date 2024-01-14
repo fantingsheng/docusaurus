@@ -4,11 +4,11 @@ import clsx from 'clsx';
 import { selectDevicon } from '../DevIcons';
 
 const BackgroundTheme = ({ config }) => {
-  const { title, bgColor, bgImg, author, icon, font, customIcon, platform } = config;
-
+  const { title, bgColor, bgImg, author, icon, font, customIcon, width, ratio } = config;
+  const height = width * ratio + 'px';
   return (
     <div className={styles.backgroundTheme}>
-      <div className={styles.main} style={{ backgroundColor: bgColor }}>
+      <div className={styles.main} style={{ backgroundColor: bgColor, height: height }}>
         <div className={styles.content}>
           <div className={styles.imgWrap}>
             <img src={bgImg} alt="preview" />

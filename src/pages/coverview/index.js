@@ -2,7 +2,8 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, TextField, Paper, Box, Grow, Typography, ClickAwayListener, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, TextField, Paper, Box, Grow, 
+  Typography, ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider } from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
@@ -32,7 +33,8 @@ export default function () {
     bgColor: '#949ee5',
     gradientBgColor: '',
     icon: 'react',
-    ratio: 1/2,
+    ratio: 0.5,
+    width: 800,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
     theme: 'basic',
@@ -117,9 +119,9 @@ export default function () {
           <Box sx={{ padding: '40px 0' }}>
             <Grid container spacing={3}>
               <Grid item xs={12} md={8}>
-                <Box className={styles.card} sx={{ overflow: 'hidden', padding: '14px' }}>
+                <Box className={styles.card} sx={{ padding: '14px' }}>
                   {/* 生成图显示 */}
-                  <div ref={coverRef} className={styles.preview}>
+                  <div ref={coverRef} className={styles.preview} style={{ width: config.width + 'px'}}>
                     <CoverImage config={config} />
                   </div>
                 </Box>
@@ -234,18 +236,30 @@ export default function () {
                     </Button>
                   </Box>
                   <Box className={styles.setItem}>
-                    <Typography variant="h5">长宽比<span style={{ fontSize: '0.8rem', color: '#fa383e' }}>（正在开发中）</span></Typography>
+                    <Typography variant="h5">长度</Typography>
+                    <Slider
+                      value={config.width}
+                      aria-label='Default'
+                      min={600}
+                      max={820}
+                      size='small'
+                      valueLabelDisplay='auto'
+                      onChange={e => handleConfigChange(e.target.value, 'width')}
+                    />
+                  </Box>
+                  <Box className={styles.setItem}>
+                    <Typography variant="h5">长宽比</Typography>
                     <ToggleButtonGroup
                       value={config.ratio}
                       exclusive
-                      onChange={val => handleConfigChange(val, 'ratio')}
+                      onChange={(event, val) => handleConfigChange(val, 'ratio')}
                       aria-label='Ratio'
                       size='small'
-                      disabled
                     >
-                      <ToggleButton sx={{ padding: '7px 12px' }} value={1/2}>1:2</ToggleButton>
-                      <ToggleButton sx={{ padding: '7px 12px' }} value={3/4}>3:4</ToggleButton>
-                      <ToggleButton sx={{ padding: '7px 12px' }} value={5/8}>5:8</ToggleButton>
+                      <ToggleButton sx={{ padding: '7px 12px' }} value={0.5}>1:2</ToggleButton>
+                      <ToggleButton sx={{ padding: '7px 12px' }} value={0.6}>3:5</ToggleButton>
+                      <ToggleButton sx={{ padding: '7px 12px' }} value={0.57}>4:7</ToggleButton>
+                      <ToggleButton sx={{ padding: '7px 12px' }} value={0.4}>5:8</ToggleButton>
                     </ToggleButtonGroup>
                   </Box>
                   <Box className={styles.setItem}>

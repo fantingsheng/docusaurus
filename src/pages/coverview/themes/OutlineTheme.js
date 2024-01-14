@@ -4,11 +4,11 @@ import clsx from 'clsx';
 import { selectDevicon } from '../DevIcons';
 
 const OutlineTheme = ({ config }) => {
-  const { title, bgColor, gradientBgColor, author, icon, font, customIcon, platform } = config;
-
+  const { title, bgColor, gradientBgColor, author, icon, font, customIcon, width, ratio } = config;
+  const height = width * ratio + 'px';
   return (
     <div className={styles.outlineTheme}>
-      <div className={styles.main} style={{ backgroundColor: bgColor, backgroundImage: gradientBgColor }}>
+      <div className={styles.main} style={{ backgroundColor: bgColor, backgroundImage: gradientBgColor, height: height }}>
         <div className={styles.content}>
           <div className={styles.textCover}>
             <div className={clsx(styles.textarea, styles['font-' + font])}>

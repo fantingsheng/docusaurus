@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useState, forwardRef, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { Box, Typography, Slider, LinearProgress, TextField, Select, MenuItem, Switch, Button, Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
+import { Box, Typography, LinearProgress, TextField, Select, MenuItem, Button } from '@mui/material';
 import styles from './style.module.scss';
 import { ColorPicker } from 'material-ui-color';
 import html2canvas from 'html2canvas';

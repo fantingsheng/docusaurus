@@ -2,11 +2,15 @@
   border-radius: 12px;
   box-shadow: 2px 2px 50px -20px #00000080;
   background-color: #fff;
+  overflow-y: 'hidden';
+  overflow-x: scroll;
 }
 [data-theme='dark'] .card {
   background-color: #222;
 }
-
+.preview {
+  margin: 0 auto;
+}
 .setItem {
   margin-top: 20px;
 
