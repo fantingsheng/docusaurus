@@ -119,7 +119,7 @@ export default function () {
           <Box sx={{ padding: '40px 0' }}>
             <Grid container spacing={3}>
               <Grid item xs={12} md={8}>
-                <Box className={styles.card} sx={{ padding: '14px', overflowX: 'auto' }}>
+                <Box className={styles.card} sx={{ padding: '20px 10px', overflowX: 'auto' }}>
                   {/* 生成图显示 */}
                   <div ref={coverRef} className={styles.preview} style={{ width: config.width + 'px'}}>
                     <CoverImage config={config} />
