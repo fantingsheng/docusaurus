@@ -1,0 +1,251 @@
+.basicTheme {
+  .content {
+    width: 83.33333%;
+    background-color: #fff;
+    border-radius: 5px;
+    height: 100%;
+    visibility: visible;
+    margin: 0 auto;
+    padding: 4px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+  }
+  .bt {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.backgroundTheme {
+  .bgIcon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 11;
+  }
+  .content {
+    width: 83.33333%;
+    border-radius: 5px;
+    height: 100%;
+    visibility: visible;
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+  }
+  .bt {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+}
+
+.stylishTheme {
+  .content {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .left {
+      width: 50%;
+      padding: 5px;
+      background-color: #fff;
+      height: 100%;
+      .bt {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2px;
+        margin-top: 5px;
+      }
+    }
+    .right {
+      width: 50%;
+      height: 100%;
+    }
+  }
+}
+
+.outlineTheme {
+  .content {
+    width: 100%;
+    border-radius: 5px;
+    height: 100%;
+    visibility: visible;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .bt {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.modernTheme {
+  .content {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    margin: 0 auto;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+  }
+  .left {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .right {
+    width: 70%;
+    background-color: #fff;
+    height: 100%;
+    border-radius: 5px;
+    padding: 5px 8px;
+
+    .bt {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+.previewTheme {
+  .content {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    position: relative;
+
+    .preview {
+      width: 80%;
+      background-color: #fff;
+      padding: 3px;
+      height: 75%;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      .toolbar {
+        height: 8px;
+        width: 100%;
+        border-radius: 4px;
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+
+        span {
+          display: inline-block;
+          width: 4px;
+          height: 4px;
+          background-color: #fff;
+          border-radius: 50%;
+          margin: 0 2px;
+        }
+      }
+    }
+  }
+}
+.mobileTheme {
+  .content {
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .left {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 8px 0 4px;
+  }
+  .right {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .mobile {
+      width: 100%;
+      height: 100%;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      background-color: #fff;
+      padding: 4px 4px 0;
+
+      .header {
+        width: 100%;
+        height: 8px;
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+
+        .audio {
+          width: 4px;
+          height: 4px;
+          background-color: #fff;
+          border-radius: 99999px;
+          margin-right: 2px;
+        }
+
+        .view {
+          width: 12px;
+          height: 4px;
+          background-color: #fff;
+          border-radius: 99999px;
+        }
+      }
+    }
+  }
+}

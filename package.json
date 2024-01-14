@@ -39,6 +39,7 @@
     "html2canvas": "^1.4.1",
     "material-ui-color": "^1.2.0",
     "prism-react-renderer": "^2.1.0",
+    "qrcode.react": "^3.1.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-rough-notation": "^1.0.5",

@@ -7,6 +7,7 @@ import { Alert, AlertTitle, Snackbar, Menu, MenuItem }  from '@mui/material';
 import confetti from 'canvas-confetti';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import QRCode from 'qrcode.react';
 
 export default function BlogToolBar({}) {
   const { siteConfig } = useDocusaurusContext();
@@ -16,11 +17,15 @@ export default function BlogToolBar({}) {
   const { metadata, isBlogPostPage } = useBlogPost();
   const { permalink } = metadata;
   const blogUrl = siteConfig.url + '' + useBaseUrl(permalink);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  
   const [alertText, setAlertText] = React.useState('');
   const [alertType, setAlertType] = React.useState('success');
+  
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
+  const [anchorEl1, setAnchorEl1] = React.useState(null);
+  const open1 = Boolean(anchorEl1);
+  
   const onClap = (e) => {
     confetti({
       particleCount: 200, // 默认值：50，要发射的五彩纸屑的数量。
@@ -102,11 +107,11 @@ export default function BlogToolBar({}) {
             }
             </IconButton>
             <audio ref={audioRef} src={metadata.frontMatter.audio}></audio>
-            <IconButton aria-label="分享" aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined} onClick={onShare}>
+            <IconButton aria-label="分享" aria-controls={open ? 'share-menu' : undefined} aria-haspopup="true" aria-expanded={open ? 'true' : undefined} onClick={onShare}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="#6B6B6B"><path fillRule="evenodd" clipRule="evenodd" d="M15.22 4.93a.42.42 0 0 1-.12.13h.01a.45.45 0 0 1-.29.08.52.52 0 0 1-.3-.13L12.5 3v7.07a.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5V3.02l-2 2a.45.45 0 0 1-.57.04h-.02a.4.4 0 0 1-.16-.3.4.4 0 0 1 .1-.32l2.8-2.8a.5.5 0 0 1 .7 0l2.8 2.8a.42.42 0 0 1 .07.5zm-.1.14zm.88 2h1.5a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2H8a.5.5 0 0 1 .35.14c.1.1.15.22.15.35a.5.5 0 0 1-.15.35.5.5 0 0 1-.35.15H6.4c-.5 0-.9.4-.9.9v10.2a.9.9 0 0 0 .9.9h11.2c.5 0 .9-.4.9-.9V8.96c0-.5-.4-.9-.9-.9H16a.5.5 0 0 1 0-1z" fill="currentColor"></path></svg>
             </IconButton>
             <Menu
-              id="basic-menu"
+              id="share-menu"
               anchorEl={anchorEl}
               open={open}
               onClose={() => setAnchorEl(null)}
@@ -128,6 +133,20 @@ export default function BlogToolBar({}) {
             <IconButton aria-label="复制链接" onClick={onCopy}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="#6B6B6B"><path fillRule="evenodd" clipRule="evenodd" d="M12.5 9.68l.6-.6a5 5 0 0 1 1.02 7.87l-2.83 2.83a5 5 0 0 1-7.07-7.07l2.38-2.38c0 .43.05.86.12 1.3l-1.8 1.79a4 4 0 0 0 5.67 5.65l2.82-2.83a4 4 0 0 0-1.04-6.4l.14-.16zm-1 4.64l-.6.6a5 5 0 0 1-1.02-7.87l2.83-2.83a5 5 0 0 1 7.07 7.07l-2.38 2.39c0-.43-.05-.87-.12-1.3l1.8-1.8a4 4 0 1 0-5.67-5.65L10.6 7.76a4 4 0 0 0 1.04 6.4l-.13.16z" fill="currentColor"></path></svg>
             </IconButton>
+            <IconButton aria-label="二维码" aria-controls={open1 ? 'basic-menu' : undefined} aria-haspopup="true" aria-expanded={open1 ? 'true' : undefined} onClick={(event) => setAnchorEl1(event.currentTarget)}>
+              <img className={styles.qrBtn} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA9ElEQVRYR9VXWw7DIAwbN+Yo3HjTJqUfqSI/FNaWvwpIjeOYMOac75cw1lrjuzz2xXeEUOMNdcM2APkkmRR0YgSsincwcBsAOSXVyVRGgoEc78TAYwBk1SOm2hnYBqCyhJxzVgMonl0F7QBYM6ycL2uAjWc7IdIADYBdyDqjGu93sTij0oAaqzQiVNeVdaNqyfPXA6jEhHKunrRaf2gA5bTrh6fLSBWNygxab1cB8gFWpLYRdaXkPgB2tWSIKfs2ZDUgA3BbMreM23rCvwNwU5B9wWZgGwDUw7EvICS+mLerwM15+TBh7wS2J2T7CdsJXQ1k5j7FF35r3ynsoAAAAABJRU5ErkJggg==" width="20" height="20" alt="qrcode" />
+            </IconButton>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl1}
+              open={open1}
+              onClose={() => setAnchorEl1(null)}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <div className={styles.qrcard}><QRCode value={blogUrl} renderAs="svg" /></div>
+            </Menu>
           </div>
           <Snackbar open={copied} autoHideDuration={1500} anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }} onClose={() => setCopied(false)}>
             <Alert severity={alertType}><AlertTitle>{alertText}</AlertTitle></Alert>

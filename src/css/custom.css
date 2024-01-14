@@ -51,8 +51,28 @@
   background-size: 100% 48%;
 }
 .markdown > h3 {
-  padding-left: 1rem;
-  border-left: 3px solid var(--ifm-color-primary-opacity);
+  position: relative;
+  padding-left: 1.2rem;
+}
+.markdown > h3::before {
+  content: '';
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  left: 0;
+  display: block;
+  width: 2px;
+  height: 1.5rem;
+  border-left: 5px solid var(--ifm-color-primary-opacity);
+}
+
+.markdown > h1 > a.hash-link,
+.markdown > h2 > a.hash-link,
+.markdown > h3 > a.hash-link,
+.markdown > h4 > a.hash-link,
+.markdown > h5 > a.hash-link,
+.markdown > h6 > a.hash-link {
+  display: none;
 }
 
 [data-theme='light'] code {
