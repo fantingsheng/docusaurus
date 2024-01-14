@@ -119,7 +119,7 @@ export default function () {
           <Box sx={{ padding: '40px 0' }}>
             <Grid container spacing={3}>
               <Grid item xs={12} md={8}>
-                <Box className={styles.card} sx={{ padding: '14px' }}>
+                <Box className={styles.card} sx={{ padding: '14px', overflowX: 'auto' }}>
                   {/* 生成图显示 */}
                   <div ref={coverRef} className={styles.preview} style={{ width: config.width + 'px'}}>
                     <CoverImage config={config} />
@@ -229,12 +229,15 @@ export default function () {
                       <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
                     </Box>
                   </Box>
-                  <Box className={styles.setItem}>
-                    <Typography variant="h5">背景图</Typography>
-                    <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
-                      上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
-                    </Button>
-                  </Box>
+                  {['background', 'stylish', 'preview', 'mobile'].includes(config.theme) ?
+                    <Box className={styles.setItem}>
+                      <Typography variant="h5">背景图</Typography>
+                      <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
+                        上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
+                      </Button>
+                    </Box>
+                    : <></>
+                  }
                   <Box className={styles.setItem}>
                     <Typography variant="h5">长度</Typography>
                     <Slider
