@@ -1,7 +1,4 @@
-// import Link from "next/link";
-// import { header, meta } from "@/config";
 import Link from '@docusaurus/Link';
-import { ConvertBytes, ConvertNumber } from "@site/src/utils";
 import styles from './style.module.scss';
 
 const TerminalLine = ({ children, blinking = false }) => (
