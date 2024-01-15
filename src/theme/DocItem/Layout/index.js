@@ -45,7 +45,7 @@ export default function DocItemLayout({children}) {
   } = frontMatter;
   return (
     <div className="row">
-      <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
+      <div className={clsx('col', styles.docItemCol)}>
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>
