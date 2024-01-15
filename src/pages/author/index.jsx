@@ -66,7 +66,7 @@ export default function Main () {
               content: '<div class="custom-content-marker">' +
               '   <img src="/img/poi-marker-red.png" width="30">' +
               '</div>',
-              offset: new AMap.Pixel(-40, -20)
+              offset: new AMap.Pixel(-50, -15)
             })
             map.add(marker);
           })
