@@ -7,6 +7,7 @@ import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, TextFiel
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import CopyAll from '@mui/icons-material/CopyAll';
 import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
 import RandomTheme from './RandomTheme';
@@ -77,6 +78,33 @@ export function Main({ normal }) {
       }, 1000);
     })
   };
+  const handleCopyImg = (cb) => {
+    if (!coverRef.current) return;
+    html2canvas(coverRef.current, {
+      useCORS: true,
+      scale: 1,
+      backgroundColor: 'transparent'
+    }).then((canvas) => {
+      canvas.toBlob(async blob => {
+        console.log(blob);
+        const data = [
+          new ClipboardItem({
+            [blob.type]: blob,
+          }),
+        ];
+        await navigator.clipboard.write(data)
+          .then(
+            () => {
+              console.log("复制成功!");
+              cb && cb();
+            },
+            () => {
+              console.error("失败.");
+            }
+          );
+      });
+    })
+  };
 
   return (
     <div className="container">
@@ -109,7 +137,7 @@ export function Main({ normal }) {
             {/* 配置 */}
           <Grid item xs={12} md={normal ? 4 : 6}>
             <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
-              <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} />
+              <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} />
             </Box>
           </Grid>
         </Grid>
@@ -167,8 +195,9 @@ export function ContentForm ({ config, handleConfigChange }) {
   )
 }
 
-export function ConfigForm ({ config, handleConfigChange, downloadImage }) {
+export function ConfigForm ({ config, handleConfigChange, downloadImage, handleCopyImg }) {
   const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const anchorRef = useRef(null);
   const fontOptions = [
     { label: 'serif', value: 'serif' },
@@ -202,6 +231,12 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage }) {
   const handleMenuItemClick = (event, scale, format) => {
     downloadImage(scale, format);
     setOpen(false);
+  };
+  const onHandleCopyImg = () => {
+    handleCopyImg(() => {
+      console.log()
+      setCopied(true);
+    })
   };
   return (
     <>
@@ -341,6 +376,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage }) {
             </Grow>
           )}
         </Popper>
+        <Button variant="contained" sx={{ marginTop: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disableElevation fullWidth>复制图片</Button>
       </Box>
     </>
   )
