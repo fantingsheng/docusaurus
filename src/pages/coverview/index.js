@@ -3,10 +3,11 @@ import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, TextField, Paper, Box, Grow, 
-  Typography, ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider } from '@mui/material';
+  Typography, ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CopyAll from '@mui/icons-material/CopyAll';
 import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
@@ -107,42 +108,40 @@ export function Main({ normal }) {
   };
 
   return (
-    <div className="container">
-      <Box sx={{ padding: '40px 0' }}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={ normal ? 8 : 12 }>
-            <Box className={styles.card} sx={{ padding: '20px 10px', overflowX: 'auto' }}>
-              {/* 生成图显示 */}
-              <div ref={coverRef} className={styles.preview} style={{ width: config.width + 'px'}}>
-                <CoverImage config={config} />
-              </div>
-            </Box>
-            {
-              normal ? 
-              <Box className={styles.card} sx={{ padding: '10px 20px 40px', marginTop: '24px' }}>
-                <ContentForm config={config} handleConfigChange={handleConfigChange} />
-              </Box>
-              : <></>
-            }
-          </Grid>
+    <Box sx={{ padding: '40px 0' }}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={ normal ? 8 : 12 }>
+          <Box className={styles.card} sx={{ padding: '20px 10px', overflowX: 'auto' }}>
+            {/* 生成图显示 */}
+            <div ref={coverRef} className={styles.preview} style={{ width: config.width + 'px'}}>
+              <CoverImage config={config} />
+            </div>
+          </Box>
           {
-            !normal ? 
-            <Grid item xs={12} md={6}>
-              <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
-                <ContentForm config={config} handleConfigChange={handleConfigChange} />
-              </Box>
-            </Grid>
+            normal ? 
+            <Box className={styles.card} sx={{ padding: '10px 20px 40px', marginTop: '24px' }}>
+              <ContentForm config={config} handleConfigChange={handleConfigChange} />
+            </Box>
             : <></>
           }
-            {/* 配置 */}
-          <Grid item xs={12} md={normal ? 4 : 6}>
+        </Grid>
+        {
+          !normal ? 
+          <Grid item xs={12} md={6}>
             <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
-              <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} />
+              <ContentForm config={config} handleConfigChange={handleConfigChange} />
             </Box>
           </Grid>
+          : <></>
+        }
+          {/* 配置 */}
+        <Grid item xs={12} md={normal ? 4 : 6}>
+          <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
+            <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} />
+          </Box>
         </Grid>
-      </Box>
-    </div>
+      </Grid>
+    </Box>
   )
 }
 
@@ -332,6 +331,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </ToggleButtonGroup>
       </Box>
       <Box className={styles.setItem}>
+        <Button variant="contained" sx={{ marginBottom: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disableElevation fullWidth>复制图片</Button>
         <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button" fullWidth>
           <Button startIcon={<SaveAltIcon />} onClick={handleToggle} disableElevation>导出图片</Button>
           <Button
@@ -376,20 +376,68 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
             </Grow>
           )}
         </Popper>
-        <Button variant="contained" sx={{ marginTop: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disableElevation fullWidth>复制图片</Button>
       </Box>
     </>
   )
 }
 
-export default function () {
+export function FrequentQuestion ({ list }) {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
   return (
-    <Layout title='制作封面图' description='封面图神器，根据配置快速生成一张漂亮的文章封面图'>
+    <>
+      {list.map(el => (
+        <Accordion
+          sx={{ backgroundColor: '#fff', boxShadow: 'none' }}
+          expanded={expanded === `panel${el.id}`}
+          onChange={handleChange(`panel${el.id}`)}
+        >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography>{el.title}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>{el.intro}</Typography>
+        </AccordionDetails>
+      </Accordion>
+      ))}
+    </>
+  )
+}
+
+export default function () {
+  const list = [{
+    id: 1,
+    title: '复制图片在什么场景用到，或者说复制后在哪才能粘贴？',
+    intro: '复制后可以粘贴在常用的富文本编辑器中，微信、QQ、钉钉等聊天工具框中。'
+  }, {
+    id: 2,
+    title: '上传的图片会泄露隐私吗？',
+    intro: '不会，上传的图片只会在浏览器的本地读取，并未上传到云端。该工具类似离线工具，不会收集任何的用户数据。请放心使用。🥰'
+  }]
+  return (
+    <Layout title='封面图生成器' description='封面图神器，根据配置快速生成一张漂亮的文章封面图'>
       <Head>
-        <meta name="keywords" content='封面图' />
+        <meta name="keywords" content='封面图,头图,生成器,工具,演示' />
       </Head>
       <div style={{ backgroundColor: 'rgba(229, 231, 235, 0.3)' }}>
-        <Main normal={true} />
+        <div className="container">
+          <Main normal={true} />
+          <Box sx={{ margin: '4rem 0' }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <h2 className='text--center'>常见问题</h2>
+                <FrequentQuestion list={list} />
+              </Grid>
+            </Grid>
+          </Box>
+        </div>
       </div>
     </Layout>
   )
