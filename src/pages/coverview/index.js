@@ -2,8 +2,8 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, TextField, Paper, Box, Grow, 
-  Typography, ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, TextField, Paper, Box, Grow, Typography,
+  ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
@@ -160,36 +160,41 @@ export function ContentForm ({ config, handleConfigChange }) {
           fullWidth
         />
       </Box>
-      <Box className={styles.setItem}>
-        <Typography variant="h5">作者</Typography>
-        <TextField
-          value={config.author}
-          onChange={e => handleConfigChange(e.target.value, 'author')}
-          placeholder='作者'
-          size='small'
-          fullWidth
-        />
-      </Box>
-      <Box className={styles.setItem}>
-        <Typography variant="h5">图标</Typography>
-        <Box sx={{ display: 'flex', gap: '10px' }}>
-          <Select
-            value={config.icon}
-            onChange={val => handleConfigChange(val.target.value, 'icon')}
-            label=''
-            size='small'
-            fullWidth
-          >
-            {devicons.map(el => (
-              <MenuItem value={el.value} key={el.value}>
-                <div className={styles.selectIconRow}><span>{el.label}</span>{selectDevicon(el.value)}</div></MenuItem>
-            ))}
-          </Select>
-          <Button component="label" size='small' variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
-            上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'customIcon')} />
-          </Button>
-        </Box>
-      </Box>
+      {['background', 'stylish', 'basic', 'modern', 'outline'].includes(config.theme) ?
+        <>
+          <Box className={styles.setItem}>
+            <Typography variant="h5">作者</Typography>
+            <TextField
+              value={config.author}
+              onChange={e => handleConfigChange(e.target.value, 'author')}
+              placeholder='作者'
+              size='small'
+              fullWidth
+            />
+          </Box>
+          <Box className={styles.setItem}>
+            <Typography variant="h5">图标</Typography>
+            <Box sx={{ display: 'flex', gap: '10px' }}>
+              <Select
+                value={config.icon}
+                onChange={val => handleConfigChange(val.target.value, 'icon')}
+                label=''
+                size='small'
+                fullWidth
+              >
+                {devicons.map(el => (
+                  <MenuItem value={el.value} key={el.value}>
+                    <div className={styles.selectIconRow}><span>{el.label}</span>{selectDevicon(el.value)}</div></MenuItem>
+                ))}
+              </Select>
+              <Button component="label" size='small' variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
+                上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'customIcon')} />
+              </Button>
+            </Box>
+          </Box>
+        </>
+        : ''
+      }
     </>
   )
 }
