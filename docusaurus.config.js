@@ -110,7 +110,7 @@ const config = {
             { to: '/coverview', label: '封面图生成器' },
             { to: '/lifebalence', label: '高效的生物钟' },
             { to: '/progress', label: '年度进度图' },
-            { to: '/photo', label: '音乐播放器' }
+            { to: '/player', label: '音乐播放器' }
           ] },
           { label: '关于', position: 'right', items: [
             { to: '/about', label: '关于本站' },
