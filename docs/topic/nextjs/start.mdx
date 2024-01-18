@@ -33,7 +33,79 @@ $ pnpm dev
 
 ## 文件目录
 
+```
+├── app                  // App Router
+│   └── page.tsx
+│   └── layout.tsx
+├── pages                // Pages Router
+│   └── index.mdx
+├── public               // 静态资源
+│   └── favicon.ico
+├── src                  // 可选的 src 文件夹
+│   └── index.tsx
+├── next.config.js       // Next.js 配置文件
+├── jsconfig.json        // JavaScript 配置文件
+├── tsconfig.json        // TypeScript 配置文件
+├── postcss.config.js    // Tailwind CSS 配置文件
+├── .next-env.d.ts       //  Next.js TypeScript 声明文件
+├── .gitignore           // Git 忽略配置文件
+├── .eslintrc.json       // ESLint 配置文件
+├── .env.development     // 开发环境变量
+├── .env.local           // 本地环境变量
+├── .env.production      // 生产环境变量
+├── .env                 // 环境变量
+├── middleware.ts        // Next.js 请求中间件
+├── instrumentation.ts   // OpenTelemetry and Instrumentation file
+├── package.json         // 项目依赖和脚本
+```
+
 ## 路由
+
+### 路由文件
+
+|                           file name                                             |      suffix         | introduction     |
+| ------------------------------------------------------------------------------- | ------------------- | ---------------- |
+| `layout`                                                                        | `.js` `.jsx` `.tsx` | 布局             |
+| `page`                                                                          | `.js` `.jsx` `.tsx` | 页面             |
+| `loading`                                                                       | `.js` `.jsx` `.tsx` | 加载页面         |
+| `not-found`                                                                     | `.js` `.jsx` `.tsx` | 404 页面         |
+| `error`                                                                         | `.js` `.jsx` `.tsx` | 错误 页面        |
+| `global-error`                                                                  | `.js` `.jsx` `.tsx` | 全局 页面        |
+| `route`                                                                         | `.js` `.ts`         | API endpoint     |
+| `template`                                                                      | `.js` `.jsx` `.tsx` | 重新渲染的布局   |
+| `default`                                                                       | `.js` `.jsx` `.tsx` | 并行路由回退页面 |
+
+### 嵌套路由
+
+|                                    |            |
+| -----------------------------------| ---------- |
+| folder                             | 路由段      |
+| folder/folder                      | 嵌套路由段  |
+
+### 动态路由
+
+|                                     |                  |
+| ----------------------------------- | ---------------- |
+| [folder]                            | 动态路由段        |
+| [...folder]                         | 全匹配路由段      |
+| [[...folder]]                       | 可选全匹配路由段   |
+
+### 路由分组和私有文件夹
+
+|                                       |                                            |
+| ------------------------------------- | ------------------------------------------ |
+| (folder)                              | 对路由进行分组而不影响路由本身                |
+| \_folder                              | 将文件夹和所有子段标记为私有的,不参与路由匹配  |
+
+### 并行和拦截路由
+
+|                          |                  |
+| ------------------------ | ---------------- |
+| `@folder`                | 命名插槽          |
+| `(.)folder`              | 拦截同级路由       |
+| `(..)folder`             | 拦截上一级路由     |
+| `(..)(..)folder`         | 拦截上两级路由     |
+| `(...)folder`            | 从根路由开始拦截   |
 
 ## 代码高亮
 
