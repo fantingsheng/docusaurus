@@ -29,7 +29,7 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
 
   const objToStyle = style => {
     let codeStr = '{\n';
-    codeStr += Object.entries(style).map(([k, v]) => `  ${k}: ${v}`).join(';\n');
+    codeStr += Object.entries(style).map(([k, v]) => `  ${k.replace(/([A-Z])/g,"-$1").toLowerCase()}: ${v}`).join(';\n');
     return codeStr + ';\n}'
   };
 
