@@ -21,7 +21,7 @@ export default function GiscusComponent() {
         inputPosition="top"
         theme={colorMode}
         lang="zh-Hans"
-        loading="lazy"
+        // loading="lazy"
         crossorigin="anonymous"
         async
       />
