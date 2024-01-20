@@ -87,7 +87,6 @@ export default function BlogToolBar({}) {
 
   if (ExecutionEnvironment.canUseDOM) {
     useEventListener('message', function (e) {
-      console.log(e);
       if (e.origin !== 'https://giscus.app') return
       if (!(typeof e.data === 'object' && e.data.giscus)) return
 
