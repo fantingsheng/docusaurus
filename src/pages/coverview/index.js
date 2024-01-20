@@ -394,7 +394,7 @@ export function FrequentQuestion () {
   };
   return (
     <>
-      <Accordion sx={{ backgroundColor: '#fff', boxShadow: 'none' }} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+      <Accordion className={styles.accordion} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content">
           <Typography>复制图片在什么场景用到，或者说复制后在哪才能粘贴？</Typography>
         </AccordionSummary>
@@ -402,7 +402,7 @@ export function FrequentQuestion () {
           <Typography>复制后可以粘贴在常用的富文本编辑器中，微信、QQ、钉钉等聊天工具框中。</Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion sx={{ backgroundColor: '#fff', boxShadow: 'none' }} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+      <Accordion className={styles.accordion} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2bh-content">
           <Typography>上传的图片会泄露隐私吗？</Typography>
         </AccordionSummary>
@@ -410,7 +410,7 @@ export function FrequentQuestion () {
           <Typography>不会，上传的图片只会在浏览器的本地读取，并未上传到云端。该工具类似离线工具，不会收集任何的用户数据。请放心使用。🥰</Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion sx={{ backgroundColor: '#fff', boxShadow: 'none' }} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+      <Accordion className={styles.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content">
           <Typography>我找不到好看的背景图和文章很搭的图标怎么办，有推荐的网站吗？</Typography>
         </AccordionSummary>
@@ -441,7 +441,11 @@ export default function () {
       <Head>
         <meta name="keywords" content='封面图,头图,生成器,工具,演示' />
       </Head>
-      <div style={{ backgroundColor: 'rgba(229, 231, 235, 0.3)' }}>
+      <div className={styles.page}>
+        {/* <svg className={styles.svgBg} width="100%" height="100%">
+          <filter id="pedroduarteisalegend"><feTurbulence type="fractalNoise" baseFrequency="0.80" numOctaves="4" stitchTiles="stitch"></feTurbulence></filter>
+          <rect width="100%" height="100%" filter="url(#pedroduarteisalegend)"></rect>
+        </svg> */}
         <div className="container">
           <Main normal={true} />
           <Box sx={{ margin: '4rem 0' }}>

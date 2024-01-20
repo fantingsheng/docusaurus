@@ -1,3 +1,14 @@
+[data-theme='light'] .page {
+  background-color: rgba(229, 231, 235, 0.3);
+}
+.svgBg {
+  position: fixed;
+  z-index: 10;
+  isolation: isolate;
+  pointer-events: none;
+  opacity: 0.6;
+  mix-blend-mode: soft-light;
+}
 .card {
   border-radius: 10px;
   box-shadow: 2px 2px 50px -20px #00000080;
@@ -94,4 +105,8 @@
     width: 20px;
     height: 20px;
   }
+}
+[data-theme='light'] .accordion {
+  background-color: #fff;
+  box-shadow: none;
 }
