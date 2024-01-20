@@ -1,0 +1,171 @@
+---
+slug: giscus-comment-count
+title: 网站接入 Giscus 评论功能，显示评论数
+authors: [fantingsheng]
+image: http://spacexcode.oss-cn-hangzhou.aliyuncs.com/1705725881593-fbf7d288-5802-470a-9fae-f876a6fdc3c7.png
+audio: https://spacexcode.oss-cn-hangzhou.aliyuncs.com/blog-audio/refactor-blog-page.mp3
+tags: [评论, Giscus]
+enable_comment: true
+enable_adsense: true
+hide_sidebar: true
+---
+
+纯静态网站或博客，由于没有数据存储功能，经常借助第三方的评论系统以插件的方式集成进来，而又以 Github 的 [Discussions](https://docs.github.com/en/discussions)
+和 [Issues](https://github.com/issues) 功能实现的居多。
+
+- [giscus](https://giscus.app) - 可借助[组件库](https://github.com/giscus/giscus-component)在 React、Vue 和 Svelte 中使用，支持多种语言
+- [gitalk](https://gitalk.github.io) - 基于 Github Issue 和 Preact 开发的评论插件
+- [utterances](https://utteranc.es) - 借助 Github issues 实现的轻量的评论组件，giscus 灵感就是来源于它
+
+本站采用的是 Giscus 的方案。UI 风格我很喜欢，简介清爽。色调也和我的网站很搭。
+
+<!--truncate-->
+
+Giscus 为 React、Vue、Solid 和 Svelte 都提供了对应的 [组件库](https://github.com/giscus/giscus-component)。
+
+这里以在 Docusaurus 中使用进行讲解：
+
+### 安装
+
+```shell
+npm i @giscus/react
+```
+
+### 创建评论组件
+
+接着我们以封装组件的形式，让评论功能成为我们网站代码的独立的一部分，在需要的地方引入即可。
+
+```jsx
+import React from 'react';
+import Giscus from "@giscus/react";
+import { useColorMode } from '@docusaurus/theme-common';
+
+export default function GiscusComponent() {
+  const { colorMode } = useColorMode();
+
+  return (
+    <div className="wrapper" id="Comment">
+      <Giscus
+        repo="fantingsheng/spacexcode-discus"
+        repoId="R_kgDOJoGL9w"
+        category="General"
+        categoryId="DIC_kwDOJoGL984CWxiW"  // E.g. id of "General"
+        mapping="url"                        // Important! To map comments to URL
+        term="Welcome to @giscus/react component!"
+        strict="0"
+        reactionsEnabled="1"
+        emitMetadata="1"
+        inputPosition="top"
+        theme={colorMode}
+        lang="zh-Hans"
+        loading="lazy"
+        crossorigin="anonymous"
+        async
+      />
+    </div>
+  );
+}
+```
+
+这里将常用到的一些特性说明下：
+
+1. 如果你想关闭它的懒加载，只需要将 `loading="lazy"` 这一项去掉即可；
+2. 关闭评论上方的表情回复，将 `data-reactions-enabled="1"` 参数设为 `0`；
+3. 评论框的位置默认是放在评论的上方，这样在发表评论的时候就不必一定要滚动到底部，你可以通过 `inputPosition` 参数进行控制，它有两个值 `top` 和 `bottom`；
+
+今天**着重**要讲的是一个功能是如何在你的页面中拿到评论数并显示？
+
+### 显示评论数
+
+一般的网站在标题的下面或者侧边栏都会有评论数的显示。而如果评论是以 Giscus 这样的外部插件的形式引入进来的，其实是通过 `iframe` 嵌入到当前网页的。数据是完全隔离开的。
+那么我们还有没有办法拿到它的评论数据呢？
+
+![爱范儿](http://spacexcode.oss-cn-hangzhou.aliyuncs.com/1705729101890-7d804270-fe8e-4c71-83ac-bb37cd8ef9ec.png)
+![少数派](http://spacexcode.oss-cn-hangzhou.aliyuncs.com/1705729101865-ac3b884b-28fc-4b4c-83c0-f67c4586c171.png)
+
+办法是有的！
+
+官方的文档中也有提到 [giscus-to-parent message events](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#giscus-to-parent-message-events)，
+意思就是我们可以监听由 giscus 通过 `window.parent.postMessage()` 发送到父窗口的 `message` 事件。
+
+官方给出的例子：
+
+```js
+function handleMessage(event: MessageEvent) {
+  if (event.origin !== 'https://giscus.app') return;
+  if (!(typeof event.data === 'object' && event.data.giscus)) return;
+
+  const giscusData = event.data.giscus;
+  // Do whatever you want with it, e.g. `console.log(giscusData)`.
+  // You'll need to make sure that `giscusData` contains the message you're
+  // expecting, e.g. by using `if ('discussion' in giscusData)`.
+}
+
+window.addEventListener('message', handleMessage);
+// Some time later...
+window.removeEventListener('message', handleMessage);
+```
+
+由此，我们很容易在网站的其它地方通过监听 `message` 事件来拿到评论的相关数据。
+
+我们不妨先打印下，看返回来的数据结构是什么样：
+
+```jsx
+import useEventListener from '@site/src/hooks/useEventListener';
+
+export default function Header () {
+  useEventListener('message', function (e) {
+    console.log(e);
+  })
+
+  return (
+    // ...
+  )
+}
+```
+
+> [useEventListener](https://spacexcode.com/docs/snippet/hooks/useEventListener) 是我自己封装的事件监听的 hook，通过回调函数来处理相关逻辑。
+
+![](http://spacexcode.oss-cn-hangzhou.aliyuncs.com/1705730990170-28de3a4d-4a31-4e65-b14a-53292e34a5b7.png)
+
+
+我从打印的数据中截取了部分有用的数据，其中不难发现，`data.giscus` 是我们想要的数据。如果该篇文章下还没有任何的评论，那么它的值是 `error`，否则
+就是一个对象，包含 `totalCommentCount` 和 `totalReplyCount` 两个字段。它们的和就是该文的总评论数。
+
+然后我们完善后，完整的代码如下：
+
+```jsx
+import useEventListener from '@site/src/hooks/useEventListener';
+
+export default function Header () {
+  useEventListener('message', function (e) {
+    console.log(e);
+    if (e.origin !== 'https://giscus.app') return
+    if (!(typeof e.data === 'object' && e.data.giscus)) return
+
+    const giscus = e.data.giscus;
+
+    if (giscus.error) {
+      setCommentCounter(0)
+      return
+    }
+    if (giscus.discussion) {
+      setCommentCounter(
+        giscus.discussion.totalCommentCount + giscus.discussion.totalReplyCount
+      )
+    }
+  })
+
+  return (
+    // ...
+  )
+}
+```
+
+这里为了进入页面就要拿到评论数据，所以我们要关闭 Giscus 懒加载的配置选项。
+
+好了，这篇文章就写到这里，感谢你的阅读。🥰
+
+
+
+

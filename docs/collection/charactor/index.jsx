@@ -13,6 +13,12 @@ export default function EmojiGallery ({ emojiList }) {
       setCopied(true);
       setIcon(iconText);
       confetti({
+        particleCount: 50, // 默认值：50，要发射的五彩纸屑的数量。
+        startVelocity: 20, // 默认值：45，五彩纸屑开始移动的速度，以像素为单位
+        angle: 90, // 发射的角度，0 表示水平向右；90 表示垂直向上；180 表示水平向左；270 表示垂直向下
+        spread: 360, //默认值：45，五彩纸屑在垂直方向扩散的角度，45 表示五彩纸屑以垂直方向正负 22.5 度角发射
+        ticks: 300, // 默认值: 200 ，值越小粒子消失得越快，值越大粒子消失得越慢
+        gravity: 0.5,
         origin: { x: e.clientX / e.view.innerWidth, y: e.clientY / e.view.innerHeight }
       });
       console.log("已成功复制到剪贴板");
