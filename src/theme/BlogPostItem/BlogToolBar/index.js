@@ -9,6 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import QRCode from 'qrcode.react';
 import useEventListener from '@site/src/hooks/useEventListener';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 export default function BlogToolBar({}) {
   const { siteConfig } = useDocusaurusContext();
@@ -71,6 +72,7 @@ export default function BlogToolBar({}) {
   const onShare = (event) => {
     setAnchorEl(event.currentTarget);
   }
+  
   React.useEffect(() => {
     audioRef.current?.addEventListener('loadeddata', () => {
       //todo
@@ -83,23 +85,25 @@ export default function BlogToolBar({}) {
     });
   }, []);
 
-  useEventListener('message', function (e) {
-    console.log(e);
-    if (e.origin !== 'https://giscus.app') return
-    if (!(typeof e.data === 'object' && e.data.giscus)) return
+  if (ExecutionEnvironment.canUseDOM) {
+    useEventListener('message', function (e) {
+      console.log(e);
+      if (e.origin !== 'https://giscus.app') return
+      if (!(typeof e.data === 'object' && e.data.giscus)) return
 
-    const giscus = e.data.giscus;
+      const giscus = e.data.giscus;
 
-    if (giscus.error) {
-      setCommentCounter(0)
-      return
-    }
-    if (giscus.discussion) {
-      setCommentCounter(
-        giscus.discussion.totalCommentCount + giscus.discussion.totalReplyCount
-      )
-    }
-  })
+      if (giscus.error) {
+        setCommentCounter(0)
+        return
+      }
+      if (giscus.discussion) {
+        setCommentCounter(
+          giscus.discussion.totalCommentCount + giscus.discussion.totalReplyCount
+        )
+      }
+    })
+  }
   return (
     <>
     {

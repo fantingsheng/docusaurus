@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkspacexcode_com=self.webpackChunkspacexcode_com||[]).push([[4410],{16535:s=>{s.exports=JSON.parse('{"label":"Giscus","permalink":"/blog/tags/giscus","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

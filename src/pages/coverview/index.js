@@ -442,9 +442,10 @@ export default function () {
         <meta name="keywords" content='封面图,头图,生成器,工具,演示' />
       </Head>
       <div className={styles.page}>
-        {/* <svg className={styles.svgBg} width="100%" height="100%">
-          <filter id="pedroduarteisalegend"><feTurbulence type="fractalNoise" baseFrequency="0.80" numOctaves="4" stitchTiles="stitch"></feTurbulence></filter>
-          <rect width="100%" height="100%" filter="url(#pedroduarteisalegend)"></rect>
+        {/* <svg className={styles.svgFilterBg}><filter id="noise">
+          <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"></feTurbulence>
+          <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+          <rect width="100%" height="100%" filter="url(#noise)"></rect>
         </svg> */}
         <div className="container">
           <Main normal={true} />
