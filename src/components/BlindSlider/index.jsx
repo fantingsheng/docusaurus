@@ -1,7 +1,6 @@
 import React from 'react';
 import { useRef, useState, useEffect } from 'react';
 import styles from './style.module.scss';
-import clsx from 'clsx';
 
 export default function ({ img1, img2, height }) {
   const container = useRef();
@@ -12,7 +11,7 @@ export default function ({ img1, img2, height }) {
     const { width: w } = container.current.getBoundingClientRect()
     setTransform(w / 2);
     setWidth(w);
-  }, [])
+  }, []);
 
   const onMousedown = () => {
     document.addEventListener('mousemove', onMousemove)
