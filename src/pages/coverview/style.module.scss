@@ -1,5 +1,5 @@
 [data-theme='light'] .page {
-  background-color: rgba(229, 231, 235, 0.3);
+  background-color: #F5F7FA;
 }
 .svgFilterBg {
   position: fixed;
@@ -91,7 +91,7 @@
 }
 .card {
   border-radius: 10px;
-  box-shadow: 2px 2px 50px -20px #00000080;
+  // box-shadow: 2px 2px 50px -20px #00000080;
   background-color: #fff;
 }
 [data-theme='dark'] .card {
