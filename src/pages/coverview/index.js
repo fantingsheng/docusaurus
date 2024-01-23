@@ -155,7 +155,7 @@ export function Main({ normal }) {
           {/* 配置 */}
         <Grid item xs={12} md={normal ? 4 : 6}>
           <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
-            <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} loading={loading} />
+            <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} />
           </Box>
         </Grid>
       </Grid>
@@ -217,7 +217,7 @@ export function ContentForm ({ config, handleConfigChange }) {
   )
 }
 
-export function ConfigForm ({ config, handleConfigChange, downloadImage, handleCopyImg, loading }) {
+export function ConfigForm ({ config, handleConfigChange, downloadImage, handleCopyImg }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const anchorRef = useRef(null);
@@ -354,8 +354,8 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </ToggleButtonGroup>
       </Box>
       <Box className={styles.setItem}>
-        <Button variant="contained" sx={{ marginBottom: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disabled={loading} disableElevation fullWidth>复制图片</Button>
-        <ButtonGroup variant="contained" ref={anchorRef} aria-label="导出图片" disabled={loading} disableElevation fullWidth>
+        <Button variant="contained" sx={{ marginBottom: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disableElevation fullWidth>复制图片</Button>
+        <ButtonGroup variant="contained" ref={anchorRef} aria-label="导出图片" disableElevation fullWidth>
           <Button startIcon={<SaveAltIcon />} onClick={handleToggle}>导出图片</Button>
           <Button
             aria-controls={open ? 'split-button-menu' : undefined}
