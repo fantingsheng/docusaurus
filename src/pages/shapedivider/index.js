@@ -11,7 +11,13 @@ export default function () {
         <meta name="keywords" content='分隔线, SVG, 弧线, 背景图' />
       </Head>
       <Banner />
-      <Form />
+      <div className='container'>
+        <div className='row'>
+          <div className='col col--10 col--offset-1'>
+            <Form />
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }

@@ -81,7 +81,7 @@ export default function Form () {
   }
 
   return (
-    <div className='container padding-bottom--lg'>
+    <div className='padding-bottom--lg'>
       <div className='row'>
         <div className='col col--8 col--offset-2'>
           <Card variant="outlined" className={styles.formWrap}>
@@ -152,7 +152,7 @@ export default function Form () {
               </div>
               <div className={styles.downloadBtn}>
                 <IconButton onClick={downloadSvg}>
-                  <CloudDownloadOutlinedIcon sx={{ fontSize: 38 }} color='primary' />
+                  <CloudDownloadOutlinedIcon sx={{ fontSize: 30 }} color='primary' />
                 </IconButton>
               </div>
             </CardContent>
