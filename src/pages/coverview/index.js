@@ -40,6 +40,7 @@ const VisuallyHiddenInput = styled('input')({
 
 export function Main({ normal }) {
   const coverRef = useRef();
+  const [loading, setLoading] = useState(false);
   
   const [config, setConfig] = useState({
     font: 'serif',
@@ -59,6 +60,7 @@ export function Main({ normal }) {
   };
   const downloadImage = (scale, format) => {
     if (!coverRef.current) return;
+    setLoading(true);
     html2canvas(coverRef.current, {
       useCORS: true,
       scale: scale,
@@ -77,10 +79,15 @@ export function Main({ normal }) {
       setTimeout(() => {
           a.remove();
       }, 1000);
+    }).catch(() => {
+      //todo;
+    }).finally(() => {
+      setLoading(false);
     })
   };
   const handleCopyImg = (cb) => {
     if (!coverRef.current) return;
+    setLoading(true);
     html2canvas(coverRef.current, {
       useCORS: true,
       scale: 1,
@@ -102,7 +109,11 @@ export function Main({ normal }) {
             () => {
               console.error("失败.");
             }
-          );
+          ).catch(() => {
+
+          }).finally(() => {
+            setLoading(false);
+          })
       });
     })
   };
@@ -113,8 +124,15 @@ export function Main({ normal }) {
         <Grid item xs={12} md={ normal ? 8 : 12 }>
           <Box className={styles.card} sx={{ padding: '20px 10px', overflowX: 'auto' }}>
             {/* 生成图显示 */}
-            <div ref={coverRef} className={styles.preview} style={{ width: config.width + 'px'}}>
-              <CoverImage config={config} />
+            <div className={styles.initBox}>
+              <div ref={coverRef} className={styles.preview} style={{ width: config.width + 'px'}}>
+                <CoverImage config={config} />
+              </div>
+              {
+                loading ? <div className={styles.loader}>
+                  <span></span>
+                </div> : ''
+              }
             </div>
           </Box>
           {
@@ -137,7 +155,7 @@ export function Main({ normal }) {
           {/* 配置 */}
         <Grid item xs={12} md={normal ? 4 : 6}>
           <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
-            <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} />
+            <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} loading={loading} />
           </Box>
         </Grid>
       </Grid>
@@ -199,7 +217,7 @@ export function ContentForm ({ config, handleConfigChange }) {
   )
 }
 
-export function ConfigForm ({ config, handleConfigChange, downloadImage, handleCopyImg }) {
+export function ConfigForm ({ config, handleConfigChange, downloadImage, handleCopyImg, loading }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const anchorRef = useRef(null);
@@ -336,16 +354,15 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </ToggleButtonGroup>
       </Box>
       <Box className={styles.setItem}>
-        <Button variant="contained" sx={{ marginBottom: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disableElevation fullWidth>复制图片</Button>
-        <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button" fullWidth>
-          <Button startIcon={<SaveAltIcon />} onClick={handleToggle} disableElevation>导出图片</Button>
+        <Button variant="contained" sx={{ marginBottom: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disabled={loading} disableElevation fullWidth>复制图片</Button>
+        <ButtonGroup variant="contained" ref={anchorRef} aria-label="导出图片" disabled={loading} disableElevation fullWidth>
+          <Button startIcon={<SaveAltIcon />} onClick={handleToggle}>导出图片</Button>
           <Button
             aria-controls={open ? 'split-button-menu' : undefined}
             aria-expanded={open ? 'true' : undefined}
             aria-label="选择格式并导出图片"
             aria-haspopup="menu"
             onClick={handleToggle}
-            disableElevation
             sx={{ width: 80 }}
           >
             <ArrowDropDownIcon />
