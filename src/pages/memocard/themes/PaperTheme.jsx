@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.module.scss';
 import clsx from 'clsx';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import QrcodeBox from '../QrcodeBox';
 
 export default function PaperTheme ({ config }) {
@@ -22,7 +23,11 @@ export default function PaperTheme ({ config }) {
           <rect width="100%" height="100%" filter="url(#noise)"></rect>
         </svg>
         <div className={clsx(styles.content, styles['font-' + font])}>
-          <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
+          <BrowserOnly>
+          {
+            () => <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
+          }
+          </BrowserOnly>
           <div className={styles.tb}>
             <div className={styles.author}>{author}</div>
             <QrcodeBox config={config} />

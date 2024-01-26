@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.module.scss';
 import clsx from 'clsx';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import QrcodeBox from '../QrcodeBox';
 
 export default function NormalTheme ({ config }) {
@@ -17,7 +18,11 @@ export default function NormalTheme ({ config }) {
     >
       <div className={styles.main} style={{ backgroundColor: dark ? `rgba(0, 0, 0, ${opacity})` : `rgba(255, 255, 255, ${opacity})`, borderRadius: `${borderRadius}px` }}>
         <div className={clsx(styles.content, styles['font-' + font])}>
-          <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
+          <BrowserOnly>
+          {
+            () => <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
+          }
+          </BrowserOnly>
           <div className={styles.tb}>
             <div className={styles.author}>{author}</div>
             <QrcodeBox config={config} />
