@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import QrcodeBox from '../QrcodeBox';
 
 export default function PaperTheme ({ config }) {
-  const {content, author, bgColor, url, gradientBgColor, width, theme, vertPad, horizPad, dark, font} = {...config}
+  const {content, author, bgColor, opacity, borderRadius, gradientBgColor, width, theme, vertPad, horizPad, dark, font} = {...config}
 
   return (
     <div className={clsx(styles.theme, styles[theme + 'Theme'], dark ? styles.dark : '')}
@@ -15,7 +15,7 @@ export default function PaperTheme ({ config }) {
         padding: `${vertPad}px ${horizPad}px`
       }}
     >
-      <div className={styles.main} style={{ backgroundColor: dark ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.7)' }}>
+      <div className={styles.main} style={{ backgroundColor: dark ? `rgba(0, 0, 0, ${opacity})` : `rgba(255, 255, 255, ${opacity})`, borderRadius: `${borderRadius}px` }}>
         <svg className={styles.svgFilterBg}><filter id="noise">
           <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"></feTurbulence>
           <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>

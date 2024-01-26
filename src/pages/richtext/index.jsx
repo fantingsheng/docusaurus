@@ -52,6 +52,8 @@ export function Main({ normal }) {
     author: '编程范儿',
     theme: 'normal',
     dark: false,
+    opacity: 0.7,
+    borderRadius: 10,
     bgImg: '/page/coverview-bg.png'
   });
  
@@ -175,15 +177,16 @@ export function ContentForm ({ config, handleConfigChange }) {
           placeholder='标题'
           size='small'
           multiline
-          rows={6}
+          minRows={6}
+          maxRows={10}
           fullWidth
         />
-        <Button
+        {/* <Button
           sx={{ width: 80 }}
         >
           <ArrowDropDownIcon />
           <span>Emoji</span>
-        </Button>
+        </Button> */}
       </Box>
       <Box className={styles.setItem}>
         <Typography variant="h5">作者</Typography>
@@ -313,6 +316,34 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
             sx={{ width: '60px' }}
           />
           <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
+        </Box>
+      </Box>
+      <Box sx={{ display: 'flex', gap: '20px' }}>
+        <Box className={styles.setItem} sx={{ width: '50%' }}>
+          <Typography variant="h5">透明度</Typography>
+          <Slider
+            value={config.opacity}
+            aria-label='Default'
+            min={0.1}
+            max={1}
+            step={0.05}
+            size='small'
+            valueLabelDisplay='auto'
+            onChange={e => handleConfigChange(e.target.value, 'opacity')}
+          />
+        </Box>
+        <Box className={styles.setItem} sx={{ width: '50%' }}>
+          <Typography variant="h5">圆角</Typography>
+          <Slider
+            value={config.borderRadius}
+            aria-label='Default'
+            min={1}
+            step={1}
+            max={40}
+            size='small'
+            valueLabelDisplay='auto'
+            onChange={e => handleConfigChange(e.target.value, 'borderRadius')}
+          />
         </Box>
       </Box>
       <Box sx={{ display: 'flex', gap: '20px' }}>

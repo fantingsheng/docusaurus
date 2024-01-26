@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import QrcodeBox from '../QrcodeBox';
 
 export default function GridTheme ({ config }) {
-  const {content, author, bgColor, url, gradientBgColor, theme, width, vertPad, horizPad, dark, font} = {...config}
+  const {content, author, bgColor, opacity, borderRadius, gradientBgColor, theme, width, vertPad, horizPad, dark, font} = {...config}
 
   return (
     <div className={clsx(styles.theme, styles[theme + 'Theme'], dark ? styles.dark : '')}
@@ -15,7 +15,7 @@ export default function GridTheme ({ config }) {
         padding: `${vertPad}px ${horizPad}px`
       }}
     >
-      <div className={styles.main} style={{ backgroundColor: dark ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.7)' }}>
+      <div className={styles.main} style={{ backgroundColor: dark ? `rgba(0, 0, 0, ${opacity})` : `rgba(255, 255, 255, ${opacity})`, borderRadius: `${borderRadius}px` }}>
         <div className={clsx(styles.content, styles['font-' + font])}>
           <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
           <div className={styles.tb}>
