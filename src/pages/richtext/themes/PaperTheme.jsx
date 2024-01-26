@@ -23,7 +23,7 @@ export default function PaperTheme ({ config }) {
           <rect width="100%" height="100%" filter="url(#noise)"></rect>
         </svg>
         <div className={clsx(styles.content, styles['font-' + font])}>
-          <div>{content}</div>
+          <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
           <div className={styles.tb}>{author}</div>
         </div>
       </div>

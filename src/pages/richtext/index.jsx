@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, Switch, TextField, Paper, Box, Grow, Typography,
+import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, FormControlLabel, Switch, TextField, Paper, Box, Grow, Typography,
   ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -40,7 +40,7 @@ export function Main({ normal }) {
   const [config, setConfig] = useState({
     font: 'serif',
     bgColor: '#949ee5',
-    content: '这是一款文字卡片制作工具，你可以输入文字生成精美的文字卡片，然后分享到社交网站或直接复制到聊天工具中。\r\n\r\n它支持不同背景色的设置，可以是纯色和渐变色。\r\n它还支持多个主题的切换。\r\n在这里写上你的文字试试效果吧。',
+    content: '🤗 这是一款文字卡片制作工具，你可以输入文字生成精美的文字卡片，然后分享到社交网站或直接复制到聊天工具中。\r\n\r\n它支持不同背景色的设置，可以是纯色和渐变色。\r\n它还支持多个主题的切换。\r\n在这里写上你的文字试试效果吧。👨‍💻',
     url: 'https://spacexcode.com',
     gradientBgColor: '',
     icon: 'react',
@@ -264,11 +264,16 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </Box>
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">深色主题</Typography>
-        <Switch
-          value={config.dark}
-          onChange={e => handleConfigChange(e.target.checked, 'dark')}
-          inputProps={{ 'aria-label': 'controlled' }}
+        <Typography variant="h5">外观</Typography>
+        <FormControlLabel
+          control={
+            <Switch
+              value={config.dark}
+              onChange={e => handleConfigChange(e.target.checked, 'dark')}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
+          }
+          label="深色主题"
         />
       </Box>
       <Box className={styles.setItem}>
