@@ -175,8 +175,9 @@ export function ContentForm ({ config, handleConfigChange }) {
         <TextField
           value={config.content}
           onChange={e => handleConfigChange(e.target.value, 'content')}
-          placeholder='标题'
+          placeholder='卡片上的文字内容'
           size='small'
+          className={styles.sizeInput}
           multiline
           minRows={6}
           maxRows={10}
@@ -188,7 +189,8 @@ export function ContentForm ({ config, handleConfigChange }) {
         <TextField
           value={config.author}
           onChange={e => handleConfigChange(e.target.value, 'author')}
-          placeholder='作者'
+          placeholder='署名'
+          className={styles.sizeInput}
           size='small'
           fullWidth
         />
@@ -199,7 +201,8 @@ export function ContentForm ({ config, handleConfigChange }) {
           error={config.url && !reg.test(config.url)}
           value={config.url}
           onChange={e => handleConfigChange(e.target.value, 'url')}
-          placeholder='链接'
+          placeholder='链接地址'
+          className={styles.sizeInput}
           size='small'
           fullWidth
         />
@@ -274,9 +277,11 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
             <Switch
               value={config.dark}
               onChange={e => handleConfigChange(e.target.checked, 'dark')}
+              size="small"
               inputProps={{ 'aria-label': 'controlled' }}
             />
           }
+          className={styles.sizeInput}
           label="深色主题"
         />
       </Box>
@@ -287,6 +292,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           onChange={val => handleConfigChange(val.target.value, 'font')}
           label=""
           size='small'
+          className={styles.sizeInput}
           fullWidth
         >
           {fontOptions.map(el => (

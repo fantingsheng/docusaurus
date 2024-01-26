@@ -89,6 +89,9 @@
     }  
   } 
 }
+.sizeInput > div, .sizeInput > span {
+  font-size: 14px;
+}
 .card {
   border-radius: 5px;
   box-shadow: 2px 2px 30px -20px #00000060;
@@ -109,7 +112,7 @@
   margin-top: 20px;
 
   h5 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     margin-bottom: 10px;
   }

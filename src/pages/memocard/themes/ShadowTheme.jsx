@@ -16,7 +16,7 @@ export default function ShadowTheme ({ config }) {
         padding: `${vertPad}px ${horizPad}px`
       }}
     >
-      <div className={styles.main} style={{ backgroundColor: dark ? `rgba(0, 0, 0, ${opacity})` : `rgba(255, 255, 255, ${opacity})`, borderRadius: `${borderRadius}px` }}>
+      <div className={styles.main} style={{ backgroundColor: dark ? `rgba(0, 0, 0, ${opacity})` : `rgba(255, 255, 255, ${opacity})` }}>
         <div className={clsx(styles.content, styles['font-' + font])}>
           <BrowserOnly>
           {
@@ -27,7 +27,6 @@ export default function ShadowTheme ({ config }) {
             <div className={styles.author}>{author}</div>
             <QrcodeBox config={config} />
           </div>
-          <div className={styles.btShadow}></div>
         </div>
       </div>
     </div>
