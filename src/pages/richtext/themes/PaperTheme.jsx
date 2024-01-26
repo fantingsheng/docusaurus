@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './style.module.scss';
 import clsx from 'clsx';
+import QrcodeBox from '../QrcodeBox';
 
 export default function PaperTheme ({ config }) {
-  const {content, author, bgColor, gradientBgColor, width, theme, vertPad, horizPad, dark, font} = {...config}
-  const height = width * ratio + 'px';
+  const {content, author, bgColor, url, gradientBgColor, width, theme, vertPad, horizPad, dark, font} = {...config}
 
   return (
     <div className={clsx(styles.theme, styles[theme + 'Theme'], dark ? styles.dark : '')}
@@ -23,7 +23,10 @@ export default function PaperTheme ({ config }) {
         </svg>
         <div className={clsx(styles.content, styles['font-' + font])}>
           <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
-          <div className={styles.tb}>{author}</div>
+          <div className={styles.tb}>
+            <div className={styles.author}>{author}</div>
+            <QrcodeBox config={config} />
+          </div>
         </div>
       </div>
     </div>

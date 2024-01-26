@@ -23,6 +23,8 @@
     .tb {
       display: flex;
       justify-content: flex-end;
+      flex-direction: column;
+      align-items: flex-end;
       font-style: italic;
       font-size: 12px;
     }

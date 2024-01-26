@@ -41,7 +41,7 @@ export function Main({ normal }) {
     font: 'serif',
     bgColor: '#949ee5',
     content: '🤗 这是一款文字卡片制作工具，你可以输入文字生成精美的文字卡片，然后分享到社交网站或直接复制到聊天工具中。\r\n\r\n它支持不同背景色的设置，可以是纯色和渐变色。\r\n它还支持多个主题的切换。\r\n在这里写上你的文字试试效果吧。👨‍💻',
-    url: 'https://spacexcode.com',
+    url: '',
     gradientBgColor: '',
     icon: 'react',
     ratio: 0.5,
@@ -164,6 +164,7 @@ export function Main({ normal }) {
 }
 
 export function ContentForm ({ config, handleConfigChange }) {
+  const reg = /^(?:(http|https):\/\/)?((?:[\w-]+\.)+[a-z0-9]+)((?:\/[^/?#]*)+)?(\?[^#]+)?(#.+)?$/i;
   return (
     <>
       <Box className={styles.setItem}>
@@ -197,6 +198,7 @@ export function ContentForm ({ config, handleConfigChange }) {
       <Box className={styles.setItem}>
         <Typography variant="h5">链接</Typography>
         <TextField
+          error={config.url && !reg.test(config.url)}
           value={config.url}
           onChange={e => handleConfigChange(e.target.value, 'url')}
           placeholder='链接'
