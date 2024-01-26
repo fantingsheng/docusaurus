@@ -1,0 +1,441 @@
+import React from 'react';
+import { useState, useRef } from 'react';
+import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
+import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, Switch, TextField, Paper, Box, Grow, Typography,
+  ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CopyAll from '@mui/icons-material/CopyAll';
+import { styled } from '@mui/material/styles';
+import RandomTheme from './RandomTheme';
+import TextCard from './TextCard';
+import { ColorPicker } from 'material-ui-color';
+import styles from './style.module.scss';
+import clsx from 'clsx';
+import html2canvas from 'html2canvas';
+
+import NormalTheme from './themeSkeleton/NormalTheme';
+import GridTheme from './themeSkeleton/GridTheme';
+import PaperTheme from './themeSkeleton/PaperTheme';
+
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
+
+export function Main({ normal }) {
+  const coverRef = useRef();
+  const [loading, setLoading] = useState(false);
+  
+  const [config, setConfig] = useState({
+    font: 'serif',
+    bgColor: '#949ee5',
+    content: '这是一款文字卡片制作工具，你可以输入文字生成精美的文字卡片，然后分享到社交网站或直接复制到聊天工具中。\r\n\r\n它支持不同背景色的设置，可以是纯色和渐变色。\r\n它还支持多个主题的切换。\r\n在这里写上你的文字试试效果吧。',
+    url: 'https://spacexcode.com',
+    gradientBgColor: '',
+    icon: 'react',
+    ratio: 0.5,
+    width: 800,
+    title: '欢迎来到太空编程站点',
+    author: '编程范儿',
+    theme: 'normal',
+    dark: false,
+    bgImg: '/page/coverview-bg.png'
+  });
+ 
+  const handleConfigChange = (val, key) => {
+    setConfig((prev) => ({ ...prev, [key]: val }));
+  };
+  const downloadImage = (scale, format) => {
+    if (!coverRef.current) return;
+    setLoading(true);
+    html2canvas(coverRef.current, {
+      useCORS: true,
+      scale: scale,
+      backgroundColor: 'transparent'
+    }).then((canvas) => {
+      let newImg = new Image()
+      const date = new Date()
+      newImg.src = canvas.toDataURL('image/' + format) // 'image/png'
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = newImg.src;
+      a.download = `spacexcode-cover-${date.getMinutes()}${date.getSeconds()}.${format}`;
+      a.rel = "noopener noreferrer";
+      document.body.append(a);
+      a.click();
+      setTimeout(() => {
+          a.remove();
+      }, 1000);
+    }).catch(() => {
+      //todo;
+    }).finally(() => {
+      setLoading(false);
+    })
+  };
+  const handleCopyImg = (cb) => {
+    if (!coverRef.current) return;
+    setLoading(true);
+    html2canvas(coverRef.current, {
+      useCORS: true,
+      scale: 1,
+      backgroundColor: 'transparent'
+    }).then((canvas) => {
+      canvas.toBlob(async blob => {
+        console.log(blob);
+        const data = [
+          new ClipboardItem({
+            [blob.type]: blob,
+          }),
+        ];
+        await navigator.clipboard.write(data)
+          .then(
+            () => {
+              console.log("复制成功!");
+              cb && cb();
+            },
+            () => {
+              console.error("失败.");
+            }
+          ).catch(() => {
+
+          }).finally(() => {
+            setLoading(false);
+          })
+      });
+    })
+  };
+
+  return (
+    <Box sx={{ padding: '40px 0' }}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={ normal ? 8 : 12 }>
+          <Box className={styles.card} sx={{ padding: '20px 10px', overflowX: 'auto' }}>
+            {/* 生成图显示 */}
+            <div className={styles.initBox}>
+              <div ref={coverRef} className={styles.preview} style={{ width: config.width + 'px'}}>
+                <TextCard config={config} />
+              </div>
+              {
+                loading ? <div className={styles.loader}>
+                  <span></span>
+                </div> : ''
+              }
+            </div>
+          </Box>
+          {
+            normal ? 
+            <Box className={styles.card} sx={{ padding: '10px 20px 40px', marginTop: '24px' }}>
+              <ContentForm config={config} handleConfigChange={handleConfigChange} />
+            </Box>
+            : <></>
+          }
+        </Grid>
+        {
+          !normal ? 
+          <Grid item xs={12} md={6}>
+            <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
+              <ContentForm config={config} handleConfigChange={handleConfigChange} />
+            </Box>
+          </Grid>
+          : <></>
+        }
+          {/* 配置 */}
+        <Grid item xs={12} md={normal ? 4 : 6}>
+          <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
+            <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} />
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
+  )
+}
+
+export function ContentForm ({ config, handleConfigChange }) {
+  return (
+    <>
+      <Box className={styles.setItem}>
+        <Typography variant="h5">在这里输入卡片上的文字内容</Typography>
+        <TextField
+          value={config.content}
+          onChange={e => handleConfigChange(e.target.value, 'content')}
+          placeholder='标题'
+          size='small'
+          multiline
+          rows={6}
+          fullWidth
+        />
+        <Button
+          sx={{ width: 80 }}
+        >
+          <ArrowDropDownIcon />
+          <span>Emoji</span>
+        </Button>
+      </Box>
+      <Box className={styles.setItem}>
+        <Typography variant="h5">作者</Typography>
+        <TextField
+          value={config.author}
+          onChange={e => handleConfigChange(e.target.value, 'author')}
+          placeholder='作者'
+          size='small'
+          fullWidth
+        />
+      </Box>
+      <Box className={styles.setItem}>
+        <Typography variant="h5">链接</Typography>
+        <TextField
+          value={config.url}
+          onChange={e => handleConfigChange(e.target.value, 'url')}
+          placeholder='链接'
+          size='small'
+          fullWidth
+        />
+      </Box>
+    </>
+  )
+}
+
+export function ConfigForm ({ config, handleConfigChange, downloadImage, handleCopyImg }) {
+  const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const anchorRef = useRef(null);
+  const fontOptions = [
+    { label: 'serif', value: 'serif' },
+    { label: 'sans', value: 'sans' },
+    { label: 'mono', value: 'mono' },
+    { label: 'Inter', value: 'inter' },
+    { label: 'Poppins', value: 'poppins' },
+    { label: 'Anek', value: 'anek' }
+  ];
+  const bgColorOptions = [
+    'linear-gradient(310deg,rgb(214,233,255),rgb(214,229,255),rgb(209,214,255),rgb(221,209,255),rgb(243,209,255),rgb(255,204,245),rgb(255,204,223),rgb(255,200,199),rgb(255,216,199),rgb(255,221,199))',
+    'linear-gradient(160deg,rgb(204,251,252),rgb(197,234,254),rgb(189,211,255))',
+    'linear-gradient(150deg,rgb(255,242,158),rgb(255,239,153),rgb(255,231,140),rgb(255,217,121),rgb(255,197,98),rgb(255,171,75),rgb(255,143,52),rgb(255,115,33),rgb(255,95,20),rgb(255,87,15))',
+    'linear-gradient(345deg,rgb(211,89,255),rgb(228,99,255),rgb(255,123,247),rgb(255,154,218),rgb(255,185,208),rgb(255,209,214),rgb(255,219,219))',
+    'linear-gradient(150deg,rgb(0,224,245),rgb(31,158,255),rgb(51,85,255))',
+    'linear-gradient(330deg,rgb(255,25,125),rgb(45,13,255),rgb(0,255,179))',
+    'linear-gradient(150deg,rgb(0,176,158),rgb(19,77,93),rgb(16,23,31))',
+    'linear-gradient(150deg,rgb(95,108,138),rgb(48,59,94),rgb(14,18,38))'
+  ]
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const handleMenuItemClick = (event, scale, format) => {
+    downloadImage(scale, format);
+    setOpen(false);
+  };
+  const onHandleCopyImg = () => {
+    handleCopyImg(() => {
+      console.log()
+      setCopied(true);
+    })
+  };
+  return (
+    <>
+      <Box className={styles.setItem}>
+        <Typography variant="h5">主题</Typography>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+          {/* 主题列表 */}
+          <div className={clsx(styles.themeItem, config.theme === 'normal' ? styles.on : '')}
+            onClick={() => handleConfigChange('normal', 'theme')}><NormalTheme /></div>
+          <div className={clsx(styles.themeItem, config.theme === 'grid' ? styles.on : '')}
+            onClick={() => handleConfigChange('grid', 'theme')}><GridTheme /></div>
+          <div className={clsx(styles.themeItem, config.theme === 'paper' ? styles.on : '')}
+            onClick={() => handleConfigChange('paper', 'theme')}><PaperTheme /></div>
+        </Box>
+      </Box>
+      <Box className={styles.setItem}>
+        <Typography variant="h5">深色主题</Typography>
+        <Switch
+          value={config.dark}
+          onChange={e => handleConfigChange(e.target.checked, 'dark')}
+          inputProps={{ 'aria-label': 'controlled' }}
+        />
+      </Box>
+      <Box className={styles.setItem}>
+        <Typography variant="h5">字体</Typography>
+        <Select
+          value={config.font}
+          onChange={val => handleConfigChange(val.target.value, 'font')}
+          label=""
+          size='small'
+          fullWidth
+        >
+          {fontOptions.map(el => (
+            <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
+          ))}
+        </Select>
+      </Box>
+      <Box className={styles.setItem}>
+        <Typography variant="h5">背景色</Typography>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+          {bgColorOptions.map((el, index) => (
+            <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
+              onClick={() => handleConfigChange(el, 'gradientBgColor')} key={index}></div>
+          ))}
+          <div className={clsx(styles.bgGradient, styles.clearColor)} onClick={() => handleConfigChange('', 'gradientBgColor')}>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>清除背景色</title>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </div>
+        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+          <ColorPicker
+            value={config.bgColor}
+            onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
+            sx={{ width: '60px' }}
+          />
+          <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
+        </Box>
+      </Box>
+      {['background', 'stylish', 'preview', 'mobile'].includes(config.theme) ?
+        <Box className={styles.setItem}>
+          <Typography variant="h5">背景图</Typography>
+          <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
+            上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
+          </Button>
+        </Box>
+        : <></>
+      }
+      <Box className={styles.setItem}>
+        <Typography variant="h5">长度</Typography>
+        <Slider
+          value={config.width}
+          aria-label='Default'
+          min={600}
+          max={820}
+          size='small'
+          valueLabelDisplay='auto'
+          onChange={e => handleConfigChange(e.target.value, 'width')}
+        />
+      </Box>
+      <Box className={styles.setItem}>
+        <Typography variant="h5">长宽比</Typography>
+        <ToggleButtonGroup
+          value={config.ratio}
+          exclusive
+          onChange={(event, val) => handleConfigChange(val, 'ratio')}
+          aria-label='Ratio'
+          size='small'
+        >
+          <ToggleButton sx={{ padding: '7px 12px' }} value={0.5}>1:2</ToggleButton>
+          <ToggleButton sx={{ padding: '7px 12px' }} value={0.6}>3:5</ToggleButton>
+          <ToggleButton sx={{ padding: '7px 12px' }} value={0.57}>4:7</ToggleButton>
+          <ToggleButton sx={{ padding: '7px 12px' }} value={0.4}>5:8</ToggleButton>
+        </ToggleButtonGroup>
+      </Box>
+      <Box className={styles.setItem}>
+        <Button variant="contained" sx={{ marginBottom: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disableElevation fullWidth>复制图片</Button>
+        <ButtonGroup variant="contained" ref={anchorRef} aria-label="导出图片" disableElevation fullWidth>
+          <Button startIcon={<SaveAltIcon />} onClick={handleToggle}>导出图片</Button>
+          <Button
+            aria-controls={open ? 'split-button-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aria-label="选择格式并导出图片"
+            aria-haspopup="menu"
+            onClick={handleToggle}
+            sx={{ width: 80 }}
+          >
+            <ArrowDropDownIcon />
+          </Button>
+        </ButtonGroup>
+        <Popper sx={{ zIndex: 1 }} open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === 'bottom' ? 'center top' : 'center bottom',
+              }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList autoFocusItem>
+                    <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'png')}>
+                      PNG / 1X 
+                    </MenuItem>
+                    <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'png')}>
+                      PNG / 2X 
+                    </MenuItem>
+                    <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'jpg')}>
+                      JPG / 1X 
+                    </MenuItem>
+                    <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'jpg')}>
+                      JPG / 2X
+                    </MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      </Box>
+    </>
+  )
+}
+
+export function FrequentQuestion () {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+  return (
+    <>
+      <Accordion className={styles.accordion} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content">
+          <Typography>复制图片在什么场景用到，或者说复制后在哪才能粘贴？</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>复制后可以粘贴在常用的富文本编辑器中，微信、QQ、钉钉等聊天工具框中。</Typography>
+        </AccordionDetails>
+      </Accordion>
+    </>
+  )
+}
+
+export default function () {
+  return (
+    <Layout title='文字卡片生成器' description='文字卡片生成器，根据配置快速生成一张漂亮的文字卡片，用于展示和分享'>
+      <Head>
+        <meta name="keywords" content='文字卡片,头图,生成器,工具,演示' />
+      </Head>
+      <div className={styles.page}>
+        {/* <svg className={styles.svgFilterBg}><filter id="noise">
+          <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"></feTurbulence>
+          <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+          <rect width="100%" height="100%" filter="url(#noise)"></rect>
+        </svg> */}
+        <div className="container">
+          <Main normal={true} />
+          <Box sx={{ margin: '4rem 0' }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <h2 className='text--center'>常见问题</h2>
+                <FrequentQuestion />
+              </Grid>
+            </Grid>
+          </Box>
+        </div>
+      </div>
+    </Layout>
+  )
+}
