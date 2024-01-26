@@ -45,6 +45,8 @@ export function Main({ normal }) {
     gradientBgColor: '',
     icon: 'react',
     ratio: 0.5,
+    vertPad: 40,
+    horizPad: 40,
     width: 800,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
@@ -311,15 +313,32 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
         </Box>
       </Box>
-      {['background', 'stylish', 'preview', 'mobile'].includes(config.theme) ?
-        <Box className={styles.setItem}>
-          <Typography variant="h5">背景图</Typography>
-          <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
-            上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
-          </Button>
+      <Box sx={{ display: 'flex', gap: '20px' }}>
+        <Box className={styles.setItem} sx={{ width: '50%' }}>
+          <Typography variant="h5">上下间距</Typography>
+          <Slider
+            value={config.vertPad}
+            aria-label='Default'
+            min={10}
+            max={100}
+            size='small'
+            valueLabelDisplay='auto'
+            onChange={e => handleConfigChange(e.target.value, 'vertPad')}
+          />
         </Box>
-        : <></>
-      }
+        <Box className={styles.setItem} sx={{ width: '50%' }}>
+          <Typography variant="h5">左右间距</Typography>
+          <Slider
+            value={config.horizPad}
+            aria-label='Default'
+            min={10}
+            max={200}
+            size='small'
+            valueLabelDisplay='auto'
+            onChange={e => handleConfigChange(e.target.value, 'horizPad')}
+          />
+        </Box>
+      </Box>
       <Box className={styles.setItem}>
         <Typography variant="h5">长度</Typography>
         <Slider
@@ -331,21 +350,6 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           valueLabelDisplay='auto'
           onChange={e => handleConfigChange(e.target.value, 'width')}
         />
-      </Box>
-      <Box className={styles.setItem}>
-        <Typography variant="h5">长宽比</Typography>
-        <ToggleButtonGroup
-          value={config.ratio}
-          exclusive
-          onChange={(event, val) => handleConfigChange(val, 'ratio')}
-          aria-label='Ratio'
-          size='small'
-        >
-          <ToggleButton sx={{ padding: '7px 12px' }} value={0.5}>1:2</ToggleButton>
-          <ToggleButton sx={{ padding: '7px 12px' }} value={0.6}>3:5</ToggleButton>
-          <ToggleButton sx={{ padding: '7px 12px' }} value={0.57}>4:7</ToggleButton>
-          <ToggleButton sx={{ padding: '7px 12px' }} value={0.4}>5:8</ToggleButton>
-        </ToggleButtonGroup>
       </Box>
       <Box className={styles.setItem}>
         <Button variant="contained" sx={{ marginBottom: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disableElevation fullWidth>复制图片</Button>

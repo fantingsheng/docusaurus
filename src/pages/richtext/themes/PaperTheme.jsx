@@ -3,7 +3,7 @@ import styles from './style.module.scss';
 import clsx from 'clsx';
 
 export default function PaperTheme ({ config }) {
-  const {content, author, bgColor, gradientBgColor, width, theme, ratio, dark, font} = {...config}
+  const {content, author, bgColor, gradientBgColor, width, theme, vertPad, horizPad, dark, font} = {...config}
   const height = width * ratio + 'px';
 
   return (
@@ -11,9 +11,8 @@ export default function PaperTheme ({ config }) {
       style={{ 
         backgroundColor: bgColor,
         backgroundImage: gradientBgColor,
-        width: config.width + 'px',
-        minHeight: height,
-        padding: '40px'
+        width: width + 'px',
+        padding: `${vertPad}px ${horizPad}px`
       }}
     >
       <div className={styles.main} style={{ backgroundColor: dark ? 'rgba(0, 0, 0, 0.7)' : 'rgba(255, 255, 255, 0.7)' }}>
