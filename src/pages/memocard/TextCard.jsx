@@ -2,6 +2,7 @@ import React from "react";
 import NormalTheme from "./themes/NormalTheme";
 import GridTheme from "./themes/GridTheme";
 import PaperTheme from "./themes/PaperTheme";
+import ShadowTheme from "./themes/ShadowTheme";
 
 import styles from './style.module.scss';
 
@@ -16,6 +17,8 @@ export default function TextCard ({ config }) {
         return <GridTheme config={config} />;
 			case 'paper':
         return <PaperTheme config={config} />;
+      case 'shadow':
+        return <ShadowTheme config={config} />;
 			default:
         return <NormalTheme config={config} />;
 		}

@@ -20,6 +20,7 @@ import html2canvas from 'html2canvas';
 import NormalTheme from './themeSkeleton/NormalTheme';
 import GridTheme from './themeSkeleton/GridTheme';
 import PaperTheme from './themeSkeleton/PaperTheme';
+import ShadowTheme from './themeSkeleton/ShadowTheme';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -181,15 +182,9 @@ export function ContentForm ({ config, handleConfigChange }) {
           maxRows={10}
           fullWidth
         />
-        {/* <Button
-          sx={{ width: 80 }}
-        >
-          <ArrowDropDownIcon />
-          <span>Emoji</span>
-        </Button> */}
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">作者</Typography>
+        <Typography variant="h5">文字下面的署名</Typography>
         <TextField
           value={config.author}
           onChange={e => handleConfigChange(e.target.value, 'author')}
@@ -199,7 +194,7 @@ export function ContentForm ({ config, handleConfigChange }) {
         />
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">链接</Typography>
+        <Typography variant="h5">插入链接以二维码显示</Typography>
         <TextField
           error={config.url && !reg.test(config.url)}
           value={config.url}
@@ -268,6 +263,8 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
             onClick={() => handleConfigChange('grid', 'theme')}><GridTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'paper' ? styles.on : '')}
             onClick={() => handleConfigChange('paper', 'theme')}><PaperTheme /></div>
+          <div className={clsx(styles.themeItem, config.theme === 'shadow' ? styles.on : '')}
+            onClick={() => handleConfigChange('shadow', 'theme')}><ShadowTheme /></div>
         </Box>
       </Box>
       <Box className={styles.setItem}>
