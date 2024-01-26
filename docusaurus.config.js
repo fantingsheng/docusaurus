@@ -108,6 +108,7 @@ const config = {
             { to: '/codeimage', label: '代码图片生成器' },
             { to: '/cssglass', label: '毛玻璃效果生成器' },
             { to: '/coverview', label: '封面图生成器' },
+            { to: '/memocard', label: '文字卡片' },
             { to: '/lifebalence', label: '高效的生物钟' },
             { to: '/progress', label: '年度进度图' },
             { to: '/player', label: '音乐播放器' }
@@ -126,122 +127,51 @@ const config = {
           {
             title: '其它站点',
             items: [
-              {
-                label: '个人主页',
-                to: 'https://blog.i-fanr.com/'
-              },
-              {
-                label: '前端开发笔记',
-                to: 'https://i-fanr.com/',
-              },
-              {
-                label: '悦己工作室',
-                to: 'https://yugere.com'
-              }
+              { label: '个人主页', to: 'https://blog.i-fanr.com/' },
+              { label: '前端开发笔记', to: 'https://i-fanr.com/' },
+              { label: '悦己工作室', to: 'https://yugere.com' }
             ],
           },
           {
             title: '作品集',
             items: [
-              {
-                label: '站点统计工具',
-                to: '/visitor',
-              },
-              {
-                label: '优美的分隔线',
-                to: '/shapedivider',
-              },
-              {
-                label: '毛玻璃效果生成器',
-                to: '/cssglass',
-              },
-              {
-                label: '代码图片生成器',
-                to: '/codeimage',
-              },
-              {
-                label: '封面图生成器',
-                to: '/coverview'
-              },
-              {
-                label: '城市印象',
-                to: '/photo'
-              },
-              {
-                label: '音乐播放器',
-                to: '/player'
-              }
+              { label: '站点统计工具', to: '/visitor' },
+              { label: '优美的分隔线', to: '/shapedivider' },
+              { label: '毛玻璃效果生成器', to: '/cssglass' },
+              { label: '代码图片生成器', to: '/codeimage' },
+              { label: '封面图生成器', to: '/coverview' },
+              { label: '文字卡片', to: '/memocard' },
+              { label: '城市印象', to: '/photo' },
+              { label: '音乐播放器', to: '/player' }
             ],
           },
           {
             title: '知识平台',
             items: [
-              {
-                label: '简书',
-                href: 'https://www.jianshu.com/u/0d4441e81795',
-              },
-              {
-                label: '知乎',
-                href: 'https://www.zhihu.com/people/timfan',
-              },
-              {
-                label: '掘金',
-                href: 'https://juejin.cn/user/1372604177862088',
-              },
-              {
-                label: '开发者头条',
-                href: 'https://toutiao.io/u/578387',
-              },
-              {
-                label: 'CSDN',
-                href: 'https://blog.csdn.net/u013919171',
-              },
+              { label: '简书', href: 'https://www.jianshu.com/u/0d4441e81795' },
+              { label: '知乎', href: 'https://www.zhihu.com/people/timfan' },
+              { label: '掘金', href: 'https://juejin.cn/user/1372604177862088' },
+              { label: '开发者头条', href: 'https://toutiao.io/u/578387' },
+              { label: 'CSDN', href: 'https://blog.csdn.net/u013919171' }
             ],
           },
           {
             title: '常用技术',
             items: [
-              {
-                label: 'Vue',
-                href: 'https://cn.vuejs.org',
-              },
-              {
-                label: 'React',
-                href: 'https://zh-hans.react.dev',
-              },
-              {
-                label: 'Svelte',
-                href: 'https://www.svelte.cn'
-              },
-              {
-                label: 'NodeJS',
-                href: 'https://nodejs.org'
-              },
-              {
-                label: 'Next.js',
-                href: 'https://nextjs.org'
-              },
-              {
-                label: 'Nuxt',
-                href: 'https://nuxt.com'
-              }
+              { label: 'Vue', href: 'https://cn.vuejs.org' },
+              { label: 'React', href: 'https://zh-hans.react.dev' },
+              { label: 'Svelte', href: 'https://www.svelte.cn' },
+              { label: 'NodeJS', href: 'https://nodejs.org' },
+              { label: 'Next.js', href: 'https://nextjs.org' },
+              { label: 'Nuxt', href: 'https://nuxt.com' }
             ],
           },
           {
             title: '友链',
             items: [
-              {
-                label: 'Raycast',
-                href: 'https://www.raycast.com/'
-              },
-              {
-                label: 'Alan',
-                href: 'https://www.alanwang.site/'
-              },
-              {
-                label: 'Macin',
-                href: 'https://www.macin.org/'
-              }
+              { label: 'Raycast', href: 'https://www.raycast.com/' },
+              { label: 'Alan', href: 'https://www.alanwang.site/' },
+              { label: 'Macin', href: 'https://www.macin.org/' }
             ]
           }
         ],
