@@ -2,9 +2,10 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
-import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, FormControlLabel, Switch, TextField, Paper, Box, Grow, Typography,
+import { Grid, Select, Button, IconButton, ButtonGroup, MenuItem, MenuList, Popper, FormControlLabel, Switch, TextField, Paper, Box, Grow, Typography,
   ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import OutlinedInput from '@mui/material/OutlinedInput';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -39,7 +40,7 @@ export function Main({ normal }) {
   const [loading, setLoading] = useState(false);
   
   const [config, setConfig] = useState({
-    font: 'serif',
+    font: '',
     bgColor: '#949ee5',
     content: '🤗 这是一款文字卡片制作工具，你可以输入文字生成精美的文字卡片，然后分享到社交网站或直接复制到聊天工具中。\r\n\r\n它支持不同背景色的设置，可以是纯色和渐变色。\r\n它还支持多个主题的切换。\r\n在这里写上你的文字试试效果吧。👨‍💻',
     url: '',
@@ -171,7 +172,13 @@ export function ContentForm ({ config, handleConfigChange }) {
   return (
     <>
       <Box className={styles.setItem}>
-        <Typography variant="h5">在这里输入卡片上的文字内容</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography variant="h5">📝 在这里输入卡片上的文字内容</Typography>
+          <IconButton aria-label="清除" size="small" sx={{ marginBottom: '5px' }} onClick={() => handleConfigChange('', 'content')}>
+            <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 576 512">
+            <path fill="#272a68" d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7H288h9.4H512c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416H288l-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z"></path></svg>
+          </IconButton>
+        </Box>
         <TextField
           value={config.content}
           onChange={e => handleConfigChange(e.target.value, 'content')}
@@ -185,7 +192,7 @@ export function ContentForm ({ config, handleConfigChange }) {
         />
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">文字下面的署名</Typography>
+        <Typography variant="h5">📬 文字下面的署名</Typography>
         <TextField
           value={config.author}
           onChange={e => handleConfigChange(e.target.value, 'author')}
@@ -196,7 +203,7 @@ export function ContentForm ({ config, handleConfigChange }) {
         />
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">插入链接以二维码显示</Typography>
+        <Typography variant="h5">🔗 插入链接以二维码显示</Typography>
         <TextField
           error={config.url && !reg.test(config.url)}
           value={config.url}
@@ -271,36 +278,6 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </Box>
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">外观</Typography>
-        <FormControlLabel
-          control={
-            <Switch
-              value={config.dark}
-              onChange={e => handleConfigChange(e.target.checked, 'dark')}
-              size="small"
-              inputProps={{ 'aria-label': 'controlled' }}
-            />
-          }
-          className={styles.sizeInput}
-          label="深色主题"
-        />
-      </Box>
-      <Box className={styles.setItem}>
-        <Typography variant="h5">字体</Typography>
-        <Select
-          value={config.font}
-          onChange={val => handleConfigChange(val.target.value, 'font')}
-          label=""
-          size='small'
-          className={styles.sizeInput}
-          fullWidth
-        >
-          {fontOptions.map(el => (
-            <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
-          ))}
-        </Select>
-      </Box>
-      <Box className={styles.setItem}>
         <Typography variant="h5">背景色</Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
           {bgColorOptions.map((el, index) => (
@@ -320,6 +297,44 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           />
           <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
         </Box>
+      </Box>
+      <Box sx={{ display: 'flex', gap: '20px' }}>
+      <Box className={styles.setItem} sx={{ width: '50%' }}>
+        <Typography variant="h5">外观</Typography>
+        <FormControlLabel
+          control={
+            <Switch
+              value={config.dark}
+              onChange={e => handleConfigChange(e.target.checked, 'dark')}
+              inputProps={{ 'aria-label': 'controlled' }}
+            />
+          }
+          className={styles.sizeInput}
+          label="深色主题"
+        />
+      </Box>
+      <Box className={styles.setItem} sx={{ width: '50%' }}>
+        <Typography variant="h5">字体</Typography>
+        <Select
+          value={config.font}
+          onChange={val => handleConfigChange(val.target.value, 'font')}
+          size='small'
+          className={styles.sizeInput}
+          sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px' } }}
+          renderValue={(selected) => {
+            if (selected.length === 0) {
+              return <em style={{ color: '#A8ABB2' }}>选择字体</em>;
+            }
+            return selected;
+          }}
+          fullWidth
+          displayEmpty
+        >
+          {fontOptions.map(el => (
+            <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
+          ))}
+        </Select>
+      </Box>
       </Box>
       <Box sx={{ display: 'flex', gap: '20px' }}>
         <Box className={styles.setItem} sx={{ width: '50%' }}>
