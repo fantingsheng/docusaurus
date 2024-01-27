@@ -4,27 +4,33 @@ title: 关于本站
 
 # 关于本站
 
-本站建立的初衷作为自己前端知识系统结构化总结和平时收集的一些有用的资料，作为备忘。如果有幸帮助到访问网站的你，那么它建立的意义又多了一些。
+本站建立的初衷作为自己前端知识系统结构化总结和平时收集的一些有用的资料，作为备忘。如果这里分享的东西刚好能帮助到访问网站的你，那么它建立的意义又多了一些。
+
+下面是关于本站如何搭建起来的，以及使用到的一些技术和工具的相关信息。
 
 ---
 
-### 品牌相关 ⚛️
+## ⚛️ 品牌相关
 
-#### 1. Logo
+### Logo
 
 本站的 Logo SVG文件 由网站 [**Free Logo Maker**](https://logomakerr.ai/) 提供的 AI 自动生成技术创建。创意来源于本站域名 [spacexcode.com](https://spacexcode.com) 几个字母和首字母 **S** 的象形图标组建而成。
 
+<center>
 ![Logo](../../static/img/logo.svg)
+</center>
 
-#### 2. 网页图标
+### 网页图标
 
 图标 Favicon 文件由 [**ACONVERT.COM**](https://www.aconvert.com/icon/) 网站提供的转化工具 `svg -> favicon` 生成而来。
 
+<center>
 ![Favicon](../../static/img/share.png)
+</center>
 
 <br />
 
-### 建站技术 🛠
+## 🛠 建站技术
 
 本站由 Facebook 开源的静态网站生成器 [Docusaurus](https://www.docusaurus.cn/) 程序搭建而成。
 
@@ -33,7 +39,7 @@ title: 关于本站
 - 文章底部显示微信公众号卡片，版权说明打赏组件，基于 Swizzle 特性对博客页面进行重新定义布局，参考 [Swizzle](https://www.docusaurus.io/zh-CN/docs/swizzling)。
 - 首页 Banner 位置增加本地搜索功能，依赖 [docusaurus-lunr-search](https://github.com/praveenn77/docusaurus-lunr-search) 插件。
 
-#### 1. 服务器
+### 服务器
 
 本站部署在私人阿里云服务器 ECS 上，远程通过 SSH 工具进行管理。
 
@@ -41,30 +47,30 @@ title: 关于本站
 - CPU&内存：1核(vCPU)1 GiB
 - 操作系统：CentOS 7.7 64位
 
-#### 2. Web 服务器
+### Web 服务器
 
 果断采用轻量、高性能、高并发且安全可靠的 Nginx 服务器。
 
-#### 3. 文件存储
+### 文件存储
 
 为了缓解服务器压力（存储和请求速度），文章中的图片存放在阿里云对象存储 OSS 上。
 
-#### 4. 域名
+### 域名
 
 本站域名 `spacexcode.com` 于 2021年01月购买自[万网](https://wanwang.aliyun.com/)，已备案。
 
-#### 5. SSL 证书
+### SSL 证书
 
 为了支持 HTTPS 访问，使用 DigiCert 免费版 SSL 证书，有效期一年，一年后需要重新申请生成新的证书上传。  
 因免费证书不支持二级域名，购买了 Rapid 普通版 DV SSL 证书，支持特定单个二级域名 `visitor.spacexcode.com`
 
-#### 6. 部署方案
+### 部署方案
 
 代码托管在 Github 上，为了使得国内服务器上拉代码速度快点，在 Gitee 上做了备份；目前还是采用的本地打包上传，服务端拉取，后面研究自动化部署方案。
 
 <br />
 
-### 数据统计 📈
+## 📊 数据统计
 
 1. 使用 [百度统计](https://tongji.baidu.com/) 作为网站的数据统计和分析工具，后台针对不同维度数据配置了邮箱接收每天推送的统计报告。  
 2. 网站底部的 PV 和 UV 量使用 [不蒜子](https://busuanzi.ibruce.info/) 进行统计。
@@ -72,7 +78,7 @@ title: 关于本站
 
 <br />
 
-### 网站运营 💰
+## 💰 网站运营
 
 本站接受广告投放，内容需要与互联网技术领域相关，本站目前流量有限，但网站专业性强，主要针对前端领域，分享一些优质的前端学习资源，在前端领域有一定的目标粉丝群体。
 另外如果觉得写的好的内容对你有帮助，也可以在文章底部请作者喝杯咖啡。
@@ -81,7 +87,7 @@ title: 关于本站
 
 <br />
 
-### 欢迎讨论 💬
+## 💬 欢迎讨论
 
 讨论时请注意网络文明用语，自觉遵守网络道德规范。出现违法信息会及时删除。
 
