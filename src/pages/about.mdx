@@ -41,27 +41,30 @@ title: 关于本站
 
 ### 服务器
 
-本站部署在私人阿里云服务器 ECS 上，远程通过 SSH 工具进行管理。
+本站部署在私人阿里云服务器 ECS 上，远程通过 SSH 工具进行管理。Mac 端我使用 [iTerms2](https://iterm2.com)，Windows 上使用 [PuTTY](https://putty.org) ，推荐大家使用。
 
-基础配置：  
-- CPU&内存：1核(vCPU)1 GiB
+服务器基础配置：  
+- CPU&内存：1核(vCPU) 1 GiB
 - 操作系统：CentOS 7.7 64位
+- 公网带宽：1 Mbps
+- 机房所在地：杭州
 
 ### Web 服务器
 
-果断采用轻量、高性能、高并发且安全可靠的 Nginx 服务器。
+果断采用轻量、高性能、高并发且安全可靠的 [Nginx](https://nginx.org) 服务器。
 
 ### 文件存储
 
-为了缓解服务器压力（存储和请求速度），文章中的图片存放在阿里云对象存储 OSS 上。
+为了缓解服务器压力（内存和速度），文章中的图片和媒体文件存放在阿里云对象存储 OSS 上。图片使用开源自搭建的 Web 工具上传，其它使用 ossbrowser 客户端工具。
 
 ### 域名
 
-本站域名 `spacexcode.com` 于 2021年01月购买自[万网](https://wanwang.aliyun.com/)，已备案。
+本站域名 `spacexcode.com` 于 2021年01月购买自[万网](https://wanwang.aliyun.com/)，已备案 [苏ICP备16044739号-3](http://beian.miit.gov.cn)。
 
 ### SSL 证书
 
-为了支持 HTTPS 访问，使用 DigiCert 免费版 SSL 证书，有效期一年，一年后需要重新申请生成新的证书上传。  
+为了支持 HTTPS 访问，使用 DigiCert 免费版 SSL 证书，有效期一年，一年后需要重新申请生成新的证书部署到服务器。
+
 因免费证书不支持二级域名，购买了 Rapid 普通版 DV SSL 证书，支持特定单个二级域名 `visitor.spacexcode.com`
 
 ### 部署方案
