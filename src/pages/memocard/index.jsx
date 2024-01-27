@@ -311,7 +311,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         />
       </Box>
       <Box className={styles.setItem} sx={{ width: '50%' }}>
-        <Typography variant="h5">字体</Typography>
+        <Typography variant="h5">字体<span className={styles.fontInfos}>（中文）</span></Typography>
         <Select
           value={config.font}
           onChange={val => handleConfigChange(val.target.value, 'font')}
