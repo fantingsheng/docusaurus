@@ -43,12 +43,12 @@ export function Main({ normal }) {
   const [loading, setLoading] = useState(false);
   
   const [config, setConfig] = useState({
-    font: 'serif',
+    font: '',
     bgColor: '#949ee5',
     gradientBgColor: '',
     icon: 'react',
     ratio: 0.5,
-    width: 800,
+    width: 810,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
     theme: 'basic',
@@ -173,6 +173,7 @@ export function ContentForm ({ config, handleConfigChange }) {
           onChange={e => handleConfigChange(e.target.value, 'title')}
           placeholder='标题'
           size='small'
+          className={styles.sizeInput}
           multiline
           rows={3}
           fullWidth
@@ -186,6 +187,7 @@ export function ContentForm ({ config, handleConfigChange }) {
               value={config.author}
               onChange={e => handleConfigChange(e.target.value, 'author')}
               placeholder='作者'
+              className={styles.sizeInput}
               size='small'
               fullWidth
             />
@@ -196,8 +198,9 @@ export function ContentForm ({ config, handleConfigChange }) {
               <Select
                 value={config.icon}
                 onChange={val => handleConfigChange(val.target.value, 'icon')}
-                label=''
+                sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px' } }}
                 size='small'
+                className={styles.sizeInput}
                 fullWidth
               >
                 {devicons.map(el => (
@@ -222,20 +225,19 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
   const [copied, setCopied] = useState(false);
   const anchorRef = useRef(null);
   const fontOptions = [
-    { label: 'serif', value: 'serif' },
-    { label: 'sans', value: 'sans' },
-    { label: 'mono', value: 'mono' },
-    { label: 'Inter', value: 'inter' },
-    { label: 'Poppins', value: 'poppins' },
-    { label: 'Anek', value: 'anek' }
+    { label: '黑体', value: 'simhei' },
+    { label: '宋体', value: 'simsun' },
+    { label: '楷体', value: 'kaiti' },
+    { label: '仿宋', value: 'fangsong' }
   ];
   const bgColorOptions = [
     'linear-gradient(310deg,rgb(214,233,255),rgb(214,229,255),rgb(209,214,255),rgb(221,209,255),rgb(243,209,255),rgb(255,204,245),rgb(255,204,223),rgb(255,200,199),rgb(255,216,199),rgb(255,221,199))',
     'linear-gradient(160deg,rgb(204,251,252),rgb(197,234,254),rgb(189,211,255))',
     'linear-gradient(150deg,rgb(255,242,158),rgb(255,239,153),rgb(255,231,140),rgb(255,217,121),rgb(255,197,98),rgb(255,171,75),rgb(255,143,52),rgb(255,115,33),rgb(255,95,20),rgb(255,87,15))',
     'linear-gradient(345deg,rgb(211,89,255),rgb(228,99,255),rgb(255,123,247),rgb(255,154,218),rgb(255,185,208),rgb(255,209,214),rgb(255,219,219))',
+    'linear-gradient(25deg, #7c2df3, #7167f7, #5992fb, #00b9ff)',
+    'linear-gradient(25deg, #00b7f7, #a2b7b5, #d5b871, #f6b900)',
     'linear-gradient(150deg,rgb(0,224,245),rgb(31,158,255),rgb(51,85,255))',
-    'linear-gradient(330deg,rgb(255,25,125),rgb(45,13,255),rgb(0,255,179))',
     'linear-gradient(150deg,rgb(0,176,158),rgb(19,77,93),rgb(16,23,31))',
     'linear-gradient(150deg,rgb(95,108,138),rgb(48,59,94),rgb(14,18,38))'
   ]
@@ -288,6 +290,16 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           value={config.font}
           onChange={val => handleConfigChange(val.target.value, 'font')}
           label=""
+          className={styles.sizeInput}
+          sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px' } }}
+          renderValue={(selected) => {
+            if (selected.length === 0) {
+              return <em style={{ color: '#A8ABB2' }}>选择字体</em>;
+            }
+            const item = fontOptions.find(el => el.value === selected);
+            return item.label;
+          }}
+          displayEmpty
           size='small'
           fullWidth
         >
@@ -327,19 +339,19 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         : <></>
       }
       <Box className={styles.setItem}>
-        <Typography variant="h5">长度</Typography>
+        <Typography variant="h5">宽度</Typography>
         <Slider
           value={config.width}
           aria-label='Default'
           min={600}
-          max={820}
+          max={1000}
           size='small'
           valueLabelDisplay='auto'
           onChange={e => handleConfigChange(e.target.value, 'width')}
         />
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">长宽比</Typography>
+        <Typography variant="h5">宽高比</Typography>
         <ToggleButtonGroup
           value={config.ratio}
           exclusive
@@ -424,7 +436,7 @@ export function FrequentQuestion () {
           <Typography>上传的图片会泄露隐私吗？</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>不会，上传的图片只会在浏览器的本地读取，并未上传到云端。该工具类似离线工具，不会收集任何的用户数据。请放心使用。🥰</Typography>
+          <Typography>💁‍♂️ 不会，上传的图片只会在浏览器的本地读取，并未上传到云端。该工具类似离线工具，不会收集任何的用户数据。请放心使用。🥰</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion className={styles.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -432,7 +444,7 @@ export function FrequentQuestion () {
           <Typography>我找不到好看的背景图和文章很搭的图标怎么办，有推荐的网站吗？</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>免费的图片素材网站：</Typography>
+          <Typography>👉 免费的图片素材网站：</Typography>
           <ul>
             <li>Unsplash: <a href="https://unsplash.com" target="_blank">https://unsplash.com</a></li>
             <li>Pexels: <a href="https://www.pexels.com/zh-cn" target="_blank">https://www.pexels.com/zh-cn</a></li>
@@ -440,7 +452,7 @@ export function FrequentQuestion () {
             <li>Pixabay: <a href="https://pixabay.com/photos" target="_blank">https://pixabay.com/photos</a></li>
             <li>Awesome Wallpapers:  <a href="https://wallhaven.cc" target="_blank">https://wallhaven.cc</a></li>
           </ul>
-          <Typography>免费的图标网站：</Typography>
+          <Typography>👉 免费的图标网站：</Typography>
           <ul>
             <li>Devicon - 提供一系列关于编程语言、设计和开发工具的图标: <a href="https://devicon.dev" target="_blank">https://devicon.dev</a></li>
             <li>Simple Icons - 收集了2770个免费 SVG 格式的国内外著名品牌的图标: <a href="https://simpleicons.org" target="_blank">https://simpleicons.org</a></li>
@@ -469,7 +481,7 @@ export default function () {
           <Box sx={{ margin: '4rem 0' }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <h2 className='text--center'>常见问题</h2>
+                <h2 className='text--center margin-bottom--lg'>常见问题</h2>
                 <FrequentQuestion />
               </Grid>
             </Grid>

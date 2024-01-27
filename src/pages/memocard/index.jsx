@@ -4,8 +4,6 @@ import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { Grid, Select, Button, IconButton, ButtonGroup, MenuItem, MenuList, Popper, FormControlLabel, Switch, TextField, Paper, Box, Grow, Typography,
   ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -49,7 +47,7 @@ export function Main({ normal }) {
     ratio: 0.5,
     vertPad: 40,
     horizPad: 40,
-    width: 800,
+    width: 810,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
     theme: 'normal',
@@ -223,20 +221,19 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
   const [copied, setCopied] = useState(false);
   const anchorRef = useRef(null);
   const fontOptions = [
-    { label: 'serif', value: 'serif' },
-    { label: 'sans', value: 'sans' },
-    { label: 'mono', value: 'mono' },
-    { label: 'Inter', value: 'inter' },
-    { label: 'Poppins', value: 'poppins' },
-    { label: 'Anek', value: 'anek' }
+    { label: '黑体', value: 'simhei' },
+    { label: '宋体', value: 'simsun' },
+    { label: '楷体', value: 'kaiti' },
+    { label: '仿宋', value: 'fangsong' }
   ];
   const bgColorOptions = [
     'linear-gradient(310deg,rgb(214,233,255),rgb(214,229,255),rgb(209,214,255),rgb(221,209,255),rgb(243,209,255),rgb(255,204,245),rgb(255,204,223),rgb(255,200,199),rgb(255,216,199),rgb(255,221,199))',
     'linear-gradient(160deg,rgb(204,251,252),rgb(197,234,254),rgb(189,211,255))',
     'linear-gradient(150deg,rgb(255,242,158),rgb(255,239,153),rgb(255,231,140),rgb(255,217,121),rgb(255,197,98),rgb(255,171,75),rgb(255,143,52),rgb(255,115,33),rgb(255,95,20),rgb(255,87,15))',
     'linear-gradient(345deg,rgb(211,89,255),rgb(228,99,255),rgb(255,123,247),rgb(255,154,218),rgb(255,185,208),rgb(255,209,214),rgb(255,219,219))',
+    'linear-gradient(25deg, #7c2df3, #7167f7, #5992fb, #00b9ff)',
+    'linear-gradient(25deg, #00b7f7, #a2b7b5, #d5b871, #f6b900)',
     'linear-gradient(150deg,rgb(0,224,245),rgb(31,158,255),rgb(51,85,255))',
-    'linear-gradient(330deg,rgb(255,25,125),rgb(45,13,255),rgb(0,255,179))',
     'linear-gradient(150deg,rgb(0,176,158),rgb(19,77,93),rgb(16,23,31))',
     'linear-gradient(150deg,rgb(95,108,138),rgb(48,59,94),rgb(14,18,38))'
   ]
@@ -325,7 +322,8 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
             if (selected.length === 0) {
               return <em style={{ color: '#A8ABB2' }}>选择字体</em>;
             }
-            return selected;
+            const item = fontOptions.find(el => el.value === selected);
+            return item.label;
           }}
           fullWidth
           displayEmpty
@@ -391,12 +389,12 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </Box>
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">长度</Typography>
+        <Typography variant="h5">卡片宽度</Typography>
         <Slider
           value={config.width}
           aria-label='Default'
-          min={600}
-          max={820}
+          min={400}
+          max={860}
           size='small'
           valueLabelDisplay='auto'
           onChange={e => handleConfigChange(e.target.value, 'width')}
@@ -479,17 +477,12 @@ export default function () {
         <meta name="keywords" content='文字卡片,头图,生成器,工具,演示' />
       </Head>
       <div className={styles.page}>
-        {/* <svg className={styles.svgFilterBg}><filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"></feTurbulence>
-          <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
-          <rect width="100%" height="100%" filter="url(#noise)"></rect>
-        </svg> */}
         <div className="container">
           <Main normal={true} />
           <Box sx={{ margin: '4rem 0' }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <h2 className='text--center'>常见问题</h2>
+                <h2 className='text--center margin-bottom--lg'>常见问题</h2>
                 <FrequentQuestion />
               </Grid>
             </Grid>

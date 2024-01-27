@@ -104,13 +104,16 @@
   margin-top: 20px;
 
   h5 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     margin-bottom: 10px;
   }
 }
 .coverWrap {
   width: 100%;
+}
+.sizeInput > div, .sizeInput > span {
+  font-size: 14px;
 }
 .themeItem {
   cursor: pointer;
@@ -138,7 +141,7 @@
   height: 24px;
   border-radius: 4px;
   cursor: pointer;
-  margin: 6px;
+  margin: 5px;
 
   &.on {
     position: relative;
