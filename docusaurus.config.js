@@ -175,7 +175,7 @@ const config = {
             ]
           }
         ],
-        copyright: `Copyright © 2023 - ${new Date().getFullYear()} All in Spacexcode. Built with Docusaurus.`,
+        copyright: `Copyright © 2023 - ${new Date().getFullYear()}, All in SpaceXcode. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
