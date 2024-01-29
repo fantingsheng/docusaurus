@@ -49,3 +49,19 @@ export function downloadByUrl (url, filename) {
    maximumFractionDigits: 2,
   }).format(number);
  };
+
+ export const copyText = async text => {
+  const readOnlyTextArea = document.createElement('textarea');
+  readOnlyTextArea.value = text;
+
+  readOnlyTextArea.setAttribute('readonly', true);
+  readOnlyTextArea.style.position = 'absolute';
+  readOnlyTextArea.style.left = '-9001px';
+
+  document.body.appendChild(readOnlyTextArea);
+
+  readOnlyTextArea.select();
+  document.execCommand('copy');
+
+  document.body.removeChild(readOnlyTextArea);
+};
