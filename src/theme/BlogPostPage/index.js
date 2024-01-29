@@ -55,7 +55,7 @@ function BlogPostPageContent({sidebar, children}) {
       )}
 
       {
-        (enableComment && isBlogPostPage) && <GiscusComponent />
+        (enableComment && isBlogPostPage) && <GiscusComponent lazy="" />
       }
     </BlogLayout>
   );

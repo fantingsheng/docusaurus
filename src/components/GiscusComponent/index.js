@@ -3,7 +3,7 @@ import Giscus from "@giscus/react";
 import { useColorMode } from '@docusaurus/theme-common';
 import styles from './style.module.scss';
 
-export default function GiscusComponent() {
+export default function GiscusComponent({ lazy = 'lazy' }) {
   const { colorMode } = useColorMode();
 
   return (
@@ -21,7 +21,7 @@ export default function GiscusComponent() {
         inputPosition="top"
         theme={colorMode}
         lang="zh-Hans"
-        // loading="lazy"
+        loading={lazy}
         crossorigin="anonymous"
         async
       />
