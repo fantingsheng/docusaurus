@@ -203,7 +203,7 @@ export function ContentForm ({ config, handleConfigChange }) {
       <Box className={styles.setItem}>
         <Typography variant="h5">🔗 插入链接以二维码显示</Typography>
         <TextField
-          error={config.url && !reg.test(config.url)}
+          error={!!config.url && !reg.test(config.url)}
           value={config.url}
           onChange={e => handleConfigChange(e.target.value, 'url')}
           placeholder='链接地址'
