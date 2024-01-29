@@ -72,15 +72,15 @@ export function Main({ normal }) {
       const a = document.createElement("a");
       a.style.display = "none";
       a.href = newImg.src;
-      a.download = `spacexcode-cover-${date.getMinutes()}${date.getSeconds()}.${format}`;
+      a.download = `spacexcode-coverview-${date.getMinutes()}${date.getSeconds()}.${format}`;
       a.rel = "noopener noreferrer";
       document.body.append(a);
       a.click();
       setTimeout(() => {
           a.remove();
       }, 1000);
-    }).catch(() => {
-      //todo;
+    }).catch((err) => {
+      console.log(err);
     }).finally(() => {
       setLoading(false);
     })
@@ -106,11 +106,11 @@ export function Main({ normal }) {
               console.log("复制成功!");
               cb && cb();
             },
-            () => {
-              console.error("失败.");
+            (err) => {
+              console.error(err);
             }
-          ).catch(() => {
-
+          ).catch((err) => {
+            console.error(err);
           }).finally(() => {
             setLoading(false);
           })
