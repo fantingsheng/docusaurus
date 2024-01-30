@@ -162,7 +162,7 @@ export default function DocSidebarItemCategory({
           aria-expanded={collapsible ? !collapsed : undefined}
           href={collapsible ? hrefWithSSRFallback ?? '#' : hrefWithSSRFallback}
           {...props}>
-          {label}{ customProps && customProps.featured ? <sup><img src='/img/new.png' width='10' style={{ verticalAlign: 'top', marginLeft: '2px' }} /></sup> : '' }
+          {label}{ customProps && customProps.featured ? <sup className="new beta">New</sup> : '' }
         </Link>
         {href && collapsible && (
           <CollapseButton

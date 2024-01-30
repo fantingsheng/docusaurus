@@ -149,6 +149,18 @@ a.decoration:after {
 a.decoration:hover::after {
   top: 0%;
 }
+sup.new {
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-size: 0.45rem;
+  border-radius: 1rem;
+  color: #fff;
+  background-color: #fa383e;
+  text-rendering: optimizeLegibility;
+  padding: 0 0.4em;
+  line-height: 1.7;
+  display: inline-block;
+}
 /* 自定义代码区样式 */
 .codeFormatted {
   --syntax-text: #FEFDFD;
