@@ -177,7 +177,7 @@ export default function BlogToolBar({}) {
               <div className={styles.qrcard}><QRCode value={blogUrl} renderAs="svg" /></div>
             </Menu>
           </div>
-          <Snackbar open={copied} autoHideDuration={1500} anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }} onClose={() => setCopied(false)}>
+          <Snackbar open={copied} autoHideDuration={1500} anchorOrigin={{ horizontal: 'center', vertical: 'top' }} onClose={() => setCopied(false)}>
             <Alert severity={alertType}><AlertTitle>{alertText}</AlertTitle></Alert>
           </Snackbar>
         </div>)
