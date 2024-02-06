@@ -80,6 +80,18 @@
   border: 1px solid #ededed;
 }
 
+blockquote {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-left-width: 3px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+[data-theme='light'] blockquote {
+  background-color: #FAFAFA;
+}
+
 /* 域名文字渐变 */
 .domain-text-gradient {
   background: linear-gradient(120deg, #383c93 30%, #43a756);
