@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import Link from '@docusaurus/Link';
 import { fetchRoute } from '@site/src/utils/route';
 import gcoord from 'gcoord';
 
@@ -91,7 +92,7 @@ export default function () {
     <main className={styles.main}>
       <aside className={styles.aside}>
         <nav className={styles.nav}>
-          <a href="/"><img src='/img/logo.svg' width='140' alt='spacexcode.com' /></a>
+          <Link to="/"><img src='/img/logo.svg' width='140' alt='spacexcode.com' /></Link>
         </nav>
         <header className={styles.header}>
           <h2>我的足迹</h2>

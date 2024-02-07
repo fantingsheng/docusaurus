@@ -113,6 +113,7 @@ const config = {
             { to: '/progress', label: '年度进度图' },
             { to: '/player', label: '音乐播放器' }
           ] },
+          { to: '/routes', label: '足迹', position: 'right' },
           { label: '关于', position: 'right', items: [
             { to: '/about', label: '关于本站' },
             { to: '/author', label: '了解作者' },
