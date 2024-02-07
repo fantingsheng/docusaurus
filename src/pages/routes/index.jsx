@@ -9,7 +9,7 @@ function MapContainer({ routeData }) {
   let map = null;
   
   useEffect(() => {
-     if (ExecutionEnvironment.canUseDOM && routeData) {
+    if (ExecutionEnvironment.canUseDOM && routeData) {
       window._AMapSecurityConfig = {
         securityJsCode: '9eacf9618d78d0ee65d219c5ae35813b'
       }
@@ -77,57 +77,66 @@ export default function () {
   const [curRoute, setCurRoute] = useState("10612773928.gpx")
   const routes = [
     { name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', slug: '10612773928.gpx' },
-    { name: '金匮公园', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', slug: '10612773926.gpx' },
-    { name: '尚贤河', type: '🏃', distance: 15.5, elevation: 115, color: '#ef4444', slug: '10612773938.gpx' }
+    // { name: '金匮公园', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', slug: '10612773926.gpx' },
+    // { name: '尚贤河', type: '🏃', distance: 15.5, elevation: 115, color: '#ef4444', slug: '10612773938.gpx' }
   ]
-  async function getRouteData () {
-    const data = await fetchRoute('10612773928.gpx');
+  async function getRouteData (route) {
+    const data = await fetchRoute(route);
     console.log('data', data);
     setRouteData(data);
   };
+
   useEffect(() => {
-    getRouteData();
+    getRouteData(curRoute);
   }, [])
+
+  const handleClickRoute = (route) => {
+    setCurRoute(route);
+    getRouteData(route);
+  };
+
   return (
     <main className={styles.main}>
       <aside className={styles.aside}>
-        <nav className={styles.nav}>
-          <Link to="/"><img src='/img/logo.svg' width='140' alt='spacexcode.com' /></Link>
-        </nav>
-        <header className={styles.header}>
-          <h2>我的足迹</h2>
-          <p>记录下自己在这个城市的一些足迹。👣</p>
-        </header>
-        <section className={styles.routerList}>
-          <div className={styles.filterNav}>
-            <h3>所有路线</h3>
-          </div>
-          <ul>
-            {routes.map(el => (
-              <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }}>
-                <div className={styles.rhead}>
-                  <p><span className={styles.dot} style={{ backgroundColor: el.color }}></span>{el.name}</p>
-                  <span className={styles.mode}>{el.type}</span>
-                </div>
-                <ol>
-                  <li>
-                    <span>Distance</span>
-                    <strong>{el.distance} km</strong>
-                  </li>
-                  <li>
-                    <span>Elevation</span>
-                    <strong>{el.elevation} m</strong>
-                  </li>
-                </ol>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={styles.moreBtn}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <footer className={styles.footer}>
-          A project by <a href="/author">Timfan</a>
-        </footer>
+        <div style={{ paddingTop: '0.75rem' }}>
+          <nav className={styles.nav}>
+            <Link to="/"><img src='/img/logo.svg' width='140' alt='spacexcode.com' /></Link>
+          </nav>
+          <header className={styles.header}>
+            <h2>我的足迹</h2>
+            <p>记录下自己在这个城市的一些足迹。👣</p>
+          </header>
+          <section className={styles.routerList}>
+            <div className={styles.filterNav}>
+              <h3>所有路线</h3>
+            </div>
+            <ul>
+              {routes.map(el => (
+                <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }} onClick={handleClickRoute(el.slug)}>
+                  <div className={styles.rhead}>
+                    <p><span className={styles.dot} style={{ backgroundColor: el.color }}></span>{el.name}</p>
+                    <span className={styles.mode}>{el.type}</span>
+                  </div>
+                  <ol>
+                    <li>
+                      <span>Distance</span>
+                      <strong>{el.distance} km</strong>
+                    </li>
+                    <li>
+                      <span>Elevation</span>
+                      <strong>{el.elevation} m</strong>
+                    </li>
+                  </ol>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={styles.moreBtn}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <footer className={styles.footer}>
+            A project by <Link to="/author">Timfan</Link>
+          </footer>
+        </div>
       </aside>
       <div className={styles.rightMap}>
         <MapContainer routeData={routeData} />
