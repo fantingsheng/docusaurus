@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import Link from '@docusaurus/Link';
+import Head from '@docusaurus/Head';
 import { fetchRoute } from '@site/src/utils/route';
 import gcoord from 'gcoord';
 
-function MapContainer({ routeData }) {
+function MapContainer({ routeData, lineColor }) {
   let map = null;
+  const [amap, setAmap] = useState();
+  const [mapImpl, setMapImpl] = useState();
   
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM && routeData) {
@@ -20,38 +23,22 @@ function MapContainer({ routeData }) {
         plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
       })
         .then((AMap) => {
-          const originLnglats = routeData.geoJson.features[0].geometry.coordinates;
-          const centerLnglat = gcoord.transform(
-            [originLnglats[Math.floor(originLnglats.length / 2)][0], originLnglats[Math.floor(originLnglats.length / 2)][1]], // 经纬度坐标
-            gcoord.WGS84, // 当前坐标系
-            gcoord.GCJ02 // 目标坐标系
-          );
+          setAmap(AMap)
           map = new AMap.Map("container", {
             viewMode: "3D", // 是否为3D地图模式
-            mapStyle: "amap://styles/macaron",
             zoom: 13, // 初始化地图级别
-            center: centerLnglat, // 初始化地图中心点位置
+            center: [120.325121, 31.498017], // 初始化地图中心点位置
           });
-          
-          console.log('routeData', routeData)
-          
-          let lnglats = [];
-          originLnglats.forEach(async el => {
-            lnglats.push(gcoord.transform(
-              [el[0], el[1]], // 经纬度坐标
-              gcoord.WGS84, // 当前坐标系
-              gcoord.GCJ02 // 目标坐标系
-            ));
-          })  
-          console.log("lnglats", lnglats);
-
-          const polyline = new AMap.Polyline({
-            strokeColor: '#a855f7',
-            strokeWeight: 4,
-            strokeOpacity: 1,
-            path: lnglats
+          setMapImpl(map);
+          const marker = new AMap.Marker({
+            position: new AMap.LngLat(120.325121, 31.498017),
+            content: '<div class="custom-content-marker">' +
+            '   <img src="/img/poi-marker-red.png" width="30">' +
+            '</div>',
+            offset: new AMap.Pixel(-50, -15)
           })
-          map.add(polyline);
+          map.add(marker);
+          DrawRouteLine(map, AMap, lineColor);
         })
         .catch((e) => {
           console.log(e);
@@ -62,6 +49,46 @@ function MapContainer({ routeData }) {
       map?.destroy();
     };
   }, [routeData]);
+
+  function DrawRouteLine (map, AMap, lineColor) {
+    const originLnglats = routeData.geoJson.features[0].geometry.coordinates;
+    const centerLnglat = gcoord.transform(
+      [originLnglats[Math.floor(originLnglats.length / 2)][0], originLnglats[Math.floor(originLnglats.length / 2)][1]], // 经纬度坐标
+      gcoord.WGS84, // 当前坐标系
+      gcoord.GCJ02 // 目标坐标系
+    );
+    map.setCenter(centerLnglat)
+    console.log('routeData', routeData)
+    
+    let lnglats = [];
+    originLnglats.forEach(async el => {
+      lnglats.push(gcoord.transform(
+        [el[0], el[1]], // 经纬度坐标
+        gcoord.WGS84, // 当前坐标系
+        gcoord.GCJ02 // 目标坐标系
+      ));
+    })  
+    console.log("lnglats", lnglats);
+
+    const polyline = new AMap.Polyline({
+      strokeColor: lineColor,
+      strokeWeight: 4,
+      strokeOpacity: 1,
+      cursor: 'pointer',
+      path: lnglats
+    })
+    map.add(polyline);
+  }
+
+  // useEffect(() => {
+  //   if (mapImpl && routeData) {
+  //     DrawRouteLine(mapImpl, amap, routeData)
+  //   }
+
+  //   return () => {
+  //     mapImpl?.remove(polyline);
+  //   };
+  // }, [mapImpl, routeData])
 
   return (
     <div
@@ -77,7 +104,7 @@ export default function () {
   const [curRoute, setCurRoute] = useState("10612773928.gpx")
   const routes = [
     { name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', slug: '10612773928.gpx' },
-    // { name: '金匮公园', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', slug: '10612773926.gpx' },
+    { name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', slug: '10612773929.gpx' },
     // { name: '尚贤河', type: '🏃', distance: 15.5, elevation: 115, color: '#ef4444', slug: '10612773938.gpx' }
   ]
   async function getRouteData (route) {
@@ -86,16 +113,24 @@ export default function () {
     setRouteData(data);
   };
 
+  const getRouteColor = () => {
+    return routes.find(el => el.slug === curRoute).color
+  }
+
   useEffect(() => {
     getRouteData(curRoute);
-  }, [])
+  }, [curRoute])
 
   const handleClickRoute = (route) => {
     setCurRoute(route);
-    getRouteData(route);
   };
 
   return (
+    <>
+    <Head>
+      <meta name="title" content='我的足迹' />
+      <meta name="keywords" content='主页,太空编程,前端开发,编程范儿' />
+    </Head>
     <main className={styles.main}>
       <aside className={styles.aside}>
         <div style={{ paddingTop: '0.75rem' }}>
@@ -112,7 +147,7 @@ export default function () {
             </div>
             <ul>
               {routes.map(el => (
-                <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }} onClick={handleClickRoute(el.slug)}>
+                <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }} key={el.slug} onClick={() => handleClickRoute(el.slug)}>
                   <div className={styles.rhead}>
                     <p><span className={styles.dot} style={{ backgroundColor: el.color }}></span>{el.name}</p>
                     <span className={styles.mode}>{el.type}</span>
@@ -139,8 +174,9 @@ export default function () {
         </div>
       </aside>
       <div className={styles.rightMap}>
-        <MapContainer routeData={routeData} />
+        <MapContainer routeData={routeData} lineColor={getRouteColor()} />
       </div>
     </main>
+    </>
   )
 }
