@@ -46,7 +46,7 @@ function MapContainer({ routeData }) {
 
           const polyline = new AMap.Polyline({
             strokeColor: '#a855f7',
-            strokeWeight: 3,
+            strokeWeight: 4,
             strokeOpacity: 1,
             path: lnglats
           })
@@ -73,44 +73,55 @@ function MapContainer({ routeData }) {
 
 export default function () {
   const [routeData, setRouteData] = useState();
+  const [curRoute, setCurRoute] = useState("10612773928.gpx")
+  const routes = [
+    { name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', slug: '10612773928.gpx' },
+    { name: '金匮公园', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', slug: '10612773926.gpx' },
+    { name: '尚贤河', type: '🏃', distance: 15.5, elevation: 115, color: '#ef4444', slug: '10612773938.gpx' }
+  ]
+  async function getRouteData () {
+    const data = await fetchRoute('10612773928.gpx');
+    console.log('data', data);
+    setRouteData(data);
+  };
   useEffect(() => {
-    async function getRouteData () {
-      const data = await fetchRoute('10612773928.gpx');
-      console.log('data', data);
-      setRouteData(data);
-    }
     getRouteData();
   }, [])
   return (
     <main className={styles.main}>
       <aside className={styles.aside}>
         <nav className={styles.nav}>
-          <img src='/img/logo.svg' width='140' alt='spacexcode.com' />
+          <a href="/"><img src='/img/logo.svg' width='140' alt='spacexcode.com' /></a>
         </nav>
         <header className={styles.header}>
           <h2>我的足迹</h2>
-          <p>A curated selection of trails for hiking & running</p>
+          <p>记录下自己在这个城市的一些足迹。👣</p>
         </header>
         <section className={styles.routerList}>
           <div className={styles.filterNav}>
             <h3>所有路线</h3>
           </div>
           <ul>
-            <li>
-              <div className={styles.rhead}><span style={{ backgroundColor: '#a855f7' }}></span>上班路线</div>
-              <ol>
-                <li>
-                  <span>Distance</span>
-                  <strong>30.1 km</strong>
-                </li>
-                <li>
-                  <span>Elevation</span>
-                  <strong>785 m</strong>
-                </li>
-              </ol>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={styles.moreBtn}>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
-            </li>
+            {routes.map(el => (
+              <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }}>
+                <div className={styles.rhead}>
+                  <p><span className={styles.dot} style={{ backgroundColor: el.color }}></span>{el.name}</p>
+                  <span className={styles.mode}>{el.type}</span>
+                </div>
+                <ol>
+                  <li>
+                    <span>Distance</span>
+                    <strong>{el.distance} km</strong>
+                  </li>
+                  <li>
+                    <span>Elevation</span>
+                    <strong>{el.elevation} m</strong>
+                  </li>
+                </ol>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={styles.moreBtn}>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+              </li>
+            ))}
           </ul>
         </section>
         <footer className={styles.footer}>
