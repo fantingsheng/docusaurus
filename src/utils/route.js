@@ -2,7 +2,6 @@ import toGeoJson from '@mapbox/togeojson'
 import { DOMParser } from 'xmldom'
 // import path from 'path'
 // import fs from 'fs-extra'
-// import fs from 'fs-extra'
 // import { readFileSync } from 'fs-extra'
 import length from '@turf/length'
 
@@ -27,8 +26,16 @@ export const fetchRoute = async (filePath) => {
     const slug = filePath.replace('.gpx', '')
 
     const distance = length(geoJson)
+    // Calculate elevation gain using coordinate data
+    const { coordinates } = geoJson.features[0].geometry
+    let elevation = 0
+    coordinates.forEach((coord, index) => {
+        if (index === coordinates.length - 1) return
+        const elevationDifference = coordinates[index + 1][2] - coordinates[index][2]
+        if (elevationDifference > 0) elevation += elevationDifference
+    })
 
     return {
-        geoJson, slug, distance
+        geoJson, slug, distance, elevation
     }
 };
