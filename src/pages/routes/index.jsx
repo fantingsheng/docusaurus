@@ -109,12 +109,12 @@ export default function () {
                 </li>
               </ol>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={styles.moreBtn}>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
             </li>
           </ul>
         </section>
         <footer className={styles.footer}>
-          A project by Timfan
+          A project by <a href="/author">Timfan</a>
         </footer>
       </aside>
       <div className={styles.rightMap}>
