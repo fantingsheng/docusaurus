@@ -17,7 +17,82 @@
 }
 .header {
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
+}
+.filterNav {
+  display: flex;
+  padding: 1rem 1.25rem;
+  justify-content: space-between;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+  z-index: 10;
+  top: 0;
+  position: sticky;
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.routerList {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-top: .25rem;
+    
+    li {
+      padding: 1rem;
+      border: 1px solid #e0e4e0;
+      border-radius: 0.25rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+
+      .rhead {
+        font-weight: 600;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        margin-bottom: 0.375rem;
+
+        span {
+          width: 14px;
+          height: 14px;
+          display: inline-block;
+          margin-right: 0.75rem;
+          border-radius: 99999px;
+        }
+      }
+      ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+
+        li {
+          border: none;
+          padding: 0;
+          margin: 0;
+          margin-right: 1.25rem;
+
+          span {
+            color: #6b716a;
+            font-size: 0.75rem;
+            line-height: 1rem;
+            display: block;
+          }
+
+          strong {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 400;
+          }
+        }
+      }
+      .moreBtn {
+        position: absolute;
+        width: 20px;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+      }
+    }
+  }
 }
 .footer {
   font-size: 0.8rem;
