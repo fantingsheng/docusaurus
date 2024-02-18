@@ -153,12 +153,12 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
 export default function () {
   const [open, setOpen] = useState(false);
   const [routeData, setRouteData] = useState();
-  const [curRoute, setCurRoute] = useState("10612773928.gpx")
+  const [curRoute, setCurRoute] = useState('10612773928.gpx')
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
-    { name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', slug: '10612773928.gpx' },
-    { name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', slug: '10612773929.gpx' },
+    { slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', intro: ' 这是横跨经开和新吴区的上班路线，途径高浪路和吴都路' },
+    { slug: '10612773929.gpx', name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', intro: '这是路线描述信息' },
   ]
   async function getRouteData (route) {
     const data = await fetchRoute(route);
@@ -168,6 +168,10 @@ export default function () {
 
   const getRouteColor = () => {
     return routes.find(el => el.slug === curRoute).color
+  }
+
+  const getRouteIntro = () => {
+    return routes.find(el => el.slug === curRoute).intro
   }
 
   useEffect(() => {
@@ -188,11 +192,11 @@ export default function () {
         <aside className={styles.aside}>
           <div style={{ paddingTop: '0.75rem' }}>
             <nav className={styles.nav}>
-              <Link to="/"><img src='/img/logo.svg' width='160' alt='spacexcode.com' /></Link>
+              <Link to='/'><img src='/img/logo.svg' width='160' alt='spacexcode.com' /></Link>
             </nav>
             <header className={styles.header}>
               <h2>我的足迹</h2>
-              <p>记录下自己在这个城市走过一些痕迹。👣</p>
+              <p>记录下自己在这个城市深度走过一些路径。👣</p>
             </header>
             <section className={styles.routerList}>
               <div className={styles.filterNav}>
@@ -215,14 +219,14 @@ export default function () {
                         <strong>{el.elevation} m</strong>
                       </li>
                     </ol>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className={styles.moreBtn} onClick={() => setOpen(true)}>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={styles.moreBtn} onClick={() => setOpen(true)}>
+                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path></svg>
                   </li>
                 ))}
               </ul>
             </section>
             <footer className={styles.footer}>
-              A side project by <Link to="/author">Timfan</Link>
+              A side project by <Link to='/author'>Timfan</Link>
             </footer>
           </div>
         </aside>
@@ -232,7 +236,7 @@ export default function () {
       </main>
       <Drawer
         anchor='bottom'
-        variant="persistent"
+        variant='persistent'
         open={open}
         onClose={() => setOpen(false)}
       >
@@ -251,7 +255,7 @@ export default function () {
                 <li>路程：{parseFloat(routeData?.distance.toFixed(2))} Km</li>
                 <li>海拔：{parseFloat(routeData?.elevation.toFixed(2))} m</li>
               </ul>
-              路径介绍
+              <p>{getRouteIntro()}</p>
             </div>
           </div>
         </div>
