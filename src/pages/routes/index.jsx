@@ -188,7 +188,7 @@ export default function () {
         <aside className={styles.aside}>
           <div style={{ paddingTop: '0.75rem' }}>
             <nav className={styles.nav}>
-              <Link to="/"><img src='/img/logo.svg' width='140' alt='spacexcode.com' /></Link>
+              <Link to="/"><img src='/img/logo.svg' width='160' alt='spacexcode.com' /></Link>
             </nav>
             <header className={styles.header}>
               <h2>我的足迹</h2>
