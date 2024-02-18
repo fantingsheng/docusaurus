@@ -24,7 +24,7 @@ export const fetchRoute = async (filePath) => {
     const source = new DOMParser().parseFromString(res)
     const geoJson = toGeoJson.gpx(source)
     const slug = filePath.replace('.gpx', '')
-
+    console.log("geoJson", geoJson)
     const distance = length(geoJson)
     // Calculate elevation gain using coordinate data
     const { coordinates } = geoJson.features[0].geometry
