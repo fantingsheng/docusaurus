@@ -128,7 +128,19 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
         .scaleLinear()
         .domain([0, d3.max(data, d => d[yName])])
         .range([height, 0]);
-
+      
+      const xAxis = d3.axisBottom(xScale);
+      const yAxis = d3.axisLeft(yScale);
+      svg
+        .append('g')
+        .attr('class', 'x-axis')
+        .attr('transform', `translate(0, ${height})`)
+        .call(xAxis);
+      
+      svg
+        .append('g')
+        .attr('class', 'y-axis')
+        .call(yAxis);
       // 创建折线生成器
       const line = d3
         .line()
@@ -144,6 +156,7 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
         .attr('fill', 'none')
         .attr('stroke', 'steelblue')
         .attr('stroke-width', 2);
+
     }
   }, [data]);
 
@@ -157,7 +170,7 @@ export default function () {
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
-    { slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', intro: ' 这是横跨经开和新吴区的上班路线，途径高浪路和吴都路' },
+    { slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', intro: ' 这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道' },
     { slug: '10612773929.gpx', name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', intro: '这是路线描述信息' },
   ]
   async function getRouteData (route) {
