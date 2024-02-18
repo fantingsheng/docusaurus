@@ -72,21 +72,24 @@ export default function Home() {
           </div>
           <div className='row'>
             <div className='col col--8 col--offset-2'>
-              <div className='margin-bottom--lg'>
-                <h4>强大的本地搜索</h4>
+              <div className={clsx(styles.starList, 'margin-bottom--lg')}>
+                <h4><svg width="32" height="32" viewBox="0 0 64 64" fill="none"><path d="M39.64 40.83L33.87 56.7a1.99 1.99 0 0 1-3.74 0l-5.77-15.87a2.02 2.02 0 0 0-1.2-1.2L7.3 33.88a1.99 1.99 0 0 1 0-3.74l15.87-5.77a2.02 2.02 0 0 0 1.2-1.2L30.12 7.3a1.99 1.99 0 0 1 3.74 0l5.77 15.87a2.02 2.02 0 0 0 1.2 1.2l15.86 5.76a1.99 1.99 0 0 1 0 3.74l-15.87 5.77a2.02 2.02 0 0 0-1.2 1.2z" fill="#FFC017"></path></svg>
+                  强大的本地搜索</h4>
                 <p>只需加载一次，即可快速响应您的搜索。<br />
                   搜索功能由<a href="https://github.com/praveenn77/docusaurus-lunr-search"> docusaurus-lunr-search </a>提供技术支持。</p>
               </div>
             </div>
             <div className='col col--8 col--offset-2'>
-              <div className='margin-bottom--lg'>
-                <h4>精准的模糊匹配</h4>
+              <div className={clsx(styles.starList, 'margin-bottom--lg')}>
+                <h4><svg width="32" height="32" viewBox="0 0 64 64" fill="none"><path d="M39.64 40.83L33.87 56.7a1.99 1.99 0 0 1-3.74 0l-5.77-15.87a2.02 2.02 0 0 0-1.2-1.2L7.3 33.88a1.99 1.99 0 0 1 0-3.74l15.87-5.77a2.02 2.02 0 0 0 1.2-1.2L30.12 7.3a1.99 1.99 0 0 1 3.74 0l5.77 15.87a2.02 2.02 0 0 0 1.2 1.2l15.86 5.76a1.99 1.99 0 0 1 0 3.74l-15.87 5.77a2.02 2.02 0 0 0-1.2 1.2z" fill="#FFC017"></path></svg>
+                  精准的模糊匹配</h4>
                 <p>根据你搜索的内容进行全站内容的关键字匹配</p>
               </div>
             </div>
             <div className='col col--8 col--offset-2'>
-              <div className='margin-bottom--lg'>
-                <h4>快速触达目标页</h4>
+              <div className={clsx(styles.starList, 'margin-bottom--lg')}>
+                <h4><svg width="32" height="32" viewBox="0 0 64 64" fill="none"><path d="M39.64 40.83L33.87 56.7a1.99 1.99 0 0 1-3.74 0l-5.77-15.87a2.02 2.02 0 0 0-1.2-1.2L7.3 33.88a1.99 1.99 0 0 1 0-3.74l15.87-5.77a2.02 2.02 0 0 0 1.2-1.2L30.12 7.3a1.99 1.99 0 0 1 3.74 0l5.77 15.87a2.02 2.02 0 0 0 1.2 1.2l15.86 5.76a1.99 1.99 0 0 1 0 3.74l-15.87 5.77a2.02 2.02 0 0 0-1.2 1.2z" fill="#FFC017"></path></svg>
+                  快速触达目标页</h4>
                 <p>支持上下按键进行搜索内容条目的切换，点击或 Enter 键即可到达内容页面</p>
               </div>
             </div>

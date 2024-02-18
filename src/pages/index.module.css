@@ -68,3 +68,13 @@
   40%, 60% { transform: translate3d(+4px, 0, 0); }
   50% { transform: translate3d(-4px, 0, 0); }
 }
+.starList h4 {
+  display: flex;
+  align-items: center;
+}
+
+.starList h4 svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 5px;
+}
