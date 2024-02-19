@@ -19,6 +19,15 @@ import length from '@turf/length'
 //     }
 // })
 
+// p1,p2 数组形式 [经度,纬度]
+export const distance = (p1, p2) => {
+    const v =
+        turf.distance(turf.point(p1), turf.point(p2), {
+        units: "kilometers",
+    }); // 单位千米
+    return v;
+};
+
 export const fetchRoute = async (filePath) => {
     const res = await (await fetch('/routers/' + filePath)).text();
     const source = new DOMParser().parseFromString(res)
