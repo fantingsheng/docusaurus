@@ -3,7 +3,7 @@ import styles from './style.module.scss';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
-import { Drawer, IconButton } from '@mui/material';
+import { Drawer, IconButton, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { fetchRoute } from '@site/src/utils/route';
 import gcoord from 'gcoord';
@@ -119,30 +119,16 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
       const svg = d3.select(svgRef.current);
 
       // 创建比例尺
-      // const xScale = d3
-      //   .scaleLinear()
-      //   .domain([0, d3.max(data, d => d[xName])])
-      //   .range([0, width]);
-
-      // const yScale = d3
-      //   .scaleLinear()
-      //   .domain([0, d3.max(data, d => d[yName])])
-      //   .range([height, 0]);
       const xScale = d3.scaleLinear(d3.extent(data, d => d[xName]), [marginLeft, width - marginRight]);
       const yScale = d3.scaleLinear([0, d3.max(data, d => d[yName])], [height - marginBottom, marginTop]);
       
       const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0);
       const yAxis = d3.axisLeft(yScale).ticks(height / 40);
+      // 绘制坐标轴
       svg
         .append('g')
         .attr('transform', `translate(0, ${height - marginBottom})`)
-        .call(xAxis)
-        .call(g => g.append("text")
-          .attr("x", width)
-          .attr("y", height)
-          .attr("fill", "currentColor")
-          .attr("text-anchor", "start")
-          .text("距离 (km)"));
+        .call(xAxis);
       
       svg
         .append('g')
@@ -178,6 +164,7 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
 
 export default function () {
   const [open, setOpen] = useState(false);
+  const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
   const [curRoute, setCurRoute] = useState('10612773928.gpx')
 
@@ -185,7 +172,8 @@ export default function () {
   const routes = [
     { slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道' },
     { slug: '10612773929.gpx', name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', intro: '这是路线描述信息' },
-  ]
+  ];
+
   async function getRouteData (route) {
     const data = await fetchRoute(route);
     console.log('data', data);
@@ -221,12 +209,25 @@ export default function () {
               <Link to='/'><img src='/img/logo.svg' width='160' alt='spacexcode.com' /></Link>
             </nav>
             <header className={styles.header}>
-              <h2>我的足迹</h2>
-              <p>记录下自己在这个城市深度走过一些路径。👣</p>
+              <h2>城市足迹</h2>
+              <p>记录下自己在所住城市的一些深度走、跑步、骑行过的路径。👣</p>
             </header>
             <section className={styles.routerList}>
               <div className={styles.filterNav}>
                 <h3>所有路线</h3>
+                <FormControl size="small" sx={{ minWidth: 120, fontSize: '0.75rem' }}>
+                  <InputLabel id="select-label">排列顺序</InputLabel>
+                  <Select
+                    labelId="select-label"
+                    value={orderBy}
+                    label="排列顺序"
+                    onChange={(val) => setOrderBy(val.target.value)}
+                  >
+                    <MenuItem value='latest'>最近添加</MenuItem>
+                    <MenuItem value='longest'>路程最长</MenuItem>
+                    <MenuItem value='elevation'>海拔最高</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
               <ul>
                 {routes.map(el => (
