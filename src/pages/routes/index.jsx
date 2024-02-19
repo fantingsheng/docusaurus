@@ -119,28 +119,41 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
       const svg = d3.select(svgRef.current);
 
       // 创建比例尺
-      const xScale = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, d => d[xName])])
-        .range([0, width]);
+      // const xScale = d3
+      //   .scaleLinear()
+      //   .domain([0, d3.max(data, d => d[xName])])
+      //   .range([0, width]);
 
-      const yScale = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, d => d[yName])])
-        .range([height, 0]);
+      // const yScale = d3
+      //   .scaleLinear()
+      //   .domain([0, d3.max(data, d => d[yName])])
+      //   .range([height, 0]);
+      const xScale = d3.scaleLinear(d3.extent(data, d => d[xName]), [marginLeft, width - marginRight]);
+      const yScale = d3.scaleLinear([0, d3.max(data, d => d[yName])], [height - marginBottom, marginTop]);
       
-      const xAxis = d3.axisBottom(xScale);
-      const yAxis = d3.axisLeft(yScale);
+      const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0);
+      const yAxis = d3.axisLeft(yScale).ticks(height / 40);
       svg
         .append('g')
-        .attr('class', 'x-axis')
-        .attr('transform', `translate(0, ${height})`)
-        .call(xAxis);
+        .attr('transform', `translate(0, ${height - marginBottom})`)
+        .call(xAxis)
+        .call(g => g.append("text")
+          .attr("x", width)
+          .attr("y", height)
+          .attr("fill", "currentColor")
+          .attr("text-anchor", "start")
+          .text("距离 (km)"));
       
       svg
         .append('g')
-        .attr('class', 'y-axis')
-        .call(yAxis);
+        .attr('transform', `translate(${marginLeft}, 0)`)
+        .call(yAxis)
+        .call(g => g.append("text")
+          .attr("x", -marginLeft)
+          .attr("y", 10)
+          .attr("fill", "currentColor")
+          .attr("text-anchor", "start")
+          .text("海拔高度 (m)"));
       // 创建折线生成器
       const line = d3
         .line()
@@ -154,7 +167,7 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
         .attr('class', 'line')
         .attr('d', line)
         .attr('fill', 'none')
-        .attr('stroke', 'steelblue')
+        .attr('stroke', '#383c93')
         .attr('stroke-width', 2);
 
     }
@@ -170,7 +183,7 @@ export default function () {
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
-    { slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', intro: ' 这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道' },
+    { slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道' },
     { slug: '10612773929.gpx', name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', intro: '这是路线描述信息' },
   ]
   async function getRouteData (route) {
@@ -261,7 +274,7 @@ export default function () {
           </div>
           <div className={styles.routeDetail}>
             <div className={styles.chart}>
-              <RouteChart data={[{ x: 0.2, y: 20 }, { x: 1, y: 30 }]} />
+              <RouteChart data={routeData?.chartData} />
             </div>
             <div className={styles.intro}>
               <ul>
