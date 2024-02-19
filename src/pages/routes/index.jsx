@@ -170,8 +170,8 @@ export default function () {
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
-    { slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 785, color: '#a855f7', intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道' },
-    { slug: '10612773929.gpx', name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 23, color: '#f59e0b', intro: '这是路线描述信息' },
+    { id: 1, slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 24, color: '#a855f7', intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道' },
+    { id: 2, slug: '10612773929.gpx', name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 28, color: '#f59e0b', intro: '这是路线描述信息' },
   ];
 
   async function getRouteData (route) {
@@ -186,6 +186,27 @@ export default function () {
 
   const getRouteIntro = () => {
     return routes.find(el => el.slug === curRoute).intro
+  }
+
+  const getRouteList = () => {
+    let orderKey;
+    switch (orderBy) {
+      case 'latest':
+        orderKey = 'id';
+        break;
+      case 'longest':
+        orderKey = 'distance';
+        break;
+      case 'elevest':
+        orderKey = 'elevation';
+        break;
+      default:
+        orderKey = 'id';
+        break;
+    }
+    return routes.sort(function (a, b) {
+      return b[orderKey] - a[orderKey]
+    })
   }
 
   useEffect(() => {
@@ -223,14 +244,14 @@ export default function () {
                     label="排列顺序"
                     onChange={(val) => setOrderBy(val.target.value)}
                   >
-                    <MenuItem value='latest'>最近添加</MenuItem>
-                    <MenuItem value='longest'>路程最长</MenuItem>
-                    <MenuItem value='elevation'>海拔最高</MenuItem>
+                    <MenuItem value='latest'>添加时间</MenuItem>
+                    <MenuItem value='longest'>路程长度</MenuItem>
+                    <MenuItem value='elevest'>海拔高度</MenuItem>
                   </Select>
                 </FormControl>
               </div>
               <ul>
-                {routes.map(el => (
+                {getRouteList().map(el => (
                   <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }} key={el.slug} onClick={() => handleClickRoute(el.slug)}>
                     <div className={styles.rhead}>
                       <p><span className={styles.dot} style={{ backgroundColor: el.color }}></span>{el.name}</p>
