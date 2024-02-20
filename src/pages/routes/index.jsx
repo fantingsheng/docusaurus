@@ -236,12 +236,13 @@ export default function () {
             <section className={styles.routerList}>
               <div className={styles.filterNav}>
                 <h3>所有路线</h3>
-                <FormControl size="small" sx={{ minWidth: 120, fontSize: '0.75rem' }}>
-                  <InputLabel id="select-label">排列顺序</InputLabel>
+                <FormControl size="small" sx={{ minWidth: 105, fontSize: '0.75rem' }}>
+                  <InputLabel id="select-label" sx={{ fontSize: '14px' }}>排列顺序</InputLabel>
                   <Select
                     labelId="select-label"
                     value={orderBy}
                     label="排列顺序"
+                    sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px', fontSize: '14px' } }}
                     onChange={(val) => setOrderBy(val.target.value)}
                   >
                     <MenuItem value='latest'>添加时间</MenuItem>
