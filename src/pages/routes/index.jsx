@@ -117,7 +117,7 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
   useEffect(() => {
     if (data && svgRef.current) {
       const svg = d3.select(svgRef.current);
-      svg.empty();
+      svg.selectAll("*").remove();
 
       // 创建比例尺
       const xScale = d3.scaleLinear(d3.extent(data, d => d[xName]), [marginLeft, width - marginRight]);
@@ -140,7 +140,7 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
           .attr("y", 10)
           .attr("fill", "#6b716a")
           .attr("text-anchor", "start")
-          .text("海拔高度 (m)"));
+          .text("海拔 (m)"));
       // 创建折线生成器
       const line = d3
         .line()
