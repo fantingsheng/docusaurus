@@ -102,14 +102,14 @@ function MapContainer({ routeData, lineColor }) {
   );
 }
 
-function RouteChart({ data, xName = 'x', yName = 'y' }) {
+function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
 
   const width = 600;
   const height = 200;
   const marginTop = 20;
-  const marginRight = 30;
-  const marginBottom = 30;
-  const marginLeft = 40;
+  const marginRight = 20;
+  const marginBottom = 20;
+  const marginLeft = 20;
 
   
   const svgRef = useRef(null);
@@ -117,12 +117,13 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
   useEffect(() => {
     if (data && svgRef.current) {
       const svg = d3.select(svgRef.current);
+      svg.empty();
 
       // 创建比例尺
       const xScale = d3.scaleLinear(d3.extent(data, d => d[xName]), [marginLeft, width - marginRight]);
       const yScale = d3.scaleLinear([0, d3.max(data, d => d[yName])], [height - marginBottom, marginTop]);
       
-      const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0);
+      const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0).tickFormat(val => val + 'm');
       const yAxis = d3.axisLeft(yScale).ticks(height / 40);
       // 绘制坐标轴
       svg
@@ -137,7 +138,7 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
         .call(g => g.append("text")
           .attr("x", -marginLeft)
           .attr("y", 10)
-          .attr("fill", "currentColor")
+          .attr("fill", "#6b716a")
           .attr("text-anchor", "start")
           .text("海拔高度 (m)"));
       // 创建折线生成器
@@ -145,19 +146,35 @@ function RouteChart({ data, xName = 'x', yName = 'y' }) {
         .line()
         .x(d => xScale(d[xName]))
         .y(d => yScale(d[yName]));
+      
+      // var gradient = svg.append("defs")
+      //   .append("linearGradient")
+      //   .attr("id", "line-gradient")
+      //   .attr("gradientUnits", "userSpaceOnUse")
+      //   .attr("x1", 0)
+      //   .attr("y1", yScale(ymax)) 
+      //   .attr("x2", 0)
+      //   .attr("y2", yScale(0))
 
+      // gradient.append("stop")
+      // .attr("offset", "0%")
+      // .attr("stop-color", "green"); 
+
+      // gradient.append("stop")
+      // .attr("offset", "100%")
+      // .attr("stop-color", "#fff"); 
       // 绘制折线路径
       svg
         .append('path')
         .datum(data)
         .attr('class', 'line')
         .attr('d', line)
-        .attr('fill', 'none')
+        .attr('fill', "url(#line-gradient)")
         .attr('stroke', '#383c93')
-        .attr('stroke-width', 2);
+        .attr('stroke-width', 1);
 
     }
-  }, [data]);
+  }, [data, svgRef.current]);
 
   return <svg ref={svgRef} width={width} height={height}></svg>;
 }
@@ -166,7 +183,7 @@ export default function () {
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
-  const [curRoute, setCurRoute] = useState('10612773928.gpx')
+  const [curRoute, setCurRoute] = useState('10612773929.gpx')
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
@@ -297,7 +314,7 @@ export default function () {
           </div>
           <div className={styles.routeDetail}>
             <div className={styles.chart}>
-              <RouteChart data={routeData?.chartData} />
+              <RouteChart data={routeData?.chartData} ymax={routeData?.elevation} />
             </div>
             <div className={styles.intro}>
               <ul>
