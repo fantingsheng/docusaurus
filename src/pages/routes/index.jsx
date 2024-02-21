@@ -105,7 +105,7 @@ function MapContainer({ routeData, lineColor }) {
 function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
 
   const width = 600;
-  const height = 200;
+  const height = 220;
   const marginTop = 20;
   const marginRight = 20;
   const marginBottom = 20;
