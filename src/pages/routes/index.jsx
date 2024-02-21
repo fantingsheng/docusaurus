@@ -147,6 +147,12 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
         .x(d => xScale(d[xName]))
         .y(d => yScale(d[yName]));
       
+      var tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0)
+        .style("position", 'absolute');
+      
       // var gradient = svg.append("defs")
       //   .append("linearGradient")
       //   .attr("id", "line-gradient")
@@ -171,7 +177,20 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
         .attr('d', line)
         .attr('fill', "url(#line-gradient)")
         .attr('stroke', '#383c93')
-        .attr('stroke-width', 1);
+        .attr('stroke-width', 1)
+        .on('mouseover', function(d) {
+          tooltip.transition()
+            .duration(200)
+            .style("opacity", 0.9);
+          // tooltip.html("X: " + d.x + "<br/>" + "Y: " + d.y)
+          //   .style("left", (d.x) + "px")
+          //   .style("top", (d.y - 28) + "px");
+      })
+      .on("mouseout", function(d) {
+          tooltip.transition()
+          .duration(500)
+          .style("opacity", 0);
+      });;
 
     }
   }, [data, svgRef.current]);
