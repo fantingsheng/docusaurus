@@ -3,11 +3,33 @@ import styles from './style.module.scss';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
-import { Drawer, IconButton, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box, Drawer, IconButton, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { fetchRoute } from '@site/src/utils/route';
 import gcoord from 'gcoord';
 import * as d3 from 'd3';
+
+const drawerHeight = 324;
+
+const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => ({
+    flexGrow: 1,
+    position: 'relative',
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginBottom: `-${drawerHeight}px`,
+    ...(open && {
+      transition: theme.transitions.create('margin', {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+      marginBottom: 0,
+    }),
+  }),
+);
 
 function MapContainer({ routeData, lineColor }) {
   let map = null;
@@ -111,7 +133,6 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
   const marginBottom = 20;
   const marginLeft = 20;
 
-  
   const svgRef = useRef(null);
 
   useEffect(() => {
@@ -259,92 +280,103 @@ export default function () {
         <meta name="title" content='我的足迹' />
         <meta name="keywords" content='足迹,跑步,金城湾,尚贤湖,Strava,运动' />
       </Head>
-      <main className={styles.main}>
-        <aside className={styles.aside}>
-          <div style={{ paddingTop: '0.75rem' }}>
-            <nav className={styles.nav}>
-              <Link to='/'><img src='/img/logo.svg' width='160' alt='spacexcode.com' /></Link>
-            </nav>
-            <header className={styles.header}>
-              <h2>城市足迹</h2>
-              <p>记录下自己在所住城市的一些深度走、跑步、骑行过的路径。👣</p>
-            </header>
-            <section className={styles.routerList}>
-              <div className={styles.filterNav}>
-                <h3>所有路线</h3>
-                <FormControl size="small" sx={{ minWidth: 105, fontSize: '0.75rem' }}>
-                  <InputLabel id="select-label" sx={{ fontSize: '14px' }}>排列顺序</InputLabel>
-                  <Select
-                    labelId="select-label"
-                    value={orderBy}
-                    label="排列顺序"
-                    sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px', fontSize: '14px' } }}
-                    onChange={(val) => setOrderBy(val.target.value)}
-                  >
-                    <MenuItem value='latest'>添加时间</MenuItem>
-                    <MenuItem value='longest'>路程长度</MenuItem>
-                    <MenuItem value='elevest'>海拔高度</MenuItem>
-                  </Select>
-                </FormControl>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw', backgroundColor: 'rgb(230, 228, 224)' }}>
+        <Main open={open}>
+          <aside className={styles.aside}>
+            <div style={{ paddingTop: '0.75rem' }}>
+              <nav className={styles.nav}>
+                <Link to='/'><img src='/img/logo.svg' width='160' alt='spacexcode.com' /></Link>
+              </nav>
+              <header className={styles.header}>
+                <h2>城市足迹</h2>
+                <p>记录下自己在所住城市的一些深度走、跑步、骑行过的路径。👣</p>
+              </header>
+              <section className={styles.routerList}>
+                <div className={styles.filterNav}>
+                  <h3>所有路线</h3>
+                  <FormControl size="small" sx={{ minWidth: 105, fontSize: '0.75rem' }}>
+                    <InputLabel id="select-label" sx={{ fontSize: '14px' }}>排列顺序</InputLabel>
+                    <Select
+                      labelId="select-label"
+                      value={orderBy}
+                      label="排列顺序"
+                      sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px', fontSize: '14px' } }}
+                      onChange={(val) => setOrderBy(val.target.value)}
+                    >
+                      <MenuItem value='latest'>添加时间</MenuItem>
+                      <MenuItem value='longest'>路程长度</MenuItem>
+                      <MenuItem value='elevest'>海拔高度</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+                <ul>
+                  {getRouteList().map(el => (
+                    <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }} key={el.slug} onClick={() => handleClickRoute(el.slug)}>
+                      <div className={styles.rhead}>
+                        <p><span className={styles.dot} style={{ backgroundColor: el.color }}></span>{el.name}</p>
+                        <span className={styles.mode}>{el.type}</span>
+                      </div>
+                      <ol>
+                        <li>
+                          <span>路程 (Distance)</span>
+                          <strong>{el.distance} km</strong>
+                        </li>
+                        <li>
+                          <span>海拔 (Elevation)</span>
+                          <strong>{el.elevation} m</strong>
+                        </li>
+                      </ol>
+                      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={styles.moreBtn} onClick={() => setOpen(true)}>
+                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path></svg>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+              <footer className={styles.footer}>
+                A side project by <Link to='/author'>Timfan</Link>
+              </footer>
+            </div>
+          </aside>
+          <div className={styles.rightMap}>
+            <MapContainer routeData={routeData} lineColor={getRouteColor()} />
+          </div>
+        </Main>
+        <Drawer
+          anchor='bottom'
+          variant='persistent'
+          sx={{
+            height: drawerHeight,
+            width: '100vw',
+            flexShrink: 0,
+            '& .MuiDrawer-paper': {
+              height: drawerHeight,
+              boxSizing: 'border-box',
+            },
+          }}
+          open={open}
+          onClose={() => setOpen(false)}
+        >
+          <div className={styles.drwInner}>
+            <div className={styles.drwhead}>
+              <IconButton onClick={() => setOpen(false)}>
+                <KeyboardArrowDownIcon />
+              </IconButton>
+            </div>
+            <div className={styles.routeDetail}>
+              <div className={styles.chart}>
+                <RouteChart data={routeData?.chartData} ymax={routeData?.elevation} />
               </div>
-              <ul>
-                {getRouteList().map(el => (
-                  <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }} key={el.slug} onClick={() => handleClickRoute(el.slug)}>
-                    <div className={styles.rhead}>
-                      <p><span className={styles.dot} style={{ backgroundColor: el.color }}></span>{el.name}</p>
-                      <span className={styles.mode}>{el.type}</span>
-                    </div>
-                    <ol>
-                      <li>
-                        <span>路程 (Distance)</span>
-                        <strong>{el.distance} km</strong>
-                      </li>
-                      <li>
-                        <span>海拔 (Elevation)</span>
-                        <strong>{el.elevation} m</strong>
-                      </li>
-                    </ol>
-                    <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={styles.moreBtn} onClick={() => setOpen(true)}>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path></svg>
-                  </li>
-                ))}
-              </ul>
-            </section>
-            <footer className={styles.footer}>
-              A side project by <Link to='/author'>Timfan</Link>
-            </footer>
-          </div>
-        </aside>
-        <div className={styles.rightMap}>
-          <MapContainer routeData={routeData} lineColor={getRouteColor()} />
-        </div>
-      </main>
-      <Drawer
-        anchor='bottom'
-        variant='persistent'
-        open={open}
-        onClose={() => setOpen(false)}
-      >
-        <div className={styles.drwInner}>
-          <div className={styles.drwhead}>
-            <IconButton onClick={() => setOpen(false)}>
-              <KeyboardArrowDownIcon />
-            </IconButton>
-          </div>
-          <div className={styles.routeDetail}>
-            <div className={styles.chart}>
-              <RouteChart data={routeData?.chartData} ymax={routeData?.elevation} />
-            </div>
-            <div className={styles.intro}>
-              <ul>
-                <li>路程：{parseFloat(routeData?.distance.toFixed(2))} Km</li>
-                <li>海拔：{parseFloat(routeData?.elevation.toFixed(2))} m</li>
-              </ul>
-              <p>{getRouteIntro()}</p>
+              <div className={styles.intro}>
+                <ul>
+                  <li>路程：{parseFloat(routeData?.distance.toFixed(2))} Km</li>
+                  <li>海拔：{parseFloat(routeData?.elevation.toFixed(2))} m</li>
+                </ul>
+                <p>{getRouteIntro()}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </Drawer>
+        </Drawer>
+      </Box>
     </>
   )
 }
