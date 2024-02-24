@@ -26,8 +26,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   left: 0;
   top: 0;
   background-color: #fff;
@@ -38,8 +38,8 @@
 
 .admonitionIcon svg {
   display: inline-block;
-  height: 1.6em;
-  width: 1.6em;
+  height: 1.4em;
+  width: 1.4em;
   fill: var(--ifm-alert-border-color);
 }
 
