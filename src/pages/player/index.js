@@ -345,6 +345,13 @@ export function MusicQueue({ songList, currentIndex, changeCurrentIndex }) {
 export default function () {
   const songList = [
     {
+      artists: '毕夏',
+      name: '生如夏花',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1708751555932-f67ddb91-cb1f-4e16-9bc7-a5edce584192.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/生如夏花-毕夏.mp3',
+      lyric: '也不知在黑暗中究竟沉睡了多久'
+    },
+    {
       artists: '林俊杰',
       name: '那女孩对我说',
       avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png',
