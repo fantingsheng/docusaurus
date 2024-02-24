@@ -352,6 +352,13 @@ export default function () {
       lyric: '也不知在黑暗中究竟沉睡了多久'
     },
     {
+      artists: '吉克隽逸',
+      name: '被动',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1708752909713-81e8978c-6dd4-4a13-abfe-805810a76da7.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/被动-吉克隽逸.mp3',
+      lyric: '我可以很久 不和你联络 任日子一天天这么过'
+    },
+    {
       artists: '林俊杰',
       name: '那女孩对我说',
       avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png',
