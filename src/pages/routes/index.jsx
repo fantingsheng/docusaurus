@@ -51,7 +51,7 @@ function MapContainer({ routeData, lineColor }) {
           setAmap(AMap)
           map = new AMap.Map("container", {
             viewMode: "3D", // 是否为3D地图模式
-            zoom: 13, // 初始化地图级别
+            zoom: 14, // 初始化地图级别
             center: [120.325121, 31.498017], // 初始化地图中心点位置
           });
           setMapImpl(map);
@@ -223,12 +223,14 @@ export default function () {
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
-  const [curRoute, setCurRoute] = useState('10612773929.gpx')
+  const [curRoute, setCurRoute] = useState('10839536771.gpx')
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
-    { id: 1, slug: '10612773928.gpx', name: '上班路线', type: '🛵', distance: 9.75, elevation: 24, color: '#a855f7', intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道' },
-    { id: 2, slug: '10612773929.gpx', name: '测试路线', type: '🚴‍♀️', distance: 5.45, elevation: 28, color: '#f59e0b', intro: '这是路线描述信息' },
+    { id: 1, slug: '10612773928.gpx', name: '上班路线高浪路+吴都路', type: '🛵', distance: 9.75, elevation: 24, color: '#a855f7',
+      intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道，横跨运河的高浪大桥，每天上下班时间穿梭着大量往来的人群。' },
+    { id: 2, slug: '10839536771.gpx', name: '尚贤河市政府前段', type: '🏃', distance: 2.69, elevation: 16.6, color: '#409EFF',
+      intro: '位于无锡市市政府前的这段围绕着尚贤河的步道，风景异常美丽，宏伟的市政府大楼，前面倚着山，后面傍着水。视野出奇的好。尤其当清风拂面，掠过水面，波光粼粼。' }
   ];
 
   async function getRouteData (route) {
