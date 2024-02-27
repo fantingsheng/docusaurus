@@ -176,3 +176,11 @@
     position: absolute;
   }
 }
+.tooltip {
+  position: absolute;
+  z-index: 99999;
+  font-size: 12px;
+  padding: 5px;
+  border: 1px solid #e0e4e0;
+  border-radius: 5px;
+}

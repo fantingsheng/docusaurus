@@ -105,16 +105,6 @@ function MapContainer({ routeData, lineColor }) {
     map.add(polyline);
   }
 
-  // useEffect(() => {
-  //   if (mapImpl && routeData) {
-  //     DrawRouteLine(mapImpl, amap, routeData)
-  //   }
-
-  //   return () => {
-  //     mapImpl?.remove(polyline);
-  //   };
-  // }, [mapImpl, routeData])
-
   return (
     <div
       id="container"
@@ -168,29 +158,6 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
         .x(d => xScale(d[xName]))
         .y(d => yScale(d[yName]));
       
-      var tooltip = d3.select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0)
-        .style("position", 'absolute');
-      
-      // var gradient = svg.append("defs")
-      //   .append("linearGradient")
-      //   .attr("id", "line-gradient")
-      //   .attr("gradientUnits", "userSpaceOnUse")
-      //   .attr("x1", 0)
-      //   .attr("y1", yScale(ymax)) 
-      //   .attr("x2", 0)
-      //   .attr("y2", yScale(0))
-
-      // gradient.append("stop")
-      // .attr("offset", "0%")
-      // .attr("stop-color", "green"); 
-
-      // gradient.append("stop")
-      // .attr("offset", "100%")
-      // .attr("stop-color", "#fff"); 
-      // 绘制折线路径
       svg
         .append('path')
         .datum(data)
@@ -198,20 +165,24 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
         .attr('d', line)
         .attr('fill', "url(#line-gradient)")
         .attr('stroke', '#383c93')
-        .attr('stroke-width', 1)
-        .on('mouseover', function(d) {
-          tooltip.transition()
-            .duration(200)
-            .style("opacity", 0.9);
-          // tooltip.html("X: " + d.x + "<br/>" + "Y: " + d.y)
-          //   .style("left", (d.x) + "px")
-          //   .style("top", (d.y - 28) + "px");
-      })
-      .on("mouseout", function(d) {
-          tooltip.transition()
-          .duration(500)
-          .style("opacity", 0);
-      });;
+        .attr('stroke-width', 1);
+
+      // const tooltip = d3.select("body").append("div").attr("class", styles.tooltip).style("opacity", 0);
+      // svg.on("mousemove", function(evt) {
+      //   console.log("mousemove", evt)
+      //   tooltip.transition()
+      //     .duration(200)
+      //     .style("opacity", .9);
+      //   tooltip.html("距离，海拔")
+      //     .style("left", (evt.pageX) + "px")
+      //     .style("top", (evt.pageY - 28) + "px");
+      // });
+      
+      // svg.on("mouseout", function() {
+      //   tooltip.transition()
+      //     .duration(500)
+      //     .style("opacity", 0);
+      // });
 
     }
   }, [data, svgRef.current]);
@@ -227,9 +198,9 @@ export default function () {
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
-    { id: 1, slug: '10612773928.gpx', name: '上班路线高浪路+吴都路', type: '🛵', distance: 9.75, elevation: 24, color: '#a855f7',
+    { id: 1, slug: '10612773928.gpx', name: '上班路线高浪路+吴都路', type: '🛵', distance: 9.76, elevation: 68.6, color: '#a855f7',
       intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道，横跨运河的高浪大桥，每天上下班时间穿梭着大量往来的人群。' },
-    { id: 2, slug: '10839536771.gpx', name: '尚贤河市政府前段', type: '🏃', distance: 2.69, elevation: 16.6, color: '#409EFF',
+    { id: 2, slug: '10839536771.gpx', name: '尚贤河市政府前段', type: '🏃', distance: 2.76, elevation: 16.6, color: '#409EFF',
       intro: '位于无锡市市政府前的这段围绕着尚贤河的步道，风景异常美丽，宏伟的市政府大楼，前面倚着山，后面傍着水。视野出奇的好。尤其当清风拂面，掠过水面，波光粼粼。' }
   ];
 
