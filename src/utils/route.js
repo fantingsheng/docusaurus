@@ -47,13 +47,16 @@ export const fetchRoute = async (filePath) => {
         if (index === 0) {
             chartData.push({ x: 0, y: coordinates[index][2]})
         } else {
-            const d = calcPointDistance([coordinates[0][0], coordinates[0][1]], [coordinates[index][0], coordinates[index][1]]);
+            const tempGeoJson = JSON.parse(JSON.stringify(geoJson));
+            tempGeoJson.features[0].geometry.coordinates.splice(index, tempGeoJson.features[0].geometry.coordinates.length - index);
+            const d = length(tempGeoJson);
+            // const d = calcPointDistance([coordinates[0][0], coordinates[0][1]], [coordinates[index][0], coordinates[index][1]]);
             chartData.push({ x: d, y: coordinates[index][2] })
         }
         const elevationDifference = coordinates[index + 1][2] - coordinates[index][2]
         if (elevationDifference > 0) elevation += elevationDifference
     })
-
+    
     return {
         geoJson, slug, distance, elevation, chartData
     }
