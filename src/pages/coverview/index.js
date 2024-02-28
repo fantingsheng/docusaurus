@@ -363,8 +363,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           <ToggleButton sx={{ padding: '7px 12px' }} value={0.6}>3:5</ToggleButton>
           <ToggleButton sx={{ padding: '7px 12px' }} value={0.57}>4:7</ToggleButton>
           <ToggleButton sx={{ padding: '7px 12px' }} value={0.4}>5:8</ToggleButton>
-          <ToggleButton sx={{ padding: '7px 12px' }} value={1}>1:1</ToggleButton>
-          <ToggleButton sx={{ padding: '7px 12px' }} value={1.77}>16:9</ToggleButton>
+          <ToggleButton sx={{ padding: '7px 12px' }} value={1.7777}>16:9</ToggleButton>
         </ToggleButtonGroup>
       </Box>
       <Box className={styles.setItem}>
