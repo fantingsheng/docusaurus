@@ -119,9 +119,9 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
   const width = 600;
   const height = 220;
   const marginTop = 20;
-  const marginRight = 20;
-  const marginBottom = 20;
-  const marginLeft = 20;
+  const marginRight = 0;
+  const marginBottom = 15;
+  const marginLeft = 25;
 
   const svgRef = useRef(null);
 
@@ -166,23 +166,6 @@ function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
         .attr('fill', "url(#line-gradient)")
         .attr('stroke', '#383c93')
         .attr('stroke-width', 1);
-
-      // const tooltip = d3.select("body").append("div").attr("class", styles.tooltip).style("opacity", 0);
-      // svg.on("mousemove", function(evt) {
-      //   console.log("mousemove", evt)
-      //   tooltip.transition()
-      //     .duration(200)
-      //     .style("opacity", .9);
-      //   tooltip.html("距离，海拔")
-      //     .style("left", (evt.pageX) + "px")
-      //     .style("top", (evt.pageY - 28) + "px");
-      // });
-      
-      // svg.on("mouseout", function() {
-      //   tooltip.transition()
-      //     .duration(500)
-      //     .style("opacity", 0);
-      // });
 
     }
   }, [data, svgRef.current]);
