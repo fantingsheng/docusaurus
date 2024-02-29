@@ -1,19 +1,17 @@
 ---
 slug: use-d3-draw-line-chart
-title: 如何使用数据可视化库 D3 绘制折线统计图？
+title: 如何使用数据可视化库 D3 绘制折线统计图
 authors: [timfan]
 image: https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1706590814569-48d9d7d2-5507-4a9f-b7e4-2684fc17a38e.png
 tags: [可视化, d3, 统计图, 动态演示]
 hide_table_of_contents: true
-draft: true
 enable_comment: true
 enable_adsense: true
 hide_sidebar: true
 ---
 
 import * as d3 from 'd3';
-import Chart from '@site/src/pages/routes/chart';
-import { chartData, ChartXyAxis, ChartDrawLine, ChartDrawArea } from '@site/src/pages/routes/demo';
+import { Chart, chartData, ChartXyAxis, ChartDrawLine, ChartDrawArea } from '@site/src/pages/routes/demo';
 
 如题，如何使用数据可视化库 D3 绘制折线统计图？
 
@@ -202,6 +200,7 @@ export function ChartDrawArea({ data }) {
       .y0(height - margin.bottom)
       .y1(d => yScale(d.elevation));
     
+    // 绘制渐变区域
     svg
       .append('path')
       .datum(data)
@@ -232,7 +231,10 @@ export function ChartDrawArea({ data }) {
 
 ### 绘制鼠标悬浮移动文字效果
 
-我们在表的上面绘制一块矩形用来监听鼠标的 `mouseMove` 和 `mouseLeave` 事件，然后触发悬浮文字的显示。
+我们在图表的上面绘制一块矩形用来监听鼠标的 `mouseMove` 和 `mouseLeave` 事件，然后触发悬浮文字的显示。
+
+这里的难点是通过当前鼠标事件获得的位置（x, y）坐标计算出离得最近的数据点信息以及根据距离判断悬浮的文字显示在垂直引导线的左边还是右边。
+可以看具体的代码实现，上面也有相关的注解。
 
 ```jsx showLineNumbers
 import React, { useRef, useEffect, useState } from 'react';
@@ -252,10 +254,10 @@ export default function Chart({ data, width, height }) {
       .domain(d3.extent(data.map(d => d.distance)))
       .range([margin.left, width - margin.right]);
 
-    // Get the xScale value from x position
+    // 根据鼠标当前所在位置计算横坐标
     const distance = xScale.invert(x)
 
-    // Get the elevation value by finding the closest matching dataPoint.
+    // 根据当前鼠标所在横坐标的值获得最近的点
     const { elevation, coordinates } = data.reduce((prev, curr) =>
       Math.abs(curr.distance - distance) < Math.abs(prev.distance - distance) ? curr : prev,
     )
@@ -296,7 +298,7 @@ export default function Chart({ data, width, height }) {
         </linearGradient>
       </defs>
 
-      {/* Hover line */}
+      {/* 垂直引导线 */}
       {hoverX && (
         <g transform={`translate(${hoverX}, 0)`}>
           <line y1={margin.top} y2={height - margin.bottom} stroke="currentColor" />
@@ -305,7 +307,7 @@ export default function Chart({ data, width, height }) {
         </g>
       )}
 
-      {/* Hover element */}
+      {/* 悬浮效果触发区域 */}
       {width > 0 && height > 0 && (
         <rect
           width={width - margin.left - margin.right}
@@ -332,7 +334,9 @@ export default function Chart({ data, width, height }) {
   />
 </ChartContainer>
 
-最后，完整的功能代码如下：
+虽然 D3 用起来没有专门的图表库那么直接（只需要通过配置参数即可生成），但是却给人一种无所不能的感觉，它只提供了笔，至于画成什么样完全取决于执笔之人。
+
+最后，附上完整的功能代码如下：
 
 ```jsx showLineNumbers
 import React, { useRef, useEffect, useState } from 'react';
@@ -411,13 +415,12 @@ export default function Chart({ data, width, height }) {
     const posX = e.clientX ? e.clientX : clamp(e.targetTouches[0].clientX, 58, width + 32) // TODO: measure - 58px from left screen edge, 32px from right
     const x = posX - bounds.left + margin.left
 
-    // Get the xScale value from x position
+    // 根据鼠标当前所在位置计算横坐标
     const xScale = d3.scaleLinear()
       .domain(d3.extent(data.map(d => d.distance)))
       .range([margin.left, width - margin.right]);
     const distance = xScale.invert(x)
-    // Get the elevation value by finding the closest matching dataPoint.
-    // TODO: There is probably a d3 function somewhere to get the y value from the x but this works
+    // 根据当前鼠标所在横坐标的值获得最近的点
     const { elevation, coordinates } = data.reduce((prev, curr) =>
       Math.abs(curr.distance - distance) < Math.abs(prev.distance - distance) ? curr : prev,
     )
@@ -458,7 +461,7 @@ export default function Chart({ data, width, height }) {
         </linearGradient>
       </defs>
 
-      {/* Hover line */}
+      {/* 垂直引导线 */}
       {hoverX && (
         <g transform={`translate(${hoverX}, 0)`}>
           <line y1={margin.top} y2={height - margin.bottom} stroke="currentColor" />
@@ -467,7 +470,7 @@ export default function Chart({ data, width, height }) {
         </g>
       )}
 
-      {/* Hover element */}
+      {/* 悬浮效果触发区域 */}
       {width > 0 && height > 0 && (
         <rect
           width={width - margin.left - margin.right}

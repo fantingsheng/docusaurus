@@ -77,7 +77,7 @@ export default function Chart({ data, width, height }) {
       .attr('d', area)
       .attr('fill', 'url(#gradient)');
 
-  }, [svgRef.current, data]);
+  }, data);
 
   const handleMouseMove = e => {
     const bounds = e.target.getBoundingClientRect()
