@@ -29,7 +29,9 @@ export default function Chart({ data, width, height }) {
   const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
   useEffect(() => {
+    if (data) {
     const svg = d3.select(svgRef.current);
+    svg.selectAll(".line, .area, .xAxis, .yAxis").remove();
 
     const xScale = d3.scaleLinear()
       .domain(d3.extent(data.map(d => d.distance)))
@@ -48,11 +50,13 @@ export default function Chart({ data, width, height }) {
     svg
       .append('g')
       .attr('transform', `translate(0, ${height - margin.bottom})`)
+      .attr('class', 'xAxis')
       .call(xAxis);
     
     svg
       .append('g')
       .attr('transform', `translate(${margin.left}, 0)`)
+      .attr('class', 'yAxis')
       .call(yAxis)
       .call(g => g.append("text")
         .attr("x", -margin.left)
@@ -73,9 +77,11 @@ export default function Chart({ data, width, height }) {
 
     svg
       .append('path')
+      .attr('class', 'area')
       .datum(data)
       .attr('d', area)
       .attr('fill', 'url(#gradient)');
+    }
 
   }, data);
 

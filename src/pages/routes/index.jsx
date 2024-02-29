@@ -8,6 +8,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { fetchRoute } from '@site/src/utils/route';
 import * as d3 from 'd3';
 import MapContainer from './mapbox';
+import Chart from './chart';
 
 const drawerHeight = 324;
 
@@ -29,65 +30,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     }),
   }),
 );
-
-function RouteChart({ data, xName = 'x', yName = 'y', ymax }) {
-
-  const width = 600;
-  const height = 220;
-  const marginTop = 20;
-  const marginRight = 0;
-  const marginBottom = 15;
-  const marginLeft = 25;
-
-  const svgRef = useRef(null);
-
-  useEffect(() => {
-    if (data && svgRef.current) {
-      const svg = d3.select(svgRef.current);
-      svg.selectAll("*").remove();
-
-      // 创建比例尺
-      const xScale = d3.scaleLinear(d3.extent(data, d => d[xName]), [marginLeft, width - marginRight]);
-      const yScale = d3.scaleLinear([0, d3.max(data, d => d[yName])], [height - marginBottom, marginTop]);
-      
-      const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0).tickFormat(val => val + 'm');
-      const yAxis = d3.axisLeft(yScale).ticks(height / 40);
-      // 绘制坐标轴
-      svg
-        .append('g')
-        .attr('transform', `translate(0, ${height - marginBottom})`)
-        .call(xAxis);
-      
-      svg
-        .append('g')
-        .attr('transform', `translate(${marginLeft}, 0)`)
-        .call(yAxis)
-        .call(g => g.append("text")
-          .attr("x", -marginLeft)
-          .attr("y", 10)
-          .attr("fill", "#6b716a")
-          .attr("text-anchor", "start")
-          .text("海拔 (m)"));
-      // 创建折线生成器
-      const line = d3
-        .line()
-        .x(d => xScale(d[xName]))
-        .y(d => yScale(d[yName]));
-      
-      svg
-        .append('path')
-        .datum(data)
-        .attr('class', 'line')
-        .attr('d', line)
-        .attr('fill', "url(#line-gradient)")
-        .attr('stroke', '#383c93')
-        .attr('stroke-width', 1);
-
-    }
-  }, [data, svgRef.current]);
-
-  return <svg ref={svgRef} width={width} height={height}></svg>;
-}
 
 export default function () {
   const [open, setOpen] = useState(false);
@@ -235,8 +177,8 @@ export default function () {
               </IconButton>
             </div>
             <div className={styles.routeDetail}>
-              <div className={styles.chart}>
-                <RouteChart data={routeData?.chartData} ymax={routeData?.elevation} />
+              <div className={styles.chartBox}>
+                <Chart data={routeData?.chartData} width={500} height={220} />
               </div>
               <div className={styles.intro}>
                 <ul>

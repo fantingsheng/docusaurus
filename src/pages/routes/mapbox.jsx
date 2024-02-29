@@ -53,7 +53,7 @@ export default function MapContainer({ routeData, lineColor }) {
           setAmap(AMap)
           map = new AMap.Map("container", {
             viewMode: "3D", // 是否为3D地图模式
-            zoom: 14, // 初始化地图级别
+            zoom: 13, // 初始化地图级别
             center: [120.325121, 31.498017], // 初始化地图中心点位置
           });
           setMapImpl(map);
