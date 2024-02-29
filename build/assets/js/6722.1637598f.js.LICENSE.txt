@@ -1,0 +1,5 @@
+/**
+ * @preserve
+ * gcoord 1.0.5, geographic coordinate library
+ * Copyright (c) 2023 Jiulong Hu <me@hujiulong.com>
+ */

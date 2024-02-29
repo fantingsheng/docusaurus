@@ -3,7 +3,7 @@ slug: use-d3-draw-line-chart
 title: 如何使用数据可视化库 D3 绘制折线统计图
 authors: [timfan]
 image: https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1709197073172-42cb76bd-9cfc-4cbb-be54-4e654657a66e.png
-tags: [可视化, d3, 统计图, 动态演示]
+tags: [可视化, D3, 统计图, 动态演示]
 hide_table_of_contents: true
 enable_comment: true
 enable_adsense: true
@@ -54,6 +54,8 @@ npm install d3 --save
 
 ### 初始化图表
 
+首先我们在组件中初始化 svg 元素，设置它的长度和宽度，类似于在一个画板中设定指定的区域作为画布，然后不断往画布中填充各种元素。
+
 ```jsx showLineNumbers
 import React, { useRef } from 'react';
 import * as d3 from 'd3';
@@ -69,8 +71,6 @@ export default function Chart() {
   )
 }
 ```
-
-首先我们在组件中初始化 svg 元素，设置它的长度和宽度，类似于在画板中设定一个区域作为画布，然后不断往画布中填充各种元素。
 
 我们准备一组用于演示的数据，它是一个对象数组，对象中包含 `distance` 和 `elevation` 的两个属性。横轴使用 `distance` 值用于描述距离起点的距离，纵轴使用
 `elevation` 值用于描述对应该距离所在点的海拔高度。
@@ -143,6 +143,8 @@ export default function Chart({ data }) {
 
 ### 绘制数据曲线
 
+通过 D3 的 `line()` 方法生成 `svg` 元素的 `path` 数据，将数据通过 `datum` 进行绑定后，再使用属性 `stroke` 和 `stroke-width` 设置线条的颜色和宽度。
+
 ```jsx showLineNumbers
 import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
@@ -182,7 +184,8 @@ export function Chart({ data }) {
 
 ### 绘制渐变背景色
 
-为了使折线图有一定的立体感和美观度，我们将折线和坐标轴围起来区域的增加一个渐变的背景色。
+为了使折线图有一定的立体感和美观度，我们将折线和坐标轴围起来区域的增加一个渐变的背景色。这个区域我们可以通过 D3 的 `area()` 方法实现。然后将已经定义好的
+线性渐变绑定到这个区域上来。
 
 ```jsx showLineNumbers
 import React, { useRef, useEffect } from 'react';
@@ -334,7 +337,7 @@ export default function Chart({ data, width, height }) {
   />
 </ChartContainer>
 
-虽然 D3 用起来没有专门的图表库那么直接（只需要通过配置参数即可生成），但是却给人一种无所不能的感觉，它只提供了笔，至于画成什么样完全取决于执笔之人。
+虽然 D3 用起来没有其它专门的图表库那么直接（只需要通过配置参数即可生成相应的图表），但是却给人一种无所不能的感觉，它只提供了笔，至于画成什么样完全取决于执笔之人。
 
 最后，附上完整的功能代码如下：
 

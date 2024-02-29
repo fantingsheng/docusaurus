@@ -357,3 +357,9 @@ export function Chart({ data, width, height }) {
     </svg>
   );
 }
+
+export default function DemoChart() {
+  return (
+    <></>
+  )
+};
