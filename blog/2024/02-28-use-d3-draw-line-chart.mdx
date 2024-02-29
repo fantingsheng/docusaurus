@@ -1,6 +1,6 @@
 ---
 slug: use-d3-draw-line-chart
-title: 如何使用开源数据可视化库 d3 绘制折线统计图？
+title: 如何使用数据可视化库 D3 绘制折线统计图？
 authors: [timfan]
 image: https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1706590814569-48d9d7d2-5507-4a9f-b7e4-2684fc17a38e.png
 tags: [可视化, d3, 统计图, 动态演示]
@@ -14,14 +14,31 @@ hide_sidebar: true
 import * as d3 from 'd3';
 import Chart from '@site/src/pages/routes/chart';
 
-如题，如何使用开源数据可视化库 d3 绘制折线统计图？
+如题，如何使用数据可视化库 D3 绘制折线统计图？
 
-这篇文章将通过实例来讲解如何一步一步绘制下面这样一个折线统计图，并带有鼠标移动的显示效果。
+这篇文章将通过实例来讲解如何一步一步绘制下面这样一个折线统计图，并带有鼠标悬浮移动的文字显示效果。
 
 export function LineChart() {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <Chart width={300} height={200} data={[]} />
+    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+      <Chart
+        width={320}
+        height={200}
+        data={[
+          { distance: 1.2, elevation: 3, coordinations: [] },
+          { distance: 1.6, elevation: 3.5, coordinations: [] },
+          { distance: 1.8, elevation: 3.4, coordinations: [] },
+          { distance: 2.0, elevation: 3.6, coordinations: [] },
+          { distance: 2.3, elevation: 4, coordinations: [] },
+          { distance: 2.5, elevation: 3.9, coordinations: [] },
+          { distance: 2.8, elevation: 3.8, coordinations: [] },
+          { distance: 3.1, elevation: 4.0, coordinations: [] },
+          { distance: 3.4, elevation: 4.2, coordinations: [] },
+          { distance: 3.7, elevation: 4.4, coordinations: [] },
+          { distance: 4.2, elevation: 3.8, coordinations: [] },
+          { distance: 4.5, elevation: 3.6, coordinations: [] }
+        ]}
+      />
     </div>
   )
 }
@@ -33,7 +50,37 @@ export function LineChart() {
 > D3（或D3.js）是一个用于可视化数据的免费开源JavaScript库。其基于web标准的低级别方法在创作动态、数据驱动的图形方面提供了无与伦比的灵活性。
 十多年来，D3为开创性的、屡获殊荣的可视化提供了动力，成为更高级别图表库的基础构建块，并在世界各地培养了一个充满活力的数据从业者社区。
 
+D3 它并不是一个类似于 [eChart](https://echarts.apache.org) 或 [AntV](https://antv.vision) 等专门绘制图表的库，但我们可以利用它轻量的图形绘制能力，间接地通过一定的手段绘制出来。
 
+其实 D3 是通过 svg 格式绘制出来的图形，在使用它的同时我们需要掌握 SVG 的一些基础知识。
+
+## 安装 D3 图形库
+
+在项目根目录下执行命令：
+
+```shell
+npm install d3 --save
+```
+
+## 初始化图表
+
+```jsx
+import React, { useRef } from 'react';
+import * as d3 from 'd3';
+
+export default function Chart() {
+  const width = 320;
+  const height = 200;
+
+  const svgRef = useRef();
+
+  return (
+    <svg ref={svgRef} width={width} height={height}></svg>
+  )
+}
+```
+
+首先我们在组件中初始化 svg 元素，设置它的长度和宽度，类似于在画板中设定一个区域作为画布，然后不断往画布中填充各种元素。
 
 
 
