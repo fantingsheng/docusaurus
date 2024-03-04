@@ -74,8 +74,8 @@ const GiscusComment = ({ isEnableReaction = false }) => {
   return (
     <div className='mt-5 mb-2'>
       <Giscus
-        repo='aulianza/aulianza.id'
-        repoId='R_kgDOJoIhfQ'
+        repo='fantingsheng/repo.id'
+        repoId='R_kgDOJoIh**'
         category='General'
         categoryId='DIC_kwDOJoIhfc4CW6cJ'
         mapping='pathname'
@@ -150,15 +150,15 @@ const generateRssFeed = async () => {
     link: "https://spacexcode.com/author",
   };
   const feed = new Feed({
-    title: "Sreetam Das' blog",
+    title: "Timfan' blog",
     description: "",
     id: siteURL,
     link: siteURL,
     image: `${siteURL}/logo.svg`,
     favicon: `${siteURL}/favicon.png`,
-    copyright: `All rights reserved ${date.getFullYear()}, Sreetam Das`,
+    copyright: `All rights reserved ${date.getFullYear()}, Timfan`,
     updated: date,
-    generator: "Feed for xxx Blog",
+    generator: "Feed for Timfan's blog",
     feedLinks: {
       rss2: `${siteURL}/rss/feed.xml`,
       json: `${siteURL}/rss/feed.json`,
@@ -193,20 +193,20 @@ const generateRssFeed = async () => {
   const siteURL = process.env.SITE_URL;
   const date = new Date();
   const author = {
-    name: "Sreetam Das",
-    email: "sreetam@sreetamdas.com",
-    link: "https://twitter.com/_SreetamDas",
+    name: "Timfan",
+    email: "fants0230@sina.com",
+    link: "https://spacexcode.com/author",
   };
   const feed = new Feed({
-    title: "Sreetam Das' blog",
+    title: "Timfan' blog",
     description: "",
     id: siteURL,
     link: siteURL,
     image: `${siteURL}/logo.svg`,
     favicon: `${siteURL}/favicon.png`,
-    copyright: `All rights reserved ${date.getFullYear()}, Sreetam Das`,
+    copyright: `All rights reserved ${date.getFullYear()}, Timfan`,
     updated: date,
-    generator: "Feed for Node.js",
+    generator: "Feed for Timfan's blog",
     feedLinks: {
       rss2: `${siteURL}/rss/feed.xml`,
       json: `${siteURL}/rss/feed.json`,
