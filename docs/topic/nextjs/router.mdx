@@ -1,35 +1,14 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# 开始
+# 路由实现
 
-## 安装
+在 Next.js 中，路由是通过文件系统实现的，每个文件夹代表一个路由段，文件夹中的页面文件则对应着具体的路由。
 
-建议使用 `create-next-app` 创建新的 Next.js 应用程序，它会自动为你设置所有内容
+在 Next.js 版本13中还引入了新的 App Router，它基于 React Server Components 构建，支持共享布局、嵌套路由、加载状态、错误处理等功能。
 
-```shell
-npx create-next-app@latest
-# or
-yarn create next-app
-```
-
-如果你希望使用 TypeScript 开发项目，可以通过 --typescript 参数：
-
-```shell
-npx create-next-app@latest --typescript
-# or
-yarn create next-app --typescript
-```
-
-或者以脚手架的方式从 Git 仓库中克隆模板：
-
-```shell
-$ pnpm create next-app ts-next -e https://github.com/chhpt/nextjs-starter
-$ cd project
-$ pnpm install
-$ pnpm dev
-```
+App Router 允许你在 `app` 目录下定义路由，与 `pages` 目录一起工作，允许增量采用新的行为。这使你可以将应用程序的某些路由选择为新行为，同时保留 `pages` 目录中的其他路由以前的行为。
 
 ## 文件目录
 
@@ -106,22 +85,3 @@ $ pnpm dev
 | `(..)folder`             | 拦截上一级路由     |
 | `(..)(..)folder`         | 拦截上两级路由     |
 | `(...)folder`            | 从根路由开始拦截   |
-
-## 代码高亮
-
-- [Shiki](https://shiki.matsu.io)
-- [highlight.js](https://highlightjs.org)
-
-## 订阅功能
-
-- rss-for-nextjs - [https://sreetamdas.com/blog/rss-for-nextjs](https://sreetamdas.com/blog/rss-for-nextjs)
-
-## 相关文章
-
-- Fuse.js - [https://www.fusejs.io](https://www.fusejs.io)
-
-一些使用 nextjs 搭建的网站
-
-- https://github.com/sreetamdas/sreetamdas.com
-- https://github.com/onwidget/tailnext/tree/main
-- https://igorkowalczyk.dev/

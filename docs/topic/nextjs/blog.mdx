@@ -1,0 +1,248 @@
+---
+sidebar_position: 5
+---
+
+# 博客功能
+
+## 代码高亮
+
+- [Shiki](https://shiki.matsu.io)
+- [highlight.js](https://highlightjs.org)
+
+## 相关文章
+
+- Fuse.js - [https://www.fusejs.io](https://www.fusejs.io)
+
+```shell
+npm install fuse.js
+```
+
+```js
+import Fuse from 'fuse.js'
+
+const articles = [
+  {
+    "title": "Old Man's War",
+    "author": {
+      "firstName": "John",
+      "lastName": "Scalzi"
+    }
+  },
+  {
+    "title": "The Lock Artist",
+    "author": {
+      "firstName": "Steve",
+      "lastName": "Hamilton"
+    }
+  }
+  /*...*/
+]
+
+const options = { keys: ['title', 'author.firstName'] }
+
+// Create the Fuse index
+const myIndex = Fuse.createIndex(options.keys, articles)
+// initialize Fuse with the index
+const fuse = new Fuse(articles, options, myIndex)
+```
+
+## 评论功能
+
+静态网站的评论实现有一种方案是借助 Github Issue 或者 Github Discussions 封装的插件形式集成进来。数据存储在第三方，同时也解决了登录授权问题。
+
+下面是根据次方案实现的三个库：
+
+- [giscus](https://giscus.app) - 可借助[组件库](https://github.com/giscus/giscus-component)在 React、Vue 和 Svelte 中使用，支持多种语言
+- [gitalk](https://gitalk.github.io) - 基于 Github Issue 和 Preact 开发的评论插件
+- [utterances](https://utteranc.es) - 借助 Github issues 实现的轻量的评论组件，giscus 灵感就是来源于它
+
+这里采用 Giscus 评论功能为例，进行讲解。先安装 `@giscus/react` 库
+
+```shell
+npm install @giscus/react --save
+```
+
+然后在项目中封装一个全局的评论组件：
+
+```jsx
+import Giscus from '@giscus/react';
+import { useTheme } from 'next-themes';
+
+const GiscusComment = ({ isEnableReaction = false }) => {
+  const { theme } = useTheme();
+
+  return (
+    <div className='mt-5 mb-2'>
+      <Giscus
+        repo='aulianza/aulianza.id'
+        repoId='R_kgDOJoIhfQ'
+        category='General'
+        categoryId='DIC_kwDOJoIhfc4CW6cJ'
+        mapping='pathname'
+        reactionsEnabled={isEnableReaction ? '1' : '0'}
+        emitMetadata='1'
+        inputPosition='top'
+        theme={theme === 'dark' ? 'transparent_dark' : 'light'}
+        lang='en'
+        loading='lazy'
+      />
+    </div>
+  );
+};
+
+export default GiscusComment;
+```
+
+## 文章 RSS 订阅
+
+RSS 是网站内容常见的订阅方式，而 `feed` 库正是该功能的封装。
+
+### 安装 feed 库
+
+```sh
+npm i feed
+```
+
+### 获取所有的文章数据
+
+从博客文章的所在目录读取所有的 `mdx` 格式文件，然后从头部的 `metadata` 数据中获取到文章的相关信息。
+
+```js
+export const getBlogPostsData = async () => {
+  // path where the MDX files are
+  const DIR = path.join(process.cwd(), "src", "content", "blog");
+  const files = fs
+    .readdirSync(DIR)
+    .filter((file) => file.endsWith(".mdx"));
+  const META = /export\s+const\s+meta\s+=\s+(\{(\n|.)*?\n\})/;
+  const postsData = files.map((file) => {
+    // grab the metadata
+    const name = path.join(DIR, file);
+    const contents = fs.readFileSync(name, "utf8");
+    const match = META.exec(contents);
+    if (!match || typeof match[1] !== "string")
+      throw new Error(`${name} needs to export const meta = {}`);
+    const meta = eval("(" + match[1] + ")");
+    // remove the ".mdx" from the filename
+    const slug = file.replace(/\.mdx?$/, "");
+    return {
+      ...meta,
+      slug,
+    };
+  });
+  return postsData;
+};
+```
+
+### 创建 RSS 订阅文件
+
+```js
+import { Feed } from "feed";
+import { getBlogPostsData } from "@/utils/blog";
+
+const generateRssFeed = async () => {
+  const posts = await getBlogPostsData();
+  const siteURL = process.env.SITE_URL;
+  const date = new Date();
+  const author = {
+    name: "Timfan",
+    email: "fants0230@sina.com",
+    link: "https://spacexcode.com/author",
+  };
+  const feed = new Feed({
+    title: "Sreetam Das' blog",
+    description: "",
+    id: siteURL,
+    link: siteURL,
+    image: `${siteURL}/logo.svg`,
+    favicon: `${siteURL}/favicon.png`,
+    copyright: `All rights reserved ${date.getFullYear()}, Sreetam Das`,
+    updated: date,
+    generator: "Feed for xxx Blog",
+    feedLinks: {
+      rss2: `${siteURL}/rss/feed.xml`,
+      json: `${siteURL}/rss/feed.json`,
+      atom: `${siteURL}/rss/atom.xml`,
+    },
+    author,
+  });
+  posts.forEach((post) => {
+    const url = `${siteURL}/blog/${post.slug}`;
+    feed.addItem({
+      title: post.title,
+      id: url,
+      link: url,
+      description: post.summary,
+      content: post.summary,
+      author: [author],
+      contributor: [author],
+      date: new Date(post.published_at),
+    });
+  });
+};
+```
+
+最后我们将生成的订阅文件写到项目目录中
+
+```js
+import fs from "fs";
+import { Feed } from "feed";
+import { getBlogPostsData } from "@/utils/blog";
+const generateRssFeed = async () => {
+  const posts = await getBlogPostsData();
+  const siteURL = process.env.SITE_URL;
+  const date = new Date();
+  const author = {
+    name: "Sreetam Das",
+    email: "sreetam@sreetamdas.com",
+    link: "https://twitter.com/_SreetamDas",
+  };
+  const feed = new Feed({
+    title: "Sreetam Das' blog",
+    description: "",
+    id: siteURL,
+    link: siteURL,
+    image: `${siteURL}/logo.svg`,
+    favicon: `${siteURL}/favicon.png`,
+    copyright: `All rights reserved ${date.getFullYear()}, Sreetam Das`,
+    updated: date,
+    generator: "Feed for Node.js",
+    feedLinks: {
+      rss2: `${siteURL}/rss/feed.xml`,
+      json: `${siteURL}/rss/feed.json`,
+      atom: `${siteURL}/rss/atom.xml`,
+    },
+    author,
+  });
+  posts.forEach((post) => {
+    const url = `${siteURL}/blog/${post.slug}`;
+    feed.addItem({
+      title: post.title,
+      id: url,
+      link: url,
+      description: post.summary,
+      content: post.summary,
+      author: [author],
+      contributor: [author],
+      date: new Date(post.published_at),
+    });
+  });
+  fs.mkdirSync("./public/rss", { recursive: true });
+  fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
+  fs.writeFileSync("./public/rss/atom.xml", feed.atom1());
+  fs.writeFileSync("./public/rss/feed.json", feed.json1());
+};
+```
+
+### 在 `getStaticProps` 方法中调用
+
+```js
+export const getStaticProps = async (_context) => {
+  await generateRssFeed();
+  return {
+    // ...
+  };
+};
+```
+
+>详见 rss-for-nextjs - [https://sreetamdas.com/blog/rss-for-nextjs](https://sreetamdas.com/blog/rss-for-nextjs)
