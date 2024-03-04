@@ -22,5 +22,51 @@ export default {
 };
 ```
 
-社区收集汇总的优秀的插件：  
-[https://github.com/webbertakken/awesome-docusaurus#plugins](https://github.com/webbertakken/awesome-docusaurus#plugins)
+## 开发自定义插件
+
+```
+// 创建一个新的npm包，作为插件项目的代码库
+npx tsdx create docusaurus-plugin-template
+
+// 进入新创建的插件项目目录
+cd docusaurus-plugin-template
+
+// 添加Docusaurus的类型定义
+yarn add --dev @docusaurus/types@2.0.0-alpha.65
+
+// 编写插件的代码
+// src/index.ts
+import { LoadContext, Plugin } from '@docusaurus/types';
+
+function myDocusaurusPlugin({ siteConfig: { themeConfig }}: LoadContext): Plugin<void> {
+  // 在这里编写你的插件逻辑
+  return {
+    name: 'my-docusaurus-plugin',
+    // ...其他生命周期方法
+  };
+}
+
+export default myDocusaurusPlugin
+
+// 在本地测试你的插件
+yarn build
+yarn link
+
+// 在你的Docusaurus项目中使用你的插件
+cd /path/to/your/docusaurus/project
+yarn link docusaurus-plugin-template
+
+// 修改docusaurus.config.js，引入你的插件
+module.exports = {
+  // ...
+  plugins: ['docusaurus-plugin-template'],
+};
+
+// 发布你的插件到npm
+npm publish
+```
+
+:::info[社区收集汇总的优秀的插件]
+- [https://github.com/webbertakken/awesome-docusaurus#plugins](https://github.com/webbertakken/awesome-docusaurus#plugins)
+:::
+
