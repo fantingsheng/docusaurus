@@ -8,10 +8,11 @@ sidebar_position: 5
 
 - [Shiki](https://shiki.matsu.io)
 - [highlight.js](https://highlightjs.org)
+- [rehype-pretty-code](https://github.com/atomiks/rehype-pretty-code)
 
 ## 相关文章
 
-- Fuse.js - [https://www.fusejs.io](https://www.fusejs.io)
+Fuse.js - [https://www.fusejs.io](https://www.fusejs.io)
 
 ```shell
 npm install fuse.js
@@ -44,6 +45,31 @@ const options = { keys: ['title', 'author.firstName'] }
 const myIndex = Fuse.createIndex(options.keys, articles)
 // initialize Fuse with the index
 const fuse = new Fuse(articles, options, myIndex)
+```
+
+## 阅读时间
+
+通过 `reading-time` 库可以为我们的文章添加阅读时间、文章字数元数据。
+
+```shell
+npm i reading-time
+```
+
+通过导出的 `readingTime` 方法计算文章的阅读时间，然后将数据写到 `meta` 变量中。
+
+```js
+import readingTime from 'reading-time';
+
+export function getPostBySlug(slug: string) {
+...
+  const { data, content, excerpt } = matter(fileContents, {
+    excerpt: true,
+  });
+
+  const readTime = readingTime(content);
+  const meta = { ...data, readingTime: readTime };
+  ...
+}
 ```
 
 ## 评论功能
