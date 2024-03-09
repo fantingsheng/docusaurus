@@ -10,8 +10,8 @@ const BackgroundTheme = ({ config }) => {
     <div className={styles.backgroundTheme}>
       <div className={styles.main} style={{ backgroundColor: bgColor, height: height }}>
         <div className={styles.content}>
-          <div className={styles.imgWrap}>
-            <img src={bgImg} alt="preview" />
+          <div className={styles.imgWrap} style={{ backgroundImage: `url(${bgImg})` }}>
+            {/* <img src={bgImg} alt="preview" /> */}
           </div>
           <div className={styles.textCover}>
             <div className={clsx(styles.textarea, styles['font-' + font])}>

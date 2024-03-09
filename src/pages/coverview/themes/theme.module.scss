@@ -108,12 +108,8 @@
 
       .imgWrap {
         width: 100%;
-
-        img {
-          object-fit: cover;
-          width: 100%;
-          height: 100%;
-        }
+        background-position: center;
+        background-size: cover;
       }
       .textCover {
         position: absolute;
@@ -205,12 +201,9 @@
 
         .preview {
           height: inherit;
-
-          img {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-          }
+          overflow: hidden;
+          background-size: cover;
+          background-position: center;
         }
       }
       .left {

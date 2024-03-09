@@ -30,8 +30,8 @@ const StylishTheme = ({ config }) => {
             </div>
           </div>
           <div className={styles.right}>
-            <div className={styles.preview}>
-              <img src={bgImg} alt="preview" />
+            <div className={styles.preview} style={{ backgroundImage: `url(${bgImg})` }}>
+              {/* <img src={bgImg} alt="preview" /> */}
             </div>
           </div>
         </div>
