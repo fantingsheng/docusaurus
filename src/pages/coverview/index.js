@@ -25,6 +25,7 @@ import OutlineTheme from './themeSkeleton/OutlineTheme';
 import ModernTheme from './themeSkeleton/ModernTheme';
 import PreviewTheme from './themeSkeleton/PreviewTheme';
 import MobileTheme from './themeSkeleton/MobileTheme';
+import PictureTheme from './themeSkeleton/PictureTheme';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -166,19 +167,21 @@ export function Main({ normal }) {
 export function ContentForm ({ config, handleConfigChange }) {
   return (
     <>
-      <Box className={styles.setItem}>
-        <Typography variant="h5">标题</Typography>
-        <TextField
-          value={config.title}
-          onChange={e => handleConfigChange(e.target.value, 'title')}
-          placeholder='标题'
-          size='small'
-          className={styles.sizeInput}
-          multiline
-          rows={3}
-          fullWidth
-        />
-      </Box>
+      {['background', 'stylish', 'basic', 'modern', 'outline', 'mobile', 'preview'].includes(config.theme) ?
+        <Box className={styles.setItem}>
+          <Typography variant="h5">标题</Typography>
+          <TextField
+            value={config.title}
+            onChange={e => handleConfigChange(e.target.value, 'title')}
+            placeholder='标题'
+            size='small'
+            className={styles.sizeInput}
+            multiline
+            rows={3}
+            fullWidth
+          />
+        </Box> : ''
+      }
       {['background', 'stylish', 'basic', 'modern', 'outline'].includes(config.theme) ?
         <>
           <Box className={styles.setItem}>
@@ -282,6 +285,8 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
             onClick={() => handleConfigChange('preview', 'theme')}><PreviewTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'mobile' ? styles.on : '')}
             onClick={() => handleConfigChange('mobile', 'theme')}><MobileTheme /></div>
+          <div className={clsx(styles.themeItem, config.theme === 'picture' ? styles.on : '')}
+            onClick={() => handleConfigChange('picture', 'theme')}><PictureTheme /></div>
         </Box>
       </Box>
       <Box className={styles.setItem}>
@@ -329,7 +334,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
         </Box>
       </Box>
-      {['background', 'stylish', 'preview', 'mobile'].includes(config.theme) ?
+      {['background', 'stylish', 'preview', 'mobile', 'picture'].includes(config.theme) ?
         <Box className={styles.setItem}>
           <Typography variant="h5">背景图</Typography>
           <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
@@ -472,11 +477,6 @@ export default function () {
         <meta name="keywords" content='封面图,头图,生成器,工具,演示' />
       </Head>
       <div className={styles.page}>
-        {/* <svg className={styles.svgFilterBg}><filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="4" stitchTiles="stitch"></feTurbulence>
-          <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
-          <rect width="100%" height="100%" filter="url(#noise)"></rect>
-        </svg> */}
         <div className="container">
           <Main normal={true} />
           <Box sx={{ margin: '4rem 0' }}>

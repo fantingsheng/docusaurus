@@ -6,6 +6,7 @@ import OutlineTheme from './themes/OutlineTheme';
 import ModernTheme from './themes/ModernTheme';
 import PreviewTheme from './themes/PreviewTheme';
 import MobileTheme from './themes/MobileTheme';
+import PictureTheme from './themes/PictureTheme';
 
 import styles from './style.module.scss';
 
@@ -28,6 +29,8 @@ export default function CoverImage ({ config }) {
         return <StylishTheme config={config} />;
 			case 'mobile':
         return <MobileTheme config={config} />;
+      case 'picture':
+        return <PictureTheme config={config} />;
 			default:
         return <BasicTheme config={config} />;
 		}
