@@ -35,7 +35,7 @@ export default function () {
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
-  const [curRoute, setCurRoute] = useState('10927881366.gpx');
+  const [curRoute, setCurRoute] = useState('10935466900.gpx');
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
@@ -44,7 +44,9 @@ export default function () {
     { id: 2, slug: '10839536771.gpx', name: '尚贤河市政府前段', type: '🏃', distance: 2.76, elevation: 16.6, color: '#409EFF',
       intro: '位于无锡市市政府前的这段围绕着尚贤河的步道，风景异常美丽，宏伟的市政府大楼，前面倚着山，后面傍着水。视野出奇的好。尤其当清风拂面，掠过水面，波光粼粼。' },
     { id: 3, slug: '10927881366.gpx', name: '周末骑行经开核心城区', type: '🚴‍♀️', distance: 11.3, elevation: 18, color: '#fc5200',
-      intro: '这是一段经开的核心城区，聚集了市区的众多重大基建设施，包括博览中心、国际会议中心、美术馆（在建）、奥体中心（在建）。沿途道路宽广景色优美，非常适合骑行。' }
+      intro: '这是一段经开的核心城区，聚集了市区的众多重大基建设施，包括博览中心、国际会议中心、美术馆（在建）、奥体中心（在建）。沿途道路宽广景色优美，非常适合骑行。' },
+    { id: 4, slug: '10935466900.gpx', name: '金匮公园越野跑', type: '🏃', distance: 3.66, elevation: 43, color: '#67C23A',
+      intro: '位于市政府前的金匮公园，人造的天然氧吧，高配置的跑步道，路径也十分的多样性，有一段是穿过山顶的路，海拔不过三四来米，一口气跑到山顶，酣畅淋漓。' }
   ];
 
   async function getRouteData (route) {
