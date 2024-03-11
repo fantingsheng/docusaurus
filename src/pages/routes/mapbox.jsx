@@ -33,6 +33,7 @@ export default function MapContainer({ routeData, lineColor }) {
       cursor: 'pointer',
       path: lnglats
     })
+    map.clearMap();
     map.add(polyline);
   }
 

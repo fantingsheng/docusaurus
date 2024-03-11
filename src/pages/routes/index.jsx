@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
 import { styled } from '@mui/material/styles';
-import { Box, Drawer, IconButton, FormControl, MenuItem, InputLabel, Select } from '@mui/material';
+import { Box, Drawer, IconButton, FormControl, MenuItem, InputLabel, Select, CircularProgress } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { fetchRoute } from '@site/src/utils/route';
-import * as d3 from 'd3';
 import MapContainer from './mapbox';
 import Chart from './chart';
 
@@ -36,6 +35,7 @@ export default function () {
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
   const [curRoute, setCurRoute] = useState('10935466900.gpx');
+  const [loading, setLoading] = useState(false);
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
@@ -50,9 +50,15 @@ export default function () {
   ];
 
   async function getRouteData (route) {
-    const data = await fetchRoute(route);
-    // console.log('data', data);
-    setRouteData(data);
+    setLoading(true);
+    try {
+      const data = await fetchRoute(route);
+      setRouteData(data);
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setLoading(false)
+    }
   };
 
   const getRouteColor = () => {
@@ -146,6 +152,11 @@ export default function () {
                       </ol>
                       <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={styles.moreBtn} onClick={() => setOpen(true)}>
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path></svg>
+                      { loading && curRoute === el.slug ?
+                        <div className={styles.loadingCover}>
+                          <CircularProgress color="inherit" />
+                        </div> : <></>
+                      }
                     </li>
                   ))}
                 </ul>
