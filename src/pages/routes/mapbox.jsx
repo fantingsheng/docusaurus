@@ -16,7 +16,6 @@ export default function MapContainer({ routeData, lineColor }) {
       gcoord.GCJ02 // 目标坐标系
     );
     map.setCenter(centerLnglat)
-    console.log('routeData', routeData)
     
     let lnglats = [];
     originLnglats.forEach(async el => {
@@ -26,7 +25,6 @@ export default function MapContainer({ routeData, lineColor }) {
         gcoord.GCJ02 // 目标坐标系
       ));
     })  
-    console.log("lnglats", lnglats);
 
     const polyline = new AMap.Polyline({
       strokeColor: lineColor,
@@ -37,9 +35,9 @@ export default function MapContainer({ routeData, lineColor }) {
     })
     map.add(polyline);
   }
-  
+
   useEffect(() => {
-    if (ExecutionEnvironment.canUseDOM && routeData) {
+    if (ExecutionEnvironment.canUseDOM) {
       window._AMapSecurityConfig = {
         securityJsCode: '9eacf9618d78d0ee65d219c5ae35813b'
       }
@@ -65,7 +63,7 @@ export default function MapContainer({ routeData, lineColor }) {
             offset: new AMap.Pixel(-50, -15)
           })
           map.add(marker);
-          DrawRouteLine(map, AMap, lineColor);
+          // DrawRouteLine(map, AMap, lineColor);
         })
         .catch((e) => {
           console.log(e);
@@ -75,7 +73,13 @@ export default function MapContainer({ routeData, lineColor }) {
     return () => {
       map?.destroy();
     };
-  }, [routeData]);
+  }, []);
+  
+  useEffect(() => {
+    if (mapImpl) {
+      DrawRouteLine(mapImpl, amap, lineColor);
+    }
+  }, [mapImpl, routeData]);
 
   return (
     <div

@@ -51,7 +51,7 @@ export default function () {
 
   async function getRouteData (route) {
     const data = await fetchRoute(route);
-    console.log('data', data);
+    // console.log('data', data);
     setRouteData(data);
   };
 
