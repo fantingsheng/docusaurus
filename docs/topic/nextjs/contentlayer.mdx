@@ -2,4 +2,45 @@
 sidebar_position: 5
 ---
 
-# 支持 MDX 文件渲染 
+# 支持 MDX 文件渲染
+
+如今大多静态文档网站生成技术都支持 `mdx` 格式文件的渲染。这得益于像 `contentlayer` 这样的库的支持，将非结构化内容转换为类型安全的 json 数据结构。
+
+> 静态站点生成技术：[built static site](/docs/collection/built-static-site)
+
+### 安装 contentlayer
+
+在 Next 项目中，你需要额外安装 `next-contentlayer`，它提供了 `contentlayer` 接口对 Nextjs 框架的支持。 
+
+```shell
+npm install contentlayer next-contentlayer --save
+```
+
+### 使用 withContentLayer 函数对 Next 配置参数进行处理
+
+```js {1,9}
+import { withContentLayer } from "next-contentlayer";
+ 
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+};
+ 
+module.exports = withContentlayer(nextConfig);
+```
+
+### 添加编译选项生成路径
+
+```js {5}
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.tsx", "**/*.ts", ".contentlayer/generated"]
+}
+```
+
