@@ -170,6 +170,7 @@ sup.new {
   background-color: #fa383e;
   text-rendering: optimizeLegibility;
   padding: 0 0.4em;
+  margin-left: 3px;
   line-height: 1.7;
   display: inline-block;
 }

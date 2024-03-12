@@ -14,7 +14,7 @@ export default function DocSidebarItemLink({
   index,
   ...props
 }) {
-  const {href, label, className, autoAddBaseUrl} = item;
+  const {href, label, className, autoAddBaseUrl, customProps} = item;
   const isActive = isActiveSidebarItem(item, activePath);
   const isInternalLink = isInternalUrl(href);
   return (
@@ -41,7 +41,7 @@ export default function DocSidebarItemLink({
           onClick: onItemClick ? () => onItemClick(item) : undefined,
         })}
         {...props}>
-        {label}
+        {label}{ customProps && customProps.featured ? <sup className="new beta">New</sup> : '' }
         {!isInternalLink && <IconExternalLink />}
       </Link>
     </li>

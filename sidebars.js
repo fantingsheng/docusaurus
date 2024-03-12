@@ -186,6 +186,9 @@ const sidebars = {
           dirName: 'snippet/program'
         }
       ],
+      customProps: {
+        featured: true
+      },
       link: {
         type: 'generated-index',
         title: '小程序',
