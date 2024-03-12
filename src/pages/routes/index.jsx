@@ -8,6 +8,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { fetchRoute } from '@site/src/utils/route';
 import MapContainer from './mapbox';
 import Chart from './chart';
+import RouteBox from './routebox';
 
 const drawerHeight = 324;
 
@@ -15,6 +16,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
     position: 'relative',
+    height: '100%',
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -104,7 +106,7 @@ export default function () {
         <meta name="title" content='我的足迹' />
         <meta name="keywords" content='足迹,跑步,金城湾,尚贤湖,Strava,运动' />
       </Head>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw', backgroundColor: 'rgb(230, 228, 224)' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100%', backgroundColor: 'rgb(230, 228, 224)' }}>
         <Main open={open}>
           <aside className={styles.aside}>
             <div style={{ paddingTop: '0.75rem' }}>
@@ -135,29 +137,12 @@ export default function () {
                 </div>
                 <ul>
                   {getRouteList().map(el => (
-                    <li style={{ borderColor: curRoute === el.slug ? el.color : '#e0e4e0' }} key={el.slug} onClick={() => handleClickRoute(el.slug)}>
-                      <div className={styles.rhead}>
-                        <p><span className={styles.dot} style={{ backgroundColor: el.color }}></span>{el.name}</p>
-                        <span className={styles.mode}>{el.type}</span>
-                      </div>
-                      <ol>
-                        <li>
-                          <span>路程 (Distance)</span>
-                          <strong>{el.distance} km</strong>
-                        </li>
-                        <li>
-                          <span>海拔 (Elevation)</span>
-                          <strong>{el.elevation} m</strong>
-                        </li>
-                      </ol>
-                      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={styles.moreBtn} onClick={() => setOpen(true)}>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path></svg>
-                      { loading && curRoute === el.slug ?
-                        <div className={styles.loadingCover}>
-                          <CircularProgress color="inherit" />
-                        </div> : <></>
-                      }
-                    </li>
+                    <RouteBox
+                      route={el}
+                      loading={loading && curRoute === el.slug}
+                      handleClickRoute={handleClickRoute}
+                      handleClickMore={() => setOpen(true)}
+                    />
                   ))}
                 </ul>
               </section>
