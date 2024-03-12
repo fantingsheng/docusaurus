@@ -15,3 +15,58 @@ import RouterPage from '@site/src/pages/routes';
   <RouterPage />
 </BrowserWindow>
 
+跑步的路线数据是通过一款叫 Strava 的 App 采集而来。同时它也支持 Web 端登陆，在后台导出 `gpx` 格式的文件，文件中包含的路线实时经纬度和海拔高度数据。
+
+认为定义这样一组路线数据：
+
+```js
+const routes = [
+  { id: 1, slug: '10612773928.gpx', name: '上班路线高浪路+吴都路', type: '🛵', distance: 9.76, elevation: 68.6, color: '#a855f7',
+    intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道，横跨运河的高浪大桥，每天上下班时间穿梭着大量往来的人群。' },
+  { id: 2, slug: '10839536771.gpx', name: '尚贤河市政府前段', type: '🏃', distance: 2.76, elevation: 16.6, color: '#409EFF',
+    intro: '位于无锡市市政府前的这段围绕着尚贤河的步道，风景异常美丽，宏伟的市政府大楼，前面倚着山，后面傍着水。视野出奇的好。尤其当清风拂面，掠过水面，波光粼粼。' },
+  { id: 3, slug: '10927881366.gpx', name: '周末骑行经开核心城区', type: '🚴‍♀️', distance: 11.3, elevation: 18, color: '#fc5200',
+    intro: '这是一段经开的核心城区，聚集了市区的众多重大基建设施，包括博览中心、国际会议中心、美术馆（在建）、奥体中心（在建）。沿途道路宽广景色优美，非常适合骑行。' },
+  { id: 4, slug: '10935466900.gpx', name: '金匮公园越野跑', type: '🏃', distance: 3.66, elevation: 43, color: '#67C23A',
+    intro: '位于市政府前的金匮公园，人造的天然氧吧，高配置的跑步道，路径也十分的多样性，有一段是穿过山顶的路，海拔不过三四来米，一口气跑到山顶，酣畅淋漓。' }
+];
+```
+
+而 `gpx` 文件被存放在静态目录 `/static/routers` 下，然后页面中通过 `fetch` 去请求。
+
+```js
+import length from '@turf/length'
+import toGeoJson from '@mapbox/togeojson'
+import { DOMParser } from 'xmldom'
+
+export const fetchRoute = async (filePath) => {
+  const res = await (await fetch('/routers/' + filePath)).text();
+  const source = new DOMParser().parseFromString(res)
+  const geoJson = toGeoJson.gpx(source)
+  const slug = filePath.replace('.gpx', '')
+  const distance = length(geoJson)
+
+  // Calculate elevation gain using coordinate data
+  const { coordinates } = geoJson.features[0].geometry
+
+  const chartData = [];
+  let elevation = 0
+  coordinates.forEach((coord, index) => {
+    if (index === coordinates.length - 1) return
+    if (index === 0) {
+      chartData.push({ distance: 0, elevation: coordinates[index][2]})
+    } else {
+      const tempGeoJson = JSON.parse(JSON.stringify(geoJson));
+      tempGeoJson.features[0].geometry.coordinates.splice(index, tempGeoJson.features[0].geometry.coordinates.length - index);
+      const d = length(tempGeoJson);
+      chartData.push({ distance: d, elevation: coordinates[index][2] })
+    }
+    const elevationDifference = coordinates[index + 1][2] - coordinates[index][2]
+    if (elevationDifference > 0) elevation += elevationDifference
+  })
+  
+  return {
+    geoJson, slug, distance, elevation, chartData
+  }
+};
+```
