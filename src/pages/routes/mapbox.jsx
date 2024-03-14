@@ -64,7 +64,6 @@ export default function MapContainer({ routeData, lineColor }) {
             offset: new AMap.Pixel(-50, -15)
           })
           map.add(marker);
-          // DrawRouteLine(map, AMap, lineColor);
         })
         .catch((e) => {
           console.log(e);
@@ -77,7 +76,7 @@ export default function MapContainer({ routeData, lineColor }) {
   }, []);
   
   useEffect(() => {
-    if (mapImpl) {
+    if (mapImpl && routeData) {
       DrawRouteLine(mapImpl, amap, lineColor);
     }
   }, [mapImpl, routeData]);
