@@ -120,7 +120,7 @@ export function Main({ normal }) {
   };
 
   return (
-    <Box sx={{ padding: '40px 0' }}>
+    <Box sx={{ padding: '0 0 40px' }}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={ normal ? 8 : 12 }>
           <Box className={styles.card} sx={{ padding: '20px 10px', overflowX: 'auto' }}>
@@ -478,15 +478,17 @@ export default function () {
       </Head>
       <div className={styles.page}>
         <div className="container">
-          <Main normal={true} />
-          <Box sx={{ margin: '4rem 0' }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <h2 className='text--center margin-bottom--lg'>常见问题</h2>
-                <FrequentQuestion />
+          <div className={styles.main}>
+            <Main normal={true} />
+            <Box sx={{ margin: '4rem 0 0' }}>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <h2 className='text--center margin-bottom--lg'>常见问题</h2>
+                  <FrequentQuestion />
+                </Grid>
               </Grid>
-            </Grid>
-          </Box>
+            </Box>
+          </div>
         </div>
       </div>
     </Layout>

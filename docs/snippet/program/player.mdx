@@ -8,6 +8,7 @@ import Form from '@site/src/pages/player/index';
 import Drawer from '@mui/material/Drawer';
 import { Player, MusicQueue } from '@site/src/pages/player/index'
 import React from 'react';
+import BrowserWindow from '@site/src/components/BrowserWindow';
 
 export function MyMp3Player () {
   const songList = [
@@ -58,8 +59,9 @@ export function MyMp3Player () {
   )
 }
 
-<MyMp3Player />
-
+<BrowserWindow bodyPad="3px" url="https://spacexcode.com/player">
+  <MyMp3Player />
+</BrowserWindow>
 
 ## 介绍
 
