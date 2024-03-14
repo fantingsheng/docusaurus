@@ -159,6 +159,7 @@ const config = {
           {
             title: '常用技术',
             items: [
+              { label: 'TypeScript', href: 'https://www.typescriptlang.org/' },
               { label: 'Vue', href: 'https://cn.vuejs.org' },
               { label: 'React', href: 'https://zh-hans.react.dev' },
               { label: 'Svelte', href: 'https://www.svelte.cn' },
