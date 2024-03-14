@@ -6,7 +6,7 @@ enable_comment: true
 
 养成一个好习惯，需要源源不断的动力支持⬆️，而如何寻找动力。那就要主动制定目标🎯。
 
-比如我最近在开发一个线上展示跑步路线的网页，没有数据📊，我就使用专业的运动记录软件去采集，这样一来给了我去运动的动力。真是一举两得啊。
+比如我最近在开发一个线上展示跑步路线的网页，没有数据📊，我就使用专业的运动记录软件去采集，这样一来也给了我去运动的动力。真是一举两得啊。
 
 import BrowserWindow from '@site/src/components/BrowserWindow';
 import RouterPage from '@site/src/pages/routes';
@@ -34,11 +34,11 @@ const routes = [
 ```
 
 - slug：对应 `gpx` 格式的文件名，当切换到该路线时通过文件名请求数据
-- type: 运动的方式，目前有三种：公路车骑行、电动车骑行、跑步
-- distance: 路线长度
-- elevation: 最大海拔高度
-- color: 左边列表的颜色区分和地图轨迹的绘制颜色
-- intro: 该路线的描述文字
+- type：运动的方式，目前有三种：公路车骑行、电动车骑行、跑步
+- distance：路线长度
+- elevation：最大海拔高度
+- color：左边列表的颜色区分和地图轨迹的绘制颜色
+- intro：该路线的描述文字
 
 路线的 `gpx` 文件被存放在静态目录 `/static/routers` 下，然后封装了对应的方法通过 `fetch` 去请求。
 
@@ -79,7 +79,8 @@ export const fetchRoute = async (fileName) => {
 };
 ```
 
-封装路线列表组件
+封装路线列表组件，选中的列表项给它一个状态值 `active`，它的边框颜色给个区分。由于通过 `fetch` 去请求资源需要耗费一定的时间，我们在这里有个加载的状态需要显示出来。
+在这里也就是一个圆形的加载进度条。
 
 ```jsx title="routerbox.jsx"
 import React from 'react';
@@ -116,10 +117,12 @@ export default function RouteBox ({ route, active, loading, handleClickRoute, ha
 }
 ```
 
-在页面中渲染路线列表
+下面我们使用定义好的路线数据，在页面中渲染路线列表。
 
-```jsx showLineNumbers {11}
-export default function ({ size = "default" }) {
+另外列表我们可以通过筛选条件去排序，按添加时间（Id 大小）、路程长度、海拔高度三个维度去排序。
+
+```jsx showLineNumbers {84-91}
+export default function () {
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
@@ -226,12 +229,30 @@ export default function ({ size = "default" }) {
 }
 ```
 
-使用高德地图，绘制路线图。
+接下来开始使用高德地图 Web 组件，绘制路线图。
 
-这里需要注意的一点是，由于 Strava 采集的路线的经纬度是国际坐标系（WGS-84），而高德使用的是 GCJ02 坐标系，需要进行坐标转换
-这里使用 [gcoord](https://www.npmjs.com/package/gcoord)（一个处理地理坐标的js库）进行转化。
+首先执行命令安装包
 
-```jsx
+```sh
+npm i @amap/amap-jsapi-loader --save
+```
+
+然后我们封装一个组件，初始化一个地图视图出来，在获取到路线经纬度数据后，通过 `AMap.Polyline()` 接口绘制出来。
+
+这里需要注意的一点是，由于 Strava App 采集的路线的经纬度是 GPS 设备的国际坐标系（WGS-84），而高德使用的是 GCJ02 坐标系，所以需要进行坐标转换。
+我们可以使用 [gcoord](https://www.npmjs.com/package/gcoord)（一个处理地理坐标的js库）进行转化。
+
+|      CRS（坐标系）     |        坐标格式       |           说明            |
+|      -------       |         ----------          |     --------------       |
+| gcoord.WGS84  |  [lng,lat]   | WGS-84坐标系，GPS设备获取的经纬度坐标 |
+| gcoord.GCJ02	| [lng,lat]	   | GCJ-02坐标系，Google 中国地图、SOSO 地图、aliyun 地图、mapabc 地图和高德地图所用的经纬度坐标  |
+|  gcoord.BD09	| [lng,lat]	   | BD-09坐标系，百度地图采用的经纬度坐标 |
+| gcoord.Baidu	| [lng,lat]	   | 百度坐标系，BD-09 坐标系别名，同 BD-09  |
+| gcoord.BMap	  |  [lng,lat]	| 百度地图，BD-09 坐标系别名，同 BD-09     |
+| gcoord.AMap	  |  [lng,lat]	|  高德地图，同 GCJ-02                   |
+
+
+```jsx showLineNumbers title="mapbox.jsx"
 import React, { useEffect, useState } from 'react';
 import gcoord from 'gcoord';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
@@ -325,11 +346,11 @@ export default function MapContainer({ routeData, lineColor }) {
 }
 ```
 
-点击列表中的向右箭头，以抽屉的形式打开路线的详情界面。上面有距离和海拔对应的折线图，和路线的详细文字描述。
+点击列表中的向右箭头，以抽屉的形式从底部打开路线的详细介绍界面。上面有一个距离和海拔对应的折线图，和路线的详细文字描述。
 
 看如何使用 D3 绘制这样一个折线图。可以参考文章：[如何使用数据可视化库 D3 绘制折线统计图](https://spacexcode.com/blog/use-d3-draw-line-chart)
 
-```jsx title=chart.jsx
+```jsx showLineNumbers title="chart.jsx"
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import styles from './style.module.scss';

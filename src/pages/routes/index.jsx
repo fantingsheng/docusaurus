@@ -149,7 +149,7 @@ export default function ({ size = "default" }) {
                 </ul>
               </section>
               <footer className={styles.footer}>
-                A side project by <Link to='/author'>Timfan</Link> | <Link to='/photo'>Photo</Link>
+                A side project by <Link to='/author'>Timfan</Link>
               </footer>
             </div>
           </aside>
