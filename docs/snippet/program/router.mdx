@@ -15,9 +15,10 @@ import RouterPage from '@site/src/pages/routes';
   <RouterPage size="small" />
 </BrowserWindow>
 
-跑步的路线数据是通过一款叫 Strava（[strava.com](https://strava.com)） 的 App 采集而来。同时它也支持 Web 端登陆，在后台导出 `gpx` 格式的文件，文件中包含的路线实时经纬度和海拔高度数据。
+跑步的路线数据是通过一款叫 Strava（[strava.com](https://strava.com)） 的 App 采集而来。同时它也支持 Web 端登陆，后台可以导出对应路线的 `gpx` 格式的文件，文件中包含了该
+路线实时经纬度和海拔高度等数据。
 
-认为定义这样一组路线数据：
+页面中的所有路线，是人为定义这样一组数据：
 
 ```js
 const routes = [
@@ -32,18 +33,25 @@ const routes = [
 ];
 ```
 
-而 `gpx` 文件被存放在静态目录 `/static/routers` 下，然后页面中通过 `fetch` 去请求。
+- slug：对应 `gpx` 格式的文件名，当切换到该路线时通过文件名请求数据
+- type: 运动的方式，目前有三种：公路车骑行、电动车骑行、跑步
+- distance: 路线长度
+- elevation: 最大海拔高度
+- color: 左边列表的颜色区分和地图轨迹的绘制颜色
+- intro: 该路线的描述文字
+
+路线的 `gpx` 文件被存放在静态目录 `/static/routers` 下，然后封装了对应的方法通过 `fetch` 去请求。
 
 ```js showLineNumbers
 import length from '@turf/length'
 import toGeoJson from '@mapbox/togeojson'
 import { DOMParser } from 'xmldom'
 
-export const fetchRoute = async (filePath) => {
-  const res = await (await fetch('/routers/' + filePath)).text();
+export const fetchRoute = async (fileName) => {
+  const res = await (await fetch('/routers/' + fileName)).text();
   const source = new DOMParser().parseFromString(res)
   const geoJson = toGeoJson.gpx(source)
-  const slug = filePath.replace('.gpx', '')
+  const slug = fileName.replace('.gpx', '')
   const distance = length(geoJson)
 
   // Calculate elevation gain using coordinate data
@@ -71,6 +79,413 @@ export const fetchRoute = async (filePath) => {
 };
 ```
 
+封装路线列表组件
 
+```jsx title="routerbox.jsx"
+import React from 'react';
+import styles from './style.module.scss';
+import { CircularProgress } from '@mui/material';
 
+export default function RouteBox ({ route, active, loading, handleClickRoute, handleClickMore }) {
+  return (
+    <li style={{ borderColor: active ? route.color : "#e0e4e0" }} key={route.slug} onClick={() => handleClickRoute(route.slug)}>
+      <div className={styles.rhead}>
+        <p><span className={styles.dot} style={{ backgroundColor: route.color }}></span>{route.name}</p>
+        <span className={styles.mode}>{route.type}</span>
+      </div>
+      <ol>
+      <li>
+        <span>路程 (Distance)</span>
+        <strong>{route.distance} km</strong>
+      </li>
+      <li>
+        <span>海拔 (Elevation)</span>
+        <strong>{route.elevation} m</strong>
+      </li>
+      </ol>
+      <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={styles.moreBtn} onClick={() => handleClickMore()}>
+        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path>
+      </svg>
+      { loading && active ?
+        <div className={styles.loadingCover}>
+          <CircularProgress color="inherit" />
+        </div> : <></>
+      }
+    </li>
+  )
+}
+```
 
+在页面中渲染路线列表
+
+```jsx showLineNumbers {11}
+export default function ({ size = "default" }) {
+  const [open, setOpen] = useState(false);
+  const [orderBy, setOrderBy] = useState("");
+  const [routeData, setRouteData] = useState();
+  const [curRoute, setCurRoute] = useState('10935466900.gpx');
+  const [loading, setLoading] = useState(false);
+
+  // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
+  const routes = [
+    { id: 1, slug: '10612773928.gpx', name: '上班路线高浪路+吴都路', type: '🛵', distance: 9.76, elevation: 68.6, color: '#a855f7',
+      intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道，横跨运河的高浪大桥，每天上下班时间穿梭着大量往来的人群。' },
+    { id: 2, slug: '10839536771.gpx', name: '尚贤河市政府前段', type: '🏃', distance: 2.76, elevation: 16.6, color: '#409EFF',
+      intro: '位于无锡市市政府前的这段围绕着尚贤河的步道，风景异常美丽，宏伟的市政府大楼，前面倚着山，后面傍着水。视野出奇的好。尤其当清风拂面，掠过水面，波光粼粼。' },
+    { id: 3, slug: '10927881366.gpx', name: '周末骑行经开核心城区', type: '🚴‍♀️', distance: 11.3, elevation: 18, color: '#fc5200',
+      intro: '这是一段经开的核心城区，聚集了市区的众多重大基建设施，包括博览中心、国际会议中心、美术馆（在建）、奥体中心（在建）。沿途道路宽广景色优美，非常适合骑行。' },
+    { id: 4, slug: '10935466900.gpx', name: '金匮公园越野跑', type: '🏃', distance: 3.66, elevation: 43, color: '#67C23A',
+      intro: '位于市政府前的金匮公园，人造的天然氧吧，高配置的跑步道，路径也十分的多样性，有一段是穿过山顶的路，海拔不过三四来米，一口气跑到山顶，酣畅淋漓。' }
+  ];
+
+  async function getRouteData (route) {
+    setLoading(true);
+    try {
+      const data = await fetchRoute(route);
+      setRouteData(data);
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setLoading(false)
+    }
+  };
+
+  const getRouteList = () => {
+    let orderKey;
+    switch (orderBy) {
+      case 'latest':
+        orderKey = 'id';
+        break;
+      case 'longest':
+        orderKey = 'distance';
+        break;
+      case 'elevest':
+        orderKey = 'elevation';
+        break;
+      default:
+        orderKey = 'id';
+        break;
+    }
+    return routes.sort(function (a, b) {
+      return b[orderKey] - a[orderKey]
+    })
+  }
+
+  const handleClickRoute = (route) => {
+    setCurRoute(route);
+  };
+
+  return (
+    <>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100%', backgroundColor: 'rgb(230, 228, 224)' }} className={styles[size]}>
+        <Main open={open}>
+          <aside className={styles.aside}>
+            <div style={{ paddingTop: '0.75rem' }}>
+              ...
+              <section className={styles.routerList}>
+                <div className={styles.filterNav}>
+                  <h3>所有路线</h3>
+                  <FormControl size="small" sx={{ minWidth: 105, fontSize: '0.75rem' }}>
+                    <InputLabel id="select-label" sx={{ fontSize: '14px' }}>排列顺序</InputLabel>
+                    <Select
+                      labelId="select-label"
+                      value={orderBy}
+                      label="排列顺序"
+                      sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px', fontSize: '14px' } }}
+                      onChange={(val) => setOrderBy(val.target.value)}
+                    >
+                      <MenuItem value='latest'>添加时间</MenuItem>
+                      <MenuItem value='longest'>路程长度</MenuItem>
+                      <MenuItem value='elevest'>海拔高度</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+                <ul>
+                  {getRouteList().map(el => (
+                    <RouteBox
+                      route={el}
+                      active={curRoute === el.slug}
+                      loading={loading}
+                      handleClickRoute={handleClickRoute}
+                      handleClickMore={() => setOpen(true)}
+                      key={el.slug}
+                    />
+                  ))}
+                </ul>
+              </section>
+              <footer className={styles.footer}>
+                A side project by <Link to='/author'>Timfan</Link> | <Link to='/photo'>Photo</Link>
+              </footer>
+            </div>
+          </aside>
+          ...
+        </Main>
+      </Box>
+    </>
+  )
+}
+```
+
+使用高德地图，绘制路线图。
+
+这里需要注意的一点是，由于 Strava 采集的路线的经纬度是国际坐标系（WGS-84），而高德使用的是 GCJ02 坐标系，需要进行坐标转换
+这里使用 [gcoord](https://www.npmjs.com/package/gcoord)（一个处理地理坐标的js库）进行转化。
+
+```jsx
+import React, { useEffect, useState } from 'react';
+import gcoord from 'gcoord';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import styles from './style.module.scss';
+
+export default function MapContainer({ routeData, lineColor }) {
+  let map = null;
+  const [amap, setAmap] = useState();
+  const [mapImpl, setMapImpl] = useState();
+
+  function DrawRouteLine (map, AMap, lineColor) {
+    const originLnglats = routeData.geoJson.features[0].geometry.coordinates;
+    const centerLnglat = gcoord.transform(
+      [originLnglats[Math.floor(originLnglats.length / 2)][0], originLnglats[Math.floor(originLnglats.length / 2)][1]], // 经纬度坐标
+      gcoord.WGS84, // 当前坐标系
+      gcoord.GCJ02 // 目标坐标系
+    );
+    map.setCenter(centerLnglat)
+    
+    let lnglats = [];
+    originLnglats.forEach(async el => {
+      lnglats.push(gcoord.transform(
+        [el[0], el[1]], // 经纬度坐标
+        gcoord.WGS84, // 当前坐标系
+        gcoord.GCJ02 // 目标坐标系
+      ));
+    })  
+
+    const polyline = new AMap.Polyline({
+      strokeColor: lineColor,
+      strokeWeight: 4,
+      strokeOpacity: 1,
+      cursor: 'pointer',
+      path: lnglats
+    })
+    map.clearMap();
+    map.add(polyline);
+  }
+
+  useEffect(() => {
+    if (ExecutionEnvironment.canUseDOM) {
+      window._AMapSecurityConfig = {
+        securityJsCode: '9eacf9618d78d0ee65d219c5ae35813b'
+      }
+      import("@amap/amap-jsapi-loader").then(AMapLoader => {
+      AMapLoader.load({
+        key: "f92d916868bf43323d76c1f7670*****", // 申请好的Web端开发者Key，首次调用 load 时必填
+        version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+        plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+      })
+        .then((AMap) => {
+          setAmap(AMap)
+          map = new AMap.Map("container", {
+            viewMode: "3D", // 是否为3D地图模式
+            zoom: 14, // 初始化地图级别
+            center: [120.325121, 31.498017], // 初始化地图中心点位置
+          });
+          setMapImpl(map);
+          const marker = new AMap.Marker({
+            position: new AMap.LngLat(120.325121, 31.498017),
+            content: '<div class="custom-content-marker">' +
+            '   <img src="/img/poi-marker-red.png" width="30">' +
+            '</div>',
+            offset: new AMap.Pixel(-50, -15)
+          })
+          map.add(marker);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      })
+    }
+    return () => {
+      map?.destroy();
+    };
+  }, []);
+  
+  useEffect(() => {
+    if (mapImpl && routeData) {
+      DrawRouteLine(mapImpl, amap, lineColor);
+    }
+  }, [mapImpl, routeData]);
+
+  return (
+    <div
+      id="container"
+      className={styles.container}
+      style={{ height: "100%", width: "100%" }}
+    ></div>
+  );
+}
+```
+
+点击列表中的向右箭头，以抽屉的形式打开路线的详情界面。上面有距离和海拔对应的折线图，和路线的详细文字描述。
+
+看如何使用 D3 绘制这样一个折线图。可以参考文章：[如何使用数据可视化库 D3 绘制折线统计图](https://spacexcode.com/blog/use-d3-draw-line-chart)
+
+```jsx title=chart.jsx
+import React, { useRef, useEffect, useState } from 'react';
+import * as d3 from 'd3';
+import styles from './style.module.scss';
+
+export default function Chart({ data, width, height }) {
+  const svgRef = useRef();
+
+  const [hoverX, setHoverX] = useState(null)
+  const [hoverDistance, setHoverDistance] = useState(null)
+  const [hoverElevation, setHoverElevation] = useState(null)
+
+  const margin = {
+    top: 20,
+    right: 0,
+    bottom: 20,
+    left: 25
+  }
+
+  const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+  useEffect(() => {
+    if (data) {
+    const svg = d3.select(svgRef.current);
+    svg.selectAll(".line, .area, .xAxis, .yAxis").remove();
+
+    const xScale = d3.scaleLinear()
+      .domain(d3.extent(data.map(d => d.distance)))
+      .range([margin.left, width - margin.right]);
+
+    const yScale = d3.scaleLinear()
+      .domain(d3.extent(data.map(d => d.elevation)))
+      .range([height - margin.bottom - 5, margin.top]);
+
+    const line = d3.line().x(d => xScale(d.distance)).y(d => yScale(d.elevation));
+    const area = d3.area().x(d => xScale(d.distance)).y0(height - margin.bottom).y1(d => yScale(d.elevation));
+    
+    const xAxis = d3.axisBottom(xScale).ticks(width / 80).tickSizeOuter(0).tickFormat(val => val + 'm');
+    const yAxis = d3.axisLeft(yScale).ticks(height / 40);
+    // 绘制坐标轴
+    svg
+      .append('g')
+      .attr('transform', `translate(0, ${height - margin.bottom})`)
+      .attr('class', 'xAxis')
+      .call(xAxis);
+    
+    svg
+      .append('g')
+      .attr('transform', `translate(${margin.left}, 0)`)
+      .attr('class', 'yAxis')
+      .call(yAxis)
+      .call(g => g.append("text")
+        .attr("x", -margin.left)
+        .attr("y", 10)
+        .attr("fill", "#6b716a")
+        .attr("text-anchor", "start")
+        .text("海拔 (m)"));
+
+    // 绘制折线
+    svg
+      .append('path')
+      .datum(data)
+      .attr('class', 'line')
+      .attr('d', line)
+      .attr('fill', 'none')
+      .attr('stroke', '#75A134')
+      .attr('stroke-width', 1);
+
+    svg
+      .append('path')
+      .attr('class', 'area')
+      .datum(data)
+      .attr('d', area)
+      .attr('fill', 'url(#gradient)');
+    }
+
+  }, [data]);
+
+  const handleMouseMove = e => {
+    const bounds = e.target.getBoundingClientRect()
+    const posX = e.clientX ? e.clientX : clamp(e.targetTouches[0].clientX, 58, width + 32) // TODO: measure - 58px from left screen edge, 32px from right
+    const x = posX - bounds.left + margin.left
+
+    // Get the xScale value from x position
+    const xScale = d3.scaleLinear()
+      .domain(d3.extent(data.map(d => d.distance)))
+      .range([margin.left, width - margin.right]);
+    const distance = xScale.invert(x)
+    // Get the elevation value by finding the closest matching dataPoint.
+    // TODO: There is probably a d3 function somewhere to get the y value from the x but this works
+    const { elevation, coordinates } = data.reduce((prev, curr) =>
+      Math.abs(curr.distance - distance) < Math.abs(prev.distance - distance) ? curr : prev,
+    )
+
+    // setHoverCoordinate(coordinates)
+    setHoverX(x)
+    setHoverDistance(Math.round(distance * 100) / 100)
+    setHoverElevation(Math.floor(elevation))
+  }
+
+  const handleMouseLeave = () => {
+    setHoverX(null)
+    setHoverDistance(null)
+    // setHoverCoordinate(null)
+  }
+
+  function HoverText({ y, children }) {
+    const alignToRight = hoverX > width - margin.left - margin.right - 55
+    return (
+      <text
+        x={alignToRight ? -4 : 4}
+        y={y}
+        textAnchor={alignToRight ? 'end' : 'start'}
+        alignmentBaseline="hanging"
+        fill="currentColor"
+        className={styles.hoverText}
+      >
+        {children}
+      </text>
+    )
+  }
+
+  return (
+    <svg className={styles.chart} ref={svgRef} width={width} height={height}>
+      <defs>
+        <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="rgba(117,161,52, 0.3)" />
+          <stop offset="60%" stopColor="rgba(117,161,52, 0.2)" />
+          <stop offset="100%" stopColor="rgba(117,161,52, 0)" />
+        </linearGradient>
+      </defs>
+      {/* Hover line */}
+      {hoverX && (
+        <g transform={`translate(${hoverX}, 0)`}>
+          <line y1={margin.top} y2={height - margin.bottom} stroke="currentColor" />
+          <HoverText y={margin.top}>Dist: {hoverDistance} km</HoverText>
+          <HoverText y={margin.top + 16}>Elev: {hoverElevation} m</HoverText>
+        </g>
+      )}
+
+      {/* Hover element
+       * width will be 0 on first render, if we remove margins we'll get a negative value which rect does not support
+       */}
+      {width > 0 && height > 0 && (
+        <rect
+          width={width - margin.left - margin.right}
+          height={height - margin.top - margin.bottom}
+          fill="transparent"
+          x={margin.left}
+          y={margin.top}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          onTouchMove={handleMouseMove}
+          onTouchEnd={handleMouseLeave}
+        />
+      )}
+    </svg>
+  );
+}
+```

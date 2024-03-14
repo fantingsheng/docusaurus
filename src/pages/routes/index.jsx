@@ -55,7 +55,6 @@ export default function ({ size = "default" }) {
     setLoading(true);
     try {
       const data = await fetchRoute(route);
-      console.log("load data")
       setRouteData(data);
     } catch (err) {
       console.log(err)
@@ -105,14 +104,14 @@ export default function ({ size = "default" }) {
     <>
       <Head>
         <meta name="title" content='我的足迹' />
-        <meta name="keywords" content='足迹,跑步,金城湾,尚贤湖,Strava,运动' />
+        <meta name="keywords" content='足迹,跑步,路线,运动轨迹,Strava,城市骑行' />
       </Head>
       <Box sx={{ display: 'flex', flexDirection: 'column', height: size === 'small' ? '500px' : '100vh', width: '100%', backgroundColor: 'rgb(230, 228, 224)' }} className={styles[size]}>
         <Main open={open}>
           <aside className={styles.aside}>
             <div style={{ paddingTop: '0.75rem' }}>
               <nav className={styles.nav}>
-                <Link to='/'><img src='/img/logo.svg' width='160' alt='spacexcode.com' /></Link>
+                <Link to='/'><img src='/img/logo.svg' width='160' alt="Spacexcode's logo" /></Link>
               </nav>
               <header className={styles.header}>
                 <h2>城市足迹</h2>
@@ -150,7 +149,7 @@ export default function ({ size = "default" }) {
                 </ul>
               </section>
               <footer className={styles.footer}>
-                A side project by <Link to='/author'>Timfan</Link>
+                A side project by <Link to='/author'>Timfan</Link> | <Link to='/photo'>Photo</Link>
               </footer>
             </div>
           </aside>
