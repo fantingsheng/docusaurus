@@ -32,7 +32,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }),
 );
 
-export default function () {
+export default function ({ size = "default" }) {
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
@@ -107,7 +107,7 @@ export default function () {
         <meta name="title" content='我的足迹' />
         <meta name="keywords" content='足迹,跑步,金城湾,尚贤湖,Strava,运动' />
       </Head>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100%', backgroundColor: 'rgb(230, 228, 224)' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: size === 'small' ? '500px' : '100vh', width: '100%', backgroundColor: 'rgb(230, 228, 224)' }} className={styles[size]}>
         <Main open={open}>
           <aside className={styles.aside}>
             <div style={{ paddingTop: '0.75rem' }}>

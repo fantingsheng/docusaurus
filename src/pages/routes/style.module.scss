@@ -6,6 +6,9 @@
   bottom: 0;
   top: 0;
   border-right: 1px solid #e0e4e0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
 }
 .nav {
   justify-content: flex-start;
@@ -186,12 +189,19 @@
   position: relative;
   margin-left: 430px;
 }
-@media (min-width: 640px) {
+.aside {
+  width: 430px;
+}
+.rightMap {
+  margin-left: 430px;
+}
+
+.small {
   .aside {
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 430px;
-    position: absolute;
+    width: 360px;
+  }
+  .rightMap {
+    margin-left: 360px;
   }
 }
 .chart {

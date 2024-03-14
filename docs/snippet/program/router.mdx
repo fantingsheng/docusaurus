@@ -12,10 +12,10 @@ import BrowserWindow from '@site/src/components/BrowserWindow';
 import RouterPage from '@site/src/pages/routes';
 
 <BrowserWindow bodyPad="0" url="https://spacexcode.com/routes">
-  <RouterPage />
+  <RouterPage size="small" />
 </BrowserWindow>
 
-跑步的路线数据是通过一款叫 Strava 的 App 采集而来。同时它也支持 Web 端登陆，在后台导出 `gpx` 格式的文件，文件中包含的路线实时经纬度和海拔高度数据。
+跑步的路线数据是通过一款叫 Strava（[strava.com](https://strava.com)） 的 App 采集而来。同时它也支持 Web 端登陆，在后台导出 `gpx` 格式的文件，文件中包含的路线实时经纬度和海拔高度数据。
 
 认为定义这样一组路线数据：
 
@@ -70,3 +70,7 @@ export const fetchRoute = async (filePath) => {
   }
 };
 ```
+
+
+
+
