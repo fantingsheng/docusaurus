@@ -83,7 +83,7 @@ export default function Chart({ data, width, height }) {
       .attr('fill', 'url(#gradient)');
     }
 
-  }, data);
+  }, [data]);
 
   const handleMouseMove = e => {
     const bounds = e.target.getBoundingClientRect()

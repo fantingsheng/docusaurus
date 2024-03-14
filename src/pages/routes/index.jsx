@@ -55,6 +55,7 @@ export default function () {
     setLoading(true);
     try {
       const data = await fetchRoute(route);
+      console.log("load data")
       setRouteData(data);
     } catch (err) {
       console.log(err)
@@ -139,9 +140,11 @@ export default function () {
                   {getRouteList().map(el => (
                     <RouteBox
                       route={el}
-                      loading={loading && curRoute === el.slug}
+                      active={curRoute === el.slug}
+                      loading={loading}
                       handleClickRoute={handleClickRoute}
                       handleClickMore={() => setOpen(true)}
+                      key={el.slug}
                     />
                   ))}
                 </ul>
