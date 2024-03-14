@@ -72,9 +72,10 @@ export function Main({ normal }) {
       const date = new Date()
       newImg.src = canvas.toDataURL('image/' + format) // 'image/png'
       const a = document.createElement("a");
+      const scaleName = scale === 2 ? '@2x' : '';
       a.style.display = "none";
       a.href = newImg.src;
-      a.download = `spacexcode-memocard-${date.getMinutes()}${date.getSeconds()}.${format}`;
+      a.download = `spacexcode-memocard-${date.getMinutes()}${date.getSeconds()}${scaleName}.${format}`;
       a.rel = "noopener noreferrer";
       document.body.append(a);
       a.click();
