@@ -1,0 +1,62 @@
+---
+sidebar_position: 2
+---
+
+# 全局配置
+
+关于 Docusaurus 应用的的配置项很多（也就是根目录下的 `docusaurus.config.js` 文件），官方文档很难覆盖到所有的，或者有所提到但是也很隐蔽，所以我把常用的一些配置做些讲解。
+
+## 网站顶部公告
+
+例如官网的顶部这样一条信息栏，是通过 `themeConfig` 下面的参数 `announcementBar` 配置而来。
+
+![公告](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1710469949264-4d06fae2-b817-4096-a323-d362db7a6dfb.png)
+
+```js title="docusaurus.config.js"
+themeConfig: {
+  announcementBar: {
+    id: 'announcementBar-3',
+    content: `🎉️ <b>我的<a target="_blank" href="https://spacexcode.com/routes">足迹</a> 应用上线了！</b> 👣`,
+  },
+}
+```
+
+## 导航栏和底部菜单支持插入 Html 代码
+
+导航栏和底部菜单都支持更灵活的自定义 `html` 代码的格式。
+
+```js title="docusaurus.config.js" showLineNumbers {11,24-27}
+themeConfig: {
+  navbar: {
+    items: [
+      {
+        label: '关于',
+        position: 'right',
+        items: [
+          { to: '/about', label: '关于本站' },
+          { to: '/author', label: '了解作者' },
+          { to: '/release/log', label: '更新日志' },
+          { type: 'html', value: '<hr class="dropdown-separator">' }
+        ]
+      }
+    ]
+  },
+  footer: {
+    links: [
+      {
+        title: '常用技术',
+        items: [
+          { label: 'TypeScript', href: 'https://www.typescriptlang.org/' },
+          { label: 'Vue', href: 'https://cn.vuejs.org' },
+          {
+            html: `
+              <a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify">
+                <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51" />
+              </a>`
+          }
+        ],
+      }
+    ]
+  }
+}
+```
