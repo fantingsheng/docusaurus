@@ -47,7 +47,7 @@ const config = {
           blogSidebarTitle: '最近文章',
           showReadingTime: true,
           postsPerPage: 8,
-          blogSidebarCount: 15
+          blogSidebarCount: 20
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -183,7 +183,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         defaultLanguage: 'javascript',
-        additionalLanguages: ['powershell']
+        additionalLanguages: ['csharp', 'powershell', 'bash', 'diff', 'json', 'scss', 'matlab', 'java', 'haskell', 'dart', 'latex', 'php']
       },
       tableOfContents: {
         minHeadingLevel: 2,
