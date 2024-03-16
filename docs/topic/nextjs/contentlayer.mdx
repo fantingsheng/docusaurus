@@ -8,17 +8,21 @@ sidebar_position: 5
 
 > 静态站点生成技术：[built static site](/docs/collection/built-static-site)
 
+## 安装
+
 ### 安装 contentlayer
 
-在 Next 项目中，你需要额外安装 `next-contentlayer`，它提供了 `contentlayer` 接口对 Nextjs 框架的支持。 
+在 Next 项目中，你需要额外安装 `next-contentlayer`，它提供了对 `contentlayer` 接口的封装以便对 Nextjs 框架的支持。 
 
 ```bash
 npm install contentlayer next-contentlayer --save
 ```
 
-### 使用 withContentLayer 函数对 Next 配置参数进行处理
+### 使用 withContentLayer 函数对 Next 配置进行包装
 
-```js {1,9}
+在 `next.config.js` 文件中导入 `withContentLayer` 函数并使用它对 Next 配置进行包装。
+
+```js showLineNumbers {1,9}
 import { withContentLayer } from "next-contentlayer";
  
 /** @type {import('next').NextConfig} */
@@ -30,9 +34,11 @@ const nextConfig = {
 module.exports = withContentlayer(nextConfig);
 ```
 
-### 添加编译选项生成路径
+### 添加编译选项以及生成路径
 
-```js {5}
+在 `tsconfig.json` 文件中添加以下配置，以满足对生成目录的访问。
+
+```js {5, 8}
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -43,4 +49,296 @@ module.exports = withContentlayer(nextConfig);
   "include": ["next-env.d.ts", "**/*.tsx", "**/*.ts", ".contentlayer/generated"]
 }
 ```
+
+## 定义结构
+
+首先在项目根目录下创建了一个 `/content` 文件夹。然后在 `/content` 文件夹下，创建了两个文件夹 `/definitions` 和 `/posts`。
+
+- `definitions`：放置对数据结构的定义文件
+- `posts`：放置以 `mdx` 格式撰写的文章
+
+```
+content
+├── definitions
+└── posts
+```
+
+这里以 `Post` 为例，我们在 `/definitions` 目录下新建 `post.tsx`，用它来定义单篇文章的内容结构：
+
+```jsx showLineNumbers
+import { defineDocumentType } from "contentlayer/source-files";
+ 
+export const Post = defineDocumentType(() => ({
+  name: "Post",
+  filePathPattern: "posts/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: { type: "string", required: true },
+    publishedAt: { type: "string", required: true },
+    description: { type: "string" },
+    status: {
+      type: "enum",
+      options: ["draft", "published"],
+      required: true,
+    },
+  },
+}));
+```
+
+还有另外两个模型需要定义：`Tag` 和 `Series`。`Tag` 将用于给文章定义标签，而 `Series` 定义与某篇文章相关的文章，用于推荐。
+
+```jsx title="./content/definitions/tag.tsx" showLineNumbers
+import { defineNestedType } from "contentlayer/source-files";
+ 
+// define tags elsewhere (in a constants file)
+import { tagNames, tagSlugs } from "../../lib/contentlayer";
+ 
+export const Tag = defineNestedType(() => ({
+  name: "Tag",
+  fields: {
+    title: {
+      type: "enum",
+      required: true,
+      options: tagNames,
+    },
+    slug: {
+      type: "enum",
+      required: true,
+      options: tagSlugs,
+    },
+  },
+}));
+```
+
+```jsx title="./content/definitions/series.tsx" showLineNumbers
+import { defineNestedType } from "contentlayer/source-files";
+ 
+export const Series = defineNestedType(() => ({
+  name: "Series",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    order: {
+      type: "number",
+      required: true,
+    },
+  },
+}));
+```
+
+定义好 `Series` 和 `Tag` 之后，就可以把它们导入到 `Post` 中使用它们来完成字段的定义。
+
+```jsx title="./content/definitions/post.tsx" showLineNumbers
+import { defineDocumentType } from "contentlayer/source-files";
+ 
+import { Tag } from "./tag";
+import { Series } from "./series";
+ 
+export const Post = defineDocumentType(() => ({
+  // ...
+  fields: {
+    title: { type: "string", required: true },
+    publishedAt: { type: "string", required: true },
+    description: { type: "string" },
+    status: {
+      type: "enum",
+      options: ["draft", "published"],
+      required: true,
+    },
+    series: {
+      type: "nested",
+      required: false,
+      of: Series,
+    },
+    tags: {
+      type: "list",
+      required: false,
+      of: Tag,
+    },
+  },
+}));
+```
+
+## 配置文件
+
+现在，我们需要将定义好的模型提供给 `Contentlayer` ，在项目根目录下新建 `contentlayer.config.js` 文件。
+
+```js title="contentlayer.config.js" showLineNumbers
+import { makeSource } from "contentlayer/source-files";
+ 
+import { Post } from "./content/defintions/post";
+ 
+export default makeSource({
+  contentDirPath: "content",
+  documentTypes: [Post],
+  mdx: {
+    esbuildOptions(options) {
+      options.target = "esnext";
+      return options;
+    },
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+```
+
+## 插件
+
+请注意上面 `contentlayer.config.js` 文件中的 `remarkPlugins` 和 `rehypePlugins` 两个字段，Contentlayer 非常强大，我们可以在内容生成的过程中
+使用各种插件。
+
+### Github Flavored Markdown
+
+[Github Flavored Markdown](https://github.github.com/gfm/) 是 Github 在处理 Md 文件时使用的工具其中之一。我们可以使用 `remark-gfm` 来启用它。
+
+```bash
+npm install remark-gfm
+```
+
+然后把它引入 `contentlayer.config.js` 配置文件中
+
+```js {9} showLineNumbers
+import { makeSource } from "contentlayer/source-files";
+import { Post } from "./content/defintions/post";
+import remarkGfm from "remark-gfm";
+ 
+export default makeSource({
+  // ...
+  mdx: {
+    // ...
+    remarkPlugins: [[remarkGfm]],
+    rehypePlugins: [],
+  },
+});
+```
+
+### 处理标题文章链接
+
+给标题文本添加上超链接便签，便于点击跳转
+
+```bash
+npm install rehype-autolink-headings github-slugger rehype-slug
+```
+
+```js titile="contentlayer.config.js" showLineNumbers
+import { makeSource } from "contentlayer/source-files";
+import { Post } from "./content/defintions/post";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-heading";
+ 
+export default makeSource({
+  // ...
+  mdx: {
+    // ...
+    remarkPlugins: [[remarkGfm]],
+    rehypePlugins: [
+      [rehypeSlug],
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "wrap",
+          properties: {
+            className: ["<insert class names here>"],
+          },
+        },
+      ],
+    ],
+  },
+});
+```
+
+最后你需要到 `Post` 模型中，从内容中获取文章的链接
+
+```jsx title="./content/definitions/post.tsx" showLineNumbers
+import { defineDocumentType } from "contentlayer/source-files";
+import { Tag } from "./tag";
+import { Series } from "./series";
+import GithubSlugger from "github-slugger";
+ 
+export const Post = defineDocumentType(() => ({
+  // ...
+  computedFields: {
+    headings: {
+      type: "json",
+      resolve: async (doc) => {
+        const slugger = new GithubSlugger();
+ 
+        // https://stackoverflow.com/a/70802303
+        const regex = /\n\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+ 
+        const headings = Array.from(doc.body.raw.matchAll(regex)).map(
+          // @ts-ignore
+          ({ groups }) => {
+            const flag = groups?.flag;
+            const content = groups?.content;
+            return {
+              heading: flag?.length,
+              text: content,
+              slug: content ? slugger.slug(content) : undefined,
+            };
+          }
+        );
+ 
+        return headings;
+      },
+    },
+  },
+}));
+```
+
+### Slug
+
+为了在 Next.js 中给每篇文章渲染一个页面，需要生成一个对应的 `slug`，这时在 `Post` 模型中添加另一个 `computedField` 字段。
+
+```jsx title="./content/definitions/post.tsx" showLineNumbers
+import { defineDocumentType } from "contentlayer/source-files";
+import { Tag } from "./tag";
+import { Series } from "./series";
+import GithubSlugger from "github-slugger";
+ 
+export const Post = defineDocumentType(() => ({
+  // ...
+  computedFields: {
+    // ...
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+    },
+  },
+}));
+```
+
+### 渲染内容
+
+我们可以使用 `Next.js` 中的动态路由来渲染文章页面，在 `/pages` 目录下，我们创建 `post` 目录和 `[slug].tsx` 文件。用大括号包起来表示它是一个参数。
+
+然后我们可以直接从 `contentlayer/generated` 中获取由 `contentlayer` 生成的一个 `json` 格式的包含所有文章的一个数组。
+
+```js
+import { allPosts } from "contentlayer/generated";
+```
+
+通过这个导入，您可以获取所有生成的文章，并根据需要进行渲染。这里为了便于直接从页面中获取，把它放在页面的 `getStaticProps` 方法中。
+
+```jsx
+import { allPosts } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
+ 
+export async function getStaticProps() {
+  const posts = allPosts
+    .sort((a, b) => {
+      return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
+    })
+    .filter((p) => p.status === "published");
+ 
+  return { props: { posts: posts } };
+}
+```
+
+
+
+
 
