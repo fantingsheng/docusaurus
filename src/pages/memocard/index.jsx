@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
+import GiscusComponent from '@site/src/components/GiscusComponent';
 import { Grid, Select, Button, IconButton, ButtonGroup, MenuItem, MenuList, Popper, FormControlLabel, Switch, TextField, Paper, Box, Grow, Typography,
   ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -483,8 +484,16 @@ export default function () {
           <Box sx={{ margin: '4rem 0' }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <h2 className='text--center margin-bottom--lg'>常见问题</h2>
+                <h2 className='text--center margin-bottom--lg'>🛠 常见问题</h2>
                 <FrequentQuestion />
+              </Grid>
+            </Grid>
+          </Box>
+          <Box sx={{ margin: '6rem 0 4rem' }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <h2 className='text--center margin-bottom--sm'>💬 交流讨论</h2>
+                <GiscusComponent reactionsEnabled="0" />
               </Grid>
             </Grid>
           </Box>
