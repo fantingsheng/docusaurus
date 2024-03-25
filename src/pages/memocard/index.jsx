@@ -40,6 +40,7 @@ export function Main({ normal }) {
   
   const [config, setConfig] = useState({
     font: '',
+    fontSize: 14,
     bgColor: '#949ee5',
     content: '🤗 这是一款文字卡片制作工具，你可以输入文字生成精美的文字卡片，然后分享到社交网站或直接复制到聊天工具中。\r\n\r\n它支持不同背景色的设置，可以是纯色和渐变色。\r\n它还支持多个主题的切换。\r\n在这里写上你的文字试试效果吧。👨‍💻',
     url: '',
@@ -228,6 +229,12 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     { label: '楷体', value: 'kaiti' },
     { label: '仿宋', value: 'fangsong' }
   ];
+  const fontSizeOptions = [
+    { label: '12px', value: 12 },
+    { label: '14px', value: 14 },
+    { label: '16px', value: 16 },
+    { label: '18px', value: 18 }
+  ]
   const bgColorOptions = [
     'linear-gradient(310deg,rgb(214,233,255),rgb(214,229,255),rgb(209,214,255),rgb(221,209,255),rgb(243,209,255),rgb(255,204,245),rgb(255,204,223),rgb(255,200,199),rgb(255,216,199),rgb(255,221,199))',
     'linear-gradient(160deg,rgb(204,251,252),rgb(197,234,254),rgb(189,211,255))',
@@ -298,43 +305,65 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </Box>
       </Box>
       <Box sx={{ display: 'flex', gap: '20px' }}>
-      <Box className={styles.setItem} sx={{ width: '50%' }}>
-        <Typography variant="h5">外观</Typography>
-        <FormControlLabel
-          control={
-            <Switch
-              value={config.dark}
-              onChange={e => handleConfigChange(e.target.checked, 'dark')}
-              inputProps={{ 'aria-label': 'controlled' }}
-            />
-          }
-          className={styles.sizeInput}
-          label="深色主题"
-        />
-      </Box>
-      <Box className={styles.setItem} sx={{ width: '50%' }}>
-        <Typography variant="h5">字体<span className={styles.fontInfos}>（中文）</span></Typography>
-        <Select
-          value={config.font}
-          onChange={val => handleConfigChange(val.target.value, 'font')}
-          size='small'
-          className={styles.sizeInput}
-          sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px' } }}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em style={{ color: '#A8ABB2' }}>选择字体</em>;
+        <Box className={styles.setItem} sx={{ width: '50%' }}>
+          <Typography variant="h5">外观</Typography>
+          <FormControlLabel
+            control={
+              <Switch
+                value={config.dark}
+                onChange={e => handleConfigChange(e.target.checked, 'dark')}
+                inputProps={{ 'aria-label': 'controlled' }}
+              />
             }
-            const item = fontOptions.find(el => el.value === selected);
-            return item.label;
-          }}
-          fullWidth
-          displayEmpty
-        >
-          {fontOptions.map(el => (
-            <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
-          ))}
-        </Select>
-      </Box>
+            className={styles.sizeInput}
+            label="深色主题"
+          />
+        </Box>
+        <Box className={styles.setItem} sx={{ width: '50%' }}>
+          <Typography variant="h5">字体及大小<span className={styles.fontInfos}>（仅中文）</span></Typography>
+          <Box sx={{ display: 'flex', gap: '10px' }}>
+            <Select
+              value={config.font}
+              onChange={val => handleConfigChange(val.target.value, 'font')}
+              size='small'
+              className={styles.sizeInput}
+              sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px' } }}
+              renderValue={(selected) => {
+                if (selected.length === 0) {
+                  return <em style={{ color: '#A8ABB2' }}>选择字体</em>;
+                }
+                const item = fontOptions.find(el => el.value === selected);
+                return item.label;
+              }}
+              fullWidth
+              displayEmpty
+            >
+              {fontOptions.map(el => (
+                <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
+              ))}
+            </Select>
+            <Select
+              value={config.fontSize}
+              onChange={val => handleConfigChange(val.target.value, 'fontSize')}
+              size='small'
+              className={styles.sizeInput}
+              sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px' } }}
+              renderValue={(selected) => {
+                if (selected.length === 0) {
+                  return <em style={{ color: '#A8ABB2' }}>选择字体大小</em>;
+                }
+                const item = fontSizeOptions.find(el => el.value === selected);
+                return item.label;
+              }}
+              fullWidth
+              displayEmpty
+            >
+              {fontSizeOptions.map(el => (
+                <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
+              ))}
+            </Select>
+          </Box>
+        </Box>
       </Box>
       <Box sx={{ display: 'flex', gap: '20px' }}>
         <Box className={styles.setItem} sx={{ width: '50%' }}>

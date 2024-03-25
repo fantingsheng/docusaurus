@@ -5,7 +5,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 import QrcodeBox from '../QrcodeBox';
 
 export default function PaperTheme ({ config }) {
-  const {content, author, bgColor, opacity, borderRadius, gradientBgColor, width, theme, vertPad, horizPad, dark, font} = {...config}
+  const {content, author, bgColor, opacity, borderRadius, gradientBgColor, width, theme, vertPad, horizPad, dark, font, fontSize} = {...config}
 
   return (
     <div className={clsx(styles.theme, styles[theme + 'Theme'], dark ? styles.dark : '')}
@@ -22,7 +22,7 @@ export default function PaperTheme ({ config }) {
           <feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
           <rect width="100%" height="100%" filter="url(#noise)"></rect>
         </svg>
-        <div className={clsx(styles.content, styles['font-' + font])}>
+        <div className={clsx(styles.content, styles['font-' + font])} style={{ fontSize: fontSize + 'px' }}>
           <BrowserOnly>
           {
             () => <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>

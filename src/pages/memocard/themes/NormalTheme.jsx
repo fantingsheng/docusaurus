@@ -5,7 +5,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 import QrcodeBox from '../QrcodeBox';
 
 export default function NormalTheme ({ config }) {
-  const {content, author, bgColor, opacity, borderRadius, gradientBgColor, width, theme, dark, vertPad, horizPad, font} = {...config}
+  const {content, author, bgColor, opacity, borderRadius, gradientBgColor, width, theme, dark, vertPad, horizPad, font, fontSize} = {...config}
 
   return (
     <div className={clsx(styles.theme, styles[theme + 'Theme'], dark ? styles.dark : '')}
@@ -17,7 +17,7 @@ export default function NormalTheme ({ config }) {
       }}
     >
       <div className={styles.main} style={{ backgroundColor: dark ? `rgba(0, 0, 0, ${opacity})` : `rgba(255, 255, 255, ${opacity})`, borderRadius: `${borderRadius}px` }}>
-        <div className={clsx(styles.content, styles['font-' + font])}>
+        <div className={clsx(styles.content, styles['font-' + font])} style={{ fontSize: fontSize + 'px' }}>
           <BrowserOnly>
           {
             () => <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
