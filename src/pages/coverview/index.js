@@ -448,16 +448,16 @@ export function FrequentQuestion () {
           <Typography>导出图片使用的是 <a href="https://html2canvas.hertzen.com/">html2canvas</a> 这个库。会有一些支持的不够好的 CSS 属性导致图片略有差异。🥶</Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2bh-content">
+      <Accordion className={styles.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content">
           <Typography>上传的图片会泄露隐私吗？</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>💁‍♂️ 不会，上传的图片只会在浏览器的本地读取，并未上传到云端。该工具类似离线工具，不会收集任何的用户数据。请放心使用。🥰</Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content">
+      <Accordion className={styles.accordion} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4bh-content">
           <Typography>我找不到好看的背景图和文章很搭的图标怎么办，有推荐的网站吗？</Typography>
         </AccordionSummary>
         <AccordionDetails>
