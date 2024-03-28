@@ -10,6 +10,7 @@ export default function AlbumGallery () {
   const windowSize = useWindowSize();
   const isMobile = windowSize === 'mobile';
   const itemData = [
+    { title: '金匮公园樱花林', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711585423744-41a8bcf5-5844-48da-8aab-b14e7fd64ede.jpg' },
     { title: '惠山-三毛峰', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1704533891019-98978b32-181f-404b-a728-37eaf040f9cf.jpg' },
     { title: '苏宁悦城', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689408969633-035197b8-c646-45bc-a43c-9350ced51585.jpg'},
     { title: '宜家家居', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1689408969569-82b40cf0-61ae-424a-b0ab-be54140e446d.jpg'},
