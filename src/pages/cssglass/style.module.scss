@@ -13,25 +13,25 @@
   align-items: center;
   flex-direction: row;
   border-radius: 10px;
-  padding: 100px 160px 60px;
+  padding: 60px 100px 30px;
 }
 [data-theme='light'] .boxCard {
   background: linear-gradient(135deg, #a7cee0 50%, #d0dea7);
 }
 .circleBig {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   margin-top: -220px;
-  margin-right: -140px;
+  margin-right: -120px;
   background: linear-gradient(135deg,#ffb566,#ff6677);
 }
 .circleSmall {
-  width: 145px;
-  height: 145px;
+  width: 105px;
+  height: 105px;
   border-radius: 50%;
   margin-top: 225px;
-  margin-left: -80px;
+  margin-left: -60px;
   background: linear-gradient(135deg,#de82ca,#259fac);
 }
 .glassBox {
