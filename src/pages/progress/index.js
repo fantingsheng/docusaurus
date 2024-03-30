@@ -158,7 +158,7 @@ export const Main = forwardRef(({ config, style }, ref) => {
       </Typography>
       {
         config.copyright ? 
-        <div>
+        <div className={styles.domain}>
           <a href="https://spacexcode.com" target="_blank">spacexcode.com</a>
         </div>
         :
@@ -217,7 +217,7 @@ export default function () {
       </Head>
       <div className='container'>
         <div className='row'>
-          <div className='col col--10 col--offset-1'>
+          <div className='col col--8 col--offset-2'>
             <Main ref={progressBarRef} config={config} />
           </div>
           <div className='col col--12'>

@@ -65,12 +65,12 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className='container'>
         <h1 className='hero__title'>{siteConfig.title}</h1>
-        <p className='hero__subtitle'>{siteConfig.tagline}</p>
+        <p className='hero__subtitle margin-bottom--lg'>分享硬核且有趣的前端编程知识</p>
         <div className={styles.buttons}>
           <Link
             className='button button--secondary button--lg'
             to='/docs/intro'>
-            快速了解前端知识体系
+            💡 快速了解前端知识体系
           </Link>
         </div>
         <div className='row'>

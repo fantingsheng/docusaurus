@@ -85,14 +85,14 @@ export default function HomepageCodeBlock() {
     <div className='container'>
       <div className='row'>
         <div className='col col--6 col--offset-3 margin-bottom--lg'>
-          <AnimateLinear hasShadow={true}>
+          <AnimateLinear hasShadow={true} bw={8}>
             <div className='text--center' style={{ width: '100%'}}>
               <h4 className='margin-bottom--md'>每段代码都有一个故事，分享你的故事</h4>
               <a className='button button--secondary ' href='/codestory'>投稿</a>
             </div>
           </AnimateLinear>
         </div>
-        <div className='col col--8 col--offset-2'>
+        <div className='col col--8 col--offset-2 margin-bottom--md'>
           <div ref={blockRef}>
             {/* showLineNumbers 显示行号 metastring='{8}' */}
             <CodeBlock

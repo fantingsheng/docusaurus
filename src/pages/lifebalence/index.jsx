@@ -201,13 +201,13 @@ export default function Index() {
             </div>
           </div>
           <div className='row'>
-            <div className='col col--12 margin-top--lg'>
+            <div className='col col--12 margin-top--xl'>
               <Divider>您有什么好的建议，欢迎评论区留言 💬</Divider>
             </div>
           </div>
           <div className='row'>
             <div className='col col--10 col--offset-1'>
-              <GiscusComponent />
+              <GiscusComponent reactionsEnabled="0" />
             </div>
           </div>
         </div>

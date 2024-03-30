@@ -4,9 +4,14 @@ import clsx from 'clsx';
 
 export default function (props) {
   const pad = props.pad || '20px';
-  const borderBg = props.borderBg || 'linear-gradient(140deg, #cf2f98, #6a3dec)'
+  const borderBg = props.borderBg || 'linear-gradient(140deg, #cf2f98, #6a3dec)';
+  const borderWidth = props.bw || 4;
+
   return (
-    <div className={clsx(styles.outer, props.hasShadow ? styles.shadow : '')} style={{ background: borderBg }}>
+    <div
+      className={clsx(styles.outer, props.hasShadow ? styles.shadow : '')}
+      style={{ background: borderBg, padding: borderWidth + 'px' }}
+    >
       <div className={styles.gradient}></div>
       <div className={styles.content} style={{ padding: pad }}>
         {props.children}
