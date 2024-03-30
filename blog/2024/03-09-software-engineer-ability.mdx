@@ -11,16 +11,15 @@ enable_adsense: true
 hide_sidebar: true
 ---
 
+import TOCInline from '@theme/TOCInline';
+
 ![spacexcode-coverview-4135.png](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1709970260116-74d2563f-b00c-4b37-84d4-5faa8e2e4fa0.png)
 
 <p><center><font color="#909399">封面图由工具 [https://spacexcode.com/coverview](https://spacexcode.com/coverview) 生成</font></center></p>
 
 在程序员这个行业跌跌撞撞也已经快十年了，越来越觉得要想在程序员这条路上走的更远更久，以下的这几种能力不能忽视，需要保持持久的恒心与毅力着重地培养起来。
 
-1. 英文能力
-2. 算法
-3. 设计与审美
-4. 创作
+<TOCInline toc={toc} minHeadingLevel={2} maxHeadingLevel={4} />
 
 为什么是这几种能力，我们深知越重要且对我们影响越深远的东西都非一日之功，它们有的是习惯，有的是思维，都在潜移默化地不断改变着我们。而往往这也是拉开与常人距离的重大因子。
 
@@ -37,9 +36,49 @@ hide_sidebar: true
 
 这里推荐我常用的一款背单词软件：不背单词（[https://www.bbdc.cn/](https://www.bbdc.cn/)），它采用科学记忆算法（通俗地讲就是背新单词的过程中包含对旧单词的回顾记忆），使用了大量的影视和新闻例句融入语境帮助记忆，而且背完后的拼写测试功能更有益于加深我们对单词的记忆。
 
+import { ImageList, ImageListItem } from '@mui/material';
+
+export function StandardImageList() {
+  return (
+    <ImageList sx={{ width: '100%', height: 'auto' }} cols={4}>
+      <ImageListItem sx={{ paddingTop: '0.25rem' }}>
+        <img
+          srcSet="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711781224498-19faaa64-1c07-41ba-b733-8f34f548dd8d.jpg"
+          src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711781224498-19faaa64-1c07-41ba-b733-8f34f548dd8d.jpg"
+          loading="lazy"
+        />
+      </ImageListItem>
+      <ImageListItem>
+        <img
+          srcSet="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711781224448-978686b3-e9fb-4704-8a2a-4356d8d514a7.jpg"
+          src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711781224448-978686b3-e9fb-4704-8a2a-4356d8d514a7.jpg"
+          loading="lazy"
+        />
+      </ImageListItem>
+      <ImageListItem>
+        <img
+          srcSet="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711781224489-e96b9e8a-e792-4d3d-8504-31144398f6dc.jpg"
+          src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711781224489-e96b9e8a-e792-4d3d-8504-31144398f6dc.jpg"
+          loading="lazy"
+        />
+      </ImageListItem>
+      <ImageListItem>
+        <img
+          srcSet="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711781224503-828779d1-5930-4e1e-851a-93ce7961651d.jpg"
+          src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1711781224503-828779d1-5930-4e1e-851a-93ce7961651d.jpg"
+          loading="lazy"
+        />
+      </ImageListItem>
+    </ImageList>
+  );
+}
+
+<StandardImageList />
+
 ### 阅读（Reading）
 
-在有一定的单词量的基础上（看到有专家说掌握了七千到八千的单词，阅读一些英文材料基本可以无障碍了），再通过大量的阅读的训练，不断加快我们看英文的速度和准确度。阅读的范围可以是各种技术的官方文档，或者社区（Medium.com、dev.to）。
+在有一定的单词量的基础上（看到有专家说掌握了七千到八千的单词，阅读一些英文材料基本可以无障碍了），再通过大量的阅读的训练，不断加快我们看英文的速度和准确度。阅读的范围可以是各种技术的官方文档，
+或者社区（Medium.com、dev.to）。
 
 ## 算法（Algorithm）
 
@@ -52,7 +91,9 @@ hide_sidebar: true
 
 ## 设计与审美（Design & Aesthetic）
 
-对于前端开发者来说，在构建产品的过程中是最接近用户的群体。我们要对产品的易用性和美观上有最大的责任。平时多从设计网站上多寻找灵感。
+对于前端开发者来说，在构建产品的过程中是最接近用户的群体。自然要对产品的易用性和美观上有最大的责任。所有平时我们要多从设计网站上寻找灵感，多积累经验，不断提升审美意识。
+
+这些网站应该是你经常浏览的：
 
 - 互联网上最大最专业的设计平台：[https://dribbble.com/](https://dribbble.com/)
 - 了解常见的网页布局和特效：[https://bentogrids.com/](https://bentogrids.com/)
@@ -69,13 +110,16 @@ hide_sidebar: true
 
 ### 写作（Write）
 
-撰写个人博客，如果是为了扩大影响力，也可在大的平台上发布自己的文章，这样比起个人站会有更大的曝光度。
+撰写个人博客，如果是为了扩大影响力，也可在大的平台上发布自己的文章，这样比起个人站会有更大的曝光度，更容易形成影响力。
 
 可能有的人会为写作素材发愁，但是我认为这是一种借口。你可以去读别人的文章然后写感想，也可以通过实现某个小软件写实现过程。
-类似于我的作品集 [https://spacexcode.com/docs/snippet/program](https://spacexcode.com/docs/snippet/program)，每一个小程序就是一篇文章。
+类似于我的作品集 [https://spacexcode.com/docs/snippet/program](https://spacexcode.com/docs/snippet/program)，我每实现一个小程序就写这样一篇
+文章介绍实现的过程和用到的一些技术方案。
 
 ### 作品（Side Project）
 
-开发个人的软件产品，可能是为了解决某个需求而开发的软件工具，也可能是基于为了练习刚学会的某个技术。
+学编程免不了要多实践，开发个人的软件产品，可能是为了解决某个需求而开发的软件工具，也可能是基于练习刚学会的某个技术。在实战中不断积累解决一些具体问题的开发方案。
 
-[https://boringcashcow.com](https://boringcashcow.com/) 这是一个关于收集洞察商机，开发出赚取巨大收益的小产品的案例网站。
+[BoringCashCow](https://boringcashcow.com) 这是一个关于收集洞察的商机，开发出小产品继而赚取巨大收益的案例网站。收藏它，在你没有灵感的时候它或许能帮助到你。
+
+还有一种方式，找到一些优秀的开源项目，以此为基石，不断给它添砖加瓦，这也是一种实践的方式 —— 二次创作。另外还能得到高手的指导和帮助。
