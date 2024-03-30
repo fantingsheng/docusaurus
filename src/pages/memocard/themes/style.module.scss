@@ -40,7 +40,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  
+
+    .mainText {
+      min-height: 20px;
+    }
+    .placeholder {
+      color: #A8ABB2;
+    }
     .tb {
       display: flex;
       justify-content: flex-end;

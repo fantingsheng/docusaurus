@@ -306,7 +306,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </Box>
       </Box>
       <Box sx={{ display: 'flex', gap: '20px' }}>
-        <Box className={styles.setItem} sx={{ width: '50%' }}>
+        <Box className={styles.setItem} sx={{ width: '40%' }}>
           <Typography variant="h5">外观</Typography>
           <FormControlLabel
             control={
@@ -320,9 +320,9 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
             label="深色主题"
           />
         </Box>
-        <Box className={styles.setItem} sx={{ width: '50%' }}>
-          <Typography variant="h5">字体及大小<span className={styles.fontInfos}>（仅中文）</span></Typography>
-          <Box sx={{ display: 'flex', gap: '10px' }}>
+        <Box className={styles.setItem} sx={{ width: '60%' }}>
+          <Typography variant="h5">字体及大小<span className={styles.fontInfos}>（中文）</span></Typography>
+          <Box sx={{ display: 'flex', gap: '5px' }}>
             <Select
               value={config.font}
               onChange={val => handleConfigChange(val.target.value, 'font')}
@@ -366,71 +366,121 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           </Box>
         </Box>
       </Box>
-      <Box sx={{ display: 'flex', gap: '20px' }}>
+      <Box sx={{ display: 'flex', gap: '30px' }}>
         <Box className={styles.setItem} sx={{ width: '50%' }}>
           <Typography variant="h5">透明度</Typography>
-          <Slider
-            value={config.opacity}
-            aria-label='Default'
-            min={0.1}
-            max={1}
-            step={0.05}
-            size='small'
-            valueLabelDisplay='auto'
-            onChange={e => handleConfigChange(e.target.value, 'opacity')}
-          />
+          <Grid container spacing={1} alignItems="center">
+            <Grid item>
+              <Typography variant="caption">0.1</Typography>
+            </Grid>
+            <Grid item xs sx={{ display: 'flex' }}>
+              <Slider
+                value={config.opacity}
+                aria-label='Default'
+                min={0.1}
+                max={1}
+                step={0.05}
+                size='small'
+                valueLabelDisplay='auto'
+                onChange={e => handleConfigChange(e.target.value, 'opacity')}
+              />
+            </Grid>
+            <Grid item>
+              <Typography variant="caption">1</Typography>
+            </Grid>
+          </Grid>
         </Box>
         <Box className={styles.setItem} sx={{ width: '50%' }}>
           <Typography variant="h5">圆角</Typography>
-          <Slider
-            value={config.borderRadius}
-            aria-label='Default'
-            min={1}
-            step={1}
-            max={40}
-            size='small'
-            valueLabelDisplay='auto'
-            onChange={e => handleConfigChange(e.target.value, 'borderRadius')}
-          />
+          <Grid container spacing={1} alignItems="center">
+            <Grid item>
+              <Typography variant="caption">0px</Typography>
+            </Grid>
+            <Grid item xs sx={{ display: 'flex' }}>
+              <Slider
+                value={config.borderRadius}
+                aria-label='Default'
+                min={0}
+                step={1}
+                max={40}
+                size='small'
+                valueLabelDisplay='auto'
+                onChange={e => handleConfigChange(e.target.value, 'borderRadius')}
+              />
+            </Grid>
+            <Grid item>
+              <Typography variant="caption">40px</Typography>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
-      <Box sx={{ display: 'flex', gap: '20px' }}>
+      <Box sx={{ display: 'flex', gap: '30px' }}>
         <Box className={styles.setItem} sx={{ width: '50%' }}>
           <Typography variant="h5">上下间距</Typography>
-          <Slider
-            value={config.vertPad}
-            aria-label='Default'
-            min={10}
-            max={100}
-            size='small'
-            valueLabelDisplay='auto'
-            onChange={e => handleConfigChange(e.target.value, 'vertPad')}
-          />
+          <Grid container spacing={1} alignItems="center">
+            <Grid item>
+              <Typography variant="caption">10px</Typography>
+            </Grid>
+            <Grid item xs sx={{ display: 'flex' }}>
+              <Slider
+                value={config.vertPad}
+                aria-label='Default'
+                min={10}
+                max={100}
+                size='small'
+                valueLabelDisplay='auto'
+                onChange={e => handleConfigChange(e.target.value, 'vertPad')}
+              />
+            </Grid>
+            <Grid item>
+              <Typography variant="caption">100px</Typography>
+            </Grid>
+          </Grid>
         </Box>
         <Box className={styles.setItem} sx={{ width: '50%' }}>
           <Typography variant="h5">左右间距</Typography>
-          <Slider
-            value={config.horizPad}
-            aria-label='Default'
-            min={10}
-            max={200}
-            size='small'
-            valueLabelDisplay='auto'
-            onChange={e => handleConfigChange(e.target.value, 'horizPad')}
-          />
+          <Grid container spacing={1} alignItems="center">
+            <Grid item>
+              <Typography variant="caption">10px</Typography>
+            </Grid>
+            <Grid item xs sx={{ display: 'flex' }}>
+              <Slider
+                value={config.horizPad}
+                aria-label='Default'
+                min={10}
+                max={200}
+                size='small'
+                valueLabelDisplay='auto'
+                onChange={e => handleConfigChange(e.target.value, 'horizPad')}
+              />
+            </Grid>
+            <Grid item>
+              <Typography variant="caption">200px</Typography>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
       <Box className={styles.setItem}>
         <Typography variant="h5">卡片宽度</Typography>
-        <Slider
-          value={config.width}
-          aria-label='Default'
-          min={400}
-          max={860}
-          size='small'
-          valueLabelDisplay='auto'
-          onChange={e => handleConfigChange(e.target.value, 'width')}
-        />
+        <Grid container spacing={1} alignItems="center">
+          <Grid item>
+            <Typography variant="caption">400px</Typography>
+          </Grid>
+          <Grid item xs sx={{ display: 'flex' }}>
+            <Slider
+              value={config.width}
+              aria-label='Default'
+              min={400}
+              max={860}
+              size='small'
+              valueLabelDisplay='auto'
+              onChange={e => handleConfigChange(e.target.value, 'width')}
+            />
+          </Grid>
+          <Grid item>
+            <Typography variant="caption">860px</Typography>
+          </Grid>
+        </Grid>
       </Box>
       <Box className={styles.setItem}>
         <Button variant="contained" sx={{ marginBottom: '10px' }} startIcon={<CopyAll />} onClick={onHandleCopyImg} disableElevation fullWidth>复制图片</Button>

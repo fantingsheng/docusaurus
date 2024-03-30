@@ -20,7 +20,8 @@ export default function ShadowTheme ({ config }) {
         <div className={clsx(styles.content, styles['font-' + font])} style={{ fontSize: fontSize + 'px' }}>
           <BrowserOnly>
           {
-            () => <div dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>")}}></div>
+            () => content.length ? <div className={styles.mainText} dangerouslySetInnerHTML={{__html: content.replace(/\n|\r\n/g, "<br/>") }}></div>
+            : <span className={styles.placeholder}>请输入有效的文字内容...</span>
           }
           </BrowserOnly>
           <div className={styles.tb}>

@@ -348,15 +348,25 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
       }
       <Box className={styles.setItem}>
         <Typography variant="h5">宽度</Typography>
-        <Slider
-          value={config.width}
-          aria-label='Default'
-          min={600}
-          max={1000}
-          size='small'
-          valueLabelDisplay='auto'
-          onChange={e => handleConfigChange(e.target.value, 'width')}
-        />
+        <Grid container spacing={2} alignItems="center">
+          <Grid item>
+            <Typography variant="caption">600px</Typography>
+          </Grid>
+          <Grid item xs sx={{ display: 'flex' }}>
+            <Slider
+              value={config.width}
+              aria-label='Default'
+              min={600}
+              max={1000}
+              size='small'
+              valueLabelDisplay='auto'
+              onChange={e => handleConfigChange(e.target.value, 'width')}
+            />
+          </Grid>
+          <Grid item>
+            <Typography variant="caption">1000px</Typography>
+          </Grid>
+        </Grid>
       </Box>
       <Box className={styles.setItem}>
         <Typography variant="h5">宽高比</Typography>
