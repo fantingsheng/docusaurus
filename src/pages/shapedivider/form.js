@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { FormControl, Avatar, SpeedDial, SpeedDialAction, Select,
-  IconButton, MenuItem, Switch, Slider, Card, CardContent } from '@mui/material';
+  IconButton, MenuItem, Switch, Slider, Card, CardContent, Grid, Typography } from '@mui/material';
 import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import BrowserWindow from '@site/src/components/BrowserWindow'
@@ -85,10 +85,10 @@ export default function Form () {
       <div className='row'>
         <div className='col col--8 col--offset-2'>
           <Card variant="outlined" className={styles.formWrap}>
-            <CardContent sx={{ position: 'relative', overflow: 'visible', paddingTop: '20px', paddingBottom: '40px !important' }}>
-              <div className='row padding-horiz--md'>
-                <div className='col col--4 margin-top--md'>
-                  <div className={styles.label}>形状</div>
+            <CardContent sx={{ position: 'relative', overflow: 'visible', padding: '20px 20px 40px!important' }}>
+              <Grid container spacing={{ xs: 2, md: 3, lg: 4 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                <Grid item xs={2} md={4}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: '600' }}>形状</Typography>
                   <FormControl variant='standard' fullWidth>
                     <Select
                       value={formData.shape}
@@ -100,59 +100,79 @@ export default function Form () {
                       ))}
                     </Select>
                   </FormControl>
-                </div>
-                <div className='col col--4 margin-top--md'>
-                  <div className={styles.label}>颜色</div>
+                </Grid>
+                <Grid item xs={2} md={4}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: '600' }}>颜色</Typography>
                   <div style={{ display: 'flex' }}>
                     <ColorPicker value={formData.color} onChange={val => handleChange(`#${val.hex}`, 'color')} fullWidth />
                   </div>
-                </div>
-                <div className='col col--2 margin-top--md'>
-                  <div className={styles.label}>翻转</div>
+                </Grid>
+                <Grid item xs={2} md={2}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: '600' }}>翻转</Typography>
                   <Switch
                     value={formData.flip}
                     disabled={flipDisabled}
                     onChange={e => handleChange(e.target.checked, 'flip')}
                     inputProps={{ 'aria-label': 'controlled' }}
                   />
-                </div>
-                <div className='col col--2 margin-top--md'>
-                  <div className={styles.label}>倒转</div>
+                </Grid>
+                <Grid item xs={2} md={2}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: '600' }}>倒转</Typography>
                   <Switch
                     value={formData.invert}
                     disabled={invertDisabled}
                     onChange={e => handleChange(e.target.checked, 'invert')}
                     inputProps={{ 'aria-label': 'controlled' }}
                   />
-                </div>
-                <div className='col col--6 margin-top--md'>
-                  <div className={styles.label}>高度（px）</div>
-                  <Slider
-                    value={formData.height}
-                    aria-label='Default'
-                    min={0}
-                    max={500}
-                    valueLabelDisplay='auto'
-                    size='small'
-                    onChange={e => handleChange(e.target.value, 'height')}
-                    />
-                </div>
-                <div className='col col--6 margin-top--md'>
-                  <div className={styles.label}>宽度（%）</div>
-                  <Slider
-                    value={formData.width}
-                    aria-label='Default'
-                    min={100}
-                    max={300}
-                    size='small'
-                    valueLabelDisplay='auto'
-                    onChange={e => handleChange(e.target.value, 'width')}
-                  />
-                </div>
-              </div>
+                </Grid>
+                <Grid item xs={2} md={6}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: '600' }}>高度（px）</Typography>
+                  <Grid container spacing={2} alignItems="center">
+                    <Grid item>
+                      <Typography variant="caption">0px</Typography>
+                    </Grid>
+                    <Grid item xs sx={{ display: 'flex' }}>
+                      <Slider
+                        value={formData.height}
+                        aria-label='Default'
+                        min={0}
+                        max={500}
+                        valueLabelDisplay='auto'
+                        size='small'
+                        onChange={e => handleChange(e.target.value, 'height')}
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="caption">500px</Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={2} md={6}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: '600' }}>宽度（%）</Typography>
+                  <Grid container spacing={2} alignItems="center">
+                    <Grid item>
+                      <Typography variant="caption">100%</Typography>
+                    </Grid>
+                    <Grid item xs sx={{ display: 'flex' }}>
+                      <Slider
+                        value={formData.width}
+                        aria-label='Default'
+                        min={100}
+                        max={300}
+                        size='small'
+                        valueLabelDisplay='auto'
+                        onChange={e => handleChange(e.target.value, 'width')}
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="caption">300%</Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
               <div className={styles.downloadBtn}>
                 <IconButton onClick={downloadSvg}>
-                  <CloudDownloadOutlinedIcon sx={{ fontSize: 30 }} color='primary' />
+                  <CloudDownloadOutlinedIcon sx={{ fontSize: 28 }} color='primary' />
                 </IconButton>
               </div>
             </CardContent>
@@ -191,29 +211,29 @@ export default function Form () {
                     }
                 </svg>
               </div>
+              <SpeedDial
+                ariaLabel="背景切换"
+                sx={{ 
+                  position: 'absolute',
+                  bottom: 50,
+                  right: 40,
+                  '& > button': { background: 'linear-gradient(to right, #ec77ab 0%, #7873f5 100%)' } }}
+                size='small'
+                icon={<WallpaperIcon />}
+              >
+                {actions.map((action, index) => (
+                  <SpeedDialAction
+                    key={action.name}
+                    icon={<Avatar src={action.icon} />}
+                    tooltipTitle={action.name}
+                    onClick={() => setBg(index + 1)}
+                  />
+                ))}
+              </SpeedDial>
             </div>
           </BrowserWindow>
         </div>
       </div>
-      <SpeedDial
-        ariaLabel="背景切换"
-        sx={{ 
-          position: 'fixed',
-          bottom: 50,
-          right: 20,
-          '& > button': { background: 'linear-gradient(to right, #ec77ab 0%, #7873f5 100%)' } }}
-        size='small'
-        icon={<WallpaperIcon />}
-      >
-        {actions.map((action, index) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={<Avatar src={action.icon} />}
-            tooltipTitle={action.name}
-            onClick={() => setBg(index + 1)}
-          />
-        ))}
-      </SpeedDial>
     </div>
   )
 }

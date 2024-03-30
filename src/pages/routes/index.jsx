@@ -5,6 +5,8 @@ import Head from '@docusaurus/Head';
 import { styled } from '@mui/material/styles';
 import { Box, Drawer, IconButton, FormControl, MenuItem, InputLabel, Select, CircularProgress } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
+import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import { fetchRoute } from '@site/src/utils/route';
 import MapContainer from './mapbox';
 import Chart from './chart';
@@ -112,10 +114,11 @@ export default function ({ size = "default" }) {
             <div style={{ paddingTop: '0.75rem' }}>
               <nav className={styles.nav}>
                 <Link to='/'><img src='/img/logo.svg' width='160' alt="Spacexcode's logo" /></Link>
+                <Link to='/photo'><WallpaperIcon sx={{ color: "rgb(30, 136, 229)" }} /></Link>
               </nav>
               <header className={styles.header}>
                 <h2>城市足迹</h2>
-                <p>记录下自己在所住城市的一些深度走、跑步、骑行过的路径。👣</p>
+                <p>记录下自己在所住城市的一些深度行走、慢跑、骑行过的路径。👣</p>
               </header>
               <section className={styles.routerList}>
                 <div className={styles.filterNav}>
@@ -184,8 +187,8 @@ export default function ({ size = "default" }) {
               </div>
               <div className={styles.intro}>
                 <ul>
-                  <li>路程：{parseFloat(routeData?.distance.toFixed(2))} Km</li>
-                  <li>海拔：{parseFloat(routeData?.elevation.toFixed(2))} m</li>
+                  <li><span>路程：</span>{parseFloat(routeData?.distance.toFixed(2))} Km</li>
+                  <li><span>海拔：</span>{parseFloat(routeData?.elevation.toFixed(2))} m</li>
                 </ul>
                 <p>{getRouteIntro()}</p>
               </div>
