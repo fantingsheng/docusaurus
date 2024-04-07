@@ -31,6 +31,7 @@
     height: 50px;
     line-height: 50px;
     font-size: 1.4rem;
+    font-weight: 700;
   }
 
   ul {
@@ -46,7 +47,14 @@
       line-height: 50px;
       padding: 0 15px;
       margin: 0 5px;
-      font-size: 1rem;
+      font-size: 0.8rem;
+
+      a {
+        color: inherit;
+        &.on {
+          color: var(--ifm-link-color)
+        }
+      }
     }
   }
 }

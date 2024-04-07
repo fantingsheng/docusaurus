@@ -9,7 +9,7 @@ export function NavBgPage (props) {
         <div className={clsx(styles.navWrapper, props.dot ? styles.dotBg : '')}>
           <div className={styles.logo}>Logo</div>
           <ul>
-            <li><a>首页</a></li>
+            <li><a className={styles.on}>首页</a></li>
             <li><a>文档</a></li>
             <li><a>新闻</a></li>
           </ul>

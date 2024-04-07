@@ -6,9 +6,47 @@ enable_comment: true
 ---
 
 import styles from './style.module.scss';
+import { Flexform, FlexBlock } from './index';
 
 Flexbox 是一种非常强大的布局模式。当我们真正了解它的工作原理时，我们可以很方便地构建自动响应的动态布局。
 
 比如，你可以体验下下面这样一个演示组件：
+
+<Flexform />
+
+在不使用媒体或容器查询，不设置任何的断点的情况下，使用流式布局的原理来达到布局上的无缝切换。
+
+下面是相关的样式代码：
+
+```css
+form {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.name {
+  flex-grow: 1;
+  flex-basis: 160px;
+}
+.email {
+  flex-grow: 3;
+  flex-basis: 200px;
+}
+button {
+  flex-grow: 1;
+  flex-basis: 80px;
+}
+```
+
+在接下来的内容中，我们将针对 Flexbox 布局中的一些特性配合动态演示进行讲解，一步一步帮你建立关于响应式
+布局的心智模型。为今后的深入学习奠定一定的基础。
+
+## Flexbox 布局介绍
+
+<FlexBlock />
+
+
+
 
 
