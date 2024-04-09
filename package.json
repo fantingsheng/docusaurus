@@ -15,15 +15,15 @@
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
-    "@docusaurus/core": "^3.1.1",
-    "@docusaurus/plugin-ideal-image": "^3.1.1",
-    "@docusaurus/plugin-sitemap": "^3.1.1",
-    "@docusaurus/preset-classic": "^3.1.1",
-    "@docusaurus/theme-live-codeblock": "^3.1.1",
-    "@docusaurus/theme-mermaid": "^3.1.1",
+    "@docusaurus/core": "^3.2.1",
+    "@docusaurus/plugin-ideal-image": "^3.2.1",
+    "@docusaurus/plugin-sitemap": "^3.2.1",
+    "@docusaurus/preset-classic": "^3.2.1",
+    "@docusaurus/theme-live-codeblock": "^3.2.1",
+    "@docusaurus/theme-mermaid": "^3.2.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@giscus/react": "^2.2.8",
+    "@giscus/react": "^2.4.0",
     "@mapbox/togeojson": "^0.16.2",
     "@mdx-js/react": "^3.0.0",
     "@mui/icons-material": "^5.14.16",
@@ -52,8 +52,8 @@
     "xmldom": "^0.6.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.1.1",
-    "@docusaurus/types": "^3.1.1"
+    "@docusaurus/module-type-aliases": "^3.2.1",
+    "@docusaurus/types": "^3.2.1"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
