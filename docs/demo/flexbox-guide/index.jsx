@@ -62,14 +62,15 @@ export function FlexBlock () {
         <Typography variant="h5" sx={{ fontSize: '1rem' }}>布局方式：</Typography>
         <RadioGroup
           sx={{ display: 'flex', flexDirection: 'row' }}
-          size="small"
           value={display}
           onChange={(e) => setDisplay(e.target.value)}
         >
-          <FormControlLabel value="block" control={<Radio />} size="small" label="block" />
-          <FormControlLabel value="flex" control={<Radio />} size="small" label="flex" />
+          <FormControlLabel value="block" control={<Radio size="small" />} label="block" />
+          <FormControlLabel value="flex" control={<Radio size="small" />} label="flex" />
         </RadioGroup>
       </Box>
     </div>
   )
 }
+
+
