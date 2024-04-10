@@ -1,0 +1,62 @@
+---
+slug: array-function
+title: 数组的常用方法解析
+authors: [fants]
+tags: [数组, 迭代, 动态演示]
+hide_table_of_contents: true
+draft: true
+enable_comment: true
+enable_adsense: true
+hide_sidebar: true
+---
+
+写业务代码写多了发现大部分时间都在处理各种格式的数据，而尤以数组和对象类型的数据为主。数据来源又分为从云端接口获取的数据、本地表单提交的数据
+或直接使用 `Sql` 语句从数据库中读取的数据，甚至还有从静态文件中 `fetch` 的数据。不管数据的来源如何，我们的重心永远都是在把源数据处理成最终符合我们需求的数据。
+
+import ReactJson from 'react-json-view';
+
+<ReactJson displayObjectSize={false} enableClipboard={false} src={[
+  {
+    id: 1, name: 'a', children: [
+      { id: 101, name: 'a1', children: null }
+    ]
+  },
+  {
+    id: 2, name: 'b', children: [
+      {
+        id: 201, name: 'b1', children: [
+          { id: 211, name: 'b2', children: null }
+        ]
+      }
+    ]
+  }
+]} />
+
+
+```js
+const arrayTreeAddLevel = (array, levelName = 'level', childrenName = 'children') => {
+  if (!Array.isArray(array)) return []
+    const recursive = (array, level = 0) => {
+    level++
+    return array.map(v => {
+      v[levelName] = level
+      const child = v[childrenName]
+      if (child && child.length) recursive(child, level)
+        return v
+      })
+    }
+  return recursive(array)
+}
+```
+
+数组的常用方法有哪些？
+
+`reduce`，`map`，`filter`，``
+
+## 去重
+
+## 数组对象属性变换
+
+## 树形（层级）结构拍平
+
+## 构建树形结构
