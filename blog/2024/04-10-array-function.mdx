@@ -39,16 +39,16 @@ import JsonView from '@site/src/components/JsonView';
 
 ```js showLineNumbers
 const arrayTreeAddLevel = (array, levelName = 'level', childrenName = 'children') => {
-  if (!Array.isArray(array)) return []
-    const recursive = (array, level = 0) => {
-    level++
+  if (!Array.isArray(array)) return [];
+  const recursive = (array, level = 0) => {
+    level++;
     return array.map(v => {
-      v[levelName] = level
-      const child = v[childrenName]
-      if (child && child.length) recursive(child, level)
-        return v
-      })
-    }
+      v[levelName] = level;
+      const child = v[childrenName];
+      if (child && child.length) recursive(child, level);
+      return v;
+    })
+  }
   return recursive(array)
 }
 ```
