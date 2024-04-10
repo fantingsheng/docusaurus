@@ -17,9 +17,9 @@ hide_sidebar: true
 
 <!--truncate-->
 
-import ReactJson from 'react-json-view';
+import JsonView from '@site/src/components/JsonView';
 
-<ReactJson displayObjectSize={false} enableClipboard={false} src={[
+<JsonView enableClipboard={false} src={[
   {
     id: 1, name: 'a', children: [
       { id: 101, name: 'a1', children: null }
@@ -37,7 +37,7 @@ import ReactJson from 'react-json-view';
 ]} />
 
 
-```js
+```js showLineNumbers
 const arrayTreeAddLevel = (array, levelName = 'level', childrenName = 'children') => {
   if (!Array.isArray(array)) return []
     const recursive = (array, level = 0) => {
@@ -55,7 +55,7 @@ const arrayTreeAddLevel = (array, levelName = 'level', childrenName = 'children'
 
 数组的常用方法有哪些？
 
-`reduce`，`map`，`filter`，``
+`reduce`，`map`，`filter`
 
 ## 去重
 

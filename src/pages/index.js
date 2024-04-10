@@ -34,10 +34,10 @@ function SearchBar () {
   }
   return (
     <Paper
-      sx={{ p: '2px 2px 0', display: 'flex', alignItems: 'center', width: '100%', margin: '0 auto' }}
+      sx={{ p: '2px 2px 0', display: 'flex', borderRadius: '999999px', alignItems: 'center', width: '100%', margin: '0 auto' }}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 2, flex: 1 }}
         className={shake ? styles.searchInputShake : ''}
         placeholder='输入你想搜索的任何内容'
         value={searchVal}
