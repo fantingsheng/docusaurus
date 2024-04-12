@@ -96,7 +96,7 @@ export default function HomepageCodeBlock() {
           <div ref={blockRef}>
             {/* showLineNumbers 显示行号 metastring='{8}' */}
             <CodeBlock
-              title='本代码段由 ChatGPT 生成'
+              title='🤖 本代码段由 ChatGPT 生成 '
               language="jsx"
             >
               { MagicWriter() }
