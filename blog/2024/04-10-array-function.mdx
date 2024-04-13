@@ -1,6 +1,6 @@
 ---
 slug: array-function
-title: 数组的常用方法解析
+title: 日常开发中树形结构数据的几种处理方式
 authors: [fants]
 tags: [数组, 迭代, 动态演示]
 hide_table_of_contents: true
@@ -11,15 +11,17 @@ hide_sidebar: true
 ---
 
 写业务代码写多了发现大部分时间都在处理各种格式的数据，而尤以数组和对象类型的数据为主。数据主要来源又分为：从云端接口获取的数据、本地表单提交的数据
-或直接使用 `Sql` 语句从数据库中读取的数据，甚至还有从静态文件中 `fetch` 的数据。
+或直接使用 `Sql` 语句从数据库中读取的数据，甚至还有从静态文件中通过 `fetch` 请求到的文本转化为特定格式的数据。
 
-不管数据的来源如何，我们的重心永远都是在把源数据处理成最终符合我们需求的数据。
+不管数据的来源如何，我们的工作重心永远都是在把源数据处理成最终符合我们需求的数据。
 
 <!--truncate-->
 
+下面展示的是一个嵌套的对象数组结构的数据，通常在渲染菜单的时候用到。
+
 import JsonView from '@site/src/components/JsonView';
 
-<JsonView enableClipboard={false} src={[
+export const treeData = [
   {
     id: 1, name: 'a', children: [
       { id: 101, name: 'a1', children: null }
@@ -34,8 +36,13 @@ import JsonView from '@site/src/components/JsonView';
       }
     ]
   }
-]} />
+]
 
+<JsonView enableClipboard={false} src={treeData} />
+
+## 树形结构增加属性
+
+如果我们要给菜单的每一项增加一个层级的属性，则需要通过递归的方式，实现下面这样一个构造的方法：
 
 ```js showLineNumbers
 const arrayTreeAddLevel = (array, levelName = 'level', childrenName = 'children') => {
@@ -53,14 +60,93 @@ const arrayTreeAddLevel = (array, levelName = 'level', childrenName = 'children'
 }
 ```
 
-数组的常用方法有哪些？
+然后，我们将树形结构的数据通过参数传入调用后：
 
-`reduce`，`map`，`filter`
+```js showLineNumbers
+arrayTreeAddLevel(treeData);
+```
 
-## 去重
+数据经过处理后，输出如下：
 
-## 数组对象属性变换
+export const arrayTreeAddLevel = (array, levelName = 'level', childrenName = 'children') => {
+  if (!Array.isArray(array)) return [];
+  const recursive = (array, level = 0) => {
+    level++;
+    return array.map(v => {
+      v[levelName] = level;
+      const child = v[childrenName];
+      if (child && child.length) recursive(child, level);
+      return v;
+    })
+  }
+  return recursive(array)
+}
 
-## 树形（层级）结构拍平
+<JsonView enableClipboard={false} src={arrayTreeAddLevel(treeData)} />
 
-## 构建树形结构
+## 树形结构拍平
+
+如果是将树形结构的数据拍平，返回一个一维数组呢？
+
+```js showLineNumbers
+export function flatTree(data, children?) {
+  const arrList = [];
+  const config = {
+    childrenList: children || "children"
+  };
+
+  for (const d of data) {
+    adaptToChildrenList(d);
+  }
+
+  function adaptToChildrenList(o) {
+    const obj = Object.entries(o).reduce(
+      (a, [k, v]) => (k === config.childrenList ? a : ((a[k] = v), a)),
+      {}
+    );
+    arrList.push(obj);
+    if (o[config.childrenList] && o[config.childrenList].length > 0) {
+      for (const l of o[config.childrenList]) {
+        adaptToChildrenList(l);
+      }
+    }
+  }
+  return arrList;
+}
+```
+
+export const flatTree = (data, children) => {
+  const arrList = [];
+  const config = {
+    childrenList: children || "children"
+  };
+
+  for (const d of data) {
+    adaptToChildrenList(d);
+  }
+
+  function adaptToChildrenList(o) {
+    const obj = Object.entries(o).reduce(
+      (a, [k, v]) => (k === config.childrenList ? a : ((a[k] = v), a)),
+      {}
+    );
+    arrList.push(obj);
+    if (o[config.childrenList] && o[config.childrenList].length > 0) {
+      for (const l of o[config.childrenList]) {
+        adaptToChildrenList(l);
+      }
+    }
+  }
+  return arrList;
+}
+
+通过以上的函数，成功返回了我们想要的数据：
+
+<JsonView enableClipboard={false} src={flatTree(treeData)} />
+
+
+
+
+
+
+
