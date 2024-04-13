@@ -143,7 +143,8 @@ const config = {
               { label: '封面图生成器', to: '/coverview' },
               { label: '文字卡片', to: '/memocard' },
               { label: '城市印象', to: '/photo' },
-              { label: '音乐播放器', to: '/player' }
+              { label: '音乐播放器', to: '/player' },
+              { label: '我在用', to: '/uses' }
             ],
           },
           {
@@ -153,7 +154,9 @@ const config = {
               { label: '知乎', href: 'https://www.zhihu.com/people/timfan' },
               { label: '掘金', href: 'https://juejin.cn/user/1372604177862088' },
               { label: '开发者头条', href: 'https://toutiao.io/u/578387' },
-              { label: 'CSDN', href: 'https://blog.csdn.net/u013919171' }
+              { label: 'CSDN', href: 'https://blog.csdn.net/u013919171' },
+              { label: 'Medium', href: 'https://medium.com/@fants0230' },
+              { label: 'DEV', href: 'https://dev.to/fantingsheng' }
             ],
           },
           {
