@@ -1,10 +1,9 @@
 ---
-slug: array-function
+slug: tree-some-method
 title: 日常开发中树形结构数据的几种处理方式
 authors: [fants]
 tags: [数组, 迭代, 动态演示]
 hide_table_of_contents: true
-draft: true
 enable_comment: true
 enable_adsense: true
 hide_sidebar: true
@@ -17,9 +16,11 @@ hide_sidebar: true
 
 <!--truncate-->
 
-下面展示的是一个嵌套的对象数组结构的数据，通常在渲染菜单的时候用到。
+下面展示的是一个嵌套的对象数组结构的数据，通常在渲染菜单或创建多层分类的时候用到。
 
+import { useState } from 'react';
 import JsonView from '@site/src/components/JsonView';
+import { Switch, Box, Typography, FormControlLabel } from "@mui/material"
 
 export const treeData = [
   {
@@ -144,8 +145,80 @@ export const flatTree = (data, children) => {
 
 <JsonView enableClipboard={false} src={flatTree(treeData)} />
 
+## 按照某个字段排序
 
+在菜单的使用场景中，我们需要对同级的数组按照某个字段进行排序：
 
+```js showLineNumbers
+function sortTree(data, attr = 'rank') {
+  const menus = data.sort(
+    (a, b) => {
+      return a[attr] - b[attr];
+    }
+  );
+  menus.forEach(
+    v => v.children && (v.children = sortTree(v.children))
+  );
+  return menus;
+}
+```
+
+通过切换按钮，可直观观察排序前后的数据变化。
+
+export const sortTree = (data, attr = 'rank') => {
+  const menus = data.sort(
+    (a, b) => {
+      return a[attr] - b[attr];
+    }
+  );
+  menus.forEach(
+    v => v.children && (v.children = sortTree(v.children))
+  );
+  return menus;
+}
+
+export const ShowTreeSort = () => {
+  const [sort, setSort] = useState(false);
+  const originTree = [
+    {
+      id: 1, name: 'a', rank: 3, children: [
+        { id: 101, name: 'a1', rank: 4, children: null },
+        { id: 102, name: 'a2', rank: 2, children: null }
+      ]
+    },
+    {
+      id: 2, name: 'b', rank: 2, children: [
+        {
+          id: 201, name: 'b1', rank: 2, children: [
+            { id: 211, name: 'b2', rank: 1, children: null }
+          ]
+        }
+      ]
+    }
+  ];
+
+  const data = sort ? sortTree(originTree) : originTree;
+
+  return (
+    <div>
+      <Box sx={{ display: 'flex' }}>
+          <FormControlLabel
+            control={
+              <Switch
+                value={sort}
+                onChange={e => setSort(e.target.checked)}
+                inputProps={{ 'aria-label': 'controlled' }}
+              />
+            }
+            label="开启排序"
+          />
+        </Box>
+      <JsonView enableClipboard={false} src={data} />
+    </div>
+  )
+}
+
+<ShowTreeSort />
 
 
 
