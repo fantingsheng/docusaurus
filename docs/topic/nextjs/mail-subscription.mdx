@@ -4,4 +4,32 @@ sidebar_position: 7
 
 # 邮件订阅
 
-创作中。。。
+import { useState } from 'react';
+import { Box, Button, TextField, Typography } from "@mui/material"
+
+export const Flexform = () => {
+  const [width, setWidth] = useState(400)
+  return (
+    <Box sx={{ margin: '20px 0', padding: '20px', backgroundColor: '#f5f6f9', textAlign: 'center' }}>
+      <Typography variant="h5" sx={{ marginBottom: '10px' }}>邮件订阅</Typography>
+      <Box
+        sx={{ width: width + 'px', margin: '0 auto', display: 'flex', 'align-items': 'flex-end', gap: '15px' }}>
+        <Box sx={{ flexGrow: 1 }}>
+          <TextField
+            placeholder='fants0230@gmail.com'
+            size='small'
+            fullWidth
+          />
+        </Box>
+        <Box sx={{ flexGrow: 1 }}>
+          <Button variant="contained" fullWidth>提交</Button>
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
+<Flexform />
+
+
+
