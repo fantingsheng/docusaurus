@@ -487,6 +487,14 @@ export function FrequentQuestion () {
           </ul>
         </AccordionDetails>
       </Accordion>
+      <Accordion className={styles.accordion} expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel5bh-content">
+          <Typography>找不到满足自己的需求的主题模版？</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>如果提供的模版满足不了您的图片要求，在下面的评论区提出你的意见，上传参考图片，我会酌情考虑开发相应的模板。</Typography>
+        </AccordionDetails>
+      </Accordion>
     </>
   )
 }
