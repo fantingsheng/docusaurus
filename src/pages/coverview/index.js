@@ -468,7 +468,7 @@ export function FrequentQuestion () {
       </Accordion>
       <Accordion className={styles.accordion} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4bh-content">
-          <Typography>我找不到好看的背景图和文章很搭的图标怎么办，有推荐的网站吗？</Typography>
+          <Typography>找不到好看的背景图和文章很搭的图标怎么办，有推荐的网站吗？</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>👉 免费的图片素材网站：</Typography>
