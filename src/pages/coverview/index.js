@@ -492,7 +492,8 @@ export function FrequentQuestion () {
           <Typography>找不到满足自己的需求的主题模版？</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>如果提供的模版满足不了您的图片要求，在下面的评论区提出你的意见，上传参考图片，我会酌情考虑开发相应的模板。</Typography>
+          <Typography>如果提供的模版满足不了您的图片要求，在下面的评论区提出你的意见，上传参考图片，如果合理我会考虑开发相应的模板。<br />
+          同时我也希望凭借大家的智慧，尽量丰富这个工具的主题模板。</Typography>
         </AccordionDetails>
       </Accordion>
     </>
