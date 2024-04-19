@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import gcoord from 'gcoord';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import styles from './style.module.scss';
+import { Skeleton } from '@mui/material';
 
 export default function MapContainer({ routeData, lineColor }) {
   let map = null;
   const [amap, setAmap] = useState();
   const [mapImpl, setMapImpl] = useState();
+  const [loading, setLoading] = useState(true);
 
   function DrawRouteLine (map, AMap, lineColor) {
     const originLnglats = routeData.geoJson.features[0].geometry.coordinates;
@@ -49,21 +51,26 @@ export default function MapContainer({ routeData, lineColor }) {
         plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
       })
         .then((AMap) => {
+          setLoading(false)
           setAmap(AMap)
-          map = new AMap.Map("container", {
-            viewMode: "3D", // 是否为3D地图模式
-            zoom: 14, // 初始化地图级别
-            center: [120.325121, 31.498017], // 初始化地图中心点位置
-          });
-          setMapImpl(map);
-          const marker = new AMap.Marker({
-            position: new AMap.LngLat(120.325121, 31.498017),
-            content: '<div class="custom-content-marker">' +
-            '   <img src="/img/poi-marker-red.png" width="30">' +
-            '</div>',
-            offset: new AMap.Pixel(-50, -15)
+          
+          setTimeout(() => {
+            map = new AMap.Map("container", {
+              viewMode: "3D", // 是否为3D地图模式
+              zoom: 14, // 初始化地图级别
+              center: [120.325121, 31.498017], // 初始化地图中心点位置
+            });
+            setMapImpl(map);
+            const marker = new AMap.Marker({
+              position: new AMap.LngLat(120.325121, 31.498017),
+              content: '<div class="custom-content-marker">' +
+              '   <img src="/img/poi-marker-red.png" width="30">' +
+              '</div>',
+              offset: new AMap.Pixel(-50, -15)
+            })
+            map.add(marker);
           })
-          map.add(marker);
+          
         })
         .catch((e) => {
           console.log(e);
@@ -82,10 +89,12 @@ export default function MapContainer({ routeData, lineColor }) {
   }, [mapImpl, routeData]);
 
   return (
-    <div
-      id="container"
-      className={styles.container}
-      style={{ height: "100%", width: "100%" }}
-    ></div>
+    loading ? 
+      (<Skeleton animation="wave" variant="rectangular" sx={{ bgcolor: 'grey.300' }} width='100%' height='100%' />) :
+      (<div
+        id="container"
+        className={styles.container}
+        style={{ height: "100%", width: "100%" }}
+      />)
   );
 }

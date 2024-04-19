@@ -130,7 +130,7 @@ const config = {
             items: [
               { label: '个人主页', to: 'https://blog.i-fanr.com/' },
               { label: '前端开发笔记', to: 'https://i-fanr.com/' },
-              { label: '悦己工作室', to: 'https://yugere.com' }
+              { label: '悦己工作室', to: 'https://yugere.com' },
             ],
           },
           {
