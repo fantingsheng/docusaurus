@@ -5,12 +5,12 @@ import Head from '@docusaurus/Head';
 import { styled } from '@mui/material/styles';
 import { Box, Drawer, IconButton, FormControl, MenuItem, InputLabel, Select, CircularProgress } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import { fetchRoute } from '@site/src/utils/route';
 import MapContainer from './mapbox';
 import Chart from './chart';
 import RouteBox from './routebox';
+import { MapProvider } from './mapprovider';
 
 const drawerHeight = 324;
 
@@ -108,6 +108,7 @@ export default function ({ size = "default" }) {
         <meta name="title" content='我的足迹' />
         <meta name="keywords" content='足迹,跑步,路线,运动轨迹,Strava,城市骑行' />
       </Head>
+      <MapProvider>
       <Box sx={{ display: 'flex', flexDirection: 'column', height: size === 'small' ? '500px' : '100vh', width: '100%', backgroundColor: 'rgb(230, 228, 224)' }} className={styles[size]}>
         <Main open={open}>
           <aside className={styles.aside}>
@@ -196,6 +197,7 @@ export default function ({ size = "default" }) {
           </div>
         </Drawer>
       </Box>
+      </MapProvider>
     </>
   )
 }

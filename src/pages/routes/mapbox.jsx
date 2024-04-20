@@ -3,12 +3,16 @@ import gcoord from 'gcoord';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import styles from './style.module.scss';
 import { Skeleton } from '@mui/material';
+import { useMapContext } from './mapprovider';
 
 export default function MapContainer({ routeData, lineColor }) {
   let map = null;
   const [amap, setAmap] = useState();
   const [mapImpl, setMapImpl] = useState();
   const [loading, setLoading] = useState(true);
+  const [hoverPointerMarker, setHoverPointerMarker] = useState();
+
+  const { hoverCoordinate } = useMapContext();
 
   function DrawRouteLine (map, AMap, lineColor) {
     const originLnglats = routeData.geoJson.features[0].geometry.coordinates;
@@ -70,10 +74,19 @@ export default function MapContainer({ routeData, lineColor }) {
       icon: endIcon,
       offset: new AMap.Pixel(-13, -30)
     });
+
+    const hoverPointMarker = new AMap.Marker({
+      position: hoverCoordinate ? new AMap.LngLat(hoverCoordinate[0], hoverCoordinate[1]) : null,
+      content: `<div style="width: 12px;height:12px;padding: 3px;border-radius: 50%;background-color: ${lineColor}"><div style="width: 6px;height:6px;background-color:#fff;border-radius:50%;"></div></div>`,
+      offset: new AMap.Pixel(-6, -6)
+    });
+    setHoverPointerMarker(hoverPointMarker);
+    
     map.clearMap();
     map.add(polyline);
     map.add(startMarker);
     map.add(endMarker);
+    map.add(hoverPointMarker);
     map.setZoom(14);
   }
 
@@ -126,6 +139,19 @@ export default function MapContainer({ routeData, lineColor }) {
       DrawRouteLine(mapImpl, amap, lineColor);
     }
   }, [mapImpl, routeData]);
+
+  useEffect(() => {
+    if (hoverPointerMarker) {
+      if (hoverCoordinate) {
+        hoverPointerMarker.show()
+        const poi = gcoord.transform([hoverCoordinate[0], hoverCoordinate[1]], gcoord.WGS84, gcoord.GCJ02);
+        hoverPointerMarker.setPosition(new AMap.LngLat(poi[0], poi[1]));
+      } else {
+        hoverPointerMarker.setPosition(null)
+      }
+    }
+    return () => hoverPointerMarker && hoverPointerMarker.hide()
+  }, [hoverPointerMarker, hoverCoordinate])
 
   return (
     loading ? 

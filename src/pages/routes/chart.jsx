@@ -1,12 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import styles from './style.module.scss';
+import { useMapContext } from './mapprovider';
 
 export default function Chart({ coordinates, width, height }) {
   const svgRef = useRef();
 
   const data = coordinates?.map(x => ({ distance: x[3], elevation: x[2], coordinates: [x[0], x[1]] }))
 
+  const { setHoverCoordinate } = useMapContext()
   const [hoverX, setHoverX] = useState(null)
   const [hoverDistance, setHoverDistance] = useState(null)
   const [hoverElevation, setHoverElevation] = useState(null)
@@ -103,7 +105,7 @@ export default function Chart({ coordinates, width, height }) {
       Math.abs(curr.distance - distance) < Math.abs(prev.distance - distance) ? curr : prev,
     )
 
-    // setHoverCoordinate(coordinates)
+    setHoverCoordinate(coordinates)
     setHoverX(x)
     setHoverDistance(Math.round(distance * 100) / 100)
     setHoverElevation(Math.floor(elevation))
@@ -112,7 +114,7 @@ export default function Chart({ coordinates, width, height }) {
   const handleMouseLeave = () => {
     setHoverX(null)
     setHoverDistance(null)
-    // setHoverCoordinate(null)
+    setHoverCoordinate(null)
   }
 
   function HoverText({ y, children }) {
