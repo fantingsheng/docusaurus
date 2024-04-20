@@ -2,8 +2,10 @@ import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import styles from './style.module.scss';
 
-export default function Chart({ data, width, height }) {
+export default function Chart({ coordinates, width, height }) {
   const svgRef = useRef();
+
+  const data = coordinates?.map(x => ({ distance: x[3], elevation: x[2], coordinates: [x[0], x[1]] }))
 
   const [hoverX, setHoverX] = useState(null)
   const [hoverDistance, setHoverDistance] = useState(null)
