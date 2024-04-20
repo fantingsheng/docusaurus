@@ -17,6 +17,10 @@ export default function MapContainer({ routeData, lineColor }) {
       gcoord.WGS84, // 当前坐标系
       gcoord.GCJ02 // 目标坐标系
     );
+
+    const startLnglat = gcoord.transform([originLnglats[0][0], originLnglats[0][1]], gcoord.WGS84, gcoord.GCJ02);
+    const endLnglat = gcoord.transform([originLnglats[originLnglats.length - 1][0], originLnglats[originLnglats.length - 1][1]], gcoord.WGS84, gcoord.GCJ02);
+
     map.setCenter(centerLnglat)
     
     let lnglats = [];
@@ -33,10 +37,44 @@ export default function MapContainer({ routeData, lineColor }) {
       strokeWeight: 4,
       strokeOpacity: 1,
       cursor: 'pointer',
-      path: lnglats
+      lineCap: 'square',
+      path: lnglats,
+      extData: {
+        id: routeData.slug
+      }
     })
+
+    const startIcon = new AMap.Icon({
+      // 图标尺寸
+      size: new AMap.Size(25, 34),
+      // 图标的取图地址
+      image: '/img/dir-marker.png',
+      // 图标所用图片大小
+      imageSize: new AMap.Size(135, 40),
+      // 图标取图偏移量
+      imageOffset: new AMap.Pixel(-9, -3)
+    });
+    const endIcon = new AMap.Icon({
+      size: new AMap.Size(25, 34),
+      image: '/img/dir-marker.png',
+      imageSize: new AMap.Size(135, 40),
+      imageOffset: new AMap.Pixel(-95, -3)
+    });
+    const startMarker = new AMap.Marker({
+      position: new AMap.LngLat(startLnglat[0], startLnglat[1]),
+      icon: startIcon,
+      offset: new AMap.Pixel(-13, -30)
+    });
+    const endMarker = new AMap.Marker({
+      position: new AMap.LngLat(endLnglat[0], endLnglat[1]),
+      icon: endIcon,
+      offset: new AMap.Pixel(-13, -30)
+    });
     map.clearMap();
     map.add(polyline);
+    map.add(startMarker);
+    map.add(endMarker);
+    map.setZoom(14);
   }
 
   useEffect(() => {
@@ -51,14 +89,13 @@ export default function MapContainer({ routeData, lineColor }) {
         plugins: [], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
       })
         .then((AMap) => {
-          setLoading(false)
           setAmap(AMap)
-          
           setTimeout(() => {
             map = new AMap.Map("container", {
               viewMode: "3D", // 是否为3D地图模式
               zoom: 14, // 初始化地图级别
               center: [120.325121, 31.498017], // 初始化地图中心点位置
+              mapStyle: 'amap://styles/macaron'
             });
             setMapImpl(map);
             const marker = new AMap.Marker({
@@ -74,6 +111,8 @@ export default function MapContainer({ routeData, lineColor }) {
         })
         .catch((e) => {
           console.log(e);
+        }).finally(() => {
+          setLoading(false)
         });
       })
     }
