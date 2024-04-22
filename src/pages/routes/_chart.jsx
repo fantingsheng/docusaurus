@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import styles from './style.module.scss';
-import { useMapContext } from '../../utils/mapprovider';
+import { useMapContext } from './_mapprovider';
 
 export default function Chart({ coordinates, width, height }) {
   const svgRef = useRef();

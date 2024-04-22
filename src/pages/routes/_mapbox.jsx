@@ -3,7 +3,7 @@ import gcoord from 'gcoord';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import styles from './style.module.scss';
 import { Skeleton } from '@mui/material';
-import { useMapContext } from '../../utils/mapprovider';
+import { useMapContext } from './_mapprovider';
 
 export default function MapContainer({ routeData, lineColor }) {
   let map = null;

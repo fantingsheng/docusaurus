@@ -10,7 +10,7 @@ import { fetchRoute } from '@site/src/utils/route';
 import MapContainer from './_mapbox';
 import Chart from './_chart';
 import RouteBox from './routebox';
-import { MapProvider } from '../../utils/mapprovider';
+import { MapProvider } from './_mapprovider';
 
 const drawerHeight = 324;
 
