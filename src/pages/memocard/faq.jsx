@@ -21,10 +21,23 @@ export default function FrequentQuestion () {
       </Accordion>
       <Accordion className={styles.accordion} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2bh-content">
-          <Typography>为什么导出的图片和左边展示区域的有差异？</Typography>
+          <Typography>为什么导出的图片和左边预览区域的有差异？</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>导出图片使用的是 <a href="https://html2canvas.hertzen.com/">html2canvas</a> 这个库。会有一些支持的不够好的 CSS 属性导致图片略有差异。🥶</Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion className={styles.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content">
+          <Typography>正文输入部分右上角 Emoji 表情插入都支持哪些？</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>目前是罗列了一些我经常使用的表情符号，可以直接点击复制到剪切板，方面快速粘贴。
+          </Typography>
+          <Typography>如果你想要更多的表情符号，可以去下面这些网站去浏览👉：</Typography>
+          <ul>
+            <li>EmojiAll中文官方網站: <a href="https://www.emojiall.com/zh-hant" target="_blank">https://www.emojiall.com/zh-hant</a></li>
+          </ul>
         </AccordionDetails>
       </Accordion>
     </>
