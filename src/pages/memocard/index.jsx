@@ -4,12 +4,11 @@ import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import GiscusComponent from '@site/src/components/GiscusComponent';
 import { Grid, Select, Button, IconButton, ButtonGroup, MenuItem, MenuList, Popper, FormControlLabel, Switch, TextField, Paper, Box, Grow, Typography,
-  ClickAwayListener, ToggleButtonGroup, ToggleButton, Slider, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+  ClickAwayListener, Slider } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import AddReactionIcon from '@mui/icons-material/AddReaction';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CopyAll from '@mui/icons-material/CopyAll';
-import { styled } from '@mui/material/styles';
 import RandomTheme from './RandomTheme';
 import TextCard from './TextCard';
 import { ColorPicker } from 'material-ui-color';
@@ -22,17 +21,8 @@ import GridTheme from './themeSkeleton/GridTheme';
 import PaperTheme from './themeSkeleton/PaperTheme';
 import ShadowTheme from './themeSkeleton/ShadowTheme';
 
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
-  height: 1,
-  overflow: 'hidden',
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  whiteSpace: 'nowrap',
-  width: 1,
-});
+import FrequentQuestion from './faq';
+import EmojiGallery from '@site/docs/collection/charactor';
 
 export function Main({ normal }) {
   const coverRef = useRef();
@@ -170,16 +160,69 @@ export function Main({ normal }) {
 }
 
 export function ContentForm ({ config, handleConfigChange }) {
+  const anchorRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
   const reg = /^(?:(http|https):\/\/)?((?:[\w-]+\.)+[a-z0-9]+)((?:\/[^/?#]*)+)?(\?[^#]+)?(#.+)?$/i;
+
   return (
     <>
       <Box className={styles.setItem}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant="h5">📝 在这里输入卡片上的文字内容</Typography>
-          <IconButton aria-label="清除" size="small" sx={{ marginBottom: '5px' }} onClick={() => handleConfigChange('', 'content')}>
-            <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 576 512">
-            <path fill="#272a68" d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7H288h9.4H512c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416H288l-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z"></path></svg>
-          </IconButton>
+          <span>
+            <IconButton aria-label="清除" size="small" sx={{ marginBottom: '5px' }} onClick={() => handleConfigChange('', 'content')}>
+              <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 576 512">
+              <path fill="#272a68" d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7H288h9.4H512c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416H288l-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z"></path></svg>
+            </IconButton>
+            <IconButton aria-label="表情符号" ref={anchorRef} size="small" sx={{ marginBottom: '5px' }} onClick={handleToggle}>
+              <AddReactionIcon sx={{ fontSize: '18px' }} color="primary" />
+            </IconButton>
+            <Popper sx={{ zIndex: 1, width: '50%' }} open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === 'bottom' ? 'center top' : 'center bottom',
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <Box sx={{ backgroundColor: '#fff', paddingBottom: '10px', maxHeight: '400px', overflowY: 'scroll' }}>
+                        <EmojiGallery fontSize='16px' emojiList={
+                          ['😅', '😤', '🥳', '😎', '😄', '🤔', '🤯', '🤮', '🤬', '🤐', '🤤', '🥶', '🙃', '🧐', '😍', '💁‍♂️', '🕵️‍♂️', '🙋', '👀', '🕵️‍♂️', 
+'🧑', '🧟', '🧟‍♀️', '🎅', '🧙‍♀️', '❤️', '🙏', '💪🏼', '👋', '🤝', '🥰', '🔥', '💗', '🙌', '👍', '🤙', '💯', '👊', '💥', '🚫', '💬', '📨', '👇', '👌🏻', '🎤',
+'👉', '🎉', '🍻', '👨‍💻', '📚', '🎨', '📝', '📈', '⏰', '✒️', '📋', '🖌', '💻', '📊', '💬', '📘', '🗓', '📖', '📄️', '📐', '💹', '✅',
+'❎', '📌', '📰', '🖨', '📁', '🧮', '🎓', '🔢', '🖍️', '☕', '🎮', '🔬️',
+'🚗', '🛵', '♿️', '🚥', '🚦', '🚀', '✈️', '🏎️', '🚴‍♀️', '🚄', '🛴', '🏍️', '⛵️', '🚢', '🚕', '🚖', '⛴️', '🚚', '🛺',
+'🍍', '🍈', '🍅', '🎃', '🥝', '🥑', '🍐', '🦪', '🥥', '🍎', '🍊', '🍌', '🌰', '🍒', '🥭', '🥒', '🍓', '🍉', '🥬', '🍠',
+  '🌶️', '🧅', '🌽', '🥔', '🧄', '🥦', '🥕', '🥜',
+  '🦄', '🐋', '🐱', '🦀', '🦐', '🐡', '👻', '🐶', '🐞', '🐜', '🐯', '🐷', '👾', '🐛', '🦖', '🦔', '🦅', '🦆', '🐤', '🦢',
+  '🐘', '🐒', '🐭', '🐰', '🐍', '🦉', '🦁️', '🐟', '🐳', '🐸', '🦟', '🦈', '🐎', '🐢', '🐬', '🦕', '🐕', '🦌', '🦑', '🦋',
+  '🦗', '🦂', '🧸', '🦎', '🦏', '🦊', '🦍',
+'⛹', '🏀', '⚽', '🎯', '🏊‍♀️', '🏊', '🔫', '🏈', '🏓️', '💃', '🏃‍♀️', '🏃', '🎿', '🥊', '🏋', '🤺', '🤸', '🤾',
+'✨', '🔨', '🛠', '🌟', '💰', '🥤', '☁️', '⭐', '⚡️', '🏳️‍🌈', '🔍', '🗑️', '🔄', '🧼', '🧹', '📍', '🌍', '🎩', '📦', '🌱',
+  '🌈', '🔗', '💨', '🔌', '♨️', '🌛', '☀️', '🧬', '💍', '💡', '🛡️', '🦺', '⚛️', '📷', '🔋', '👓', '⁉️', '🤳', '☘️',
+  '💎', '🎄', '🍰', '🖼', '💦', '💫', '⏳', '🏠', '☪️', '✔️', '❌', '🔭', '🏰', '📬', '🎈', '🔊', '🗂', '🥇', '🥈', '🥉',
+  '📫', '🍨', '🔧', '🌐', '🧪', '🧩', '➗', '🌌', '🛢️', '🔔', '⛔', '⚓', '⚙️', '💥', '💸', '💅', '🌑', '📲',
+  '🦾', '✂️', '🏗️', '🔌', '⛓️', '🤖', '📤', '🎬', '⚖️', '🏛', '🚧', '❄️', '⭕']
+                        } />
+                      </Box>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </span>
         </Box>
         <TextField
           value={config.content}
@@ -528,34 +571,6 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           )}
         </Popper>
       </Box>
-    </>
-  )
-}
-
-export function FrequentQuestion () {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-  return (
-    <>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content">
-          <Typography>复制图片在什么场景用到，或者说复制后在哪才能粘贴？</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>复制后可以粘贴在常用的富文本编辑器中，微信、QQ、钉钉等聊天工具框中。</Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2bh-content">
-          <Typography>为什么导出的图片和左边展示区域的有差异？</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>导出图片使用的是 <a href="https://html2canvas.hertzen.com/">html2canvas</a> 这个库。会有一些支持的不够好的 CSS 属性导致图片略有差异。🥶</Typography>
-        </AccordionDetails>
-      </Accordion>
     </>
   )
 }

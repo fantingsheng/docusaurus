@@ -3,7 +3,7 @@ import styles from './style.module.scss';
 import { Box, Grid, Alert, AlertTitle, Snackbar }  from '@mui/material';
 import confetti from 'canvas-confetti';
 
-export default function EmojiGallery ({ emojiList }) {
+export default function EmojiGallery ({ emojiList, fontSize }) {
   const [copied, setCopied] = useState(false);
   const [icon, setIcon] = useState('');
   const onCopyHandle = (e, iconText) => {
@@ -36,7 +36,7 @@ export default function EmojiGallery ({ emojiList }) {
         {
           emojiList.map((el, index) => (
             <Grid item xs={2} md={1} key={index}>
-              <div className={styles.iconBlock} onClick={(e) => onCopyHandle(e, el)}>{el}</div>
+              <div className={styles.iconBlock} style={{ fontSize: fontSize || '2.4rem' }} onClick={(e) => onCopyHandle(e, el)}>{el}</div>
             </Grid>
           ))
         }
