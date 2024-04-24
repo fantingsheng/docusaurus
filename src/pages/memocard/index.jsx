@@ -197,8 +197,8 @@ export function ContentForm ({ config, handleConfigChange }) {
                 >
                   <Paper>
                     <ClickAwayListener onClickAway={handleClose}>
-                      <Box sx={{ backgroundColor: '#fff', paddingBottom: '10px', maxHeight: '400px', overflowY: 'scroll' }}>
-                        <EmojiGallery fontSize='16px' emojiList={
+                      <Box sx={{ backgroundColor: '#fff', padding: '10px', maxHeight: '400px', overflowY: 'scroll' }}>
+                        <EmojiGallery fontSize='18px' emojiList={
                           ['😅', '😤', '🥳', '😎', '😄', '🤔', '🤯', '🤮', '🤬', '🤐', '🤤', '🥶', '🙃', '🧐', '😍', '💁‍♂️', '🕵️‍♂️', '🙋', '👀', '🕵️‍♂️', 
 '🧑', '🧟', '🧟‍♀️', '🎅', '🧙‍♀️', '❤️', '🙏', '💪🏼', '👋', '🤝', '🥰', '🔥', '💗', '🙌', '👍', '🤙', '💯', '👊', '💥', '🚫', '💬', '📨', '👇', '👌🏻', '🎤',
 '👉', '🎉', '🍻', '👨‍💻', '📚', '🎨', '📝', '📈', '⏰', '✒️', '📋', '🖌', '💻', '📊', '💬', '📘', '🗓', '📖', '📄️', '📐', '💹', '✅',
