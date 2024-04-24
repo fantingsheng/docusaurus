@@ -38,7 +38,7 @@ export default function ({ size = "default" }) {
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
-  const [curRoute, setCurRoute] = useState('10935466900.gpx');
+  const [curRoute, setCurRoute] = useState('11251970009.gpx');
   const [loading, setLoading] = useState(false);
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
@@ -50,7 +50,9 @@ export default function ({ size = "default" }) {
     { id: 3, slug: '10927881366.gpx', name: '周末骑行经开核心城区', type: '🚴‍♀️', distance: 11.48, elevation: 42.1, color: '#fc5200',
       intro: '这是一段经开的核心城区，聚集了市区的众多重大基建设施，包括博览中心、国际会议中心、美术馆（在建）、奥体中心（在建）。沿途道路宽广景色优美，非常适合骑行。' },
     { id: 4, slug: '10935466900.gpx', name: '金匮公园越野跑', type: '🏃', distance: 3.74, elevation: 54.6, color: '#67C23A',
-      intro: '位于市政府前的金匮公园，人造的天然氧吧，高配置的跑步道，路径也十分的多样性，有一段是穿过山顶的路，海拔不过三四来米，一口气跑到山顶，酣畅淋漓。' }
+      intro: '位于市政府前的金匮公园，人造的天然氧吧，高配置的跑步道，路径也十分的多样性，有一段是穿过山顶的路，海拔不过三四来米，一口气跑到山顶，酣畅淋漓。' },
+    { id: 5, slug: '11251970009.gpx', name: '金城湾观光骑行', type: '🛵', distance: 4.55, elevation: 24, color: '#FFD000',
+      intro: '金城湾这一段环湖路景色优美，绿化也很 Nice ，周边更有金城湾公园，万象城，大剧院等建筑，绝对是无锡商业和湖景结合的最好的一处景观。很推荐徒步和慢跑。' }
   ];
 
   async function getRouteData (route) {
