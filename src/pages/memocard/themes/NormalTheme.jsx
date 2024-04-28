@@ -5,13 +5,13 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 import QrcodeBox from '../QrcodeBox';
 
 export default function NormalTheme ({ config }) {
-  const {content, author, bgColor, opacity, borderRadius, gradientBgColor, width, theme, dark, vertPad, horizPad, font, fontSize} = {...config}
+  const {content, author, bgColor, bgImg, opacity, borderRadius, gradientBgColor, width, theme, dark, vertPad, horizPad, font, fontSize} = {...config}
 
   return (
     <div className={clsx(styles.theme, styles[theme + 'Theme'], dark ? styles.dark : '')}
       style={{ 
         backgroundColor: bgColor,
-        backgroundImage: gradientBgColor,
+        backgroundImage: bgImg ? `url(${bgImg})` :  gradientBgColor,
         width: width + 'px',
         padding: `${vertPad}px ${horizPad}px`
       }}

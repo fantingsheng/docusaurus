@@ -6,12 +6,14 @@ import GiscusComponent from '@site/src/components/GiscusComponent';
 import { Grid, Select, Button, IconButton, ButtonGroup, MenuItem, MenuList, Popper, FormControlLabel, Switch, TextField, Paper, Box, Grow, Typography,
   ClickAwayListener, Slider } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CopyAll from '@mui/icons-material/CopyAll';
 import RandomTheme from './RandomTheme';
 import TextCard from './TextCard';
 import { ColorPicker } from 'material-ui-color';
+import { styled } from '@mui/material/styles';
 import styles from './style.module.scss';
 import clsx from 'clsx';
 import html2canvas from 'html2canvas';
@@ -23,6 +25,18 @@ import ShadowTheme from './themeSkeleton/ShadowTheme';
 
 import FrequentQuestion from './faq';
 import EmojiGallery from '@site/docs/collection/charactor';
+
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
 
 export function Main({ normal }) {
   const coverRef = useRef();
@@ -46,7 +60,7 @@ export function Main({ normal }) {
     dark: false,
     opacity: 0.7,
     borderRadius: 10,
-    bgImg: '/page/coverview-bg.png'
+    bgImg: ''
   });
  
   const handleConfigChange = (val, key) => {
@@ -277,7 +291,8 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     { label: '12px', value: 12 },
     { label: '14px', value: 14 },
     { label: '16px', value: 16 },
-    { label: '18px', value: 18 }
+    { label: '18px', value: 18 },
+    { label: '20px', value: 20 }
   ]
   const bgColorOptions = [
     'linear-gradient(310deg,rgb(214,233,255),rgb(214,229,255),rgb(209,214,255),rgb(221,209,255),rgb(243,209,255),rgb(255,204,245),rgb(255,204,223),rgb(255,200,199),rgb(255,216,199),rgb(255,221,199))',
@@ -298,7 +313,6 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
   const handleMenuItemClick = (event, scale, format) => {
@@ -311,6 +325,20 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
       setCopied(true);
     })
   };
+  const handleBgGradientClick = (color) => {
+    handleConfigChange('', 'bgImg');
+    handleConfigChange(color, 'gradientBgColor');
+  }
+  const handleBgUpload = (e) => {
+    handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg');
+    handleConfigChange('', 'gradientBgColor');
+  }
+
+  const handleBgColorClick = (color) => {
+    handleConfigChange(color, 'bgColor');
+    handleConfigChange('', 'bgImg');
+    handleConfigChange('', 'gradientBgColor');
+  }
   return (
     <>
       <Box className={styles.setItem}>
@@ -332,20 +360,20 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
           {bgColorOptions.map((el, index) => (
             <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
-              onClick={() => handleConfigChange(el, 'gradientBgColor')} key={index}></div>
+              onClick={() => handleBgGradientClick(el)} key={index}></div>
           ))}
-          <div className={clsx(styles.bgGradient, styles.clearColor)} onClick={() => handleConfigChange('', 'gradientBgColor')}>
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>清除背景色</title>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-          </div>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <ColorPicker
             value={config.bgColor}
-            onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
+            onChange={val => handleBgColorClick(`#${val.hex}`)} 
             sx={{ width: '60px' }}
           />
-          <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
+          <RandomTheme onThemeChange={(theme, Pattern) => handleBgColorClick(theme.bgColor)} />
+          <Button component="label" variant="contained" sx={{ padding: '4px 0px', minWidth: '34px', marginBottom: '4px' }}>
+            <AddPhotoAlternateIcon sx={{ fontSize: 20, marginRight: '0' }} />
+            <VisuallyHiddenInput type="file" onChange={handleBgUpload} />
+          </Button>
         </Box>
       </Box>
       <Box sx={{ display: 'flex', gap: '20px' }}>
