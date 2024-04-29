@@ -48,6 +48,7 @@ export default function ({ handleConfigChange }) {
               <ClickAwayListener onClickAway={handleClose}>
                 <Box sx={{ backgroundColor: '#fff', padding: '20px', maxHeight: '600px', overflowY: 'scroll' }}>
                   <Typography sx={{ marginBottom: '10px' }}>去 <a href="https://uigradients.com/" target='_blank'>uiGradients</a> 网站找到心仪的渐变色后拷贝 CSS 代码粘贴到输入框中</Typography>
+                  <Typography sx={{ marginBottom: '10px' }}>或者利用在线工具 <a href="https://cssgradient.io/" target='_blank'>cssgradient.io</a> 定制你的渐变色</Typography>
                   <TextField
                     value={inputCode}
                     onChange={e => onCodeInputChange(e.target.value)}
@@ -55,7 +56,7 @@ export default function ({ handleConfigChange }) {
                     className={styles.sizeInput}
                     size='small'
                     multiline
-                    minRows={4}
+                    minRows={5}
                     maxRows={10}
                     fullWidth
                   />
