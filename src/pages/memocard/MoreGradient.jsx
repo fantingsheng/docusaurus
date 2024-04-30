@@ -27,6 +27,7 @@ export default function ({ handleConfigChange }) {
     console.log("match", match);
     if (match) {
       handleConfigChange(match[0], 'gradientBgColor')
+      handleConfigChange('', 'bgImg');
     }
   }
 
