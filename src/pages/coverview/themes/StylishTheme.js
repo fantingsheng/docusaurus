@@ -4,11 +4,11 @@ import clsx from 'clsx';
 import { selectDevicon } from '../DevIcons';
 
 const StylishTheme = ({ config }) => {
-  const { title, bgColor, bgImg, gradientBgColor, author, icon, font, customIcon, width, ratio } = config;
+  const { title, bgColor, bgImg, gradientBgColor, author, icon, font, customIcon, width, ratio, horizPad, vertPad } = config;
   const height = width * ratio + 'px';
   return (
     <div className={styles.stylishTheme}>
-      <div className={styles.main} style={{ backgroundColor: bgColor, backgroundImage: gradientBgColor, height: height }}>
+      <div className={styles.main} style={{ backgroundColor: bgColor, backgroundImage: gradientBgColor, height: height, padding: `${vertPad}px ${horizPad}px` }}>
         <div className={styles.content}>
 
           <div className={clsx(styles.left, styles['font-' + font])}>

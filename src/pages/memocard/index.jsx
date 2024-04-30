@@ -23,7 +23,7 @@ import GridTheme from './themeSkeleton/GridTheme';
 import PaperTheme from './themeSkeleton/PaperTheme';
 import ShadowTheme from './themeSkeleton/ShadowTheme';
 
-import FrequentQuestion from './faq';
+import FrequentQuestion from './FaqList';
 import MoreGradient from './MoreGradient';
 import EmojiGallery from '@site/docs/collection/charactor';
 
@@ -358,7 +358,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         </Box>
       </Box>
       <Box className={styles.setItem}>
-        <Typography variant="h5">背景色</Typography>
+        <Typography variant="h5">背景</Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
           {bgColorOptions.map((el, index) => (
             <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}

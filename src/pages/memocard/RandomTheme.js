@@ -84,10 +84,6 @@ export default function RandomTheme ({ onThemeChange }) {
       {
         bgColor: '#ffb2e6',
         bdColor: '#8447ff'
-      },
-      {
-        bgColor: '',
-        bdColor: ''
       }
     ];
     const patterns = ['graph-paper', 'gigsaw', '', 'hideout', 'dots', '', 'falling-triangles', 'circuit-board', '',

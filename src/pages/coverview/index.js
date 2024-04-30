@@ -8,11 +8,10 @@ import { Grid, Select, Button, ButtonGroup, MenuItem, MenuList, Popper, TextFiel
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CopyAll from '@mui/icons-material/CopyAll';
 import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
-import RandomTheme from './RandomTheme';
+import RandomTheme from '../memocard/RandomTheme';
 import { ColorPicker } from 'material-ui-color';
 import styles from './style.module.scss';
 import clsx from 'clsx';
@@ -27,6 +26,9 @@ import ModernTheme from './themeSkeleton/ModernTheme';
 import PreviewTheme from './themeSkeleton/PreviewTheme';
 import MobileTheme from './themeSkeleton/MobileTheme';
 import PictureTheme from './themeSkeleton/PictureTheme';
+
+import FrequentQuestion from './FaqList';
+import MoreGradient from '../memocard/MoreGradient';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -52,8 +54,8 @@ export function Main({ normal }) {
     ratio: 0.5,
     width: 810,
     borderRadius: 10,
-    padVert: 20,
-    padHoriz: 40,
+    vertPad: 20,
+    horizPad: 20,
     title: '欢迎来到太空编程站点',
     author: '编程范儿',
     theme: 'basic',
@@ -244,6 +246,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     'linear-gradient(160deg,rgb(204,251,252),rgb(197,234,254),rgb(189,211,255))',
     'linear-gradient(150deg,rgb(255,242,158),rgb(255,239,153),rgb(255,231,140),rgb(255,217,121),rgb(255,197,98),rgb(255,171,75),rgb(255,143,52),rgb(255,115,33),rgb(255,95,20),rgb(255,87,15))',
     'linear-gradient(345deg,rgb(211,89,255),rgb(228,99,255),rgb(255,123,247),rgb(255,154,218),rgb(255,185,208),rgb(255,209,214),rgb(255,219,219))',
+    'linear-gradient(150deg, #ef32d9, #89fffd)',
     'linear-gradient(25deg, #7c2df3, #7167f7, #5992fb, #00b9ff)',
     'linear-gradient(25deg, #00b7f7, #a2b7b5, #d5b871, #f6b900)',
     'linear-gradient(150deg,rgb(0,224,245),rgb(31,158,255),rgb(51,85,255))',
@@ -271,6 +274,34 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
       setCopied(true);
     })
   };
+  const handleBgGradientClick = (color) => {
+    handleConfigChange(color, 'gradientBgColor');
+  };
+
+  const handleBgColorClick = (color) => {
+    handleConfigChange(color, 'bgColor');
+    handleConfigChange('', 'gradientBgColor');
+  };
+
+  const onChangeTheme = (themeName) => {
+    handleConfigChange(themeName, 'theme')
+    if (themeName === 'picture') {
+      handleConfigChange(40, 'horizPad');
+      handleConfigChange(40, 'vertPad');
+    } else if (themeName === 'stylish') {
+      handleConfigChange(20, 'horizPad');
+      handleConfigChange(20, 'vertPad');
+    } else if (themeName === 'modern') {
+      handleConfigChange(20, 'horizPad');
+      handleConfigChange(20, 'vertPad');
+    }
+    if (themeName === 'mobile') {
+      console.log("themeName", themeName)
+      handleConfigChange('/page/coverview-mbg.png', 'bgImg');
+    } else {
+      handleConfigChange('/page/coverview-bg.png', 'bgImg');
+    }
+  };
   return (
     <>
       <Box className={styles.setItem}>
@@ -278,74 +309,148 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
           {/* 主题列表 */}
           <div className={clsx(styles.themeItem, config.theme === 'basic' ? styles.on : '')}
-            onClick={() => handleConfigChange('basic', 'theme')}><BasicTheme /></div>
+            onClick={() => onChangeTheme('basic')}><BasicTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'background' ? styles.on : '')}
-            onClick={() => handleConfigChange('background', 'theme')}><BackgroundTheme /></div>
+            onClick={() => onChangeTheme('background')}><BackgroundTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'stylish' ? styles.on : '')}
-            onClick={() => handleConfigChange('stylish', 'theme')}><StylishTheme /></div>
+            onClick={() => onChangeTheme('stylish')}><StylishTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'outline' ? styles.on : '')}
-            onClick={() => handleConfigChange('outline', 'theme')}><OutlineTheme /></div>
+            onClick={() => onChangeTheme('outline')}><OutlineTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'modern' ? styles.on : '')}
-            onClick={() => handleConfigChange('modern', 'theme')}><ModernTheme /></div>
+            onClick={() => onChangeTheme('modern')}><ModernTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'preview' ? styles.on : '')}
-            onClick={() => handleConfigChange('preview', 'theme')}><PreviewTheme /></div>
+            onClick={() => onChangeTheme('preview')}><PreviewTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'mobile' ? styles.on : '')}
-            onClick={() => handleConfigChange('mobile', 'theme')}><MobileTheme /></div>
+            onClick={() => onChangeTheme('mobile')}><MobileTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'picture' ? styles.on : '')}
-            onClick={() => handleConfigChange('picture', 'theme')}><PictureTheme /></div>
+            onClick={() => onChangeTheme('picture')}><PictureTheme /></div>
         </Box>
-      </Box>
-      <Box className={styles.setItem}>
-        <Typography variant="h5">字体<span className={styles.fontInfos}>（中文）</span></Typography>
-        <Select
-          value={config.font}
-          onChange={val => handleConfigChange(val.target.value, 'font')}
-          label=""
-          className={styles.sizeInput}
-          sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px' } }}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em style={{ color: '#A8ABB2' }}>选择字体</em>;
-            }
-            const item = fontOptions.find(el => el.value === selected);
-            return item.label;
-          }}
-          displayEmpty
-          size='small'
-          fullWidth
-        >
-          {fontOptions.map(el => (
-            <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
-          ))}
-        </Select>
       </Box>
       <Box className={styles.setItem}>
         <Typography variant="h5">背景色</Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
           {bgColorOptions.map((el, index) => (
             <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
-              onClick={() => handleConfigChange(el, 'gradientBgColor')} key={index}></div>
+            onClick={() => handleBgGradientClick(el)} key={index}></div>
           ))}
-          <div className={clsx(styles.bgGradient, styles.clearColor)} onClick={() => handleConfigChange('', 'gradientBgColor')}>
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>清除背景色</title>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-          </div>
+          <MoreGradient handleConfigChange={handleConfigChange} />
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <ColorPicker
             value={config.bgColor}
-            onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
+            onChange={val => handleBgColorClick(`#${val.hex}`)}
             sx={{ width: '60px' }}
           />
-          <RandomTheme onThemeChange={(theme, Pattern) => handleConfigChange(theme.bgColor, 'bgColor')} />
+          <RandomTheme onThemeChange={(theme, Pattern) => handleBgColorClick(theme.bgColor)} />
         </Box>
       </Box>
       {['background', 'stylish', 'preview', 'mobile', 'picture'].includes(config.theme) ?
         <Box className={styles.setItem}>
           <Typography variant="h5">背景图</Typography>
-          <Button component="label" variant="contained" sx={{ width: '120px' }} startIcon={<AddPhotoAlternateIcon />}>
+          <Button component="label" size="small" variant="contained" sx={{ width: '80px' }} startIcon={<AddPhotoAlternateIcon />}>
             上传<VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
           </Button>
+        </Box>
+        : <></>
+      }
+      <Box sx={{ display: 'flex', gap: '30px' }}>
+        <Box className={styles.setItem} sx={{ width: '50%' }}>
+          <Typography variant="h5">字体<span className={styles.fontInfos}>（中文）</span></Typography>
+          <Select
+            value={config.font}
+            onChange={val => handleConfigChange(val.target.value, 'font')}
+            label=""
+            className={styles.sizeInput}
+            sx={{ '& > div': { paddingTop: '6px', paddingBottom: '6px' } }}
+            renderValue={(selected) => {
+              if (selected.length === 0) {
+                return <em style={{ color: '#A8ABB2' }}>选择字体</em>;
+              }
+              const item = fontOptions.find(el => el.value === selected);
+              return item.label;
+            }}
+            displayEmpty
+            size='small'
+            fullWidth
+          >
+            {fontOptions.map(el => (
+              <MenuItem value={el.value} key={el.value}>{el.label}</MenuItem>
+            ))}
+          </Select>
+        </Box>
+        {['basic', 'modern', 'picture'].includes(config.theme) ?
+          <Box className={styles.setItem} sx={{ width: '50%' }}>
+            <Typography variant="h5">圆角</Typography>
+            <Grid container spacing={1} alignItems="center">
+              <Grid item>
+                <Typography variant="caption">0px</Typography>
+              </Grid>
+              <Grid item xs sx={{ display: 'flex' }}>
+                <Slider
+                  value={config.borderRadius}
+                  aria-label='Default'
+                  min={0}
+                  step={1}
+                  max={40}
+                  size='small'
+                  valueLabelDisplay='auto'
+                  onChange={e => handleConfigChange(e.target.value, 'borderRadius')}
+                />
+              </Grid>
+              <Grid item>
+                <Typography variant="caption">40px</Typography>
+              </Grid>
+            </Grid>
+          </Box>
+          : <></>
+        }
+      </Box>
+      {['stylish', 'modern', 'picture'].includes(config.theme) ?
+        <Box sx={{ display: 'flex', gap: '30px' }}>
+          <Box className={styles.setItem} sx={{ width: '50%' }}>
+            <Typography variant="h5">上下间距</Typography>
+            <Grid container spacing={1} alignItems="center">
+              <Grid item>
+                <Typography variant="caption">10px</Typography>
+              </Grid>
+              <Grid item xs sx={{ display: 'flex' }}>
+                <Slider
+                  value={config.vertPad}
+                  aria-label='Default'
+                  min={10}
+                  max={100}
+                  size='small'
+                  valueLabelDisplay='auto'
+                  onChange={e => handleConfigChange(e.target.value, 'vertPad')}
+                />
+              </Grid>
+              <Grid item>
+                <Typography variant="caption">100px</Typography>
+              </Grid>
+            </Grid>
+          </Box>
+          <Box className={styles.setItem} sx={{ width: '50%' }}>
+            <Typography variant="h5">左右间距</Typography>
+            <Grid container spacing={1} alignItems="center">
+              <Grid item>
+                <Typography variant="caption">10px</Typography>
+              </Grid>
+              <Grid item xs sx={{ display: 'flex' }}>
+                <Slider
+                  value={config.horizPad}
+                  aria-label='Default'
+                  min={10}
+                  max={200}
+                  size='small'
+                  valueLabelDisplay='auto'
+                  onChange={e => handleConfigChange(e.target.value, 'horizPad')}
+                />
+              </Grid>
+              <Grid item>
+                <Typography variant="caption">200px</Typography>
+              </Grid>
+            </Grid>
+          </Box>
         </Box>
         : <></>
       }
@@ -433,72 +538,6 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           )}
         </Popper>
       </Box>
-    </>
-  )
-}
-
-export function FrequentQuestion () {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
-  return (
-    <>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1bh-content">
-          <Typography>复制图片在什么场景用到，或者说复制后在哪才能粘贴？</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>复制后可以粘贴在常用的富文本编辑器中，微信、QQ、钉钉等聊天工具框中。</Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel2bh-content">
-          <Typography>为什么导出的图片和左边展示区域的有差异？</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>导出图片使用的是 <a href="https://html2canvas.hertzen.com/">html2canvas</a> 这个库。会有一些支持的不够好的 CSS 属性导致图片略有差异。🥶</Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content">
-          <Typography>上传的图片会泄露隐私吗？</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>💁‍♂️ 不会，上传的图片只会在浏览器的本地读取，并未上传到云端。该工具类似离线工具，不会收集任何的用户数据。请放心使用。🥰</Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4bh-content">
-          <Typography>找不到好看的背景图和文章很搭的图标怎么办，有推荐的网站吗？</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>👉 免费的图片素材网站：</Typography>
-          <ul>
-            <li>Unsplash: <a href="https://unsplash.com" target="_blank">https://unsplash.com</a></li>
-            <li>Pexels: <a href="https://www.pexels.com/zh-cn" target="_blank">https://www.pexels.com/zh-cn</a></li>
-            <li>500 PX: <a href="https://500px.com" target="_blank">https://500px.com</a></li>
-            <li>Pixabay: <a href="https://pixabay.com/photos" target="_blank">https://pixabay.com/photos</a></li>
-            <li>Awesome Wallpapers:  <a href="https://wallhaven.cc" target="_blank">https://wallhaven.cc</a></li>
-          </ul>
-          <Typography>👉 免费的图标网站：</Typography>
-          <ul>
-            <li>Devicon - 提供一系列关于编程语言、设计和开发工具的图标: <a href="https://devicon.dev" target="_blank">https://devicon.dev</a></li>
-            <li>Simple Icons - 收集了2770个免费 SVG 格式的国内外著名品牌的图标: <a href="https://simpleicons.org" target="_blank">https://simpleicons.org</a></li>
-            <li>svgl - 漂亮的 SVG 格式的软件产品和公司图标: <a href="https://svgl.app" target="_blank">https://svgl.app</a></li>
-          </ul>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion className={styles.accordion} expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel5bh-content">
-          <Typography>找不到满足自己的需求的主题模版？</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>如果提供的模版满足不了您的图片要求，在下面的评论区提出你的意见，上传参考图片，如果合理我会考虑开发相应的模板。<br />
-          同时我也希望凭借大家的智慧，尽量丰富这个工具的主题模板。</Typography>
-        </AccordionDetails>
-      </Accordion>
     </>
   )
 }

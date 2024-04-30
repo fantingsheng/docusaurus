@@ -4,12 +4,12 @@ import clsx from 'clsx';
 import { selectDevicon } from '../DevIcons';
 
 const BasicTheme = ({ config }) => {
-  const { title, bgColor, gradientBgColor, author, icon, font, customIcon, width, ratio } = config;
+  const { title, bgColor, gradientBgColor, author, icon, font, customIcon, width, ratio, borderRadius } = config;
   const height = width * ratio + 'px';
   return (
     <div className={styles.basicTheme}>
       <div className={styles.main} style={{ backgroundColor: bgColor, backgroundImage: gradientBgColor, height: height }}>
-        <div className={clsx(styles.content, styles['font-' + font])}>
+        <div className={clsx(styles.content, styles['font-' + font])} style={{ borderRadius: borderRadius + 'px' }}>
           <div style={{ padding: '0 3rem' }}>
             <h1>{title}</h1>
           </div>
