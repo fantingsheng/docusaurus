@@ -1,0 +1,160 @@
+---
+sidebar_position: 7
+---
+
+# 邮件订阅
+
+一个常见的邮件定义功能组件一般长这样：一个用于输入邮箱地址的输入框，和一个用于触发提交的按钮。
+
+import { useState } from 'react';
+import { Box, Button, TextField, Typography } from "@mui/material"
+
+export const Flexform = () => {
+  const [width, setWidth] = useState(400);
+  const [mail, setMail] = useState('');
+
+  return (
+    <Box sx={{ margin: '20px 0', padding: '20px', backgroundColor: '#f5f6f9', textAlign: 'center' }}>
+      <Typography variant="h5" sx={{ marginBottom: '10px' }}>邮件订阅</Typography>
+      <Box
+        sx={{ width: width + 'px', margin: '0 auto', display: 'flex', 'align-items': 'flex-end', gap: '15px' }}>
+        <Box sx={{ flexGrow: 1 }}>
+          <TextField
+            placeholder='fants0230@gmail.com'
+            value={mail}
+            size='small'
+            fullWidth
+          />
+        </Box>
+        <Box sx={{ flexGrow: 1 }}>
+          <Button variant="contained" fullWidth>提交</Button>
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
+<Flexform />
+
+我们只需要给按钮绑定一个方法，将输入的邮件地址通过一个变量存储后，提交给后端的接口：
+
+```js showLineNumbers
+const subscribe = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const res = await fetch("/api/subscribe", {
+    body: JSON.stringify({
+      email: value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+  });
+
+  const { error } = await res.json();
+
+  if (error) {
+    // Error to do
+  }
+  // Success to do
+};
+```
+
+如果邮件订阅的数据需要我们自己存储，那么我们就需要写一个接口来实现，这里以使用 Prisma 为例：
+
+创建用于存储订阅邮箱的 Prisma 数据模型：
+
+```
+model Subscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
+
+订阅接口实现：
+
+先判断邮箱是否已存在，然后更新数据表。
+
+
+```ts
+import { NextApiRequest, NextApiResponse } from 'next';
+
+import prisma from '@/common/libs/prisma';
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const { email } = req.body;
+  
+  try {
+    const existingSubscriber = await prisma.subscriber.findUnique({
+      where: { email }
+    });
+
+    if (existingSubscriber) {
+      return res.status(400).json({ error: 'Email already exists' });
+    }
+
+    const subscriber = await prisma.subscriber.update({
+      data: { email }
+    });
+
+    return res.json(subscriber);
+  } catch (error) {
+    return res.status(500).json({ error: 'Failed to subscribe' });
+  }
+}
+```
+
+
+如果我们是借助第三方的服务来实现邮箱订阅功能，这里以 [Convertkit](https://convertkit.com/) 服务提供商为例，它的调用方式如下：
+
+
+```ts showLineNumbers {23}
+import type { NextApiRequest, NextApiResponse } from "next";
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+
+  try {
+    const FORM_ID = process.env.CONVERTKIT_FORM_ID;
+    const API_KEY = process.env.CONVERTKIT_API_KEY;
+
+    const data = {
+      email,
+      api_key: API_KEY,
+    };
+
+    const response = await fetch(
+      `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`,
+      {
+        body: JSON.stringify(data),
+        headers: {
+          Authorization: `apikey ${API_KEY}`,
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        method: "POST",
+      }
+    );
+    if (response.status >= 400) {
+      return res.status(400).json({
+        error: `There was an error subscribing to the newsletter…`,
+      });
+    }
+
+    return res.status(201).json({ error: "" });
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message || error.toString() });
+  }
+}
+```
