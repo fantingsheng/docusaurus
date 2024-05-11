@@ -2,17 +2,17 @@ fantingsheng:
   name: Timfan
   title: 高级前端开发
   url: https://github.com/fantingsheng
-  image_url: https://spacexcode.com/img/avatar.png
-  email: fants0230@sina.com
+  image_url: /img/avatar.png
+  email: fants0230@gmail.com
 fants:
   name: 编程范儿
   title: 从事前端开发，常用 Vue、React、Nodejs、Nextjs 等技术，喜欢研究网页 UI、UX
   url: https://github.com/fantingsheng
-  image_url: https://spacexcode.com/img/avatar.png
+  image_url: /img/avatar.png
   email: fants0230@sina.com
 timfan:
   name: 编程范儿
-  title: 关注前端设计动态，喜欢研究 CSS 动画
+  title: 专注前端开发技术，业余喜欢写作和分享，倡导“Learn in Public”
   url: https://spacexcode.com/author
-  image_url: https://spacexcode.com/img/avatar.png
+  image_url: /img/avatar.jpg
   email: fants0230@sina.com
