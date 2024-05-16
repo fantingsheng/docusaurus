@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkspacexcode_com=self.webpackChunkspacexcode_com||[]).push([[6611],{86611:(e,c,s)=>{s.r(c),s.d(c,{default:()=>p});s(67294);var a=s(55171),u=s.n(a),n=s(85893);function p(e){return(0,n.jsx)(u(),{displayObjectSize:!1,...e})}}}]);

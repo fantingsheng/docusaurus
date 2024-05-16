@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkspacexcode_com=self.webpackChunkspacexcode_com||[]).push([[4496],{5643:e=>{e.exports=JSON.parse('{"label":"Nuxt","permalink":"/blog/tags/nuxt","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
