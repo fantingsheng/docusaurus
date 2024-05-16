@@ -151,6 +151,7 @@ export default function ({ size = "default" }) {
                         loading={loading}
                         handleClickRoute={handleClickRoute}
                         handleClickMore={() => setOpen(true)}
+                        dropDown={open}
                         key={el.slug}
                       />
                     ))}

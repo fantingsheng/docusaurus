@@ -112,8 +112,13 @@
         width: 20px;
         top: 50%;
         right: 0.45rem;
-        transform: translateY(-50%);
+        transform: translateY(-50%) rotate(0deg);
         cursor: pointer;
+        transition: all 0.15s linear;
+
+        &.open {
+          transform: translateY(-50%) rotate(90deg);
+        }
       }
       .loadingCover {
         position: absolute;
