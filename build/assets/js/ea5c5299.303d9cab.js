@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkspacexcode_com=self.webpackChunkspacexcode_com||[]).push([[3381],{15045:s=>{s.exports=JSON.parse('{"label":"Capslock","permalink":"/blog/tags/capslock","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

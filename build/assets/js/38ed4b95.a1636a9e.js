@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkspacexcode_com=self.webpackChunkspacexcode_com||[]).push([[6109],{56955:e=>{e.exports=JSON.parse('{"label":"\u7f51\u7ad9","permalink":"/blog/tags/\u7f51\u7ad9","allTagsPath":"/blog/tags","count":2,"unlisted":false}')}}]);
