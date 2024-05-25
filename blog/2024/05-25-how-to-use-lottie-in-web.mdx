@@ -1,0 +1,108 @@
+---
+slug: how-to-use-lottie-in-web
+title: Web 开发中动画的另一种实现方式 Lottie 
+authors: [timfan]
+tags: [教程, 动态演示, Lottie, 动画]
+hide_table_of_contents: true
+enable_comment: true
+enable_adsense: true
+hide_sidebar: true
+---
+
+**Lottie 解释：**
+
+[Lottie](https://github.com/airbnb/lottie) 是一个开源的动画库，由 Airbnb 公司开发。它可以在 Web、iOS、Android 和 React Native 等多个平台上运行。
+
+说白了就是设计师通过导出一个动画文件，就可以同时在几乎所有的平台运用。大大简化了设计师和工程师的工作。并且保证多个平台动画有一致的运行效果。
+
+而且相对于视频和 Gif 比较，它的文件格式小，动画的性能还高。
+
+<!--truncate-->
+
+import Lottie from 'react-lottie'
+import * as animateGithub from '@site/static/json/github.json'
+
+export const GithubLottie = () => {
+  return (
+    <>
+      <Lottie
+        options={{
+          loop: true,
+          autoplay: true, 
+          animationData: animateGithub,
+          rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+          }
+        }}
+        height={200}
+        width={200}
+      />
+      <div style={{ textAlign: 'center', fontSize: '12px', color: '#909399', marginTop: '10px' }}>
+        <span>该动画由 Lottie 生成，<a href="/json/github.json" target="_blank">json 文件</a></span>
+      </div>
+    </>
+  )
+}
+
+<GithubLottie />
+
+<br />
+
+在 React 中你可以通过 `react-lottie` 这个库来实现快速实现开发，首先安装：
+
+```shell
+npm install --save react-lottie
+```
+
+然后，在代码中引入组件，配置必要的参数：
+
+```jsx
+import React from 'react';
+import Lottie from 'react-lottie';
+import * as animationData from '../json/github.json';
+
+export default function WebLottie () {
+  return (
+    <Lottie
+      options={{
+        loop: true,
+        autoplay: true, 
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: 'xMidYMid slice'
+        }
+      }}
+      height={400}
+      width={400}
+    />
+  )
+}
+```
+
+**参数解释：**
+
+- `loop`：控制动画的播放形式，是否循环播放，默认值 `false`；
+- `autoplay`：控制动画是否自动播放，默认值为 `false`；
+- `animationData`：动画文件数据，可通过导入 `json` 文件；
+- `rendererSettings`：渲染设置，`preserveAspectRatio` 属性表示是否强制进行统一缩放；
+- `width`：渲染出来的 svg 的长度；
+- `height`：渲染出来的 svg 的宽度；
+- `eventListeners`：支持动画执行过程中各节点的回调，比如：
+
+```
+eventListeners=[
+  {
+    eventName: 'complete',
+    callback: () => console.log('the animation completed:'),
+  },
+]
+```
+
+在开发端没有任何的使用心智负担，只要交给我们动画的 json 文件，就能轻易地渲染出来。
+
+那么主流的 Lottie 动画制作工具有哪些呢？
+
+- [Adobe After Effects](https://www.adobe.com/products/aftereffects.html)：最专业的设计工具当然还得是 Adobe 
+- [Figma](https://www.figma.com/)：最新的流行设计工具
+- [Sketch](https://www.sketch.com/)：主流的设计工具
+- [LottieFiles](https://lottiefiles.com/)：一个 Lottie 动画共享和制作的平台

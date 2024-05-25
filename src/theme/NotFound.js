@@ -2,6 +2,9 @@ import React from 'react';
 import Translate, {translate} from '@docusaurus/Translate';
 import {PageMetadata} from '@docusaurus/theme-common';
 import Layout from '@theme/Layout';
+import Lottie from 'react-lottie';
+import * as animateGithub from '@site/static/json/404.json'
+
 export default function NotFound() {
   return (
     <>
@@ -16,8 +19,19 @@ export default function NotFound() {
           <div className="container">
             <div className="row">
               <div className="col col--6 col--offset-3">
-                <div className="padding-vert--lg">
-                  <img src="/img/404.png" alt="Not Found" />
+                <div className="padding-vert--lg text--center">
+                  <Lottie
+                    options={{
+                      loop: true,
+                      autoplay: true, 
+                      animationData: animateGithub,
+                      rendererSettings: {
+                        preserveAspectRatio: 'xMidYMid slice'
+                      }
+                    }}
+                    height={300}
+                    width={300}
+                  />
                   <h1 className="hero__title margin-top--md">
                     <Translate
                       id="theme.NotFound.title"
