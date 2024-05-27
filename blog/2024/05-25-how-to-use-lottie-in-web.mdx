@@ -100,6 +100,30 @@ eventListeners=[
 
 在开发端没有任何的使用心智负担，只要交给我们动画的 json 文件，就能轻易地渲染出来。
 
+import * as animationLove from '@site/static/json/love.json';
+
+export const LottieDynamicForm = () => {
+
+  return (
+    <>
+      <Lottie
+        options={{
+          loop: true,
+          autoplay: true, 
+          animationData: animationLove,
+          rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+          }
+        }}
+        height={300}
+        width={300}
+      />
+    </>
+  )
+}
+
+<LottieDynamicForm />
+
 那么主流的 Lottie 动画制作工具有哪些呢？
 
 - [Adobe After Effects](https://www.adobe.com/products/aftereffects.html)：最专业的设计工具当然还得是 Adobe 
