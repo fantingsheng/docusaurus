@@ -1,0 +1,160 @@
+---
+slug: the-change-of-blog
+title: 博客的内容形式发展趋势 
+authors: [fants]
+tags: [教程, 动态演示, 博客, 发展趋势]
+hide_table_of_contents: true
+enable_comment: true
+enable_adsense: true
+hide_sidebar: true
+draft: true
+---
+
+你平时都在什么平台写博客？你写博客时的编辑器是什么？
+
+依我观察，现在的博客形式无外乎以下几种：
+
+<!--truncate-->
+
+- 本地编辑器书写，Hexo、Hugo、Vitepress 等部署
+- Notion、语雀和飞书等工具记录和发布
+- WordPress 等开源网站程序搭建，在线书写和发布
+- Github 仓库或 Page
+- 掘金、知乎、CSDN等在线平台记录
+
+不管平台或工具是什么？它们或有良好的编写体验，或易于在线发布和传播，抑或对搜索引擎友好，社区氛围好易于扩大影响力。
+
+今天我们不讨论用哪个平台，何种工具来呈现你的博客。着重关注下博客的内容形式随着 Web 技术的发展有哪些变化？
+
+我们最初的印象中一篇文章的形成素材来看，文字搭配图片，这也是从纸媒时代常见的方式。过度到互联网时代，多媒体素材逐渐丰富起来，有了视频、GIF、SVG 等，文章给人的体验也从单纯的视觉扩大到听觉。
+我们接受的信息维度发生了变化。
+
+这种变化的感受对于经历完整互联网发展的我们来说，或者不算深刻。但是，接下来的要讨论的一种趋势，你不得不去关注。
+
+你可以打开这两篇文章观察下：
+- CSS :has() Interactive Guide: [https://ishadeed.com/article/css-has-guide](https://ishadeed.com/article/css-has-guide)
+- An Interactive Guide to Flexbox: [https://www.joshwcomeau.com/css/interactive-guide-to-flexbox](https://www.joshwcomeau.com/css/interactive-guide-to-flexbox)
+
+发现两个作者在讲解知识的时候，都配有大量的生动案例，通过一系列的鼠标或键盘操作来和读者进行互动。来达到读者在观察网页上一些元素的样式和行为发生的变化过程中思考背后的原理的目的。
+
+**很重要的一点**：我们从单纯被动接受信息，到一种参与互动，仿佛在跟着文章思维和作者进行交流。这种学习的过程更加立体和深刻。
+
+另外通过这种方式写作，更能锻炼写作者对某个知识点背后的原理和在实际场景中的应用的深入理解。因为每个案例都是该知识点在实际应用中的一种折射。
+
+我理解这种创作的深度比单纯的码文字要高的多。
+
+而之所以有这种变化的趋势，背后得益于 Web 技术的发展的助推：静态网站生成技术对 `mdx` 格式的文件的支持：同一个文件中不仅支持 `md` 语法，还能直接写 `jsx` 代码在文件执行。
+
+首先不妨先从交互形式的角度：
+- 鼠标点击操作触发
+- 通过键盘按键
+- 眼球互动（VR 场景）
+- 手指操作（VR 场景）
+
+下面我们来通过几个案例，看看都有哪些可能性？
+
+**通过键盘按键互动**
+
+import { useState, useEffect } from 'react'
+import BrowserOnly from '@docusaurus/BrowserOnly'
+import { IconButton, FormControl, InputLabel, OutlinedInput, InputAdornment, FormHelperText, Typography } from '@mui/material';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+export const CapsLockDetect = () => {
+  function InputDetect () {
+    const [ locked, setLocked ] = useState(false);
+    const detect = (e) => {
+      let isLocked = false;
+      if (e.getModifierState('CapsLock')) {
+        isLocked = true;
+      }
+      setLocked(isLocked);
+    }
+    useEffect(() => {
+      window.addEventListener('keydown', detect)
+      window.addEventListener('keyup', detect)
+      return () => {
+        window.removeEventListener('keydown', detect)
+        window.removeEventListener('keyup', detect)
+      }
+    }, [])
+    return (
+      <div
+        style={{
+          backgroundColor: 'rgb(246, 248, 250)',
+          padding: '10px',
+          margin: '0 0 20px'
+        }}>
+        <Typography variant="subtitle1" gutterBottom>按下键盘上的 `caps lock` 键，体验交互上的变化：</Typography>
+        <FormControl sx={{ width: '50%' }} variant="outlined">
+          <InputLabel size="small" htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type='password'
+            size="small"
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  size="small"
+                  aria-label="toggle password visibility"
+                  edge="end"
+                >
+                  <VisibilityOff />
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+          <FormHelperText id="component-helper-text">
+            { locked ? <div>Caps lock is on</div> : '' }
+          </FormHelperText>
+        </FormControl>
+      </div>
+    )
+  }
+  return (
+    <BrowserOnly>
+    {
+      () => <InputDetect />
+    }
+    </BrowserOnly>
+  )
+};
+
+<CapsLockDetect />
+
+这是一种常见的应用场景，通过监听键盘大小键的关闭和开启来给与用户输入密码时友好提示。
+
+**及时编码，实时展示效果**
+
+```jsx live
+function App() {
+  const [mouseX, setMouseX] = React.useState(null);
+  const [mouseY, setMouseY] = React.useState(null);
+
+  const handleMouseMove = React.useMemo(
+    () => debounce((ev) => {
+      setMouseX(ev.clientX);
+      setMouseY(ev.clientY);
+    }, 250), // 修改防抖数值观察变化
+    []
+  );
+  
+  return (
+    <div
+      style={{ padding: '40px 20px', border: '2px dashed #ebedf0' }}
+      onMouseMove={handleMouseMove}>
+      鼠标位置：{ mouseX ? `X: ${mouseX}` : '' } { mouseY ? `Y: ${mouseY}` : '' }
+    </div>
+  );
+}
+```
+
+这种及时显示代码效果的的互动形式，大大提高了读者对代码的兴趣。
+
+有点类似 [CODEPEN](https://codepen.io) 这种代码演示平台。大大简化了我们在线调试代码的过程。
+
+**通过改变配置，展示效果**
+
+这种强交互的文章有哪些产品方面的应用，做的最好的应该是公众号，我们通常无法拒绝那种通过点击展开图片，或点击变换场景的公众号推文。深刻抓住了互动在营销上传播力。
+
