@@ -1,0 +1,8 @@
+.details {
+  --docusaurus-details-decoration-color: var(--ifm-alert-border-color);
+  --docusaurus-details-transition: transform var(--ifm-transition-fast) ease;
+  margin: 0 0 var(--ifm-spacing-vertical);
+  border: 1px dashed var(--ifm-alert-border-color);
+  background-color: transparent;
+  border: 1px dashed rgb(235, 237, 240);
+}
