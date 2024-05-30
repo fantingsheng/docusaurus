@@ -6,7 +6,7 @@
 
 **Web 端**
 
-![spacexcode](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1694759335925-72ca94d6-4e66-4a03-b50c-002e1a0d716a.png)
+![spacexcode](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717084684240-f086ab0a-1f66-4c4f-b46c-5085d0bddf82.png)
 
 **移动端**
 
