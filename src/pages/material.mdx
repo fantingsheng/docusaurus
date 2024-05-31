@@ -10,11 +10,27 @@ import { ImageList, ImageListItem } from '@mui/material';
 
 export function IconImageList() {
   return (
-    <ImageList sx={{ width: '100%', height: 'auto' }} cols={3}>
-      <ImageListItem sx={{ paddingTop: '0.25rem' }}>
+    <ImageList sx={{ width: '100%', height: 'auto' }} gap={10} cols={3}>
+      <ImageListItem>
+        <div style={
+          { 
+            backgroundImage: 'linear-gradient(45deg,#dadde1 25%,#0000 0),linear-gradient(-45deg,#dadde1 25%,#0000 0),linear-gradient(45deg,#0000 75%,#dadde1 0),linear-gradient(-45deg,#0000 75%,#dadde1 0)',
+            backgroundPosition: '0 0,0 10px,10px -10px,-10px 0',
+            backgroundSize: '20px 20px',
+            fontSize: 0
+          }
+        }>
+          <img
+            srcSet="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717086036405-2e19e2b2-cd29-4aa8-83b4-2a01e8279b16.png"
+            src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717086036405-2e19e2b2-cd29-4aa8-83b4-2a01e8279b16.png"
+            loading="lazy"
+          />
+        </div>
+      </ImageListItem>
+      <ImageListItem>
         <img
-          srcSet="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717086036405-2e19e2b2-cd29-4aa8-83b4-2a01e8279b16.png"
-          src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717086036405-2e19e2b2-cd29-4aa8-83b4-2a01e8279b16.png"
+          srcSet="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717170106647-7651f3d7-c2a4-41ef-9042-ddc3078d61ad.png"
+          src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717170106647-7651f3d7-c2a4-41ef-9042-ddc3078d61ad.png"
           loading="lazy"
         />
       </ImageListItem>
@@ -31,7 +47,7 @@ export function IconImageList() {
 
 <IconImageList />
 
-Created by [https://icon.ray.so/](https://icon.ray.so/)
+Created by Icon Maker ([https://icon.ray.so](https://icon.ray.so/))
 
 <br />
 
@@ -41,23 +57,55 @@ Created by [https://icon.ray.so/](https://icon.ray.so/)
 
 ![Logo](../../static/img/logo.svg)
 
+Created by Free Logo Maker ([https://logomakerr.ai](https://logomakerr.ai/))
+
 <br />
 
 ## 网页截图
 
 <br />
 
-![](http://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717084242634-be771832-c6b2-4cb1-b513-4c784ef5f469.png)
+export const CaptureImageLst = () => {
+  return (
+    <>
+      <div className="margin-bottom--lg">
+        <div className="text--center">
+          <figure style={{ margin: 0 }}>
+            <img src="http://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717084242634-be771832-c6b2-4cb1-b513-4c784ef5f469.png" alt="spacexcode" />
+            <figcaption style={{ color: '#909399', fontWeight: 300, fontStyle: 'italic' }}>Created by shots.so in Mockup Browser model, Safari Light style </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div className="margin-bottom--lg">
+        <div className="text--center">
+          <figure style={{ margin: 0 }}>
+            <img src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717085395234-3be2f340-21d8-429f-bc27-8e6ddd01a403.png" alt="spacexcode" />
+            <figcaption style={{ color: '#909399', fontWeight: 300, fontStyle: 'italic' }}>Created by shots.so in Mockup iPhone 15 model, Bule style</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div className="margin-bottom--lg">
+        <div className="text--center">
+          <figure style={{ margin: 0 }}>
+            <img src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717087136006-691735a0-09a2-410f-86fa-2551215b4a99.png" alt="spacexcode" />
+            <figcaption style={{ color: '#909399', fontWeight: 300, fontStyle: 'italic' }}>Created by shots.so in Mockup Macbook Pro 16 model</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div className="margin-bottom--lg">
+        <div className="text--center">
+          <figure style={{ margin: 0 }}>
+            <img src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717170620057-aec98955-74bf-430b-ab8b-bce45971b110.png" alt="spacexcode" />
+            <figcaption style={{ color: '#909399', fontWeight: 300, fontStyle: 'italic' }}>Created by shots.so in Apple Watch Ultra model</figcaption>
+          </figure>
+        </div>
+      </div>
+      
+    </>
+  )
+}
 
-created by shots.so in Mockup Browser model, Safari Light style 
-
-![](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717085395234-3be2f340-21d8-429f-bc27-8e6ddd01a403.png)
-
-created by shots.so in Mockup iPhone 15 model, Bule style
-
-![](https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1717087136006-691735a0-09a2-410f-86fa-2551215b4a99.png)
-
-created by shots.so in Mockup Macbook Pro 16 model
+<CaptureImageLst />
 
 <br />
 
