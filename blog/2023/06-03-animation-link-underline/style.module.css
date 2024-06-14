@@ -61,3 +61,22 @@
   transform-origin: top right;
   transition: transform 0.3s ease;
 }
+
+.animateInLeftOutRight:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.animateInLeftOutRight::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: top right;
+  transition: transform 0.3s ease;
+}
