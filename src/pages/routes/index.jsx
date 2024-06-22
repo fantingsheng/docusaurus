@@ -160,7 +160,7 @@ export default function ({ size = "default" }) {
                   </ul>
                 </section>
                 <footer className={styles.footer}>
-                  A side project by <Link to='/author'>Timfan</Link>
+                  A side project by <Link to='/author'>Timfan</Link>, data from Strava.
                 </footer>
               </div>
             </aside>
