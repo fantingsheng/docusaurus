@@ -1,5 +1,5 @@
 
-import { Button } from '@mui/material';
+import { Button, Skeleton, Box } from '@mui/material';
 
 import styles from './style.module.scss';
 
@@ -8,15 +8,14 @@ export default function ViewerSelect() {
   const handleToggle = () => {}
   
   return (
-    <Button
-      aria-controls={open ? 'split-button-menu' : undefined}
-      aria-expanded={open ? 'true' : undefined}
-      aria-label="选择格式并导出图片"
-      aria-haspopup="menu"
+    <Box
       onClick={handleToggle}
-      sx={{ width: 80, position: 'fixed' }}
+      sx={{ width: '100%', position: 'absolute' }}
     >
-      button
-    </Button>
+      <Box sx={{ display: 'flex', width: '100%', border: `1px solid var(--mui-palette-primary-dark)`, borderRadius: '5px' }}>
+        <Box sx={{ width: '60px', height: '40px' }}></Box> 
+        <span>iPhoneX< br/>1920x1560</span>
+      </Box>
+    </Box>
   )
 }
