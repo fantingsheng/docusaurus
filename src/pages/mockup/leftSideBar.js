@@ -3,12 +3,12 @@ import styles from "./style.module.scss";
 import clsx from "clsx";
 import Link from '@docusaurus/Link';
 
-import MockupTab from "./MockupTab";
-import FrameTab from "./FrameTab";
+import MockupTab from "./components/MockupTab";
+import FrameTab from "./components/FrameTab";
 
 import { Box, Tabs, Tab } from '@mui/material';
 
-import ExportButton from "./ExportButton";
+import ExportButton from "./components/ExportButton";
 
 export default function LeftSideBar() {
   const [value, setValue] = useState(0);

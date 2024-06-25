@@ -6,7 +6,7 @@ export default function ScreenShot ({ config }) {
 	const selectTheme = (theme) => {
 		switch (theme) {
 			case 'normal':
-        return <>cc</>;
+        return <></>;
 		}
 	};
 
