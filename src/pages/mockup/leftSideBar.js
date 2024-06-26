@@ -52,9 +52,8 @@ export default function LeftSideBar() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Mockup">sdfsdfsdf</Tab>            
+          <Tab label="Mockup" />            
           <Tab label="Frame" />
-          
         </Tabs>
         <TabPanel value={value} index={0}>
           <MockupTab />

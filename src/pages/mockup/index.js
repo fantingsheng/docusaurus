@@ -1,4 +1,4 @@
-import Layout from '@theme/Layout';
+import { useState } from 'react';
 import Head from '@docusaurus/Head';
 import LeftSideBar from "./leftSideBar";
 import RightSideBar from "./rightSideBar";
@@ -6,6 +6,15 @@ import Preview from "./preview";
 import styles from "./style.module.scss";
 
 export default function () {
+  const [config, setConfig] = useState({
+    theme: "",
+    bgImg: ""
+  })
+
+  const handleConfigChange = (val, key) => {
+    setConfig((prev) => ({ ...prev, [key]: val }));
+  };
+
   return (
     <>
       <Head>
@@ -15,13 +24,13 @@ export default function () {
       </Head>
       <main className={styles.appMain}>
         <div className={styles.sidebar}>
-          <LeftSideBar />
+          <LeftSideBar config={config} handleConfigChange={handleConfigChange} />
         </div>
         <div className={styles.preview}>
-          <Preview />
+          <Preview config={config} handleConfigChange={handleConfigChange} />
         </div>
         <div className={styles.sidebar}>
-          <RightSideBar />
+          <RightSideBar config={config} handleConfigChange={handleConfigChange} />
         </div>
       </main>
     </>

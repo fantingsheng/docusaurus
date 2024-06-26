@@ -1,11 +1,9 @@
 import styles from "./style.module.scss";
 import ScreenShot from "./screenShot";
+import UploadCard from "./components/UploadCard";
 
-export default function Preview() {
-  const config = {
-    theme: ""
-  }
-  
+export default function Preview({ config }) {
+
   return (
     <div
       id="previewFrame"
@@ -16,9 +14,13 @@ export default function Preview() {
         className={styles.frameGrident}
         style={{ backgroundImage: "linear-gradient(140deg, rgb(255, 100, 50) 12.8%, rgb(255, 0, 101) 43.52%, rgb(123, 46, 255) 84.34%", opacity: 1}}
       ></div>
-      <div className={styles.mockupWrapper} style={{ transform: "scale(1) translateX(0%) translateY(0%)"}}>
-        <div className={styles.screenshot}>
-          <ScreenShot config={config} />
+      <div className={styles.displayContainer}>
+        <div className={styles.mockupWrapper} style={{ transform: "scale(1) translateX(0%) translateY(0%)"}}>
+          <div className={styles.screenshot}>
+            {
+              config?.bgImg ? <ScreenShot config={config} /> : <UploadCard />
+            }
+          </div>
         </div>
       </div>
     </div>
