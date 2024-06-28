@@ -11,7 +11,7 @@ import { Box, Tabs, Tab } from '@mui/material';
 import ExportButton from "./components/ExportButton";
 import ExportSetting from "./components/ExportSetting";
 
-export default function LeftSideBar() {
+export default function LeftSideBar({ config, handleConfigChange }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -57,10 +57,10 @@ export default function LeftSideBar() {
           <Tab label="Frame" />
         </Tabs>
         <TabPanel value={value} index={0}>
-          <MockupTab />
+          <MockupTab config={config} handleConfigChange={handleConfigChange} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <FrameTab />
+          <FrameTab config={config} handleConfigChange={handleConfigChange} />
         </TabPanel>
         <div className={styles.exportControls}>
           <Box sx={{ display: 'flex', gap: '8px' }}>

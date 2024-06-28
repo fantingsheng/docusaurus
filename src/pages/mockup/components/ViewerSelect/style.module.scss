@@ -5,3 +5,16 @@
   font-size: 12px;
   margin-top: 3px;
 }
+.moreBtn {
+  position: absolute;
+  width: 20px;
+  top: 50%;
+  right: 0.45rem;
+  transform: translateY(-50%) rotate(90deg);
+  cursor: pointer;
+  transition: all 0.15s linear;
+
+  &.open {
+    transform: translateY(-50%) rotate(270deg);
+  }
+}

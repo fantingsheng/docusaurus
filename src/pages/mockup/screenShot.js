@@ -6,7 +6,9 @@ export default function ScreenShot ({ config }) {
 	const selectTheme = (theme) => {
 		switch (theme) {
 			case 'normal':
-        return <></>;
+        return <img src={config.bgImg} />;
+      default:
+        return <img src={config.bgImg} />;
 		}
 	};
 

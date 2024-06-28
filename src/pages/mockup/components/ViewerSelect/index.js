@@ -1,29 +1,65 @@
-
-import { Button, Skeleton, Box } from '@mui/material';
-
+import { useState, useRef } from 'react';
+import { Button, Skeleton, Box, Popper, ClickAwayListener, Paper, Grow } from '@mui/material';
+import clsx from 'clsx';
 import styles from './style.module.scss';
 
 export default function ViewerSelect() {
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
 
-  const handleToggle = () => {}
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+  };
   
   return (
-    <Box
-      onClick={handleToggle}
-      sx={{ width: '100%', position: 'absolute' }}
-    >
-      <Box sx={{
-          display: 'flex',
-          alignItems: 'center',
-          width: '100%',
-          border: `1px solid #eee`,
-          borderRadius: '5px',
-          padding: '8px',
-          gap: '8px'
-        }}>
-        <Box sx={{ width: '60px', height: '40px', backgroundColor: '#eee' }}></Box> 
-        <div className={styles.line}>iPhoneX< br/><span className={styles.small}>1920x1560</span></div>
+    <>
+      <Box
+        sx={{ width: '100%', position: 'absolute' }}
+      >
+        <Box ref={anchorRef} 
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            width: '100%',
+            border: `1px solid #eee`,
+            borderRadius: '5px',
+            padding: '8px',
+            gap: '8px',
+            cursor: 'pointer'
+          }}
+          onClick={handleToggle}
+        >
+          <Box sx={{ width: '60px', height: '40px', backgroundColor: '#eee' }}></Box> 
+          <div className={styles.line}>iPhoneX< br/><span className={styles.small}>1920x1560</span></div>
+          <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={clsx(styles.moreBtn, open ? styles.open : '')}>
+            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path>
+          </svg>
+        </Box>
       </Box>
-    </Box>
+      <Popper sx={{ zIndex: 1 }} open={open} placement="bottom-start" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === 'bottom' ? 'left top' : 'left bottom',
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <Box sx={{ background: '#fff', padding: '10px', width: '400px' }}>setting</Box>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
+    </>
   )
 }

@@ -1,6 +1,6 @@
 import { Box, Button, styled } from "@mui/material";
 
-export default function UploadCard() {
+export default function UploadCard({ handleConfigChange }) {
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
     clipPath: 'inset(50%)',
@@ -29,7 +29,7 @@ export default function UploadCard() {
       }}
     >
       Upload file
-      <VisuallyHiddenInput type="file" />
+      <VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
     </Button>
   )
 }
