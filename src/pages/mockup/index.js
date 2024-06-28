@@ -8,9 +8,12 @@ import styles from "./style.module.scss";
 export default function () {
   const [config, setConfig] = useState({
     theme: "",
+    picture: "",
     bgImg: "",
     borderRadius: 10,
-    shadow: ""
+    shadow: "",
+    bgColor: "",
+    bgGradient: ""
   })
 
   const handleConfigChange = (val, key) => {
