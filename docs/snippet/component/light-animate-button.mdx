@@ -1,0 +1,150 @@
+---
+title: 光影动画按钮
+sidebar_position: 10
+hide_table_of_contents: true
+enable_donate: true
+---
+
+import LightAnimateButton from '@site/src/components/LightAnimateButton';
+
+export const ExampleDemo = () => (
+  <div style={{ width: '100%', margin: '40px auto' }}>
+    <div style={{ backgroundColor: 'rgb(11, 11, 15)', height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <LightAnimateButton />
+    </div>
+  </div>
+)
+
+<ExampleDemo />
+
+## 代码实现
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="html" label="HTML" default>
+
+```html
+<button class="button">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.98883 17.9652C8.44583 18.297 7.74902 17.9063 7.74902 17.2699V6.73023C7.74902 6.09386 8.44583 5.70307 8.98883 6.0349L17.6122 11.3047C18.1321 11.6225 18.1321 12.3776 17.6122 12.6954L8.98883 17.9652Z" fill="#fff"></path></svg>
+  <span class="btnText">Watch the guided tour</span>
+  <span class="light"></span>
+</button>
+```
+
+</TabItem>
+<TabItem value="css" label="CSS" default>
+
+```scss
+.button {
+  color: rgb(230, 230, 230);
+  z-index: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 15px 5px 8px;
+  border-radius: 99px;
+  background: linear-gradient(black, black) padding-box padding-box, linear-gradient(to right, rgba(182, 177, 239, 0.2), rgba(224, 172, 131, 0.2)) border-box border-box;
+  border: 1px solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 8px -1px;
+  transition: all 0.6s ease 0s;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 14px;
+    height: 1px;
+    width: 32px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.16));
+    animation: 8s linear 0s infinite normal none running transLight;
+    mix-blend-mode: difference;
+  }
+
+  .btnText {
+    position: relative;
+    margin-left: 4px;
+    top: -1px;
+    font-size: 13px;
+    line-height: 13px;
+  }
+
+  .light {
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: -11px;
+    left: 36px;
+    filter: blur(0.5px);
+    transform-origin: center center;
+    animation: 8s linear 0s infinite normal none running lightRorate;
+
+    &::after, &::before {
+      content: "";
+      position: absolute;
+    }
+
+    &::before {
+      width: 1px;
+      height: 100%;
+      left: 10px;
+      top: 0;
+      background: linear-gradient(transparent, rgba(224, 173, 135, 0.8), transparent);
+    }
+    &::after {
+      width: 100%;
+      height: 1px;
+      left: 0;
+      top: 10px;
+      background: linear-gradient(to left, transparent, rgba(224, 173, 135, 0.8), transparent);
+    }
+  }
+}
+
+@keyframes transLight {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(94px);
+    opacity: 1;
+  }
+  52% {
+    transform: translateX(96px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes lightRorate {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0;
+    transform: translateX(30px) rotate(-240deg) scale(0.5);
+  }
+  50% {
+    transform: translateX(94px) rotate(-60deg) scale(1);
+    opacity: 1;
+  }
+  55% {
+    transform: translateX(96px) rotate(0deg) scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+```
+
+</TabItem>
+</Tabs>
