@@ -4,7 +4,11 @@ import Preview from "./preview";
 export default function RightSideBar({ config }) {
   const transformLst = [
     "",
-    "perspective(400em) rotateY(-15deg) rotateX(6deg) skew(-8deg,4deg) translate3d(-4%,-2%,0) scale(.86)"
+    "perspective(400em) rotateY(-15deg) rotateX(6deg) skew(-8deg,4deg) translate3d(-4%,-2%,0) scale(.86)",
+    "rotate(-8deg) scale(.9)",
+    "perspective(400em) rotateY(15deg) rotateX(6deg) skew(8deg,-4deg) translate3d(4%,-2%,0) scale(.86)",
+    "perspective(400em) translate3d(0,-6%,0) rotateX(34deg) scale(.84)",
+    "rotateX(40deg) rotate(40deg) scale(.8)"
   ];
 
   return (

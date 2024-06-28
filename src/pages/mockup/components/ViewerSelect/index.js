@@ -16,7 +16,7 @@ export default function ViewerSelect() {
           display: 'flex',
           alignItems: 'center',
           width: '100%',
-          border: `1px solid var(--mui-palette-primary-dark)`,
+          border: `1px solid #eee`,
           borderRadius: '5px',
           padding: '8px',
           gap: '8px'

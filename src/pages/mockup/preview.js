@@ -2,7 +2,7 @@ import styles from "./style.module.scss";
 import ScreenShot from "./screenShot";
 import UploadCard from "./components/UploadCard";
 
-export default function Preview({ config }) {
+export default function Preview({ config, transform }) {
 
   return (
     <div
@@ -16,7 +16,7 @@ export default function Preview({ config }) {
       ></div>
       <div className={styles.displayContainer}>
         <div className={styles.mockupWrapper} style={{ transform: "scale(1) translateX(0%) translateY(0%)"}}>
-          <div className={styles.screenshot}>
+          <div className={styles.screenshot} style={{ transform: transform }}>
             {
               config?.bgImg ? <ScreenShot config={config} /> : <UploadCard />
             }

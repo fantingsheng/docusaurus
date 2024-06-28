@@ -9,6 +9,7 @@ import FrameTab from "./components/FrameTab";
 import { Box, Tabs, Tab } from '@mui/material';
 
 import ExportButton from "./components/ExportButton";
+import ExportSetting from "./components/ExportSetting";
 
 export default function LeftSideBar() {
   const [value, setValue] = useState(0);
@@ -62,7 +63,10 @@ export default function LeftSideBar() {
           <FrameTab />
         </TabPanel>
         <div className={styles.exportControls}>
-          <ExportButton />
+          <Box sx={{ display: 'flex', gap: '8px' }}>
+            <ExportButton />
+            <ExportSetting />
+          </Box>
         </div>
       </div>
     </>
