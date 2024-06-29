@@ -20,6 +20,9 @@ export default function MockupTab({ config, handleConfigChange }) {
           <Typography className={styles.setTit} variant="h3">阴影</Typography>
           <BoxShadow shadow={config.borderRadius} handleConfigChange={handleConfigChange} />
         </Box>
+        <Box className={styles.pannelCtrl}>
+          <Typography className={styles.setTit} variant="h3">大小和位置</Typography>
+        </Box>
       </div>
     </div>
   )

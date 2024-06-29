@@ -22,7 +22,7 @@ export default function ViewerSelect() {
   return (
     <>
       <Box
-        sx={{ width: '100%', position: 'absolute', background: '#fff' }}
+        sx={{ width: '100%', position: 'absolute', background: '#fff', zIndex: 2 }}
       >
         <Box ref={anchorRef} 
           sx={{
@@ -38,7 +38,7 @@ export default function ViewerSelect() {
           onClick={handleToggle}
         >
           <Box sx={{ width: '60px', height: '40px', backgroundColor: '#eee' }}></Box> 
-          <div className={styles.line}>iPhoneX< br/><span className={styles.small}>1920x1560</span></div>
+          <div className={styles.line}>iPhoneX< br/><span className={styles.small}>1920x1440</span></div>
           <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={clsx(styles.moreBtn, open ? styles.open : '')}>
             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path>
           </svg>

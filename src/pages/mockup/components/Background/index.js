@@ -8,7 +8,8 @@ export default function Background({ config, handleConfigChange }) {
   }
 
   const solidColors = ["rgb(248, 249, 250)", "rgb(222, 226, 230)", "rgb(173, 181, 189)", "rgb(73, 80, 87)", "rgb(33, 37, 41)",
-    "rgb(21, 22, 23)", "rgb(255, 89, 94)", "rgb(255, 146, 76)", "rgb(255, 202, 58)"];
+    "rgb(21, 22, 23)", "rgb(255, 89, 94)", "rgb(255, 146, 76)", "rgb(255, 202, 58)", "rgb(197, 202, 48)",
+  "rgb(138, 201, 38)", "rgb(63, 201, 93)"];
 
   const gradientColors = [
     "linear-gradient(140deg, rgb(255, 100, 50) 12.8%, rgb(255, 0, 101) 43.52%, rgb(123, 46, 255) 84.34%)",

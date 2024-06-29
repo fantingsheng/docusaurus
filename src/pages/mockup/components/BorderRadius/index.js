@@ -54,6 +54,7 @@ export default function BorderRadius({ borderRadius, handleConfigChange }) {
   return (
     <>
       <AirbnbSlider
+        aria-label='radius'
         slots={{ thumb: AirbnbThumbComponent }}
         value={radius}
         min={1}
@@ -65,7 +66,7 @@ export default function BorderRadius({ borderRadius, handleConfigChange }) {
         value={radius}
         exclusive
         onChange={(e, val) => onValueChange(val)}
-        aria-label="border radius"
+        aria-label="border radius switch"
         size="small"
       >
         <ToggleButton value={5} aria-label="5px">

@@ -5,11 +5,12 @@ export default function BoxShadow({ shadow, handleConfigChange }) {
   const [opacity, setOpacity] = useState(0.4);
   const [shadowVal, setShadowVal] = useState(shadow);
 
+  const onValueChange = () => {}
   return (
     <>
       <Slider
         value={opacity}
-        aria-label='Default'
+        aria-label='shadow'
         min={0}
         step={0.05}
         max={1}
