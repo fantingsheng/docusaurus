@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Button, Skeleton, Box, Popper, ClickAwayListener, Paper, Grow } from '@mui/material';
+import MockupModel from "../MockupModel";
 import clsx from 'clsx';
 import styles from './style.module.scss';
 
@@ -44,17 +45,18 @@ export default function ViewerSelect() {
         </Box>
       </Box>
       <Popper sx={{ zIndex: 1 }} open={open} placement="bottom-start" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-        {({ TransitionProps, placement }) => (
+        {({ TransitionProps }) => (
           <Grow
             {...TransitionProps}
             style={{
-              transformOrigin:
-                placement === 'bottom' ? 'left top' : 'left bottom',
+              transformOrigin: 'left top',
             }}
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <Box sx={{ background: '#fff', padding: '10px', width: '400px' }}>setting</Box>
+                <Box sx={{ background: '#fff', padding: '10px', width: '400px' }}>
+                  <MockupModel />
+                </Box>
               </ClickAwayListener>
             </Paper>
           </Grow>
