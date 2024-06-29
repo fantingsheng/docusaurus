@@ -16,7 +16,11 @@ export default function RightSideBar({ config, handleConfigChange }) {
       <div className={styles.cardsWrapper}>
         {
           transformLst.map((item, index) => 
-            (<Preview config={config} handleConfigChange={handleConfigChange} transform={item} key={index} />)
+            (<div className={styles.layoutItem} key={index}>
+              <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
+                <Preview config={config} handleConfigChange={handleConfigChange} transform={item} />
+              </div>
+            </div>)
           )
         }
       </div>

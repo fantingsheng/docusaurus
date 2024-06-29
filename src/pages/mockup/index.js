@@ -11,9 +11,11 @@ export default function () {
     picture: "",
     bgImg: "",
     borderRadius: 10,
+    transparent: false,
     shadow: "",
-    bgColor: "",
-    bgGradient: ""
+    bg: "linear-gradient(140deg, rgb(255, 100, 50) 12.8%, rgb(255, 0, 101) 43.52%, rgb(123, 46, 255) 84.34%)",
+    noise: 0,
+    blur: 0
   })
 
   const handleConfigChange = (val, key) => {
@@ -31,11 +33,24 @@ export default function () {
         <div className={styles.sidebar}>
           <LeftSideBar config={config} handleConfigChange={handleConfigChange} />
         </div>
-        <div className={styles.preview}>
-          <Preview config={config} handleConfigChange={handleConfigChange} />
+        <div className={styles.canvas}>
+          <div className={styles.safeArea}>
+            <div
+              id="previewFrame"
+              className={styles.previewFrame}
+              style={{ aspectRatio: "4 / 3" }}
+            >
+              <Preview config={config} handleConfigChange={handleConfigChange} />
+            </div>
+          </div>
         </div>
         <div className={styles.sidebar}>
           <RightSideBar config={config} handleConfigChange={handleConfigChange} />
+        </div>
+        <div className={styles.exportLayer}>
+          <div id="captureCanvas" className={styles.frame}>
+            <Preview config={config} handleConfigChange={handleConfigChange} />
+          </div>
         </div>
       </main>
     </>

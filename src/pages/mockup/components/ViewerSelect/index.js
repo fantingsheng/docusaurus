@@ -22,7 +22,7 @@ export default function ViewerSelect() {
   return (
     <>
       <Box
-        sx={{ width: '100%', position: 'absolute' }}
+        sx={{ width: '100%', position: 'absolute', background: '#fff' }}
       >
         <Box ref={anchorRef} 
           sx={{

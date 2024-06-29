@@ -29,7 +29,7 @@ export default function UploadCard({ handleConfigChange }) {
       }}
     >
       Upload file
-      <VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
+      <VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'picture')} />
     </Button>
   )
 }

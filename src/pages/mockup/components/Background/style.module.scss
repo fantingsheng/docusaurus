@@ -1,0 +1,36 @@
+.title {
+  font-size: 12px !important;
+  color: rgba(0,0,0,.54) !important;
+}
+.solidColorList {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(6, 1fr);
+}
+.colorStyles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.colorCircle {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 40px;
+  cursor: pointer;
+  aspect-ratio: 1/1;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+}
+.gridentColorList {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.colorRect {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+  cursor: pointer;
+  aspect-ratio: 18/9;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+}

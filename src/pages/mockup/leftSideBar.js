@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from "./style.module.scss";
 import clsx from "clsx";
 import Link from '@docusaurus/Link';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 import MockupTab from "./components/MockupTab";
 import FrameTab from "./components/FrameTab";
@@ -53,7 +54,7 @@ export default function LeftSideBar({ config, handleConfigChange }) {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Mockup" />            
+          <Tab icon={<PhoneIcon />} iconPosition="start" label="Mockup" />            
           <Tab label="Frame" />
         </Tabs>
         <TabPanel value={value} index={0}>
