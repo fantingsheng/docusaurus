@@ -21,7 +21,8 @@ export default function MockupModel() {
         <ToggleButton value="watch">手表</ToggleButton>
       </ToggleButtonGroup>
       <Divider sx={{ margin: '10px 0' }} />
-      <Card sx={{ maxWidth: 245, backgroundColor: '#fff' }}>
+      <Box sx={{ display: 'grid', gap: '10px', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      <Card sx={{ maxWidth: 285, backgroundColor: '#fff' }}>
         <CardHeader
           title="Screenshot"
           subheader="September 14, 2016"
@@ -39,6 +40,25 @@ export default function MockupModel() {
           </Typography>
         </CardContent>
       </Card>
+      <Card sx={{ maxWidth: 285, backgroundColor: '#fff' }}>
+        <CardHeader
+          title="Screenshot"
+          subheader="September 14, 2016"
+        />
+        <CardMedia
+          component="img"
+          height="124"
+          image="https://mui.com/static/images/cards/paella.jpg"
+          alt="Paella dish"
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            This impressive paella is a perfect party dish and a fun meal to cook
+            together with your guests. 
+          </Typography>
+        </CardContent>
+      </Card>
+      </Box>
     </Box>
   )
 }

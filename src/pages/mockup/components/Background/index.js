@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Box, Button, Typography, styled } from "@mui/material";
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+
 import styles from "./style.module.scss";
 
 export default function Background({ config, handleConfigChange }) {

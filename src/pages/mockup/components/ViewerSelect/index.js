@@ -44,7 +44,7 @@ export default function ViewerSelect() {
           </svg>
         </Box>
       </Box>
-      <Popper sx={{ zIndex: 1 }} open={open} placement="bottom-start" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Popper sx={{ zIndex: 5 }} open={open} placement="bottom-start" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps }) => (
           <Grow
             {...TransitionProps}

@@ -1,9 +1,12 @@
 import { useState, useRef } from 'react';
-import { Box, Button, Popper, ClickAwayListener, Paper, Grow } from '@mui/material';
+import { Box, Button, Popper, ClickAwayListener, Paper, Grow, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 export default function ExportSetting() {
   const [open, setOpen] = useState(false);
+  const [rate, setRate] = useState(1);
+  const [format, setFormat] = useState('jpg');
+
   const anchorRef = useRef(null);
 
   const handleToggle = () => {
@@ -19,7 +22,7 @@ export default function ExportSetting() {
   return (
     <>
       <Button ref={anchorRef} variant="contained" size="small" sx={{ minWidth: '45px' }} onClick={handleToggle}><SettingsIcon /></Button>
-      <Popper sx={{ zIndex: 1 }} open={open} placement="top-end" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Popper sx={{ zIndex: 5, minWidth: '200px' }} open={open} placement="top-end" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
@@ -30,7 +33,45 @@ export default function ExportSetting() {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <Box sx={{ background: '#fff', padding: '10px' }}>setting</Box>
+                <Box sx={{ background: '#fff', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                    <Typography>格式</Typography>
+                    <ToggleButtonGroup
+                      value={format}
+                      exclusive
+                      onChange={(e, val) => setFormat(val)}
+                      aria-label="border radius switch"
+                      size="small"
+                    >
+                      <ToggleButton value="jpg" aria-label="jpg">
+                        JPG
+                      </ToggleButton>
+                      <ToggleButton value="png" aria-label="png">
+                        PNG
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  </Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                    <Typography>分辨率</Typography>
+                    <ToggleButtonGroup
+                      value={rate}
+                      exclusive
+                      onChange={(e, val) => setRate(val)}
+                      aria-label="border radius switch"
+                      size="small"
+                    >
+                      <ToggleButton value={1} aria-label="1x">
+                        1x
+                      </ToggleButton>
+                      <ToggleButton value={2} aria-label="2x">
+                        2x
+                      </ToggleButton>
+                      <ToggleButton value={3} aria-label="3x">
+                        3px
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  </Box>
+                </Box>
               </ClickAwayListener>
             </Paper>
           </Grow>
