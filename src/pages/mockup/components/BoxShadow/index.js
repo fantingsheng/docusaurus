@@ -14,7 +14,6 @@ export default function BoxShadow({ shadow, handleConfigChange }) {
         min={0}
         step={0.05}
         max={1}
-        size='small'
         valueLabelDisplay='auto'
         onChange={e => setOpacity(e.target.value)}
       />

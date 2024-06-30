@@ -1,4 +1,5 @@
 import { Box, Button, styled } from "@mui/material";
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 export default function UploadCard({ handleConfigChange }) {
   const VisuallyHiddenInput = styled('input')({
@@ -28,7 +29,8 @@ export default function UploadCard({ handleConfigChange }) {
         }
       }}
     >
-      Upload file
+      <AddPhotoAlternateIcon />
+      上传图片
       <VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'picture')} />
     </Button>
   )

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Box, Button, Typography, styled } from "@mui/material";
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-
+import PaletteIcon from '@mui/icons-material/Palette';
+import WallpaperIcon from '@mui/icons-material/Wallpaper';
+import GradientIcon from '@mui/icons-material/Gradient';
 import styles from "./style.module.scss";
 
 export default function Background({ config, handleConfigChange }) {
@@ -41,9 +42,12 @@ export default function Background({ config, handleConfigChange }) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <Box sx={{ display: 'flex', gap: '10px' }}>
-        <Button variant="contained" onClick={onClickTransBg}>透明</Button>
-        <Button variant="contained">颜色</Button>
-        <Button component="label" variant="contained">图片
+        <Button className={styles.bgButton} variant="contained" onClick={onClickTransBg} fullWidth>
+          <GradientIcon />透明</Button>
+        <Button className={styles.bgButton} variant="contained" fullWidth>
+          <PaletteIcon />颜色</Button>
+        <Button className={styles.bgButton} component="label" variant="contained" fullWidth>
+          <WallpaperIcon />图片
           <VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
         </Button>
       </Box>

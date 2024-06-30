@@ -29,9 +29,8 @@ export default function Frame({ config, handleConfigChange }) {
             min={0}
             step={1}
             max={100}
-            size='small'
             valueLabelDisplay='auto'
-            onChange={e => onNoiseChange(e.target.value)}
+            onChange={e => setNoiseVal(e.target.value)}
           />
           <Slider
             value={blurVal}
@@ -39,9 +38,8 @@ export default function Frame({ config, handleConfigChange }) {
             min={0}
             step={1}
             max={100}
-            size='small'
             valueLabelDisplay='auto'
-            onChange={e => onBlurChange(e.target.value)}
+            onChange={e => setBlurVal(e.target.value)}
           />
         </Box>
         <Box className={styles.pannelCtrl}>

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import styles from "./style.module.scss";
 import clsx from "clsx";
 import Link from '@docusaurus/Link';
-import PhoneIcon from '@mui/icons-material/Phone';
+import AirplayIcon from '@mui/icons-material/Airplay';
+import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 
 import MockupTab from "./components/MockupTab";
 import FrameTab from "./components/FrameTab";
@@ -54,8 +55,8 @@ export default function LeftSideBar({ config, handleConfigChange }) {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab icon={<PhoneIcon />} iconPosition="start" label="Mockup" />            
-          <Tab label="Frame" />
+          <Tab label="模型" sx={{ minHeight: '48px' }} icon={<AirplayIcon fontSize='small' />} iconPosition="start" />            
+          <Tab label="框架" sx={{ minHeight: '48px' }} icon={<AspectRatioIcon fontSize='small' />} iconPosition="start" />
         </Tabs>
         <TabPanel value={value} index={0}>
           <MockupTab config={config} handleConfigChange={handleConfigChange} />

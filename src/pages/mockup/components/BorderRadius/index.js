@@ -2,7 +2,7 @@ import { Slider, SliderThumb, ToggleButtonGroup, ToggleButton, styled } from '@m
 import { useState } from 'react';
 
 export default function BorderRadius({ borderRadius, handleConfigChange }) {
-  const [radius, setRadius] = useState(borderRadius);
+  const [radius, setRadius] = useState(10);
 
   const AirbnbSlider = styled(Slider)(({ theme }) => ({
     color: '#383c93',
@@ -60,17 +60,17 @@ export default function BorderRadius({ borderRadius, handleConfigChange }) {
         min={1}
         step={1}
         max={40}
-        onChange={e => onValueChange(e.target.value)}
+        valueLabelDisplay='auto'
+        onChange={e => setRadius(e.target.value)}
       /> */}
       <Slider
-        aria-label='radius'
         value={radius}
+        aria-label='radius'
         min={1}
         step={1}
         max={40}
-        size='small'
         valueLabelDisplay='auto'
-        onChange={e => onValueChange(e.target.value)}
+        onChange={e => setRadius(e.target.value)}
       />
       <ToggleButtonGroup
         value={radius}

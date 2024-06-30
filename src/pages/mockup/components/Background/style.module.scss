@@ -2,6 +2,12 @@
   font-size: 12px !important;
   color: rgba(0,0,0,.54) !important;
 }
+.bgButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .solidColorList {
   display: grid;
   gap: 8px;
