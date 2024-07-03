@@ -103,7 +103,6 @@ const config = {
           },
           { to: '/blog', label: '博客', position: 'left' },
           { label: '实战', position: 'right', items: [
-            { to: '/visitor', label: '统计工具' },
             { to: '/shapedivider', label: '分隔线工具' },
             { to: '/codeimage', label: '代码图片生成器' },
             { to: '/cssglass', label: '毛玻璃效果生成器' },
