@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkspacexcode_com=self.webpackChunkspacexcode_com||[]).push([[4280],{42750:(e,c,s)=>{s.r(c),s.d(c,{default:()=>n});s(67294);var t=s(85893);function n(e){let{config:c}=e;const{theme:s}=c;return(0,t.jsx)(t.Fragment,{children:(0,t.jsx)("img",{src:c.picture})})}}}]);
