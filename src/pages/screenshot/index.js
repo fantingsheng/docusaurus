@@ -40,7 +40,7 @@ export default function () {
               className={styles.previewFrame}
               style={{ aspectRatio: "4 / 3" }}
             >
-              <Preview config={config} handleConfigChange={handleConfigChange} />
+              <Preview config={config} handleConfigChange={handleConfigChange} showBtn={true} />
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@ export default function () {
         </div>
         <div className={styles.exportLayer}>
           <div id="captureCanvas" className={styles.frame}>
-            <Preview config={config} handleConfigChange={handleConfigChange} />
+            <Preview config={config} handleConfigChange={handleConfigChange} showBtn={false} />
           </div>
         </div>
       </main>

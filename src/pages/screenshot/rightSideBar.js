@@ -18,7 +18,7 @@ export default function RightSideBar({ config, handleConfigChange }) {
           transformLst.map((item, index) => 
             (<div className={styles.layoutItem} key={index}>
               <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
-                <Preview config={config} handleConfigChange={handleConfigChange} transform={item} />
+                <Preview config={config} handleConfigChange={handleConfigChange} transform={item} showBtn={false} />
               </div>
             </div>)
           )

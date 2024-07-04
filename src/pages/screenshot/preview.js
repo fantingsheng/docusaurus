@@ -1,8 +1,14 @@
 import styles from "./style.module.scss";
 import ScreenShot from "./screenShot";
 import UploadCard from "./components/UploadCard";
+import { Box } from '@mui/material';
+import { useEffect } from "react";
 
-export default function Preview({ config, handleConfigChange, transform }) {
+export default function Preview({ config, handleConfigChange, transform, showBtn }) {
+
+  useEffect(() => {
+    console.log("showBtn", showBtn)
+  }, [])
 
   return (
     <div className={styles.frameContent}>
@@ -20,7 +26,14 @@ export default function Preview({ config, handleConfigChange, transform }) {
         <div className={styles.mockupWrapper} style={{ transform: "scale(1) translateX(0%) translateY(0%)"}}>
           <div className={styles.screenshot} style={{ transform: transform, borderRadius: `${config.borderRadius}px` }}>
             {
-              config?.picture ? <ScreenShot config={config} /> : <UploadCard handleConfigChange={handleConfigChange} />
+              config?.picture ? <ScreenShot config={config} /> : showBtn ? <UploadCard handleConfigChange={handleConfigChange} /> : <Box sx={{
+                width: "100%", height: "100%",
+                background: "rgba(220,220,220,1)",
+                color: "rgba(0,0,0,.8)",
+                '&:hover': {
+                  background: "rgba(220,220,220,1)"
+                }
+              }} />
             }
           </div>
         </div>
