@@ -1,12 +1,24 @@
 import { useState, useRef } from 'react';
 import { Button, Skeleton, Box, Popper, ClickAwayListener, Paper, Grow } from '@mui/material';
 import MockupModel from "../MockupModel";
+import FrameModel from "../FrameModel";
 import clsx from 'clsx';
 import styles from './style.module.scss';
 
-export default function ViewerSelect() {
+export default function ViewerSelect({ openStyle }) {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+  const [selObj, setSelObj] = useState(openStyle === "mockup" ? {
+    tit: "Screenshot",
+    info: "图片自适应大小"
+  } : {
+    tit: "Default 16 : 9",
+    info: "1920 x 1080"
+  });
+
+  const handleSelChange = (val, key) => {
+    setSelObj((prev) => ({ ...prev, [key]: val }));
+  }; 
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -38,7 +50,10 @@ export default function ViewerSelect() {
           onClick={handleToggle}
         >
           <Box sx={{ width: '60px', height: '40px', backgroundColor: '#eee' }}></Box> 
-          <div className={styles.line}>iPhoneX< br/><span className={styles.small}>1920x1440</span></div>
+          <div className={styles.line}>
+            {selObj.tit}< br/>
+            <span className={styles.small}>{selObj.info}</span>
+          </div>
           <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={clsx(styles.moreBtn, open ? styles.open : '')}>
             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path>
           </svg>
@@ -55,7 +70,12 @@ export default function ViewerSelect() {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <Box sx={{ background: '#fff', padding: '10px', width: '400px' }}>
-                  <MockupModel />
+                  {
+                    openStyle === "mockup" ? 
+                    <MockupModel handleSelChange={handleSelChange} /> 
+                    :
+                    <FrameModel handleSelChange={handleSelChange} />
+                  }
                 </Box>
               </ClickAwayListener>
             </Paper>

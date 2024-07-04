@@ -1,7 +1,7 @@
 import { Box, Card, CardHeader, CardMedia, CardContent, Typography, ToggleButtonGroup, ToggleButton, Divider } from '@mui/material';
 import { useState } from 'react';
 
-export default function MockupModel() {
+export default function MockupModel({ handleSelChange }) {
   const [platform, setPlatform] = useState("all");
 
   return (
