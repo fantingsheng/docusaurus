@@ -18,18 +18,29 @@ export default function Preview({ config, handleConfigChange, transform, showBtn
         }
       </div>
       <div className={styles.displayContainer}>
-        <div className={styles.mockupWrapper} style={{ transform: "scale(1) translateX(0%) translateY(0%)"}}>
-          <div className={styles.screenshot} style={{ transform: transform, borderRadius: `${config.borderRadius}px` }}>
-            {
-              config?.picture ? <ScreenShot config={config} /> : showBtn ? <UploadCard handleConfigChange={handleConfigChange} /> : <Box sx={{
-                width: "100%", height: "100%",
-                background: "rgba(220,220,220,1)",
-                color: "rgba(0,0,0,.8)",
-                '&:hover': {
-                  background: "rgba(220,220,220,1)"
+        <div className={styles.mockupModule} style={{ }}>
+          <div className={styles.divices} style={{ transform: "scale(1) translateX(0%) translateY(0%)", transform: transform, borderRadius: `${config.borderRadius}px` }}>
+            <div className={styles.item}>
+              <div className={styles.itemContainer}>
+                {
+                  config?.picture ? <ScreenShot config={config} /> : showBtn ? <UploadCard handleConfigChange={handleConfigChange} /> : <Box sx={{
+                    width: "100%", height: "100%",
+                    background: "rgba(220,220,220,1)",
+                    color: "rgba(0,0,0,.8)",
+                    '&:hover': {
+                      background: "rgba(220,220,220,1)"
+                    }
+                  }} />
                 }
-              }} />
-            }
+                <div className={styles.shadow}>
+                  <div className={styles.shadowLayer} style={{transform: 'translateX(0.46875em) translateY(0.65625em) scale(1)', filter: 'blur(0.325em)', opacity: 0.4}} />
+                  <div className={styles.shadowLayer} style={{transform: 'translateX(1.40625em) translateY(1.96875em) scale(1)', filter: 'blur(0.975em)', opacity: 0.4}} />
+                  <div className={styles.shadowLayer} style={{transform: 'translateX(2.8125em) translateY(3.9375em) scale(1)', filter: 'blur(1.95em)', opacity: 0.4}} />
+                  <div className={styles.shadowLayer} style={{transform: 'translateX(4.6875em) translateY(6.5625em) scale(1)', filter: 'blur(3.25em)', opacity: 0.4}} />
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>

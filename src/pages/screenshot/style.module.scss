@@ -119,21 +119,66 @@
   justify-content: center;
   padding: 10%;
 }
-
-.mockupWrapper {
+.mockupModule {
   position: relative;
-  z-index: 2;
-  width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  pointer-events: none;
+  margin: auto;
+  z-index: 4;
+  will-change: contents;
+  transform: translateZ(0);
 }
+.divices {
+  position: absolute;
+  inset: 0;
+  max-height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: all;
+  transform: translateZ(0);
+  will-change: contents,transform,opacity;
 
-.screenshot {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  .item {
+    position: relative;
+    width: 100%;
+    container-type: size;
+    container-name: item-container;
+    aspect-ratio: unset!important;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+
+    .itemContainer {
+      position: relative;
+      width: 100%;
+      width: unset;
+      height: max-content;
+      position: absolute;
+      inset: 0;
+      max-height: 100%;
+      margin: auto;
+
+      .shadow {
+        position: absolute;
+        inset: var(--shadow-inset);
+        z-index: -5;
+        border-radius: var(--shadow-radius);
+        
+        .shadowLayer {
+          will-change: transform,opacity,filter;
+          position: absolute;
+          inset: 1%;
+          border-radius: inherit;
+          pointer-events: none;
+          background: rgba(0,0,0,.99);
+        }
+      }
+    }
+  }
 }
 
 .layout {

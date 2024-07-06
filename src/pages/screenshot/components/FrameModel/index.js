@@ -30,7 +30,7 @@ export default function FrameModel({ handleConfigChange, handleSelChange }) {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       <Typography>常用尺寸</Typography>
       <Box className={styles.frameWrapper}>
         {
@@ -46,7 +46,7 @@ export default function FrameModel({ handleConfigChange, handleSelChange }) {
           ))
         }
       </Box>
-      <Divider />
+      <Divider sx={{ margin: '10px 0', backgroundColor: 'rgba(0,0,0,.08)' }} />
       <Typography>公众号</Typography>
       <Box className={styles.frameWrapper}>
         {
