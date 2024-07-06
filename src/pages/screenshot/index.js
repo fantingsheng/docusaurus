@@ -18,6 +18,7 @@ export default function () {
     style: "",
     shadow: "",
     bg: "linear-gradient(140deg, rgb(255, 100, 50) 12.8%, rgb(255, 0, 101) 43.52%, rgb(123, 46, 255) 84.34%)",
+    ratio: '4 / 3',
     noise: 0,
     blur: 0
   })
@@ -29,7 +30,7 @@ export default function () {
   return (
     <>
       <Head>
-        <title>{`Screenshot | ${siteConfig.title}`}</title>
+        <title>{`图片美化套壳 | ${siteConfig.title}`}</title>
         <meta name="title" content='图片模型生成器' />
         <meta name="description" content="用模型帮你生成漂亮的图片" />
         <meta name="keywords" content='手机套壳,模型,图片美化' />
@@ -43,7 +44,7 @@ export default function () {
             <div
               id="previewFrame"
               className={styles.previewFrame}
-              style={{ aspectRatio: "4 / 3" }}
+              style={{ aspectRatio: config.ratio }}
             >
               <Preview config={config} handleConfigChange={handleConfigChange} transform={config.style} showBtn={true} />
             </div>

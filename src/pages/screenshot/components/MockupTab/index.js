@@ -7,7 +7,7 @@ import { Box, Typography } from '@mui/material';
 export default function MockupTab({ config, handleConfigChange }) {
   return (
     <div className={styles.tab}>
-      <ViewerSelect openStyle="mockup" />
+      <ViewerSelect config={config} handleConfigChange={handleConfigChange} openStyle="mockup" />
       <div className={styles.scrollView}>
         <Box className={styles.pannelCtrl}>
           <Typography className={styles.setTit} variant="h3">样式</Typography>

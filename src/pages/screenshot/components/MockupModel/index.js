@@ -17,9 +17,9 @@ export default function MockupModel({ handleSelChange }) {
       ]
     },
     { 
-      title: 'Screenshot',
+      title: 'Browser',
       type: '',
-      subtitle: '16 layouts',
+      subtitle: '4 layouts',
       thumbnail: 'https://mui.com/static/images/cards/paella.jpg',
       previews: [
         'https://mui.com/static/images/cards/paella.jpg',
@@ -27,10 +27,20 @@ export default function MockupModel({ handleSelChange }) {
       ]
     },
     { 
-      title: 'Screenshot',
+      title: 'Minimal Phone',
       type: '',
-      subtitle: '16 layouts',
+      subtitle: '8 layouts',
       thumbnail: 'https://mui.com/static/images/cards/paella.jpg',
+      previews: [
+        'https://mui.com/static/images/cards/paella.jpg',
+        'https://mui.com/static/images/cards/paella.jpg'
+      ]
+    },
+    { 
+      title: 'iPhone 15',
+      type: 'phone',
+      subtitle: '8 layouts',
+      thumbnail: '/screenshot/mockup/iphone15.webp',
       previews: [
         'https://mui.com/static/images/cards/paella.jpg',
         'https://mui.com/static/images/cards/paella.jpg'
@@ -57,12 +67,12 @@ export default function MockupModel({ handleSelChange }) {
           <ToggleButton value="watch">手表</ToggleButton>
         </ToggleButtonGroup>
       </Box>
-      {/* <Divider sx={{ margin: '10px 0' }} /> */}
       <Box sx={{ display: 'grid', gap: '10px', gridTemplateColumns: 'repeat(2, 1fr)' }}>
         {
-          mockupLst.map(el => (
-            <Card sx={{ maxWidth: 285, backgroundColor: '#fff' }}>
+          mockupLst.filter(el => (platform !== 'all' && platform === el.type) || (platform === 'all' && true)).map((el, index) => (
+            <Card sx={{ maxWidth: 285, backgroundColor: '#fff' }} key={index}>
               <CardHeader
+                sx={{ '& .MuiCardHeader-title': { fontSize: '18px' }, '& .MuiCardHeader-subheader': {} }}
                 title={el.title}
                 subheader={el.subtitle}
               />
@@ -74,8 +84,8 @@ export default function MockupModel({ handleSelChange }) {
               />
               <CardContent sx={{ display: 'flex', gap: '10px' }}>
                 {
-                  el.previews.map(img => (
-                    <Avatar sx={{  }} variant="rounded" src={img} />
+                  el.previews.map((img, id) => (
+                    <Avatar sx={{}} variant="rounded" src={img} key={id} />
                   ))
                 }
               </CardContent>

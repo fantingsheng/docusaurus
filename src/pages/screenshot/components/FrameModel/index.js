@@ -3,8 +3,8 @@ import styles from "./style.module.scss";
 import clsx from "clsx";
 import { useState } from 'react';
 
-export default function FrameModel({ handleSelChange }) {
-  const [wxh, setWxh] = useState("1920 x 1080");
+export default function FrameModel({ handleConfigChange, handleSelChange }) {
+  const [wxh, setWxh] = useState("1920 x 1440");
   const usualSizes = [
     { aspectRatio: "16 / 9", ratioText: "16 : 9", wxh: "1920 x 1080" },
     { aspectRatio: "3 / 2", ratioText: "3 : 2", wxh: "1920 x 1280" },
@@ -22,10 +22,11 @@ export default function FrameModel({ handleSelChange }) {
     { aspectRatio: "2.35 / 1", ratioText: "2.35 : 1", wxh: "900 x 383" }
   ]
 
-  const onSizeButtonClick = (rt, wh) => {
+  const onSizeButtonClick = (ar, rt, wh) => {
     setWxh(wh);
     handleSelChange(`Default ${rt}`, "tit");
     handleSelChange(wh, "info");
+    handleConfigChange(ar, "ratio");
   };
 
   return (
@@ -34,7 +35,7 @@ export default function FrameModel({ handleSelChange }) {
       <Box className={styles.frameWrapper}>
         {
           usualSizes.map((el, index) => (
-            <button className={clsx(styles.frameItem, el.wxh === wxh ? styles.active : '')} key={index} onClick={() => onSizeButtonClick(el.ratioText, el.wxh)}>
+            <button className={clsx(styles.frameItem, el.wxh === wxh ? styles.active : '')} key={index} onClick={() => onSizeButtonClick(el.aspectRatio, el.ratioText, el.wxh)}>
               <div className={styles.frameOuter}>
                 <div className={styles.lineFrame} style={{ aspectRatio: el.aspectRatio }}>
                   <span>{el.ratioText}</span>

@@ -5,15 +5,15 @@ import FrameModel from "../FrameModel";
 import clsx from 'clsx';
 import styles from './style.module.scss';
 
-export default function ViewerSelect({ openStyle }) {
+export default function ViewerSelect({ config, handleConfigChange, openStyle }) {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const [selObj, setSelObj] = useState(openStyle === "mockup" ? {
     tit: "Screenshot",
     info: "图片自适应大小"
   } : {
-    tit: "Default 16 : 9",
-    info: "1920 x 1080"
+    tit: "Default 4 : 3",
+    info: "1920 x 1440"
   });
 
   const handleSelChange = (val, key) => {
@@ -41,6 +41,7 @@ export default function ViewerSelect({ openStyle }) {
             display: 'flex',
             alignItems: 'center',
             width: '100%',
+            height: '54px',
             border: `1px solid #eee`,
             borderRadius: '5px',
             padding: '8px',
@@ -49,7 +50,7 @@ export default function ViewerSelect({ openStyle }) {
           }}
           onClick={handleToggle}
         >
-          <Box sx={{ width: '60px', height: '40px', backgroundColor: '#eee' }}></Box> 
+          <Box className={styles.grayModel} sx={{ aspectRatio: config.ratio }}></Box> 
           <div className={styles.line}>
             {selObj.tit}< br/>
             <span className={styles.small}>{selObj.info}</span>
@@ -72,9 +73,9 @@ export default function ViewerSelect({ openStyle }) {
                 <Box className={styles.popperBox}>
                   {
                     openStyle === "mockup" ? 
-                    <MockupModel handleSelChange={handleSelChange} /> 
+                    <MockupModel handleSelChange={handleSelChange} handleConfigChange={handleConfigChange} /> 
                     :
-                    <FrameModel handleSelChange={handleSelChange} />
+                    <FrameModel handleSelChange={handleSelChange} handleConfigChange={handleConfigChange} />
                   }
                 </Box>
               </ClickAwayListener>

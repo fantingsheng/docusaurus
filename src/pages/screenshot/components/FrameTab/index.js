@@ -19,7 +19,7 @@ export default function Frame({ config, handleConfigChange }) {
   }
   return (
     <div className={styles.tab}>
-      <ViewerSelect openStyle="frame" />
+      <ViewerSelect config={config} handleConfigChange={handleConfigChange} openStyle="frame" />
       <div className={styles.scrollView}>
         <Box className={styles.pannelCtrl}>
           <Typography className={styles.setTit} variant="h5">效果</Typography>
