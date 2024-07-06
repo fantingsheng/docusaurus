@@ -4,10 +4,11 @@ import PaletteIcon from '@mui/icons-material/Palette';
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import GradientIcon from '@mui/icons-material/Gradient';
 import styles from "./style.module.scss";
+import clsx from 'clsx';
 
 export default function Background({ config, handleConfigChange }) {
   const onClickTransBg = () => {
-    handleConfigChange(true, "transparent")
+    handleConfigChange(true, "transparent");
   }
 
   const solidColors = ["rgb(248, 249, 250)", "rgb(222, 226, 230)", "rgb(173, 181, 189)", "rgb(73, 80, 87)", "rgb(33, 37, 41)",
@@ -24,6 +25,7 @@ export default function Background({ config, handleConfigChange }) {
   ]
 
   const onClickSolidColor = (color) => {
+    handleConfigChange(false, "transparent");
     handleConfigChange(color, "bg");
   };
 
@@ -56,7 +58,12 @@ export default function Background({ config, handleConfigChange }) {
         <div className={styles.solidColorList}>
           {
             solidColors.map(el => (
-              <div className={styles.colorCircle} style={{ backgroundColor: el }} key={el} onClick={() => onClickSolidColor(el)}></div>
+              <div
+                className={clsx(styles.colorCircle, config.bg === el ? styles.active : '')}
+                style={{ backgroundColor: el }}
+                key={el}
+                onClick={() => onClickSolidColor(el)}
+              />
             ))
           }
         </div>
@@ -66,7 +73,12 @@ export default function Background({ config, handleConfigChange }) {
         <div className={styles.gridentColorList}>
           {
             gradientColors.map(el => (
-              <div className={styles.colorRect} style={{ background: el }} key={el} onClick={() => onClickSolidColor(el)}></div>
+              <div
+                className={clsx(styles.colorRect, config.bg === el ? styles.active : '')}
+                style={{ background: el }}
+                key={el}
+                onClick={() => onClickSolidColor(el)}
+              />
             ))
           }
         </div>

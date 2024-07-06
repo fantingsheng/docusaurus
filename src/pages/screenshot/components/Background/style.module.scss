@@ -40,3 +40,9 @@
   aspect-ratio: 18/9;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
 }
+.colorCircle, .colorRect {
+  &.active {
+    outline-offset: 3px;
+    outline: solid 1.5px rgba(0,0,0, 1) !important;;
+  }
+}

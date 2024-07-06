@@ -24,8 +24,10 @@ export default function Preview({ config, handleConfigChange, transform, showBtn
               <div className={styles.itemContainer}>
                 {
                   config?.picture ? <ScreenShot config={config} /> : showBtn ? <UploadCard handleConfigChange={handleConfigChange} /> : <Box sx={{
-                    width: "100%", height: "100%",
+                    width: "100%",
+                    height: "100%",
                     background: "rgba(220,220,220,1)",
+                    borderRadius: '10px',
                     color: "rgba(0,0,0,.8)",
                     '&:hover': {
                       background: "rgba(220,220,220,1)"
