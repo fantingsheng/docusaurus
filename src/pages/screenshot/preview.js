@@ -32,7 +32,7 @@ export default function Preview({ config, handleConfigChange, transform, showBtn
                     }
                   }} />
                 }
-                <div className={styles.shadow}>
+                <div className={styles.shadow} style={{ borderRadius: '2.5em' }}>
                   <div className={styles.shadowLayer} style={{transform: 'translateX(0.46875em) translateY(0.65625em) scale(1)', filter: 'blur(0.325em)', opacity: 0.4}} />
                   <div className={styles.shadowLayer} style={{transform: 'translateX(1.40625em) translateY(1.96875em) scale(1)', filter: 'blur(0.975em)', opacity: 0.4}} />
                   <div className={styles.shadowLayer} style={{transform: 'translateX(2.8125em) translateY(3.9375em) scale(1)', filter: 'blur(1.95em)', opacity: 0.4}} />
