@@ -85,10 +85,10 @@ export default function BorderRadius({ borderRadius, handleConfigChange }) {
         <ToggleButton value={10} aria-label="10px">
           10px
         </ToggleButton>
-        <ToggleButton value={15} aria-label="10px">
+        <ToggleButton value={15} aria-label="15px">
           15px
         </ToggleButton>
-        <ToggleButton value={20} aria-label="10px">
+        <ToggleButton value={20} aria-label="20px">
           20px
         </ToggleButton>
       </ToggleButtonGroup>

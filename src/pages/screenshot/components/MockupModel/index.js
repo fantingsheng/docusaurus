@@ -71,7 +71,7 @@ export default function MockupModel({ handleSelChange }) {
                 image={el.thumbnail}
                 alt={el.title}
               />
-              <CardContent sx={{ display: 'flex', gap: '10px' }}>
+              <CardContent sx={{ display: 'flex', gap: '8px' }}>
                 {
                   el.previews.map((img, id) => (
                     <Avatar sx={{ bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src={img} key={id}>
