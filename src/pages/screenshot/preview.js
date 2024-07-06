@@ -19,8 +19,8 @@ export default function Preview({ config, handleConfigChange, transform, showBtn
       </div>
       <div className={styles.displayContainer}>
         <div className={styles.mockupModule} style={{ }}>
-          <div className={styles.divices} style={{ transform: "scale(1) translateX(0%) translateY(0%)", transform: transform, borderRadius: `${config.borderRadius}px` }}>
-            <div className={styles.item}>
+          <div className={styles.divices} style={{ transform: "scale(1) translateX(0%) translateY(0%)" }}>
+            <div className={styles.item} style={{ transform: transform, borderRadius: `${config.borderRadius}px` }}>
               <div className={styles.itemContainer}>
                 {
                   config?.picture ? <ScreenShot config={config} /> : showBtn ? <UploadCard handleConfigChange={handleConfigChange} /> : <Box sx={{
