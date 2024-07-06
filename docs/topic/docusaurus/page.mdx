@@ -23,7 +23,7 @@ export default function () {
   return (
     <Layout title='城市印象' description='记录自己的城市风景，居一城，爱一城'>
       <Head>
-        <meta name='keywords' content='城市, 风景, 无锡, 随手拍, 江南, 太湖' />
+        <meta name='keywords' content='城市,风景,无锡,随手拍,江南,太湖' />
       </Head>
     </Layout>
     {/* ... */}
@@ -49,3 +49,28 @@ export default function () {
   )
 }
 ```
+
+当这个页面不包含 `layout` 组件的时候，如何去设置页面的标题，这里的标题不同于 `meta` 标签 `name` 属性里面的 `title`，它直接显示在浏览器的标签里。
+
+```jsx
+import Head from '@docusaurus/Head';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+export default function () {
+  const { siteConfig } = useDocusaurusContext();
+
+  return (
+    <>
+      <Head>
+        <title>{`New Page Title | ${siteConfig.title}`}</title>
+      </Head>
+      {/* ... */}
+    </>
+  )
+}
+```
+
+
+
+
+

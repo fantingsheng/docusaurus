@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from '@docusaurus/Head';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import LeftSideBar from "./leftSideBar";
 import RightSideBar from "./rightSideBar";
 import Preview from "./preview";
 import styles from "./style.module.scss";
 
 export default function () {
+  const { siteConfig } = useDocusaurusContext();
+
   const [config, setConfig] = useState({
     theme: "",
     picture: "",
@@ -25,6 +28,7 @@ export default function () {
   return (
     <>
       <Head>
+        <title>{`Screenshot | ${siteConfig.title}`}</title>
         <meta name="title" content='图片模型生成器' />
         <meta name="description" content="用模型帮你生成漂亮的图片" />
         <meta name="keywords" content='手机套壳,模型,图片美化' />

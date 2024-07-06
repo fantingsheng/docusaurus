@@ -2,13 +2,8 @@ import styles from "./style.module.scss";
 import ScreenShot from "./screenShot";
 import UploadCard from "./components/UploadCard";
 import { Box } from '@mui/material';
-import { useEffect } from "react";
 
 export default function Preview({ config, handleConfigChange, transform, showBtn }) {
-
-  useEffect(() => {
-    console.log("showBtn", showBtn)
-  }, [])
 
   return (
     <div className={styles.frameContent}>
