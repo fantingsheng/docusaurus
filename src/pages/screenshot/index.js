@@ -15,6 +15,7 @@ export default function () {
     bgImg: "",
     borderRadius: 10,
     transparent: false,
+    style: "",
     shadow: "",
     bg: "linear-gradient(140deg, rgb(255, 100, 50) 12.8%, rgb(255, 0, 101) 43.52%, rgb(123, 46, 255) 84.34%)",
     noise: 0,
@@ -44,7 +45,7 @@ export default function () {
               className={styles.previewFrame}
               style={{ aspectRatio: "4 / 3" }}
             >
-              <Preview config={config} handleConfigChange={handleConfigChange} showBtn={true} />
+              <Preview config={config} handleConfigChange={handleConfigChange} transform={config.style} showBtn={true} />
             </div>
           </div>
         </div>

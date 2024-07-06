@@ -1,5 +1,6 @@
 import styles from "./style.module.scss";
 import Preview from "./preview";
+import clsx from 'clsx';
 
 export default function RightSideBar({ config, handleConfigChange }) {
   const transformLst = [
@@ -16,7 +17,11 @@ export default function RightSideBar({ config, handleConfigChange }) {
       <div className={styles.cardsWrapper}>
         {
           transformLst.map((item, index) => 
-            (<div className={styles.layoutItem} key={index}>
+            (<div
+              className={clsx(styles.layoutItem, item === config.style ? styles.active : '')}
+              key={index}
+              onClick={() => handleConfigChange(item, "style")}
+            >
               <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
                 <Preview config={config} handleConfigChange={handleConfigChange} transform={item} showBtn={false} />
               </div>
