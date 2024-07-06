@@ -1,6 +1,7 @@
 import { Box, Card, CardHeader, CardMedia, CardContent, Typography, Avatar, ToggleButtonGroup, ToggleButton, Divider } from '@mui/material';
 import { useState } from 'react';
 import styles from './style.module.scss';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
 export default function MockupModel({ handleSelChange }) {
   const [platform, setPlatform] = useState("all");
@@ -10,41 +11,29 @@ export default function MockupModel({ handleSelChange }) {
       title: 'Screenshot',
       type: '',
       subtitle: '16 layouts',
-      thumbnail: 'https://mui.com/static/images/cards/paella.jpg',
-      previews: [
-        'https://mui.com/static/images/cards/paella.jpg',
-        'https://mui.com/static/images/cards/paella.jpg'
-      ]
+      thumbnail: '/screenshot/mockup/screenshot.png',
+      previews: ['', '', '', '']
     },
     { 
       title: 'Browser',
       type: '',
       subtitle: '4 layouts',
       thumbnail: 'https://mui.com/static/images/cards/paella.jpg',
-      previews: [
-        'https://mui.com/static/images/cards/paella.jpg',
-        'https://mui.com/static/images/cards/paella.jpg'
-      ]
+      previews: ['', '', '', '']
     },
     { 
       title: 'Minimal Phone',
       type: '',
       subtitle: '8 layouts',
       thumbnail: 'https://mui.com/static/images/cards/paella.jpg',
-      previews: [
-        'https://mui.com/static/images/cards/paella.jpg',
-        'https://mui.com/static/images/cards/paella.jpg'
-      ]
+      previews: ['', '', '', '']
     },
     { 
       title: 'iPhone 15',
       type: 'phone',
       subtitle: '8 layouts',
       thumbnail: '/screenshot/mockup/iphone15.webp',
-      previews: [
-        'https://mui.com/static/images/cards/paella.jpg',
-        'https://mui.com/static/images/cards/paella.jpg'
-      ]
+      previews: ['', '', '', '']
     }
   ]
 
@@ -85,7 +74,9 @@ export default function MockupModel({ handleSelChange }) {
               <CardContent sx={{ display: 'flex', gap: '10px' }}>
                 {
                   el.previews.map((img, id) => (
-                    <Avatar sx={{}} variant="rounded" src={img} key={id} />
+                    <Avatar sx={{ bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src={img} key={id}>
+                      <InsertPhotoIcon />
+                    </Avatar>
                   ))
                 }
               </CardContent>
