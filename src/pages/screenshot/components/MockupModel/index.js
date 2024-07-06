@@ -18,14 +18,14 @@ export default function MockupModel({ handleSelChange }) {
       title: 'Browser',
       type: '',
       subtitle: '4 layouts',
-      thumbnail: 'https://mui.com/static/images/cards/paella.jpg',
+      thumbnail: '/screenshot/mockup/default.png',
       previews: ['', '', '', '']
     },
     { 
       title: 'Minimal Phone',
       type: '',
       subtitle: '8 layouts',
-      thumbnail: 'https://mui.com/static/images/cards/paella.jpg',
+      thumbnail: '/screenshot/mockup/default.png',
       previews: ['', '', '', '']
     },
     { 
