@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export default function FrameModel({ handleSelChange }) {
   const [wxh, setWxh] = useState("1920 x 1080");
-  const sizeLst = [
+  const usualSizes = [
     { aspectRatio: "16 / 9", ratioText: "16 : 9", wxh: "1920 x 1080" },
     { aspectRatio: "3 / 2", ratioText: "3 : 2", wxh: "1920 x 1280" },
     { aspectRatio: "4 / 3", ratioText: "4 : 3", wxh: "1920 x 1440" },
@@ -17,6 +17,11 @@ export default function FrameModel({ handleSelChange }) {
     { aspectRatio: "9 / 16", ratioText: "9 : 16", wxh: "1080 x 1920" }
   ];
 
+  const wechatSizes = [
+    { aspectRatio: "1 / 1", ratioText: "1 : 1", wxh: "200 x 200" },
+    { aspectRatio: "2.35 / 1", ratioText: "2.35 : 1", wxh: "900 x 383" }
+  ]
+
   const onSizeButtonClick = (rt, wh) => {
     setWxh(wh);
     handleSelChange(`Default ${rt}`, "tit");
@@ -24,11 +29,11 @@ export default function FrameModel({ handleSelChange }) {
   };
 
   return (
-    <Box>
-      <Divider />
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <Typography>常用尺寸</Typography>
       <Box className={styles.frameWrapper}>
         {
-          sizeLst.map((el, index) => (
+          usualSizes.map((el, index) => (
             <button className={clsx(styles.frameItem, el.wxh === wxh ? styles.active : '')} key={index} onClick={() => onSizeButtonClick(el.ratioText, el.wxh)}>
               <div className={styles.frameOuter}>
                 <div className={styles.lineFrame} style={{ aspectRatio: el.aspectRatio }}>
@@ -41,6 +46,21 @@ export default function FrameModel({ handleSelChange }) {
         }
       </Box>
       <Divider />
+      <Typography>公众号</Typography>
+      <Box className={styles.frameWrapper}>
+        {
+          wechatSizes.map((el, index) => (
+            <button className={clsx(styles.frameItem, el.wxh === wxh ? styles.active : '')} key={index} onClick={() => onSizeButtonClick(el.ratioText, el.wxh)}>
+              <div className={styles.frameOuter}>
+                <div className={styles.lineFrame} style={{ aspectRatio: el.aspectRatio }}>
+                  <span>{el.ratioText}</span>
+                </div>
+              </div>
+              <div className={styles.sizeText}>{el.wxh}</div>
+            </button>
+          ))
+        }
+      </Box>
     </Box>
   )
 }

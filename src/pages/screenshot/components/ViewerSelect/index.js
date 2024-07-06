@@ -69,7 +69,7 @@ export default function ViewerSelect({ openStyle }) {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <Box sx={{ background: '#fff', padding: '10px', width: '400px' }}>
+                <Box className={styles.popperBox}>
                   {
                     openStyle === "mockup" ? 
                     <MockupModel handleSelChange={handleSelChange} /> 

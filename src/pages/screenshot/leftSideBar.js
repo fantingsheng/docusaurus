@@ -4,11 +4,12 @@ import clsx from "clsx";
 import Link from '@docusaurus/Link';
 import AirplayIcon from '@mui/icons-material/Airplay';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
+import WidgetsIcon from '@mui/icons-material/Widgets';
 
 import MockupTab from "./components/MockupTab";
 import FrameTab from "./components/FrameTab";
 
-import { Box, Tabs, Tab } from '@mui/material';
+import { Box, Tabs, Tab, IconButton } from '@mui/material';
 
 import ExportButton from "./components/ExportButton";
 import ExportSetting from "./components/ExportSetting";
@@ -46,6 +47,9 @@ export default function LeftSideBar({ config, handleConfigChange }) {
         <Link to='/'>
           <img src='/img/share.png' width='36' alt="Spacexcode's logo" />
         </Link>
+        <IconButton color="primary" aria-label="Menu">
+          <WidgetsIcon />
+        </IconButton>
       </div>
       <div className={clsx(styles.pannel)}>
         <Tabs
