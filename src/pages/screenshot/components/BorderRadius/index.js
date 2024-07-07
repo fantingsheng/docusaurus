@@ -1,4 +1,4 @@
-import { Slider, SliderThumb, ToggleButtonGroup, ToggleButton, styled } from '@mui/material';
+import { Slider, SliderThumb, Stack, ToggleButtonGroup, ToggleButton, styled, Typography } from '@mui/material';
 import { useState } from 'react';
 
 export default function BorderRadius({ borderRadius, handleConfigChange }) {
@@ -63,15 +63,20 @@ export default function BorderRadius({ borderRadius, handleConfigChange }) {
         valueLabelDisplay='auto'
         onChange={e => setRadius(e.target.value)}
       /> */}
-      <Slider
-        value={radius}
-        aria-label='radius'
-        min={1}
-        step={1}
-        max={40}
-        valueLabelDisplay='auto'
-        onChange={e => setRadius(e.target.value)}
-      />
+      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+        <Typography>Radius</Typography>
+        <Slider
+          value={radius}
+          aria-label='Radius'
+          min={1}
+          step={1}
+          max={40}
+          valueLabelDisplay='auto'
+          onChange={e => setRadius(e.target.value)}
+        />
+        <Typography>{radius}</Typography>
+      </Stack>
+      
       <ToggleButtonGroup
         value={radius}
         exclusive

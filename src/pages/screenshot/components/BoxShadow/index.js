@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Slider, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { Slider, ToggleButtonGroup, ToggleButton, Stack, Typography } from '@mui/material';
 
 export default function BoxShadow({ shadow, handleConfigChange }) {
   const [opacity, setOpacity] = useState(0.4);
@@ -8,15 +8,20 @@ export default function BoxShadow({ shadow, handleConfigChange }) {
   const onValueChange = () => {}
   return (
     <>
-      <Slider
-        value={opacity}
-        aria-label='shadow'
-        min={0}
-        step={0.05}
-        max={1}
-        valueLabelDisplay='auto'
-        onChange={e => setOpacity(e.target.value)}
-      />
+      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+        <Typography>Shadow</Typography>
+        <Slider
+          value={opacity}
+          aria-label='shadow'
+          min={0}
+          step={0.05}
+          max={1}
+          valueLabelDisplay='auto'
+          onChange={e => setOpacity(e.target.value)}
+        />
+        <Typography>{opacity}</Typography>
+      </Stack>
+    
       <ToggleButtonGroup
         value={shadowVal}
         exclusive
