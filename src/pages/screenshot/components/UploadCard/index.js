@@ -1,4 +1,4 @@
-import { Button, styled } from "@mui/material";
+import { Button, styled, Typography } from "@mui/material";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 export default function UploadCard({ handleConfigChange }) {
@@ -28,12 +28,19 @@ export default function UploadCard({ handleConfigChange }) {
         borderRadius: '10px',
         '&:hover': {
           background: "rgba(220,220,220,1)"
-        }
+        },
+        flexDirection: 'column',
+        gap: '5px'
       }}
     >
-      <AddPhotoAlternateIcon />
-        上传图片
-        <VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'picture')} />
+      <AddPhotoAlternateIcon fontSize="large" />
+      <Typography>上传图片</Typography>
+      <Typography variant="caption">（PNG 或者 JPG）</Typography>
+      <VisuallyHiddenInput
+        type="file"
+        accept="image/x-png,image/jpeg,image/webp,image/jpg"
+        onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'picture')}
+      />
     </Button>
   )
 }

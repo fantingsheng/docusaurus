@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './style.module.scss';
 
 export default function ScreenShot ({ config }) {
   const { theme } = config;
@@ -6,9 +7,9 @@ export default function ScreenShot ({ config }) {
 	const selectTheme = (theme) => {
 		switch (theme) {
 			case 'normal':
-        return <img src={config.picture} />;
+        return <img className={styles.uploadImg} src={config.picture} />;
       default:
-        return <img src={config.picture} />;
+        return <img className={styles.uploadImg} src={config.picture} />;
 		}
 	};
 
