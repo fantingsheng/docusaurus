@@ -2,10 +2,8 @@ import { useState, useRef } from 'react';
 import { Box, Button, Popper, ClickAwayListener, Paper, Grow, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-export default function ExportSetting() {
+export default function ExportSetting({ expConfig, handleExpConfigChange }) {
   const [open, setOpen] = useState(false);
-  const [rate, setRate] = useState(1);
-  const [format, setFormat] = useState('jpg');
 
   const anchorRef = useRef(null);
 
@@ -37,9 +35,9 @@ export default function ExportSetting() {
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography>格式</Typography>
                     <ToggleButtonGroup
-                      value={format}
+                      value={expConfig.format}
                       exclusive
-                      onChange={(e, val) => setFormat(val)}
+                      onChange={(e, val) => handleExpConfigChange(val, "format")}
                       aria-label="border radius switch"
                       size="small"
                     >
@@ -54,9 +52,9 @@ export default function ExportSetting() {
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography>分辨率</Typography>
                     <ToggleButtonGroup
-                      value={rate}
+                      value={expConfig.scale}
                       exclusive
-                      onChange={(e, val) => setRate(val)}
+                      onChange={(e, val) => handleExpConfigChange(val, "scale")}
                       aria-label="border radius switch"
                       size="small"
                     >

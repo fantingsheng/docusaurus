@@ -1,7 +1,7 @@
 import { Slider, SliderThumb, Stack, ToggleButtonGroup, ToggleButton, styled, Typography } from '@mui/material';
 import { useState } from 'react';
 
-export default function BorderRadius({ borderRadius, handleConfigChange }) {
+export default function BorderRadius({ config, handleConfigChange }) {
   const [radius, setRadius] = useState(10);
 
   const AirbnbSlider = styled(Slider)(({ theme }) => ({
@@ -47,7 +47,7 @@ export default function BorderRadius({ borderRadius, handleConfigChange }) {
   }
 
   const onValueChange = (newVal) => {
-    setRadius(newVal);
+    // setRadius(newVal);
     handleConfigChange(newVal, "borderRadius");
   }
 
@@ -66,19 +66,19 @@ export default function BorderRadius({ borderRadius, handleConfigChange }) {
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
         <Typography>Radius</Typography>
         <Slider
-          value={radius}
+          value={config.borderRadius}
           aria-label='Radius'
           min={1}
           step={1}
           max={40}
           valueLabelDisplay='auto'
-          onChange={e => setRadius(e.target.value)}
+          onChange={e => onValueChange(e.target.value)}
         />
-        <Typography>{radius}</Typography>
+        <Typography>{config.borderRadius}</Typography>
       </Stack>
       
       <ToggleButtonGroup
-        value={radius}
+        value={config.borderRadius}
         exclusive
         onChange={(e, val) => onValueChange(val)}
         aria-label="border radius switch"

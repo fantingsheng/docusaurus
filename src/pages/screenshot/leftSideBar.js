@@ -11,10 +11,7 @@ import FrameTab from "./components/FrameTab";
 
 import { Box, Tabs, Tab, IconButton } from '@mui/material';
 
-import ExportButton from "./components/ExportButton";
-import ExportSetting from "./components/ExportSetting";
-
-export default function LeftSideBar({ config, handleConfigChange }) {
+export default function LeftSideBar({ config, handleConfigChange, children }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -69,10 +66,7 @@ export default function LeftSideBar({ config, handleConfigChange }) {
           <FrameTab config={config} handleConfigChange={handleConfigChange} />
         </TabPanel>
         <div className={styles.exportControls}>
-          <Box sx={{ display: 'flex', gap: '8px' }}>
-            <ExportButton />
-            <ExportSetting />
-          </Box>
+          { children }
         </div>
       </div>
     </>

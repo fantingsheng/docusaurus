@@ -14,7 +14,7 @@ export default function MockupTab({ config, handleConfigChange }) {
         </Box>
         <Box className={styles.pannelCtrl}>
           <Typography className={styles.setTit} variant="h3">圆角</Typography>
-          <BorderRadius borderRadius={config.borderRadius} handleConfigChange={handleConfigChange} />
+          <BorderRadius config={config} handleConfigChange={handleConfigChange} />
         </Box>
         <Box className={styles.pannelCtrl}>
           <Typography className={styles.setTit} variant="h3">阴影</Typography>
