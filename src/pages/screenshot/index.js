@@ -120,7 +120,7 @@ export default function () {
         <div className={styles.sidebar}>
           <LeftSideBar config={config} handleConfigChange={handleConfigChange}>
             <Box sx={{ display: 'flex', gap: '8px' }}>
-              <ExportButton handleExportImage={downloadImage} handleCopyImage={handleCopyImg} />
+              <ExportButton loading={loading} handleExportImage={downloadImage} handleCopyImage={handleCopyImg} />
               <ExportSetting expConfig={expConfig} handleExpConfigChange={handleExpConfigChange} />
             </Box>
           </LeftSideBar>
