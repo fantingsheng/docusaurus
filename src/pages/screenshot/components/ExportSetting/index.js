@@ -31,15 +31,16 @@ export default function ExportSetting({ expConfig, handleExpConfigChange }) {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <Box sx={{ background: '#fff', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <Box sx={{ background: '#fff', padding: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                    <Typography>格式</Typography>
+                    <Typography variant="button">格式</Typography>
                     <ToggleButtonGroup
                       value={expConfig.format}
                       exclusive
                       onChange={(e, val) => handleExpConfigChange(val, "format")}
                       aria-label="border radius switch"
                       size="small"
+                      fullWidth
                     >
                       <ToggleButton value="jpg" aria-label="jpg">
                         JPG
@@ -50,13 +51,14 @@ export default function ExportSetting({ expConfig, handleExpConfigChange }) {
                     </ToggleButtonGroup>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                    <Typography>分辨率</Typography>
+                    <Typography variant="button">分辨率</Typography>
                     <ToggleButtonGroup
                       value={expConfig.scale}
                       exclusive
                       onChange={(e, val) => handleExpConfigChange(val, "scale")}
                       aria-label="border radius switch"
                       size="small"
+                      fullWidth
                     >
                       <ToggleButton value={1} aria-label="1x">
                         1x

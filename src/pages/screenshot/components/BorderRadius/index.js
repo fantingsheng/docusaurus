@@ -83,6 +83,7 @@ export default function BorderRadius({ config, handleConfigChange }) {
         onChange={(e, val) => onValueChange(val)}
         aria-label="border radius switch"
         size="small"
+        fullWidth
       >
         <ToggleButton value={5} aria-label="5px">
           5px

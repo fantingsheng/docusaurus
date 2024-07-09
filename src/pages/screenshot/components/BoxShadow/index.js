@@ -28,6 +28,7 @@ export default function BoxShadow({ shadow, handleConfigChange }) {
         onChange={(e, val) => onValueChange(val)}
         aria-label="border radius"
         size="small"
+        fullWidth
       >
         <ToggleButton value={"none"} aria-label="5px">
           None

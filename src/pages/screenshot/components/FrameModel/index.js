@@ -31,7 +31,7 @@ export default function FrameModel({ handleConfigChange, handleSelChange }) {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      <Typography>常用尺寸</Typography>
+      <Typography variant="button">常用尺寸</Typography>
       <Box className={styles.frameWrapper}>
         {
           usualSizes.map((el, index) => (
@@ -47,7 +47,7 @@ export default function FrameModel({ handleConfigChange, handleSelChange }) {
         }
       </Box>
       <Divider sx={{ margin: '10px 0', backgroundColor: 'rgba(0,0,0,.08)' }} />
-      <Typography>公众号</Typography>
+      <Typography variant="button">公众号</Typography>
       <Box className={styles.frameWrapper}>
         {
           wechatSizes.map((el, index) => (
