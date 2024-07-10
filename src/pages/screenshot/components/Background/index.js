@@ -57,8 +57,7 @@ export default function Background({ config, handleConfigChange }) {
       <Box className={styles.colorStyles}>
         <Typography className={styles.title} variant="h4">纯色</Typography>
         <div className={styles.solidColorList}>
-          {
-            solidColors.map(el => (
+          { solidColors.map(el => (
               <div
                 className={clsx(styles.colorCircle, config.bg === el ? styles.active : '')}
                 style={{ backgroundColor: el }}
@@ -72,8 +71,7 @@ export default function Background({ config, handleConfigChange }) {
       <Box className={styles.colorStyles}>
         <Typography className={styles.title} variant="h4">渐变</Typography>
         <div className={styles.gridentColorList}>
-          {
-            gradientColors.map(el => (
+          { gradientColors.map(el => (
               <div
                 className={clsx(styles.colorRect, config.bg === el ? styles.active : '')}
                 style={{ background: el }}

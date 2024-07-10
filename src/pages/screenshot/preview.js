@@ -1,6 +1,5 @@
 import styles from "./style.module.scss";
 import CoverTheme from "./themes";
-import UploadCard from "./components/UploadCard";
 import { Box } from '@mui/material';
 import clsx from 'clsx';
 
@@ -19,10 +18,8 @@ export default function Preview({ config, handleConfigChange, transform, showBtn
           <div className={styles.devices} style={{ transform: "scale(1) translateX(0%) translateY(0%)" }}>
             <div className={styles.item} style={{ borderRadius: `${config.borderRadius}px` }}>
               <div className={clsx(styles.itemContainer, 'item-container')}>
-                {
-                  config?.picture ? 
-                  <CoverTheme config={config} /> : showBtn ?
-                  <UploadCard handleConfigChange={handleConfigChange} /> : 
+                {showBtn ?
+                  <CoverTheme config={config} handleConfigChange={handleConfigChange} /> : 
                   <Box sx={{
                     width: "100%",
                     height: "100%",
@@ -32,7 +29,9 @@ export default function Preview({ config, handleConfigChange, transform, showBtn
                     '&:hover': {
                       background: "rgba(220,220,220,1)"
                     }
-                  }} />
+                  }}>
+                    {config.picture ? <img src={config.picture} /> : <></>}
+                  </Box>
                 }
                 <div className={styles.shadow} style={{ borderRadius: `${config.borderRadius}px` }}>
                   <div className={styles.shadowLayer} 

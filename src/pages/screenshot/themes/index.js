@@ -1,13 +1,17 @@
 import React from "react";
-import styles from './style.module.scss';
 
-export default function CoverTheme ({ config }) {
-  const { theme } = config;
+import Browser from "./browser";
+import ScreenShot from "./screenShot";
+
+export default function CoverTheme (props) {
+  const { theme } = props.config;
 
 	const selectTheme = (theme) => {
 		switch (theme) {
 			case 'screenshot':
-        return <img className={styles.uploadImg} src={config.picture} />;
+        return <ScreenShot {...props} />;
+      case 'browser':
+        return <Browser {...props} />
       default:
         return <></>;
 		}

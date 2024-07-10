@@ -1,7 +1,7 @@
 import { Button, styled, Typography } from "@mui/material";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
-export default function UploadCard({ handleConfigChange }) {
+export default function UploadCard({ config, handleConfigChange }) {
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
     clipPath: 'inset(50%)',
@@ -33,9 +33,15 @@ export default function UploadCard({ handleConfigChange }) {
         gap: '5px'
       }}
     >
-      <AddPhotoAlternateIcon fontSize="large" />
-      <Typography>上传图片</Typography>
-      <Typography variant="caption">（PNG 或者 JPG）</Typography>
+      {config.picture ? 
+        <img src={config.picture} /> : 
+        (<>
+          <AddPhotoAlternateIcon fontSize="large" />
+          <Typography>上传图片</Typography>
+          <Typography variant="caption">（PNG 或者 JPG）</Typography>
+          </>
+        )
+      }
       <VisuallyHiddenInput
         type="file"
         accept="image/x-png,image/jpeg,image/webp,image/jpg"
