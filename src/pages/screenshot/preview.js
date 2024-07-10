@@ -1,5 +1,5 @@
 import styles from "./style.module.scss";
-import ScreenShot from "./screenShot";
+import CoverTheme from "./themes";
 import UploadCard from "./components/UploadCard";
 import { Box } from '@mui/material';
 import clsx from 'clsx';
@@ -21,7 +21,7 @@ export default function Preview({ config, handleConfigChange, transform, showBtn
               <div className={clsx(styles.itemContainer, 'item-container')}>
                 {
                   config?.picture ? 
-                  <ScreenShot config={config} /> : showBtn ?
+                  <CoverTheme config={config} /> : showBtn ?
                   <UploadCard handleConfigChange={handleConfigChange} /> : 
                   <Box sx={{
                     width: "100%",

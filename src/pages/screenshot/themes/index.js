@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './style.module.scss';
 
-export default function ScreenShot ({ config }) {
+export default function CoverTheme ({ config }) {
   const { theme } = config;
 
 	const selectTheme = (theme) => {
