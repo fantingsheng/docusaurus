@@ -32,7 +32,6 @@ export default function ExportButton({ loading, handleExportImage, handleCopyIma
         variant="contained" 
         size="small" 
         loading={cn === 'copy' && loading} 
-        loadingPosition="start" 
         sx={{ width: 80 }}
         onClick={() => onHandleButtonClick("copy")}
       >

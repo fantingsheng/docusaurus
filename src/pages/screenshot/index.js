@@ -18,7 +18,7 @@ export default function () {
   const [loading, setLoading] = useState(false);
 
   const [config, setConfig] = useState({
-    theme: "",
+    theme: "screenshot",
     picture: "",
     bgImg: "",
     borderRadius: 10,
@@ -36,7 +36,7 @@ export default function () {
   const [expConfig, setExpConfig] = useState({
     format: 'png',
     scale: 1
-  })
+  });
 
   const handleConfigChange = (val, key) => {
     setConfig((prev) => ({ ...prev, [key]: val }));

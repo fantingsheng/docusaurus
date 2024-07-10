@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { Button, Skeleton, Box, Popper, ClickAwayListener, Paper, Grow } from '@mui/material';
+import { useState, useRef, useEffect } from 'react';
+import { Box, Popper, ClickAwayListener, Paper, Grow } from '@mui/material';
 import MockupModel from "../MockupModel";
 import FrameModel from "../FrameModel";
 import clsx from 'clsx';
@@ -73,9 +73,9 @@ export default function ViewerSelect({ config, handleConfigChange, openStyle }) 
                 <Box className={styles.popperBox}>
                   {
                     openStyle === "mockup" ? 
-                    <MockupModel handleSelChange={handleSelChange} handleConfigChange={handleConfigChange} /> 
-                    :
-                    <FrameModel handleSelChange={handleSelChange} handleConfigChange={handleConfigChange} />
+                      <MockupModel config={config} handleSelChange={handleSelChange} handleConfigChange={handleConfigChange} /> 
+                      :
+                      <FrameModel config={config} handleSelChange={handleSelChange} handleConfigChange={handleConfigChange} />
                   }
                 </Box>
               </ClickAwayListener>

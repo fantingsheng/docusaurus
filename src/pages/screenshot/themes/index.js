@@ -6,10 +6,10 @@ export default function CoverTheme ({ config }) {
 
 	const selectTheme = (theme) => {
 		switch (theme) {
-			case 'normal':
+			case 'screenshot':
         return <img className={styles.uploadImg} src={config.picture} />;
       default:
-        return <img className={styles.uploadImg} src={config.picture} />;
+        return <></>;
 		}
 	};
 

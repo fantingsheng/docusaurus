@@ -2,8 +2,9 @@ import { Box, Card, CardHeader, CardMedia, CardContent, Typography, Avatar, Togg
 import { useState } from 'react';
 import styles from './style.module.scss';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+import clsx from 'clsx';
 
-export default function MockupModel({ handleSelChange }) {
+export default function MockupModel({ config, handleSelChange, handleConfigChange }) {
   const [platform, setPlatform] = useState("all");
 
   const mockupLst = [
@@ -41,9 +42,16 @@ export default function MockupModel({ handleSelChange }) {
     }
   ]
 
+  const onHandleClickTheme = val => {
+    const theme = mockupLst.find(el => el.name === val);
+    handleConfigChange(val, 'theme');
+    handleSelChange(theme?.title, 'tit');
+    handleSelChange(theme?.subtitle, 'info');
+  };
+
   return (
-    <Box sx={{ position: 'relative', paddingTop: '54px' }}>
-      <Box className={styles.navbar}>
+    <Box sx={{ position: 'relative', paddingTop: '64px' }}>
+      <Box className={styles.themeTypeNav}>
         <ToggleButtonGroup
           color="primary"
           value={platform}
@@ -63,10 +71,15 @@ export default function MockupModel({ handleSelChange }) {
           <ToggleButton value="watch">手表</ToggleButton>
         </ToggleButtonGroup>
       </Box>
-      <Box sx={{ display: 'grid', gap: '10px', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      <Box className={styles.themeGrid}>
         {
           mockupLst.filter(el => (platform !== 'all' && platform === el.type) || (platform === 'all' && true)).map((el, index) => (
-            <Card sx={{ maxWidth: 285, backgroundColor: '#fff' }} key={index}>
+            <Card
+              className={clsx(styles.gridItem, config.theme === el.name ? styles.active : '')}
+              sx={{ maxWidth: 325, backgroundColor: '#fff' }}
+              key={index}
+              onClick={() => onHandleClickTheme(el.name)}
+            >
               <CardHeader
                 sx={{ '& .MuiCardHeader-title': { fontSize: '18px' }, '& .MuiCardHeader-subheader': {} }}
                 title={el.title}
