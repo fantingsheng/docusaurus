@@ -34,7 +34,7 @@ export default function ViewerSelect({ config, handleConfigChange, openStyle }) 
   return (
     <>
       <Box
-        sx={{ width: '100%', position: 'absolute', background: '#fff', zIndex: 2 }}
+        sx={{ width: '100%', position: 'absolute', background: '#fff', zIndex: 2, padding: '0 8px' }}
       >
         <Box ref={anchorRef} 
           sx={{

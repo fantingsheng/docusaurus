@@ -31,7 +31,7 @@ export default function LeftSideBar({ config, handleConfigChange, children }) {
         {...other}
       >
         {value === index && (
-          <Box sx={{ p: 1 }}>
+          <Box sx={{ padding: '8px 0'  }}>
             {children}
           </Box>
         )}
