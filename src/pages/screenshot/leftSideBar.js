@@ -8,6 +8,7 @@ import WidgetsIcon from '@mui/icons-material/Widgets';
 
 import MockupTab from "./components/MockupTab";
 import FrameTab from "./components/FrameTab";
+import ViewerSelect from "./components/ViewerSelect";
 
 import { Box, Tabs, Tab, IconButton } from '@mui/material';
 
@@ -60,10 +61,20 @@ export default function LeftSideBar({ config, handleConfigChange, children }) {
           <Tab label="框架" sx={{ minHeight: '48px' }} icon={<AspectRatioIcon fontSize='small' />} iconPosition="start" />
         </Tabs>
         <TabPanel value={value} index={0}>
-          <MockupTab config={config} handleConfigChange={handleConfigChange} />
+          <div className={styles.tabInner}>
+            <ViewerSelect config={config} handleConfigChange={handleConfigChange} openStyle="mockup" />
+            <div className={styles.scrollView}>
+              <MockupTab config={config} handleConfigChange={handleConfigChange} />
+            </div>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <FrameTab config={config} handleConfigChange={handleConfigChange} />
+          <div className={styles.tabInner}>
+            <ViewerSelect config={config} handleConfigChange={handleConfigChange} openStyle="frame" />
+            <div className={styles.scrollView}>
+              <FrameTab config={config} handleConfigChange={handleConfigChange} />
+            </div>
+          </div>
         </TabPanel>
         <div className={styles.exportControls}>
           { children }

@@ -1,15 +1,7 @@
-.tab {
-  position: relative;
-  height: calc(100vh - 152px);
-}
-.scrollView {
-  height: 100%;
-  width: 100%;
-  padding: 80px 0;
+.setPannel {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  overflow-y: auto;
 }
 .pannelCtrl {
   display: flex;

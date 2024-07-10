@@ -227,6 +227,16 @@
   height: calc(100% - 48px);
   position: relative;
 }
+.tabInner {
+  position: relative;
+  height: calc(100vh - 152px);
+}
+.scrollView {
+  height: 100%;
+  width: 100%;
+  padding: 80px 0;
+  overflow-y: auto;
+}
 
 .exportControls {
   padding: 20px 8px 10px;
