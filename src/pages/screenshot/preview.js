@@ -15,7 +15,7 @@ export default function Preview({ config, handleConfigChange, transform, showBtn
       </div>
       <div className={styles.displayContainer}>
         <div className={styles.mockupModule} style={{ transform: transform }}>
-          <div className={styles.devices} style={{ transform: "scale(1) translateX(0%) translateY(0%)" }}>
+          <div className={styles.devices} style={{ transform: `scale(${config.scale}) translateX(${config.transformX}%) translateY(${config.transformY}%)` }}>
             <div className={styles.item} style={{ borderRadius: `${config.borderRadius}px` }}>
               <div className={clsx(styles.itemContainer, 'item-container')}>
                 {showBtn ?

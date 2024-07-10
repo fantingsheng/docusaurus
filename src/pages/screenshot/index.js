@@ -29,6 +29,9 @@ export default function () {
     ratio: '4 / 3',
     noise: 0,
     blur: 0,
+    scale: 1,
+    transformX: 0,
+    transformY: 0,
     width: 1920,
     height: 1440
   })
