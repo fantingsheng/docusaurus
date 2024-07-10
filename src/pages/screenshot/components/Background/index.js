@@ -26,6 +26,7 @@ export default function Background({ config, handleConfigChange }) {
 
   const onClickSolidColor = (color) => {
     handleConfigChange(false, "transparent");
+    handleConfigChange("", "bgImg");
     handleConfigChange(color, "bg");
   };
 
@@ -44,11 +45,11 @@ export default function Background({ config, handleConfigChange }) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <Box sx={{ display: 'flex', gap: '10px' }}>
-        <Button className={styles.bgButton} variant="contained" onClick={onClickTransBg} fullWidth>
+        <Button className={clsx(styles.bgButton, config.transparent ? styles.active : '')} variant="contained" onClick={onClickTransBg} fullWidth>
           <GradientIcon />透明</Button>
         <Button className={styles.bgButton} variant="contained" fullWidth>
           <PaletteIcon />颜色</Button>
-        <Button className={styles.bgButton} component="label" variant="contained" fullWidth>
+        <Button className={clsx(styles.bgButton, config.bgImg ? styles.active : '')} component="label" variant="contained" fullWidth>
           <WallpaperIcon />图片
           <VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
         </Button>
