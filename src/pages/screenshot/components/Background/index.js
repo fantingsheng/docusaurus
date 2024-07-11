@@ -9,6 +9,8 @@ import clsx from 'clsx';
 export default function Background({ config, handleConfigChange }) {
   const onClickTransBg = () => {
     handleConfigChange(true, "transparent");
+    handleConfigChange("", "bgImg");
+    handleConfigChange("", "bg");
   }
 
   const solidColors = ["rgb(248, 249, 250)", "rgb(222, 226, 230)", "rgb(173, 181, 189)", "rgb(73, 80, 87)", "rgb(33, 37, 41)",
@@ -33,6 +35,7 @@ export default function Background({ config, handleConfigChange }) {
   const onClickUploadBg = (val) => {
     handleConfigChange(val, "bgImg");
     handleConfigChange(false, "transparent");
+    handleConfigChange("", "bg");
   };
 
   const VisuallyHiddenInput = styled('input')({
