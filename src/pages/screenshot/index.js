@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, createContext, useRef, useState } from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import LeftSideBar from "./leftSideBar";
@@ -12,8 +12,11 @@ import ExportSetting from "./components/ExportSetting";
 
 import { Box } from '@mui/material';
 
+export const ConfigContext = createContext();
+
 export default function () {
   const { siteConfig } = useDocusaurusContext();
+
   const coverRef = useRef();
   const [loading, setLoading] = useState(false);
 
@@ -120,33 +123,35 @@ export default function () {
         <meta name="keywords" content='手机套壳,模型,图片美化' />
       </Head>
       <main className={styles.appMain}>
-        <div className={styles.sidebar}>
-          <LeftSideBar config={config} handleConfigChange={handleConfigChange}>
-            <Box sx={{ display: 'flex', gap: '8px' }}>
-              <ExportButton loading={loading} handleExportImage={downloadImage} handleCopyImage={handleCopyImg} />
-              <ExportSetting expConfig={expConfig} handleExpConfigChange={handleExpConfigChange} />
-            </Box>
-          </LeftSideBar>
-        </div>
-        <div className={styles.canvas}>
-          <div className={styles.safeArea}>
-            <div
-              id="previewFrame"
-              className={styles.previewFrame}
-              style={{ aspectRatio: config.ratio }}
-            >
-              <Preview config={config} handleConfigChange={handleConfigChange} transform={config.style} showBtn={true} />
+        <ConfigContext.Provider value={{ config, handleConfigChange }}>
+          <div className={styles.sidebar}>
+            <LeftSideBar config={config} handleConfigChange={handleConfigChange}>
+              <Box sx={{ display: 'flex', gap: '8px' }}>
+                <ExportButton loading={loading} handleExportImage={downloadImage} handleCopyImage={handleCopyImg} />
+                <ExportSetting expConfig={expConfig} handleExpConfigChange={handleExpConfigChange} />
+              </Box>
+            </LeftSideBar>
+          </div>
+          <div className={styles.canvas}>
+            <div className={styles.safeArea}>
+              <div
+                id="previewFrame"
+                className={styles.previewFrame}
+                style={{ aspectRatio: config.ratio }}
+              >
+                <Preview config={config} handleConfigChange={handleConfigChange} transform={config.style} showBtn={true} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.sidebar}>
-          <RightSideBar config={config} handleConfigChange={handleConfigChange} />
-        </div>
-        <div className={styles.exportLayer} style={{ zIndex: -1000, width: config.width / 2, height: config.height / 2 }}>
-          <div id="captureCanvas" ref={coverRef} className={styles.frame} style={{ aspectRatio: config.ratio, width: config.width / 2, height: config.height / 2}}>
-            <Preview config={config} handleConfigChange={handleConfigChange} showBtn={false} />
+          <div className={styles.sidebar}>
+            <RightSideBar config={config} handleConfigChange={handleConfigChange} />
           </div>
-        </div>
+          <div className={styles.exportLayer} style={{ zIndex: -1000, width: config.width / 2, height: config.height / 2 }}>
+            <div id="captureCanvas" ref={coverRef} className={styles.frame} style={{ aspectRatio: config.ratio, width: config.width / 2, height: config.height / 2}}>
+              <Preview config={config} handleConfigChange={handleConfigChange} showBtn={false} />
+            </div>
+          </div>
+        </ConfigContext.Provider>
       </main>
     </>
   )

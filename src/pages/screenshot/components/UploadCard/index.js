@@ -1,5 +1,6 @@
 import { Button, styled, Typography } from "@mui/material";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import styles from './style.module.scss';
 
 export default function UploadCard({ config, handleConfigChange }) {
   const VisuallyHiddenInput = styled('input')({
@@ -25,16 +26,18 @@ export default function UploadCard({ config, handleConfigChange }) {
         height: "100%",
         background: "rgba(220,220,220,1)",
         color: "rgba(0,0,0,.8)",
-        borderRadius: '10px',
+        borderRadius: `${config.borderRadius}px`,
         '&:hover': {
           background: "rgba(220,220,220,1)"
         },
         flexDirection: 'column',
-        gap: '5px'
+        overflow: 'hidden',
+        gap: '5px',
+        padding: 0
       }}
     >
       {config.picture ? 
-        <img src={config.picture} /> : 
+        <img src={config.picture} className={styles.uploadImg} /> : 
         (<>
           <AddPhotoAlternateIcon fontSize="large" />
           <Typography>上传图片</Typography>

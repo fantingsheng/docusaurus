@@ -1,7 +1,9 @@
+import styles from "./style.module.scss";
+import { Box, Typography } from '@mui/material';
+
 import BorderRadius from "../BorderRadius";
 import BoxShadow from "../BoxShadow";
-import styles from "./style.module.scss";
-import { Box, Typography } from '@mui/material'; 
+import SizeAndPosition from "../SizeAndPosition";
 
 export default function MockupTab({ config, handleConfigChange }) {
   return (
@@ -19,6 +21,7 @@ export default function MockupTab({ config, handleConfigChange }) {
       </Box>
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">大小和位置</Typography>
+        <SizeAndPosition config={config} handleConfigChange={handleConfigChange} />
       </Box>
     </div>
   )
