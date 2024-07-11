@@ -30,6 +30,11 @@ export default function Background({ config, handleConfigChange }) {
     handleConfigChange(color, "bg");
   };
 
+  const onClickUploadBg = (val) => {
+    handleConfigChange(val, "bgImg");
+    handleConfigChange(false, "transparent");
+  };
+
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
     clipPath: 'inset(50%)',
@@ -51,7 +56,7 @@ export default function Background({ config, handleConfigChange }) {
           <PaletteIcon />颜色</Button>
         <Button className={clsx(styles.bgButton, config.bgImg ? styles.active : '')} component="label" variant="contained" fullWidth>
           <WallpaperIcon />图片
-          <VisuallyHiddenInput type="file" onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'bgImg')} />
+          <VisuallyHiddenInput type="file" onChange={(e) => onClickUploadBg(URL.createObjectURL(e.target.files[0]))} />
         </Button>
       </Box>
       <Box className={styles.colorStyles}>
