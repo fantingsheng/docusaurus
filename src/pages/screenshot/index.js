@@ -139,15 +139,27 @@ export default function () {
                 className={styles.previewFrame}
                 style={{ aspectRatio: config.ratio }}
               >
-                <Preview config={config} handleConfigChange={handleConfigChange} transform={config.style} showBtn={true} />
+                <Preview
+                  config={config}
+                  handleConfigChange={handleConfigChange}
+                  transform={config.style} showBtn={true}
+                />
               </div>
             </div>
           </div>
           <div className={styles.sidebar}>
             <RightSideBar config={config} handleConfigChange={handleConfigChange} />
           </div>
-          <div className={styles.exportLayer} style={{ zIndex: -1000, width: config.width / 2, height: config.height / 2 }}>
-            <div id="captureCanvas" ref={coverRef} className={styles.frame} style={{ aspectRatio: config.ratio, width: config.width / 2, height: config.height / 2}}>
+          <div
+            className={styles.exportLayer}
+            style={{ zIndex: -1000, width: config.width / 2, height: config.height / 2 }}
+          >
+            <div
+              ref={coverRef}
+              id="captureCanvas"
+              className={styles.frame}
+              style={{ aspectRatio: config.ratio, width: config.width / 2, height: config.height / 2}}
+            >
               <Preview config={config} handleConfigChange={handleConfigChange} showBtn={false} />
             </div>
           </div>
