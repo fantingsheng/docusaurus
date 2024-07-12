@@ -45,6 +45,7 @@
     "prism-react-renderer": "^2.1.0",
     "qrcode.react": "^3.1.0",
     "react": "^17.0.0 || ^18.0.0",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-json-view": "^1.21.3",
     "react-lottie": "^1.2.4",

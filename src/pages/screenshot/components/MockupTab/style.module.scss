@@ -12,3 +12,60 @@
   font-size: 14px !important;
   color: rgba(0,0,0,.56);
 }
+
+.pannelCtrlGrid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+
+  .pannelBtn {
+    width: 100%;
+    height: max-content;
+    flex-direction: column;
+    gap: 0;
+    text-align: center;
+    cursor: pointer;
+
+    &.active {
+      
+      
+
+      .preview {
+        outline-offset: 2px;
+        outline: solid 1.5px rgba(0,0,0,1) !important;
+      }
+    }
+
+    .preview {
+      border-radius: 6px;
+      outline-offset: 2px;
+      position: relative;
+      width: 100%;
+      background: rgba(220,220,220,1);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: inherit;
+      }
+    }
+
+    .name {
+      color: rgba(0,0,0,.56);
+      margin: 8px 4px;
+      font: normal 11px/14px Inter,sans-serif;
+      max-width: 100%;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

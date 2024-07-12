@@ -8,6 +8,7 @@
   height: 100vh;
   background: #f5f7fa;
   transition: transform .3s ease;
+  overflow: hidden;
 
   *::-webkit-scrollbar {
     width: 0!important;
