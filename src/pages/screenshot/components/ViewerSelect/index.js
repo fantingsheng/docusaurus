@@ -1,11 +1,15 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useContext } from 'react';
 import { Box, Popper, ClickAwayListener, Paper, Grow } from '@mui/material';
 import MockupModel from "../MockupModel";
 import FrameModel from "../FrameModel";
 import clsx from 'clsx';
 import styles from './style.module.scss';
+import { ConfigContext } from "../../index";
 
-export default function ViewerSelect({ config, handleConfigChange, openStyle }) {
+
+export default function ViewerSelect({ openStyle }) {
+  const { config, handleConfigChange } = useContext(ConfigContext);
+
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const [selObj, setSelObj] = useState(openStyle === "mockup" ? {

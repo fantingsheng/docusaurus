@@ -1,14 +1,13 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import { Box, Button, Typography, styled, Popper, ClickAwayListener, Paper, Grow, } from "@mui/material";
-import PaletteIcon from '@mui/icons-material/Palette';
-import WallpaperIcon from '@mui/icons-material/Wallpaper';
-import GradientIcon from '@mui/icons-material/Gradient';
-import PhotoIcon from '@mui/icons-material/Photo';
 import { SketchPicker } from 'react-color';
 import styles from "./style.module.scss";
 import clsx from 'clsx';
+import { ConfigContext } from "../../index";
 
-export default function Background({ config, handleConfigChange }) {
+export default function Background() {
+  const { config, handleConfigChange } = useContext(ConfigContext);
+
   const [customColor, setCustomColor] = useState("");
   const [open, setOpen] = useState(false);
 

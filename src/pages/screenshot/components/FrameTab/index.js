@@ -1,10 +1,12 @@
-import { useState } from "react";
-import ViewerSelect from "../ViewerSelect";
+import { useState, useContext } from "react";
 import Background from "../Background";
 import { Box, Typography, Slider, Stack } from '@mui/material';
 import styles from "./style.module.scss";
+import { ConfigContext } from "../../index";
 
-export default function Frame({ config, handleConfigChange }) {
+export default function Frame() {
+  const { config, handleConfigChange } = useContext(ConfigContext);
+
   const [noiseVal, setNoiseVal] = useState(config.noise);
   const [blurVal, setBlurVal] = useState(config.blur);
 
@@ -51,7 +53,7 @@ export default function Frame({ config, handleConfigChange }) {
       </Box>
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h5">背景</Typography>
-        <Background config={config} handleConfigChange={handleConfigChange} />
+        <Background />
       </Box>
     </div>
   )

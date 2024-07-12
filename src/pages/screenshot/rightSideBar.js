@@ -1,8 +1,14 @@
 import styles from "./style.module.scss";
 import Preview from "./preview";
 import clsx from 'clsx';
+import { useContext } from 'react';
 
-export default function RightSideBar({ config, handleConfigChange }) {
+import { ConfigContext } from "./index";
+
+
+export default function RightSideBar() {
+  const { config, handleConfigChange } = useContext(ConfigContext);
+
   const transformLst = [
     "",
     "perspective(400em) rotateY(-15deg) rotateX(6deg) skew(-8deg,4deg) translate3d(-4%,-2%,0) scale(.86)",
@@ -23,7 +29,7 @@ export default function RightSideBar({ config, handleConfigChange }) {
               onClick={() => handleConfigChange(item, "style")}
             >
               <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
-                <Preview config={config} handleConfigChange={handleConfigChange} transform={item} showBtn={false} />
+                <Preview transform={item} showBtn={false} />
               </div>
             </div>)
           )

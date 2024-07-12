@@ -140,15 +140,14 @@ export default function () {
                 style={{ aspectRatio: config.ratio }}
               >
                 <Preview
-                  config={config}
-                  handleConfigChange={handleConfigChange}
-                  transform={config.style} showBtn={true}
+                  transform={config.style}
+                  showBtn={true}
                 />
               </div>
             </div>
           </div>
           <div className={styles.sidebar}>
-            <RightSideBar config={config} handleConfigChange={handleConfigChange} />
+            <RightSideBar />
           </div>
           <div
             className={styles.exportLayer}
@@ -160,7 +159,7 @@ export default function () {
               className={styles.frame}
               style={{ aspectRatio: config.ratio, width: config.width / 2, height: config.height / 2}}
             >
-              <Preview config={config} handleConfigChange={handleConfigChange} showBtn={false} />
+              <Preview transform={config.style} showBtn={false} />
             </div>
           </div>
         </ConfigContext.Provider>

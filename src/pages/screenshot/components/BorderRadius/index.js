@@ -1,7 +1,11 @@
-import { Slider, SliderThumb, Stack, ToggleButtonGroup, ToggleButton, styled, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
-export default function BorderRadius({ config, handleConfigChange }) {
+import { Slider, SliderThumb, Stack, ToggleButtonGroup, ToggleButton, styled, Typography } from '@mui/material';
+import { ConfigContext } from "../../index";
+
+export default function BorderRadius() {
+  const { config, handleConfigChange } = useContext(ConfigContext);
+
   const [radius, setRadius] = useState(10);
 
   const AirbnbSlider = styled(Slider)(({ theme }) => ({

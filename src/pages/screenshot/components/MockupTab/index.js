@@ -5,7 +5,8 @@ import BorderRadius from "../BorderRadius";
 import BoxShadow from "../BoxShadow";
 import SizeAndPosition from "../SizeAndPosition";
 
-export default function MockupTab({ config, handleConfigChange }) {
+export default function MockupTab() {
+
   return (
     <div className={styles.setPannel}>
       <Box className={styles.pannelCtrl}>
@@ -19,15 +20,15 @@ export default function MockupTab({ config, handleConfigChange }) {
       </Box>
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">圆角</Typography>
-        <BorderRadius config={config} handleConfigChange={handleConfigChange} />
+        <BorderRadius />
       </Box>
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">阴影</Typography>
-        <BoxShadow shadow={config.borderRadius} handleConfigChange={handleConfigChange} />
+        <BoxShadow />
       </Box>
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">大小和位置</Typography>
-        <SizeAndPosition config={config} handleConfigChange={handleConfigChange} />
+        <SizeAndPosition />
       </Box>
     </div>
   )

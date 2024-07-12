@@ -12,7 +12,7 @@ import ViewerSelect from "./components/ViewerSelect";
 
 import { Box, Tabs, Tab, IconButton } from '@mui/material';
 
-export default function LeftSideBar({ config, handleConfigChange, children }) {
+export default function LeftSideBar({ children }) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -62,17 +62,17 @@ export default function LeftSideBar({ config, handleConfigChange, children }) {
         </Tabs>
         <TabPanel value={value} index={0}>
           <div className={styles.tabInner}>
-            <ViewerSelect config={config} handleConfigChange={handleConfigChange} openStyle="mockup" />
+            <ViewerSelect openStyle="mockup" />
             <div className={styles.scrollView}>
-              <MockupTab config={config} handleConfigChange={handleConfigChange} />
+              <MockupTab />
             </div>
           </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <div className={styles.tabInner}>
-            <ViewerSelect config={config} handleConfigChange={handleConfigChange} openStyle="frame" />
+            <ViewerSelect openStyle="frame" />
             <div className={styles.scrollView}>
-              <FrameTab config={config} handleConfigChange={handleConfigChange} />
+              <FrameTab />
             </div>
           </div>
         </TabPanel>
