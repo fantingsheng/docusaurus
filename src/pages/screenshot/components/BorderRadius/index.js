@@ -76,7 +76,7 @@ export default function BorderRadius() {
           step={1}
           max={40}
           valueLabelDisplay='auto'
-          onChange={e => onValueChange(e.target.value)}
+          onChange={(e, val) => onValueChange(val)}
         />
         <Typography>{config.borderRadius}</Typography>
       </Stack>

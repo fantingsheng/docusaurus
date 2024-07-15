@@ -22,7 +22,7 @@ export default function SizeAndPosition() {
           step={0.01}
           max={2}
           valueLabelDisplay='auto'
-          onChangeCommitted={(e, val) => onValueChange(val)}
+          onChange={(e, val) => onValueChange(val)}
         />
         <Typography>{config.scale}</Typography>
       </Stack>

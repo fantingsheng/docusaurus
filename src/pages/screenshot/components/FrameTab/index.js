@@ -7,16 +7,11 @@ import { useConfigContext } from '../../_configProvider';
 export default function Frame() {
   const { config, handleConfigChange } = useConfigContext();
 
-  const [noiseVal, setNoiseVal] = useState(config.noise);
-  const [blurVal, setBlurVal] = useState(config.blur);
-
   const onNoiseChange = (val) => {
-    setNoiseVal(val);
     handleConfigChange(val, "noise")
   }
 
   const onBlurChange = (val) => {
-    setBlurVal(val);
     handleConfigChange(val, "blur")
   }
   return (
@@ -31,23 +26,23 @@ export default function Frame() {
             step={1}
             max={100}
             valueLabelDisplay='auto'
-            value={noiseVal}
-            onChange={e => setNoiseVal(e.target.value)}
+            value={config.noise}
+            onChange={e => onNoiseChange(e.target.value)}
           />
-          <Typography>{noiseVal}</Typography>
+          <Typography>{config.noise}</Typography>
         </Stack>
         <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
           <Typography>Blur</Typography>
           <Slider
-            value={blurVal}
+            value={config.blur}
             aria-label='Blur'
             min={0}
             step={1}
             max={100}
             valueLabelDisplay='auto'
-            onChange={e => setBlurVal(e.target.value)}
+            onChange={e => onBlurChange(e.target.value)}
           />
-          <Typography>{blurVal}</Typography>
+          <Typography>{config.blur}</Typography>
         </Stack>
         
       </Box>
