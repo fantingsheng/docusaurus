@@ -2,7 +2,11 @@ import { useState, useRef } from 'react';
 import { Box, Button, Popper, ClickAwayListener, Paper, Grow, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-export default function ExportSetting({ expConfig, handleExpConfigChange }) {
+import { useConfigContext } from '../../_configProvider';
+
+export default function ExportSetting() {
+  const { config, handleConfigChange } = useConfigContext();
+
   const [open, setOpen] = useState(false);
 
   const anchorRef = useRef(null);
@@ -35,9 +39,9 @@ export default function ExportSetting({ expConfig, handleExpConfigChange }) {
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">格式</Typography>
                     <ToggleButtonGroup
-                      value={expConfig.format}
+                      value={config.format}
                       exclusive
-                      onChange={(e, val) => handleExpConfigChange(val, "format")}
+                      onChange={(e, val) => handleConfigChange(val, "format")}
                       aria-label="border radius switch"
                       size="small"
                       fullWidth
@@ -53,9 +57,9 @@ export default function ExportSetting({ expConfig, handleExpConfigChange }) {
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">分辨率</Typography>
                     <ToggleButtonGroup
-                      value={expConfig.scale}
+                      value={config.expScale}
                       exclusive
-                      onChange={(e, val) => handleExpConfigChange(val, "scale")}
+                      onChange={(e, val) => handleConfigChange(val, "expScale")}
                       aria-label="border radius switch"
                       size="small"
                       fullWidth

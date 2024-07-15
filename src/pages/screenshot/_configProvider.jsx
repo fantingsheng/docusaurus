@@ -19,7 +19,9 @@ export function ConfigProvider({ children }) {
     transformX: 0,
     transformY: 0,
     width: 1920,
-    height: 1440
+    height: 1440,
+    format: 'png',
+    expScale: 1 // 导出图片分辨率
   })
 
   const handleConfigChange = (val, key) => {
