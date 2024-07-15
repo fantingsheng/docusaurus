@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react';
 
 import { Slider, SliderThumb, Stack, ToggleButtonGroup, ToggleButton, styled, Typography } from '@mui/material';
-import { ConfigContext } from "../../index";
+import { useConfigContext } from '../../_configProvider';
 
 export default function BorderRadius() {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   const [radius, setRadius] = useState(10);
 

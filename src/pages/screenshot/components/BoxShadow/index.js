@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Slider, ToggleButtonGroup, ToggleButton, Stack, Typography } from '@mui/material';
 
-export default function BoxShadow({ shadow, handleConfigChange }) {
+export default function BoxShadow({ shadow }) {
   const [opacity, setOpacity] = useState(0.4);
   const [shadowVal, setShadowVal] = useState(shadow);
 

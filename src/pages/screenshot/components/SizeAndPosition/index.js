@@ -1,10 +1,10 @@
 import { Slider, SliderThumb, Stack, ToggleButtonGroup, ToggleButton, styled, Typography } from '@mui/material';
 import { useState, useContext } from 'react';
 
-import { ConfigContext } from "../../index";
+import { useConfigContext } from '../../_configProvider';
 
 export default function SizeAndPosition() {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   const onValueChange = (newVal) => {
     // setRadius(newVal);

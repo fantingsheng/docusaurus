@@ -2,12 +2,12 @@ import styles from "./style.module.scss";
 import CoverTheme from "./themes";
 import { Box } from '@mui/material';
 import clsx from 'clsx';
-import { useContext } from 'react';
 
-import { ConfigContext } from "./index";
+import { useConfigContext } from './_configProvider';
+
 
 export default function Preview({ transform, showBtn }) {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   return (
     <div className={styles.frameContent}>

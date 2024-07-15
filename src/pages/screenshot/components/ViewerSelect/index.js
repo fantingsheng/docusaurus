@@ -4,11 +4,11 @@ import MockupModel from "../MockupModel";
 import FrameModel from "../FrameModel";
 import clsx from 'clsx';
 import styles from './style.module.scss';
-import { ConfigContext } from "../../index";
+import { useConfigContext } from '../../_configProvider';
 
 
 export default function ViewerSelect({ openStyle }) {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);

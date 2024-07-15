@@ -3,10 +3,10 @@ import { useState, useContext } from 'react';
 import styles from './style.module.scss';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import clsx from 'clsx';
-import { ConfigContext } from "../../index";
+import { useConfigContext } from '../../_configProvider';
 
 export default function MockupModel({ handleSelChange }) {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   const [platform, setPlatform] = useState("all");
 

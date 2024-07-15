@@ -2,10 +2,10 @@ import { useState, useContext } from "react";
 import Background from "../Background";
 import { Box, Typography, Slider, Stack } from '@mui/material';
 import styles from "./style.module.scss";
-import { ConfigContext } from "../../index";
+import { useConfigContext } from '../../_configProvider';
 
 export default function Frame() {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   const [noiseVal, setNoiseVal] = useState(config.noise);
   const [blurVal, setBlurVal] = useState(config.blur);

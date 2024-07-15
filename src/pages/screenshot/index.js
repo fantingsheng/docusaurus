@@ -9,16 +9,18 @@ import html2canvas from 'html2canvas';
 
 import ExportButton from "./components/ExportButton";
 import ExportSetting from "./components/ExportSetting";
-
+import { ConfigProvider, useConfigContext } from './_configProvider';
 import { Box } from '@mui/material';
 
-export const ConfigContext = createContext();
+// export const ConfigContext = createContext();
 
 export default function () {
   const { siteConfig } = useDocusaurusContext();
 
   const coverRef = useRef();
   const [loading, setLoading] = useState(false);
+
+  // const { config } = useConfigContext();
 
   const [config, setConfig] = useState({
     theme: "screenshot",
@@ -44,9 +46,9 @@ export default function () {
     scale: 1
   });
 
-  const handleConfigChange = (val, key) => {
-    setConfig((prev) => ({ ...prev, [key]: val }));
-  };
+  // const handleConfigChange = (val, key) => {
+  //   setConfig((prev) => ({ ...prev, [key]: val }));
+  // };
 
   const handleExpConfigChange = (val, key) => {
     setExpConfig((prev) => ({ ...prev, [key]: val }));
@@ -122,8 +124,8 @@ export default function () {
         <meta name="description" content="选择模型帮你生成漂亮的图片" />
         <meta name="keywords" content='手机套壳,模型,图片美化' />
       </Head>
-      <main className={styles.appMain}>
-        <ConfigContext.Provider value={{ config, handleConfigChange }}>
+      <ConfigProvider>
+        <main className={styles.appMain}>
           <div className={styles.sidebar}>
             <LeftSideBar>
               <Box sx={{ display: 'flex', gap: '8px' }}>
@@ -162,8 +164,8 @@ export default function () {
               <Preview transform={config.style} showBtn={false} />
             </div>
           </div>
-        </ConfigContext.Provider>
-      </main>
+        </main>
+      </ConfigProvider>
     </>
   )
 }

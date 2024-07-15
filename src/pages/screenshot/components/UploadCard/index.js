@@ -3,10 +3,10 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import styles from './style.module.scss';
 import { useContext } from 'react';
 
-import { ConfigContext } from "../../index";
+import { useConfigContext } from '../../_configProvider';
 
 export default function UploadCard() {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',

@@ -1,13 +1,12 @@
 import styles from "./style.module.scss";
 import Preview from "./preview";
 import clsx from 'clsx';
-import { useContext } from 'react';
 
-import { ConfigContext } from "./index";
+import { useConfigContext } from './_configProvider';
 
 
 export default function RightSideBar() {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   const transformLst = [
     "",

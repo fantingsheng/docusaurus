@@ -3,10 +3,10 @@ import { Box, Button, Typography, styled, Popper, ClickAwayListener, Paper, Grow
 import { SketchPicker } from 'react-color';
 import styles from "./style.module.scss";
 import clsx from 'clsx';
-import { ConfigContext } from "../../index";
+import { useConfigContext } from '../../_configProvider';
 
 export default function Background() {
-  const { config, handleConfigChange } = useContext(ConfigContext);
+  const { config, handleConfigChange } = useConfigContext();
 
   const [customColor, setCustomColor] = useState("");
   const [open, setOpen] = useState(false);
