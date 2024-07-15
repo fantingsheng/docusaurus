@@ -125,7 +125,7 @@ export default function () {
       <main className={styles.appMain}>
         <ConfigContext.Provider value={{ config, handleConfigChange }}>
           <div className={styles.sidebar}>
-            <LeftSideBar config={config} handleConfigChange={handleConfigChange}>
+            <LeftSideBar>
               <Box sx={{ display: 'flex', gap: '8px' }}>
                 <ExportButton loading={loading} handleExportImage={downloadImage} handleCopyImage={handleCopyImg} />
                 <ExportSetting expConfig={expConfig} handleExpConfigChange={handleExpConfigChange} />

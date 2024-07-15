@@ -20,7 +20,7 @@ export default function ExportSetting({ expConfig, handleExpConfigChange }) {
   return (
     <>
       <Button ref={anchorRef} variant="contained" size="small" sx={{ minWidth: '45px' }} onClick={handleToggle}><SettingsIcon /></Button>
-      <Popper sx={{ zIndex: 5, minWidth: '200px' }} open={open} placement="top-end" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Popper sx={{ zIndex: 5, minWidth: '240px' }} open={open} placement="top-end" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}

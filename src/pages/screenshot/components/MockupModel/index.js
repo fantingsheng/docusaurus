@@ -1,10 +1,13 @@
 import { Box, Card, CardHeader, CardMedia, CardContent, Typography, Avatar, ToggleButtonGroup, ToggleButton } from '@mui/material';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from './style.module.scss';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import clsx from 'clsx';
+import { ConfigContext } from "../../index";
 
-export default function MockupModel({ config, handleSelChange, handleConfigChange }) {
+export default function MockupModel({ handleSelChange }) {
+  const { config, handleConfigChange } = useContext(ConfigContext);
+
   const [platform, setPlatform] = useState("all");
 
   const mockupLst = [

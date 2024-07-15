@@ -77,9 +77,9 @@ export default function ViewerSelect({ openStyle }) {
                 <Box className={styles.popperBox}>
                   {
                     openStyle === "mockup" ? 
-                      <MockupModel config={config} handleSelChange={handleSelChange} handleConfigChange={handleConfigChange} /> 
+                      <MockupModel handleSelChange={handleSelChange} /> 
                       :
-                      <FrameModel config={config} handleSelChange={handleSelChange} handleConfigChange={handleConfigChange} />
+                      <FrameModel handleSelChange={handleSelChange} />
                   }
                 </Box>
               </ClickAwayListener>

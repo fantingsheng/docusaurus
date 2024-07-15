@@ -1,9 +1,13 @@
 import { Box, Card, CardHeader, CardMedia, CardContent, Typography, ToggleButtonGroup, ToggleButton, Divider } from '@mui/material';
 import styles from "./style.module.scss";
 import clsx from "clsx";
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ConfigContext } from "../../index";
 
-export default function FrameModel({ config, handleConfigChange, handleSelChange }) {
+
+export default function FrameModel({ handleSelChange }) {
+  const { config, handleConfigChange } = useContext(ConfigContext);
+
   const usualSizes = [
     { aspectRatio: "16 / 9", ratioText: "16 : 9", wxh: "1920 x 1080" },
     { aspectRatio: "3 / 2", ratioText: "3 : 2", wxh: "1920 x 1280" },
