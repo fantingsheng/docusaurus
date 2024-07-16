@@ -18,6 +18,7 @@
   --ifm-footer-link-hover-color: #585ebf;
   --ifm-code-padding-horizontal: 0.2rem;
   --ifm-code-border-radius: 0.3rem;
+  --ifm-footer-background-color: rgba(15, 23, 42, 1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -32,6 +33,7 @@
   --ifm-color-primary-opacity: #6cc47ec7;
   --ifm-footer-link-hover-color: #43a756;
   --docusaurus-highlighted-code-line-bg: rgb(255 251 221/0.1);
+  --ifm-footer-background-color: rgba(15, 23, 42, 1);
 }
 
 .markdown > h1,
@@ -89,6 +91,10 @@ blockquote {
 
 [data-theme='light'] blockquote {
   background-color: #FAFAFA;
+}
+
+.footer {
+  background-color: rgba(15, 23, 42, 1) !important;
 }
 
 /* 域名文字渐变 */

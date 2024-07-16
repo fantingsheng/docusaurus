@@ -14,17 +14,16 @@ export default function SizeAndPosition() {
   return (
     <>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-        <Typography>Size</Typography>
+        <Typography variant="caption">Size</Typography>
         <Slider
           value={config.scale}
           aria-label='Radius'
-          min={0}
+          min={0.5}
           step={0.01}
-          max={2}
-          valueLabelDisplay='auto'
+          max={1.5}
           onChange={(e, val) => onValueChange(val)}
         />
-        <Typography>{config.scale}</Typography>
+        <Typography variant="caption">{config.scale}</Typography>
       </Stack>
       
       {/* <ToggleButtonGroup

@@ -10,7 +10,7 @@ export function ConfigProvider({ children }) {
     borderRadius: 10,
     transparent: false,
     style: "",
-    shadow: "",
+    shadowOpacity: 0.4,
     bg: "linear-gradient(140deg, rgb(255, 100, 50) 12.8%, rgb(255, 0, 101) 43.52%, rgb(123, 46, 255) 84.34%)",
     ratio: '4 / 3',
     noise: 0,

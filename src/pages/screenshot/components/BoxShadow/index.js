@@ -1,7 +1,10 @@
 import { useState } from "react"
 import { Slider, ToggleButtonGroup, ToggleButton, Stack, Typography } from '@mui/material';
+import { useConfigContext } from '../../_configProvider';
 
 export default function BoxShadow({ shadow }) {
+  const { config, handleConfigChange } = useConfigContext();
+
   const [opacity, setOpacity] = useState(0.4);
   const [shadowVal, setShadowVal] = useState(shadow);
 
@@ -9,17 +12,16 @@ export default function BoxShadow({ shadow }) {
   return (
     <>
       <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-        <Typography>Shadow</Typography>
+        <Typography variant="caption">Opacity</Typography>
         <Slider
-          value={opacity}
+          value={config.shadowOpacity * 100}
           aria-label='shadow'
-          min={0}
-          step={0.05}
-          max={1}
-          valueLabelDisplay='auto'
-          onChange={e => setOpacity(e.target.value)}
+          min={10}
+          step={1}
+          max={70}
+          onChange={(e, val) => handleConfigChange(val / 100, "shadowOpacity")}
         />
-        <Typography>{opacity}</Typography>
+        <Typography variant="caption">{config.shadowOpacity * 100}</Typography>
       </Stack>
     
       <ToggleButtonGroup

@@ -39,13 +39,13 @@ export default function Preview({ transform, showBtn }) {
                 }
                 <div className={styles.shadow} style={{ borderRadius: `${config.borderRadius}px` }}>
                   <div className={styles.shadowLayer} 
-                    style={{transform: 'translateX(0.46875em) translateY(0.65625em) scale(1)', filter: 'blur(0.325em)', opacity: 0.4}} />
+                    style={{transform: 'translateX(0.46875em) translateY(0.65625em) scale(1)', filter: 'blur(0.325em)', opacity: config.shadowOpacity}} />
                   <div className={styles.shadowLayer} 
-                    style={{transform: 'translateX(1.40625em) translateY(1.96875em) scale(1)', filter: 'blur(0.975em)', opacity: 0.4}} />
+                    style={{transform: 'translateX(1.40625em) translateY(1.96875em) scale(1)', filter: 'blur(0.975em)', opacity: config.shadowOpacity}} />
                   <div className={styles.shadowLayer} 
-                    style={{transform: 'translateX(2.8125em) translateY(3.9375em) scale(1)', filter: 'blur(1.95em)', opacity: 0.4}} />
+                    style={{transform: 'translateX(2.8125em) translateY(3.9375em) scale(1)', filter: 'blur(1.95em)', opacity: config.shadowOpacity}} />
                   <div className={styles.shadowLayer} 
-                    style={{transform: 'translateX(4.6875em) translateY(6.5625em) scale(1)', filter: 'blur(3.25em)', opacity: 0.4}} />
+                    style={{transform: 'translateX(4.6875em) translateY(6.5625em) scale(1)', filter: 'blur(3.25em)', opacity: config.shadowOpacity}} />
                 </div>
               </div>
             </div>

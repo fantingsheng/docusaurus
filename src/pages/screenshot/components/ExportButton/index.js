@@ -1,4 +1,4 @@
-import { Button, ButtonGroup } from '@mui/material';
+import { Button, ButtonGroup, Typography } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CopyAll from '@mui/icons-material/CopyAll';
@@ -94,7 +94,10 @@ export default function ExportButton({ coverRef }) {
         startIcon={<SaveAltIcon />} 
         onClick={() => onHandleButtonClick("export")}
       >
-        导出图片
+        <Typography sx={{ fontSize: '14px', textTransform: 'none', textAlign: 'left', lineHeight: 1 }}>
+          导出图片
+        <Typography variant="body1" sx={{ fontSize: '10px' }}>{`${config.expScale}x as ${config.format}`}</Typography>
+        </Typography>
       </LoadingButton>
       <LoadingButton 
         variant="contained" 
