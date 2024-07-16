@@ -2,6 +2,7 @@ import { Button, ButtonGroup, Typography } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CopyAll from '@mui/icons-material/CopyAll';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useState } from 'react';
 import html2canvas from 'html2canvas';
 import { useConfigContext } from '../../_configProvider';
@@ -109,7 +110,7 @@ export default function ExportButton({ coverRef }) {
         sx={{ width: 80 }}
         onClick={() => onHandleButtonClick("copy")}
       >
-        <CopyAll />
+        <ContentCopyIcon />
       </LoadingButton>
     </ButtonGroup>
   )
