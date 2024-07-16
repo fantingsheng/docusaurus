@@ -1,14 +1,14 @@
 import { useRef } from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import LeftSideBar from "./leftSideBar";
-import RightSideBar from "./rightSideBar";
-import ExportLayer from './exportLayer';
-import CenterPreview from './centerPreview';
+import LeftSideBar from "./_leftSideBar";
+import RightSideBar from "./_rightSideBar";
+import ExportLayer from './_exportLayer';
+import CenterPreview from './_centerPreview';
 import styles from "./style.module.scss";
 
-import ExportButton from "./components/ExportButton";
-import ExportSetting from "./components/ExportSetting";
+import ExportButton from "./components/_ExportButton";
+import ExportSetting from "./components/_ExportSetting";
 import { ConfigProvider } from './_configProvider';
 import { Box } from '@mui/material';
 
