@@ -8,30 +8,28 @@ export default function FrameModel({ handleSelChange }) {
   const { config, handleConfigChange } = useConfigContext();
 
   const usualSizes = [
-    { aspectRatio: "16 / 9", ratioText: "16 : 9", wxh: "1920 x 1080" },
-    { aspectRatio: "3 / 2", ratioText: "3 : 2", wxh: "1920 x 1280" },
-    { aspectRatio: "4 / 3", ratioText: "4 : 3", wxh: "1920 x 1440" },
-    { aspectRatio: "5 / 4", ratioText: "5 : 4", wxh: "1920 x 1536" },
-    { aspectRatio: "1 / 1", ratioText: "1 : 1", wxh: "1920 x 1920" },
-    { aspectRatio: "4 / 5", ratioText: "4 : 5", wxh: "1080 x 1350" },
-    { aspectRatio: "3 / 4", ratioText: "3 : 4", wxh: "1080 x 1440" },
-    { aspectRatio: "2 / 3", ratioText: "2 : 3", wxh: "1080 x 1620" },
-    { aspectRatio: "9 / 16", ratioText: "9 : 16", wxh: "1080 x 1920" }
+    { aspectRatio: "16 / 9", width: 1920, height: 1080 },
+    { aspectRatio: "3 / 2", width: 1920, height: 1280 },
+    { aspectRatio: "4 / 3", width: 1920, height: 1440 },
+    { aspectRatio: "5 / 4", width: 1920, height: 1536 },
+    { aspectRatio: "1 / 1", width: 1920, height: 1920 },
+    { aspectRatio: "4 / 5", width: 1080, height: 1350 },
+    { aspectRatio: "3 / 4", width: 1080, height: 1440 },
+    { aspectRatio: "2 / 3", width: 1080, height: 1620 },
+    { aspectRatio: "9 / 16", width: 1080, height: 1920 }
   ];
 
   const wechatSizes = [
-    { aspectRatio: "1 / 1", ratioText: "1 : 1", wxh: "200 x 200" },
-    { aspectRatio: "2.35 / 1", ratioText: "2.35 : 1", wxh: "900 x 383" }
+    { aspectRatio: "1 / 1", width: 200, height: 200 },
+    { aspectRatio: "2.35 / 1", width: 900, height: 383 }
   ]
 
-  const onSizeButtonClick = (ar, rt, wh) => {
-    const whar = wh.replace(" x ", "x").split("x");
-    console.log("whar", whar)
-    handleSelChange(`Default ${rt}`, "tit");
-    handleSelChange(wh, "info");
+  const onSizeButtonClick = (ar, w, h) => {
+    handleSelChange(`Default ${ar.replace("/", ":")}`, "tit");
+    handleSelChange(`${w} x ${h}`, "info");
     handleConfigChange(ar, "ratio");
-    handleConfigChange(whar[0], "width");
-    handleConfigChange(whar[1], "height");
+    handleConfigChange(w, "width");
+    handleConfigChange(h, "height");
   };
 
   return (
@@ -41,13 +39,13 @@ export default function FrameModel({ handleSelChange }) {
         {
           usualSizes.map((el, index) => (
             <button 
-              className={clsx(styles.frameItem, el.wxh === `${config.width} x ${config.height}` ? styles.active : '')}
+              className={clsx(styles.frameItem, el.width === config.width && el.height === config.height ? styles.active : '')}
               key={index}
-              onClick={() => onSizeButtonClick(el.aspectRatio, el.ratioText, el.wxh)}
+              onClick={() => onSizeButtonClick(el.aspectRatio, el.width, el.height)}
             >
               <div className={styles.frameOuter}>
                 <div className={styles.lineFrame} style={{ aspectRatio: el.aspectRatio }}>
-                  <span>{el.ratioText}</span>
+                  <span>{el.aspectRatio.replace("/", ":")}</span>
                 </div>
               </div>
               <div className={styles.sizeText}>{el.wxh}</div>
@@ -61,13 +59,13 @@ export default function FrameModel({ handleSelChange }) {
         {
           wechatSizes.map((el, index) => (
             <button
-              className={clsx(styles.frameItem, el.wxh === `${config.width} x ${config.height}` ? styles.active : '')}
+              className={clsx(styles.frameItem, el.width === config.width && el.height === config.height ? styles.active : '')}
               key={index}
-              onClick={() => onSizeButtonClick(el.aspectRatio, el.ratioText, el.wxh)}
+              onClick={() => onSizeButtonClick(el.aspectRatio, el.width, el.height)}
             >
               <div className={styles.frameOuter}>
                 <div className={styles.lineFrame} style={{ aspectRatio: el.aspectRatio }}>
-                  <span>{el.ratioText}</span>
+                  <span>{el.aspectRatio.replace("/", ":")}</span>
                 </div>
               </div>
               <div className={styles.sizeText}>{el.wxh}</div>

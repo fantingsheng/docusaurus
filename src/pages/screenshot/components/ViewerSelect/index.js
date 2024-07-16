@@ -8,7 +8,7 @@ import { useConfigContext } from '../../_configProvider';
 
 
 export default function ViewerSelect({ openStyle }) {
-  const { config, handleConfigChange } = useConfigContext();
+  const { config } = useConfigContext();
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
