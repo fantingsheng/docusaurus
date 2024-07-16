@@ -11,11 +11,12 @@ import FrameTab from "./components/FrameTab";
 import ViewerSelect from "./components/ViewerSelect";
 import Giscus from "@giscus/react";
 
-import { Box, Tabs, Tab, IconButton, Drawer } from '@mui/material';
+import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle } from '@mui/material';
 
 export default function LeftSideBar({ children }) {
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -59,7 +60,7 @@ export default function LeftSideBar({ children }) {
           <IconButton color="primary" aria-label="Menu" onClick={handleDrawerOpen}>
             <CommentIcon />
           </IconButton>
-          <IconButton color="primary" aria-label="Menu">
+          <IconButton color="primary" aria-label="Menu" onClick={() => setVisible(true)}>
             <WidgetsIcon />
           </IconButton>
         </Box>
@@ -95,6 +96,9 @@ export default function LeftSideBar({ children }) {
           { children }
         </div>
       </div>
+      <Dialog onClose={() => setVisible(false)} open={visible}>
+        <DialogTitle>Welcome to use Screenshot</DialogTitle>
+      </Dialog>
       <Drawer
         anchor="right"
         open={open}

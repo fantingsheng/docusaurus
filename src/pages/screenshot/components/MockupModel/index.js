@@ -19,30 +19,30 @@ export default function MockupModel({ handleSelChange }) {
       thumbnail: '/screenshot/mockup/screenshot.png',
       previews: ['', '', '', '']
     },
-    {
-      name: 'browser',
-      title: 'Browser',
-      type: '',
-      subtitle: '4 layouts',
-      thumbnail: '/screenshot/mockup/default.png',
-      previews: ['', '', '', '']
-    },
-    {
-      name: 'miniphone',
-      title: 'Minimal Phone',
-      type: '',
-      subtitle: '8 layouts',
-      thumbnail: '/screenshot/mockup/default.png',
-      previews: ['', '', '', '']
-    },
-    {
-      name: 'iphone15',
-      title: 'iPhone 15',
-      type: 'phone',
-      subtitle: '8 layouts',
-      thumbnail: '/screenshot/mockup/iphone15.webp',
-      previews: ['', '', '', '']
-    }
+    // {
+    //   name: 'browser',
+    //   title: 'Browser',
+    //   type: '',
+    //   subtitle: '4 layouts',
+    //   thumbnail: '/screenshot/mockup/default.png',
+    //   previews: ['', '', '', '']
+    // },
+    // {
+    //   name: 'miniphone',
+    //   title: 'Minimal Phone',
+    //   type: '',
+    //   subtitle: '8 layouts',
+    //   thumbnail: '/screenshot/mockup/default.png',
+    //   previews: ['', '', '', '']
+    // },
+    // {
+    //   name: 'iphone15',
+    //   title: 'iPhone 15',
+    //   type: 'phone',
+    //   subtitle: '8 layouts',
+    //   thumbnail: '/screenshot/mockup/iphone15.webp',
+    //   previews: ['', '', '', '']
+    // }
   ]
 
   const onHandleClickTheme = val => {

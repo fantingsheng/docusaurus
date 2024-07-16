@@ -33,7 +33,7 @@
 
       .preview {
         outline-offset: 2px;
-        outline: solid 1.5px rgba(0,0,0,1) !important;
+        outline: solid 1.5px var(--mui-palette-primary-main) !important;
       }
     }
 
