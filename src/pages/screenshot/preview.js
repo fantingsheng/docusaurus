@@ -22,7 +22,7 @@ export default function Preview({ transform, showBtn }) {
           <div className={styles.devices} style={{ transform: `scale(${config.scale}) translateX(${config.transformX}%) translateY(${config.transformY}%)` }}>
             <div className={styles.item} style={{ borderRadius: `${config.borderRadius}px` }}>
               <div className={clsx(styles.itemContainer, 'item-container')}>
-                {showBtn ?
+                { showBtn ?
                   <CoverTheme config={config} handleConfigChange={handleConfigChange} /> : 
                   <Box sx={{
                     width: "100%",
@@ -37,16 +37,21 @@ export default function Preview({ transform, showBtn }) {
                     {config.picture ? <img src={config.picture} /> : <></>}
                   </Box>
                 }
-                <div className={styles.shadow} style={{ borderRadius: `${config.borderRadius}px` }}>
-                  <div className={styles.shadowLayer} 
-                    style={{transform: 'translateX(0.46875em) translateY(0.65625em) scale(1)', filter: 'blur(0.325em)', opacity: config.shadowOpacity}} />
-                  <div className={styles.shadowLayer} 
-                    style={{transform: 'translateX(1.40625em) translateY(1.96875em) scale(1)', filter: 'blur(0.975em)', opacity: config.shadowOpacity}} />
-                  <div className={styles.shadowLayer} 
-                    style={{transform: 'translateX(2.8125em) translateY(3.9375em) scale(1)', filter: 'blur(1.95em)', opacity: config.shadowOpacity}} />
-                  <div className={styles.shadowLayer} 
-                    style={{transform: 'translateX(4.6875em) translateY(6.5625em) scale(1)', filter: 'blur(3.25em)', opacity: config.shadowOpacity}} />
-                </div>
+                { config.shadowX && config.shadowY ?
+                  <div className={styles.shadow} style={{ borderRadius: `${config.borderRadius}px` }}>
+                    {[1, 3, 6, 10].map(el => (
+                      <div
+                        className={styles.shadowLayer} 
+                        style={{
+                          transform: `translateX(${config.shadowX * el}em) translateY(${config.shadowY * el}em) scale(1)`,
+                          filter: `blur(${0.325 * el}em)`,
+                          opacity: config.shadowOpacity
+                        }}
+                        key={el}
+                      />
+                    ))}
+                  </div> : ""
+                }
               </div>
             </div>
           </div>

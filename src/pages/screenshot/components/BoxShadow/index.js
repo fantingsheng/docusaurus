@@ -5,10 +5,21 @@ import { useConfigContext } from '../../_configProvider';
 export default function BoxShadow({ shadow }) {
   const { config, handleConfigChange } = useConfigContext();
 
-  const [opacity, setOpacity] = useState(0.4);
-  const [shadowVal, setShadowVal] = useState(shadow);
+  const [shadowVal, setShadowVal] = useState("spread");
 
-  const onValueChange = () => {}
+  const onValueChange = (val) => {
+    setShadowVal(val);
+    if (val === "none") {
+      handleConfigChange(null, "shadowX");
+      handleConfigChange(null, "shadowY");
+    } else if (val === "hug") {
+      handleConfigChange(0.3125, "shadowX");
+      handleConfigChange(0.30625, "shadowY");
+    } else if (val === "spread") {
+      handleConfigChange(0.46875, "shadowX");
+      handleConfigChange(0.65625, "shadowY");
+    }
+  }
   return (
     <>
       <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
@@ -32,13 +43,13 @@ export default function BoxShadow({ shadow }) {
         size="small"
         fullWidth
       >
-        <ToggleButton value={"none"} aria-label="5px">
+        <ToggleButton value="none" aria-label="none">
           None
         </ToggleButton>
-        <ToggleButton value={""} aria-label="10px">
+        <ToggleButton value="hug" aria-label="hug">
           Hug
         </ToggleButton>
-        <ToggleButton value={""} aria-label="10px">
+        <ToggleButton value="spread" aria-label="spread">
           Spread
         </ToggleButton>
       </ToggleButtonGroup>

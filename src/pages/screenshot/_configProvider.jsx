@@ -8,9 +8,11 @@ export function ConfigProvider({ children }) {
     picture: "",
     bgImg: "",
     borderRadius: 10,
-    transparent: false,
-    style: "",
+    transparent: false, // 透明背景
+    style: "", // 样式
     shadowOpacity: 0.4,
+    shadowX: 0.46875,
+    shadowY: 0.65625,
     bg: "linear-gradient(140deg, rgb(255, 100, 50) 12.8%, rgb(255, 0, 101) 43.52%, rgb(123, 46, 255) 84.34%)",
     ratio: '4 / 3',
     noise: 0,
