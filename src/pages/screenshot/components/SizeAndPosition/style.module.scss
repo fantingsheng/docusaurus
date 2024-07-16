@@ -1,0 +1,40 @@
+.posGrid {
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: relative;
+  background: rgba(220,220,220,1);
+  border-radius: 10px;
+  display: flex;
+  padding: 2px;
+
+  .presetCol {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+
+    .presetBtn {
+      flex: 1 1;
+      padding: 2px;
+      cursor: pointer;
+
+      .tile {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,.06);
+      }
+
+      &.active {
+        .tile {
+          background: rgba(255, 255, 255, 1);
+        }
+      }
+
+      &:hover {
+        .tile {
+          background: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+  }
+}

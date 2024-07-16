@@ -18,7 +18,7 @@ export default function Frame() {
     <div className={styles.setPannel}>
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h5">效果</Typography>
-        <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+        <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
           <Typography variant="caption">Noise</Typography>
           <Slider
             aria-label="Noise"
@@ -31,7 +31,7 @@ export default function Frame() {
           />
           <Typography variant="caption">{config.noise}</Typography>
         </Stack>
-        <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+        <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
           <Typography variant="caption">Blur</Typography>
           <Slider
             value={config.blur}

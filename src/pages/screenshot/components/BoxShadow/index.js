@@ -11,7 +11,7 @@ export default function BoxShadow({ shadow }) {
   const onValueChange = () => {}
   return (
     <>
-      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+      <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
         <Typography variant="caption">Opacity</Typography>
         <Slider
           value={config.shadowOpacity * 100}

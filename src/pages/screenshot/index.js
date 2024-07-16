@@ -14,7 +14,6 @@ import { Box } from '@mui/material';
 
 export default function () {
   const { siteConfig } = useDocusaurusContext();
-
   const coverRef = useRef();
 
   return (

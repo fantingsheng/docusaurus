@@ -91,12 +91,15 @@ export default function ExportButton({ coverRef }) {
         size="small" 
         loading={cn === 'export' && loading} 
         loadingPosition="start"
-        startIcon={<SaveAltIcon />} 
+        startIcon={<SaveAltIcon />}
+        sx={{ paddingTop: '6px', paddingBottom: '6px' }}
         onClick={() => onHandleButtonClick("export")}
       >
         <Typography sx={{ fontSize: '14px', textTransform: 'none', textAlign: 'left', lineHeight: 1 }}>
-          导出图片
-        <Typography variant="body1" sx={{ fontSize: '10px' }}>{`${config.expScale}x as ${config.format}`}</Typography>
+          导出图片<br />
+          <Typography variant="caption" sx={{ fontSize: '10px', lineHeight: 1 }}>
+            {`${config.expScale}x as ${config.format}`}
+          </Typography>
         </Typography>
       </LoadingButton>
       <LoadingButton 

@@ -5,15 +5,17 @@ import Link from '@docusaurus/Link';
 import AirplayIcon from '@mui/icons-material/Airplay';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 import WidgetsIcon from '@mui/icons-material/Widgets';
-
+import CommentIcon from '@mui/icons-material/Comment';
 import MockupTab from "./components/MockupTab";
 import FrameTab from "./components/FrameTab";
 import ViewerSelect from "./components/ViewerSelect";
+import Giscus from "@giscus/react";
 
-import { Box, Tabs, Tab, IconButton } from '@mui/material';
+import { Box, Tabs, Tab, IconButton, Drawer } from '@mui/material';
 
 export default function LeftSideBar({ children }) {
   const [value, setValue] = useState(0);
+  const [open, setOpen] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -39,15 +41,28 @@ export default function LeftSideBar({ children }) {
     );
   }
 
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <div className={styles.navbar}>
         <Link to='/'>
           <img src='/img/share.png' width='36' alt="Spacexcode's logo" />
         </Link>
-        <IconButton color="primary" aria-label="Menu">
-          <WidgetsIcon />
-        </IconButton>
+        <Box>
+          <IconButton color="primary" aria-label="Menu" onClick={handleDrawerOpen}>
+            <CommentIcon />
+          </IconButton>
+          <IconButton color="primary" aria-label="Menu">
+            <WidgetsIcon />
+          </IconButton>
+        </Box>
       </div>
       <div className={clsx(styles.pannel)}>
         <Tabs
@@ -80,6 +95,30 @@ export default function LeftSideBar({ children }) {
           { children }
         </div>
       </div>
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={handleDrawerClose}
+      >
+        <Box sx={{ width: '350px', minHeight: '100vh', padding: '20px', background: '#fff' }}>
+          <Giscus
+            repo="fantingsheng/spacexcode-discus"
+            repoId="R_kgDOJoGL9w"
+            category="General"
+            categoryId="DIC_kwDOJoGL984CWxiW"  // E.g. id of "General"
+            mapping="url"                        // Important! To map comments to URL
+            term="Welcome to @giscus/react component!"
+            strict="0"
+            reactionsEnabled={0}
+            emitMetadata="1"
+            inputPosition="top"
+            lang="zh-Hans"
+            loading='lazy'
+            crossorigin="anonymous"
+            async
+          />
+        </Box>
+      </Drawer>
     </>
   )
 }

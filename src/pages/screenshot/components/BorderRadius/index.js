@@ -12,7 +12,7 @@ export default function BorderRadius() {
 
   return (
     <>
-      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+      <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
         <Typography variant="caption">Radius</Typography>
         <Slider
           value={config.borderRadius}
