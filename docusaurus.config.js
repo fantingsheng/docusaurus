@@ -103,11 +103,12 @@ const config = {
           },
           { to: '/blog', label: '博客', position: 'left' },
           { label: '实战', position: 'right', items: [
+            { to: '/screenshot', label: '图片套壳美化' },
+            { to: '/coverview', label: '封面图生成器' },
+            { to: '/memocard', label: '文字卡片生成器' },
             { to: '/shapedivider', label: '分隔线工具' },
             { to: '/codeimage', label: '代码图片生成器' },
             { to: '/cssglass', label: '毛玻璃效果生成器' },
-            { to: '/coverview', label: '封面图生成器' },
-            { to: '/memocard', label: '文字卡片' },
             { to: '/lifebalence', label: '高效的生物钟' },
             { to: '/progress', label: '年度进度图' },
             { to: '/player', label: '音乐播放器' }
@@ -135,7 +136,7 @@ const config = {
           {
             title: '作品集',
             items: [
-              { label: '站点统计工具', to: '/visitor' },
+              { label: '图片制作工具', to: '/screenshot' },
               { label: '优美的分隔线', to: '/shapedivider' },
               { label: '毛玻璃效果生成器', to: '/cssglass' },
               { label: '代码图片生成器', to: '/codeimage' },
