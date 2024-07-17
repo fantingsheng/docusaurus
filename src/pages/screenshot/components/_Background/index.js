@@ -94,8 +94,8 @@ export default function Background() {
           onClick={handleToggle}
           fullWidth
         >
-          <div className={clsx(styles.samDot, styles.color)} style={{ backgroundColor: customColor || '#fff' }}></div>
-          <span>颜色</span>
+          <div className={clsx(styles.samDot, styles.color)} style={{ backgroundColor: customColor || '#ffffff' }}></div>
+          <span>{ customColor || '#ffffff' }</span>
         </Button>
         <Button
           className={clsx(styles.bgButton, config.bgImg ? styles.active : '')}

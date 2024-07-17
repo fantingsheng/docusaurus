@@ -9,7 +9,10 @@
   align-items: center;
   background-color: rgba(220,220,220,1) !important;
   color: inherit !important;
-  gap: 8px;
+  gap: 10px;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  text-transform: none !important;
 
   &:hover {
     border: none !important;
@@ -22,6 +25,7 @@
 
   span {
     line-height: 1;
+    font-size: 13px;
   }
 
   .samDot {
