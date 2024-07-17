@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
-import { Box, Button, Popper, ClickAwayListener, Paper, Grow, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { Box, Button, Popper, ClickAwayListener, Paper, Grow, Typography,
+  ToggleButtonGroup, ToggleButton, TextField } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 import { useConfigContext } from '../../_configProvider';
@@ -23,8 +24,18 @@ export default function ExportSetting() {
   };
   return (
     <>
-      <Button ref={anchorRef} variant="contained" size="small" sx={{ minWidth: '45px' }} onClick={handleToggle}><SettingsIcon /></Button>
-      <Popper sx={{ zIndex: 5, minWidth: '240px' }} open={open} placement="top-end" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Button ref={anchorRef} variant="contained" size="small" sx={{ minWidth: '45px' }} onClick={handleToggle}>
+        <SettingsIcon />
+      </Button>
+      <Popper
+        sx={{ zIndex: 5, minWidth: '240px' }}
+        open={open}
+        placement="top-end"
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+      >
         {({ TransitionProps, placement }) => (
           <Grow
             {...TransitionProps}
@@ -38,7 +49,7 @@ export default function ExportSetting() {
                 <Box sx={{ background: '#fff', padding: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">格式</Typography>
-                    <ToggleButtonGroup
+                    <Box><ToggleButtonGroup
                       value={config.format}
                       exclusive
                       onChange={(e, val) => handleConfigChange(val, "format")}
@@ -52,11 +63,11 @@ export default function ExportSetting() {
                       <ToggleButton value="png" aria-label="png">
                         PNG
                       </ToggleButton>
-                    </ToggleButtonGroup>
+                    </ToggleButtonGroup></Box>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">分辨率</Typography>
-                    <ToggleButtonGroup
+                    <Box><ToggleButtonGroup
                       value={config.expScale}
                       exclusive
                       onChange={(e, val) => handleConfigChange(val, "expScale")}
@@ -73,7 +84,11 @@ export default function ExportSetting() {
                       <ToggleButton value={3} aria-label="3x">
                         3px
                       </ToggleButton>
-                    </ToggleButtonGroup>
+                    </ToggleButtonGroup></Box>
+                  </Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
+                    <Typography variant="button">输出图片信息</Typography>
+                    <TextField fullWidth label={`${config.width} x ${config.height}`} size="small" variant="filled" disabled />
                   </Box>
                 </Box>
               </ClickAwayListener>
