@@ -3,7 +3,6 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useState } from 'react';
-import html2canvas from 'html2canvas';
 import { useConfigContext } from '../../_configProvider';
 import { toPng, toJpg, toBlob } from '@site/src/utils/image';
 import { downloadByUrl } from '@site/src/utils';
@@ -63,35 +62,6 @@ export default function ExportButton({ coverRef }) {
       }).finally(() => {
         setLoading(false);
       })
-
-    // html2canvas(coverRef.current, {
-    //   useCORS: true,
-    //   scale: config.expScale,
-    //   backgroundColor: 'transparent'
-    // }).then((canvas) => {
-    //   canvas.toBlob(async blob => {
-    //     console.log(blob);
-    //     const data = [
-    //       new ClipboardItem({
-    //         [blob.type]: blob,
-    //       }),
-    //     ];
-    //     await navigator.clipboard.write(data)
-    //       .then(
-    //         () => {
-    //           console.log("复制成功!");
-    //           cb && cb();
-    //         },
-    //         (err) => {
-    //           console.error(err);
-    //         }
-    //       ).catch((err) => {
-    //         console.error(err);
-    //       }).finally(() => {
-    //         setLoading(false);
-    //       })
-    //   });
-    // })
   };
 
   return (

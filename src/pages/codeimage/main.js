@@ -6,7 +6,8 @@ import { Switch, Slider, Box, MenuItem, Button, Select } from '@mui/material';
 import AnimateLinear from '@site/src/components/AnimateLinear';
 import { colorBgList, langList } from '@site/src/config/data/codeimage';
 import hljs from '../../config/highlight';
-import html2canvas from 'html2canvas'
+import { toPng, toJpg, toBlob } from '@site/src/utils/image';
+import { downloadByUrl } from '@site/src/utils';
 
 export default function Main () {
   const codeRef = useRef(null);
@@ -83,28 +84,14 @@ export default function Main () {
     setSettings((prev) => ({ ...prev, [key]: val }))
   }
   
-  const exportImg = () => {
+  const exportImg = async () => {
     if (!imgCode.current) return;
-    html2canvas(imgCode.current, {
-      useCORS: true,
-      scale: 2,
-      backgroundColor: 'transparent'
-    }).then((canvas) => {
-      const dataURL = canvas.toDataURL('image/png');
-      let newImg = new Image()
-      const date = new Date()
-      newImg.src = canvas.toDataURL('image/png')
-      const a = document.createElement("a");
-      a.style.display = "none";
-      a.href = newImg.src;
-      a.download = `spacexcode-${date.getMinutes()}${date.getSeconds()}.png`;
-      a.rel = "noopener noreferrer";
-      document.body.append(a);
-      a.click();
-      setTimeout(() => {
-          a.remove();
-      }, 1000);
-    })
+    const dataUrl = await toPng(imgCode.current, {
+      pixelRatio: 1
+    });
+    const date = new Date();
+    const fileName = `spacexcode-codeimage-${date.getMinutes()}${date.getSeconds()}.png`;
+    downloadByUrl(dataUrl, fileName);
   }
   return (
     <div className='container'>
