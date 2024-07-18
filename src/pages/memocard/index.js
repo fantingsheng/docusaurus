@@ -16,7 +16,8 @@ import { ColorPicker } from 'material-ui-color';
 import { styled } from '@mui/material/styles';
 import styles from './style.module.scss';
 import clsx from 'clsx';
-import html2canvas from 'html2canvas';
+import { toPng, toJpg, toBlob } from '@site/src/utils/image';
+import { downloadByUrl } from '@site/src/utils';
 
 import NormalTheme from './themeSkeleton/NormalTheme';
 import GridTheme from './themeSkeleton/GridTheme';
@@ -67,66 +68,48 @@ export function Main({ normal }) {
   const handleConfigChange = (val, key) => {
     setConfig((prev) => ({ ...prev, [key]: val }));
   };
-  const downloadImage = (scale, format) => {
+
+  const downloadImage = async (scale, format) => {
     if (!coverRef.current) return;
+
     setLoading(true);
-    html2canvas(coverRef.current, {
-      useCORS: true,
-      scale: scale,
-      ignoreElements: true,
-      backgroundColor: 'transparent'
-    }).then((canvas) => {
-      let newImg = new Image()
-      const date = new Date()
-      newImg.src = canvas.toDataURL('image/' + format) // 'image/png'
-      const a = document.createElement("a");
-      const scaleName = scale === 2 ? '@2x' : '';
-      a.style.display = "none";
-      a.href = newImg.src;
-      a.download = `spacexcode-memocard-${date.getMinutes()}${date.getSeconds()}${scaleName}.${format}`;
-      a.rel = "noopener noreferrer";
-      document.body.append(a);
-      a.click();
-      setTimeout(() => {
-          a.remove();
-      }, 1000);
-    }).catch((err) => {
-      console.error(err);
-    }).finally(() => {
-      setLoading(false);
-    })
+    const dataUrl = format === "png" ? await toPng(coverRef.current, {
+      pixelRatio: scale
+    }) : await toJpg(coverRef.current, {
+      pixelRatio: scale
+    });
+    const date = new Date()
+    const scaleName = scale > 1 ? `@${scale}x` : '';
+    const fileName = `spacexcode-memocard-${date.getMinutes()}${date.getSeconds()}${scaleName}.${format}`;
+    downloadByUrl(dataUrl, fileName);
+    setLoading(false);
+
   };
-  const handleCopyImg = (cb) => {
+  const handleCopyImg = async (cb) => {
     if (!coverRef.current) return;
     setLoading(true);
-    html2canvas(coverRef.current, {
-      useCORS: true,
-      scale: 1,
-      backgroundColor: 'transparent'
-    }).then((canvas) => {
-      canvas.toBlob(async blob => {
-        console.log(blob);
-        const data = [
-          new ClipboardItem({
-            [blob.type]: blob,
-          }),
-        ];
-        await navigator.clipboard.write(data)
-          .then(
-            () => {
-              console.log("复制成功!");
-              cb && cb();
-            },
-            (err) => {
-              console.error(err);
-            }
-          ).catch((err) => {
-            console.error(err);
-          }).finally(() => {
-            setLoading(false);
-          })
-      });
+    const blob = await toBlob(coverRef.current, {
+      pixelRatio: 1
     })
+    const data = [
+      new ClipboardItem({
+        [blob.type]: blob,
+      })
+    ];
+    await navigator.clipboard.write(data)
+      .then(
+        () => {
+          console.log("复制成功!");
+          cb && cb();
+        },
+        (err) => {
+          console.error(err);
+        }
+      ).catch((err) => {
+        console.error(err);
+      }).finally(() => {
+        setLoading(false);
+      })
   };
 
   return (

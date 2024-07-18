@@ -5,7 +5,8 @@ import Head from '@docusaurus/Head';
 import { Box, Typography, LinearProgress, TextField, Select, MenuItem, Button } from '@mui/material';
 import styles from './style.module.scss';
 import { ColorPicker } from 'material-ui-color';
-import html2canvas from 'html2canvas';
+import { toPng } from '@site/src/utils/image';
+import { downloadByUrl } from '@site/src/utils';
 
 const Tool = ({ config, handleConfigChange, doExportImg }) => {
   return (
@@ -184,28 +185,15 @@ export default function () {
     setConfig((prev) => ({ ...prev, [key]: val }));
   }
 
-  const exportImg = () => {
+  const exportImg = async () => {
     console.log("download")
     if (!progressBarRef.current) return;
-    html2canvas(progressBarRef.current, {
-      useCORS: true,
-      scale: 2,
-      backgroundColor: 'transparent'
-    }).then((canvas) => {
-      let newImg = new Image()
-      const date = new Date()
-      newImg.src = canvas.toDataURL('image/png')
-      const a = document.createElement("a");
-      a.style.display = "none";
-      a.href = newImg.src;
-      a.download = `spacexcode-glass-${date.getMinutes()}${date.getSeconds()}.png`;
-      a.rel = "noopener noreferrer";
-      document.body.append(a);
-      a.click();
-      setTimeout(() => {
-          a.remove();
-      }, 1000);
-    })
+    const dataUrl = await toPng(progressBarRef.current, {
+      pixelRatio: 1
+    });
+    const date = new Date()
+    const fileName = `spacexcode-yearprogress-${date.getMinutes()}${date.getSeconds()}.png`;
+    downloadByUrl(dataUrl, fileName);
   }
   return (
     <Layout
@@ -218,7 +206,9 @@ export default function () {
       <div className='container'>
         <div className='row'>
           <div className='col col--8 col--offset-2'>
-            <Main ref={progressBarRef} config={config} />
+            <div style={{ marginTop: '120px' }}>
+              <Main ref={progressBarRef} config={config} />
+            </div>
           </div>
           <div className='col col--12'>
             <div className={styles.tool}>

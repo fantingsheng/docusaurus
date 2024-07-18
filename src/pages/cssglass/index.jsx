@@ -6,7 +6,8 @@ import styles from './style.module.scss';
 import { Box, Typography, Slider, Switch, Button, Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import CodeBlock from '@theme/CodeBlock';
-import html2canvas from 'html2canvas';
+import { toPng, toJpg, toBlob } from '@site/src/utils/image';
+import { downloadByUrl } from '@site/src/utils';
 
 export const Main =  forwardRef(({ cssObj }, ref) => {
   return (
@@ -106,7 +107,7 @@ export function Tool ({ config, cssObj, handleFormChange, doExportImg }) {
           </Typography>
           <Switch
             value={config.hasBorder}
-            inputProps={{ ariaLabel: 'Switch demo' }}
+            inputProps={{ 'aria-label': 'Switch demo' }}
             onChange={e => handleFormChange(e.target.checked, 'hasBorder')}
           />
         </Box>
@@ -173,28 +174,14 @@ export default function () {
     setConfig((prev) => ({ ...prev, [key]: val }));
   }
 
-  const exportImg = () => {
-    console.log("download")
+  const exportImg = async () => {
     if (!glassRef.current) return;
-    html2canvas(glassRef.current, {
-      useCORS: true,
-      scale: 2,
-      backgroundColor: 'transparent'
-    }).then((canvas) => {
-      let newImg = new Image()
-      const date = new Date()
-      newImg.src = canvas.toDataURL('image/png')
-      const a = document.createElement("a");
-      a.style.display = "none";
-      a.href = newImg.src;
-      a.download = `spacexcode-glass-${date.getMinutes()}${date.getSeconds()}.png`;
-      a.rel = "noopener noreferrer";
-      document.body.append(a);
-      a.click();
-      setTimeout(() => {
-          a.remove();
-      }, 1000);
-    })
+    const dataUrl = await toPng(glassRef.current, {
+      pixelRatio: 1
+    });
+    const date = new Date()
+    const fileName = `spacexcode-glass-${date.getMinutes()}${date.getSeconds()}.png`;
+    downloadByUrl(dataUrl, fileName);
   }
 
   return (
