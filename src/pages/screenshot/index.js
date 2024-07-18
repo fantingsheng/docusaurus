@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import LeftSideBar from "./_leftSideBar";
@@ -15,7 +15,11 @@ import { Box } from '@mui/material';
 export default function () {
   const { siteConfig } = useDocusaurusContext();
   const coverRef = useRef();
-
+  const [fullScreen, setFullScreen] = useState(false);
+  
+  const handleFullScreen = () => {
+    setFullScreen(!fullScreen);
+  }
   return (
     <>
       <Head>
@@ -27,21 +31,24 @@ export default function () {
       <ConfigProvider>
         <main className={styles.appMain}>
           <div className={styles.sidebar}>
+            {fullScreen ? <></> :
             <LeftSideBar>
               <Box sx={{ display: 'flex', gap: '8px' }}>
                 <ExportButton coverRef={coverRef} />
                 <ExportSetting />
               </Box>
-            </LeftSideBar>
+            </LeftSideBar> }
           </div>
           <div className={styles.canvas}>
             <CenterPreview />
           </div>
           <div className={styles.sidebar}>
+          {fullScreen ? <></> :
             <RightSideBar />
+          }
           </div>
           <div className={styles.commandBar}>
-            <CommandBar />
+            <CommandBar changeFullScreen={handleFullScreen} />
           </div>
           <ExportLayer coverRef={coverRef} />
         </main>

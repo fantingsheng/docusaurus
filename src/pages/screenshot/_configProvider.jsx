@@ -24,8 +24,7 @@ export function ConfigProvider({ children }) {
     height: 1440,
     format: 'png',
     expScale: 1, // 导出图片分辨率
-    hideMockup: false,
-    fullScreen: false
+    hideMockup: false
   };
   const [config, setConfig] = useState({
     ...initConf

@@ -4,7 +4,7 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { useConfigContext } from './_configProvider';
 
-export default function CommandBar() {
+export default function CommandBar({ changeFullScreen }) {
   const { config, handleConfigChange, handleResetConfig } = useConfigContext();
 
   const onChangeMockupDisplay = () => {
@@ -28,7 +28,7 @@ export default function CommandBar() {
       <IconButton
         sx={{ width: '70px', flexDirection: 'column', gap: '5px', borderRadius: '5px' }}
         aria-label="preview"
-        onClick={onChangeFullScreen}
+        onClick={changeFullScreen}
       >
         <OpenInFullIcon />
         <span style={{ fontSize: '12px' }}>预览</span>

@@ -18,26 +18,22 @@ export default function RightSideBar() {
   ];
 
   return (
-    <>
-    {config.fullScreen ? (<></>) : (
-      <div className={styles.layout}>
-        <div className={styles.cardsWrapper}>
-          {
-            transformLst.map((item, index) => 
-              (<div
-                className={clsx(styles.layoutItem, item === config.style ? styles.active : '')}
-                key={index}
-                onClick={() => handleConfigChange(item, "style")}
-              >
-                <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
-                  <Preview transform={item} showBtn={false} />
-                </div>
-              </div>)
-            )
-          }
-        </div>
+    <div className={styles.layout}>
+      <div className={styles.cardsWrapper}>
+        {
+          transformLst.map((item, index) => 
+            (<div
+              className={clsx(styles.layoutItem, item === config.style ? styles.active : '')}
+              key={index}
+              onClick={() => handleConfigChange(item, "style")}
+            >
+              <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
+                <Preview transform={item} showBtn={false} />
+              </div>
+            </div>)
+          )
+        }
       </div>
-    )}
-    </>
+    </div>
   )
 }
