@@ -12,7 +12,7 @@ import ViewerSelect from "./components/_ViewerSelect";
 import Giscus from "@giscus/react";
 import QRCode from 'qrcode.react';
 
-import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle, DialogContent, Typography } from '@mui/material';
+import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle, DialogContent, Typography, Divider } from '@mui/material';
 
 export default function LeftSideBar({ children }) {
   const [value, setValue] = useState(0);
@@ -97,11 +97,11 @@ export default function LeftSideBar({ children }) {
           { children }
         </div>
       </div>
-      <Dialog onClose={() => setVisible(false)} open={visible}>
-        <DialogTitle>Welcome to use Screenshot</DialogTitle>
+      <Dialog onClose={() => setVisible(false)} maxWidth="md" open={visible}>
+        <DialogTitle>欢迎使用截图美化工具</DialogTitle>
         <DialogContent>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Typography variant="caption">扫码访问</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+            <Typography variant="body1">手机扫码访问</Typography>
             <QRCode
               value="https://spacexcode.com/screenshot"
               renderAs="svg"
@@ -118,6 +118,7 @@ export default function LeftSideBar({ children }) {
         onClose={handleDrawerClose}
       >
         <Box sx={{ width: '350px', minHeight: '100vh', padding: '20px', background: '#fff' }}>
+          <Divider sx={{ marginBottom: '20px' }}>建议反馈，欢迎评论区留言 💬</Divider>
           <Giscus
             repo="fantingsheng/spacexcode-discus"
             repoId="R_kgDOJoGL9w"

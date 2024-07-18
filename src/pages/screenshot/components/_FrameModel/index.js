@@ -26,7 +26,9 @@ export default function FrameModel({ handleSelChange }) {
   ]
 
   // 掘金
-  const juejinSizes = [];
+  const juejinSizes = [
+    { aspectRatio: "1.5 / 1", width: 192, height: 128 }
+  ];
   // 视频号
   const wechatVideoSizes = [];
   // 抖音
@@ -41,7 +43,7 @@ export default function FrameModel({ handleSelChange }) {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       <Typography variant="button">常用尺寸</Typography>
       <Box className={styles.frameWrapper}>
         {
@@ -61,8 +63,8 @@ export default function FrameModel({ handleSelChange }) {
           ))
         }
       </Box>
-      <Divider sx={{ margin: '10px 0', backgroundColor: 'rgba(0,0,0,.08)' }} />
-      <Typography variant="button" sx={{ display: 'flex', alignItems: 'center', gap: '5px'}}>
+      <Divider sx={{ margin: '15px 0', backgroundColor: 'rgba(0,0,0,.08)' }} />
+      <Typography variant="button" sx={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
         <svg stroke='currentColor' fill='currentColor' strokeWidth='0' viewBox="0 0 576 512" color="#07c160" height={20} width={20} xmlns='http://www.w3.org/2000/svg' style={{color: "#07c160"}}>
           <path d="M385.2 167.6c6.4 0 12.6.3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154zm-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2.1-14.7 14.6-24.4 29.3-24.4zm-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2zM563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4zm-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6zm107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3.1 10-9.9 19.6-24.4 19.6z"></path>
         </svg>
@@ -70,6 +72,28 @@ export default function FrameModel({ handleSelChange }) {
       <Box className={styles.frameWrapper}>
         {
           wechatSizes.map((el, index) => (
+            <button
+              className={clsx(styles.frameItem, el.width === config.width && el.height === config.height ? styles.active : '')}
+              key={index}
+              onClick={() => onSizeButtonClick(el.aspectRatio, el.width, el.height)}
+            >
+              <div className={styles.frameOuter}>
+                <div className={styles.lineFrame} style={{ aspectRatio: el.aspectRatio }}>
+                  <span>{el.aspectRatio.replace("/", ":")}</span>
+                </div>
+              </div>
+              <div className={styles.sizeText}>{el.wxh}</div>
+            </button>
+          ))
+        }
+      </Box>
+      <Divider sx={{ margin: '15px 0', backgroundColor: 'rgba(0,0,0,.08)' }} />
+      <Typography variant="button" sx={{ display: 'flex', alignItems: 'center', gap: '8px'}}>
+        <svg role="img" viewBox="0 0 24 24" fill='currentColor' style={{ color: "#007FFF" }} height={20} width={20} xmlns="http://www.w3.org/2000/svg"><title>Juejin</title><path d="m12 14.316 7.454-5.88-2.022-1.625L12 11.1l-.004.003-5.432-4.288-2.02 1.624 7.452 5.88Zm0-7.247 2.89-2.298L12 2.453l-.004-.005-2.884 2.318 2.884 2.3Zm0 11.266-.005.002-9.975-7.87L0 12.088l.194.156 11.803 9.308 7.463-5.885L24 12.085l-2.023-1.624Z"/></svg>
+        掘金</Typography>
+        <Box className={styles.frameWrapper}>
+        {
+          juejinSizes.map((el, index) => (
             <button
               className={clsx(styles.frameItem, el.width === config.width && el.height === config.height ? styles.active : '')}
               key={index}

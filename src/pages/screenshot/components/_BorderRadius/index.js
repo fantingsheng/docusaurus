@@ -4,8 +4,8 @@ import { Slider, Box, Stack, ToggleButtonGroup, ToggleButton, styled, Typography
 import { useConfigContext } from '../../_configProvider';
 
 export const BorderRadiusIcon = styled(Box)({
-  width: '30px',
-  height: '30px',
+  width: '28px',
+  height: '28px',
   backgroundColor: 'rgba(0,0,0,.14)',
   borderRadius: '5px',
   border: '1px solid rgba(0,0,0,.12)',
@@ -53,19 +53,19 @@ export default function BorderRadius() {
         fullWidth
       >
         <ToggleButton value={0} aria-label="Sharp">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <BorderRadiusIcon />
             <Typography sx={{ lineHeight: 1 }} variant="caption">Sharp</Typography>
           </Box>
         </ToggleButton>
         <ToggleButton value={20} aria-label="Curved">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '8px' } }} />
             <Typography sx={{ lineHeight: 1 }} variant="caption">Curved</Typography>
           </Box>
         </ToggleButton>
         <ToggleButton value={40} aria-label="Round">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '14px' } }} />
             <Typography sx={{ lineHeight: 1 }} variant="caption">Round</Typography>
           </Box>

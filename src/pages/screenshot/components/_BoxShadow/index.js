@@ -44,20 +44,20 @@ export default function BoxShadow({ shadow }) {
         fullWidth
       >
         <ToggleButton value="none" aria-label="none">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-            <Avatar sx={{ width: '30px', height: '30px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/none.png" />
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+            <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/none.png" />
             <Typography sx={{ lineHeight: 1 }} variant="caption">None</Typography>
           </Box>
         </ToggleButton>
         <ToggleButton value="hug" aria-label="hug">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-            <Avatar sx={{ width: '30px', height: '30px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/hug.png" />
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+            <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/hug.png" />
             <Typography sx={{ lineHeight: 1 }} variant="caption">Hug</Typography>
           </Box>
         </ToggleButton>
         <ToggleButton value="spread" aria-label="spread">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-            <Avatar sx={{ width: '30px', height: '30px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/spread.png" />
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+            <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/spread.png" />
             <Typography sx={{ lineHeight: 1 }} variant="caption">Spread</Typography>
           </Box>
         </ToggleButton>
