@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useMemo } from "react";
 export const ConfigContext = createContext(null)
 
 export function ConfigProvider({ children }) {
-  const [config, setConfig] = useState({
+  const initConf = {
     theme: "screenshot",
     picture: "",
     bgImg: "",
@@ -26,16 +26,24 @@ export function ConfigProvider({ children }) {
     expScale: 1, // 导出图片分辨率
     hideMockup: false,
     fullScreen: false
+  };
+  const [config, setConfig] = useState({
+    ...initConf
   })
 
   const handleConfigChange = (val, key) => {
     setConfig((prev) => ({ ...prev, [key]: val }));
   };
 
+  const handleResetConfig = () => {
+    setConfig({ ...initConf })
+  }
+
   const value = useMemo(
     () => ({
       config,
       handleConfigChange,
+      handleResetConfig
     }),
     [config],
   )
