@@ -1,7 +1,26 @@
 import { useState, useContext } from 'react';
 
-import { Slider, SliderThumb, Stack, ToggleButtonGroup, ToggleButton, styled, Typography } from '@mui/material';
+import { Slider, Box, Stack, ToggleButtonGroup, ToggleButton, styled, Typography, Avatar } from '@mui/material';
 import { useConfigContext } from '../../_configProvider';
+
+export const BorderRadiusIcon = styled(Box)({
+  width: '30px',
+  height: '30px',
+  backgroundColor: 'rgba(0,0,0,.14)',
+  borderRadius: '5px',
+  border: '1px solid rgba(0,0,0,.12)',
+  position: 'relative',
+  overflow: 'hidden',
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    width: '100px',
+    height: '100px',
+    top: '8px',
+    right: '8px',
+    border: '2px solid rgba(0,0,0,1)'
+  }
+})
 
 export default function BorderRadius() {
   const { config, handleConfigChange } = useConfigContext();
@@ -33,17 +52,23 @@ export default function BorderRadius() {
         size="small"
         fullWidth
       >
-        <ToggleButton value={5} aria-label="5px">
-          5px
+        <ToggleButton value={0} aria-label="Sharp">
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+            <BorderRadiusIcon />
+            <Typography sx={{ lineHeight: 1 }} variant="caption">Sharp</Typography>
+          </Box>
         </ToggleButton>
-        <ToggleButton value={10} aria-label="10px">
-          10px
+        <ToggleButton value={20} aria-label="Curved">
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+            <BorderRadiusIcon sx={{ '&::after': { borderRadius: '8px' } }} />
+            <Typography sx={{ lineHeight: 1 }} variant="caption">Curved</Typography>
+          </Box>
         </ToggleButton>
-        <ToggleButton value={15} aria-label="15px">
-          15px
-        </ToggleButton>
-        <ToggleButton value={20} aria-label="20px">
-          20px
+        <ToggleButton value={40} aria-label="Round">
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+            <BorderRadiusIcon sx={{ '&::after': { borderRadius: '14px' } }} />
+            <Typography sx={{ lineHeight: 1 }} variant="caption">Round</Typography>
+          </Box>
         </ToggleButton>
       </ToggleButtonGroup>
     </>

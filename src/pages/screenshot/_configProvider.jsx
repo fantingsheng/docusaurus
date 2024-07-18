@@ -7,7 +7,7 @@ export function ConfigProvider({ children }) {
     theme: "screenshot",
     picture: "",
     bgImg: "",
-    borderRadius: 10,
+    borderRadius: 25,
     transparent: false, // 透明背景
     style: "", // 样式
     shadowOpacity: 0.4,

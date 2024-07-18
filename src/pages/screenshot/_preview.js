@@ -20,7 +20,7 @@ export default function Preview({ transform, showBtn }) {
       <div className={styles.displayContainer}>
         <div className={styles.mockupModule} style={{ transform: transform }}>
           <div className={styles.devices} style={{ transform: `scale(${config.scale}) translateX(${config.transformX}%) translateY(${config.transformY}%)` }}>
-            <div className={styles.item} style={{ borderRadius: `${config.borderRadius}px` }}>
+            <div className={styles.item} style={{ borderRadius: `${config.borderRadius / 8}em` }}>
               <div className={clsx(styles.itemContainer, 'item-container')}>
                 { showBtn ?
                   <CoverTheme config={config} handleConfigChange={handleConfigChange} /> : 
@@ -38,7 +38,7 @@ export default function Preview({ transform, showBtn }) {
                   </Box>
                 }
                 { config.shadowX && config.shadowY ?
-                  <div className={styles.shadow} style={{ borderRadius: `${config.borderRadius}px` }}>
+                  <div className={styles.shadow} style={{ borderRadius: `${config.borderRadius / 8}em` }}>
                     {[1, 3, 6, 10].map(el => (
                       <div
                         className={styles.shadowLayer} 

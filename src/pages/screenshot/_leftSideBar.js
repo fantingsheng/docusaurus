@@ -10,8 +10,9 @@ import MockupTab from "./components/_MockupTab";
 import FrameTab from "./components/_FrameTab";
 import ViewerSelect from "./components/_ViewerSelect";
 import Giscus from "@giscus/react";
+import QRCode from 'qrcode.react';
 
-import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle } from '@mui/material';
+import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle, DialogContent, Typography } from '@mui/material';
 
 export default function LeftSideBar({ children }) {
   const [value, setValue] = useState(0);
@@ -98,6 +99,18 @@ export default function LeftSideBar({ children }) {
       </div>
       <Dialog onClose={() => setVisible(false)} open={visible}>
         <DialogTitle>Welcome to use Screenshot</DialogTitle>
+        <DialogContent>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography variant="caption">扫码访问</Typography>
+            <QRCode
+              value="https://spacexcode.com/screenshot"
+              renderAs="svg"
+              size={100}
+              bgColor="transparent"
+              fgColor={"#606266"}
+            />
+          </Box>
+        </DialogContent>
       </Dialog>
       <Drawer
         anchor="right"

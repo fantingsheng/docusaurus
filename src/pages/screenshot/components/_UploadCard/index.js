@@ -1,7 +1,6 @@
 import { Button, styled, Typography } from "@mui/material";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import styles from './style.module.scss';
-import { useContext } from 'react';
 
 import { useConfigContext } from '../../_configProvider';
 
