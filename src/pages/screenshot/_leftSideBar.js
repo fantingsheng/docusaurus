@@ -11,10 +11,12 @@ import FrameTab from "./components/_FrameTab";
 import ViewerSelect from "./components/_ViewerSelect";
 import Giscus from "@giscus/react";
 import QRCode from 'qrcode.react';
+import { useConfigContext } from './_configProvider';
 
 import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle, DialogContent, Typography } from '@mui/material';
 
 export default function LeftSideBar({ children }) {
+  const { config } = useConfigContext();
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -53,6 +55,8 @@ export default function LeftSideBar({ children }) {
 
   return (
     <>
+    {config.fullScreen ? (<></>) : (
+      <>
       <div className={styles.navbar}>
         <Link to='/'>
           <img src='/img/share.png' width='36' alt="Spacexcode's logo" />
@@ -97,6 +101,8 @@ export default function LeftSideBar({ children }) {
           { children }
         </div>
       </div>
+      </>
+      )}
       <Dialog onClose={() => setVisible(false)} open={visible}>
         <DialogTitle>Welcome to use Screenshot</DialogTitle>
         <DialogContent>

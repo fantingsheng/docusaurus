@@ -23,7 +23,9 @@ export function ConfigProvider({ children }) {
     width: 1920,
     height: 1440,
     format: 'png',
-    expScale: 1 // 导出图片分辨率
+    expScale: 1, // 导出图片分辨率
+    hideMockup: false,
+    fullScreen: false
   })
 
   const handleConfigChange = (val, key) => {

@@ -18,7 +18,7 @@ export default function Preview({ transform, showBtn }) {
         { !config.transparent && config.bg && !config.bgImg ? <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} /> : "" }
       </div>
       <div className={styles.displayContainer}>
-        <div className={styles.mockupModule} style={{ transform: transform }}>
+        <div className={styles.mockupModule} style={{ transform: transform, display: config.hideMockup ? 'none' : 'block' }}>
           <div className={styles.devices} style={{ transform: `scale(${config.scale}) translateX(${config.transformX}%) translateY(${config.transformY}%)` }}>
             <div className={styles.item} style={{ borderRadius: `${config.borderRadius / 8}em` }}>
               <div className={clsx(styles.itemContainer, 'item-container')}>

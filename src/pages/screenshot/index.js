@@ -5,13 +5,13 @@ import LeftSideBar from "./_leftSideBar";
 import RightSideBar from "./_rightSideBar";
 import ExportLayer from './_exportLayer';
 import CenterPreview from './_centerPreview';
+import CommandBar from './_commandBar';
 import styles from "./style.module.scss";
 
 import ExportButton from "./components/_ExportButton";
 import ExportSetting from "./components/_ExportSetting";
 import { ConfigProvider } from './_configProvider';
 import { Box } from '@mui/material';
-
 export default function () {
   const { siteConfig } = useDocusaurusContext();
   const coverRef = useRef();
@@ -39,6 +39,9 @@ export default function () {
           </div>
           <div className={styles.sidebar}>
             <RightSideBar />
+          </div>
+          <div className={styles.commandBar}>
+            <CommandBar />
           </div>
           <ExportLayer coverRef={coverRef} />
         </main>
