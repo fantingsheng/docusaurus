@@ -14,7 +14,8 @@ export default function ViewerSelect({ openStyle }) {
   const anchorRef = useRef(null);
   const [selObj, setSelObj] = useState(openStyle === "mockup" ? {
     tit: "Screenshot",
-    info: "图片自适应大小"
+    info: "图片自适应大小",
+    pic: "/screenshot/mockup/screenshot.png"
   } : {
     tit: "Default 4 : 3",
     info: "1920 x 1440"
@@ -54,7 +55,9 @@ export default function ViewerSelect({ openStyle }) {
           }}
           onClick={handleToggle}
         >
-          <Box className={styles.grayModel} sx={{ aspectRatio: config.ratio }}></Box> 
+          <Box className={styles.grayModel} sx={{ aspectRatio: config.ratio }}>
+            {selObj.pic ? <img src={selObj.pic} style={{ width: '100%', objectFit: 'cover'}} /> : ''}
+          </Box> 
           <div className={styles.line}>
             {selObj.tit}< br/>
             <span className={styles.small}>{selObj.info}</span>

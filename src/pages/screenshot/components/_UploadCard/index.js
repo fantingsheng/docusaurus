@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 
 import { useConfigContext } from '../../_configProvider';
 
-export default function UploadCard() {
+export default function UploadCard({ showBorderRadius = true }) {
   const { config, handleConfigChange } = useConfigContext();
 
   const VisuallyHiddenInput = styled('input')({
@@ -30,7 +30,7 @@ export default function UploadCard() {
         height: "100%",
         background: "rgba(220,220,220,1)",
         color: "rgba(0,0,0,.8)",
-        borderRadius: `${config.borderRadius}px`,
+        borderRadius: showBorderRadius ? `${config.borderRadius}px` : 0,
         '&:hover': {
           background: "rgba(220,220,220,1)"
         },

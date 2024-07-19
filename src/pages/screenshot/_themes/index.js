@@ -11,7 +11,9 @@ export function ThemeStyle(theme) {
         { name: 'glass-light', title: 'Glass Light', thumail: '/screenshot/theme/screenshot/glass-light.png' }
       ];
     case 'browser':
-      return [];
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/browser/default.png' },
+      ];
     default:
       return [];
   }

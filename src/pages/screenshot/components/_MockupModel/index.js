@@ -15,18 +15,18 @@ export default function MockupModel({ handleSelChange }) {
       name: 'screenshot',
       title: 'Screenshot',
       type: '',
-      subtitle: '16 layouts',
+      subtitle: '自适应图片大小',
       thumbnail: '/screenshot/mockup/screenshot.png',
       previews: ['', '', '', '']
     },
-    // {
-    //   name: 'browser',
-    //   title: 'Browser',
-    //   type: '',
-    //   subtitle: '4 layouts',
-    //   thumbnail: '/screenshot/mockup/default.png',
-    //   previews: ['', '', '', '']
-    // },
+    {
+      name: 'browser',
+      title: 'Browser',
+      type: '',
+      subtitle: '自适应图片大小',
+      thumbnail: '/screenshot/mockup/browser.png',
+      previews: ['', '', '', '']
+    },
     // {
     //   name: 'miniphone',
     //   title: 'Minimal Phone',
@@ -50,6 +50,7 @@ export default function MockupModel({ handleSelChange }) {
     handleConfigChange(val, 'theme');
     handleSelChange(theme?.title, 'tit');
     handleSelChange(theme?.subtitle, 'info');
+    handleSelChange(theme?.thumbnail, 'pic');
   };
 
   return (
@@ -84,7 +85,7 @@ export default function MockupModel({ handleSelChange }) {
               onClick={() => onHandleClickTheme(el.name)}
             >
               <CardHeader
-                sx={{ '& .MuiCardHeader-title': { fontSize: '18px' }, '& .MuiCardHeader-subheader': {} }}
+                sx={{ '& .MuiCardHeader-title': { fontSize: '16px' }, '& .MuiCardHeader-subheader': { fontSize: '12px' } }}
                 title={el.title}
                 subheader={el.subtitle}
               />

@@ -32,9 +32,10 @@ export default function Preview({ transform, showBtn }) {
                     color: "rgba(0,0,0,.8)",
                     '&:hover': {
                       background: "rgba(220,220,220,1)"
-                    }
+                    },
+                    overflow: 'hidden'
                   }}>
-                    {config.picture ? <img src={config.picture} /> : <></>}
+                    {config.picture ? <img src={config.picture} className={styles.uploadImg} /> : <></>}
                   </Box>
                 }
                 { config.shadowX && config.shadowY ?
