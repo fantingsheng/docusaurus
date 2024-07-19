@@ -182,6 +182,10 @@
       font-size: calc((100cqw + 100cqh)/150);
       aspect-ratio: unset!important;
 
+      .interface {
+        position: relative;
+      }
+
       .shadow {
         position: absolute;
         inset: 2%;

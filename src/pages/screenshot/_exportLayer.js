@@ -19,7 +19,7 @@ export default function ExportLayer({ coverRef }) {
         className={styles.frame}
         style={{ aspectRatio: config.ratio, width: config.width / 2, height: config.height / 2}}
       >
-        <Preview transform={config.style} showBtn={false} />
+        <Preview transform={config.transform} showBtn={false} />
       </div>
     </div>
   )

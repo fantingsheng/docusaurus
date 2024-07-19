@@ -16,7 +16,7 @@ export default function CenterPreview({ coverRef }) {
         style={{ aspectRatio: config.ratio }}
       >
         <Preview
-          transform={config.style}
+          transform={config.transform}
           showBtn={true}
         />
       </div>

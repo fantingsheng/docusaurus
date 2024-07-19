@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import BorderRadius from "../_BorderRadius";
 import BoxShadow from "../_BoxShadow";
 import SizeAndPosition from "../_SizeAndPosition";
+import StyleButton from "../_StyleButton";
 
 export default function MockupTab() {
 
@@ -12,10 +13,7 @@ export default function MockupTab() {
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">样式</Typography>
         <Box className={styles.pannelCtrlGrid}>
-          <div className={clsx(styles.pannelBtn, styles.active)}>
-            <div className={styles.preview} style={{aspectRatio: '4 / 3'}}></div>
-            <p className={styles.name}>Default</p>
-          </div>
+          <StyleButton />
         </Box>
       </Box>
       <Box className={styles.pannelCtrl}>

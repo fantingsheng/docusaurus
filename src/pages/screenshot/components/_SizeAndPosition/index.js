@@ -12,8 +12,8 @@ export default function SizeAndPosition() {
   }
 
   const onChangePos = (x, y) => {
-    handleConfigChange(x, "transformX");
-    handleConfigChange(y, "transformY");
+    handleConfigChange(x, "translateX");
+    handleConfigChange(y, "translateY");
   };
 
   return (
@@ -35,7 +35,7 @@ export default function SizeAndPosition() {
           <Box className={styles.presetCol} key={row}>
             {[-50, -25, 0, 25, 50].map(el => (
               <Box
-                className={clsx(styles.presetBtn, config.transformX === el && config.transformY === row ? styles.active : '')}
+                className={clsx(styles.presetBtn, config.translateX === el && config.translateY === row ? styles.active : '')}
                 key={el}
                 onClick={() => onChangePos(el, row)}
               >

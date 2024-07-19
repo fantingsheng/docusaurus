@@ -3,6 +3,20 @@ import React from "react";
 import Browser from "./browser";
 import ScreenShot from "./screenShot";
 
+export function ThemeStyle(theme) {
+  switch (theme) {
+    case 'screenshot':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/screenshot/default.png' },
+        { name: 'glass-light', title: 'Glass Light', thumail: '/screenshot/theme/screenshot/glass-light.png' }
+      ];
+    case 'browser':
+      return [];
+    default:
+      return [];
+  }
+}
+
 export default function CoverTheme (props) {
   const { theme } = props.config;
 

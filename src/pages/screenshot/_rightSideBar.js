@@ -21,11 +21,11 @@ export default function RightSideBar() {
     <div className={styles.layout}>
       <div className={styles.cardsWrapper}>
         {
-          transformLst.map((item, index) => 
+          transformLst.map((item, index) =>
             (<div
-              className={clsx(styles.layoutItem, item === config.style ? styles.active : '')}
+              className={clsx(styles.layoutItem, item === config.transform ? styles.active : '')}
               key={index}
-              onClick={() => handleConfigChange(item, "style")}
+              onClick={() => handleConfigChange(item, "transform")}
             >
               <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
                 <Preview transform={item} showBtn={false} />

@@ -1,18 +1,14 @@
 import UploadCard from "../components/_UploadCard";
-import StyleButton from "../components/_StyleButton";
 import styles from "./style.module.scss";
-
-export const screenShotStyle = () => {
-  return (
-    <>
-
-    </>
-  )
-}
+import clsx from "clsx";
 
 export default function ScreenShot(props) {
+  const { config } = {...props}
   return (
-    <div className={styles.theme}>
+    <div className={clsx(styles.theme, styles.screenShot)} style={{ position: 'relative' }}>
+      {config.style === 'glass-light' ? 
+        <div className={styles.glassLight} style={{ borderRadius: `${config.borderRadius * 1.32}px`}}/> : <></>
+      }
       <UploadCard {...props} />
     </div>
   )

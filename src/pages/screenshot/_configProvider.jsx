@@ -7,9 +7,10 @@ export function ConfigProvider({ children }) {
     theme: "screenshot",
     picture: "",
     bgImg: "",
-    borderRadius: 20,
+    borderRadius: 10,
     transparent: false, // 透明背景
-    style: "", // 样式
+    style: "default", // 样式
+    transform: "",
     shadowOpacity: 0.4,
     shadowX: 0.46875,
     shadowY: 0.65625,
@@ -18,8 +19,8 @@ export function ConfigProvider({ children }) {
     noise: 0,
     blur: 0,
     scale: 1,
-    transformX: 0,
-    transformY: 0,
+    translateX: 0,
+    translateY: 0,
     width: 1920,
     height: 1440,
     format: 'png',
