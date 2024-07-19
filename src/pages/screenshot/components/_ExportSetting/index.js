@@ -87,7 +87,7 @@ export default function ExportSetting() {
                     </ToggleButtonGroup></Box>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                    <Typography variant="button">输出图片信息</Typography>
+                    <Typography variant="button">导出图片尺寸</Typography>
                     <TextField fullWidth label={`${config.width} x ${config.height}`} size="small" variant="filled" disabled />
                   </Box>
                 </Box>
