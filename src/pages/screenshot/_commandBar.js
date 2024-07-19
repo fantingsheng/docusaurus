@@ -11,10 +11,6 @@ export default function CommandBar({ changeFullScreen }) {
     handleConfigChange(!config.hideMockup, "hideMockup");
   }
 
-  const onChangeFullScreen = () => {
-    handleConfigChange(!config.fullScreen, "fullScreen");
-  }
-
   return (
     <>
       <IconButton
