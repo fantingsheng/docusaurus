@@ -7,6 +7,12 @@ import { useConfigContext } from '../../_configProvider';
 export default function FrameModel({ handleSelChange }) {
   const { config, handleConfigChange } = useConfigContext();
 
+  const sizeLst = [
+    {
+      platform: ""
+    }
+  ];
+
   const usualSizes = [
     { aspectRatio: "16 / 9", width: 1920, height: 1080 },
     { aspectRatio: "3 / 2", width: 1920, height: 1280 },
@@ -33,6 +39,19 @@ export default function FrameModel({ handleSelChange }) {
   const wechatVideoSizes = [];
   // 抖音
   const douyinSizes = [];
+  // X
+  const xSizes = [
+    { aspectRatio: "16 / 9", width: 1200, height: 675 },
+    { aspectRatio: "3 / 1", width: 1500, height: 500 }
+  ];
+  // instagram
+  const instagramSizs = [
+    { aspectRatio: "1 / 1", width: 1080, height: 1080 },
+    { aspectRatio: "4 / 5", width: 1080, height: 1350 },
+    { aspectRatio: "9 / 16", width: 1080, height: 1920 }
+  ]
+  // youtube
+  const youtubeSizes = [];
 
   const onSizeButtonClick = (ar, w, h) => {
     handleSelChange(`Default ${ar.replace("/", ":")}`, "tit");
@@ -58,7 +77,7 @@ export default function FrameModel({ handleSelChange }) {
                   <span>{el.aspectRatio.replace("/", ":")}</span>
                 </div>
               </div>
-              <div className={styles.sizeText}>{el.wxh}</div>
+              <div className={styles.sizeText}>{`${el.width} x ${el.height}`}</div>
             </button>
           ))
         }
@@ -82,7 +101,7 @@ export default function FrameModel({ handleSelChange }) {
                   <span>{el.aspectRatio.replace("/", ":")}</span>
                 </div>
               </div>
-              <div className={styles.sizeText}>{el.wxh}</div>
+              <div className={styles.sizeText}>{`${el.width} x ${el.height}`}</div>
             </button>
           ))
         }
@@ -104,7 +123,7 @@ export default function FrameModel({ handleSelChange }) {
                   <span>{el.aspectRatio.replace("/", ":")}</span>
                 </div>
               </div>
-              <div className={styles.sizeText}>{el.wxh}</div>
+              <div className={styles.sizeText}>{`${el.width} x ${el.height}`}</div>
             </button>
           ))
         }
