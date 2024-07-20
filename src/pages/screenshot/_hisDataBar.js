@@ -65,7 +65,7 @@ export default function HisDataBar() {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <Box sx={{ background: '#fff', maxHeight: '80vh', overflowY: 'scroll', borderRadius: '10px' }}>
+                <Box sx={{ background: '#fff', minHeight: '50px', maxHeight: '80vh', overflowY: 'scroll', borderRadius: '10px' }}>
                   <List>
                     {hisData.map(el => (
                     <ListItem
