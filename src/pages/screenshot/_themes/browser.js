@@ -1,12 +1,11 @@
 import UploadCard from "../components/_UploadCard";
 import styles from "./style.module.scss";
 import clsx from "clsx";
-import BrowserWindow from '@site/src/components/BrowserWindow';
-
 
 export default function Browser(props) {
+  const { config } = {...props}
   return (
-    <div className={clsx(styles.theme, styles.browser)}>
+    <div className={clsx(styles.theme, styles.browser)} style={{ borderRadius: `${config.borderRadius}px`}}>
       <div className={styles.header}>
         <div className={styles.button}>
           <span style={{ background: 'rgb(242, 95, 88)'}}></span>
@@ -15,11 +14,9 @@ export default function Browser(props) {
         </div>
         <div className={styles.address}>{"https://spacexcode.com"}</div>
         <div className={styles.menu}>
-          <div>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
       <div className={styles.body}>

@@ -85,7 +85,7 @@ export default function MockupModel({ handleSelChange }) {
               onClick={() => onHandleClickTheme(el.name)}
             >
               <CardHeader
-                sx={{ '& .MuiCardHeader-title': { fontSize: '16px' }, '& .MuiCardHeader-subheader': { fontSize: '12px' } }}
+                sx={{ '& .MuiCardHeader-title': { fontSize: '16px' }, '& .MuiCardHeader-subheader': { fontSize: '12px', marginTop: '5px' } }}
                 title={el.title}
                 subheader={el.subtitle}
               />

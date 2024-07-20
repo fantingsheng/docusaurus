@@ -83,9 +83,9 @@ export default function CommandBar({ changeFullScreen }) {
           },
         }}
       >
-        <DialogTitle>数据保存</DialogTitle>
+        <DialogTitle>保存配置</DialogTitle>
         <DialogContent>
-          <DialogContentText>保存当前的配置数据，以便于下次更直接方便地使用</DialogContentText>
+          <DialogContentText>保存当前的配置数据，以便于下次更直接方便地使用，但不保存图片信息，需要你重新上传</DialogContentText>
           <TextField
             autoFocus
             required
@@ -96,6 +96,7 @@ export default function CommandBar({ changeFullScreen }) {
             type="text"
             fullWidth
             variant="standard"
+            autocomplete="off"
           />
         </DialogContent>
         <DialogActions>
