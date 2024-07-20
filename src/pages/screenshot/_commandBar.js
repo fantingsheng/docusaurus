@@ -5,7 +5,8 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import { useConfigContext } from './_configProvider';
-import { storageLocal } from '@site/src/utils/storage';
+// import { storageLocal } from '@site/src/utils/storage';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 export default function CommandBar({ changeFullScreen }) {
   const { config, handleConfigChange, handleResetConfig } = useConfigContext();
@@ -24,14 +25,16 @@ export default function CommandBar({ changeFullScreen }) {
   };
 
   const onSaveConfigStorage = (configName) => {
-    const data = storageLocal.getItem("screenShots") || [];
-    data.push({
-      id: Date.now(),
-      name: configName,
-      time: Date.now(),
-      config: config
-    });
-    storageLocal.setItem("screenShots", data);
+    if (ExecutionEnvironment.canUseDOM) {
+      const data = window.localStorage.getItem("screenShots") || [];
+      data.push({
+        id: Date.now(),
+        name: configName,
+        time: Date.now(),
+        config: config
+      });
+      window.localStorage.setItem("screenShots", data);
+    }
   }
 
   return (

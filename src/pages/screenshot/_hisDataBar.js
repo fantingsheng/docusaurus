@@ -3,9 +3,10 @@ import { IconButton, Box, Popper, ClickAwayListener, Paper, Grow, List, ListItem
   ListItemButton, ListItemText } from '@mui/material';
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { storageLocal } from '@site/src/utils/storage';
+// import { storageLocal } from '@site/src/utils/storage';
 import { formateDate } from '@site/src/utils';
 import { useConfigContext } from './_configProvider';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 export default function HisDataBar() {
   const anchorRef = useRef(null);
@@ -15,8 +16,10 @@ export default function HisDataBar() {
   const [name, setName] = useState(Date.now());
 
   useEffect(() => {
-    const data = storageLocal.getItem("screenShots") || [];
-    setHisData(data.sort((a, b) => (b.time - a.time)));
+    if (ExecutionEnvironment.canUseDOM) {
+      const data = window.localStorage.getItem("screenShots") || [];
+      setHisData(data.sort((a, b) => (b.time - a.time)));
+    }
   }, []);
 
   const handleToggle = () => {

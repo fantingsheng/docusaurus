@@ -33,6 +33,4 @@ class localStorageProxy extends sessionStorageProxy {
   }
 }
 
-export const storageSession = new sessionStorageProxy(sessionStorage);
-
 export const storageLocal = new localStorageProxy(localStorage);
