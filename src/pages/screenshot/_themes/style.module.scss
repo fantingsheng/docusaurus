@@ -15,6 +15,40 @@
     backdrop-filter: blur(4em) saturate(150%) contrast(150%) brightness(105%);
     -webkit-backdrop-filter: blur(4em) saturate(150%) contrast(150%) brightness(105%);
   }
+
+  .card {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #fff;
+    transform: translate3d(-3.5em,3em,0) rotate(-1.5deg) scale(.98);
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      filter: blur(5em);
+      -webkit-filter: blur(5em);
+      transform: scale(1.5);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: hsla(0,0%,100%,.5);
+      z-index: 1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 0.1em solid rgba(0,0,0,.15);
+      z-index: 1;
+      border-radius: inherit;
+    }
+  }
 }
 
 /** browser theme **/

@@ -8,7 +8,8 @@ export function ThemeStyle(theme) {
     case 'screenshot':
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/screenshot/default.png' },
-        { name: 'glass-light', title: 'Glass Light', thumail: '/screenshot/theme/screenshot/glass-light.png' }
+        { name: 'glass-light', title: 'Glass Light', thumail: '/screenshot/theme/screenshot/glass-light.png' },
+        { name: 'card', title: 'Card', thumail: '/screenshot/theme/screenshot/card.png' }
       ];
     case 'browser':
       return [

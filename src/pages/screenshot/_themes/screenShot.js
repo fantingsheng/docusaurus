@@ -6,8 +6,13 @@ export default function ScreenShot(props) {
   const { config } = {...props}
   return (
     <div className={clsx(styles.theme, styles.screenShot)} style={{ position: 'relative' }}>
-      {config.style === 'glass-light' ? 
-        <div className={styles.glassLight} style={{ borderRadius: `${config.borderRadius * 1.32}px`}}/> : <></>
+      {config.style === 'glass-light' && 
+        <div className={styles.glassLight} style={{ borderRadius: `${config.borderRadius * 1.32}px`}}/>
+      }
+      {config.style === 'card' && 
+        <div className={styles.card} style={{ borderRadius: `${config.borderRadius}px`}}>
+          <img src={config.picture} crossOrigin="anonymous" />
+        </div>
       }
       <UploadCard {...props} />
     </div>
