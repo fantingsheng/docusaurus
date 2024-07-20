@@ -6,6 +6,7 @@ import RightSideBar from "./_rightSideBar";
 import ExportLayer from './_exportLayer';
 import CenterPreview from './_centerPreview';
 import CommandBar from './_commandBar';
+import HisDataBar from './_hisDataBar';
 import styles from "./style.module.scss";
 
 import ExportButton from "./components/_ExportButton";
@@ -49,6 +50,9 @@ export default function () {
           </div>
           <div className={styles.commandBar}>
             <CommandBar changeFullScreen={handleFullScreen} />
+          </div>
+          <div className={styles.hisDataBar}>
+            <HisDataBar />
           </div>
           <ExportLayer coverRef={coverRef} />
         </main>

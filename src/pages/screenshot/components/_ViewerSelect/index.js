@@ -67,7 +67,7 @@ export default function ViewerSelect({ openStyle }) {
           </svg>
         </Box>
       </Box>
-      <Popper sx={{ zIndex: 5 }} open={open} placement="bottom-start" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Popper sx={{ zIndex: 5, borderRadius: '10px' }} open={open} placement="bottom-start" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps }) => (
           <Grow
             {...TransitionProps}
@@ -77,7 +77,7 @@ export default function ViewerSelect({ openStyle }) {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <Box className={styles.popperBox}>
+                <Box className={styles.popperBox} style={{ borderRadius: '10px' }}>
                   {
                     openStyle === "mockup" ? 
                       <MockupModel handleSelChange={handleSelChange} /> 

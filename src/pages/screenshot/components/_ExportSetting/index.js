@@ -28,7 +28,7 @@ export default function ExportSetting() {
         <SettingsIcon />
       </Button>
       <Popper
-        sx={{ zIndex: 5, minWidth: '240px' }}
+        sx={{ zIndex: 5, minWidth: '240px', borderRadius: '10px' }}
         open={open}
         placement="top-end"
         anchorEl={anchorRef.current}
@@ -46,7 +46,7 @@ export default function ExportSetting() {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <Box sx={{ background: '#fff', padding: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <Box sx={{ background: '#fff', padding: '15px', display: 'flex', flexDirection: 'column', gap: '10px', borderRadius: '10px' }}>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">格式</Typography>
                     <Box><ToggleButtonGroup

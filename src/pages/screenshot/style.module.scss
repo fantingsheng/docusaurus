@@ -71,6 +71,18 @@
   z-index: 100;
 }
 
+.hisDataBar {
+  background: none;
+  padding: 0 10px;
+  width: max-content;
+  position: fixed;
+  z-index: 100;
+  top: 8;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
 // preview area
 
 .previewFrame {

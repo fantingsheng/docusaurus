@@ -39,11 +39,16 @@ export function ConfigProvider({ children }) {
     setConfig({ ...initConf })
   }
 
+  const handleUseConfig = (config) => {
+    setConfig((prev) => ({ ...prev, ...config }))
+  }
+
   const value = useMemo(
     () => ({
       config,
       handleConfigChange,
-      handleResetConfig
+      handleResetConfig,
+      handleUseConfig
     }),
     [config],
   )
