@@ -17,7 +17,8 @@ export default function HisDataBar() {
 
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM) {
-      const data = window.localStorage.getItem("screenShots") || [];
+      const data = JSON.parse(window.localStorage.getItem("screenShots")) || [];
+      console.log("data", data)
       setHisData(data.sort((a, b) => (b.time - a.time)));
     }
   }, []);

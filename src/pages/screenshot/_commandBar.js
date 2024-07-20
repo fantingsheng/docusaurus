@@ -26,14 +26,14 @@ export default function CommandBar({ changeFullScreen }) {
 
   const onSaveConfigStorage = (configName) => {
     if (ExecutionEnvironment.canUseDOM) {
-      const data = window.localStorage.getItem("screenShots") || [];
+      const data = JSON.parse(window.localStorage.getItem("screenShots")) || [];
       data.push({
         id: Date.now(),
         name: configName,
         time: Date.now(),
         config: config
       });
-      window.localStorage.setItem("screenShots", data);
+      window.localStorage.setItem("screenShots", JSON.stringify(data));
     }
   }
 
@@ -99,7 +99,7 @@ export default function CommandBar({ changeFullScreen }) {
             type="text"
             fullWidth
             variant="standard"
-            autocomplete="off"
+            autoComplete="off"
           />
         </DialogContent>
         <DialogActions>
