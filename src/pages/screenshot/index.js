@@ -32,21 +32,19 @@ export default function () {
       <ConfigProvider>
         <main className={styles.appMain}>
           <div className={styles.sidebar}>
-            {fullScreen ? <></> :
+            {!fullScreen &&
             <LeftSideBar>
               <Box sx={{ display: 'flex', gap: '8px' }}>
                 <ExportButton coverRef={coverRef} />
                 <ExportSetting />
               </Box>
-            </LeftSideBar> }
+            </LeftSideBar>}
           </div>
           <div className={styles.canvas}>
             <CenterPreview />
           </div>
           <div className={styles.sidebar}>
-          {fullScreen ? <></> :
-            <RightSideBar />
-          }
+            {!fullScreen && <RightSideBar />}
           </div>
           <div className={styles.commandBar}>
             <CommandBar changeFullScreen={handleFullScreen} />

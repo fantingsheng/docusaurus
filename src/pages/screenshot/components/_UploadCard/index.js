@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 
 import { useConfigContext } from '../../_configProvider';
 
-export default function UploadCard({ showBorderRadius = true }) {
+export default function UploadCard({ showBtn, showBorderRadius = true }) {
   const { config, handleConfigChange } = useConfigContext();
 
   const VisuallyHiddenInput = styled('input')({
@@ -42,18 +42,19 @@ export default function UploadCard({ showBorderRadius = true }) {
     >
       {config.picture ? 
         <img src={config.picture} className={styles.uploadImg} /> : 
-        (<>
+        (showBtn && <>
           <AddPhotoAlternateIcon fontSize="large" />
           <Typography>上传图片</Typography>
           <Typography variant="caption">（PNG 或者 JPG）</Typography>
           </>
         )
       }
-      <VisuallyHiddenInput
-        type="file"
-        accept="image/x-png,image/jpeg,image/webp,image/jpg"
-        onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'picture')}
-      />
+      { showBtn && 
+        <VisuallyHiddenInput
+          type="file"
+          accept="image/x-png,image/jpeg,image/webp,image/jpg"
+          onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'picture')}
+        />}
     </Button>
   )
 }
