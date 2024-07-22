@@ -160,7 +160,7 @@ export default function Background() {
         </div>
       </Box>
       <Box className={styles.colorStyles}>
-        <Typography className={styles.title} variant="h4">渐变</Typography>
+        <Typography className={styles.title} variant="h4">渐变色</Typography>
         <div className={styles.gridentColorList}>
           { gradientColors.map(el => (
               <div
