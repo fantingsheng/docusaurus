@@ -113,3 +113,13 @@
     height: calc(100% - 41px);
   }
 }
+
+/* iphone 15 */
+.iphone15 {
+  .device {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    pointer-events: none;
+  }
+}

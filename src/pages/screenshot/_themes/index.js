@@ -2,6 +2,7 @@ import React from "react";
 
 import Browser from "./browser";
 import ScreenShot from "./screenShot";
+import Iphone15 from "./iphone15";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -13,7 +14,11 @@ export function ThemeStyle(theme) {
       ];
     case 'browser':
       return [
-        { name: 'default', title: 'Default', thumail: '/screenshot/theme/browser/default.png' },
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/browser/style_default.png' },
+      ];
+    case 'iphone15':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/iphone15/style_black.png' },
       ];
     default:
       return [];
@@ -29,6 +34,8 @@ export default function CoverTheme (props) {
         return <ScreenShot {...props} />;
       case 'browser':
         return <Browser {...props} />
+      case 'iphone15':
+        return <Iphone15 {...props} />
       default:
         return <></>;
 		}

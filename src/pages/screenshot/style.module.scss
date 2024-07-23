@@ -154,6 +154,32 @@
   will-change: contents;
   transform: translateZ(0);
   transition: all .2s ease;
+
+  &.screenshot {
+    --aspect-ratio: unset;
+    --shadow-inset: 2%;
+    --shadow-radius: 0.6em;
+    --drop-padding: 0;
+    --dropzone-1-ratio: unset;
+    --dropzone-2-ratio: unset;
+    --dropzone-3-ratio: unset;
+  }
+
+  &.browser {
+    --aspect-ratio: 4/3;
+    --shadow-inset: 2%;
+    --shadow-radius: 0.7em;
+    --drop-padding: 0;
+    --drop-radius: unset;
+  }
+
+  &.iphone15 {
+    --aspect-ratio: 1370/2732;
+    --shadow-inset: 3.5% 4.8%;
+    --shadow-radius: 7.4em;
+    --drop-padding: 8.4% 8.4% 10.8% 8.4%;
+    --drop-radius: 4em;
+  }
 }
 .devices {
   position: absolute;
@@ -166,14 +192,14 @@
   pointer-events: all;
   transform: translateZ(0);
   will-change: contents,transform,opacity;
-  aspect-ratio: unset;
+  aspect-ratio: var(--aspect-ratio);
   transition: all .2s ease;
 
   .item {
     position: relative;
     container-type: size;
     container-name: item-container;
-    aspect-ratio: unset!important;
+    aspect-ratio: var(--aspect-ratio) !important;
     width: 100%;
     height: 100%;
     max-height: 100%;
@@ -189,7 +215,7 @@
       max-height: 100%;
       margin: auto;
       font-size: calc((100cqw + 100cqh)/150);
-      aspect-ratio: unset !important;
+      aspect-ratio: var(--aspect-ratio) !important;
 
       .interface {
         position: relative;

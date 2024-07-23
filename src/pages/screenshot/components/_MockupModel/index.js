@@ -1,5 +1,5 @@
-import { Box, Card, CardHeader, CardMedia, CardContent, Typography, Avatar, IconButton, ToggleButtonGroup, ToggleButton } from '@mui/material';
-import { useState, useContext } from 'react';
+import { Box, Card, CardHeader, CardMedia, CardContent, Typography, Avatar, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { useState } from 'react';
 import styles from './style.module.scss';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import clsx from 'clsx';
@@ -29,6 +29,14 @@ export default function MockupModel({ handleSelChange }) {
       thumbnail: '/screenshot/mockup/browser.png',
       previews: ['', '', '', '']
     },
+    {
+      name: 'iphone15',
+      title: 'iPhone 15',
+      type: 'phone',
+      subtitle: '8 layouts',
+      thumbnail: '/screenshot/mockup/iphone15.png',
+      previews: ['', '', '', '']
+    },
     // {
     //   name: 'miniphone',
     //   title: 'Minimal Phone',
@@ -37,14 +45,6 @@ export default function MockupModel({ handleSelChange }) {
     //   thumbnail: '/screenshot/mockup/default.png',
     //   previews: ['', '', '', '']
     // },
-    // {
-    //   name: 'iphone15',
-    //   title: 'iPhone 15',
-    //   type: 'phone',
-    //   subtitle: '8 layouts',
-    //   thumbnail: '/screenshot/mockup/iphone15.webp',
-    //   previews: ['', '', '', '']
-    // }
   ]
 
   const onHandleClickTheme = val => {
