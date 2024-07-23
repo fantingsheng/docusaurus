@@ -1,4 +1,4 @@
-import { Box, Card, CardHeader, CardMedia, CardContent, Typography, Avatar, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { Box, Card, CardHeader, CardMedia, CardContent, Typography, Avatar, IconButton, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import { useState, useContext } from 'react';
 import styles from './style.module.scss';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
@@ -15,6 +15,7 @@ export default function MockupModel({ handleSelChange }) {
       name: 'screenshot',
       title: 'Screenshot',
       type: '',
+      feature: false,
       subtitle: '自适应图片大小',
       thumbnail: '/screenshot/mockup/screenshot.png',
       previews: ['', '', '', '']
@@ -23,6 +24,7 @@ export default function MockupModel({ handleSelChange }) {
       name: 'browser',
       title: 'Browser',
       type: '',
+      feature: true,
       subtitle: '自适应图片大小',
       thumbnail: '/screenshot/mockup/browser.png',
       previews: ['', '', '', '']
@@ -77,7 +79,7 @@ export default function MockupModel({ handleSelChange }) {
       </Box>
       <Box className={styles.themeGrid}>
         {
-          mockupLst.filter(el => (platform !== 'all' && platform === el.type) || (platform === 'all' && true)).map((el, index) => (
+          mockupLst.filter(el => platform === 'all' || (platform !== 'all' && platform === el.type)).map((el, index) => (
             <Card
               className={clsx(styles.gridItem, config.theme === el.name ? styles.active : '')}
               sx={{ maxWidth: 325, backgroundColor: '#fff' }}
@@ -85,9 +87,19 @@ export default function MockupModel({ handleSelChange }) {
               onClick={() => onHandleClickTheme(el.name)}
             >
               <CardHeader
-                sx={{ '& .MuiCardHeader-title': { fontSize: '16px' }, '& .MuiCardHeader-subheader': { fontSize: '12px', marginTop: '5px' } }}
+                sx={{ 
+                  '& .MuiCardHeader-title': { fontSize: '16px' },
+                  '& .MuiCardHeader-subheader': { fontSize: '12px', marginTop: '5px' },
+                  padding: '10px'
+                }}
                 title={el.title}
                 subheader={el.subtitle}
+                action={
+                  el.feature && 
+                  <div className={styles.rightCorner}>
+                    <p className={styles.tag}>New</p>
+                  </div>
+                }
               />
               <CardMedia
                 component="img"
@@ -95,7 +107,7 @@ export default function MockupModel({ handleSelChange }) {
                 image={el.thumbnail}
                 alt={el.title}
               />
-              <CardContent sx={{ display: 'flex', gap: '8px' }}>
+              <CardContent sx={{ padding: '10px 10px 20px !important', display: 'flex', gap: '5px' }}>
                 {
                   el.previews.map((img, id) => (
                     <Avatar sx={{ bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src={img} key={id}>
