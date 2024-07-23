@@ -23,7 +23,7 @@ export default function BoxShadow({ shadow }) {
   return (
     <>
       <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
-        <Typography variant="caption">Opacity</Typography>
+        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Opacity</Typography>
         <Slider
           value={config.shadowOpacity * 100}
           aria-label='shadow'
@@ -32,7 +32,7 @@ export default function BoxShadow({ shadow }) {
           max={70}
           onChange={(e, val) => handleConfigChange(val / 100, "shadowOpacity")}
         />
-        <Typography variant="caption">{config.shadowOpacity * 100}</Typography>
+        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.shadowOpacity * 100}</Typography>
       </Stack>
     
       <ToggleButtonGroup
@@ -46,19 +46,19 @@ export default function BoxShadow({ shadow }) {
         <ToggleButton value="none" aria-label="none">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/none.png" />
-            <Typography sx={{ lineHeight: 1 }} variant="caption">None</Typography>
+            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">None</Typography>
           </Box>
         </ToggleButton>
         <ToggleButton value="hug" aria-label="hug">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/hug.png" />
-            <Typography sx={{ lineHeight: 1 }} variant="caption">Hug</Typography>
+            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Hug</Typography>
           </Box>
         </ToggleButton>
         <ToggleButton value="spread" aria-label="spread">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/spread.png" />
-            <Typography sx={{ lineHeight: 1 }} variant="caption">Spread</Typography>
+            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Spread</Typography>
           </Box>
         </ToggleButton>
       </ToggleButtonGroup>

@@ -76,7 +76,7 @@ export default function HisDataBar() {
                       key={el.id}
                       disablePadding
                       secondaryAction={
-                        <Typography variant='caption' sx={{ color: 'rgba(0,0,0,.6)'}}>
+                        <Typography variant='caption' sx={{ color: 'rgba(0,0,0,.45)'}}>
                           {formateDate(el.time)}
                         </Typography>
                       }

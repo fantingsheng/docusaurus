@@ -55,7 +55,7 @@ export default function ViewerSelect({ openStyle }) {
           }}
           onClick={handleToggle}
         >
-          <Box className={styles.grayModel} sx={{ aspectRatio: config.ratio }}>
+          <Box className={styles.grayModel} sx={{ aspectRatio: config.ratio, border: selObj.pic ? 'none' : `1px solid var(--mui-palette-primary-main)` }}>
             {selObj.pic ? <img src={selObj.pic} style={{ width: '100%', objectFit: 'cover'}} /> : ''}
           </Box> 
           <div className={styles.line}>

@@ -32,7 +32,7 @@ export default function BorderRadius() {
   return (
     <>
       <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
-        <Typography variant="caption">Radius</Typography>
+        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Radius</Typography>
         <Slider
           value={config.borderRadius}
           aria-label='Radius'
@@ -41,7 +41,7 @@ export default function BorderRadius() {
           max={40}
           onChange={(e, val) => onValueChange(val)}
         />
-        <Typography variant="caption">{config.borderRadius}</Typography>
+        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.borderRadius}</Typography>
       </Stack>
       
       <ToggleButtonGroup
@@ -55,19 +55,19 @@ export default function BorderRadius() {
         <ToggleButton value={0} aria-label="Sharp">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <BorderRadiusIcon />
-            <Typography sx={{ lineHeight: 1 }} variant="caption">Sharp</Typography>
+            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Sharp</Typography>
           </Box>
         </ToggleButton>
         <ToggleButton value={10} aria-label="Curved">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '8px' } }} />
-            <Typography sx={{ lineHeight: 1 }} variant="caption">Curved</Typography>
+            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Curved</Typography>
           </Box>
         </ToggleButton>
         <ToggleButton value={20} aria-label="Round">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '14px' } }} />
-            <Typography sx={{ lineHeight: 1 }} variant="caption">Round</Typography>
+            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Round</Typography>
           </Box>
         </ToggleButton>
       </ToggleButtonGroup>

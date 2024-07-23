@@ -19,7 +19,7 @@ export default function Frame() {
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h5">效果</Typography>
         <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
-          <Typography variant="caption">Noise</Typography>
+          <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Noise</Typography>
           <Slider
             aria-label="Noise"
             min={0}
@@ -29,10 +29,10 @@ export default function Frame() {
             value={config.noise}
             onChange={e => onNoiseChange(e.target.value)}
           />
-          <Typography variant="caption">{config.noise}</Typography>
+          <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.noise}</Typography>
         </Stack>
         <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
-          <Typography variant="caption">Blur</Typography>
+          <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Blur</Typography>
           <Slider
             value={config.blur}
             aria-label='Blur'
@@ -42,7 +42,7 @@ export default function Frame() {
             valueLabelDisplay='auto'
             onChange={e => onBlurChange(e.target.value)}
           />
-          <Typography variant="caption">{config.blur}</Typography>
+          <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.blur}</Typography>
         </Stack>
         
       </Box>

@@ -19,7 +19,7 @@ export default function SizeAndPosition() {
   return (
     <>
       <Stack spacing={2} direction="row" sx={{ }} alignItems="center">
-        <Typography variant="caption">Size</Typography>
+        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Size</Typography>
         <Slider
           value={config.scale}
           aria-label='Radius'
@@ -28,7 +28,7 @@ export default function SizeAndPosition() {
           max={1.5}
           onChange={(e, val) => onValueChange(val)}
         />
-        <Typography variant="caption">{config.scale}</Typography>
+        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.scale}</Typography>
       </Stack>
       <Box className={styles.posGrid}>
         {[-50, -25, 0, 25, 50].map(row => (

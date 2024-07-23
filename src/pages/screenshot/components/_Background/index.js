@@ -47,7 +47,10 @@ export default function Background() {
     "linear-gradient(113.96deg, rgb(69, 223, 232) 11.98%, rgb(211, 170, 175) 50%, rgb(232, 103, 100) 85.42%)",
     "linear-gradient(135deg, rgb(79, 172, 254), rgb(0, 242, 254))",
     "linear-gradient(135deg, rgb(248, 208, 129), rgb(238, 129, 68))",
-    "linear-gradient(135deg, rgb(249, 240, 71), rgb(15, 216, 80))"
+    "linear-gradient(135deg, rgb(249, 240, 71), rgb(15, 216, 80))",
+    "linear-gradient(-45deg, rgb(114, 122, 154), rgb(216, 219, 233))",
+    "linear-gradient(-45deg, rgb(80, 82, 133) 0%, rgb(88, 94, 146) 12%, rgb(101, 104, 159) 25%, rgb(116, 116, 176) 37%, rgb(126, 126, 187) 50%, rgb(131, 137, 199) 62%, rgb(151, 149, 212) 75%, rgb(162, 161, 220) 87%, rgb(181, 174, 228) 100%)",
+    "linear-gradient(150deg, rgb(95, 108, 138), rgb(48, 59, 94), rgb(14, 18, 38))"
   ]
 
   const onClickSolidColor = (color) => {
