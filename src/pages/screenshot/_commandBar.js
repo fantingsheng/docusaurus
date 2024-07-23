@@ -5,7 +5,6 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import { useConfigContext } from './_configProvider';
-// import { storageLocal } from '@site/src/utils/storage';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 export default function CommandBar({ changeFullScreen }) {
@@ -34,6 +33,7 @@ export default function CommandBar({ changeFullScreen }) {
         config: config
       });
       window.localStorage.setItem("screenShots", JSON.stringify(data));
+      handleConfigChange(Date.now(), "id");
     }
   }
 

@@ -4,6 +4,7 @@ export const ConfigContext = createContext(null)
 
 export function ConfigProvider({ children }) {
   const initConf = {
+    id: Date.now(),
     theme: "screenshot",
     picture: "",
     bgImg: "",

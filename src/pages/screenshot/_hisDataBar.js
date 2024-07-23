@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { IconButton, Box, Popper, ClickAwayListener, Paper, Grow, List, ListItem, Typography,
   ListItemButton, ListItemText } from '@mui/material';
-
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-// import { storageLocal } from '@site/src/utils/storage';
 import { formateDate } from '@site/src/utils';
 import { useConfigContext } from './_configProvider';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
@@ -12,16 +10,15 @@ export default function HisDataBar() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [hisData, setHisData] = useState([]);
-  const { handleUseConfig } = useConfigContext();
-  const [name, setName] = useState(Date.now());
+  const { config, handleUseConfig } = useConfigContext();
+  const [name, setName] = useState(config.id);
 
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM) {
       const data = JSON.parse(window.localStorage.getItem("screenShots")) || [];
-      console.log("data", data)
       setHisData(data.sort((a, b) => (b.time - a.time)));
     }
-  }, []);
+  }, [config.id]);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -82,7 +79,7 @@ export default function HisDataBar() {
                       }
                       onClick={() => onClickHisoryItem(el)}
                     >
-                      <ListItemButton>
+                      <ListItemButton sx={{ borderLeft: el.config.id == config.id ? '2px solid var(--mui-palette-primary-main)' : 'none' }}>
                         <ListItemText sx={{
                           '& span': { fontSize: '12px', textOverflow: 'ellipsis',
                           overflow: 'hidden',
