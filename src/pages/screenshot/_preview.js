@@ -23,8 +23,9 @@ export default function Preview({ transform, showBtn }) {
             <div className={styles.item} style={{ borderRadius: `${config.borderRadius}px` }}>
               <div className={clsx(styles.itemContainer, 'item-container')}>
                 <CoverTheme config={config} showBtn={showBtn} />
+                {/* 阴影 */}
                 { config.shadowX && config.shadowY &&
-                  <div className={styles.shadow} style={{ borderRadius: `${config.borderRadius}px` }}>
+                  <div className={styles.shadow}>
                     {[1, 3, 6, 10].map(el => (
                       <div
                         className={styles.shadowLayer} 
