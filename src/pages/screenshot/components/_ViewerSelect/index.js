@@ -51,7 +51,8 @@ export default function ViewerSelect({ openStyle }) {
             borderRadius: '5px',
             padding: '8px',
             gap: '8px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            userSelect: 'none'
           }}
           onClick={handleToggle}
         >
