@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { styled } from '@mui/material/styles';
 import { Box, Drawer, IconButton, FormControl, MenuItem, InputLabel, Select, CircularProgress } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -35,6 +36,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 );
 
 export default function ({ size = "default" }) {
+  const { siteConfig } = useDocusaurusContext();
+
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
@@ -111,6 +114,7 @@ export default function ({ size = "default" }) {
   return (
     <>
       <Head>
+        <title>{`我的足迹 | ${siteConfig.title}`}</title>
         <meta name="title" content='我的足迹' />
         <meta name="keywords" content='足迹,跑步,路线,运动轨迹,Strava,城市骑行' />
       </Head>
