@@ -33,7 +33,7 @@ export default function MockupModel({ handleSelChange }) {
       name: 'iphone15',
       title: 'iPhone 15',
       type: 'phone',
-      subtitle: '8 layouts',
+      subtitle: '1170 x 2532',
       thumbnail: '/screenshot/mockup/iphone15.png',
       previews: ['', '', '', '']
     },

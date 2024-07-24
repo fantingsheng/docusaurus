@@ -1,0 +1,21 @@
+.makeToolGrid {
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  .gridItem {
+    flex-shrink: 0;
+    width: calc((100% - 4px)/2);
+    background-color: #f6f6f7;
+
+    .link {
+      display: flex;
+      height: 64px;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+}

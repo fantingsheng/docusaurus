@@ -15,6 +15,7 @@ import styles from './styles.module.css';
 import GiscusComponent from '@site/src/components/GiscusComponent';
 import DonateButton from '@site/src/components/DonateButton';
 import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
+import CustomToolAds from '@site/src/components/CustomToolAds';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -68,6 +69,7 @@ export default function DocItemLayout({children}) {
           {docTOC.desktop}
           <div className={styles.adsWrap}>
             <div className={styles.adsTitle}>成为赞助商</div>
+            <CustomToolAds />
             <GoogleAdsBlock model='pureShow' height='120px' />
           </div>
         </div>
