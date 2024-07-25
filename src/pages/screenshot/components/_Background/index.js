@@ -82,6 +82,12 @@ export default function Background() {
     clip-path: polygon(
       @rand(100%) 0, 100% @rand(100%), 0 @rand(100%)
     );`,
+    `@grid: 7 / 100% / #0a0c27;
+    @shape: clover 5;
+    background: hsla(-@i(*4), 70%, 68%, @r.8);
+    transform:
+      scale(@r(.2, 1.5))
+      translate(@m2.@r(±50%));`
   ]
 
   const onClickSolidColor = (color) => {
