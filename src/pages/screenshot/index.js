@@ -24,7 +24,7 @@ export default function () {
   return (
     <>
       <Head>
-        <title>{`图片美化套壳 | ${siteConfig.title}`}</title>
+        <title>{`图片套壳美化 | ${siteConfig.title}`}</title>
         <meta name="title" content='图片模型生成器' />
         <meta name="description" content="选择模型帮你生成漂亮的图片" />
         <meta name="keywords" content='手机套壳,模型,图片美化' />

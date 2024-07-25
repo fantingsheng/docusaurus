@@ -117,7 +117,6 @@ export default function Background() {
   });
 
   const handleChangeComplete = (color) => {
-    console.log("color", color);
     setCustomColor(color.hex);
     handleConfigChange(color.hex, "bg");
     handleConfigChange(false, "transparent");
@@ -130,7 +129,6 @@ export default function Background() {
     handleConfigChange(false, "transparent");
     handleConfigChange("", "bgImg");
     handleConfigChange("", "bg");
-    console.log("config", config);
   }
 
   return (
