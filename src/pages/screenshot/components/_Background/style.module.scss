@@ -85,3 +85,20 @@
     outline: solid 1.5px var(--mui-palette-primary-main) !important;;
   }
 }
+.cssDoodleList {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+
+  .colorRect {
+    aspect-ratio: 16/9;
+    
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   top: 0; left: 0; bottom: 0; right: 0;
+    //   backdrop-filter: blur(4px);
+    //   z-index: 1;
+    // }
+  }
+}

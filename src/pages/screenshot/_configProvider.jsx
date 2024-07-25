@@ -8,6 +8,7 @@ export function ConfigProvider({ children }) {
     theme: "screenshot",
     picture: "",
     bgImg: "",
+    bgLayer: "",
     borderRadius: 10,
     transparent: false, // 透明背景
     style: "default", // 样式

@@ -1,13 +1,19 @@
 import styles from "./style.module.scss";
 import CoverTheme from "./_themes";
-import { Box } from '@mui/material';
 import clsx from 'clsx';
+import 'css-doodle';
 
 import { useConfigContext } from './_configProvider';
+import { useEffect, useRef } from "react";
 
 
 export default function Preview({ transform, showBtn }) {
   const { config, handleConfigChange } = useConfigContext();
+  const cssDoodle = useRef();
+
+  useEffect(() => {
+    cssDoodle.current && cssDoodle.current.update(config.bgLayer);
+  }, [config.bgLayer]);
 
   return (
     <div className={styles.frameContent}>
@@ -16,6 +22,13 @@ export default function Preview({ transform, showBtn }) {
         <div className={styles.frameNoise} style={{ opacity: config.noise / 100 }} />
         { !config.transparent && config.bgImg && <img className={styles.frameBackground} src={config.bgImg} /> }
         { !config.transparent && config.bg && !config.bgImg && <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} /> }
+        { !config.transparent && config.bgLayer && 
+          <css-doodle ref={cssDoodle}>
+            <style>
+              {config.bgLayer}
+            </style>
+          </css-doodle>
+        }
       </div>
       <div className={styles.displayContainer}>
         <div className={clsx(styles.mockupModule, styles[config.theme])} style={{ transform: transform, display: config.hideMockup ? 'none' : 'block' }}>
