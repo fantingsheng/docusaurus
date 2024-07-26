@@ -8,22 +8,30 @@ import { useEffect, useRef } from "react";
 
 
 export default function Preview({ transform, showBtn }) {
-  const { config, handleConfigChange } = useConfigContext();
+  const { config } = useConfigContext();
   const cssDoodle = useRef();
 
   useEffect(() => {
     cssDoodle.current && cssDoodle.current.update(config.bgLayer);
   }, [config.bgLayer]);
 
+  const cssDoodleChange = () => {
+    cssDoodle.current && cssDoodle.current.update();
+  }
+
   return (
     <div className={styles.frameContent}>
       <div className={styles.frameBackgroundDisplay}>
         <div className={styles.frameBlur} style={{ backdropFilter: `blur(${config.blur * 0.04}em)`, transform: 'translate3d(0px, 0px, 0px)' }} />
         <div className={styles.frameNoise} style={{ opacity: config.noise / 100 }} />
-        { !config.transparent && config.bgImg && <img className={styles.frameBackground} src={config.bgImg} /> }
-        { !config.transparent && config.bg && !config.bgImg && <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} /> }
+        { !config.transparent && config.bgImg &&
+          <img className={styles.frameBackground} src={config.bgImg} />
+        }
+        { !config.transparent && config.bg &&
+          !config.bgImg && <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} />
+        }
         { !config.transparent && config.bgLayer && 
-          <css-doodle ref={cssDoodle}>
+          <css-doodle ref={cssDoodle} onClick={cssDoodleChange}>
             <style>
               {config.bgLayer}
             </style>
