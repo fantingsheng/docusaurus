@@ -76,7 +76,7 @@ export default function Background() {
     `:doodle {
       @grid: 8x8 / 100%;
     }
-    background: rgba(96, 86, 158, @rand(.9));
+    background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8));
     transition: .2s ease @rand(200ms);
     transform: rotate(@rand(360deg));
     clip-path: polygon(
@@ -87,7 +87,16 @@ export default function Background() {
     background: hsla(-@i(*4), 70%, 68%, @r.8);
     transform:
       scale(@r(.2, 1.5))
-      translate(@m2.@r(±50%));`
+      translate(@m2.@r(±50%));`,
+    `:doodle {
+      @grid: 8 / 100%;
+      @shape: rect;
+    }
+    transition: .2s @r(.6s);
+    border-radius: @pick(100% 0, 0 100%);
+    will-change: transform;
+    transform: scale(@r(.25, 1.25));
+    background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8))`
   ]
 
   const onClickSolidColor = (color) => {
