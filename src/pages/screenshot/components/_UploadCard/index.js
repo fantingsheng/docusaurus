@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 
 import { useConfigContext } from '../../_configProvider';
 
-export default function UploadCard({ showBtn, showBorderRadius = true }) {
+export default function UploadCard({ showBtn }) {
   const { config, handleConfigChange } = useConfigContext();
 
   const VisuallyHiddenInput = styled('input')({
@@ -20,10 +20,13 @@ export default function UploadCard({ showBtn, showBorderRadius = true }) {
   });
 
   return (
-    <Box sx={{
-      width: "100%",
-      height: "100%",
-      padding: 'var(--drop-padding)'
+    <Box className="uploadWrap" 
+      sx={{
+        width: "100%",
+        height: "100%",
+        padding: 'var(--drop-padding)',
+        borderRadius: `${config.borderRadius}px`,
+        overflow: ["screenshot"].includes(config.theme) ? 'hidden' : 'unset'
     }}>
       <Button
         component="label"
@@ -36,7 +39,7 @@ export default function UploadCard({ showBtn, showBorderRadius = true }) {
           minWidth: "100%",
           background: "rgba(220,220,220,1)",
           color: "rgba(0,0,0,.8)",
-          borderRadius: showBorderRadius ? `${config.borderRadius}px` : 0,
+          borderRadius: 'var(--drop-radius)',
           '&:hover': {
             background: "rgba(220,220,220,1)"
           },

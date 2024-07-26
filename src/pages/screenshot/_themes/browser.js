@@ -20,7 +20,7 @@ export default function Browser(props) {
         </div>
       </div>
       <div className={styles.body}>
-        <UploadCard {...props} showBorderRadius={false} />
+        <UploadCard {...props} />
       </div>
     </div>
   )

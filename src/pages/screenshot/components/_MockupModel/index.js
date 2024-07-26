@@ -37,14 +37,14 @@ export default function MockupModel({ handleSelChange }) {
       thumbnail: '/screenshot/mockup/iphone15.png',
       previews: ['', '', '', '']
     },
-    // {
-    //   name: 'miniphone',
-    //   title: 'Minimal Phone',
-    //   type: '',
-    //   subtitle: '8 layouts',
-    //   thumbnail: '/screenshot/mockup/default.png',
-    //   previews: ['', '', '', '']
-    // },
+    {
+      name: 'ipadPro13',
+      title: 'Ipad Pro 13',
+      type: 'tablet',
+      subtitle: '2048 x 2732',
+      thumbnail: '/screenshot/mockup/ipadPro13.png',
+      previews: ['', '', '', '']
+    },
   ]
 
   const onHandleClickTheme = val => {
