@@ -35,9 +35,9 @@ export default function SizeAndPosition() {
           <Box className={styles.presetCol} key={row}>
             {[-50, -25, 0, 25, 50].map(el => (
               <Box
-                className={clsx(styles.presetBtn, config.translateX === el && config.translateY === row ? styles.active : '')}
+                className={clsx(styles.presetBtn, config.translateX === row && config.translateY === el ? styles.active : '')}
                 key={el}
-                onClick={() => onChangePos(el, row)}
+                onClick={() => onChangePos(row, el)}
               >
                 <Box className={styles.tile}></Box>
               </Box>
