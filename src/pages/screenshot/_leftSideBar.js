@@ -11,8 +11,10 @@ import FrameTab from "./components/_FrameTab";
 import ViewerSelect from "./components/_ViewerSelect";
 import Giscus from "@giscus/react";
 import QRCode from 'qrcode.react';
+import Image from '@theme/IdealImage';
 
 import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle, DialogContent, Typography, Divider } from '@mui/material';
+import BoxShadow from './components/_BoxShadow';
 
 export default function LeftSideBar({ children }) {
   const [value, setValue] = useState(0);
@@ -105,14 +107,24 @@ export default function LeftSideBar({ children }) {
         <DialogTitle>欢迎使用图片套壳美化工具</DialogTitle>
         <DialogContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
-            <Typography variant="body1">手机扫码访问</Typography>
-            <QRCode
-              value={pageUrl}
-              renderAs="svg"
-              size={100}
-              bgColor="transparent"
-              fgColor={"#606266"}
-            />
+            <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '40px' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+                <Typography variant="body1">手机扫码访问</Typography>
+                <QRCode
+                  value={pageUrl}
+                  renderAs="svg"
+                  size={120}
+                  bgColor="transparent"
+                  fgColor={"#000"}
+                />
+              </Box>
+              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+                <Typography variant="body1">加好友进群交流</Typography>
+                <Box sx={{ width: '120px', height: '120px'}}>
+                  <Image img="/img/wechat.png" />
+                </Box>
+              </Box>
+            </Box>
             <Typography variant="body1">分享到</Typography>
             <Box sx={{ display: "flex", gap: '20px', justifyContent: 'center' }}>
               <a
