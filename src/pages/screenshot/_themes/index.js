@@ -21,6 +21,7 @@ export function ThemeStyle(theme) {
     case 'browser':
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/browser/style_default.png' },
+        { name: 'dark', title: 'Dark', thumail: '/screenshot/theme/browser/style_dark.png' }
       ];
     case 'iphone15':
       return [

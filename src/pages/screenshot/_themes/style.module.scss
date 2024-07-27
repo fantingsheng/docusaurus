@@ -101,6 +101,10 @@
     align-items: center;
     padding: .5rem 0.8rem;
 
+    &.dark {
+      background: rgba(28,28,30,1);
+    }
+
     .button {
       white-space: nowrap;
       display: flex;
