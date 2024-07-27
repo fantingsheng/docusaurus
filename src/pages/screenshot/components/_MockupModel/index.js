@@ -68,6 +68,14 @@ export default function MockupModel({ handleSelChange }) {
       subtitle: '410 x 502',
       thumbnail: '/screenshot/mockup/appleWatchUltra.png',
       previews: ['', '', '', '']
+    },
+    {
+      name: 'pixel7Pro',
+      title: 'Pixel 7 Pro',
+      type: 'phone',
+      subtitle: '1440 x 3120',
+      thumbnail: '/screenshot/mockup/pixel7Pro.png',
+      previews: ['', '', '', '']
     }
   ]
 

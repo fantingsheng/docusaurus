@@ -204,6 +204,14 @@
     --aspect-ratio: 600/940;
     --drop-padding: 36.4% 15.62% 36.4% 15.7%;
   }
+
+  &.pixel7Pro {
+    --aspect-ratio: 540/1100;
+    --shadow-inset: 1.6% 3.8% 1.2%;
+    --shadow-radius: 3em;
+    --drop-padding: 5.4%;
+    --drop-radius: 5px;
+  }
 }
 .devices {
   position: absolute;
