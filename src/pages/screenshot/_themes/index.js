@@ -6,6 +6,7 @@ import Iphone15 from "./iphone15";
 import IpadPro13 from "./ipadPro13";
 import MacbookPro16 from "./macbookPro16";
 import ImacRetina from "./iMacRetina";
+import AppleWatchUltra from "./appleWatchUltra";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -36,6 +37,10 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/iMacRetina/style_default.png' }
       ]
+    case 'appleWatchUltra':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/appleWatchUltra/style_default.png' }
+      ]
     default:
       return [];
   }
@@ -58,6 +63,8 @@ export default function CoverTheme (props) {
         return <MacbookPro16 {...props} />
       case 'iMacRetina':
         return <ImacRetina {...props} />
+      case 'appleWatchUltra':
+        return <AppleWatchUltra {...props} />
       default:
         return <></>;
 		}

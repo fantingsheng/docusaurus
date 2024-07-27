@@ -199,6 +199,11 @@
     --aspect-ratio: 4096/3444;
     --drop-padding: 5.2% 4% 27%;
   }
+
+  &.appleWatchUltra {
+    --aspect-ratio: 600/940;
+    --drop-padding: 36.4% 15.62% 36.4% 15.7%;
+  }
 }
 .devices {
   position: absolute;
@@ -273,12 +278,9 @@
 .ipadPro13 .devices {
   transform: rotate(90deg) scale(1.335) translateX(18.6%);
 }
-
-.macbookPro16 .devices .shadow {
-  display: none;
-}
-
-.iMacRetina .devices .shadow {
+.iMacRetina .devices .shadow,
+.macbookPro16 .devices .shadow,
+.appleWatchUltra .devices .shadow {
   display: none;
 }
 

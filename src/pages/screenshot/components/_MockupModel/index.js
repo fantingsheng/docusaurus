@@ -60,6 +60,14 @@ export default function MockupModel({ handleSelChange }) {
       subtitle: '5120 x 2880',
       thumbnail: '/screenshot/mockup/imacRetina.png',
       previews: ['', '', '', '']
+    },
+    {
+      name: 'appleWatchUltra',
+      title: 'Apple Watch Ultra',
+      type: 'watch',
+      subtitle: '410 x 502',
+      thumbnail: '/screenshot/mockup/appleWatchUltra.png',
+      previews: ['', '', '', '']
     }
   ]
 
