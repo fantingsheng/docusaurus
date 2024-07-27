@@ -45,6 +45,14 @@ export default function MockupModel({ handleSelChange }) {
       thumbnail: '/screenshot/mockup/ipadPro13.png',
       previews: ['', '', '', '']
     },
+    {
+      name: 'macbookPro16',
+      title: 'Macbook Pro 16',
+      type: 'laptop',
+      subtitle: '3456 x 2234',
+      thumbnail: '/screenshot/mockup/macbookPro16.png',
+      previews: ['', '', '', '']
+    }
   ]
 
   const onHandleClickTheme = val => {
@@ -82,7 +90,7 @@ export default function MockupModel({ handleSelChange }) {
           mockupLst.filter(el => platform === 'all' || (platform !== 'all' && platform === el.type)).map((el, index) => (
             <Card
               className={clsx(styles.gridItem, config.theme === el.name ? styles.active : '')}
-              sx={{ maxWidth: 325, backgroundColor: '#fff' }}
+              sx={{ width: 195, backgroundColor: '#fff' }}
               key={index}
               onClick={() => onHandleClickTheme(el.name)}
             >

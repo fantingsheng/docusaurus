@@ -24,10 +24,12 @@ export default function MockupTab() {
           <BorderRadius />
         </Box>
       }
+      {["screenshot", "browser", "iphone15", "ipadPro13"].includes(config.theme) && 
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">阴影</Typography>
         <BoxShadow />
       </Box>
+      }
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">大小和位置</Typography>
         <SizeAndPosition />

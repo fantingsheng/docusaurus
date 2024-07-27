@@ -4,6 +4,7 @@ import Browser from "./browser";
 import ScreenShot from "./screenShot";
 import Iphone15 from "./iphone15";
 import IpadPro13 from "./ipadPro13";
+import MacbookPro16 from "./macbookPro16";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -26,6 +27,10 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/ipadPro13/style_default.png' },
       ];
+    case 'macbookPro16':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/macbookPro16/style_default.png' }
+      ]
     default:
       return [];
   }
@@ -44,6 +49,8 @@ export default function CoverTheme (props) {
         return <Iphone15 {...props} />
       case 'ipadPro13':
         return <IpadPro13 {...props} />
+      case 'macbookPro16':
+        return <MacbookPro16 {...props} />
       default:
         return <></>;
 		}

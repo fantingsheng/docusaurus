@@ -188,6 +188,12 @@
     --drop-padding: 6.2%;
     --drop-radius: 0;
   }
+
+  &.macbookPro16 {
+    --aspect-ratio: 4096/2699;
+    --drop-padding: 7.2% 10.2% 7.14%;
+    --drop-radius: 0;
+  }
 }
 .devices {
   position: absolute;
@@ -261,6 +267,10 @@
 
 .ipadPro13 .devices {
   transform: rotate(90deg) scale(1.335) translateX(18.6%);
+}
+
+.macbookPro16 .devices .shadow {
+  display: none;
 }
 
 .layout {
