@@ -11,7 +11,8 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/screenshot/default.png' },
         { name: 'glass-light', title: 'Glass Light', thumail: '/screenshot/theme/screenshot/glass-light.png' },
-        { name: 'card', title: 'Card', thumail: '/screenshot/theme/screenshot/card.png' }
+        { name: 'card', title: 'Card', thumail: '/screenshot/theme/screenshot/card.png' },
+        { name: 'stack', title: 'Stack',thumail: '/screenshot/theme/screenshot/stack.png' }
       ];
     case 'browser':
       return [
