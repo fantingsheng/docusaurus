@@ -52,6 +52,14 @@ export default function MockupModel({ handleSelChange }) {
       subtitle: '3456 x 2234',
       thumbnail: '/screenshot/mockup/macbookPro16.png',
       previews: ['', '', '', '']
+    },
+    {
+      name: 'iMacRetina',
+      title: 'iMac Retina',
+      type: 'desktop',
+      subtitle: '5120 x 2880',
+      thumbnail: '/screenshot/mockup/imacRetina.png',
+      previews: ['', '', '', '']
     }
   ]
 

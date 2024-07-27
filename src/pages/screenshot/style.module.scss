@@ -194,6 +194,11 @@
     --drop-padding: 7.2% 10.2% 7.14%;
     --drop-radius: 0;
   }
+
+  &.iMacRetina {
+    --aspect-ratio: 4096/3444;
+    --drop-padding: 5.2% 4% 27%;
+  }
 }
 .devices {
   position: absolute;
@@ -270,6 +275,10 @@
 }
 
 .macbookPro16 .devices .shadow {
+  display: none;
+}
+
+.iMacRetina .devices .shadow {
   display: none;
 }
 
