@@ -4,7 +4,7 @@ import { SketchPicker } from 'react-color';
 import styles from "./style.module.scss";
 import clsx from 'clsx';
 import { useConfigContext } from '../../_configProvider';
-// import 'css-doodle';
+import CssDoodle from "../_CssDoodle";
 
 export default function Background() {
   const { config, handleConfigChange } = useConfigContext();
@@ -13,6 +13,11 @@ export default function Background() {
   const [open, setOpen] = useState(false);
 
   const anchorRef = useRef(null);
+  const cssDoodle = useRef([]);
+
+  const addRef = (index) => (ref) => {
+    cssDoodle.current[index] = ref;
+  };
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -233,7 +238,7 @@ export default function Background() {
           }
         </div>
       </Box>
-      {/* <Box className={styles.colorStyles}>
+      <Box className={styles.colorStyles}>
         <Typography className={styles.title} variant="h4">背景图</Typography>
         <div className={styles.cssDoodleList}>
         { cssDoodleList.map((el, index) => (
@@ -242,15 +247,11 @@ export default function Background() {
             onClick={() => onClickCssDoodle(el)}
             key={index}
           >
-            <css-doodle>
-              <style>
-                {el}
-              </style>
-            </css-doodle>
+            <CssDoodle ref={addRef(index)} rule={el} />
           </div>
         ))}
         </div>
-      </Box> */}
+      </Box>
     </Box>
   )
 }
