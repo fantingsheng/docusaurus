@@ -4,7 +4,7 @@ import { SketchPicker } from 'react-color';
 import styles from "./style.module.scss";
 import clsx from 'clsx';
 import { useConfigContext } from '../../_configProvider';
-import 'css-doodle';
+// import 'css-doodle';
 
 export default function Background() {
   const { config, handleConfigChange } = useConfigContext();
@@ -233,7 +233,7 @@ export default function Background() {
           }
         </div>
       </Box>
-      <Box className={styles.colorStyles}>
+      {/* <Box className={styles.colorStyles}>
         <Typography className={styles.title} variant="h4">背景图</Typography>
         <div className={styles.cssDoodleList}>
         { cssDoodleList.map((el, index) => (
@@ -250,7 +250,7 @@ export default function Background() {
           </div>
         ))}
         </div>
-      </Box>
+      </Box> */}
     </Box>
   )
 }
