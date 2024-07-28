@@ -11,9 +11,9 @@ export default function Preview({ transform, showBtn }) {
   const cssDoodle = useRef();
 
   const cssDoodleChange = () => {
-    console.log("onclcik")
     cssDoodle.current && cssDoodle.current.update();
-  }
+  };
+  
   return (
     <div className={styles.frameContent}>
       <div className={styles.frameBackgroundDisplay}>
@@ -26,7 +26,7 @@ export default function Preview({ transform, showBtn }) {
           !config.bgImg && <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} />
         }
         { !config.transparent && config.bgLayer && 
-          <CssDoodle ref={cssDoodle} rule={config.bgLayer} onClick={cssDoodleChange} />
+          <CssDoodle ref={cssDoodle} rule={config.bgLayer} cssDoodleChange={cssDoodleChange} />
         }
       </div>
       <div className={styles.displayContainer}>

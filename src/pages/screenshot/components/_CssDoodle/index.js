@@ -2,7 +2,7 @@ import React, { useEffect, forwardRef } from 'react';
 import { useConfigContext } from '../../_configProvider';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
-const CssDoodle = forwardRef(({ rule }, ref) => {
+const CssDoodle = forwardRef(({ rule, cssDoodleChange }, ref) => {
   const { config } = useConfigContext();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const CssDoodle = forwardRef(({ rule }, ref) => {
   }, []);
 
   return (
-    <css-doodle ref={ref}>
+    <css-doodle ref={ref} onClick={cssDoodleChange}>
       <style>
         {rule}
       </style>
