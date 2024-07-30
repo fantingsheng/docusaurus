@@ -22,10 +22,10 @@ export default function Frame() {
           <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Noise</Typography>
           <Slider
             aria-label="Noise"
+            valueLabelDisplay="auto"
             min={0}
             step={1}
             max={100}
-            valueLabelDisplay='auto'
             value={config.noise}
             onChange={e => onNoiseChange(e.target.value)}
           />

@@ -27,6 +27,7 @@ export default function BoxShadow({ shadow }) {
         <Slider
           value={config.shadowOpacity * 100}
           aria-label='shadow'
+          valueLabelDisplay="auto"
           min={10}
           step={1}
           max={70}

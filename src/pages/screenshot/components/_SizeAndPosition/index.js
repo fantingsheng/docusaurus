@@ -23,6 +23,7 @@ export default function SizeAndPosition() {
         <Slider
           value={config.scale}
           aria-label='Radius'
+          valueLabelDisplay="auto"
           min={0.5}
           step={0.01}
           max={1.5}
