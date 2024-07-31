@@ -90,6 +90,67 @@ function HomepageHeader() {
   );
 }
 
+function ProjectList() {
+  return (
+    <div className='container'>
+      <div className='row'>
+        <div className='col col--6 margin-vert--lg'>
+          <div className='card'>
+            <div className='card__header'>
+              <h3>图片套壳美化</h3>
+            </div>
+            <div className='card__body'>
+              <p>选择指定模型，帮你生成多种场景和样式经过美化的图片</p>
+            </div>
+            <div className='card__footer'>
+              <a className='button button--secondary button--block' href='/screenshot'>马上使用</a>
+            </div>
+          </div>
+        </div>
+        <div className='col col--6 margin-vert--lg'>
+          <div className='card'>
+            <div className='card__header'>
+              <h3>封面图生成</h3>
+            </div>
+            <div className='card__body'>
+              <p>输入文章的标题和作者名，选择图标即可生成一张封面图，支持多种布局样式</p>
+            </div>
+            <div className='card__footer'>
+              <a className='button button--secondary button--block' href='/coverview'>马上使用</a>
+            </div>
+          </div>
+        </div>
+        <div className='col col--6 margin-vert--lg'>
+          <div className='card'>
+            <div className='card__header'>
+              <h3>文字卡片生成</h3>
+            </div>
+            <div className='card__body'>
+              <p>你只需要输入一段文字，我们帮你生成不同样式的文字卡片</p>
+            </div>
+            <div className='card__footer'>
+              <a className='button button--secondary button--block' href='/memocard'>马上使用</a>
+            </div>
+          </div>
+        </div>
+        <div className='col col--6 margin-vert--lg'>
+          <div className='card'>
+            <div className='card__header'>
+              <h3>代码图片生成</h3>
+            </div>
+            <div className='card__body'>
+              <p>让代码以图片的方式展示和传播，支持多种背景和主题设置</p>
+            </div>
+            <div className='card__footer'>
+              <a className='button button--secondary button--block' href='/codeimage'>马上使用</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -100,6 +161,7 @@ export default function Home() {
       <main>
         <HomepageFeatures />
         <HomepageCodeBlock />
+        <ProjectList />
       </main>
     </Layout>
   );
