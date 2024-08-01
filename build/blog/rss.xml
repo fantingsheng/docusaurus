@@ -4,10 +4,41 @@
         <title>太空编程 Blog</title>
         <link>https://spacexcode.com/blog</link>
         <description>太空编程 Blog</description>
-        <lastBuildDate>Tue, 28 May 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 01 Aug 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-Hans</language>
+        <item>
+            <title><![CDATA[两个月后，我又开发了一款图片美化工具]]></title>
+            <link>https://spacexcode.com/blog/build-screenshot-tool</link>
+            <guid>https://spacexcode.com/blog/build-screenshot-tool</guid>
+            <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[博客已经两个月没有更新了，我去干啥了？这次不是偷懒，去搞了个大活！]]></description>
+            <content:encoded><![CDATA[<p>博客已经两个月没有更新了，我去干啥了？这次不是偷懒，去搞了个大活！</p>
+<p>连续做了几款图片导出工具后，这次决定做一个复杂点的，覆盖场景更丰富点的图片美化工具。结合前面的经验，技术上已经没什么障碍了。
+这种产品的唯一的挑战是 UI 设计，和部分功能的 UX。产品的审美一定要在线，才能吸引别人来使用你的工具。</p>
+<table><thead><tr><th>名称</th><th>链接</th><th>图片</th></tr></thead><tbody><tr><td><strong>封面图生成</strong></td><td><a href="https://spacexcode.com/coverview" target="_blank" rel="noopener noreferrer">spacexcode.com/coverview</a></td><td><img decoding="async" loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1709197073172-42cb76bd-9cfc-4cbb-be54-4e654657a66e.png" alt="" class="img_ev3q"></td></tr><tr><td><strong>文字卡片生成</strong></td><td><a href="https://spacexcode.com/memocard" target="_blank" rel="noopener noreferrer">spacexcode.com/memocard</a></td><td><img decoding="async" loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505197697-86c55814-d2d2-431c-ad88-1cbf37201054.png" alt="" class="img_ev3q"></td></tr><tr><td><strong>代码图片生成</strong></td><td><a href="https://spacexcode.com/codeimage" target="_blank" rel="noopener noreferrer">spacexcode.com/codeimage</a></td><td><img decoding="async" loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505333884-1d51f616-898e-4a1b-adbf-697863d9a904.png" alt="" class="img_ev3q"></td></tr></tbody></table>
+<p>所以我也是借鉴各种已有的相关产品，前期做了很多的调研。才渐渐确定了目前的软件设计。经常多次迭代，算是 1.0 版本吧，有了多款模型之后，
+决定正式发布上线，对外推广。</p>
+<p>这个产品的核心就是提供不同设备和场景下的模型，根据用户的喜好配置参数，然后导出适用不同平台尺寸的图片。</p>
+<p>整个界面分为三大块，按左 - 中 - 右的布局，页面全屏显示，不出现滚动条。左边为模型和框架的选择、参数的配置区域，中间是预览和一些功能
+按钮，右边是对图片的布局和变换样式的选择。</p>
+<p><img decoding="async" loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505827454-43547ea6-396c-4e03-9c35-87bc92607cac.png" alt="" class="img_ev3q"></p>
+<p>相较于市面上其它产品，我加了一个<strong>亮点功能</strong>：一键保存当前配置，方便下次替换图片直接使用。</p>
+<p>后续迭代计划：</p>
+<ul>
+<li>丰富模型库，提供更多的场景覆盖</li>
+<li>部分 UI 组件美化，例如滑动组件，一直不满意它的样式</li>
+<li>社区搭建，方便大家使用交流</li>
+</ul>
+<p>独立开发一款产品真的很费心力，需要充当多面手。但是如果做成之后收到大家的关注和使用，感觉一定会很棒！这也是支撑我一路做下来的动力。</p>
+<p>先做成一件事，这是我接下来不断付诸实践的目标。如果你也在从事开发工作，对自己的职业很迷茫，可以看看这篇<a href="http://symbol.iamkasong.com/" target="_blank" rel="noopener noreferrer">W.I.N第二曲线手册</a>。
+也许会有所收获。</p>]]></content:encoded>
+            <author>fants0230@sina.com (编程范儿)</author>
+            <category>图片美化</category>
+            <category>图片工具</category>
+            <category>截图美化</category>
+        </item>
         <item>
             <title><![CDATA[技术博客的内容形式发展趋势]]></title>
             <link>https://spacexcode.com/blog/the-change-of-blog</link>
@@ -582,7 +613,7 @@
 <p>我们给它增加一个场景：</p>
 <p>通常这种大树叶的绿植要么生长在热带雨林，要么被我们放在室内当做风景或者背景。</p>
 <!-- -->
-<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>17 : 34 : 42</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF" autoplay=""></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content:encoded>
+<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>18 : 05 : 19</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF" autoplay=""></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content:encoded>
             <author>fants0230@sina.com (编程范儿)</author>
             <category>CSS 动画</category>
             <category>设计</category>
@@ -1032,46 +1063,6 @@ Github Discussion 功能开发的开源的插件。用户要评论，首先得�
             <author>fants0230@sina.com (编程范儿)</author>
             <category>网格背景</category>
             <category>像素背景</category>
-        </item>
-        <item>
-            <title><![CDATA[Docusaurus V3.0 Beta 版本发布了 🎉]]></title>
-            <link>https://spacexcode.com/blog/docusaurus-v3-beta</link>
-            <guid>https://spacexcode.com/blog/docusaurus-v3-beta</guid>
-            <pubDate>Sat, 16 Sep 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[今天 Docusaurus v3 的 beta 版本发布了，意味着离正式版本发布不远了。很期待！]]></description>
-            <content:encoded><![CDATA[<p>今天 Docusaurus v3 的 beta 版本发布了，意味着离正式版本发布不远了。很期待！</p>
-<p>关注 Docusaurus 也快小半年了，个人体验特别好，是我目前使用过的最好的建站工具了。会一直持续下去。</p>
-<p>下面是官方的一些 release 信息，我也没有做特别的解读，简单翻译了下，等正式版出来，我会做个升级，然后分享详细的升级指南和新版本的特性以及功能点。</p>
-<p>Docusaurus v3 目前已经至少被3个主要的站点使用：Docusaurus (<a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">https://docusaurus.io</a>)、Jest (<a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer">https://jestjs.io</a>)
-和 React - Native (<a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">https://reactnative.dev</a>)。</p>
-<p>在这个过程中，我们解决了遇到的所有小问题。</p>
-<p>现在是时候将 v3 移至 beta 阶段了！</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="主要变化">主要变化<a class="hash-link" aria-label="主要变化的直接链接" title="主要变化的直接链接" href="https://spacexcode.com/blog/docusaurus-v3-beta#%E4%B8%BB%E8%A6%81%E5%8F%98%E5%8C%96">​</a></h3>
-<p>Docusaurus v3 主要是基础设施升级，特别是：</p>
-<ul>
-<li>MDX 2</li>
-<li>React 18</li>
-<li>TS 5</li>
-<li>Mermaid 10</li>
-</ul>
-<p>还有其他一些”功能性“破坏性变化，应该相对容易处理。UI 基本保持和最新的 v2.x 中一致。</p>
-<p>新功能并没有做详细介绍，而是等到最终版本发布的时候公布。</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="发布链接">发布链接<a class="hash-link" aria-label="发布链接的直接链接" title="发布链接的直接链接" href="https://spacexcode.com/blog/docusaurus-v3-beta#%E5%8F%91%E5%B8%83%E9%93%BE%E6%8E%A5">​</a></h3>
-<ul>
-<li>GitHub discussions: <a href="https://github.com/facebook/docusaurus/discussions/9312" target="_blank" rel="noopener noreferrer">3.0.0-beta.0</a></li>
-<li>GitHub release: <a href="https://github.com/facebook/docusaurus/releases/tag/v3.0.0-beta.0" target="_blank" rel="noopener noreferrer">https://github.com/facebook/docusaurus/releases/tag/v3.0.0-beta.0</a></li>
-<li>Docs PR: <a href="https://github.com/facebook/docusaurus/pull/9311" target="_blank" rel="noopener noreferrer">chore: v3.0.0-beta.0 release</a></li>
-<li>Tweet: <a href="https://twitter.com/sebastienlorber/status/1702742311514275978" target="_blank" rel="noopener noreferrer">https://twitter.com/sebastienlorber/status/1702742311514275978</a></li>
-</ul>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="重大变更">重大变更<a class="hash-link" aria-label="重大变更的直接链接" title="重大变更的直接链接" href="https://spacexcode.com/blog/docusaurus-v3-beta#%E9%87%8D%E5%A4%A7%E5%8F%98%E6%9B%B4">​</a></h3>
-<p>MDX v2 是 Docusaurus v3 中最令人困扰的重大变更：它可能需要您更新一些 <code>md/mdx</code> 文件，以确保它们仍然能够顺利编译。请阅读专用的 MDX v2 PR 以获取更多详细信息。</p>
-<p>特别是，诸如 <code>{</code> 和 <code>&lt;</code> 等字符可能会引发新的 MDX 编译错误。MDX v2 Playground 是您解决这些问题的新帮手。</p>
-<p>我们还创建了一个专用的支持讨论：<a href="https://github.com/facebook/docusaurus/discussions/9053" target="_blank" rel="noopener noreferrer">MDX v2 - Upgrade Support</a></p>
-<p>很快将会推出一个命令行工具。它应该提供一种方便的方法来检测哪些文档在 MDX v2 下无法编译。您可以运行 <code>npx docusaurus-mdx-checker</code> 来进行预览。</p>
-<p>如果你想了解详细的变更，请查看 -&gt; <a href="https://github.com/facebook/docusaurus/discussions/9312" target="_blank" rel="noopener noreferrer">https://github.com/facebook/docusaurus/discussions/9312</a></p>]]></content:encoded>
-            <author>fants0230@sina.com (编程范儿)</author>
-            <category>Docusuarus</category>
-            <category>更新</category>
         </item>
     </channel>
 </rss>
