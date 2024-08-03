@@ -128,10 +128,9 @@ function ProjectList() {
               </div>
               <div className='card__body'>
                 <p>{el.intro}</p>
-                <Image img={el.image} />
-              </div>
-              <div className='card__footer'>
-                <a className='button button--secondary button--block' href={el.link}>马上使用</a>
+                <Link to={el.link}>
+                  <Image img={el.image} />
+                </Link>
               </div>
             </div>
           </div>
