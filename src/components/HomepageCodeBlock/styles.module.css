@@ -27,3 +27,17 @@
             transform: translateY(8px);
   }
 }
+.formItem {
+  display: flex;
+  gap: 10px;
+  width: 85%;
+  margin: 10px auto 15px;
+}
+.subTitle {
+  margin: 10px;
+}
+.subText {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: rgba(0,0,0,.65);
+}
