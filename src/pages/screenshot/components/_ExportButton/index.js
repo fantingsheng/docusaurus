@@ -6,9 +6,10 @@ import { useState } from 'react';
 import { useConfigContext } from '../../_configProvider';
 import { toPng, toJpg, toBlob } from '@site/src/utils/image';
 import { downloadByUrl } from '@site/src/utils';
+import toast from 'react-hot-toast';
 
 export default function ExportButton({ coverRef }) {
-  const { config, handleConfigChange } = useConfigContext();
+  const { config } = useConfigContext();
 
   const [cn, setCn] = useState("export");
   const [loading, setLoading] = useState(false);
@@ -16,9 +17,9 @@ export default function ExportButton({ coverRef }) {
 
   const onHandleButtonClick = (bn) => {
     setCn(bn);
-    if (cn === 'export') {
+    if (bn === 'export') {
       downloadImage()
-    } else if (cn === 'copy') {
+    } else if (bn === 'copy') {
       handleCopyImg()
     }
   };
@@ -53,6 +54,7 @@ export default function ExportButton({ coverRef }) {
       .then(
         () => {
           console.log("复制成功!");
+          toast.success('复制成功', {position: 'bottom-center'});
         },
         (err) => {
           console.error(err);

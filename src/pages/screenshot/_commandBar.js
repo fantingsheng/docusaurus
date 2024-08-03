@@ -6,6 +6,7 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import { useConfigContext } from './_configProvider';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import toast from 'react-hot-toast';
 
 export default function CommandBar({ changeFullScreen }) {
   const { config, handleConfigChange, handleResetConfig } = useConfigContext();
@@ -34,6 +35,7 @@ export default function CommandBar({ changeFullScreen }) {
       });
       window.localStorage.setItem("screenShots", JSON.stringify(data));
       handleConfigChange(Date.now(), "id");
+      toast.success('保存成功', {position: 'bottom-center'});
     }
   }
 

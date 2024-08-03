@@ -13,6 +13,8 @@ import ExportButton from "./components/_ExportButton";
 import ExportSetting from "./components/_ExportSetting";
 import { ConfigProvider } from './_configProvider';
 import { Box } from '@mui/material';
+import toast, { Toaster } from 'react-hot-toast';
+
 export default function () {
   const { siteConfig } = useDocusaurusContext();
   const coverRef = useRef();
@@ -53,6 +55,7 @@ export default function () {
             <HisDataBar />
           </div>
           <ExportLayer coverRef={coverRef} />
+          <Toaster />
         </main>
       </ConfigProvider>
     </>
