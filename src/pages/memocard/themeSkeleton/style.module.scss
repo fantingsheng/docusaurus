@@ -61,3 +61,17 @@
     }
   }
 }
+
+.paper2Theme {
+  
+  .content {
+    position: relative;
+    background-color: rgba(255, 255, 255, 1);
+    border: 6px solid #fff;
+    
+    .svgFilterBg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -23,6 +23,7 @@ import NormalTheme from './themeSkeleton/NormalTheme';
 import GridTheme from './themeSkeleton/GridTheme';
 import PaperTheme from './themeSkeleton/PaperTheme';
 import ShadowTheme from './themeSkeleton/ShadowTheme';
+import Paper2Theme from './themeSkeleton/Paper2Theme';
 
 import FrequentQuestion from './FaqList';
 import MoreGradient from './MoreGradient';
@@ -338,6 +339,8 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
             onClick={() => handleConfigChange('paper', 'theme')}><PaperTheme /></div>
           <div className={clsx(styles.themeItem, config.theme === 'shadow' ? styles.on : '')}
             onClick={() => handleConfigChange('shadow', 'theme')}><ShadowTheme /></div>
+          <div className={clsx(styles.themeItem, config.theme === 'paper2' ? styles.on : '')}
+            onClick={() => handleConfigChange('paper2', 'theme')}><Paper2Theme /></div>
         </Box>
       </Box>
       <Box className={styles.setItem}>
