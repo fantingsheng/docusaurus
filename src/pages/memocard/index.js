@@ -12,7 +12,7 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CopyAll from '@mui/icons-material/CopyAll';
 import RandomTheme from './RandomTheme';
 import TextCard from './TextCard';
-import { ColorPicker } from 'material-ui-color';
+import { SketchPicker } from 'react-color';
 import { styled } from '@mui/material/styles';
 import styles from './style.module.scss';
 import clsx from 'clsx';
@@ -264,8 +264,10 @@ export function ContentForm ({ config, handleConfigChange }) {
 
 export function ConfigForm ({ config, handleConfigChange, downloadImage, handleCopyImg }) {
   const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [copied, setCopied] = useState(false);
   const anchorRef = useRef(null);
+  const anchorRef1 = useRef(null);
   const fontOptions = [
     { label: '黑体', value: 'simhei' },
     { label: '宋体', value: 'simsun' },
@@ -274,9 +276,13 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
   ];
   const fontSizeOptions = [
     { label: '12px', value: 12 },
+    { label: '13px', value: 13 },
     { label: '14px', value: 14 },
+    { label: '15px', value: 15 },
     { label: '16px', value: 16 },
+    { label: '17px', value: 17 },
     { label: '18px', value: 18 },
+    { label: '19px', value: 19 },
     { label: '20px', value: 20 }
   ]
   const bgColorOptions = [
@@ -295,11 +301,22 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     setOpen((prevOpen) => !prevOpen);
   };
 
+  const handleVisible = () => {
+    setVisible((prevOpen) => !prevOpen);
+  };
+
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
     setOpen(false);
+  };
+
+  const handleVisibleClose = (event) => {
+    if (anchorRef1.current && anchorRef1.current.contains(event.target)) {
+      return;
+    }
+    setVisible(false);
   };
   const handleMenuItemClick = (event, scale, format) => {
     downloadImage(scale, format);
@@ -325,6 +342,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     handleConfigChange('', 'bgImg');
     handleConfigChange('', 'gradientBgColor');
   }
+
   return (
     <>
       <Box className={styles.setItem}>
@@ -353,11 +371,42 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           <MoreGradient handleConfigChange={handleConfigChange} />
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-          <ColorPicker
+          <div ref={anchorRef1} className={styles.colorPicker} style={{ backgroundColor: config.bgColor }} onClick={handleVisible} />
+          <TextField
             value={config.bgColor}
-            onChange={val => handleBgColorClick(`#${val.hex}`)}
-            sx={{ width: '60px' }}
+            onChange={e => handleBgColorClick(e.target.value, 'bgColor')}
+            size='small'
+            variant='standard'
+            sx={{ width: '100px' }}
           />
+          <Popper
+            sx={{ zIndex: 5, minWidth: '200px' }}
+            open={visible}
+            placement="bottom"
+            anchorEl={anchorRef1.current}
+            role={undefined}
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === 'bottom' ? 'center top' : 'center bottom',
+                }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={handleVisibleClose}>
+                    <SketchPicker
+                      color={config.bgColor}
+                      onChangeComplete={(color) => handleBgColorClick(color.hex)}
+                    />
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
           <RandomTheme onThemeChange={(theme, Pattern) => handleBgColorClick(theme.bgColor)} />
           <Button component="label" variant="contained" sx={{ padding: '2px 0px', minWidth: '30px', margin: '0 0 6px 2px' }}>
             <AddPhotoAlternateIcon sx={{ fontSize: 20, marginRight: '0' }} />
@@ -524,13 +573,13 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
         <Typography variant="h5">卡片宽度</Typography>
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <Typography variant="caption">400px</Typography>
+            <Typography variant="caption">320px</Typography>
           </Grid>
           <Grid item xs sx={{ display: 'flex' }}>
             <Slider
               value={config.width}
               aria-label='Default'
-              min={400}
+              min={320}
               max={860}
               size='small'
               valueLabelDisplay='auto'
@@ -570,13 +619,13 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem>
                     <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'png')}>
-                      PNG / 1X 
+                      PNG / 1X
                     </MenuItem>
                     <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'png')}>
-                      PNG / 2X 
+                      PNG / 2X
                     </MenuItem>
                     <MenuItem onClick={(event) => handleMenuItemClick(event, 1, 'jpg')}>
-                      JPG / 1X 
+                      JPG / 1X
                     </MenuItem>
                     <MenuItem onClick={(event) => handleMenuItemClick(event, 2, 'jpg')}>
                       JPG / 2X

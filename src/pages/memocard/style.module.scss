@@ -171,6 +171,13 @@
     }
   }
 }
+.colorPicker {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  margin: 6px 4px;
+  cursor: pointer;
+}
 .clearColor {
   position: relative;
   border: 1px solid rgb(196, 196, 196);
