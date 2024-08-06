@@ -117,6 +117,7 @@ const config = {
           { label: '关于', position: 'right', items: [
             { to: '/about', label: '关于本站' },
             { to: '/author', label: '了解作者' },
+            { to: '/material', label: '品牌物料' },
             { to: '/release/log', label: '更新日志' }
           ] }
         ],
