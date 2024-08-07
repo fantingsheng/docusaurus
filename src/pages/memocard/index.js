@@ -326,7 +326,6 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
   };
   const onHandleCopyImg = () => {
     handleCopyImg(() => {
-      console.log()
       setCopied(true);
     })
   };
