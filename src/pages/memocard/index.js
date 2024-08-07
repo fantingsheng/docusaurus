@@ -292,8 +292,10 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     'linear-gradient(345deg,rgb(211,89,255),rgb(228,99,255),rgb(255,123,247),rgb(255,154,218),rgb(255,185,208),rgb(255,209,214),rgb(255,219,219))',
     'linear-gradient(150deg, #ef32d9, #89fffd)',
     'linear-gradient(25deg, #7c2df3, #7167f7, #5992fb, #00b9ff)',
+    'linear-gradient(140deg, rgb(255, 100, 50) 12.8%, rgb(255, 0, 101) 43.52%, rgb(123, 46, 255) 84.34%)',
     'linear-gradient(25deg, #00b7f7, #a2b7b5, #d5b871, #f6b900)',
     'linear-gradient(150deg,rgb(0,224,245),rgb(31,158,255),rgb(51,85,255))',
+    'linear-gradient(-45deg, rgb(114, 122, 154), rgb(216, 219, 233))',
     'linear-gradient(150deg,rgb(0,176,158),rgb(19,77,93),rgb(16,23,31))',
     'linear-gradient(150deg,rgb(95,108,138),rgb(48,59,94),rgb(14,18,38))'
   ]
