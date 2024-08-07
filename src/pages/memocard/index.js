@@ -132,7 +132,7 @@ export function Main({ normal }) {
           </Box>
           {
             normal ? 
-            <Box className={styles.card} sx={{ padding: '10px 20px 40px', marginTop: '24px' }}>
+            <Box className={styles.card} sx={{ padding: '20px 20px 30px', marginTop: '24px' }}>
               <ContentForm config={config} handleConfigChange={handleConfigChange} />
             </Box>
             : <></>
@@ -141,7 +141,7 @@ export function Main({ normal }) {
         {
           !normal ? 
           <Grid item xs={12} md={6}>
-            <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
+            <Box className={styles.card} sx={{ padding: '20px 20px 30px' }}>
               <ContentForm config={config} handleConfigChange={handleConfigChange} />
             </Box>
           </Grid>
@@ -149,7 +149,7 @@ export function Main({ normal }) {
         }
           {/* 配置 */}
         <Grid item xs={12} md={normal ? 4 : 6}>
-          <Box className={styles.card} sx={{ padding: '10px 20px 40px' }}>
+          <Box className={styles.card} sx={{ padding: '20px 20px 30px' }}>
             <ConfigForm config={config} handleConfigChange={handleConfigChange} downloadImage={downloadImage} handleCopyImg={handleCopyImg} />
           </Box>
         </Grid>
@@ -174,7 +174,7 @@ export function ContentForm ({ config, handleConfigChange }) {
 
   return (
     <>
-      <Box className={styles.setItem}>
+      <Box className={styles.setItem} sx={{ marginTop: 0 }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography variant="h5">📝 在这里输入卡片上的文字内容</Typography>
           <span>
@@ -345,7 +345,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
 
   return (
     <>
-      <Box className={styles.setItem}>
+      <Box className={styles.setItem} sx={{ marginTop: 0 }}>
         <Typography variant="h5">主题</Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
           {/* 主题列表 */}
