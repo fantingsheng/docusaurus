@@ -278,7 +278,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     }
     if (themeName === 'mobile') {
       console.log("themeName", themeName)
-      handleConfigChange('/page/coverview-mbg.png', 'bgImg');
+      handleConfigChange('/page/coverview-mbg.jpg', 'bgImg');
     } else {
       handleConfigChange('/page/coverview-bg.png', 'bgImg');
     }
