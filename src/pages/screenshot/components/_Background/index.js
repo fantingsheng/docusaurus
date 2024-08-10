@@ -104,6 +104,10 @@ export default function Background() {
     background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8))`
   ]
 
+  const imageList = [
+    "/screenshot/bgImg/macos-big-sur.jpg"
+  ]
+
   const onClickSolidColor = (color) => {
     handleConfigChange(false, "transparent");
     handleConfigChange("", "bgImg");
@@ -240,16 +244,27 @@ export default function Background() {
       </Box>
       <Box className={styles.colorStyles}>
         <Typography className={styles.title} variant="h4">背景图</Typography>
-        <div className={styles.cssDoodleList}>
-        { cssDoodleList.map((el, index) => (
+        {/* <div className={styles.cssDoodleList}>
+          { cssDoodleList.map((el, index) => (
+            <div
+              className={clsx(styles.colorRect, config.bgLayer === el ? styles.active : '')}
+              onClick={() => onClickCssDoodle(el)}
+              key={index}
+            >
+              <CssDoodle ref={addRef(index)} rule={el} />
+            </div>
+          ))}
+        </div> */}
+        <div className={styles.imageList}>
+          { imageList.map((el, index) => (
           <div
-            className={clsx(styles.colorRect, config.bgLayer === el ? styles.active : '')}
-            onClick={() => onClickCssDoodle(el)}
+            className={clsx(styles.colorRect, config.bgImg === el ? styles.active : '')}
+            onClick={() => onClickUploadBg(el)}
             key={index}
           >
-            <CssDoodle ref={addRef(index)} rule={el} />
+            <div className={styles.img} style={{ backgroundImage: `url(${el})` }}></div>
           </div>
-        ))}
+          ))}
         </div>
       </Box>
     </Box>

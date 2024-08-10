@@ -92,13 +92,22 @@
 
   .colorRect {
     aspect-ratio: 4/3;
-    
-    // &::before {
-    //   content: "";
-    //   position: absolute;
-    //   top: 0; left: 0; bottom: 0; right: 0;
-    //   backdrop-filter: blur(4px);
-    //   z-index: 1;
-    // }
+  }
+}
+
+.imageList {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+
+  .colorRect {
+    aspect-ratio: 4/3;
+
+    .img {
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: 100% 100%;
+    }
   }
 }
