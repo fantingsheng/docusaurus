@@ -107,7 +107,13 @@ export default function Background() {
   const imageList = [
     '/screenshot/bgImg/macos-big-sur-small.jpg',
     '/screenshot/bgImg/macos-big-sur-dark-small.jpg',
-    '/screenshot/bgImg/macos-big-sur-colorful-small.jpg'
+    '/screenshot/bgImg/macos-big-sur-colorful-small.jpg',
+    '/screenshot/bgImg/macos-big-sur-colorful-dark-small.jpg',
+    '/screenshot/bgImg/macos-monterey-small.jpg',
+    '/screenshot/bgImg/macos-monterey-dark-small.jpg',
+    '/screenshot/bgImg/autumnal-peach-small.png',
+    '/screenshot/bgImg/blossom-2-small.png',
+    '/screenshot/bgImg/good-vibes-small.png'
   ]
 
   const onClickSolidColor = (color) => {
