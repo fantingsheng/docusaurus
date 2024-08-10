@@ -105,7 +105,9 @@ export default function Background() {
   ]
 
   const imageList = [
-    "/screenshot/bgImg/macos-big-sur.jpg"
+    '/screenshot/bgImg/macos-big-sur.jpg',
+    '/screenshot/bgImg/macos-big-sur-dark.jpg',
+    '/screenshot/bgImg/macos-big-sur-colorful.jpg'
   ]
 
   const onClickSolidColor = (color) => {
