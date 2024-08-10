@@ -105,9 +105,9 @@ export default function Background() {
   ]
 
   const imageList = [
-    '/screenshot/bgImg/macos-big-sur.jpg',
-    '/screenshot/bgImg/macos-big-sur-dark.jpg',
-    '/screenshot/bgImg/macos-big-sur-colorful.jpg'
+    '/screenshot/bgImg/macos-big-sur-small.jpg',
+    '/screenshot/bgImg/macos-big-sur-dark-small.jpg',
+    '/screenshot/bgImg/macos-big-sur-colorful-small.jpg'
   ]
 
   const onClickSolidColor = (color) => {
@@ -261,7 +261,7 @@ export default function Background() {
           { imageList.map((el, index) => (
           <div
             className={clsx(styles.colorRect, config.bgImg === el ? styles.active : '')}
-            onClick={() => onClickUploadBg(el)}
+            onClick={() => onClickUploadBg(el.replace('-small', ''))}
             key={index}
           >
             <div className={styles.img} style={{ backgroundImage: `url(${el})` }}></div>
