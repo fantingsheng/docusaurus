@@ -119,9 +119,9 @@ function ProjectList() {
   ]
   return (
     <div className='container'>
-      <div className='row'>
+      <div className='row margin-bottom--lg'>
         {PrjLst.map((el, index) => (
-          <div className='col col--6 margin-vert--lg' key={index}>
+          <div className='col col--6 margin-top--lg' key={index}>
             <div className='card'>
               <div className='card__header'>
                 <h3>{el.title}</h3>
