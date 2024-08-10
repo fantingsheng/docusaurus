@@ -88,7 +88,7 @@ export default function ExportSetting() {
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">导出图片尺寸</Typography>
-                    <TextField fullWidth label={`${config.width} x ${config.height}`} size="small" variant="filled" disabled />
+                    <TextField fullWidth label={`${config.width * config.expScale} x ${config.height * config.expScale}`} size="small" variant="filled" disabled />
                   </Box>
                 </Box>
               </ClickAwayListener>
