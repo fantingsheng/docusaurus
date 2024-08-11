@@ -180,7 +180,7 @@ export default function Background() {
           <span>{ customColor || '#ffffff' }</span>
         </Button>
         <Button
-          className={clsx(styles.bgButton, config.bgImg ? styles.active : '')}
+          className={clsx(styles.bgButton, config.bgImg && config.bgImg.startsWith('blob') ? styles.active : '')}
           component="label"
           variant="outlined"
           fullWidth
