@@ -266,7 +266,7 @@ export default function Background() {
         <div className={styles.imageList}>
           { imageList.map((el, index) => (
           <div
-            className={clsx(styles.colorRect, config.bgImg === el ? styles.active : '')}
+            className={clsx(styles.colorRect, config.bgImg === el.replace('-small', '') ? styles.active : '')}
             onClick={() => onClickUploadBg(el.replace('-small', ''))}
             key={index}
           >
