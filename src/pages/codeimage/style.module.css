@@ -22,6 +22,7 @@
   cursor: col-resize;
   top: 0;
   bottom: 0;
+  user-select: none;
 }
 .handDrag::after {
   position: absolute;
@@ -144,6 +145,10 @@
   caret-color: white;
   text-size-adjust: none;
 }
+.editorTextarea::-webkit-scrollbar {
+  width: 0!important;
+  height: 0!important;
+}
 .editorTextarea, .codeFormatted {
   padding: 16px 16px 21px 16px;
   margin: 0;
@@ -175,14 +180,34 @@
   --syntax-attribute: #C88E8E;
   --syntax-tag: #EB6F6F;
 }
+.sizeReset {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+.sizeReset a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  color: rgba(0,0,0,.3);
+  cursor: pointer;
+  font-size: 11px;
+  line-height: 1;
+  gap: 0.6em;
+  transition: color .2s;
+}
 .setBar {
   margin-top: 80px;
   display: flex;
   align-items: center;
-  padding: 15px 24px;
+  padding: 15px 20px;
   box-shadow: 0 1px 2px 1px #0000001a;
   border-radius: 8px;
-  gap: 36px;
+  gap: 42px;
 }
 .setItem {
   font-size: 14px;
