@@ -144,6 +144,12 @@
   color: transparent;
   caret-color: white;
   text-size-adjust: none;
+  height: auto;
+  counter-increment: step 0;
+  counter-reset: step;
+  tab-size: 2;
+  transition: padding .2s;
+  white-space: pre-wrap;
 }
 .editorTextarea::-webkit-scrollbar {
   width: 0!important;
@@ -152,7 +158,8 @@
 .editorTextarea, .codeFormatted {
   padding: 16px 16px 21px 16px;
   margin: 0;
-  font: var(--ifm-font-size-base) / var(--ifm-line-height-base) var(--ifm-font-family-base);
+  font-size: 15px;
+  line-height: 22.5px;
   font-weight: 500;
   font-family: 'JetBrains Mono', monospace;
   font-variant-ligatures: none;

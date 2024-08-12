@@ -94,6 +94,7 @@ export default function Main () {
 
   useEffect(() => {
     if (codeRef.current) {
+      console.log("codeRef.current.offsetHeight", codeRef.current.offsetHeight)
       setEditorHeight(codeRef.current.offsetHeight)
     }
   }, [codeRef.current])
@@ -188,7 +189,6 @@ export default function Main () {
                             autoCapitalize='off'
                             value={code}
                             onChange={onInputChange}
-                            style={{ height: editorHeight + 'px' }}
                           />
                           <div
                             id={settings.lang}
