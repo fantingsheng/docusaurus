@@ -8,12 +8,12 @@ import { Box, Typography } from '@mui/material';
 
 export default function AboutShot() {
   const pageUrl = "https://spacexcode.com/screenshot";
-  const shareTitle = "图片套壳美化工具 | 太空编程 | 选择指定模型，帮你生成多种场景和样式经过美化的图片";
-  const shareImg = "https://spacexcode.com/screenshot/mockup/screenshot.png";
+  const shareTitle = "图片套壳美化工具 - 太空编程 | 选择指定模型，帮你生成多种场景和样式经过美化的图片";
+  const shareImg = "https://spacexcode.com/page/screenshot.png";
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '40px' }}>
-      <Box sx={{  }}>
+      <Box>
         <QuiltedImageList />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>

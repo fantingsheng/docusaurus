@@ -98,8 +98,8 @@ export default function LeftSideBar({ children }) {
         </div>
       </div>
       <Dialog onClose={() => setVisible(false)} maxWidth="md" open={visible}>
-        <DialogTitle>欢迎使用图片套壳美化工具</DialogTitle>
-        <DialogContent>
+        <DialogTitle sx={{ backgroundColor: '#fff' }}>欢迎使用图片套壳美化工具</DialogTitle>
+        <DialogContent sx={{ backgroundColor: '#fff' }}>
           <AboutShot />
         </DialogContent>
       </Dialog>
