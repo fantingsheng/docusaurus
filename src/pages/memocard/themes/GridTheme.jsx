@@ -12,6 +12,9 @@ export default function GridTheme ({ config }) {
       style={{ 
         backgroundColor: bgColor,
         backgroundImage: bgImg ? `url(${bgImg})` :  gradientBgColor,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: '100%',
         width: width + 'px',
         padding: `${vertPad}px ${horizPad}px`
       }}
