@@ -4,7 +4,7 @@ import { SketchPicker } from 'react-color';
 import styles from "./style.module.scss";
 import clsx from 'clsx';
 import { useConfigContext } from '../../_configProvider';
-import CssDoodle from "../_CssDoodle";
+// import CssDoodle from "../_CssDoodle";
 
 export default function Background() {
   const { config, handleConfigChange } = useConfigContext();

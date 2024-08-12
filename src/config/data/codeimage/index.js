@@ -6,7 +6,10 @@ export const colorBgList = [
   { name: 'Meadow', theme: 'linear-gradient(140deg, rgb(89, 212, 153), rgb(160, 135, 45))' },
   { name: 'Midnight', theme: 'linear-gradient(140deg, rgb(76, 200, 200), rgb(32, 32, 51))' },
   { name: 'Raindrop', theme: 'linear-gradient(140deg, rgb(142, 199, 251), rgb(28, 85, 170))' },
-  { name: 'Sunset', theme: 'linear-gradient(140deg, rgb(255, 207, 115), rgb(255, 122, 47))' }
+  { name: 'Sunset', theme: 'linear-gradient(140deg, rgb(255, 207, 115), rgb(255, 122, 47))' },
+  { name: 'Mono', theme: 'linear-gradient(140deg, rgb(51, 51, 51), rgb(24, 24, 24))' },
+  { name: 'Forest', theme: 'linear-gradient(140deg, rgb(80, 104, 83), rgb(33, 50, 35))' },
+  { name: 'Sand', theme: 'linear-gradient(140deg, rgb(238, 213, 182), rgb(175, 136, 86))' }
 ]
 
 export const langList = [

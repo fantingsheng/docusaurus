@@ -182,10 +182,10 @@
   padding: 15px 24px;
   box-shadow: 0 1px 2px 1px #0000001a;
   border-radius: 8px;
-  gap: 42px;
+  gap: 36px;
 }
 .setItem {
-  font-size: 13px;
+  font-size: 14px;
   display: flex;
   height: 76px;
   flex-direction: column;

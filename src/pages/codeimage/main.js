@@ -8,6 +8,7 @@ import { colorBgList, langList } from '@site/src/config/data/codeimage';
 import hljs from '../../config/highlight';
 import { toPng, toJpg, toBlob } from '@site/src/utils/image';
 import { downloadByUrl } from '@site/src/utils';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Main () {
   const codeRef = useRef(null);
@@ -84,7 +85,7 @@ export default function Main () {
     setSettings((prev) => ({ ...prev, [key]: val }))
   }
   
-  const exportImg = async () => {
+  const onExport = async () => {
     if (!imgCode.current) return;
     const dataUrl = await toPng(imgCode.current, {
       pixelRatio: 1
@@ -92,6 +93,30 @@ export default function Main () {
     const date = new Date();
     const fileName = `spacexcode-codeimage-${date.getMinutes()}${date.getSeconds()}.png`;
     downloadByUrl(dataUrl, fileName);
+  }
+
+  const onCopy = async () => {
+    if (!imgCode.current) return;
+    const blob = await toBlob(imgCode.current, {
+      pixelRatio: 1
+    })
+    const data = [
+      new ClipboardItem({
+        [blob.type]: blob,
+      })
+    ];
+    await navigator.clipboard.write(data)
+      .then(
+        () => {
+          console.log("复制成功!");
+          toast.success('复制成功', {position: 'bottom-center'});
+        },
+        (err) => {
+          console.error(err);
+        }
+      ).catch((err) => {
+        console.error(err);
+      })
   }
   return (
     <div className='container'>
@@ -164,6 +189,7 @@ export default function Main () {
                   value={settings.theme}
                   size='small'
                   onChange={e => handleSetting(e.target.value, 'theme')}
+                  sx={{  }}
                 >
                   {colorBgList.map(el => (
                     <MenuItem value={el.theme} key={el.name}>
@@ -198,7 +224,7 @@ export default function Main () {
                     getAriaValueText={val => `${val}px`}
                     valueLabelDisplay="auto"
                     step={16}
-                    marks={[{value: 16, label: '16px'}, {value: 32, label: '32px'}, {value: 64, label: '64px'}, {value: 128, label: '128px'}]}
+                    marks={[{value: 16, label: '16'}, {value: 32, label: '32'}, {value: 64, label: '64'}, {value: 128, label: '128'}]}
                     min={16}
                     max={128}
                   />
@@ -213,9 +239,11 @@ export default function Main () {
                 </Select>
               </div>
               <div className={styles.setItem}>
-                <Button variant='contained' onClick={exportImg}>导出图片</Button>
+                <Button variant='contained' onClick={onExport} fullWidth>导出图片</Button>
+                <Button variant='contained' onClick={onCopy} fullWidth>复制</Button>
               </div>
             </div>
+            <Toaster />
           </div>
         </div>
       </div>

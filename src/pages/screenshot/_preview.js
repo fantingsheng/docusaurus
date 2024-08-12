@@ -1,7 +1,7 @@
 import styles from "./style.module.scss";
 import CoverTheme from "./_themes";
 import clsx from 'clsx';
-import CssDoodle from "./components/_CssDoodle";
+// import CssDoodle from "./components/_CssDoodle";
 import { useRef } from 'react';
 import { useConfigContext } from './_configProvider';
 
@@ -25,9 +25,9 @@ export default function Preview({ transform, showBtn }) {
         { !config.transparent && config.bg &&
           !config.bgImg && <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} />
         }
-        { !config.transparent && config.bgLayer && 
+        {/* { !config.transparent && config.bgLayer && 
           <CssDoodle ref={cssDoodle} rule={config.bgLayer} cssDoodleChange={cssDoodleChange} />
-        }
+        } */}
       </div>
       <div className={styles.displayContainer}>
         <div className={clsx(styles.mockupModule, styles[config.theme])} style={{ transform: transform, display: config.hideMockup ? 'none' : 'block' }}>
