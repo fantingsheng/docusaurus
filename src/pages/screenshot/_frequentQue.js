@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from './style.module.scss';
+import Image from '@theme/IdealImage';
 
 export default function FrequentQuestion () {
   const [expanded, setExpanded] = React.useState(false);
@@ -17,6 +18,8 @@ export default function FrequentQuestion () {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>复制后可以粘贴在常用的富文本编辑器中，微信、QQ、钉钉等聊天工具框中。</Typography>
+          <Typography sx={{ marginBottom: '10px' }}>还有在微博、X、掘金沸点等社交平台输入框中直接粘贴操作，会自动以图片的格式显示，非常方便。</Typography>
+          <Image img="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1723431657226-fb904004-29eb-42c9-baf4-4217464ad524.png" />
         </AccordionDetails>
       </Accordion>
       <Accordion className={styles.accordion} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -29,10 +32,10 @@ export default function FrequentQuestion () {
       </Accordion>
       <Accordion className={styles.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel3bh-content">
-          <Typography>我在一台电脑上保存的数据为什么换台电脑不能用？</Typography>
+          <Typography>我在自己电脑上保存的数据为什么换台电脑不能用？</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>该网站数据保存在本地，使用的浏览器接口的本地存储，有效期只要不主动删除会一直存在。</Typography>
+          <Typography>该网站数据保存在本地，使用的浏览器接口的本地存储（localStorage），有效期只要不主动删除会一直存在。不同浏览器之间数据不能共享。</Typography>
         </AccordionDetails>
       </Accordion>
     </>

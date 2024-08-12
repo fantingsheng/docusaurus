@@ -17,6 +17,7 @@ export default function FrequentQuestion () {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>复制后可以粘贴在常用的富文本编辑器中，微信、QQ、钉钉等聊天工具框中。</Typography>
+          <Typography>还有在微博、X、掘金沸点等社交平台输入框中直接粘贴操作，会自动以图片的格式显示，非常方便。</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion className={styles.accordion} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -24,7 +25,7 @@ export default function FrequentQuestion () {
           <Typography>为什么导出的图片和左边展示区域的有差异？</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>导出图片使用的是 <a href="https://html2canvas.hertzen.com/">html2canvas</a> 这个库。会有一些支持的不够好的 CSS 属性导致图片略有差异。🥶</Typography>
+          <Typography>导出图片使用的是 <a href="https://www.npmjs.com/package/html-to-image/">html-to-image</a> 这个库。会有一些支持的不够好的 CSS 属性导致图片略有差异。🥶</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion className={styles.accordion} expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
