@@ -252,7 +252,7 @@ export function ContentForm ({ config, handleConfigChange }) {
           error={!!config.url && !reg.test(config.url)}
           value={config.url}
           onChange={e => handleConfigChange(e.target.value, 'url')}
-          placeholder='链接地址'
+          placeholder='https://spacexcode.com'
           className={styles.sizeInput}
           size='small'
           fullWidth
