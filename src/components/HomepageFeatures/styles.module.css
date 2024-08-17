@@ -6,8 +6,8 @@
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  height: 280px;
+  width: 280px;
 }
 .starSvg {
   animation: pulse 1.8s cubic-bezier(.4,0,.6,1) infinite;

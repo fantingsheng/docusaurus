@@ -147,7 +147,7 @@ export default function Main () {
       <div className='row'>
         <div className='col col--12'>
           <div className={styles.mainWrap}>
-            <AnimateLinear pad='0' borderBg={settings.hasBg ? settings.theme : 'transparent'}>
+            <AnimateLinear pad='0' borderBg={settings.hasBg ? settings.theme : 'transparent'} overflow='visibility'>
               <div className={styles.resizeFrame}>
                 <div className={clsx(styles.handDrag, styles.dragLeft)} onMouseDown={e => handleStartResize(e, 'left')}></div>
                 <div className={clsx(styles.handDrag, styles.dragRight)} onMouseDown={e => handleStartResize(e, 'right')}></div>

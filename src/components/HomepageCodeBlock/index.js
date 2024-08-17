@@ -110,7 +110,7 @@ export default function HomepageCodeBlock() {
                   <TextField
                     type="email"
                     name='email'
-                    placeholder='fants@spacexcode.com'
+                    placeholder='user@spacexcode.com'
                     size='small'
                     fullWidth
                     autoComplete='off'

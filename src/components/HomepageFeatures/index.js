@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/coding.svg').default,
     description: (
       <>
-       我的梦想，就是可以到太空中去编程。<br />打开深色终端，上面一个个运行的代码字符就如同置身浩航宇宙中的点点星光。
+       我的梦想，就是可以到太空中去编程。<br />打开深色的终端，跳出来一个个可以运行的代码字符，就如同置身浩航宇宙中的点点星光。
       </>
     ),
   }

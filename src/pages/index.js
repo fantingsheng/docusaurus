@@ -75,7 +75,7 @@ function HomepageHeader() {
         </div>
         <div className='row'>
           <div className='col col--8 col--offset-2'>
-            <div className='margin-top--xl'>
+            <div className={styles.searchDiv}>
               <SearchBar />
             </div>
           </div>
