@@ -1,5 +1,5 @@
 import React, { useRef, useCallback, forwardRef, useState, useImperativeHandle } from "react";
-import classnames from "classnames";
+import clsx from "clsx";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from '@docusaurus/useGlobalData';
@@ -106,7 +106,7 @@ const Search = forwardRef((props, ref) => {
         <span
           aria-label="expand searchbar"
           role="button"
-          className={classnames("search-icon", {
+          className={clsx("search-icon", {
             "search-icon-hidden": props.isSearchBarExpanded
           })}
           onClick={toggleSearchIconClick}
@@ -118,7 +118,7 @@ const Search = forwardRef((props, ref) => {
           type="search"
           placeholder={indexReady ? '请输入你要搜索的内容' : '加载中...'}
           aria-label="Search"
-          className={classnames(
+          className={clsx(
             "navbar__search-input",
             { "search-bar-expanded": props.isSearchBarExpanded },
             { "search-bar": !props.isSearchBarExpanded }
