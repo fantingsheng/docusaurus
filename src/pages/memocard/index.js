@@ -12,7 +12,7 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CopyAll from '@mui/icons-material/CopyAll';
 import RandomTheme from './RandomTheme';
 import TextCard from './TextCard';
-import { SketchPicker } from 'react-color';
+import ColorPicker from '@site/src/components/ColorPicker';
 import { styled } from '@mui/material/styles';
 import styles from './style.module.scss';
 import clsx from 'clsx';
@@ -255,6 +255,7 @@ export function ContentForm ({ config, handleConfigChange }) {
           placeholder='https://spacexcode.com'
           className={styles.sizeInput}
           size='small'
+          autoComplete='false'
           fullWidth
         />
       </Box>
@@ -369,52 +370,20 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
       </Box>
       <Box className={styles.setItem}>
         <Typography variant="h5">背景</Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
           {bgColorOptions.map((el, index) => (
             <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
               onClick={() => handleBgGradientClick(el)} key={index}></div>
           ))}
           <MoreGradient handleConfigChange={handleConfigChange} />
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-          <div ref={anchorRef1} className={styles.colorPicker} style={{ backgroundColor: config.bgColor }} onClick={handleVisible} />
-          <TextField
-            value={config.bgColor}
-            onChange={e => handleBgColorClick(e.target.value, 'bgColor')}
-            size='small'
-            variant='standard'
-            sx={{ width: '100px' }}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '5px' }}>
+          <ColorPicker
+            defaultColor={config.bgColor}
+            onChange={(color) => handleBgColorClick(color)}
           />
-          <Popper
-            sx={{ zIndex: 5, minWidth: '200px' }}
-            open={visible}
-            placement="bottom"
-            anchorEl={anchorRef1.current}
-            role={undefined}
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === 'bottom' ? 'center top' : 'center bottom',
-                }}
-              >
-                <Paper>
-                  <ClickAwayListener onClickAway={handleVisibleClose}>
-                    <SketchPicker
-                      color={config.bgColor}
-                      onChangeComplete={(color) => handleBgColorClick(color.hex)}
-                    />
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
           <RandomTheme onThemeChange={(theme, Pattern) => handleBgColorClick(theme.bgColor)} />
-          <Button component="label" variant="contained" sx={{ padding: '2px 0px', minWidth: '30px', margin: '0 0 6px 2px' }}>
+          <Button component="label" variant="contained" sx={{ padding: '2px 0px', minWidth: '30px' }}>
             <AddPhotoAlternateIcon sx={{ fontSize: 20, marginRight: '0' }} />
             <VisuallyHiddenInput type="file" onChange={handleBgUpload} />
           </Button>

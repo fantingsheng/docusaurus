@@ -5,7 +5,7 @@ import { FormControl, Avatar, SpeedDial, SpeedDialAction, Select,
 import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import BrowserWindow from '@site/src/components/BrowserWindow'
-import { ColorPicker } from 'material-ui-color';
+import ColorPicker from '@site/src/components/ColorPicker';
 import Image from '@theme/IdealImage';
 import { shapePathMap, shapeOptions } from '@site/src/config/data/shapedivider/wave';
 import styles from './style.module.css';
@@ -104,7 +104,7 @@ export default function Form () {
                 <Grid item xs={2} md={4}>
                   <Typography variant="subtitle1" sx={{ fontWeight: '600' }}>颜色</Typography>
                   <div style={{ display: 'flex' }}>
-                    <ColorPicker value={formData.color} onChange={val => handleChange(`#${val.hex}`, 'color')} fullWidth />
+                    <ColorPicker defaultColor={formData.color} onChange={val => handleChange(val, 'color')} />
                   </div>
                 </Grid>
                 <Grid item xs={2} md={2}>

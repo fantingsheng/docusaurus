@@ -43,7 +43,6 @@
     "gcoord": "^1.0.5",
     "highlight.js": "^11.8.0",
     "html-to-image": "^1.11.11",
-    "material-ui-color": "^1.2.0",
     "prism-react-renderer": "^2.1.0",
     "qrcode.react": "^3.1.0",
     "react": "^17.0.0 || ^18.0.0",

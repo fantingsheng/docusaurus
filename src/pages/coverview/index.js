@@ -12,7 +12,7 @@ import CopyAll from '@mui/icons-material/CopyAll';
 import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
 import RandomTheme from '../memocard/RandomTheme';
-import { ColorPicker } from 'material-ui-color';
+import ColorPicker from '@site/src/components/ColorPicker';
 import styles from './style.module.scss';
 import clsx from 'clsx';
 import { toPng, toJpg, toBlob } from '@site/src/utils/image';
@@ -309,18 +309,17 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
       </Box>
       <Box className={styles.setItem}>
         <Typography variant="h5">背景色</Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
           {bgColorOptions.map((el, index) => (
             <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
             onClick={() => handleBgGradientClick(el)} key={index}></div>
           ))}
           <MoreGradient handleConfigChange={handleConfigChange} />
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '5px' }}>
           <ColorPicker
-            value={config.bgColor}
-            onChange={val => handleBgColorClick(`#${val.hex}`)}
-            sx={{ width: '60px' }}
+            defaultColor={config.bgColor}
+            onChange={val => handleBgColorClick(val)}
           />
           <RandomTheme onThemeChange={(theme, Pattern) => handleBgColorClick(theme.bgColor)} />
         </Box>

@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { Box, Typography, LinearProgress, TextField, Select, MenuItem, Button } from '@mui/material';
 import styles from './style.module.scss';
-import { ColorPicker } from 'material-ui-color';
+import ColorPicker from '@site/src/components/ColorPicker';
 import { toPng } from '@site/src/utils/image';
 import { downloadByUrl } from '@site/src/utils';
 
@@ -15,13 +15,13 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
       margin: '120px auto',
       boxShadow: '0 1px 2px 1px #0000001a',
       display: 'flex',
-      gap: '40px',
+      gap: '30px',
       borderRadius: '8px',
       padding: '25px 20px',
       justifyContent: 'center',
       alignItems: 'center'
      }}>
-      <Box sx={{ width: '240px' }}>
+      <Box sx={{  }}>
         <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
           标题
         </Typography>
@@ -32,7 +32,7 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           size='small'
           fullWidth />
       </Box>
-      <Box sx={{ width: '180px' }}>
+      <Box sx={{  }}>
         <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
           时间格式
         </Typography>
@@ -47,7 +47,7 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           <MenuItem value={'zh'}>DD天HH时mm分ss秒</MenuItem>
         </Select>
       </Box>
-      <Box sx={{ width: '160px' }}>
+      <Box sx={{ width: '140px' }}>
         <Typography sx={{ color: 'grey', marginBottom: '15px' }} gutterBottom>
           进度条类型
         </Typography>
@@ -62,14 +62,13 @@ const Tool = ({ config, handleConfigChange, doExportImg }) => {
           <MenuItem value='mui'>Material UI</MenuItem>
         </Select>
       </Box>
-      <Box sx={{ width: '200px' }}>
+      <Box sx={{ width: '120px' }}>
         <Typography sx={{ color: 'grey', marginBottom: '15px'}} gutterBottom>
           背景色
         </Typography>
         <ColorPicker
-          value={config.bgColor.includes('linear-gradient') ? '#262626' : config.bgColor}
-          onChange={val => handleConfigChange(`#${val.hex}`, 'bgColor')} 
-          fullWidth
+          defaultColor={config.bgColor.includes('linear-gradient') ? '#262626' : config.bgColor}
+          onChange={val => handleConfigChange(val, 'bgColor')} 
         />
       </Box>
       <Box sx={{ width: '100px', '& > button': { width: '100%' } }}>
@@ -145,7 +144,7 @@ export const Main = forwardRef(({ config, style }, ref) => {
         config.progressBarType === 'mui' ?
         <Box sx={{ display: 'flex', width: '50%', alignItems: 'center' }}>
           <Box sx={{ width: '100%', mr: 1 }}>
-            <LinearProgress sx={{ height: '30px' }} variant="determinate" value={Number(realPerct.replace('%', ''))} />
+            <LinearProgress sx={{ height: '50px' }} variant="determinate" value={Number(realPerct.replace('%', ''))} />
           </Box>
           <Box sx={{ minWidth: 100 }}>
             <Typography variant="body2" color="white">{percentage}</Typography>
@@ -158,14 +157,11 @@ export const Main = forwardRef(({ config, style }, ref) => {
         <LstTimeFormat lstInt={lstTime} config={config} />
       </Typography>
       {
-        config.copyright ? 
+        config.copyright &&
         <div className={styles.domain}>
-          <a href="https://spacexcode.com" target="_blank">spacexcode.com</a>
+          <a href="https://spacexcode.com" target="_blank">www.spacexcode.com</a>
         </div>
-        :
-        ''
       }
-      
     </div>
   )
 })
@@ -201,7 +197,7 @@ export default function () {
       description='实时显示当前年份的进度数据'
     >
       <Head>
-        <meta name="keywords" content='多久, 进度, 年底' />
+        <meta name="keywords" content='进度条, 进度, 年度' />
       </Head>
       <div className='container'>
         <div className='row'>
