@@ -27,11 +27,12 @@ export default function CommandBar({ changeFullScreen }) {
   const onSaveConfigStorage = (configName) => {
     if (ExecutionEnvironment.canUseDOM) {
       const data = JSON.parse(window.localStorage.getItem("screenShots")) || [];
+      const timestamp = Date.now();
       data.push({
-        id: Date.now(),
+        id: timestamp,
         name: configName,
-        time: Date.now(),
-        config: config
+        time: timestamp,
+        config: {...config, id: timestamp}
       });
       window.localStorage.setItem("screenShots", JSON.stringify(data));
       handleConfigChange(Date.now(), "id");

@@ -28,8 +28,8 @@ export default function () {
       <Head>
         <title>{`图片套壳美化 | ${siteConfig.title}`}</title>
         <meta name="title" content='图片模型生成器' />
-        <meta name="description" content="选择指定模型帮你生成漂亮的图片" />
-        <meta name="keywords" content='手机套壳,模型,图片美化,封面,抖音封面,公众号封面,视频封面' />
+        <meta name="description" content="选择指定模型帮你生成漂亮的封面图片" />
+        <meta name="keywords" content='手机套壳,模型,图片美化,封面,抖音封面,公众号封面,视频封面,封面制作' />
       </Head>
       <ConfigProvider>
         <main className={styles.appMain}>

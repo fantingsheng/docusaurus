@@ -5,6 +5,8 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { formateDate } from '@site/src/utils';
 import { useConfigContext } from './_configProvider';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
+import toast from 'react-hot-toast';
 
 export default function HisDataBar() {
   const anchorRef = useRef(null);
@@ -34,6 +36,16 @@ export default function HisDataBar() {
   const onClickHisoryItem = (row) => {
     setName(row.name);
     handleUseConfig(row.config);
+  }
+
+  const onRemoveHisData = (dataId) => {
+    if (ExecutionEnvironment.canUseDOM) {
+      let data = JSON.parse(window.localStorage.getItem("screenShots")) || [];
+      data = data.filter(el => el.id !== dataId);
+      window.localStorage.setItem("screenShots", JSON.stringify(data));
+      setHisData(data.sort((a, b) => (b.time - a.time)));
+      toast.success('删除成功', {position: 'top-center'});
+    }
   }
   return (
     <Box sx={{ display: 'flex',gap: '3px' }}>
@@ -77,6 +89,7 @@ export default function HisDataBar() {
                           {formateDate(el.time)}
                         </Typography>
                       }
+                      sx={{ '&:hover .clearBtn': { visibility: 'visible' }}}
                       onClick={() => onClickHisoryItem(el)}
                     >
                       <ListItemButton sx={{ borderLeft: el.config.id == config.id ? '2px solid var(--mui-palette-primary-main)' : 'none' }}>
@@ -87,6 +100,14 @@ export default function HisDataBar() {
                           width: '70%', } 
                         }} primary={el.name} />
                       </ListItemButton>
+                      <IconButton
+                        className="clearBtn"
+                        color="error"
+                        sx={{ position: 'absolute', right: '-3px', top: '-3px', padding: '3px', visibility: 'hidden' }}
+                        onClick={() => onRemoveHisData(el.id)}
+                      >
+                        <ClearOutlinedIcon sx={{ fontSize: '14px' }} />
+                      </IconButton>
                     </ListItem>
                     ))}
                   </List>
