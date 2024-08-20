@@ -26,15 +26,15 @@ export default function Main () {
   })
   const [code, setCode] = useState(`import React from 'react';
 
-  export default function useToggle(initialValue = false) {
-    const [value, setValue] = React.useState(initialValue);
-  
-    const toggle = React.useCallback(() => {
-      setValue(v => !v);
-    }, []);
-  
-    return [value, toggle];
-  }`)
+export default function useToggle(initialValue = false) {
+  const [value, setValue] = React.useState(initialValue);
+
+  const toggle = React.useCallback(() => {
+    setValue(v => !v);
+  }, []);
+
+  return [value, toggle];
+}`)
   const [fileName, setFileName] = useState('');
   const [focus, setFocus] = useState(false);
   const [blockWidth, setBlockWidth] = useState('auto');
