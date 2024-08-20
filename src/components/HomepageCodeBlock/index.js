@@ -6,8 +6,9 @@ import useTypeWriter from '@site/src/hooks/useTypeWriter';
 import { useForm, ValidationError } from '@formspree/react';
 import confetti from 'canvas-confetti';
 import styles from "./styles.module.css";
-import { TextField } from '@mui/material';
+import { TextField, InputAdornment } from '@mui/material';
 import toast, { Toaster } from 'react-hot-toast';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const codeList = [`import React from 'react';
 import ReactDOM from 'react-dom';
@@ -114,6 +115,13 @@ export default function HomepageCodeBlock() {
                     size='small'
                     fullWidth
                     autoComplete='off'
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <MailOutlineIcon />
+                        </InputAdornment>
+                      ),
+                    }}
                   />
                   <button type="submit" className='button button--secondary' disabled={state.submitting}>订阅</button>
                 </div>
