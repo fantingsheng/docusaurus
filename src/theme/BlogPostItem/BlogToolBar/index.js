@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import styles from './style.module.scss';
-import { useBlogPost } from '@docusaurus/theme-common/internal';
+import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
 import IconButton from '@mui/material/IconButton';
 import { Alert, AlertTitle, Snackbar, Menu, MenuItem }  from '@mui/material';
 import confetti from 'canvas-confetti';
