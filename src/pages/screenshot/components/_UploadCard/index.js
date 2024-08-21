@@ -19,6 +19,20 @@ export default function UploadCard({ showBtn }) {
     width: 1,
   });
 
+  const onFileInputChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      handleConfigChange(img.src, 'picture')
+      img.onload = function() {
+        const width = this.width;
+        const height = this.height;
+        handleConfigChange(`${width} / ${height}`, 'picRatio')
+      };
+    }
+  }
+
   return (
     <Box className="uploadWrap" 
       sx={{
@@ -62,7 +76,7 @@ export default function UploadCard({ showBtn }) {
           <VisuallyHiddenInput
             type="file"
             accept="image/x-png,image/jpeg,image/webp,image/jpg"
-            onChange={(e) => handleConfigChange(URL.createObjectURL(e.target.files[0]), 'picture')}
+            onChange={onFileInputChange}
           />}
       </Button>
     </Box>

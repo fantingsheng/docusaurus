@@ -24,6 +24,16 @@ export default function ScreenShot(props) {
           </div>
         </div>
       }
+      {config.style === 'stack2' &&
+        <div className={styles.stack2} style={{borderRadius: `${config.borderRadius}px`}}>
+          <div className={clsx(styles.layer, styles.layer1)}>
+            <img src={config.picture} loading="eager" crossOrigin="anonymous" />
+          </div>
+          <div className={clsx(styles.layer, styles.layer2)}>
+            <img src={config.picture} loading="eager" crossOrigin="anonymous" />
+          </div>
+        </div>
+      }
       <UploadCard {...props} />
     </div>
   )

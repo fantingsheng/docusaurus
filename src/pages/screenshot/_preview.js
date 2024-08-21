@@ -31,7 +31,13 @@ export default function Preview({ transform, showBtn }) {
       </div>
       <div className={styles.displayContainer}>
         <div className={clsx(styles.mockupModule, styles[config.theme])} style={{ transform: transform, display: config.hideMockup ? 'none' : 'block' }}>
-          <div className={styles.devices} style={{ transform: `scale(${config.scale}) translateX(${config.translateX}%) translateY(${config.translateY}%)` }}>
+          <div
+            className={styles.devices}
+            style={{
+              transform: `scale(${config.scale}) translateX(${config.translateX}%) translateY(${config.translateY}%)`,
+              '--aspect-ratio': ['screenshot', 'browser'].includes(config.theme) ? config.picRatio : 'unset'
+            }}
+          >
             <div className={styles.item} style={{ borderRadius: `${config.borderRadius}px` }}>
               <div className={clsx(styles.itemContainer, 'item-container')}>
                 <CoverTheme config={config} showBtn={showBtn} />

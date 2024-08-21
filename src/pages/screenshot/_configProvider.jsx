@@ -7,6 +7,7 @@ export function ConfigProvider({ children }) {
     id: Date.now(),
     theme: "screenshot",
     picture: "",
+    picRatio: "1 / 1",
     bgImg: "",
     bgLayer: "",
     borderRadius: 10,

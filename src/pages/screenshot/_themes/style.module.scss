@@ -88,6 +88,57 @@
       inset: 3.2em;
     }
   }
+
+  .stack2 {
+    position: absolute;
+    inset: 0;
+    box-shadow: 0 0.5em 0.5em rgba(0,0,0,.2);
+
+    .layer {
+      position: absolute;
+      overflow: hidden;
+      background: rgb(255, 255, 255);
+      border-radius: inherit;
+      inset: 2em;
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        inset: 0px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        inset: 0px;
+        border-width: 0.1em;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.15);
+        border-image: initial;
+        border-radius: inherit;
+      }
+
+      img {
+        transform: scale(1.5);
+        filter: blur(5em);
+        width: 100%;
+        height: 100%;
+      }
+    } 
+
+    .layer1 {
+      z-index: -1;
+      box-shadow: inherit;
+      transform: translate3d(-3.5em, -4.5em, 0px) rotate(-1.5deg);
+    }
+
+    .layer2 {
+      z-index: -2;
+      transform: translate3d(-7em, -7.5em, 0px) rotate(-2.5deg) scale(0.96);
+    }
+  }
 }
 
 /** browser theme **/
