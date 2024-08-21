@@ -5,7 +5,6 @@ import FrequentQuestion from "./_frequentQue";
 import QuiltedImageList from "./_imageList";
 import { Box, Typography } from '@mui/material';
 
-
 export default function AboutShot() {
   const pageUrl = "https://spacexcode.com/screenshot";
   const shareTitle = "图片套壳美化工具 - 太空编程 | 选择指定模型，帮你生成多种场景和样式经过美化的图片";
@@ -17,7 +16,7 @@ export default function AboutShot() {
         <QuiltedImageList />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
-        <Typography variant="body1">常见问题</Typography>
+        <Typography variant="body1" sx={{ fontWeight: '600' }}>常见问题</Typography>
         <Box sx={{ width: '100%'}}>
           <FrequentQuestion />
         </Box>
