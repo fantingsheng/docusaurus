@@ -1,5 +1,5 @@
 import styles from "./style.module.scss";
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, TextField } from '@mui/material';
 import clsx from 'clsx';
 import BorderRadius from "../_BorderRadius";
 import BoxShadow from "../_BoxShadow";
@@ -8,7 +8,9 @@ import StyleButton from "../_StyleButton";
 import { useConfigContext } from '../../_configProvider';
 
 export default function MockupTab() {
-  const { config } = useConfigContext();
+  const { config, handleConfigChange } = useConfigContext();
+
+  const reg = /^(?:(http|https):\/\/)?((?:[\w-]+\.)+[a-z0-9]+)((?:\/[^/?#]*)+)?(\?[^#]+)?(#.+)?$/i;
 
   return (
     <div className={styles.setPannel}>
@@ -18,6 +20,20 @@ export default function MockupTab() {
           <StyleButton />
         </Box>
       </Box>
+      {["browser"].includes(config.theme) && 
+        <Box className={styles.pannelCtrl}>
+          <Typography className={styles.setTit} variant="h3">网址</Typography>
+          <TextField
+            error={!!config.url && !reg.test(config.url)}
+            value={config.url}
+            onChange={e => handleConfigChange(e.target.value, 'url')}
+            placeholder=''
+            size='small'
+            autoComplete='false'
+            fullWidth
+          />
+        </Box>
+      }
       {["screenshot", "browser"].includes(config.theme) && 
         <Box className={styles.pannelCtrl}>
           <Typography className={styles.setTit} variant="h3">圆角</Typography>

@@ -12,7 +12,7 @@ export default function Browser(props) {
           <span style={{ background: 'rgb(251, 190, 60)'}}></span>
           <span style={{ background: 'rgb(88, 203, 66)'}}></span>
         </div>
-        <div className={styles.address}>{"https://spacexcode.com"}</div>
+        <div className={styles.address}>{config.url}</div>
         <div className={styles.menu}>
           <span></span>
           <span></span>

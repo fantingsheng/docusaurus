@@ -28,7 +28,8 @@ export function ConfigProvider({ children }) {
     height: 1440,
     format: 'png',
     expScale: 1, // 导出图片分辨率
-    hideMockup: false
+    hideMockup: false,
+    url: 'https://spacexcode.com'
   };
   const [config, setConfig] = useState({
     ...initConf
