@@ -32,7 +32,7 @@ export default function CommandBar({ changeFullScreen }) {
         id: timestamp,
         name: configName,
         time: timestamp,
-        config: {...config, id: timestamp}
+        config: {...config, id: timestamp, picture: ''}
       });
       window.localStorage.setItem("screenShots", JSON.stringify(data));
       handleConfigChange(Date.now(), "id");
