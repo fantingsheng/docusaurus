@@ -1,10 +1,10 @@
 import { useRef, useState, useContext } from 'react';
-import { Box, Button, Typography, styled, Popper, ClickAwayListener, Paper, Grow, } from "@mui/material";
+import { Box, Button, Typography, styled, Popper, ClickAwayListener, Paper, Grow, IconButton, } from "@mui/material";
 import { SketchPicker } from 'react-color';
 import styles from "./style.module.scss";
 import clsx from 'clsx';
 import { useConfigContext } from '../../_configProvider';
-// import CssDoodle from "../_CssDoodle";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function Background() {
   const { config, handleConfigChange } = useConfigContext();
@@ -13,11 +13,9 @@ export default function Background() {
   const [open, setOpen] = useState(false);
 
   const anchorRef = useRef(null);
-  const cssDoodle = useRef([]);
-
-  const addRef = (index) => (ref) => {
-    cssDoodle.current[index] = ref;
-  };
+  const [expand1, setExpand1] = useState(false);
+  const [expand2, setExpand2] = useState(false);
+  const [expand3, setExpand3] = useState(false);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -58,50 +56,6 @@ export default function Background() {
     "linear-gradient(-45deg, rgb(114, 122, 154), rgb(216, 219, 233))",
     "linear-gradient(-45deg, rgb(80, 82, 133) 0%, rgb(88, 94, 146) 12%, rgb(101, 104, 159) 25%, rgb(116, 116, 176) 37%, rgb(126, 126, 187) 50%, rgb(131, 137, 199) 62%, rgb(151, 149, 212) 75%, rgb(162, 161, 220) 87%, rgb(181, 174, 228) 100%)",
     "linear-gradient(150deg, rgb(95, 108, 138), rgb(48, 59, 94), rgb(14, 18, 38))"
-  ]
-
-  const cssDoodleList = [
-    `:doodle {
-      @grid: 1x8 / 100%;
-    }
-    @place-cell: center;
-    width: @rand(40%, 80%);
-    height: @rand(40%, 80%);
-    transform: translate(@rand(-200%, 200%), @rand(-60%, 60%)) scale(@rand(.8, 1.8)) skew(@rand(45deg));
-    clip-path: polygon(
-      @r(0, 30%) @r(0, 50%), 
-      @r(30%, 60%) @r(0%, 30%), 
-      @r(60%, 100%) @r(0%, 50%), 
-      @r(60%, 100%) @r(50%, 100%), 
-      @r(30%, 60%) @r(60%, 100%),
-      @r(0, 30%) @r(60%, 100%)
-    );
-    background: @pick(#f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #60569e, #e6437d, #ebbf4d, #00bcd4, #03a9f4, #2196f3, #009688, #5ee463, #f8e645, #ffc107, #ff5722, #43f8bf);
-    opacity: @rand(.3, .8);`,
-    `:doodle {
-      @grid: 8x8 / 100%;
-    }
-    background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8));
-    transition: .2s ease @rand(200ms);
-    transform: rotate(@rand(360deg));
-    clip-path: polygon(
-      @rand(100%) 0, 100% @rand(100%), 0 @rand(100%)
-    );`,
-    `@grid: 7 / 100% / #0a0c27;
-    @shape: clover 5;
-    background: hsla(-@i(*4), 70%, 68%, @r.8);
-    transform:
-      scale(@r(.2, 1.5))
-      translate(@m2.@r(±50%));`,
-    `:doodle {
-      @grid: 8 / 100%;
-      @shape: rect;
-    }
-    transition: .2s @r(.6s);
-    border-radius: @pick(100% 0, 0 100%);
-    will-change: transform;
-    transform: scale(@r(.25, 1.25));
-    background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8))`
   ]
 
   const imageList = [
@@ -149,13 +103,6 @@ export default function Background() {
     handleConfigChange("", "bgImg");
     handleConfigChange("", "bgLayer");
   };
-
-  const onClickCssDoodle = (cssVal) => {
-    handleConfigChange(cssVal, "bgLayer");
-    handleConfigChange(false, "transparent");
-    handleConfigChange("", "bgImg");
-    handleConfigChange("", "bg");
-  }
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -223,9 +170,14 @@ export default function Background() {
         )}
       </Popper>
       <Box className={styles.colorStyles}>
-        <Typography className={styles.title} variant="h4">纯色</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography className={styles.title} variant="h4">纯色</Typography>
+          <IconButton aria-label="expand" size="small" onClick={() => setExpand1((val) => !val)}>
+            <KeyboardArrowDownIcon className={clsx(styles.slideBtn, expand1 && styles.up)} />
+          </IconButton>
+        </Box>
         <div className={styles.solidColorList}>
-          { solidColors.map(el => (
+          { solidColors.filter((item, index) => expand1 || (!expand1 && index < 18)).map(el => (
               <div
                 className={clsx(styles.colorCircle, config.bg === el ? styles.active : '')}
                 style={{ backgroundColor: el }}
@@ -237,9 +189,14 @@ export default function Background() {
         </div>
       </Box>
       <Box className={styles.colorStyles}>
-        <Typography className={styles.title} variant="h4">渐变色</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography className={styles.title} variant="h4">渐变色</Typography>
+          <IconButton aria-label="expand" size="small" onClick={() => setExpand2((val) => !val)}>
+            <KeyboardArrowDownIcon className={clsx(styles.slideBtn, expand1 && styles.up)} />
+          </IconButton>
+        </Box>
         <div className={styles.gridentColorList}>
-          { gradientColors.map((el, index) => (
+          { gradientColors.filter((item, index) => expand2 || (!expand2 && index < 9)).map((el, index) => (
               <div
                 className={clsx(styles.colorRect, config.bg === el ? styles.active : '')}
                 style={{ background: el }}
@@ -251,20 +208,14 @@ export default function Background() {
         </div>
       </Box>
       <Box className={styles.colorStyles}>
-        <Typography className={styles.title} variant="h4">背景图</Typography>
-        {/* <div className={styles.cssDoodleList}>
-          { cssDoodleList.map((el, index) => (
-            <div
-              className={clsx(styles.colorRect, config.bgLayer === el ? styles.active : '')}
-              onClick={() => onClickCssDoodle(el)}
-              key={index}
-            >
-              <CssDoodle ref={addRef(index)} rule={el} />
-            </div>
-          ))}
-        </div> */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography className={styles.title} variant="h4">背景图</Typography>
+          <IconButton aria-label="expand" size="small" onClick={() => setExpand3((val) => !val)}>
+            <KeyboardArrowDownIcon className={clsx(styles.slideBtn, expand3 && styles.up)} />
+          </IconButton>
+        </Box>
         <div className={styles.imageList}>
-          { imageList.map((el, index) => (
+          { imageList.filter((item, index) => expand3 || (!expand3 && index < 6)).map((el, index) => (
           <div
             className={clsx(styles.colorRect, config.bgImg === el.replace('-small', '') ? styles.active : '')}
             onClick={() => onClickUploadBg(el.replace('-small', ''))}

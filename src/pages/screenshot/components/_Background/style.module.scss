@@ -55,8 +55,18 @@
 .colorStyles {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
+.slideBtn {
+  transform: rotate(0);
+  transition: all 0.15s linear;
+
+  &.up {
+    transform: rotate(180deg);
+  }
+}
+
+
 .colorCircle {
   width: 100%;
   height: 100%;
