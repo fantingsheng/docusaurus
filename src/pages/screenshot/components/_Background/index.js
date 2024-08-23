@@ -48,15 +48,25 @@ export default function Background() {
     "linear-gradient(140deg, rgb(244, 229, 240), rgb(229, 54, 171), rgb(92, 3, 188), rgb(14, 7, 37))",
     "linear-gradient(135deg, rgb(238, 221, 243), rgb(238, 146, 177), rgb(99, 48, 180))",
     "linear-gradient(113.96deg, rgb(69, 190, 232) 13.54%, rgb(214, 161, 172) 50%, rgb(232, 140, 93) 85.42%)",
-    "linear-gradient(113.96deg, rgb(69, 233, 159) 11.98%, rgb(213, 168, 155) 50%, rgb(232, 70, 152) 85.42%)",
-    "linear-gradient(113.96deg, rgb(69, 223, 232) 11.98%, rgb(211, 170, 175) 50%, rgb(232, 103, 100) 85.42%)",
     "linear-gradient(135deg, rgb(79, 172, 254), rgb(0, 242, 254))",
     "linear-gradient(135deg, rgb(248, 208, 129), rgb(238, 129, 68))",
     "linear-gradient(135deg, rgb(249, 240, 71), rgb(15, 216, 80))",
     "linear-gradient(-45deg, rgb(114, 122, 154), rgb(216, 219, 233))",
     "linear-gradient(-45deg, rgb(80, 82, 133) 0%, rgb(88, 94, 146) 12%, rgb(101, 104, 159) 25%, rgb(116, 116, 176) 37%, rgb(126, 126, 187) 50%, rgb(131, 137, 199) 62%, rgb(151, 149, 212) 75%, rgb(162, 161, 220) 87%, rgb(181, 174, 228) 100%)",
-    "linear-gradient(150deg, rgb(95, 108, 138), rgb(48, 59, 94), rgb(14, 18, 38))"
+    "linear-gradient(150deg, rgb(95, 108, 138), rgb(48, 59, 94), rgb(14, 18, 38))",
+    'linear-gradient(140deg, rgb(207, 47, 152), rgb(106, 61, 236))',
+    'linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))',
+    'linear-gradient(140deg, rgb(255, 99, 99), rgb(115, 52, 52))',
+    'linear-gradient(140deg, rgb(189, 227, 236), rgb(54, 54, 84))',
+    'linear-gradient(140deg, rgb(89, 212, 153), rgb(160, 135, 45))',
+    'linear-gradient(140deg, rgb(76, 200, 200), rgb(32, 32, 51))',
+    'linear-gradient(140deg, rgb(142, 199, 251), rgb(28, 85, 170))',
+    'linear-gradient(140deg, rgb(51, 51, 51), rgb(24, 24, 24))',
+    'linear-gradient(140deg, rgb(80, 104, 83), rgb(33, 50, 35))',
+    'linear-gradient(140deg, rgb(238, 213, 182), rgb(175, 136, 86))'
   ]
+
+  
 
   const imageList = [
     '/screenshot/bgImg/macos-big-sur-small.jpg',
