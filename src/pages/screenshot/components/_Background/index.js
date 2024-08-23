@@ -110,7 +110,25 @@ export default function Background() {
     border-radius: @pick(100% 0, 0 100%);
     will-change: transform;
     transform: scale(@r(.25, 1.25));
-    background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8))`
+    background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8))`,
+    `@grid: 14 / 100%;
+
+    @random {
+      border-left: 1px solid #5d81bc;
+    }
+    @random {
+      border-top: 1px solid #5d81bc;
+    }
+    @random(.25) {
+      background: linear-gradient(
+        @p(#fff, tan, #5d81bc), @lp
+      )
+      50% / @r(60%) @lr
+      no-repeat;
+    }
+    @random {
+      filter: drop-shadow(0 0 10px #fff);
+    }`
   ]
 
   const onClickSolidColor = (color) => {
@@ -294,9 +312,7 @@ export default function Background() {
             </div>
           ))}
         </div>
-      </Box>
-
-              
+      </Box>  
     </Box>
   )
 }

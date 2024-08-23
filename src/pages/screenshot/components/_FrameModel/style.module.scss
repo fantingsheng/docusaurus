@@ -68,7 +68,8 @@
 }
 .truncate {
   letter-spacing: -0.4px;
-  font: 500 12px / 16px Inter, sans-serif;
+  font-size: 11px;
+  line-height: 16px;
   max-width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 1;
