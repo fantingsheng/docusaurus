@@ -5,12 +5,18 @@ import styles from "./style.module.scss";
 import clsx from 'clsx';
 import { useConfigContext } from '../../_configProvider';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import CssDoodle from "../_CssDoodle";
 
 export default function Background() {
   const { config, handleConfigChange } = useConfigContext();
 
   const [customColor, setCustomColor] = useState("");
   const [open, setOpen] = useState(false);
+  const cssDoodle = useRef([]);
+
+  const addRef = (index) => (ref) => {
+    cssDoodle.current[index] = ref;
+  };
 
   const anchorRef = useRef(null);
   const [expand1, setExpand1] = useState(false);
@@ -66,8 +72,6 @@ export default function Background() {
     'linear-gradient(140deg, rgb(238, 213, 182), rgb(175, 136, 86))'
   ]
 
-  
-
   const imageList = [
     '/screenshot/bgImg/macos-big-sur-small.jpg',
     '/screenshot/bgImg/macos-big-sur-dark-small.jpg',
@@ -78,6 +82,35 @@ export default function Background() {
     '/screenshot/bgImg/autumnal-peach-small.png',
     '/screenshot/bgImg/blossom-2-small.png',
     '/screenshot/bgImg/good-vibes-small.png'
+  ]
+
+  const cssDoodleList = [
+    `:doodle {
+      @grid: 1x8 / 100%;
+    }
+    @place-cell: center;
+    width: @rand(40%, 80%);
+    height: @rand(40%, 80%);
+    transform: translate(@rand(-200%, 200%), @rand(-60%, 60%)) scale(@rand(.8, 1.8)) skew(@rand(45deg));
+    clip-path: polygon(
+      @r(0, 30%) @r(0, 50%), 
+      @r(30%, 60%) @r(0%, 30%), 
+      @r(60%, 100%) @r(0%, 50%), 
+      @r(60%, 100%) @r(50%, 100%), 
+      @r(30%, 60%) @r(60%, 100%),
+      @r(0, 30%) @r(60%, 100%)
+    );
+    background: @pick(#f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #60569e, #e6437d, #ebbf4d, #00bcd4, #03a9f4, #2196f3, #009688, #5ee463, #f8e645, #ffc107, #ff5722, #43f8bf);
+    opacity: @rand(.3, .8);`,
+    `:doodle {
+      @grid: 8 / 100%;
+      @shape: rect;
+    }
+    transition: .2s @r(.6s);
+    border-radius: @pick(100% 0, 0 100%);
+    will-change: transform;
+    transform: scale(@r(.25, 1.25));
+    background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8))`
   ]
 
   const onClickSolidColor = (color) => {
@@ -113,6 +146,13 @@ export default function Background() {
     handleConfigChange("", "bgImg");
     handleConfigChange("", "bgLayer");
   };
+
+  const onClickCssDoodle = (cssVal) => {
+    handleConfigChange(cssVal, "bgLayer");
+    handleConfigChange(false, "transparent");
+    handleConfigChange("", "bgImg");
+    handleConfigChange("", "bg");
+  }
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -236,6 +276,27 @@ export default function Background() {
           ))}
         </div>
       </Box>
+      <Box className={styles.colorStyles}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography className={styles.title} variant="h4">绘图</Typography>
+          <IconButton aria-label="expand" size="small">
+             <span style={{ fontSize: '12px' }}>🧪</span>
+          </IconButton>
+        </Box>
+        <div className={styles.cssDoodleList}>
+          { cssDoodleList.map((el, index) => (
+            <div
+              className={clsx(styles.colorRect, config.bgLayer === el ? styles.active : '')}
+              onClick={() => onClickCssDoodle(el)}
+              key={index}
+            >
+              <CssDoodle ref={addRef(index)} rule={el} />
+            </div>
+          ))}
+        </div>
+      </Box>
+
+              
     </Box>
   )
 }
