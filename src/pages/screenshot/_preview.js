@@ -42,7 +42,7 @@ export default function Preview({ transform, showBtn }) {
               <div className={clsx(styles.itemContainer, 'item-container')}>
                 <CoverTheme config={config} showBtn={showBtn} />
                 {/* 阴影 */}
-                { config.shadowX && config.shadowY && ['screenshot', 'browser', 'iphone15', 'ipadPro13', 'pixel7Pro', 'ipadAir'].includes(config.theme) &&
+                { config.shadowX && config.shadowY && ['screenshot', 'browser', 'iphone15', 'ipadPro13', 'pixel7Pro', 'ipadAir', 'iphone14', 'iphoneSe'].includes(config.theme) &&
                   <div
                     className={styles.shadow}
                     style={{ borderRadius: config.theme === 'screenshot' ? `${config.borderRadius / 8}em` : '' }}

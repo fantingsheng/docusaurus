@@ -12,6 +12,8 @@ import SurfaceBook from "./surfaceBook";
 import StudioDisplay from "./studioDisplay";
 import AppleWatchSeries8 from "./appleWatchSeries8";
 import IpadAir from "./ipadAir";
+import Iphone14 from "./iphone14";
+import IphoneSe from "./iphoneSe";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -70,6 +72,17 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/ipadAir/style_default.png'},
       ]
+    case 'iphone14':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/iphone14/style_default.png' },
+        { name: 'red', title: 'Red', thumail: '/screenshot/theme/iphone14/style_red.png' },
+        { name: 'blue', title: 'Blue', thumail: '/screenshot/theme/iphone14/style_blue.png' },
+        { name: 'purple', title: 'Purple', thumail: '/screenshot/theme/iphone14/style_purple.png' }
+      ]
+    case 'iphoneSe':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/iphoneSe/style_default.png' },
+      ]
     default:
       return [];
   }
@@ -104,6 +117,10 @@ export default function CoverTheme (props) {
         return <AppleWatchSeries8 {...props} />
       case 'ipadAir':
         return <IpadAir {...props} />
+      case 'iphone14':
+        return <Iphone14 {...props} />
+      case 'iphoneSe':
+        return <IphoneSe {...props} />
       default:
         return <></>;
 		}

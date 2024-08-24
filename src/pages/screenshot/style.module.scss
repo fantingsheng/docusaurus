@@ -234,6 +234,22 @@
     --shadow-radius: 3.8em;
     --drop-padding: 4.4%;
   }
+
+  &.iphone14 {
+    --aspect-ratio: 1370/2732;
+    --shadow-inset: 2% 4%;
+    --shadow-radius: 7em;
+    --drop-padding: 7.1% 7.1% 7.1% 7.1%;
+    --drop-radius: 10px;
+  }
+
+  &.iphoneSe {
+    --aspect-ratio: 1570/2932;
+    --shadow-inset: 5% 11% 6%;
+    --shadow-radius: 5em;
+    --drop-padding: 28% 13.8% 30.8%;
+    --drop-radius: 0;
+  }
 }
 .devices {
   position: absolute;
@@ -277,7 +293,7 @@
 
       .shadow {
         position: absolute;
-        inset: 2%;
+        inset: var(--shadow-inset);
         z-index: -5;
         border-radius: var(--shadow-radius);
         
@@ -302,6 +318,12 @@
         transition: all .1s ease;
       }
     }
+  }
+}
+
+.iphoneSe {
+  .devices {
+    gap: 4%!important;
   }
 }
 

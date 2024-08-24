@@ -108,6 +108,22 @@ export default function MockupModel({ handleSelChange }) {
       subtitle: '1640 x 2360',
       thumbnail: '/screenshot/mockup/ipadAir.png',
       previews: []
+    },
+    {
+      name: 'iphone14',
+      title: 'iPhone 14',
+      type: 'phone',
+      subtitle: '1170 x 2532',
+      thumbnail: '/screenshot/mockup/iphone14.png',
+      previews: []
+    },
+    {
+      name: 'iphoneSe',
+      title: 'iPhone SE',
+      type: 'phone',
+      subtitle: '750 x 1334',
+      thumbnail: '/screenshot/mockup/iphoneSe.png',
+      previews: []
     }
   ]
 
