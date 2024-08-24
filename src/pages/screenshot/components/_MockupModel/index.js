@@ -18,7 +18,7 @@ export default function MockupModel({ handleSelChange }) {
       feature: false,
       subtitle: '自适应图片大小',
       thumbnail: '/screenshot/mockup/screenshot.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'browser',
@@ -27,7 +27,7 @@ export default function MockupModel({ handleSelChange }) {
       feature: true,
       subtitle: '自适应图片大小',
       thumbnail: '/screenshot/mockup/browser.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'iphone15',
@@ -35,7 +35,7 @@ export default function MockupModel({ handleSelChange }) {
       type: 'phone',
       subtitle: '1170 x 2532',
       thumbnail: '/screenshot/mockup/iphone15.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'ipadPro13',
@@ -43,7 +43,7 @@ export default function MockupModel({ handleSelChange }) {
       type: 'tablet',
       subtitle: '2048 x 2732',
       thumbnail: '/screenshot/mockup/ipadPro13.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'macbookPro16',
@@ -51,7 +51,7 @@ export default function MockupModel({ handleSelChange }) {
       type: 'laptop',
       subtitle: '3456 x 2234',
       thumbnail: '/screenshot/mockup/macbookPro16.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'iMacRetina',
@@ -59,7 +59,7 @@ export default function MockupModel({ handleSelChange }) {
       type: 'desktop',
       subtitle: '5120 x 2880',
       thumbnail: '/screenshot/mockup/imacRetina.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'appleWatchUltra',
@@ -67,7 +67,7 @@ export default function MockupModel({ handleSelChange }) {
       type: 'watch',
       subtitle: '410 x 502',
       thumbnail: '/screenshot/mockup/appleWatchUltra.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'pixel7Pro',
@@ -75,7 +75,7 @@ export default function MockupModel({ handleSelChange }) {
       type: 'phone',
       subtitle: '1440 x 3120',
       thumbnail: '/screenshot/mockup/pixel7Pro.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'surfaceBook',
@@ -83,7 +83,7 @@ export default function MockupModel({ handleSelChange }) {
       type: 'laptop',
       subtitle: '3000 x 2000',
       thumbnail: '/screenshot/mockup/surfaceBook.png',
-      previews: ['', '', '', '']
+      previews: []
     },
     {
       name: 'studioDisplay',
@@ -91,7 +91,7 @@ export default function MockupModel({ handleSelChange }) {
       type: 'desktop',
       subtitle: '5120 x 2880',
       thumbnail: '/screenshot/mockup/studioDisplay.png',
-      previews: ['', '', '', '']
+      previews: []
     }
   ]
 
