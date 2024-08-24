@@ -84,6 +84,14 @@ export default function MockupModel({ handleSelChange }) {
       subtitle: '3000 x 2000',
       thumbnail: '/screenshot/mockup/surfaceBook.png',
       previews: ['', '', '', '']
+    },
+    {
+      name: 'studioDisplay',
+      title: 'Studio Display',
+      type: 'desktop',
+      subtitle: '5120 x 2880',
+      thumbnail: '/screenshot/mockup/studioDisplay.png',
+      previews: ['', '', '', '']
     }
   ]
 
