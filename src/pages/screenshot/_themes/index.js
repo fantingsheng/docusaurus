@@ -11,6 +11,7 @@ import Pixel7Pro from "./pixel7Pro";
 import SurfaceBook from "./surfaceBook";
 import StudioDisplay from "./studioDisplay";
 import AppleWatchSeries8 from "./appleWatchSeries8";
+import IpadAir from "./ipadAir";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -65,6 +66,10 @@ export function ThemeStyle(theme) {
         { name: 'silver', title: 'Silver', thumail: '/screenshot/theme/appleWatchSeries8/style_silver.png'},
         { name: 'starlight', title: 'Starlight', thumail: '/screenshot/theme/appleWatchSeries8/style_starlight.png'}
       ]
+    case 'ipadAir':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/ipadAir/style_default.png'},
+      ]
     default:
       return [];
   }
@@ -97,6 +102,8 @@ export default function CoverTheme (props) {
         return <StudioDisplay {...props} />
       case 'appleWatchSeries8':
         return <AppleWatchSeries8 {...props} />
+      case 'ipadAir':
+        return <IpadAir {...props} />
       default:
         return <></>;
 		}

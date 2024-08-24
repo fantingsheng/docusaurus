@@ -39,7 +39,7 @@ export default function MockupModel({ handleSelChange }) {
     },
     {
       name: 'ipadPro13',
-      title: 'Ipad Pro 13',
+      title: 'iPad Pro 13',
       type: 'tablet',
       subtitle: '2048 x 2732',
       thumbnail: '/screenshot/mockup/ipadPro13.png',
@@ -100,12 +100,21 @@ export default function MockupModel({ handleSelChange }) {
       subtitle: '396 x 484',
       thumbnail: '/screenshot/mockup/appleWatchSeries8.png',
       previews: []
+    },
+    {
+      name: 'ipadAir',
+      title: 'iPad Air',
+      type: 'tablet',
+      subtitle: '1640 x 2360',
+      thumbnail: '/screenshot/mockup/ipadAir.png',
+      previews: []
     }
   ]
 
   const onHandleClickTheme = val => {
     const theme = mockupLst.find(el => el.name === val);
     handleConfigChange(val, 'theme');
+    handleConfigChange('default', 'style');
     handleSelChange(theme?.title, 'tit');
     handleSelChange(theme?.subtitle, 'info');
     handleSelChange(theme?.thumbnail, 'pic');
