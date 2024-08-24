@@ -76,6 +76,14 @@ export default function MockupModel({ handleSelChange }) {
       subtitle: '1440 x 3120',
       thumbnail: '/screenshot/mockup/pixel7Pro.png',
       previews: ['', '', '', '']
+    },
+    {
+      name: 'surfaceBook',
+      title: 'Surface Book',
+      type: 'laptop',
+      subtitle: '3000 x 2000',
+      thumbnail: '/screenshot/mockup/surfaceBook.png',
+      previews: ['', '', '', '']
     }
   ]
 

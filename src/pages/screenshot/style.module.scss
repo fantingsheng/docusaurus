@@ -182,7 +182,7 @@
   }
 
   &.ipadPro13 {
-    --aspect-ratio: 3132/2448;
+    --aspect-ratio: 2448/3132;
     --shadow-inset: 5% 4%;
     --shadow-radius: 3em;
     --drop-padding: 6.2%;
@@ -211,6 +211,11 @@
     --shadow-radius: 3em;
     --drop-padding: 5.4%;
     --drop-radius: 5px;
+  }
+
+  &.surfaceBook {
+    --aspect-ratio: 4096/2428;
+    --drop-padding: 4.4% 13.6% 6.4% 13.8%;
   }
 }
 .devices {
@@ -306,7 +311,8 @@
 }
 .iMacRetina .devices .shadow,
 .macbookPro16 .devices .shadow,
-.appleWatchUltra .devices .shadow {
+.appleWatchUltra .devices .shadow,
+.surfaceBook .devices .shadow {
   display: none;
 }
 

@@ -8,6 +8,7 @@ import MacbookPro16 from "./macbookPro16";
 import ImacRetina from "./iMacRetina";
 import AppleWatchUltra from "./appleWatchUltra";
 import Pixel7Pro from "./pixel7Pro";
+import SurfaceBook from "./surfaceBook";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -48,6 +49,10 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/pixel7Pro/style_default.png' }
       ]
+    case 'surfaceBook':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/surfaceBook/style_default.png' }
+      ]
     default:
       return [];
   }
@@ -74,6 +79,8 @@ export default function CoverTheme (props) {
         return <AppleWatchUltra {...props} />
       case 'pixel7Pro':
         return <Pixel7Pro {...props} />
+      case 'surfaceBook':
+        return <SurfaceBook {...props} />
       default:
         return <></>;
 		}

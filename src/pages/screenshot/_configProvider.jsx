@@ -10,7 +10,7 @@ export function ConfigProvider({ children }) {
     picRatio: "1 / 1",
     bgImg: "",
     bgLayer: "",
-    borderRadius: 10,
+    borderRadius: 20,
     transparent: false, // 透明背景
     style: "default", // 样式
     transform: "",

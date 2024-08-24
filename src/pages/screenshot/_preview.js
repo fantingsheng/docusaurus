@@ -10,7 +10,7 @@ export default function Preview({ transform, showBtn }) {
   const { config } = useConfigContext();
   const cssDoodle = useRef();
 
-  const cssDoodleChange = () => {
+  const cssDoodleChange = async () => {
     cssDoodle.current && cssDoodle.current.update();
   };
   
@@ -38,12 +38,15 @@ export default function Preview({ transform, showBtn }) {
               '--aspect-ratio': ['screenshot', 'browser'].includes(config.theme) ? config.picRatio : 'unset'
             }}
           >
-            <div className={styles.item} style={{ borderRadius: `${config.borderRadius}px` }}>
+            <div className={styles.item}>
               <div className={clsx(styles.itemContainer, 'item-container')}>
                 <CoverTheme config={config} showBtn={showBtn} />
                 {/* 阴影 */}
                 { config.shadowX && config.shadowY &&
-                  <div className={styles.shadow}>
+                  <div
+                    className={styles.shadow}
+                    style={{ borderRadius: config.theme === 'screenshot' ? `${config.borderRadius / 8}em` : '' }}
+                  >
                     {[1, 3, 6, 10].map(el => (
                       <div
                         className={styles.shadowLayer} 

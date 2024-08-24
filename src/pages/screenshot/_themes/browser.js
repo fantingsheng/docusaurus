@@ -5,7 +5,7 @@ import clsx from "clsx";
 export default function Browser(props) {
   const { config } = {...props}
   return (
-    <div className={clsx(styles.theme, styles.browser)} style={{ borderRadius: `${config.borderRadius}px`}}>
+    <div className={clsx(styles.theme, styles.browser)} style={{ borderRadius: `${config.borderRadius / 8}em`}}>
       <div className={clsx(styles.header, styles[config.style])}>
         <div className={styles.button}>
           <span style={{ background: 'rgb(242, 95, 88)'}}></span>

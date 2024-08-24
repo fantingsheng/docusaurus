@@ -104,13 +104,13 @@ export default function BorderRadius() {
             <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Sharp</Typography>
           </Box>
         </ToggleButton>
-        <ToggleButton value={10} aria-label="Curved">
+        <ToggleButton value={20} aria-label="Curved">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '8px' } }} />
             <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Curved</Typography>
           </Box>
         </ToggleButton>
-        <ToggleButton value={20} aria-label="Round">
+        <ToggleButton value={40} aria-label="Round">
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '14px' } }} />
             <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Round</Typography>

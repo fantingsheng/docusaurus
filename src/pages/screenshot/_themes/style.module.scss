@@ -207,3 +207,10 @@
     height: calc(100% - 41px);
   }
 }
+
+/* ipad 13 pro theme */
+.ipadPro13 {
+  .device {
+    transform: rotate(90deg) scale(1.335) translateX(18.6%);
+  }
+}
