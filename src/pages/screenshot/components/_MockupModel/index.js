@@ -92,6 +92,14 @@ export default function MockupModel({ handleSelChange }) {
       subtitle: '5120 x 2880',
       thumbnail: '/screenshot/mockup/studioDisplay.png',
       previews: []
+    },
+    {
+      name: 'appleWatchSeries8',
+      title: 'Apple Watch Series 8',
+      type: 'watch',
+      subtitle: '396 x 484',
+      thumbnail: '/screenshot/mockup/appleWatchSeries8.png',
+      previews: []
     }
   ]
 

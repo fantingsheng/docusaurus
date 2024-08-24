@@ -222,6 +222,11 @@
     --aspect-ratio: 1338/1028;
     --drop-padding: 2% 2% 20.6%;
   }
+
+  &.appleWatchSeries8 {
+    --aspect-ratio: 540/860;
+    --drop-padding: 34.6% 13.2%;
+  }
 }
 .devices {
   position: absolute;
