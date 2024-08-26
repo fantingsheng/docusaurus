@@ -7,15 +7,15 @@ export default function ScreenShot(props) {
   return (
     <div className={clsx(styles.theme, styles.screenShot)} style={{ position: 'relative' }}>
       {config.style === 'glass-light' && 
-        <div className={styles.glassLight} style={{ borderRadius: `${config.borderRadius + 4}px`}}/>
+        <div className={styles.glassLight} style={{ borderRadius: `${config.borderRadius / 8 + 0.8}em`}}/>
       }
       {config.style === 'card' && 
-        <div className={styles.card} style={{ borderRadius: `${config.borderRadius}px`}}>
+        <div className={styles.card} style={{ borderRadius: `${config.borderRadius / 8}em`}}>
           <img src={config.picture} loading="eager" crossOrigin="anonymous" />
         </div>
       }
       {config.style === 'stack' &&
-        <div className={styles.stack} style={{borderRadius: `${config.borderRadius}px`}}>
+        <div className={styles.stack} style={{borderRadius: `${config.borderRadius / 8}em`}}>
           <div className={clsx(styles.layer, styles.layer1)}>
             <img src={config.picture} loading="eager" crossOrigin="anonymous" />
           </div>
@@ -25,7 +25,7 @@ export default function ScreenShot(props) {
         </div>
       }
       {config.style === 'stack2' &&
-        <div className={styles.stack2} style={{borderRadius: `${config.borderRadius}px`}}>
+        <div className={styles.stack2} style={{borderRadius: `${config.borderRadius / 8}em`}}>
           <div className={clsx(styles.layer, styles.layer1)}>
             <img src={config.picture} loading="eager" crossOrigin="anonymous" />
           </div>
