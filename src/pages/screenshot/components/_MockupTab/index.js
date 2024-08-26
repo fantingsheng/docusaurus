@@ -22,7 +22,7 @@ export default function MockupTab() {
       </Box>
       {["browser"].includes(config.theme) && 
         <Box className={styles.pannelCtrl}>
-          <Typography className={styles.setTit} variant="h3">网址</Typography>
+          <Typography className={styles.setTit} variant="h3">地址栏</Typography>
           <TextField
             error={!!config.url && !reg.test(config.url)}
             value={config.url}
