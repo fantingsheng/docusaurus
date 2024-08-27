@@ -15,7 +15,11 @@
             <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[博客已经两个月没有更新了，我去干啥了？这次不是偷懒，去搞了个大活！]]></description>
             <content:encoded><![CDATA[<p>博客已经两个月没有更新了，我去干啥了？这次不是偷懒，去搞了个大活！</p>
-<p>连续做了几款图片导出工具后，这次决定做一个复杂点的，覆盖场景更丰富点的图片美化工具。结合前面的经验，技术上已经没什么障碍了。
+<p>连续做了几款图片导出工具后，这次决定做一个复杂点的，覆盖场景更丰富点的图片美化工具。</p>
+<p>为什么需要图片美化工具？</p>
+<p>日常分享到社交媒体的图片如果不加修饰，显示效果不佳。而且还可能因为图片尺寸不合适，导致显示不全。如果我们随意截图发到朋友圈或者社交平台，
+导致图片大小不一致，排列错乱，毫无美感。更不会引起别人的关注。特别是对于品牌的宣传，统一的图片风格更容易在视觉上加深对受众的印象。</p>
+<p>结合前面的经验，技术实现上已经没什么障碍了。
 这种产品的唯一的挑战是 UI 设计，和部分功能的 UX。产品的审美一定要在线，才能吸引别人来使用你的工具。</p>
 <table><thead><tr><th>名称</th><th>链接</th><th>图片</th></tr></thead><tbody><tr><td><strong>封面图生成</strong></td><td><a href="https://spacexcode.com/coverview" target="_blank" rel="noopener noreferrer">spacexcode.com/coverview</a></td><td><img decoding="async" loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1709197073172-42cb76bd-9cfc-4cbb-be54-4e654657a66e.png" alt="" class="img_ev3q"></td></tr><tr><td><strong>文字卡片生成</strong></td><td><a href="https://spacexcode.com/memocard" target="_blank" rel="noopener noreferrer">spacexcode.com/memocard</a></td><td><img decoding="async" loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505197697-86c55814-d2d2-431c-ad88-1cbf37201054.png" alt="" class="img_ev3q"></td></tr><tr><td><strong>代码图片生成</strong></td><td><a href="https://spacexcode.com/codeimage" target="_blank" rel="noopener noreferrer">spacexcode.com/codeimage</a></td><td><img decoding="async" loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505333884-1d51f616-898e-4a1b-adbf-697863d9a904.png" alt="" class="img_ev3q"></td></tr></tbody></table>
 <p>所以我也是借鉴各种已有的相关产品，前期做了很多的调研。才渐渐确定了目前的软件设计。经常多次迭代，算是 1.0 版本吧，有了多款模型之后，
@@ -24,6 +28,14 @@
 <p>整个界面分为三大块，按左 - 中 - 右的布局，页面全屏显示，不出现滚动条。左边为模型和框架的选择、参数的配置区域，中间是预览和一些功能
 按钮，右边是对图片的布局和变换样式的选择。</p>
 <p><img decoding="async" loading="lazy" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505827454-43547ea6-396c-4e03-9c35-87bc92607cac.png" alt="" class="img_ev3q"></p>
+<p>常见图片美化工具都有哪些功能？</p>
+<ol>
+<li>为提供的图片增加背景、阴影和圆角效果；</li>
+<li>改变尺寸，导出为社交平台匹配的尺寸大小；</li>
+<li>给图片增加设备的外壳，为图片增加场景化的效果；</li>
+<li>一键给打开的浏览器窗口截图，方便快捷，并且提供画布手动修改图片区域和大小；</li>
+<li>美化后的图片直接复制，粘贴在常用的富文本编辑器，或微信、QQ、钉钉等聊天工具框中。甚至还可以直接在微博、推特、掘金沸点等社交平台分享框中直接粘贴操作，之后会自动以图片的格式显示；</li>
+</ol>
 <p>相较于市面上其它产品，我加了一个<strong>亮点功能</strong>：一键保存当前配置，方便下次替换图片直接使用。</p>
 <p>后续迭代计划：</p>
 <ul>
@@ -239,6 +251,7 @@
 <li><a href="https://www.sequoiacap.com/article/generative-ai-a-creative-new-world" target="_blank" rel="noopener noreferrer">Generative AI: A Creative New World</a></li>
 <li><a href="https://www.swyx.io/learn-in-public" target="_blank" rel="noopener noreferrer">Learn In Public</a></li>
 <li><a href="https://arkwright.github.io/" target="_blank" rel="noopener noreferrer">Arkwrite</a></li>
+<li><a href="https://qiangmzsx.github.io/Software-Engineering-at-Google/#/" target="_blank" rel="noopener noreferrer">Software Engineering at Google</a></li>
 </ol></div></div>]]></content:encoded>
             <author>fants0230@sina.com (编程范儿)</author>
             <category>英语</category>
@@ -613,7 +626,7 @@
 <p>我们给它增加一个场景：</p>
 <p>通常这种大树叶的绿植要么生长在热带雨林，要么被我们放在室内当做风景或者背景。</p>
 <!-- -->
-<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>10 : 43 : 49</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF" autoplay=""></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content:encoded>
+<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>11 : 10 : 52</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF" autoplay=""></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content:encoded>
             <author>fants0230@sina.com (编程范儿)</author>
             <category>CSS 动画</category>
             <category>设计</category>
