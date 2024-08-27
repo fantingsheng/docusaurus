@@ -179,7 +179,7 @@ export default function MockupModel({ handleSelChange }) {
           mockupLst.filter(el => platform === 'all' || (platform !== 'all' && platform === el.type)).map((el, index) => (
             <Card
               className={clsx(styles.gridItem, config.theme === el.name ? styles.active : '')}
-              sx={{ width: 195, backgroundColor: '#fff' }}
+              sx={{ width: 215, backgroundColor: '#fff' }}
               key={index}
               onClick={() => onHandleClickTheme(el.name)}
             >
@@ -187,7 +187,7 @@ export default function MockupModel({ handleSelChange }) {
                 sx={{ 
                   '& .MuiCardHeader-title': { fontSize: '16px' },
                   '& .MuiCardHeader-subheader': { fontSize: '12px', marginTop: '5px' },
-                  padding: '10px'
+                  padding: '12px'
                 }}
                 title={el.title}
                 subheader={el.subtitle}
@@ -200,7 +200,7 @@ export default function MockupModel({ handleSelChange }) {
               />
               <CardMedia
                 component="img"
-                height="124"
+                height="162"
                 image={el.thumbnail}
                 alt={el.title}
               />
