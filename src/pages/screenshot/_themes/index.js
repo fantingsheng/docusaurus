@@ -14,6 +14,7 @@ import AppleWatchSeries8 from "./appleWatchSeries8";
 import IpadAir from "./ipadAir";
 import Iphone14 from "./iphone14";
 import IphoneSe from "./iphoneSe";
+import HuaweiP40ProPlus from "./huaweiP40ProPlus";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -83,6 +84,10 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/iphoneSe/style_default.png' },
       ]
+    case 'huaweiP40ProPlus':
+      return [
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/huaweiP40ProPlus/style_default.png' }
+      ]
     default:
       return [];
   }
@@ -121,6 +126,8 @@ export default function CoverTheme (props) {
         return <Iphone14 {...props} />
       case 'iphoneSe':
         return <IphoneSe {...props} />
+      case 'huaweiP40ProPlus':
+        return <HuaweiP40ProPlus {...props} />
       default:
         return <></>;
 		}

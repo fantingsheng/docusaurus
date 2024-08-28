@@ -126,19 +126,19 @@ export default function MockupModel({ handleSelChange }) {
       previews: []
     },
     {
-      name: 'iphoneSe',
+      name: 'huaweiP40ProPlus',
       title: 'Huawei P40 Pro+',
       type: 'phone',
       subtitle: '750 x 1334',
-      thumbnail: '/screenshot/mockup/iphoneSe.png',
+      thumbnail: '/screenshot/mockup/huaweiP40ProPlus.png',
       previews: []
     },
     {
-      name: 'iphoneSe',
+      name: 'samsungGalaxyWatch4',
       title: 'Samsung Galaxy Watch 4',
-      type: 'phone',
+      type: 'watch',
       subtitle: '750 x 1334',
-      thumbnail: '/screenshot/mockup/iphoneSe.png',
+      thumbnail: '/screenshot/mockup/samsungGalaxyWatch4.png',
       previews: []
     }
   ]

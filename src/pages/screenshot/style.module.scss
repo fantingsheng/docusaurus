@@ -250,6 +250,14 @@
     --drop-padding: 28% 13.8% 30.8%;
     --drop-radius: 0;
   }
+
+  &.huaweiP40ProPlus {
+    --aspect-ratio: 1321/2490;
+    --shadow-inset: 5% 11% 6%;
+    --shadow-radius: 5em;
+    --drop-padding: 11.5% 12.2% 12%;
+    --drop-radius: 0.8em;
+  }
 }
 .devices {
   position: absolute;
