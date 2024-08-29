@@ -84,9 +84,6 @@ export default function ExportSetting() {
                       <ToggleButton value={3} aria-label="3x">
                         3px
                       </ToggleButton>
-                      <ToggleButton value={4} aria-label="4x">
-                        4px
-                      </ToggleButton>
                     </ToggleButtonGroup></Box>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
