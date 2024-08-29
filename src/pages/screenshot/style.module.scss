@@ -258,6 +258,12 @@
     --drop-padding: 11.5% 12.2% 12%;
     --drop-radius: 0.8em;
   }
+
+  &.samsungGalaxyWatch4 {
+    --aspect-ratio: 1478/1478;
+    --drop-padding: 27%;
+    --drop-radius: 50%;
+  }
 }
 .devices {
   position: absolute;
