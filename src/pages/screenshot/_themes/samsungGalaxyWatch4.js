@@ -6,7 +6,7 @@ export default function SamsungGalaxyWatch4 (props) {
   const { config } = {...props}
   return (
     <div className={clsx(styles.theme, styles.samsungGalaxyWatch4)} style={{ position: 'relative' }}>
-      <img crossOrigin="anonymous" className={styles.device} src="/screenshot/theme/samsungGalaxyWatch4/default.png" />
+      <img crossOrigin="anonymous" className={styles.device} src={`/screenshot/theme/samsungGalaxyWatch4/${config.style}.png`} />
       <UploadCard {...props} />
     </div>
   )

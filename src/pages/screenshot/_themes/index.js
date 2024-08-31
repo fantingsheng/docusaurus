@@ -92,7 +92,9 @@ export function ThemeStyle(theme) {
       ]
     case 'samsungGalaxyWatch4':
       return [
-        { name: 'default', title: 'Default', thumail: '/screenshot/theme/samsungGalaxyWatch4/style_default.png' }
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/samsungGalaxyWatch4/style_default.png' },
+        { name: 'gold', title: 'Gold', thumail: '/screenshot/theme/samsungGalaxyWatch4/style_gold.png' },
+        { name: 'silver', title: 'Silver', thumail: '/screenshot/theme/samsungGalaxyWatch4/style_silver.png' }
       ]
     case 'iMacPro':
       return [
