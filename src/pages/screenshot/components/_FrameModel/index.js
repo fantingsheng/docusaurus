@@ -4,8 +4,8 @@ import clsx from "clsx";
 import { useConfigContext } from '../../_configProvider';
 
 
-export default function FrameModel({ handleSelChange }) {
-  const { config, handleConfigChange } = useConfigContext();
+export default function FrameModel() {
+  const { config, handleConfigChange, handleConfigFrameChange } = useConfigContext();
 
   const platSizeLst = [
     {
@@ -96,8 +96,11 @@ export default function FrameModel({ handleSelChange }) {
   ];
 
   const onSizeButtonClick = (plat, ar, w, h) => {
-    handleSelChange(`${plat.icon ? plat.platform : 'Default'} ${ar.replace("/", ":")}`, "tit");
-    handleSelChange(`${w} x ${h}`, "info");
+    handleConfigFrameChange({
+      platform: plat.platform,
+      aspectRatio: ar.replace("/", ":"),
+      sizeInfo: `${w} x ${h}`
+    });
     handleConfigChange(ar, "ratio");
     handleConfigChange(w, "width");
     handleConfigChange(h, "height");
@@ -115,7 +118,7 @@ export default function FrameModel({ handleSelChange }) {
             {
               item.sizeLst.map((el, index) => (
                 <button 
-                  className={clsx(styles.frameItem, el.width === config.width && el.height === config.height ? styles.active : '')}
+                  className={clsx(styles.frameItem, el.width === config.width && el.height === config.height && item.platform === config.frame.platform ? styles.active : '')}
                   key={index}
                   onClick={() => onSizeButtonClick(item, el.aspectRatio, el.width, el.height)}
                 >

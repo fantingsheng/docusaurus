@@ -6,7 +6,7 @@ export default function IpadAir (props) {
   const { config } = {...props}
   return (
     <div className={clsx(styles.theme, styles.ipadAir)} style={{ position: 'relative' }}>
-      <img crossOrigin="anonymous" className={styles.device} src={`/screenshot/theme/ipadAir/${config.style}.png`} />
+      <img crossOrigin="anonymous" className={styles.device} src={`/screenshot/theme/ipadAir/${config.mockup.style}.png`} />
       <UploadCard {...props} />
     </div>
   )

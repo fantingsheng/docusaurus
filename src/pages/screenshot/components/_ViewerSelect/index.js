@@ -12,18 +12,6 @@ export default function ViewerSelect({ openStyle }) {
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-  const [selObj, setSelObj] = useState(openStyle === "mockup" ? {
-    tit: "Screenshot",
-    info: "图片自适应大小",
-    pic: "/screenshot/mockup/screenshot.png"
-  } : {
-    tit: "Default 4 : 3",
-    info: "1920 x 1440"
-  });
-
-  const handleSelChange = (val, key) => {
-    setSelObj((prev) => ({ ...prev, [key]: val }));
-  }; 
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -56,12 +44,17 @@ export default function ViewerSelect({ openStyle }) {
           }}
           onClick={handleToggle}
         >
-          <Box className={styles.grayModel} sx={{ aspectRatio: config.ratio, border: selObj.pic ? 'none' : `1px solid var(--mui-palette-primary-main)` }}>
-            {selObj.pic ? <img src={selObj.pic} style={{ width: '100%', objectFit: 'cover'}} /> : ''}
+          <Box
+            className={styles.grayModel}
+            sx={{ aspectRatio: config.ratio, border: openStyle === 'mockup' ? 'none' : `1px solid var(--mui-palette-primary-main)` }}
+          >
+            {openStyle === 'mockup' && <img src={config.mockup.thumbnail} style={{ width: '100%', height: '100%', objectFit: 'cover'}} />}
           </Box> 
           <div className={styles.line}>
-            <div className={styles.tit}>{selObj.tit}</div>
-            <span className={styles.small}>{selObj.info}</span>
+            <div className={styles.tit}>
+              {openStyle === 'mockup' ? config.mockup.title : `${config.frame.platform} ${config.frame.aspectRatio.replace('/', '')}`}
+            </div>
+            <span className={styles.small}>{openStyle === 'mockup' ? config.mockup.sizeInfo : config.frame.sizeInfo}</span>
           </div>
           <div className={styles.handler}>
             <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={clsx(styles.moreBtn, open ? styles.open : '')}>
@@ -83,9 +76,9 @@ export default function ViewerSelect({ openStyle }) {
                 <Box className={styles.popperBox} style={{ borderRadius: '10px' }}>
                   {
                     openStyle === "mockup" ? 
-                      <MockupModel handleSelChange={handleSelChange} open={open} /> 
+                      <MockupModel open={open} /> 
                       :
-                      <FrameModel handleSelChange={handleSelChange} />
+                      <FrameModel />
                   }
                 </Box>
               </ClickAwayListener>

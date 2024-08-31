@@ -39,8 +39,8 @@ export default function UploadCard({ showBtn }) {
         width: "100%",
         height: "100%",
         padding: 'var(--drop-padding)',
-        borderRadius: config.theme === 'screenshot' ? `${config.borderRadius / 8}em` : '',
-        overflow: ["screenshot"].includes(config.theme) ? 'hidden' : 'unset'
+        borderRadius: config.mockup.theme === 'screenshot' ? `${config.borderRadius / 8}em` : '',
+        overflow: ["screenshot"].includes(config.mockup.theme) ? 'hidden' : 'unset'
     }}>
       <Button
         component="label"

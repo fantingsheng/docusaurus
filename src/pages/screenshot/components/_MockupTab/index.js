@@ -20,7 +20,7 @@ export default function MockupTab() {
           <StyleButton />
         </Box>
       </Box>
-      {["browser"].includes(config.theme) && 
+      {["browser"].includes(config.mockup.theme) && 
         <Box className={styles.pannelCtrl}>
           <Typography className={styles.setTit} variant="h3">地址栏</Typography>
           <TextField
@@ -34,13 +34,13 @@ export default function MockupTab() {
           />
         </Box>
       }
-      {["screenshot", "browser"].includes(config.theme) && 
+      {["screenshot", "browser"].includes(config.mockup.theme) && 
         <Box className={styles.pannelCtrl}>
           <Typography className={styles.setTit} variant="h3">圆角</Typography>
           <BorderRadius />
         </Box>
       }
-      {["screenshot", "browser", "iphone15", "pixel7Pro", "ipadPro13", 'ipadAir', 'iphone14', 'iphoneSe', "huaweiP40ProPlus"].includes(config.theme) && 
+      {["screenshot", "browser", "iphone15", "pixel7Pro", "ipadPro13", 'ipadAir', 'iphone14', 'iphoneSe', "huaweiP40ProPlus"].includes(config.mockup.theme) && 
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">阴影</Typography>
         <BoxShadow />

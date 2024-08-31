@@ -5,14 +5,25 @@ export const ConfigContext = createContext(null)
 export function ConfigProvider({ children }) {
   const initConf = {
     id: Date.now(),
-    theme: "screenshot",
+    mockup: {
+      theme: "screenshot",
+      title: "Screenshot",
+      sizeInfo: "图片自适应大小",
+      style: "default",
+      thumbnail: "/screenshot/mockup/screenshot.png"
+    },
+    frame: {
+      platform: "常用尺寸",
+      aspectRatio: "3 : 4",
+      sizeInfo: "1920 x 1440"
+    },
     picture: "",
     picRatio: "1 / 1",
     bgImg: "",
     bgLayer: "",
     borderRadius: 20,
     transparent: false, // 透明背景
-    style: "default", // 样式
+    // style: "default", // 样式
     transform: "",
     shadowOpacity: 0.4,
     shadowX: 0.46875,
@@ -39,6 +50,14 @@ export function ConfigProvider({ children }) {
     setConfig((prev) => ({ ...prev, [key]: val }));
   };
 
+  const handleConfigMockupChange = (val) => {
+    setConfig((prev) => ({ ...prev, mockup: { ...val }}));
+  }
+
+  const handleConfigFrameChange = (val) => {
+    setConfig((prev) => ({ ...prev, frame: { ...val }}));
+  }
+
   const handleResetConfig = () => {
     setConfig({ ...initConf })
   }
@@ -52,7 +71,9 @@ export function ConfigProvider({ children }) {
       config,
       handleConfigChange,
       handleResetConfig,
-      handleUseConfig
+      handleUseConfig,
+      handleConfigMockupChange,
+      handleConfigFrameChange
     }),
     [config],
   )

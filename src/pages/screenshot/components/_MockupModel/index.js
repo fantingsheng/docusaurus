@@ -5,8 +5,8 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import clsx from 'clsx';
 import { useConfigContext } from '../../_configProvider';
 
-export default function MockupModel({ handleSelChange, open }) {
-  const { config, handleConfigChange } = useConfigContext();
+export default function MockupModel({ open }) {
+  const { config, handleConfigMockupChange } = useConfigContext();
 
   const [platform, setPlatform] = useState("all");
 
@@ -152,17 +152,19 @@ export default function MockupModel({ handleSelChange, open }) {
   ]
 
   useEffect(() => {
-    const mockup = mockupLst.find(el => el.name === config.theme);
+    const mockup = mockupLst.find(el => el.name === config.mockup.theme);
     setPlatform(mockup.type || "all")
   }, [open])
 
   const onHandleClickTheme = val => {
     const theme = mockupLst.find(el => el.name === val);
-    handleConfigChange(val, 'theme');
-    handleConfigChange('default', 'style');
-    handleSelChange(theme?.title, 'tit');
-    handleSelChange(theme?.subtitle, 'info');
-    handleSelChange(theme?.thumbnail, 'pic');
+    handleConfigMockupChange({
+      theme: theme.name,
+      title: theme.title,
+      sizeInfo: theme.subtitle,
+      style: 'default',
+      thumbnail: theme.thumbnail
+    });
   };
 
   return (
@@ -191,7 +193,7 @@ export default function MockupModel({ handleSelChange, open }) {
         {
           mockupLst.filter(el => platform === 'all' || (platform !== 'all' && platform === el.type)).map((el, index) => (
             <Card
-              className={clsx(styles.gridItem, config.theme === el.name ? styles.active : '')}
+              className={clsx(styles.gridItem, config.mockup.theme === el.name ? styles.active : '')}
               sx={{ width: 215, backgroundColor: '#fff' }}
               key={index}
               onClick={() => onHandleClickTheme(el.name)}

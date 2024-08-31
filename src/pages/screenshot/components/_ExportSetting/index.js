@@ -89,11 +89,12 @@ export default function ExportSetting() {
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">导出图片尺寸</Typography>
                     <TextField
-                      defaultValue={`分辨率：${config.width * config.expScale} x ${config.height * config.expScale}`}
+                      value={`分辨率：${config.width * config.expScale} x ${config.height * config.expScale}`}
                       sx={{ '& input': { paddingTop: '10px', paddingBottom: '6px' } }}
                       size="small"
                       variant="filled"
-                      fullWidth disabled />
+                      fullWidth
+                      disabled />
                   </Box>
                 </Box>
               </ClickAwayListener>

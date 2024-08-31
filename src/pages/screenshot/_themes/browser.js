@@ -6,7 +6,7 @@ export default function Browser(props) {
   const { config } = {...props}
   return (
     <div className={clsx(styles.theme, styles.browser)} style={{ borderRadius: `${config.borderRadius / 8}em`}}>
-      <div className={clsx(styles.header, styles[config.style])}>
+      <div className={clsx(styles.header, styles[config.mockup.style])}>
         <div className={styles.button}>
           <span style={{ background: 'rgb(242, 95, 88)'}}></span>
           <span style={{ background: 'rgb(251, 190, 60)'}}></span>

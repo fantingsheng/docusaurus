@@ -30,12 +30,12 @@ export default function Preview({ transform, showBtn }) {
         }
       </div>
       <div className={styles.displayContainer}>
-        <div className={clsx(styles.mockupModule, styles[config.theme])} style={{ transform: transform, display: config.hideMockup ? 'none' : 'block' }}>
+        <div className={clsx(styles.mockupModule, styles[config.mockup.theme])} style={{ transform: transform, display: config.hideMockup ? 'none' : 'block' }}>
           <div
             className={styles.devices}
             style={{
               transform: `scale(${config.scale}) translateX(${config.translateX}%) translateY(${config.translateY}%)`,
-              '--aspect-ratio': ['screenshot', 'browser'].includes(config.theme) ? config.picRatio : 'unset'
+              '--aspect-ratio': ['screenshot', 'browser'].includes(config.mockup.theme) ? config.picRatio : 'unset'
             }}
           >
             <div className={styles.item}>
@@ -44,10 +44,10 @@ export default function Preview({ transform, showBtn }) {
                 {/* 阴影 */}
                 { config.shadowX &&
                   config.shadowY &&
-                  ['screenshot', 'browser', 'iphone15', 'ipadPro13', 'pixel7Pro', 'ipadAir', 'iphone14', 'iphoneSe', 'huaweiP40ProPlus'].includes(config.theme) &&
+                  ['screenshot', 'browser', 'iphone15', 'ipadPro13', 'pixel7Pro', 'ipadAir', 'iphone14', 'iphoneSe', 'huaweiP40ProPlus'].includes(config.mockup.theme) &&
                   <div
                     className={styles.shadow}
-                    style={{ borderRadius: config.theme === 'screenshot' ? `${config.borderRadius / 8}em` : '' }}
+                    style={{ borderRadius: config.mockup.theme === 'screenshot' ? `${config.borderRadius / 8}em` : '' }}
                   >
                     {[1, 3, 6, 10].map(el => (
                       <div

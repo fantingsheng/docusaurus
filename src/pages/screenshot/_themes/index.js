@@ -106,7 +106,7 @@ export function ThemeStyle(theme) {
 }
 
 export default function CoverTheme (props) {
-  const { theme } = props.config;
+  const { theme } = props.config.mockup;
 
 	const selectTheme = (theme) => {
 		switch (theme) {
