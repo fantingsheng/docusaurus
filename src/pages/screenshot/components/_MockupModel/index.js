@@ -129,7 +129,7 @@ export default function MockupModel({ handleSelChange }) {
       name: 'huaweiP40ProPlus',
       title: 'Huawei P40 Pro+',
       type: 'phone',
-      subtitle: '750 x 1334',
+      subtitle: '984 x 2182',
       thumbnail: '/screenshot/mockup/huaweiP40ProPlus.png',
       previews: []
     },
@@ -137,8 +137,16 @@ export default function MockupModel({ handleSelChange }) {
       name: 'samsungGalaxyWatch4',
       title: 'Samsung Galaxy Watch 4',
       type: 'watch',
-      subtitle: '750 x 1334',
+      subtitle: '682 x 682',
       thumbnail: '/screenshot/mockup/samsungGalaxyWatch4.png',
+      previews: []
+    },
+    {
+      name: 'iMacPro',
+      title: 'iMac Pro',
+      type: 'desktop',
+      subtitle: '5120 x 2880',
+      thumbnail: '/screenshot/mockup/iMacPro.png',
       previews: []
     }
   ]

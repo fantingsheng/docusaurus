@@ -252,17 +252,22 @@
   }
 
   &.huaweiP40ProPlus {
-    --aspect-ratio: 1321/2490;
+    --aspect-ratio: 1094/2278;
     --shadow-inset: 5% 11% 6%;
     --shadow-radius: 5em;
-    --drop-padding: 11.5% 12.2% 12%;
-    --drop-radius: 0.9em;
+    --drop-padding: 3% 4.4% 4% 4.8%;
+    --drop-radius: 1.2em;
   }
 
   &.samsungGalaxyWatch4 {
     --aspect-ratio: 1186/1186;
     --drop-padding: 20.8%;
     --drop-radius: 50%;
+  }
+
+  &.iMacPro {
+    --aspect-ratio: 4096/3411;
+    --drop-padding: 5.2% 4% 27%;
   }
 }
 .devices {
