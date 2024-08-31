@@ -83,7 +83,7 @@ export default function ViewerSelect({ openStyle }) {
                 <Box className={styles.popperBox} style={{ borderRadius: '10px' }}>
                   {
                     openStyle === "mockup" ? 
-                      <MockupModel handleSelChange={handleSelChange} /> 
+                      <MockupModel handleSelChange={handleSelChange} open={open} /> 
                       :
                       <FrameModel handleSelChange={handleSelChange} />
                   }

@@ -1,11 +1,11 @@
 import { Box, Card, CardHeader, CardMedia, CardContent, Typography, Avatar, ToggleButtonGroup, ToggleButton } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './style.module.scss';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import clsx from 'clsx';
 import { useConfigContext } from '../../_configProvider';
 
-export default function MockupModel({ handleSelChange }) {
+export default function MockupModel({ handleSelChange, open }) {
   const { config, handleConfigChange } = useConfigContext();
 
   const [platform, setPlatform] = useState("all");
@@ -150,6 +150,11 @@ export default function MockupModel({ handleSelChange }) {
       previews: []
     }
   ]
+
+  useEffect(() => {
+    const mockup = mockupLst.find(el => el.name === config.theme);
+    setPlatform(mockup.type || "all")
+  }, [open])
 
   const onHandleClickTheme = val => {
     const theme = mockupLst.find(el => el.name === val);
