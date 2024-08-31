@@ -1,5 +1,13 @@
 .line {
   line-height: 100%;
+  flex-grow: 1;
+  max-width: 60%;
+}
+.tit {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .small {
   font-size: 10px;
@@ -7,11 +15,15 @@
   display: inline-block;
   color: rgba(0,0,0,.4);
 }
+.handler {
+  width: 20px;
+  position: relative;
+}
 .moreBtn {
   position: absolute;
   width: 16px;
   top: 45%;
-  right: 1.25rem;
+  left: 2px;
   transform: translateY(-50%) rotate(90deg);
   cursor: pointer;
   transition: all 0.15s linear;

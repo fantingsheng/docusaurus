@@ -60,12 +60,14 @@ export default function ViewerSelect({ openStyle }) {
             {selObj.pic ? <img src={selObj.pic} style={{ width: '100%', objectFit: 'cover'}} /> : ''}
           </Box> 
           <div className={styles.line}>
-            {selObj.tit}< br/>
+            <div className={styles.tit}>{selObj.tit}</div>
             <span className={styles.small}>{selObj.info}</span>
           </div>
-          <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={clsx(styles.moreBtn, open ? styles.open : '')}>
-            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path>
-          </svg>
+          <div className={styles.handler}>
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={clsx(styles.moreBtn, open ? styles.open : '')}>
+              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path>
+            </svg>
+          </div>
         </Box>
       </Box>
       <Popper sx={{ zIndex: 5, borderRadius: '10px' }} open={open} placement="bottom-start" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
