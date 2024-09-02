@@ -46,9 +46,11 @@ export default function ViewerSelect({ openStyle }) {
         >
           <Box
             className={styles.grayModel}
-            sx={{ aspectRatio: config.ratio, border: openStyle === 'mockup' ? 'none' : `1px solid var(--mui-palette-primary-main)` }}
+            sx={{ aspectRatio: config.ratio }}
           >
-            {openStyle === 'mockup' && <img src={config.mockup.thumbnail} style={{ width: '100%', height: '100%', objectFit: 'cover'}} />}
+            {openStyle === 'mockup' ? <img src={config.mockup.thumbnail} style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
+              : <img src="/page/frame.png" style={{ width: '100%', height: '100%' }} />
+            }
           </Box> 
           <div className={styles.line}>
             <div className={styles.tit}>
