@@ -269,6 +269,14 @@
     --aspect-ratio: 4096/3411;
     --drop-padding: 5.2% 4% 27%;
   }
+
+  &.minimalPhone {
+    --aspect-ratio: 6/13;
+    --shadow-inset: 1%;
+    --shadow-radius: unset;
+    --drop-padding: 0;
+    --drop-radius: unset;
+  }
 }
 .devices {
   position: absolute;

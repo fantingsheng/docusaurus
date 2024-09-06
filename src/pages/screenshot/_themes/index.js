@@ -17,6 +17,7 @@ import IphoneSe from "./iphoneSe";
 import HuaweiP40ProPlus from "./huaweiP40ProPlus";
 import SamsungGalaxyWatch4 from "./samsungGalaxyWatch4";
 import IMacPro from "./iMacPro";
+import MinimalPhone from "./minimalPhone";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -100,6 +101,10 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/iMacPro/style_default.png' }
       ]
+    case 'minimalPhone':
+      return [
+        { name: 'default', title: '', thumail: '/screenshot/theme/minimalPhone/style_default.png' }
+      ]
     default:
       return [];
   }
@@ -144,6 +149,8 @@ export default function CoverTheme (props) {
         return <SamsungGalaxyWatch4 {...props} />
       case 'iMacPro':
         return <IMacPro {...props} />
+      case 'minimalPhone':
+        return <MinimalPhone {...props} />
       default:
         return <></>;
 		}
