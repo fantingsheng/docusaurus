@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { Box, Avatar, Slider, ToggleButtonGroup, ToggleButton, Stack, Typography } from '@mui/material';
+import RangeSlider from "@site/src/components/RangeSlider";
+
 import { useConfigContext } from '../../_configProvider';
 
 export default function BoxShadow({ shadow }) {
@@ -22,19 +24,52 @@ export default function BoxShadow({ shadow }) {
   }
   return (
     <>
-      <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
+      <RangeSlider
+        minVal={0.1}
+        maxVal={0.7}
+        step={0.01}
+        value={config.shadowOpacity}
+        label='Opacity'
+        onValueChange={val => handleConfigChange(val, "shadowOpacity")}
+      />
+      {/* <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
         <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Opacity</Typography>
         <Slider
-          value={config.shadowOpacity * 100}
+          value={config.shadowOpacity}
           aria-label='shadow'
           valueLabelDisplay="auto"
-          min={10}
-          step={1}
-          max={70}
-          onChange={(e, val) => handleConfigChange(val / 100, "shadowOpacity")}
+          min={0.1}
+          step={0.01}
+          max={0.7}
+          sx={{
+            '& .MuiSlider-thumb': {
+              backgroundColor: '#fff',
+              border: '2px solid currentColor',
+            },
+            '& .MuiSlider-valueLabel': {
+              lineHeight: 1.2,
+              fontSize: 12,
+              background: 'unset',
+              padding: 0,
+              width: 32,
+              height: 32,
+              borderRadius: '50% 50% 50% 0',
+              backgroundColor: 'var(--ifm-color-primary)',
+              transformOrigin: 'bottom left',
+              transform: 'translate(50%, -85%) rotate(-45deg) scale(0)',
+              '&::before': { display: 'none' },
+              '&.MuiSlider-valueLabelOpen': {
+                transform: 'translate(50%, -85%) rotate(-45deg) scale(1)',
+              },
+              '& > *': {
+                transform: 'rotate(45deg)',
+              },
+            }
+          }}
+          onChange={(e, val) => handleConfigChange(val, "shadowOpacity")}
         />
-        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.shadowOpacity * 100}</Typography>
-      </Stack>
+        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.shadowOpacity}</Typography>
+      </Stack> */}
     
       <ToggleButtonGroup
         value={shadowVal}

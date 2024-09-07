@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { Slider, Box, Stack, ToggleButtonGroup, ToggleButton, styled, Typography, Avatar } from '@mui/material';
+import RangeSlider from "@site/src/components/RangeSlider";
 import { useConfigContext } from '../../_configProvider';
 
 export const BorderRadiusIcon = styled(Box)({
@@ -29,54 +30,17 @@ export default function BorderRadius() {
     handleConfigChange(newVal, "borderRadius");
   }
 
-  const PrettoSlider = styled(Slider)({
-    color: '#52af77',
-    height: 8,
-    '& .MuiSlider-track': {
-      border: 'none',
-    },
-    '& .MuiSlider-thumb': {
-      height: 24,
-      width: 24,
-      backgroundColor: '#fff',
-      border: '2px solid currentColor',
-      '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-        boxShadow: 'inherit',
-      },
-      '&::before': {
-        display: 'none',
-      },
-    },
-    '& .MuiSlider-valueLabel': {
-      lineHeight: 1.2,
-      fontSize: 12,
-      background: 'unset',
-      padding: 0,
-      width: 32,
-      height: 32,
-      borderRadius: '50% 50% 50% 0',
-      backgroundColor: '#52af77',
-      transformOrigin: 'bottom left',
-      transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-      '&::before': { display: 'none' },
-      '&.MuiSlider-valueLabelOpen': {
-        transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
-      },
-      '& > *': {
-        transform: 'rotate(45deg)',
-      },
-    },
-  });
-
   return (
     <>
-      {/* <PrettoSlider
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
+      <RangeSlider
+        minVal={1}
+        maxVal={40}
+        step={1}
         value={config.borderRadius}
-        onChange={(e, val) => onValueChange(val)}
-      /> */}
-      <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
+        label='Radius'
+        onValueChange={val => handleConfigChange(val, "borderRadius")}
+      />
+      {/* <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
         <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Radius</Typography>
         <Slider
           value={config.borderRadius}
@@ -85,10 +49,35 @@ export default function BorderRadius() {
           min={1}
           step={1}
           max={40}
-          onChange={(e, val) => onValueChange(val)}
+          sx={{
+            '& .MuiSlider-thumb': {
+              backgroundColor: '#fff',
+              border: '2px solid currentColor',
+            },
+            '& .MuiSlider-valueLabel': {
+              lineHeight: 1.2,
+              fontSize: 12,
+              background: 'unset',
+              padding: 0,
+              width: 32,
+              height: 32,
+              borderRadius: '50% 50% 50% 0',
+              backgroundColor: 'var(--ifm-color-primary)',
+              transformOrigin: 'bottom left',
+              transform: 'translate(50%, -85%) rotate(-45deg) scale(0)',
+              '&::before': { display: 'none' },
+              '&.MuiSlider-valueLabelOpen': {
+                transform: 'translate(50%, -85%) rotate(-45deg) scale(1)',
+              },
+              '& > *': {
+                transform: 'rotate(45deg)',
+              },
+            }
+          }}
+          onChange={(e, val) => handleConfigChange(val, "borderRadius")}
         />
-        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.borderRadius}</Typography>
-      </Stack>
+        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.borderRadius}</Typography> 
+      </Stack>*/}
       
       <ToggleButtonGroup
         value={config.borderRadius}
