@@ -1,0 +1,285 @@
+---
+slug: customize-slider
+title: 滑动组件 Slider 样式魔改
+authors: [timfan]
+tags: [自定义样式, 滑动组件]
+image: https://spacexcode.com/screenshot/mockup/screenshot.png
+hide_table_of_contents: true
+enable_comment: true
+enable_adsense: true
+hide_sidebar: true
+---
+
+import { useState  } from 'react';
+import { Box, Slider } from '@mui/material';
+import RangeSlider from "@site/src/components/RangeSlider";
+
+
+最近在浏览网站的时候看到一个有趣的滑动组件的样式，觉得很有趣。一时有兴趣就去用代码实现了一下：
+
+export const VideoBg = () => {
+  return (
+    <div style={{ width: '100%', margin: '20px auto 40px' }}>
+      <video controls={true} style={{ width: '100%' }} src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/slider-component-demo.mp4" autoPlay={true} loop={true}></video>
+    </div>
+  )
+}
+
+<VideoBg />
+
+这里我就不从零开始实现了，借用 [Material UI Slider](https://mui.com/material-ui/react-slider/) 快速实现，基本上就是重新写样式覆盖。
+
+Material UI 上的 `Slider` 组件默认样式如下：
+
+<Slider
+  aria-label="Temperature"
+  defaultValue={30}
+  color="secondary"
+/>
+
+```jsx
+import Slider from '@mui/material/Slider';
+
+export default function Main() {
+  <Slider
+    aria-label="Temperature"
+    defaultValue={30}
+    color="secondary"
+  />
+}
+```
+
+很明显，这个和上面视频中的组件在样式上相差甚远。
+
+首先我们来剖析下组成这个组件所需要的元素有哪些？打开浏览器的元素审查，我们找到和 Slider 组件相关的元素标签，会发现主要结构如下：
+
+```html
+<span class="MuiSlider-root">
+  <span class="MuiSlider-rail"></span>
+  <span class="MuiSlider-track"></span>
+  <span class="MuiSlider-thumb"></span>
+</span>
+```
+
+这里略去一些无关紧要的元素，主要就是根元素下的类名为 `MuiSlider-rail`、`MuiSlider-track` 和 `MuiSlider-thumb` 的三个 span 标签组成。
+接下来我们也是主要围绕这三个元素进行样式重定义。
+
+我们的教程会通过一步一步修改，逐步展示修改后的样式。
+
+### 滑块高度
+
+得益于 Material UI 组件的 `sx` 属性，可以自由地自定义该组件的样式。
+
+```jsx
+<Slider
+  sx={{
+    height: 28
+  }}
+/>
+```
+
+<Slider
+  defaultValue={45}
+  aria-label='Score'
+  min={1}
+  step={1}
+  max={100}
+  sx={{
+    height: 28,
+  }}
+/>
+
+### 滑块的颜色
+
+```jsx
+<Slider
+  sx={{
+    height: 28,
+    color: 'rgba(220,220,220,1)'
+  }}
+/>
+```
+
+<Slider
+  defaultValue={45}
+  aria-label='Score'
+  min={1}
+  step={1}
+  max={100}
+  sx={{
+    height: 28,
+    color: 'rgba(220,220,220,1)'
+  }}
+/>
+
+稍稍改变下圆角的值，继续在 `sx` 下追加属性 `borderRadius: '5px'`。
+
+### 拖拽按钮的样式
+
+原来的拖拽按钮是一个圆形的，我们要将它改为细长条样式。
+
+```jsx
+<Slider
+  sx={{
+    height: 28,
+    color: 'rgba(220,220,220,1)',
+    borderRadius: '5px',
+    '& .MuiSlider-thumb': {
+      width: '2px',
+      height: '20px',
+      margin: '0 4px',
+      borderRadius: 0,
+      backgroundColor: 'currentColor',
+      boxShadow: 'none',
+      border: 'none',
+      '&::before': { boxShadow: 'none' },
+    }
+  }}
+/>
+```
+
+<Slider
+  defaultValue={45}
+  aria-label='Score'
+  min={1}
+  step={1}
+  max={100}
+  sx={{
+    height: 28,
+    color: 'rgba(220,220,220,1)',
+    borderRadius: '5px',
+    '& .MuiSlider-thumb': {
+      width: '3px',
+      height: '20px',
+      margin: '0 4px',
+      borderRadius: 0,
+      backgroundColor: 'currentColor',
+      boxShadow: 'none',
+      border: 'none',
+      '&::before': { boxShadow: 'none' },
+    }
+  }}
+/>
+
+### 增加标签和当前值的显示
+
+对于文字的显示，我们在采用和滑动组件同级，新增元素标签包裹，然后绝对定位，让它位于组件的上方。
+
+export const CustomSlider = () => {
+  const [score, setScore] = useState(45);
+  return (
+    <Box sx={{ position: 'relative', display: 'flex' }}>
+      <Slider
+        defaultValue={score}
+        aria-label='Score'
+        min={1}
+        step={1}
+        max={100}
+        sx={{
+          height: 28,
+          padding: '20px 0',
+          color: 'rgba(220,220,220,1)',
+          borderRadius: '5px',
+          '& .MuiSlider-thumb': {
+            width: '2px',
+            height: '20px',
+            margin: '0 4px',
+            borderRadius: 0,
+            backgroundColor: 'currentColor',
+            boxShadow: 'none',
+            border: 'none',
+            '&::before': { boxShadow: 'none' },
+          },
+          '& .MuiSlider-rail': {
+            position: 'relative'
+          },
+          '& .MuiSlider-track': {
+            border: 'none'
+          }
+        }}
+        onChange={(e, val) => setScore(val)}
+      />
+      <Box sx={{
+        width: '100%',
+        display: 'flex',
+        position: 'absolute',
+        height: '100%',
+        top: 0,
+        zIndex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 8px',
+        pointerEvents: 'none',
+        fontSize: '11px',
+        color: 'rgba(0,0,0,0.56)'
+      }}>
+        <span>Score</span>
+        <span>{score}</span>
+      </Box>
+    </Box>
+  )
+}
+
+<CustomSlider />
+
+```jsx
+import { Box, Slider } from '@mui/material';
+
+export default function CustomSlider() {
+  const [score, setScore] = useState(45);
+  return (
+    <Box sx={{ position: 'relative', display: 'flex' }}>
+      <Slider
+        defaultValue={score}
+        aria-label='Score'
+        min={1}
+        step={1}
+        max={100}
+        sx={{
+          height: 28,
+          color: 'rgba(220,220,220,1)',
+          borderRadius: '5px',
+          '& .MuiSlider-thumb': {
+            width: '2px',
+            height: '20px',
+            margin: '0 4px',
+            borderRadius: 0,
+            backgroundColor: 'currentColor',
+            boxShadow: 'none',
+            border: 'none',
+            '&::before': { boxShadow: 'none' },
+          },
+          '& .MuiSlider-rail': {
+            position: 'relative'
+          },
+          '& .MuiSlider-track': {
+            border: 'none'
+          }
+        }}
+        onChange={(e, val) => setScore(val)}
+      />
+      <Box sx={{
+        width: '100%',
+        display: 'flex',
+        position: 'absolute',
+        height: '100%',
+        top: 0,
+        zIndex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 8px',
+        pointerEvents: 'none',
+        fontSize: '11px',
+        color: 'rgba(0,0,0,0.56)'
+      }}>
+        <span>Score</span>
+        <span>{score}</span>
+      </Box>
+    </Box>
+  )
+}
+```
+
+
+
+
