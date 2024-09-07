@@ -10,27 +10,25 @@ export default function RangeSlider({ minVal, maxVal, step, value, onValueChange
         step={step}
         max={maxVal}
         sx={{
+          height: 28,
+          padding: '10px 0',
+          color: 'rgba(220,220,220,1)',
           '& .MuiSlider-thumb': {
             width: '2px',
-            height: '18px',
+            height: '20px',
             margin: '0 4px',
             borderRadius: 0,
-            backgroundColor: '#currentColor',
+            backgroundColor: 'currentColor',
+            boxShadow: 'none',
             border: 'none',
+            '&::before': { boxShadow: 'none' },
           },
-          height: 28,
-          borderRadius: '8px',
+          borderRadius: '5px',
           '& .MuiSlider-rail': {
             position: 'relative'
           },
           '& .MuiSlider-track': {
             border: 'none'
-          },
-          '& .MuiSlider-rail::after': {
-            content: `'20'`,
-            position: 'absolute',
-            right: '5px',
-            top: '5px'
           },
           '& .MuiSlider-valueLabel': {
             lineHeight: 1.2,
@@ -66,7 +64,7 @@ export default function RangeSlider({ minVal, maxVal, step, value, onValueChange
         padding: '0 8px',
         pointerEvents: 'none',
         fontSize: '11px',
-        color: '#fff'
+        color: 'rgba(0,0,0,0.56)'
       }}>
         <span>{label}</span>
         <span>{value}</span>
