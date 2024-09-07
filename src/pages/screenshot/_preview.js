@@ -47,7 +47,10 @@ export default function Preview({ transform, showBtn }) {
                   ['screenshot', 'browser', 'iphone15', 'ipadPro13', 'pixel7Pro', 'ipadAir', 'iphone14', 'iphoneSe', 'huaweiP40ProPlus', 'minimalPhone'].includes(config.mockup.theme) &&
                   <div
                     className={styles.shadow}
-                    style={{ borderRadius: config.mockup.theme === 'screenshot' ? `${config.borderRadius / 8}em` : '' }}
+                    style={{ 
+                      borderRadius: config.mockup.theme === 'screenshot' ? 
+                        `${config.borderRadius / 8}em` : config.mockup.theme === 'minimalPhone' ?
+                        `${config.borderRadius / 4}em` : '' }}
                   >
                     {[1, 3, 6, 10].map(el => (
                       <div

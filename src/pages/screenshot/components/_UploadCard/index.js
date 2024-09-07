@@ -33,13 +33,24 @@ export default function UploadCard({ showBtn }) {
     }
   }
 
+  const calcBorderRadius = () => {
+    switch(config.mockup.theme) {
+      case "screenshot":
+        return `${config.borderRadius / 8}em`;
+      case "minimalPhone":
+        return `${config.borderRadius / 4}em`;
+      default:
+        return ''
+    }
+  }
+
   return (
     <Box className="uploadWrap" 
       sx={{
         width: "100%",
         height: "100%",
         padding: 'var(--drop-padding)',
-        borderRadius: ["screenshot", "minimalPhone"].includes(config.mockup.theme) ? `${config.borderRadius / 8}em` : '',
+        borderRadius: calcBorderRadius(),
         overflow: ["screenshot", "minimalPhone"].includes(config.mockup.theme) ? 'hidden' : 'unset'
     }}>
       <Button
