@@ -22,6 +22,7 @@ export default function RangeSlider({ minVal, maxVal, step, value, onValueChange
             boxShadow: 'none',
             border: 'none',
             '&::before': { boxShadow: 'none' },
+            '&:hover': { boxShadow: 'none' }
           },
           borderRadius: '5px',
           '& .MuiSlider-rail': {
