@@ -666,7 +666,7 @@
 <p>我们给它增加一个场景：</p>
 <p>通常这种大树叶的绿植要么生长在热带雨林，要么被我们放在室内当做风景或者背景。</p>
 <!-- -->
-<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>17 : 21 : 33</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF" autoplay=""></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content:encoded>
+<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>00 : 10 : 54</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF" autoplay=""></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content:encoded>
             <author>fants0230@sina.com (编程范儿)</author>
             <category>CSS 动画</category>
             <category>设计</category>
@@ -1053,7 +1053,7 @@ Github Discussion 功能开发的开源的插件。用户要评论，首先得�
 <p>我发现国外的博主在文章中都喜欢插入表情字符，这样显得文章比较生动可爱。如今我也刻意地去锻炼这一点，没写完一段话，就想这里能不能插入一个合适的表情字符，为此我还特意收集了看到的一些表情字符，
 做了整理【<a href="https://spacexcode.com/docs/collection/charactor" target="_blank" rel="noopener noreferrer">网页特殊表情和字符</a>】。</p>
 <p>还有一个重要的认识就是一篇文章尽量把相关的知识点做到串联起来，关联的文章之间相互引用。你所掌握的知识结构到最后一定是网状的。</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="总结">总结<a href="https://spacexcode.com/blog/refactor-my-website#%E6%80%BB%E7%BB%93" class="hash-link" aria-label="总结的直�接链接" title="总结的直接链接">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="总结">总结<a href="https://spacexcode.com/blog/refactor-my-website#%E6%80%BB%E7%BB%93" class="hash-link" aria-label="总结的直接链接" title="总结的直接链接">​</a></h2>
 <p>网站正式上线将近四五个月了，已经产出这么多的内容算得上高产了。截止此刻网站的访问统计：<code>PV：27345</code>，<code>UV：14861</code>，期间也只在其它平台发布的文章中稍微推广了下。希望持续保持热情，将这个站点维护
 下去。</p>
 <p><em>记：2023-09-28 16:08 周四</em></p>]]></content:encoded>
