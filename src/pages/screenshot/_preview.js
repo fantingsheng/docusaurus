@@ -67,6 +67,20 @@ export default function Preview({ transform, showBtn }) {
                 }
               </div>
             </div>
+            <div className={styles.resizeHandle}>
+              <div className={clsx(styles.handleArea, styles.leftTop)}>
+                <div className={styles.handle}></div>
+              </div>
+              <div className={clsx(styles.handleArea, styles.rightTop)}>
+                <div className={styles.handle}></div>
+              </div>
+              <div className={clsx(styles.handleArea, styles.rightBottom)}>
+                <div className={styles.handle}></div>
+              </div>
+              <div className={clsx(styles.handleArea, styles.leftBottom)}>
+                <div className={styles.handle}></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
