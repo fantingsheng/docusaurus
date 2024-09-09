@@ -81,10 +81,7 @@ export default function Background() {
     '/screenshot/bgImg/macos-monterey-dark-small.jpg',
     '/screenshot/bgImg/autumnal-peach-small.png',
     '/screenshot/bgImg/blossom-2-small.png',
-    '/screenshot/bgImg/good-vibes-small.png',
-    '/screenshot/bgImg/radiant-1-small.jpg',
-    '/screenshot/bgImg/radiant-2-small.jpg',
-    '/screenshot/bgImg/radiant-3-small.png'
+    '/screenshot/bgImg/good-vibes-small.png'
   ]
 
   const cssDoodleList = [
