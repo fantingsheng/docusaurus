@@ -112,20 +112,22 @@ export default function Preview({ transform, showBtn }) {
                 }
               </div>
             </div>
-            <div className={styles.resizeHandle}>
-              <div className={clsx(styles.handleArea, styles.leftTop)} onMouseDown={e => handleStartResize(e, 'left')}>
-                <div className={styles.handle}></div>
+            {showBtn &&
+              <div className={styles.resizeHandle}>
+                <div className={clsx(styles.handleArea, styles.leftTop)} onMouseDown={e => handleStartResize(e, 'left')}>
+                  <div className={styles.handle}></div>
+                </div>
+                <div className={clsx(styles.handleArea, styles.rightTop)} onMouseDown={e => handleStartResize(e, 'right')}>
+                  <div className={styles.handle}></div>
+                </div>
+                <div className={clsx(styles.handleArea, styles.rightBottom)} onMouseDown={e => handleStartResize(e, 'right')}>
+                  <div className={styles.handle}></div>
+                </div>
+                <div className={clsx(styles.handleArea, styles.leftBottom)} onMouseDown={e => handleStartResize(e, 'left')}>
+                  <div className={styles.handle}></div>
+                </div>
               </div>
-              <div className={clsx(styles.handleArea, styles.rightTop)} onMouseDown={e => handleStartResize(e, 'right')}>
-                <div className={styles.handle}></div>
-              </div>
-              <div className={clsx(styles.handleArea, styles.rightBottom)} onMouseDown={e => handleStartResize(e, 'right')}>
-                <div className={styles.handle}></div>
-              </div>
-              <div className={clsx(styles.handleArea, styles.leftBottom)} onMouseDown={e => handleStartResize(e, 'left')}>
-                <div className={styles.handle}></div>
-              </div>
-            </div>
+            }
           </div>
         </div>
       </div>
