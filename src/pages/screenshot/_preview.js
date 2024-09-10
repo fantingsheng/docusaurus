@@ -43,7 +43,7 @@ export default function Preview({ transform, showBtn }) {
       scale = config.scale + offset * 0.01;
     }
     setClientX(e.clientX);
-    handleConfigChange(scale, 'scale');
+    handleConfigChange(parseFloat(scale.toFixed(2)), 'scale');
   }, 0)
 
   const handleResize = useCallback(didHandleResize, [isResizing, clientX, didHandleResize])
