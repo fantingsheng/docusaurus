@@ -32,15 +32,16 @@ export default function Preview({ transform, showBtn }) {
   }, [])
 
   const didHandleResize = debounce(e => {
-    if (!isResizing) return
+    if (!isResizing) return;
     const offset = e.clientX - clientX;
     let scale = 0;
+    const pixelToScale = 0.01;
 
     if (handSide === 'left') {
-      scale = config.scale - offset * 0.01;
+      scale = config.scale - offset * pixelToScale;
     }
     if (handSide === 'right') {
-      scale = config.scale + offset * 0.01;
+      scale = config.scale + offset * pixelToScale;
     }
     setClientX(e.clientX);
     handleConfigChange(parseFloat(scale.toFixed(2)), 'scale');
