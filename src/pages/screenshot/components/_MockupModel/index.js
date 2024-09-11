@@ -16,7 +16,7 @@ export default function MockupModel({ open }) {
       title: 'Screenshot',
       type: '',
       feature: false,
-      subtitle: '自适应图片大小',
+      subtitle: '自适应大小',
       thumbnail: '/screenshot/mockup/screenshot.png',
       previews: []
     },
@@ -25,7 +25,7 @@ export default function MockupModel({ open }) {
       title: 'Browser',
       type: '',
       feature: true,
-      subtitle: '自适应图片大小',
+      subtitle: '自适应大小',
       thumbnail: '/screenshot/mockup/browser.png',
       previews: []
     },

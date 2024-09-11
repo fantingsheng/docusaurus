@@ -80,3 +80,28 @@
     }
   }
 }
+
+.details {
+  background: rgba(0,0,0,0.04);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  gap: 6px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      color: rgba(0,0,0,0.36);
+      font: normal 11px/14px Inter,sans-serif;
+    }
+
+    p {
+      font: normal 11px/14px Inter,sans-serif;
+      margin: 0;
+    }
+  }
+}

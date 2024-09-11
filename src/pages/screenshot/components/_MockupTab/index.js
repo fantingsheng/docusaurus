@@ -50,6 +50,19 @@ export default function MockupTab() {
         <Typography className={styles.setTit} variant="h3">大小和位置</Typography>
         <SizeAndPosition />
       </Box>
+      <Box className={styles.pannelCtrl}>
+        <Typography className={styles.setTit} variant="h3">详细信息</Typography>
+        <Box className={styles.details}>
+          <Box className={styles.row}>
+            <span>设备</span>
+            <p>{config.mockup.title}</p>
+          </Box>
+          <Box className={styles.row}>
+            <span>图片尺寸</span>
+            <p>{config.mockup.sizeInfo}</p>
+          </Box>
+        </Box>
+      </Box>
     </div>
   )
 }
