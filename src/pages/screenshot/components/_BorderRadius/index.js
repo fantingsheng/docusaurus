@@ -6,7 +6,7 @@ import { useConfigContext } from '../../_configProvider';
 export const BorderRadiusIcon = styled(Box)({
   width: '28px',
   height: '28px',
-  backgroundColor: 'rgba(0,0,0,.14)',
+  backgroundColor: 'rgb(222, 226, 230)',
   borderRadius: '5px',
   border: '1px solid rgba(0,0,0,.12)',
   position: 'relative',
@@ -40,45 +40,6 @@ export default function BorderRadius() {
         label='Radius'
         onValueChange={val => handleConfigChange(val, "borderRadius")}
       />
-      {/* <Stack spacing={2} direction="row" sx={{  }} alignItems="center">
-        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>Radius</Typography>
-        <Slider
-          value={config.borderRadius}
-          valueLabelDisplay="auto"
-          aria-label='Radius'
-          min={1}
-          step={1}
-          max={40}
-          sx={{
-            '& .MuiSlider-thumb': {
-              backgroundColor: '#fff',
-              border: '2px solid currentColor',
-            },
-            '& .MuiSlider-valueLabel': {
-              lineHeight: 1.2,
-              fontSize: 12,
-              background: 'unset',
-              padding: 0,
-              width: 32,
-              height: 32,
-              borderRadius: '50% 50% 50% 0',
-              backgroundColor: 'var(--ifm-color-primary)',
-              transformOrigin: 'bottom left',
-              transform: 'translate(50%, -85%) rotate(-45deg) scale(0)',
-              '&::before': { display: 'none' },
-              '&.MuiSlider-valueLabelOpen': {
-                transform: 'translate(50%, -85%) rotate(-45deg) scale(1)',
-              },
-              '& > *': {
-                transform: 'rotate(45deg)',
-              },
-            }
-          }}
-          onChange={(e, val) => handleConfigChange(val, "borderRadius")}
-        />
-        <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.56)' }}>{config.borderRadius}</Typography> 
-      </Stack>*/}
-      
       <ToggleButtonGroup
         value={config.borderRadius}
         exclusive
@@ -88,21 +49,21 @@ export default function BorderRadius() {
         fullWidth
       >
         <ToggleButton value={0} aria-label="Sharp">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+          <Box sx={{ padding: '10px 0' }}>
             <BorderRadiusIcon />
-            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Sharp</Typography>
+            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none', fontSize: '11px' }} variant="caption">直角</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value={20} aria-label="Curved">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+          <Box sx={{ padding: '10px 0' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '8px' } }} />
-            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Curved</Typography>
+            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Curved</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value={40} aria-label="Round">
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+          <Box sx={{ padding: '10px 0' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '14px' } }} />
-            <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Round</Typography>
+            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Round</Typography> */}
           </Box>
         </ToggleButton>
       </ToggleButtonGroup>

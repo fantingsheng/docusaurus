@@ -1,18 +1,64 @@
 import styles from "./style.module.scss";
 import CoverTheme from "./_themes";
 import clsx from 'clsx';
+import { debounce } from '@site/src/utils';
 import CssDoodle from "./components/_CssDoodle";
-import { useRef } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { useConfigContext } from './_configProvider';
 
 
 export default function Preview({ transform, showBtn }) {
-  const { config } = useConfigContext();
+  const { config, handleConfigChange } = useConfigContext();
   const cssDoodle = useRef();
+
+  const [handSide, setHandSide] = useState('left');
+  const [clientX, setClientX] = useState(0)
 
   const cssDoodleChange = async () => {
     cssDoodle.current && cssDoodle.current.update();
   };
+
+  // 是否在拖动
+  const [isResizing, setIsResizing] = useState(false)
+
+  const handleStartResize = useCallback((e, side) => {
+    setHandSide(side)
+    setIsResizing(true)
+    setClientX(e.clientX)
+  }, [])
+
+  const handleStopResize = useCallback(() => {
+    setIsResizing(false);
+  }, [])
+
+  const didHandleResize = debounce(e => {
+    if (!isResizing) return;
+    const offset = e.clientX - clientX;
+    let scale = 0;
+    const pixelToScale = 0.01;
+
+    if (handSide === 'left') {
+      scale = config.scale - offset * pixelToScale;
+    }
+    if (handSide === 'right') {
+      scale = config.scale + offset * pixelToScale;
+    }
+    setClientX(e.clientX);
+    handleConfigChange(parseFloat(scale.toFixed(2)), 'scale');
+  }, 0)
+
+  const handleResize = useCallback(didHandleResize, [isResizing, clientX, didHandleResize])
+
+  useEffect(() => {
+    document.addEventListener('mouseup', handleStopResize)
+    document.addEventListener('mousemove', handleResize)
+
+    return () => {
+      document.removeEventListener('mouseup', handleStopResize)
+      document.removeEventListener('mousemove', handleResize)
+    }
+  }, [handleStopResize, handleResize])
+
   
   return (
     <div className={styles.frameContent}>
@@ -67,6 +113,22 @@ export default function Preview({ transform, showBtn }) {
                 }
               </div>
             </div>
+            {showBtn &&
+              <div className={styles.resizeHandle}>
+                <div className={clsx(styles.handleArea, styles.leftTop)} onMouseDown={e => handleStartResize(e, 'left')}>
+                  <div className={styles.handle}></div>
+                </div>
+                <div className={clsx(styles.handleArea, styles.rightTop)} onMouseDown={e => handleStartResize(e, 'right')}>
+                  <div className={styles.handle}></div>
+                </div>
+                <div className={clsx(styles.handleArea, styles.rightBottom)} onMouseDown={e => handleStartResize(e, 'right')}>
+                  <div className={styles.handle}></div>
+                </div>
+                <div className={clsx(styles.handleArea, styles.leftBottom)} onMouseDown={e => handleStartResize(e, 'left')}>
+                  <div className={styles.handle}></div>
+                </div>
+              </div>
+            }
           </div>
         </div>
       </div>

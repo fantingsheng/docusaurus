@@ -93,6 +93,8 @@ export default function Main() {
 
 ### 滑块的颜色
 
+对于滑块的颜色只要设置滑动组件的根元素的 `color` 属性即可，它的子元素设置 `currentColor` 直接继承。滑块底色通过设置一定的透明图来实现。
+
 ```jsx
 <Slider
   sx={{
@@ -165,7 +167,7 @@ export default function Main() {
 
 ### 增加标签和当前值的显示
 
-对于文字的显示，我们在采用和滑动组件同级，新增元素标签包裹，然后绝对定位，让它位于组件的上方。
+对于文字的显示，我们在滑动组件同级，新增元素标签包裹，然后采用绝对定位，让它位于组件的上方。
 
 export const CustomSlider = () => {
   const [score, setScore] = useState(45);

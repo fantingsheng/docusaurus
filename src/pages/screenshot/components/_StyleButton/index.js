@@ -26,7 +26,7 @@ export default function StyleButton() {
               <img src={el.thumail} width="100%" alt={el.title} />
             </div>
           </div>
-          <p className={styles.name}>{el.title}</p>
+          {/* <p className={styles.name}>{el.title}</p> */}
         </div>
       ))}
     </>
