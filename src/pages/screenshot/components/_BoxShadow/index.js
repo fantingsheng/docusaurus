@@ -4,7 +4,7 @@ import RangeSlider from "@site/src/components/RangeSlider";
 
 import { useConfigContext } from '../../_configProvider';
 
-export default function BoxShadow({ shadow }) {
+export default function BoxShadow() {
   const { config, handleConfigChange } = useConfigContext();
 
   const [shadowVal, setShadowVal] = useState("spread");

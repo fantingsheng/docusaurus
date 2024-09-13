@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import Background from "../_Background";
-import { Box, Typography, Slider, Stack } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import RangeSlider from "@site/src/components/RangeSlider";
 
 import styles from "./style.module.scss";
@@ -9,13 +9,6 @@ import { useConfigContext } from '../../_configProvider';
 export default function Frame() {
   const { config, handleConfigChange } = useConfigContext();
 
-  const onNoiseChange = (val) => {
-    handleConfigChange(val, "noise")
-  }
-
-  const onBlurChange = (val) => {
-    handleConfigChange(val, "blur")
-  }
   return (
     <div className={styles.setPannel}>
       <Box className={styles.pannelCtrl}>
@@ -28,14 +21,16 @@ export default function Frame() {
           label='Noise'
           onValueChange={val => handleConfigChange(val, "noise")}
         />
-        <RangeSlider
-          minVal={0}
-          maxVal={100}
-          step={1}
-          value={config.blur}
-          label='Blur'
-          onValueChange={val => handleConfigChange(val, "blur")}
-        />
+        <Box sx={{ marginTop: '-20px' }}>
+          <RangeSlider
+            minVal={0}
+            maxVal={100}
+            step={1}
+            value={config.blur}
+            label='Blur'
+            onValueChange={val => handleConfigChange(val, "blur")}
+          />
+        </Box>
       </Box>
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h5">背景</Typography>

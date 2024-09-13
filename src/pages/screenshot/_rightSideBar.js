@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from "./style.module.scss";
 import Preview from "./_preview";
 import clsx from 'clsx';
@@ -9,6 +10,7 @@ import { useConfigContext } from './_configProvider';
 
 export default function RightSideBar() {
   const { config, handleConfigChange } = useConfigContext();
+  const [showAds, setShowAds] = useState(true);
 
   const transformLst = [
     "",
@@ -19,17 +21,21 @@ export default function RightSideBar() {
     "rotateX(40deg) rotate(40deg) scale(.8)"
   ];
 
+  const onCloseAds = () => {
+    setShowAds((prevVal) => !prevVal);
+  }
+
   return (
     <div className={styles.layout}>
       <div className={styles.cardsWrapper}>
-        <div className={styles.layoutItem}>
+        {showAds && <div className={styles.layoutItem}>
           <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto', position: 'relative' }}>
-            <div className={styles.closeBtn}>
+            <div className={styles.closeBtn} onClick={() => onCloseAds()}>
               <IconButton size="small"><CloseIcon sx={{ fontSize: '16px' }} /></IconButton>
             </div>
             <GoogleAdsBlock model='pureShow' height='100%' />
           </div>
-        </div>
+        </div>}
         {
           transformLst.map((item, index) =>
             (<div
