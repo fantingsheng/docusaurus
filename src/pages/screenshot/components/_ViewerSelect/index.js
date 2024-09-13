@@ -49,7 +49,7 @@ export default function ViewerSelect({ openStyle }) {
             sx={{ aspectRatio: config.ratio }}
           >
             {openStyle === 'mockup' ? <img src={config.mockup.thumbnail} style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
-              : <img src="/page/frame.png" style={{ width: '100%', height: '100%' }} />
+              : <div className={styles.frameIcon} />
             }
           </Box> 
           <div className={styles.line}>
