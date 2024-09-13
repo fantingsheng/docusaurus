@@ -15,7 +15,7 @@ export default function MockupTab() {
   return (
     <div className={styles.setPannel}>
       <Box className={styles.pannelCtrl}>
-        <Typography className={styles.setTit} variant="h3">样式</Typography>
+        <Typography className={styles.setTit} variant="h3" sx={{ marginBottom: '10px' }}>样式</Typography>
         <Box className={styles.pannelCtrlGrid}>
           <StyleButton />
         </Box>
