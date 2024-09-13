@@ -535,6 +535,18 @@
     outline-offset: 4px;
     outline: solid 1.5px rgba(0,0,0,1)!important;
   }
+
+  .closeBtn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border-radius: 50%;
+    background-color: rgba(220,220,220,.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 [data-theme='light'] .accordion {

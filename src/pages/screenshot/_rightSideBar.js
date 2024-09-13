@@ -1,7 +1,9 @@
 import styles from "./style.module.scss";
 import Preview from "./_preview";
 import clsx from 'clsx';
-
+import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { useConfigContext } from './_configProvider';
 
 
@@ -20,6 +22,14 @@ export default function RightSideBar() {
   return (
     <div className={styles.layout}>
       <div className={styles.cardsWrapper}>
+        <div className={styles.layoutItem}>
+          <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto', position: 'relative' }}>
+            <div className={styles.closeBtn}>
+              <IconButton size="small"><CloseIcon sx={{ fontSize: '16px' }} /></IconButton>
+            </div>
+            <GoogleAdsBlock model='pureShow' height='100%' />
+          </div>
+        </div>
         {
           transformLst.map((item, index) =>
             (<div
