@@ -56,7 +56,7 @@ export function FlexBlock () {
         <Box className={styles.block}>Welcome</Box>
         <Box className={styles.block}>to</Box>
         <Box className={styles.block}>Spacexcode</Box>
-        <Box className={styles.block}>Site</Box>
+        <Box className={styles.block}>website</Box>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Typography variant="h5" sx={{ fontSize: '1rem' }}>布局方式：</Typography>
