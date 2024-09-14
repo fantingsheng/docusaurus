@@ -4,6 +4,7 @@ import HideImageIcon from '@mui/icons-material/HideImage';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import FilterCenterFocusIcon from '@mui/icons-material/FilterCenterFocus';
 import { useConfigContext } from './_configProvider';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import toast from 'react-hot-toast';
@@ -40,6 +41,89 @@ export default function CommandBar({ changeFullScreen }) {
     }
   }
 
+  function getDisplayMedia(options) {
+    if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
+        return navigator.mediaDevices.getDisplayMedia(options)
+    }
+    if (navigator.getDisplayMedia) {
+        return navigator.getDisplayMedia(options)
+    }
+    if (navigator.webkitGetDisplayMedia) {
+        return navigator.webkitGetDisplayMedia(options)
+    }
+    if (navigator.mozGetDisplayMedia) {
+        return navigator.mozGetDisplayMedia(options)
+    }
+    throw new Error('getDisplayMedia is not defined')
+  }
+
+  async function takeScreenshotStream() {
+    const width = screen.width * (window.devicePixelRatio || 1)
+    const height = screen.height * (window.devicePixelRatio || 1)
+
+    const errors = [];
+    let stream;
+    const mediaStreamConstraints = {
+      audio: false,
+      video: {
+        width,
+        height,
+        frameRate: 1
+      }
+    };
+
+    try {
+      stream = await getDisplayMedia(mediaStreamConstraints)
+    } catch (ex) {
+      toast.error(ex, {position: 'bottom-center'})
+      errors.push(ex)
+    }
+
+    if (errors.length) {
+      console.debug(...errors)
+      if (!stream) {
+        throw errors[errors.length - 1]
+      }
+    }
+
+    return stream
+  }
+
+  async function takeScreenshotCanvas() {
+    const stream = await takeScreenshotStream()
+    const video = document.createElement('video')
+    const result = await new Promise((resolve, reject) => {
+      video.onloadedmetadata = () => {
+        video.play()
+        video.pause()
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        handleConfigChange(`${video.videoWidth} / ${video.videoHeight}`, 'picRatio')
+        const context = canvas.getContext('2d')
+        context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight)
+        resolve(canvas)
+      }
+      video.srcObject = stream
+    })
+
+    stream.getTracks().forEach(function (track) {
+      track.stop()
+    })
+
+    if (result == null) {
+      toast.error('截图失败', {position: 'bottom-center'})
+      throw new Error('Cannot take canvas screenshot')
+    }
+
+    return result
+}
+
+  const handleClickCapture = async () => {
+    const canvas = await takeScreenshotCanvas()
+    handleConfigChange(canvas.toDataURL(), "picture");
+  }
+
   return (
     <>
       <IconButton
@@ -73,6 +157,15 @@ export default function CommandBar({ changeFullScreen }) {
       >
         <LibraryAddIcon />
         <span style={{ fontSize: '12px' }}>保存</span>
+      </IconButton>
+      {/* 截图 */}
+      <IconButton
+        sx={{ width: '70px', flexDirection: 'column', gap: '5px', borderRadius: '5px' }}
+        aria-label="reset"
+        onClick={handleClickCapture}
+      >
+        <FilterCenterFocusIcon />
+        <span style={{ fontSize: '12px' }}>截图</span>
       </IconButton>
       <Dialog
         open={open}
