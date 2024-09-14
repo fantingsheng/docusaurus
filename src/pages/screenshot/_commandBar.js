@@ -145,6 +145,14 @@ export default function CommandBar({ changeFullScreen }) {
       <IconButton
         sx={{ width: '70px', flexDirection: 'column', gap: '5px', borderRadius: '5px' }}
         aria-label="reset"
+        onClick={handleClickCapture}
+      >
+        <FilterCenterFocusIcon />
+        <span style={{ fontSize: '12px' }}>截图</span>
+      </IconButton>
+      <IconButton
+        sx={{ width: '70px', flexDirection: 'column', gap: '5px', borderRadius: '5px' }}
+        aria-label="reset"
         onClick={handleResetConfig}
       >
         <RestartAltIcon />
@@ -157,15 +165,6 @@ export default function CommandBar({ changeFullScreen }) {
       >
         <LibraryAddIcon />
         <span style={{ fontSize: '12px' }}>保存</span>
-      </IconButton>
-      {/* 截图 */}
-      <IconButton
-        sx={{ width: '70px', flexDirection: 'column', gap: '5px', borderRadius: '5px' }}
-        aria-label="reset"
-        onClick={handleClickCapture}
-      >
-        <FilterCenterFocusIcon />
-        <span style={{ fontSize: '12px' }}>截图</span>
       </IconButton>
       <Dialog
         open={open}
