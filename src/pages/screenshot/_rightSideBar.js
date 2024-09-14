@@ -10,7 +10,7 @@ import { useConfigContext } from './_configProvider';
 
 export default function RightSideBar() {
   const { config, handleConfigChange } = useConfigContext();
-  const [showAds, setShowAds] = useState(true);
+  const [showAds, setShowAds] = useState(false);
 
   const transformLst = [
     "",
