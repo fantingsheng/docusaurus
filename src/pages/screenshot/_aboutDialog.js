@@ -7,7 +7,7 @@ import { Box, Typography } from '@mui/material';
 
 export default function AboutShot() {
   const pageUrl = "https://spacexcode.com/screenshot";
-  const shareTitle = "图片套壳美化工具 - 太空编程 | 选择指定模型，帮你生成多种场景和样式经过美化的图片";
+  const shareTitle = "图片套壳美化工具 - 太空编程 | 一款快捷的图片美化工具，我们预设了一些样式和设备模型，通过参数配置可以帮你一键生成并导出适用于不同分享平台的漂亮的封面图片";
   const shareImg = "https://spacexcode.com/page/screenshot.png";
 
   return (

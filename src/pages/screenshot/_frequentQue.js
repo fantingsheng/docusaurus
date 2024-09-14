@@ -35,7 +35,7 @@ export default function FrequentQuestion () {
           <Typography>我在自己电脑上保存的数据为什么换台电脑不能用？</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>该网站数据保存在本地，使用的浏览器接口的本地存储（localStorage），有效期为永久，只要不主动删除会一直存在。不同浏览器之间数据不能共享。</Typography>
+          <Typography>该网站数据保存在本地，使用的浏览器接口的本地存储（localStorage），有效期为永久（只要不主动删除会一直存在）。不同浏览器之间数据不能共享。</Typography>
         </AccordionDetails>
       </Accordion>
     </>
