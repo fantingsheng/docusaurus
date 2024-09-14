@@ -618,9 +618,9 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
 
 export default function () {
   return (
-    <Layout title='文字卡片生成器' description='文字卡片生成器，根据配置快速生成一张漂亮的文字卡片，用于展示和分享'>
+    <Layout title='文字卡片生成器' description='一款将文字转化为图片的工具，内置了丰富的样式和配色，简单调节参数快速生成一张漂亮的文字卡片，用于展示和分享'>
       <Head>
-        <meta name="keywords" content='文字卡片,头图,生成器,工具,演示' />
+        <meta name="keywords" content='文字卡片,头图,生成器,工具,文字图片,导出工具,文字样式' />
       </Head>
       <div className={styles.page}>
         <div className="container">

@@ -27,8 +27,8 @@ export default function () {
     <>
       <Head>
         <title>{`图片套壳美化 | ${siteConfig.title}`}</title>
-        <meta name="title" content='图片模型生成器' />
-        <meta name="description" content="选择指定模型帮你生成漂亮的封面图片" />
+        <meta name="title" content='图片套壳美化生成器' />
+        <meta name="description" content="一款快捷的图片美化工具，我们预设了一些样式和设备模型，通过参数配置可以帮你一键生成并导出适用于不同分享平台的漂亮的封面图片" />
         <meta name="keywords" content='手机套壳,模型,图片美化,封面,抖音封面,公众号封面,视频封面,封面制作' />
       </Head>
       <ConfigProvider>

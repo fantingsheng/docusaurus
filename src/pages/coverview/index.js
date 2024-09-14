@@ -526,7 +526,7 @@ export default function () {
   return (
     <Layout title='封面图生成器' description='封面图神器，根据配置快速生成一张漂亮的文章封面图'>
       <Head>
-        <meta name="keywords" content='封面图,头图,生成器,工具,演示' />
+        <meta name="keywords" content='封面图,头图,生成器,图片工具,文章配图' />
       </Head>
       <div className={styles.page}>
         <div className="container">
