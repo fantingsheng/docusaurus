@@ -10,6 +10,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CopyAll from '@mui/icons-material/CopyAll';
+import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
 import RandomTheme from './RandomTheme';
 import TextCard from './TextCard';
 import ColorPicker from '@site/src/components/ColorPicker';
@@ -632,6 +633,9 @@ export default function () {
                 <FrequentQuestion />
               </Grid>
             </Grid>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <GoogleAdsBlock model='inFluid' height='80px' />
           </Box>
           <Box sx={{ margin: '6rem 0 4rem' }}>
             <Grid container spacing={3}>

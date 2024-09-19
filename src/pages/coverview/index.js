@@ -9,6 +9,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import CopyAll from '@mui/icons-material/CopyAll';
+import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
 import { styled } from '@mui/material/styles';
 import CoverImage from './CoverImage';
 import RandomTheme from '../memocard/RandomTheme';
@@ -539,6 +540,9 @@ export default function () {
                   <FrequentQuestion />
                 </Grid>
               </Grid>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <GoogleAdsBlock model='inFluid' height='80px' />
             </Box>
             <Box sx={{ margin: '6rem 0 4rem' }}>
               <Grid container spacing={3}>
