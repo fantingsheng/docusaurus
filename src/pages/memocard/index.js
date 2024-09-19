@@ -626,7 +626,7 @@ export default function () {
       <div className={styles.page}>
         <div className="container">
           <Main normal={true} />
-          <Box sx={{ margin: '4rem 0' }}>
+          <Box sx={{ margin: '4rem 0 0' }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <h2 className='text--center margin-bottom--lg'>🛠 常见问题</h2>
