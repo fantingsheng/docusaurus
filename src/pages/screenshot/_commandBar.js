@@ -75,7 +75,7 @@ export default function CommandBar({ changeFullScreen }) {
     try {
       stream = await getDisplayMedia(mediaStreamConstraints)
     } catch (ex) {
-      toast.error(ex, {position: 'bottom-center'})
+      // toast.error("", {position: 'bottom-center'})
       errors.push(ex)
     }
 
@@ -91,6 +91,7 @@ export default function CommandBar({ changeFullScreen }) {
 
   async function takeScreenshotCanvas() {
     const stream = await takeScreenshotStream()
+    console.log("stream", stream)
     const video = document.createElement('video')
     const result = await new Promise((resolve, reject) => {
       video.onloadedmetadata = () => {
