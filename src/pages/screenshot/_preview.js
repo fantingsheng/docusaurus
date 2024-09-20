@@ -68,8 +68,8 @@ export default function Preview({ transform, showBtn }) {
         { !config.transparent && config.bgImg &&
           <img className={styles.frameBackground} src={config.bgImg} />
         }
-        { !config.transparent && config.bg &&
-          !config.bgImg && <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} />
+        { !config.transparent && !config.bgImg && config.bg &&
+          <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} />
         }
         { !config.transparent && config.bgLayer && 
           <CssDoodle ref={cssDoodle} rule={config.bgLayer} cssDoodleChange={cssDoodleChange} />

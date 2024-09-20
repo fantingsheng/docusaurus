@@ -85,50 +85,59 @@ export default function Background() {
   ]
 
   const cssDoodleList = [
+    // `:doodle {
+    //   @grid: 1x8 / 100%;
+    // }
+    // @place-cell: center;
+    // width: @rand(40%, 80%);
+    // height: @rand(40%, 80%);
+    // transform: translate(@rand(-200%, 200%), @rand(-60%, 60%)) scale(@rand(.8, 1.8)) skew(@rand(45deg));
+    // clip-path: polygon(
+    //   @r(0, 30%) @r(0, 50%), 
+    //   @r(30%, 60%) @r(0%, 30%), 
+    //   @r(60%, 100%) @r(0%, 50%), 
+    //   @r(60%, 100%) @r(50%, 100%), 
+    //   @r(30%, 60%) @r(60%, 100%),
+    //   @r(0, 30%) @r(60%, 100%)
+    // );
+    // background: @pick(#f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #60569e, #e6437d, #ebbf4d, #00bcd4, #03a9f4, #2196f3, #009688, #5ee463, #f8e645, #ffc107, #ff5722, #43f8bf);
+    // opacity: @rand(.3, .8);`,
+    // `:doodle {
+    //   @grid: 8 / 100%;
+    //   @shape: rect;
+    // }
+    // transition: .2s @r(.6s);
+    // border-radius: @pick(100% 0, 0 100%);
+    // will-change: transform;
+    // transform: scale(@r(.25, 1.25));
+    // background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8))`,
     `:doodle {
-      @grid: 1x8 / 100%;
+      background-color: red;
+      background-image: radial-gradient(at 40% 20%,#ffb87a 0,transparent 50%),radial-gradient(at 80% 0,#1fddff 0,transparent 50%),radial-gradient(at 0 50%,#ffdbde 0,transparent 50%),radial-gradient(at 80% 50%,#ff85ad 0,transparent 50%),radial-gradient(at 0 100%,#ffb58a 0,transparent 50%),radial-gradient(at 80% 100%,#6b66ff 0,transparent 50%),radial-gradient(at 0 0,#ff85a7 0,transparent 50%);
     }
-    @place-cell: center;
-    width: @rand(40%, 80%);
-    height: @rand(40%, 80%);
-    transform: translate(@rand(-200%, 200%), @rand(-60%, 60%)) scale(@rand(.8, 1.8)) skew(@rand(45deg));
-    clip-path: polygon(
-      @r(0, 30%) @r(0, 50%), 
-      @r(30%, 60%) @r(0%, 30%), 
-      @r(60%, 100%) @r(0%, 50%), 
-      @r(60%, 100%) @r(50%, 100%), 
-      @r(30%, 60%) @r(60%, 100%),
-      @r(0, 30%) @r(60%, 100%)
-    );
-    background: @pick(#f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #60569e, #e6437d, #ebbf4d, #00bcd4, #03a9f4, #2196f3, #009688, #5ee463, #f8e645, #ffc107, #ff5722, #43f8bf);
-    opacity: @rand(.3, .8);`,
-    `:doodle {
-      @grid: 8 / 100%;
-      @shape: rect;
-    }
-    transition: .2s @r(.6s);
-    border-radius: @pick(100% 0, 0 100%);
-    will-change: transform;
-    transform: scale(@r(.25, 1.25));
-    background: hsla(calc(240 - 6 * @row() * @col()), 70%, 68%, @r(.8))`,
-    `@grid: 14 / 100%;
-
-    @random {
-      border-left: 1px solid #5d81bc;
-    }
-    @random {
-      border-top: 1px solid #5d81bc;
-    }
-    @random(.25) {
-      background: linear-gradient(
-        @p(#fff, tan, #5d81bc), @lp
-      )
-      50% / @r(60%) @lr
-      no-repeat;
-    }
+    @grid: 14 / 100%;
     @random {
       filter: drop-shadow(0 0 10px #fff);
-    }`
+    }`,
+    `:doodle {
+      background-image: radial-gradient(at 50% 50%,#fff785 0,transparent 50%),radial-gradient(at 80% 30%,#f73 0,transparent 50%),linear-gradient(45deg,#ff4000,#ff0);
+    }
+    @grid: 14 / 100%;`,
+    `:doodle {
+      background-color: #ffd500;
+      background-image: radial-gradient(circle at 30% 30%,#80ff80 0,transparent 70%),radial-gradient(circle at 70% 70%,#ff80bf 0,transparent 70%);
+    }
+    @grid: 14 / 100%;`,
+    `:doodle {
+      background-color: #ff9a9e;
+      background-image: radial-gradient(at 40% 20%,#fad0c4 0,transparent 50%),radial-gradient(at 80% 0,#fad0c4 0,transparent 50%),radial-gradient(at 0 50%,#ff9a9e 0,transparent 50%),radial-gradient(at 80% 50%,#fad0c4 0,transparent 50%),radial-gradient(at 0 100%,#fad0c4 0,transparent 50%),radial-gradient(at 80% 100%,#ff9a9e 0,transparent 50%),radial-gradient(at 0 0,#fad0c4 0,transparent 50%);
+    }
+    @grid: 14 / 100%;`,
+    `:doodle {
+      background-color: #0080ff;
+      background-image: radial-gradient(at 70% 20%,#00d4ff 0,transparent 50%),radial-gradient(at 30% 80%,#66ffe5 0,transparent 50%);
+    }
+    @grid: 14 / 100%;`
   ]
 
   const onClickSolidColor = (color) => {
@@ -296,7 +305,7 @@ export default function Background() {
       </Box>
       <Box className={styles.colorStyles}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography className={styles.title} variant="h4">绘图</Typography>
+          <Typography className={styles.title} variant="h4">实绘</Typography>
           <IconButton aria-label="expand" size="small">
              <span style={{ fontSize: '12px' }}>🧪</span>
           </IconButton>
