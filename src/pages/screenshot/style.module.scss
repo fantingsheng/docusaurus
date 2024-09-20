@@ -137,6 +137,13 @@
   pointer-events: none;
   inset: 0;
 }
+.frameBlur {
+  position: absolute;
+  inset: 0;
+  will-change: backdrop-filter,-webkit-backdrop-filter;
+  z-index: 1;
+  pointer-events: none;
+}
 .displayContainer {
   width: 100%;
   height: 100%;
