@@ -9,6 +9,9 @@ export default function ScreenShot(props) {
       {config.mockup.style === 'glass-light' && 
         <div className={styles.glassLight} style={{ borderRadius: `${config.borderRadius / 8 + 0.8}em`}}/>
       }
+      {config.mockup.style === 'border' && 
+        <div className={styles.border} style={{ borderRadius: `${config.borderRadius / 8 + 0.8}em`}}/>
+      }
       {config.mockup.style === 'card' && 
         <div className={styles.card} style={{ borderRadius: `${config.borderRadius / 8}em`}}>
           <img src={config.picture} loading="eager" crossOrigin="anonymous" />
