@@ -62,7 +62,7 @@ export default function BorderRadius() {
         </ToggleButton>
         <ToggleButton value={40} aria-label="Round">
           <Box sx={{ padding: '10px 0' }}>
-            <BorderRadiusIcon sx={{ '&::after': { borderRadius: '10px' } }} />
+            <BorderRadiusIcon sx={{ '&::after': { borderRadius: '12px' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Round</Typography> */}
           </Box>
         </ToggleButton>

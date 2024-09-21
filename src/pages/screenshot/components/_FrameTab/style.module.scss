@@ -1,7 +1,7 @@
 .setPannel {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 .pannelCtrl {
   display: flex;
@@ -10,4 +10,5 @@
 }
 .setTit {
   font-size: 14px !important;
+  color: #303133 !important;
 }

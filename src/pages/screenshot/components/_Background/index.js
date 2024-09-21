@@ -191,7 +191,7 @@ export default function Background() {
           fullWidth
         >
           <div className={clsx(styles.samDot, styles.trans)}></div>
-          <span>透明</span>
+          <span className={styles.btnTit}>透明</span>
         </Button>
         <Button
           className={clsx(styles.bgButton, config.bg && config.bg === customColor ? styles.active : '')}
@@ -201,7 +201,7 @@ export default function Background() {
           fullWidth
         >
           <div className={clsx(styles.samDot, styles.color)} style={{ backgroundColor: customColor || '#ffffff' }}></div>
-          <span>{ customColor || '#ffffff' }</span>
+          <span className={styles.btnTit}>{ customColor || '#ffffff' }</span>
         </Button>
         <Button
           className={clsx(styles.bgButton, config.bgImg && config.bgImg.startsWith('blob') ? styles.active : '')}
@@ -214,7 +214,7 @@ export default function Background() {
               <path fill="currentColor" d="M16.33 2c3.38 0 5.66 2.37 5.66 5.91v8.16c0 3.53-2.28 5.91-5.67 5.91H7.65c-3.39 0-5.67-2.38-5.67-5.92V7.89c0-3.54 2.27-5.92 5.66-5.92h8.66Zm1.1 10.55c-1.08-.67-1.9.27-2.13.57-.22.29-.41.6-.6.92-.48.78-1.03 1.69-1.97 2.22-1.38.76-2.42.05-3.17-.45-.29-.19-.56-.37-.83-.49-.68-.29-1.28.04-2.18 1.17-.48.59-.94 1.18-1.41 1.77-.29.35-.22.89.16 1.13.6.37 1.35.57 2.18.57h8.42c.47 0 .95-.07 1.4-.22 1.02-.34 1.83-1.11 2.26-2.12.35-.86.532-1.89.19-2.75-.12-.29-.28-.55-.52-.79-.62-.61-1.19-1.18-1.88-1.61ZM8.49 6c-1.38 0-2.5 1.12-2.5 2.49s1.12 2.5 2.49 2.5 2.49-1.13 2.49-2.51-1.13-2.5-2.5-2.5Z"></path>
             </svg>
           </div>
-          <span>图片</span>
+          <span className={styles.btnTit}>图片</span>
           <VisuallyHiddenInput type="file" onChange={(e) => onClickUploadBg(URL.createObjectURL(e.target.files[0]))} />
         </Button>
       </Box>

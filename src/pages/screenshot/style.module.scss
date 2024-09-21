@@ -54,8 +54,8 @@
 
 .navbar, .layout, .pannel {
   background-color: rgba(255, 255, 255, 1);
-  box-shadow: 2px 2px 30px -20px rgba(0,0,0,.376);
-  border-radius: 10px;
+  box-shadow: 4px 4px 30px -20px rgba(0,0,0,.576);
+  border-radius: 8px;
 }
 
 .commandBar {
@@ -493,7 +493,7 @@
 .scrollView {
   height: 100%;
   width: 100%;
-  padding: 80px 10px 40px;
+  padding: 70px 10px 40px;
   overflow-y: auto;
 }
 

@@ -64,7 +64,8 @@ export default function RangeSlider({ minVal, maxVal, step, value, onValueChange
         justifyContent: 'space-between',
         padding: '0 8px',
         pointerEvents: 'none',
-        fontSize: '11px',
+        font: 'normal 11px/14px Inter,sans-serif',
+        letterSpacing: '-.2px',
         color: 'rgba(0,0,0,0.56)'
       }}>
         <span>{label}</span>
