@@ -11,7 +11,7 @@ export default function Browser(props) {
   useEffect(() => {
     const height = headRef.current.getBoundingClientRect().height;
     setHeadHeight(height);
-  })
+  }, [])
 
   return (
     <div className={clsx(styles.theme, styles.browser)} style={{ borderRadius: `${config.borderRadius / 8}em`}}>
@@ -28,7 +28,7 @@ export default function Browser(props) {
           <span></span>
         </div>
       </div>
-      <div className={styles.body} style={{ height: `calc(100% - ${headHeight}px)`}}>
+      <div className={styles.body} style={{ height: 'calc(100% - 40px)'}}>
         <UploadCard {...props} />
       </div>
     </div>

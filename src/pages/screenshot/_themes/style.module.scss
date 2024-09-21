@@ -157,7 +157,7 @@
     background: #ebedf0;
     display: flex;
     align-items: center;
-    padding: 1em 1.4em;
+    padding: .5rem 0.8rem;
 
     &.dark {
       background: rgba(28,28,30,1);
@@ -173,10 +173,8 @@
       span {
         border-radius: 50%;
         display: inline-block;
-        height: 3em;
-        width: 3em;
-        max-height: 12px;
-        max-width: 12px;
+        height: 12px;
+        width: 12px;
       }
     }
 
@@ -188,10 +186,9 @@
       font: 400 12px Arial,sans-serif;
       margin: 0 0.8rem 0 0.5rem;
       padding: 0 3%;
-      height: 2em;
       display: flex;
       align-items: center;
-      max-height: 20px;
+      height: 24px;
       -webkit-user-select: none;
       user-select: none;
       flex-shrink: 0;
