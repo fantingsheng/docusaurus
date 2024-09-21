@@ -305,7 +305,7 @@ export default function Background() {
       </Box>
       <Box className={styles.colorStyles}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography className={styles.title} variant="h4">实绘</Typography>
+          <Typography className={styles.title} variant="h4">CSS Doodle</Typography>
           <IconButton aria-label="expand" size="small">
              <span style={{ fontSize: '12px' }}>🧪</span>
           </IconButton>
