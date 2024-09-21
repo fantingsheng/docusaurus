@@ -157,7 +157,7 @@
     background: #ebedf0;
     display: flex;
     align-items: center;
-    padding: .5rem 0.8rem;
+    padding: 1em 1.4em;
 
     &.dark {
       background: rgba(28,28,30,1);
@@ -167,14 +167,16 @@
       white-space: nowrap;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: min(1.8em, 5px);
       height: 100%;
 
       span {
         border-radius: 50%;
         display: inline-block;
-        height: 12px;
-        width: 12px;
+        height: 3em;
+        width: 3em;
+        max-height: 12px;
+        max-width: 12px;
       }
     }
 
@@ -185,7 +187,11 @@
       flex: 1 0;
       font: 400 12px Arial,sans-serif;
       margin: 0 0.8rem 0 0.5rem;
-      padding: 5px 3%;
+      padding: 0 3%;
+      height: 2em;
+      display: flex;
+      align-items: center;
+      max-height: 20px;
       -webkit-user-select: none;
       user-select: none;
       flex-shrink: 0;
@@ -197,7 +203,6 @@
     .menu {
       margin-left: auto;
       height: 100%;
-      
 
       span {
         background-color: #aaa;
@@ -211,9 +216,9 @@
 
   .body {
     overflow: hidden;
-    height: calc(100% - 41px);
   }
 }
+
 
 /* ipad 13 pro theme */
 .ipadPro13 {
