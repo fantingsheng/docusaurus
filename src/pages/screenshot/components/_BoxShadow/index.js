@@ -1,8 +1,29 @@
 import { useState } from "react"
-import { Box, Avatar, Slider, ToggleButtonGroup, ToggleButton, Stack, Typography } from '@mui/material';
+import { Box, Avatar, styled, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import RangeSlider from "@site/src/components/RangeSlider";
 
 import { useConfigContext } from '../../_configProvider';
+
+export const BoxShadowIcon = styled(Box)({
+  width: '28px',
+  height: '28px',
+  backgroundColor: 'rgb(222, 226, 230)',
+  borderRadius: '5px',
+  border: '1px solid rgb(222, 226, 230)',
+  position: 'relative',
+  overflow: 'hidden',
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    width: '100px',
+    height: '100px',
+    bottom: '8px',
+    left: '8px',
+    backgroundColor: '#fff',
+    borderRadius: '6px'
+    // border: '2px solid rgba(0,0,0,1)'
+  }
+})
 
 export default function BoxShadow() {
   const { config, handleConfigChange } = useConfigContext();
@@ -43,19 +64,20 @@ export default function BoxShadow() {
       >
         <ToggleButton value="none" aria-label="none">
           <Box sx={{ padding: '10px 0' }}>
-            <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/none.png" />
+            <BoxShadowIcon />
+            {/* <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/none.png" /> */}
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">None</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value="hug" aria-label="hug">
           <Box sx={{ padding: '10px 0' }}>
-            <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/hug.png" />
+            <BoxShadowIcon sx={{ '&::after': { boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Hug</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value="spread" aria-label="spread">
           <Box sx={{ padding: '10px 0' }}>
-            <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/spread.png" />
+            <BoxShadowIcon sx={{ '&::after': { boxShadow: '5px 5px 8px rgba(0, 0, 0, 0.7)' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Spread</Typography> */}
           </Box>
         </ToggleButton>
