@@ -41,7 +41,7 @@ export default function AboutShot() {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
         <Typography variant="body1">分享到</Typography>
-        <Box sx={{ display: "flex", gap: '20px', justifyContent: 'center' }}>
+        <Box sx={{ display: "flex", gap: '30px', justifyContent: 'center' }}>
           <a
             className={styles.shareLink}
             href={`https://service.weibo.com/share/share.php?url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(shareTitle)}&pic=${shareImg}`}

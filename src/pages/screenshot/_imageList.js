@@ -44,28 +44,22 @@ export default function QuiltedImageList() {
       cols: 2,
     },
     {
-      img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1723272481027-67b684c0-a603-4d5e-a86e-df3b0b8573c5.png',
-      title: 'tablet',
-      rows: 1,
-      cols: 2,
-    },
-    {
-      img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1723275812888-2e2886c2-731f-42a6-8f18-ff4dd3e76bbd.png',
+      img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1726905795158-66099b89-58bb-471d-9ef7-6d6c9c44fd63.png',
       title: 'tablet',
       rows: 2,
       cols: 2,
     },
     {
-      img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1723275176139-5875c358-b599-4453-afb0-f24b9c3bf6a0.png',
+      img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1723272481027-67b684c0-a603-4d5e-a86e-df3b0b8573c5.png',
       title: 'tablet',
       rows: 1,
       cols: 2,
-    },
+    }
   ];
   
   return (
     <ImageList
-      sx={{ width: '100%', height: 360, overflow: 'hidden' }}
+      sx={{ width: '100%' }}
       variant="quilted"
       cols={8}
       rowHeight={121}

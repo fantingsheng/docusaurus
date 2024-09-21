@@ -137,6 +137,10 @@ export default function Background() {
       background-color: #0080ff;
       background-image: radial-gradient(at 70% 20%,#00d4ff 0,transparent 50%),radial-gradient(at 30% 80%,#66ffe5 0,transparent 50%);
     }
+    @grid: 14 / 100%;`,
+    `:doodle {
+      background-image: linear-gradient(120deg,#84fab0,#8fd3f4)
+    }
     @grid: 14 / 100%;`
   ]
 

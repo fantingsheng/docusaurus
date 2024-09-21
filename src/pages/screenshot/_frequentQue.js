@@ -38,6 +38,14 @@ export default function FrequentQuestion () {
           <Typography>该网站数据保存在本地，使用的浏览器接口的本地存储（localStorage），有效期为永久（只要不主动删除会一直存在）。不同浏览器之间数据不能共享。</Typography>
         </AccordionDetails>
       </Accordion>
+      <Accordion className={styles.accordion} expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4bh-content">
+          <Typography>该工具源码是否开源？</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>该工具是参考网上其它项目，灵感来源多款同类工具，但是代码全部由本人亲手完成。本项目源码暂不考虑开源，如果有技术相关的问题，可以扫描以下的微信二维码和我沟通。</Typography>
+        </AccordionDetails>
+      </Accordion>
     </>
   )
 }
