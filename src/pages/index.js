@@ -6,7 +6,7 @@ import Layout from '@theme/Layout';
 import { useHistory } from "@docusaurus/router";
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import HomepageCodeBlock from '@site/src/components/HomepageCodeBlock';
-import { Paper, InputBase, Divider, IconButton } from '@mui/material';
+import { Paper, InputBase, Divider, IconButton, Tabs, Tab, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import styles from './index.module.css';
@@ -145,6 +145,91 @@ function ProjectList() {
   )
 }
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      <Box sx={{ padding: '8px 0', display: value === index ? 'block' : 'none' }}>
+        {children}
+      </Box>
+    </div>
+  );
+}
+
+function SideProjects() {
+  const PrjLst = [
+    {
+      title: '图片套壳美化',
+      intro: '选择指定模型，帮你生成多种场景和样式经过美化的图片',
+      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722655177263-9d318181-8d2a-43f4-93b5-898319d77342.png',
+      link: '/screenshot'
+    },
+    {
+      title: '封面图生成',
+      intro: '输入文章的标题和作者名，选择图标即可生成一张封面图，支持多种布局样式',
+      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722654438768-6af49cc0-1554-4df9-8799-f5c5210b262c.png',
+      link: '/coverview'
+    },
+    {
+      title: '文字卡片生成',
+      intro: '你只需要输入一段文字，我们帮你生成不同样式的文字卡片',
+      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722653945177-9aa19586-01da-44de-9030-8f6af6b4e5b8.png',
+      link: '/memocard'
+    },
+    {
+      title: '代码图片生成',
+      intro: '让代码以图片的方式展示和传播，支持多种背景和主题设置',
+      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505333884-1d51f616-898e-4a1b-adbf-697863d9a904.png',
+      link: '/codeimage'
+    }
+  ];
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <div className='container'>
+      <div className='row margin-top--lg margin-bottom--lg'>
+        <div className='col col--8 col--offset-2'>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            textColor="inherit"
+            variant="fullWidth"
+            aria-label="full width tabs example"
+            sx={{ justifyContent: 'center' }}
+          >
+            {PrjLst.map((el, index) => (
+              <Tab label={el.title} sx={{ minHeight: '48px' }} key={index} />    
+            ))}
+          </Tabs>
+          {PrjLst.map((el, index) => (
+            <TabPanel value={value} index={index} key={index}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 0'}}>
+                <div>{el.intro}</div>
+                <Box sx={{ marginTop: '20px'}}>
+                  <Link to={el.link}>
+                    <Image img={el.image} />
+                  </Link>
+                </Box>
+              </Box>
+            </TabPanel>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -155,7 +240,7 @@ export default function Home() {
       <main>
         <HomepageFeatures />
         <HomepageCodeBlock />
-        <ProjectList />
+        <SideProjects />
       </main>
     </Layout>
   );
