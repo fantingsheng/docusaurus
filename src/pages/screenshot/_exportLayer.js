@@ -1,5 +1,3 @@
-import { useEffect, createContext, useRef, useState } from 'react';
-
 import Preview from "./_preview";
 import styles from "./style.module.scss";
 
@@ -11,13 +9,13 @@ export default function ExportLayer({ coverRef }) {
   return (
     <div
       className={styles.exportLayer}
-      style={{ zIndex: -1000, width: config.width / 2, height: config.height / 2 }}
+      style={{ zIndex: -1000, width: config.width, height: config.height }}
     >
       <div
         ref={coverRef}
         id="captureCanvas"
         className={styles.frame}
-        style={{ aspectRatio: config.ratio, width: config.width / 2, height: config.height / 2}}
+        style={{ aspectRatio: config.ratio, width: config.width, height: config.height }}
       >
         <Preview transform={config.transform} showBtn={false} />
       </div>

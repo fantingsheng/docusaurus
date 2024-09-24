@@ -1,11 +1,15 @@
-import { Box, Typography, Divider } from '@mui/material';
+import { useState } from 'react';
+import { Box, Typography, Divider, TextField, Button } from '@mui/material';
 import styles from "./style.module.scss";
 import clsx from "clsx";
 import { useConfigContext } from '../../_configProvider';
-
+import toast from 'react-hot-toast';
 
 export default function FrameModel() {
   const { config, handleConfigChange, handleConfigFrameChange } = useConfigContext();
+
+  const [width, setWidth] = useState(1920);
+  const [height, setHeight] = useState(1440);
 
   const platSizeLst = [
     {
@@ -106,8 +110,41 @@ export default function FrameModel() {
     handleConfigChange(h, "height");
   };
 
+  const setCanvasSize = () => {
+    handleConfigChange(width, "width");
+    handleConfigChange(height, "height");
+    handleConfigChange(width / height, "ratio");
+    handleConfigFrameChange({
+      platform: '自定义',
+      aspectRatio: `${width} : ${height}`,
+      sizeInfo: `${width} x ${height}`
+    });
+    toast.success('设置成功', {position: 'top-center'});
+  }
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <Box sx={{ display: 'flex', gap: '10px', padding: '10px 0' }}>
+        <TextField
+          value={width}
+          onChange={e => setWidth(e.target.value)}
+          placeholder=''
+          size='small'
+          autoComplete='false'
+          label='宽度'
+          fullWidth
+        />
+        <TextField
+          value={height}
+          onChange={e => setHeight(e.target.value)}
+          placeholder=''
+          size='small'
+          autoComplete='false'
+          label='高度'
+          fullWidth
+        />
+        <Button variant="contained" size='small' onClick={setCanvasSize}>设置</Button>
+      </Box>
       {
         platSizeLst.map((item, id) => (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }} key={id}>
