@@ -99,7 +99,7 @@ export default function Main () {
             </Box>
           </Grid>
           <Grid item xs={12} md={8}>
-            <Box className={styles.bentoGrid}>
+            <Box className={styles.bentoGrid} style={{ gridTemplateArea: '"map map map map github github twitter twitter" "map map map map weibo weibo photo photo" "pkg pkg pkg player player player photo photo" "cat cat conf conf conf job job job"'}}>
               <Box className={styles.gridItem} sx={{ padding: '0 !important' }} style={{ gridArea: 'map / map / map / map' }}>
                 <MapContainer />
               </Box>
