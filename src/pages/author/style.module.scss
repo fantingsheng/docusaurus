@@ -50,5 +50,33 @@
     background-color: #f5f7fa;
     border-radius: 8px;
     overflow: hidden;
+
+    &.map {
+      grid-area: map / map / map / map;
+    }
+
+    &.github {
+      grid-area: github / github / github / github;
+    }
+
+    &.twitter {
+      grid-area: twitter / twitter / twitter / twitter;
+    }
+
+    &.weibo {
+      grid-area: weibo / weibo / weibo / weibo;
+    }
+
+    &.photo {
+      grid-area: photo / photo / photo / photo;
+    }
+
+    &.pkg {
+      grid-area: pkg / pkg / pkg / pkg;
+    }
+
+    &.player {
+      grid-area: player / player / player / player;
+    }
   }
 }
