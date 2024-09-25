@@ -50,7 +50,7 @@ const Widget = styled('div')(({ theme }) => ({
   borderRadius: 16,
   width: 343,
   maxWidth: '100%',
-  margin: 'auto',
+  margin: '10px auto',
   position: 'relative',
   zIndex: 1,
   backgroundColor:

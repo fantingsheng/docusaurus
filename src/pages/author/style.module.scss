@@ -35,7 +35,20 @@
   padding: 20px;
 }
 .bentoGrid {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(8,1fr);
+  grid-template-areas:
+      "map map map map gay gay name name"
+      "map map map map tall tall side side"
+      "pkg pkg pkg desk desk desk side side"
+      "cat cat conf conf conf job job job";
+  grid-gap: 16px;
+  gap: 16px;
+
+  .gridItem {
+    padding: 15px;
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    overflow: hidden;
+  }
 }

@@ -37,7 +37,7 @@ export function MyMp3Player () {
   const [open, setOpen] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   return (
-    <div style={{ height: '325px', padding: '30px 0', position: 'relative', display: 'flex', alignItems: 'center' }}>
+    <div style={{ padding: '30px 0', position: 'relative', display: 'flex', alignItems: 'center' }}>
       <Player
         openDraw={() => setOpen(true)}
         songList={songList}
