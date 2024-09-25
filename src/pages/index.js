@@ -216,7 +216,7 @@ function SideProjects() {
             <TabPanel value={value} index={index} key={index}>
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 0'}}>
                 <div>{el.intro}</div>
-                <Box sx={{ marginTop: '20px'}}>
+                <Box sx={{ marginTop: '20px', borderRadius: '5px', overflow: 'hidden', fontSize: 0 }}>
                   <Link to={el.link}>
                     <Image img={el.image} />
                   </Link>

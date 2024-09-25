@@ -102,7 +102,7 @@ export default function HomepageCodeBlock() {
       <div className='row'>
         <div className='col col--6 col--offset-3 margin-bottom--lg'>
           <Toaster />
-          <AnimateLinear hasShadow={true} pad={10} bw={10}>
+          <AnimateLinear hasShadow={true} pad={10} bw={8}>
             <div className='text--center' style={{ width: '100%'}}>
               <form ref={formRef} onSubmit={handleSubmit}>
                 <h4 className={styles.subTitle}>让我们用代码让这个世界更美好</h4>
