@@ -20,7 +20,7 @@ import RangeSlider from "@site/src/components/RangeSlider";
 export const VideoBg = () => {
   return (
     <div style={{ width: '100%', margin: '20px auto 40px' }}>
-      <video controls={true} style={{ width: '100%' }} src='https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/slider-component-demo.mp4' autoPlay={true} loop={true}></video>
+      <video controls={true} style={{ width: '100%' }} src='https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/slider-component-demo.mp4' autoPlay={false}></video>
     </div>
   )
 }
@@ -38,6 +38,8 @@ Material UI 上的 `Slider` 组件默认样式如下：
   defaultValue={30}
   color="secondary"
 />
+
+<br /><br />
 
 ```jsx
 import Slider from '@mui/material/Slider';
@@ -64,13 +66,13 @@ export default function Main() {
 ```
 
 这里略去一些无关紧要的元素，主要就是根元素下的类名为 `MuiSlider-rail`、`MuiSlider-track` 和 `MuiSlider-thumb` 的三个 span 标签组成。
-接下来我们也是主要围绕这三个元素进行样式重定义。
+接下来我们也是主要围绕这三个元素对它们的进行样式进行重写。
 
-我们的教程会通过一步一步修改，逐步展示修改后的样式。
+接下来的文章内容会通过逐步地修改，展示修改后的样式。
 
 ### 滑块高度
 
-得益于 Material UI 组件的 `sx` 属性，可以自由地自定义该组件的样式。
+得益于 Material UI 组件的 `sx` 属性，可以自由地对组件的样式进行覆盖式重写。`sx` 的值是一个 CSS 对象，可以做到对深层子元素的样式定义。
 
 ```jsx
 <Slider
@@ -93,7 +95,8 @@ export default function Main() {
 
 ### 滑块的颜色
 
-对于滑块的颜色只要设置滑动组件的根元素的 `color` 属性即可，它的子元素设置 `currentColor` 直接继承。滑块底色通过设置一定的透明图来实现。
+对于滑块的颜色只要设置滑动组件的根元素的 `color` 属性即可，它的子元素通过设置 `currentColor` 直接继承过来。
+滑块底色通过设置一定的透明度来区分已滑过区域和未滑过的区域。
 
 ```jsx
 <Slider
@@ -122,7 +125,7 @@ export default function Main() {
 
 原来的拖拽按钮是一个圆形的，我们要将它改为细长条样式。
 
-```jsx
+```jsx {7-9}
 <Slider
   sx={{
     height: 28,
@@ -167,7 +170,7 @@ export default function Main() {
 
 ### 增加标签和当前值的显示
 
-对于文字的显示，我们在滑动组件同级，新增元素标签包裹，然后采用绝对定位，让它位于组件的上方。
+对于文字的显示，我们在滑动组件同级，新增元素标签包裹，然后采用绝对定位，让它离开当前的文档流浮动在组件的上方。
 
 export const CustomSlider = () => {
   const [score, setScore] = useState(45);
@@ -225,6 +228,8 @@ export const CustomSlider = () => {
 }
 
 <CustomSlider />
+
+最后，完整代码如下：
 
 ```jsx
 import { Box, Slider } from '@mui/material';
@@ -284,6 +289,7 @@ export default function CustomSlider() {
 }
 ```
 
+如果你有兴趣，可以根据原理来实现其它样式的滑块组件。
 
 
 
