@@ -38,12 +38,12 @@
   display: grid;
   grid-template-columns: repeat(8,1fr);
   grid-template-areas:
-      "map map map map gay gay name name"
-      "map map map map tall tall side side"
-      "pkg pkg pkg desk desk desk side side"
+      "map map map map github github twitter twitter"
+      "map map map map weibo weibo photo photo"
+      "pkg pkg pkg player player player photo photo"
       "cat cat conf conf conf job job job";
-  grid-gap: 16px;
-  gap: 16px;
+  grid-gap: 20px;
+  gap: 20px;
 
   .gridItem {
     padding: 15px;
