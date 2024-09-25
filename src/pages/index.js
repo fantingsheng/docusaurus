@@ -12,6 +12,33 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import styles from './index.module.css';
 import Image from '@theme/IdealImage';
 
+const PrjLst = [
+  {
+    title: '图片套壳美化',
+    intro: '选择指定模型，帮你生成多种场景和样式经过美化的图片',
+    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722655177263-9d318181-8d2a-43f4-93b5-898319d77342.png',
+    link: '/screenshot'
+  },
+  {
+    title: '封面图生成',
+    intro: '输入文章的标题和作者名，选择图标即可生成一张封面图，支持多种布局样式',
+    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722654438768-6af49cc0-1554-4df9-8799-f5c5210b262c.png',
+    link: '/coverview'
+  },
+  {
+    title: '文字卡片生成',
+    intro: '你只需要输入一段文字，我们帮你生成不同样式的文字卡片',
+    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722653945177-9aa19586-01da-44de-9030-8f6af6b4e5b8.png',
+    link: '/memocard'
+  },
+  {
+    title: '代码图片生成',
+    intro: '让代码以图片的方式展示和传播，支持多种背景和主题设置',
+    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505333884-1d51f616-898e-4a1b-adbf-697863d9a904.png',
+    link: '/codeimage'
+  }
+];
+
 function SearchBar () {
   const [searchVal, setSearchVal] = useState('')
   const [shake, setShake] = useState(false)
@@ -96,32 +123,7 @@ function HomepageHeader() {
 }
 
 function ProjectList() {
-  const PrjLst = [
-    {
-      title: '图片套壳美化',
-      intro: '选择指定模型，帮你生成多种场景和样式经过美化的图片',
-      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722655177263-9d318181-8d2a-43f4-93b5-898319d77342.png',
-      link: '/screenshot'
-    },
-    {
-      title: '封面图生成',
-      intro: '输入文章的标题和作者名，选择图标即可生成一张封面图，支持多种布局样式',
-      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722654438768-6af49cc0-1554-4df9-8799-f5c5210b262c.png',
-      link: '/coverview'
-    },
-    {
-      title: '文字卡片生成',
-      intro: '你只需要输入一段文字，我们帮你生成不同样式的文字卡片',
-      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722653945177-9aa19586-01da-44de-9030-8f6af6b4e5b8.png',
-      link: '/memocard'
-    },
-    {
-      title: '代码图片生成',
-      intro: '让代码以图片的方式展示和传播，支持多种背景和主题设置',
-      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505333884-1d51f616-898e-4a1b-adbf-697863d9a904.png',
-      link: '/codeimage'
-    }
-  ]
+
   return (
     <div className='container'>
       <div className='row margin-bottom--lg'>
@@ -164,32 +166,7 @@ function TabPanel(props) {
 }
 
 function SideProjects() {
-  const PrjLst = [
-    {
-      title: '图片套壳美化',
-      intro: '选择指定模型，帮你生成多种场景和样式经过美化的图片',
-      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722655177263-9d318181-8d2a-43f4-93b5-898319d77342.png',
-      link: '/screenshot'
-    },
-    {
-      title: '封面图生成',
-      intro: '输入文章的标题和作者名，选择图标即可生成一张封面图，支持多种布局样式',
-      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722654438768-6af49cc0-1554-4df9-8799-f5c5210b262c.png',
-      link: '/coverview'
-    },
-    {
-      title: '文字卡片生成',
-      intro: '你只需要输入一段文字，我们帮你生成不同样式的文字卡片',
-      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722653945177-9aa19586-01da-44de-9030-8f6af6b4e5b8.png',
-      link: '/memocard'
-    },
-    {
-      title: '代码图片生成',
-      intro: '让代码以图片的方式展示和传播，支持多种背景和主题设置',
-      image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505333884-1d51f616-898e-4a1b-adbf-697863d9a904.png',
-      link: '/codeimage'
-    }
-  ];
+  
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -197,33 +174,35 @@ function SideProjects() {
   };
 
   return (
-    <div className='container'>
-      <div className='row margin-top--lg margin-bottom--lg'>
-        <div className='col col--8 col--offset-2'>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            textColor="inherit"
-            variant="fullWidth"
-            aria-label="full width tabs example"
-            sx={{ justifyContent: 'center' }}
-          >
+    <div className="padding-top--lg padding-bottom--lg margin-top--lg" style={{ backgroundColor: '#f5f7fa' }}>
+      <div className='container'>
+        <div className='row'>
+          <div className='col col--8 col--offset-2'>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              textColor="inherit"
+              variant="fullWidth"
+              aria-label="full width tabs example"
+              sx={{ justifyContent: 'center' }}
+            >
+              {PrjLst.map((el, index) => (
+                <Tab label={el.title} sx={{ minHeight: '48px' }} key={index} />    
+              ))}
+            </Tabs>
             {PrjLst.map((el, index) => (
-              <Tab label={el.title} sx={{ minHeight: '48px' }} key={index} />    
-            ))}
-          </Tabs>
-          {PrjLst.map((el, index) => (
-            <TabPanel value={value} index={index} key={index}>
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 0'}}>
-                <div>{el.intro}</div>
-                <Box sx={{ marginTop: '20px', borderRadius: '5px', overflow: 'hidden', fontSize: 0 }}>
-                  <Link to={el.link}>
-                    <Image img={el.image} />
-                  </Link>
+              <TabPanel value={value} index={index} key={index}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 0'}}>
+                  <div>{el.intro}</div>
+                  <Box sx={{ marginTop: '20px', borderRadius: '5px', overflow: 'hidden', fontSize: 0 }}>
+                    <Link to={el.link}>
+                      <Image img={el.image} />
+                    </Link>
+                  </Box>
                 </Box>
-              </Box>
-            </TabPanel>
-          ))}
+              </TabPanel>
+            ))}
+          </div>
         </div>
       </div>
     </div>
