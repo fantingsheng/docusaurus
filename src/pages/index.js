@@ -157,12 +157,14 @@ function SideProjects() {
               value={value}
               onChange={handleChange}
               textColor="inherit"
-              variant="fullWidth"
+              variant="scrollable"
+              scrollButtons
+              allowScrollButtonsMobile
               aria-label="full width tabs example"
-              sx={{ justifyContent: 'center' }}
+              sx={{ '& .MuiTabs-flexContainer': {justifyContent: 'center'} }}
             >
               {PrjLst.map((el, index) => (
-                <Tab label={el.title} sx={{ minHeight: '48px' }} key={index} />    
+                <Tab label={el.title} sx={{ minHeight: '48px', padding: '12px 30px' }} key={index} />    
               ))}
             </Tabs>
             {PrjLst.map((el, index) => (
