@@ -467,6 +467,7 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
           size='small'
         >
           <ToggleButton sx={{ padding: '7px 12px' }} value={0.5}>1:2</ToggleButton>
+          <ToggleButton sx={{ padding: '7px 12px' }} value={0.666666666}>2:3</ToggleButton>
           <ToggleButton sx={{ padding: '7px 12px' }} value={0.6}>3:5</ToggleButton>
           <ToggleButton sx={{ padding: '7px 12px' }} value={0.57}>4:7</ToggleButton>
           <ToggleButton sx={{ padding: '7px 12px' }} value={0.4}>5:8</ToggleButton>

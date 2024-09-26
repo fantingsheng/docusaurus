@@ -267,8 +267,8 @@ export default function useToggle(initialValue = false) {
                 </Select>
               </div>
               <div className={styles.setItem}>
-                <Button variant='contained' onClick={onExport} fullWidth>导出图片</Button>
                 <Button variant='contained' onClick={onCopy} fullWidth>复制</Button>
+                <Button variant='contained' onClick={onExport} fullWidth>导出图片</Button>
               </div>
             </div>
             <Toaster />

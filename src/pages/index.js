@@ -15,26 +15,26 @@ import Image from '@theme/IdealImage';
 const PrjLst = [
   {
     title: '图片套壳美化',
-    intro: '选择指定模型，帮你生成多种场景和样式经过美化的图片',
-    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722655177263-9d318181-8d2a-43f4-93b5-898319d77342.png',
+    intro: '截图美化工具，选择指定模型，设置背景，帮你生成多种场景和样式经过美化的图片',
+    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1727325010988-4c8b8b77-ea84-4fa3-8250-2a5f5499f4de.png',
     link: '/screenshot'
   },
   {
     title: '封面图生成',
-    intro: '输入文章的标题和作者名，选择图标即可生成一张封面图，支持多种布局样式',
-    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722654438768-6af49cc0-1554-4df9-8799-f5c5210b262c.png',
+    intro: '输入文章的标题、作者名和图标，可根据需要设置背景，即可生成一张文章的封面图，内置多种布局样式',
+    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1727326002599-e8c7885c-99d0-49fb-97b1-079a3a02d443.png',
     link: '/coverview'
   },
   {
     title: '文字卡片生成',
-    intro: '你只需要输入一段文字，我们帮你生成不同样式的文字卡片',
-    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722653945177-9aa19586-01da-44de-9030-8f6af6b4e5b8.png',
+    intro: '一款将文字转化为图片的工具，内置了丰富的样式和配色，简单配置即可生成一张漂亮的文字卡片',
+    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1727328369477-4ce6b3b5-d32a-4fab-a349-e057fceb0b63.png',
     link: '/memocard'
   },
   {
     title: '代码图片生成',
-    intro: '让代码以图片的方式展示和传播，支持多种背景和主题设置',
-    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1722505333884-1d51f616-898e-4a1b-adbf-697863d9a904.png',
+    intro: '输入一段代码会根据类型高亮显示，支持背景主题颜色设置，让代码有了字符以外的图片的形式来分享传播',
+    image: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1727327664373-394f8f90-5b6b-45af-9053-698bc6a1d19a.png',
     link: '/codeimage'
   }
 ];
@@ -122,31 +122,6 @@ function HomepageHeader() {
   );
 }
 
-function ProjectList() {
-
-  return (
-    <div className='container'>
-      <div className='row margin-bottom--lg'>
-        {PrjLst.map((el, index) => (
-          <div className='col col--6 margin-top--lg' key={index}>
-            <div className='card'>
-              <div className='card__header'>
-                <h3>{el.title}</h3>
-              </div>
-              <div className='card__body'>
-                <p>{el.intro}</p>
-                <Link to={el.link}>
-                  <Image img={el.image} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -192,9 +167,9 @@ function SideProjects() {
             </Tabs>
             {PrjLst.map((el, index) => (
               <TabPanel value={value} index={index} key={index}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 0'}}>
-                  <div>{el.intro}</div>
-                  <Box sx={{ marginTop: '20px', borderRadius: '5px', overflow: 'hidden', fontSize: 0 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '30px 0 20px'}}>
+                  <div style={{ width: '50%', textAlign: 'center' }}>{el.intro}</div>
+                  <Box sx={{ marginTop: '30px', borderRadius: '5px', overflow: 'hidden', fontSize: 0 }}>
                     <Link to={el.link}>
                       <Image img={el.image} />
                     </Link>
