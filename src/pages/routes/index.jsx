@@ -119,7 +119,10 @@ export default function ({ size = "default" }) {
         <meta name="keywords" content='足迹,跑步,路线,运动轨迹,Strava,城市骑行' />
       </Head>
       <MapProvider>
-        <Box sx={{ display: 'flex', flexDirection: 'column', height: size === 'small' ? '500px' : '100vh', width: '100%', backgroundColor: 'rgb(230, 228, 224)' }} className={styles[size]}>
+        <Box
+          sx={{ display: 'flex', flexDirection: 'column', height: size === 'small' ? '500px' : '100vh', width: '100%', backgroundColor: 'rgb(230, 228, 224)' }}
+          className={styles[size]}
+        >
           <Main open={open}>
             <aside className={styles.aside}>
               <div style={{ paddingTop: '0.75rem' }}>

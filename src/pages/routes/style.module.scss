@@ -27,7 +27,11 @@
 }
 .header {
   text-align: center;
-  padding: 3rem 0;
+  padding: 1.4rem 0 1.2rem;
+
+  p {
+    margin-bottom: 0;
+  }
 }
 .filterNav {
   display: flex;
@@ -45,6 +49,8 @@
     font-size: 1.25rem;
     margin-bottom: 0;
   }
+
+  
 }
 .routerList {
   ul {
