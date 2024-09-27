@@ -18,7 +18,7 @@ export default function FrequentQuestion () {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>复制后可以粘贴在常用的富文本编辑器中，微信、QQ、钉钉等聊天工具框中。</Typography>
-          <Typography sx={{ marginBottom: '10px' }}>还有在微博、X、掘金沸点等社交平台输入框中直接粘贴操作，会自动以图片的格式显示，非常方便。</Typography>
+          <Typography sx={{ marginBottom: '10px' }}>还可以在微博、X、掘金沸点等社交平台输入框中直接粘贴操作，会自动以图片的格式显示，非常方便。</Typography>
           <Image img="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1723431657226-fb904004-29eb-42c9-baf4-4217464ad524.png" />
         </AccordionDetails>
       </Accordion>

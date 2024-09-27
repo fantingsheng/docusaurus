@@ -24,7 +24,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@formspree/react": "^2.5.1",
-    "@giscus/react": "^2.4.0",
+    "@giscus/react": "^3.0.0",
     "@mapbox/togeojson": "^0.16.2",
     "@mdx-js/react": "^3.0.0",
     "@mui/icons-material": "^5.14.16",
