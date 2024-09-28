@@ -111,14 +111,17 @@ export default function FrameModel() {
   };
 
   const setCanvasSize = () => {
-    handleConfigChange(width, "width");
-    handleConfigChange(height, "height");
-    handleConfigChange(width / height, "ratio");
+    console.log("width", width)
+    const w = width;
+    const h = height;
     handleConfigFrameChange({
       platform: '自定义',
       aspectRatio: `${width} : ${height}`,
       sizeInfo: `${width} x ${height}`
     });
+    handleConfigChange(w, "width");
+    handleConfigChange(h, "height");
+    handleConfigChange(w / h, "ratio");
     toast.success('设置成功', {position: 'top-center'});
   }
 
