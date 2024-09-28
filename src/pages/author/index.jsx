@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import Layout from '@theme/Layout';
+import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import { styled } from '@mui/material/styles';
+import ParallaxHoverTiltEffect from '@site/src/components/ParallaxHoverTiltEffect';
 import { Grid, Avatar, Paper, Box, Typography } from '@mui/material';
 import styles from './style.module.scss';
 import { Player } from '@site/src/pages/player/index'
@@ -95,7 +97,7 @@ export default function Main () {
               <Typography variant="subtitle1" sx={{ fontWeight: '400' }}>前端开发工程师 👨&zwj;💻</Typography>
               <Typography variant="h6" sx={{ marginTop: '2rem' }}>Skills</Typography>
               <Box sx={{ marginTop: '15px', display: 'flex', flexWrap: 'wrap' }}>
-                <img src="https://skillicons.dev/icons?i=js,css,typescript,vue,react,electron,nextjs,nodejs,nuxtjs,php,sass,webpack,vite,git&theme=light&perline=5" alt="Personal Skills" />
+                <img src="https://skillicons.dev/icons?i=js,css,typescript,jquery,vue,react,electron,nextjs,nodejs,nuxtjs,php,sass,webpack,vite,git,cs&theme=light&perline=6" alt="Personal Skills" />
               </Box>
             </Box>
           </Grid>
@@ -110,21 +112,21 @@ export default function Main () {
                     <rect width="40" height="40" rx="10" fill="black"></rect>
                     <g clipPath="url(#clip0_920_2749)"><path fillRule="evenodd" clipRule="evenodd" d="M20 8C13.37 8 8 13.37 8 20C8 25.31 11.435 29.795 16.205 31.385C16.805 31.49 17.03 31.13 17.03 30.815C17.03 30.53 17.015 29.585 17.015 28.58C14 29.135 13.22 27.845 12.98 27.17C12.845 26.825 12.26 25.76 11.75 25.475C11.33 25.25 10.73 24.695 11.735 24.68C12.68 24.665 13.355 25.55 13.58 25.91C14.66 27.725 16.385 27.215 17.075 26.9C17.18 26.12 17.495 25.595 17.84 25.295C15.17 24.995 12.38 23.96 12.38 19.37C12.38 18.065 12.845 16.985 13.61 16.145C13.49 15.845 13.07 14.615 13.73 12.965C13.73 12.965 14.735 12.65 17.03 14.195C17.99 13.925 19.01 13.79 20.03 13.79C21.05 13.79 22.07 13.925 23.03 14.195C25.325 12.635 26.33 12.965 26.33 12.965C26.99 14.615 26.57 15.845 26.45 16.145C27.215 16.985 27.68 18.05 27.68 19.37C27.68 23.975 24.875 24.995 22.205 25.295C22.64 25.67 23.015 26.39 23.015 27.515C23.015 29.12 23 30.41 23 30.815C23 31.13 23.225 31.505 23.825 31.385C28.565 29.795 32 25.295 32 20C32 13.37 26.63 8 20 8Z" fill="white"></path></g><defs><clipPath id="clip0_920_2749"><rect width="24" height="24" fill="white" transform="translate(8 8)"></rect></clipPath></defs></svg>
                 </Box>
-                <Typography variant="subtitle1" sx={{ marginBottom: '1.6rem', fontWeight: '500' }}>Timfan</Typography>
+                <Typography variant="subtitle1" sx={{ marginBottom: '1.2rem', fontWeight: '500' }}>@fantingsheng</Typography>
                 <a className="button button--secondary" href="https://github.com/fantingsheng" target="_blank">Follow</a>
               </Box>
               <Box className={clsx(styles.gridItem, styles.twitter)}>
                 <Box sx={{ marginBottom: '0.5rem' }}>
                   <svg width="40" height="40" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
                   </Box>
-                <Typography variant="subtitle1" sx={{ marginBottom: '1.6rem', fontWeight: '500' }}>@fants0230</Typography>
+                <Typography variant="subtitle1" sx={{ marginBottom: '1.2rem', fontWeight: '500' }}>@fants0230</Typography>
                 <a className="button button--info" href="https://twitter.com/fants0230" target="_blank">Follow</a>
               </Box>
               <Box className={clsx(styles.gridItem, styles.weibo)}>
                 <Box sx={{ marginBottom: '0.5rem' }}>
                   <svg width="40" height="40" viewBox="0 0 512 512" role="img" xmlns="http://www.w3.org/2000/svg"><title>Weibo</title><path d="M403.51 247.992c12.189-23.721 13.499-45.899 3.546-63.137-10.316-17.868-31.605-28.033-59.944-28.622-20.81-.427-44.439 4.311-68.131 13.528 8.166-27.851 5.532-49.961-7.876-63.369-16.113-16.113-44.899-16.666-81.056-1.558-33.715 14.088-70.764 40.33-104.325 73.889C35.742 228.706 2.534 286.681.945 326.653A75.672 75.672 0 0 0 0 338.441c0 35.793 25.09 69.017 70.648 93.547 43.858 23.617 101.979 36.622 163.656 36.622s119.798-13.005 163.656-36.622c45.558-24.53 70.648-57.754 70.648-93.547.001-34.374-23.032-66.257-65.098-90.449z" fill="#EA533B"/><path d="M260.338 459.932c-61.677 0-119.798-13.005-163.656-36.622-45.558-24.53-70.648-57.754-70.648-93.547 0-3.863.318-7.825.945-11.787 1.589-39.973 34.797-97.947 84.78-147.93 33.227-33.226 69.87-59.27 103.314-73.458-7.854 1.823-16.218 4.566-25.023 8.245-33.715 14.088-70.764 40.33-104.325 73.889C35.742 228.707 2.534 286.682.945 326.654A75.65 75.65 0 0 0 0 338.441c0 35.793 25.09 69.017 70.648 93.547 43.858 23.617 101.979 36.622 163.656 36.622 48.616 0 95.016-8.086 133.969-23.074-32.921 9.405-69.744 14.396-107.935 14.396z" fill="#D93C1C"/><path d="M364.19 312.032c-2.568-29.565-22.081-55.61-54.944-73.338-31.681-17.091-72.302-24.49-114.382-20.835-42.079 3.656-80.818 17.949-109.076 40.247-29.314 23.131-44.045 52.151-41.476 81.715 2.569 29.565 22.082 55.61 54.946 73.338 26.389 14.236 58.976 21.748 93.447 21.747 6.913 0 13.905-.302 20.934-.913 42.079-3.654 80.817-17.948 109.075-40.246 29.315-23.131 44.044-52.151 41.476-81.715z" fill="#FFFFFF"/><path d="M230.36 425.319a241.87 241.87 0 0 1-20.934.913c-34.471.001-67.059-7.511-93.447-21.747-32.863-17.729-52.378-43.774-54.946-73.338-2.569-29.564 12.161-58.584 41.476-81.715 5.799-4.575 12.046-8.808 18.665-12.687-12.993 5.932-24.911 13.095-35.388 21.361-29.314 23.131-44.045 52.151-41.476 81.715 2.569 29.565 22.082 55.61 54.946 73.338 26.389 14.236 58.976 21.748 93.447 21.747 6.913 0 13.905-.302 20.934-.913 33.445-2.905 64.771-12.535 90.41-27.559-22.053 10.069-47.206 16.585-73.687 18.885z" fill="#E5E5E5"/><path d="M286.65 312.533c-9.507-39.544-55.55-62.508-102.638-51.189-47.088 11.32-77.661 52.703-68.156 92.249 4.682 19.473 18.156 35.492 37.943 45.105 12.283 5.967 26.102 9.003 40.355 9.003 8.042 0 16.221-.967 24.339-2.918 47.089-11.321 77.664-52.703 68.157-92.25z" fill="#333333"/><circle cx="177.898" cy="351.457" r="30.373" fill="#FFFFFF" /><g fill="#FFA929"><path d="M373.152 117.153c-7.189 0-13.017 5.828-13.017 13.017 0 7.189 5.828 13.017 13.017 13.017 26.318 0 47.729 21.411 47.729 47.729 0 7.189 5.828 13.017 13.017 13.017s13.017-5.828 13.017-13.017c-.001-40.673-33.091-73.763-73.763-73.763z" /><path d="M364.475 43.39c-3.261 0-6.564.108-9.817.322-9.564.629-16.808 8.893-16.18 18.458.629 9.564 8.9 16.804 18.458 16.18a115.6 115.6 0 0 1 7.539-.248c62.206 0 112.813 50.608 112.813 112.813 0 7.606-.759 15.204-2.257 22.581-1.396 6.875 1.691 14.209 7.576 18.025 5.99 3.884 14.111 3.587 19.829-.675 3.388-2.525 5.774-6.307 6.614-10.445a148.538 148.538 0 0 0 2.95-29.487c0-81.343-66.18-147.524-147.525-147.524z" /></g><circle cx="234.305" cy="321.085" r="17.356" fill="#FFFFFF" /></svg>
                 </Box>
-                <Typography variant="subtitle1" sx={{ marginBottom: '1.6rem', fontWeight: '500' }}>@编程范儿</Typography>
+                <Typography variant="subtitle1" sx={{ marginBottom: '1.2rem', fontWeight: '500' }}>@编程范儿</Typography>
                 <a className="button button--danger" href="https://www.weibo.com/u/1832179583" target="_blank">关注</a>
               </Box>
               <Box className={clsx(styles.gridItem, styles.pkg)}>
@@ -142,12 +144,35 @@ export default function Main () {
                   />
                 </div>
               </Box>
-              <Box className={clsx(styles.gridItem, styles.photo)} sx={{ padding: '0 !important' }}>
+              <ParallaxHoverTiltEffect className={clsx(styles.gridItem, styles.photo)} options={{
+                reverse: false,
+                max: 15,
+                perspective: 5000,
+                easing: 'cubic-bezier(.03,.98,.52,.99)',
+                scale: '1.02',
+                speed: '5000',
+                transition: true,
+                axis: null,
+                reset: true
+              }}>
                 <div className={styles.photo} style={{ backgroundImage: 'url(https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1704520822305-e5dd2a34-5ef4-4dfd-9063-dd7074e59656.jpg)' }}></div>
+              </ParallaxHoverTiltEffect>
+              <Box className={clsx(styles.gridItem, styles.tool)} sx={{  }}>
+                <div className={styles.list}>
+                  <Typography variant="body1" sx={{ marginBottom: '0.2rem', fontWeight: '400' }}>由于经常写作需要配图，便开发了几款图片导出工具：</Typography>
+                  <ul>
+                    <li><Link to="/screenshot">图片套壳美化</Link></li>
+                    <li><Link to="/coverview">封面图生成</Link></li>
+                    <li><Link to="/memocard">文字卡片生成</Link></li>
+                    <li><Link to="/codeimage">代码图片生成</Link></li>
+                  </ul>
+                </div>
               </Box>
-              <Box className={styles.gridItem} sx={{ padding: '0 !important' }} style={{ gridArea: 'cat / cat / cat / cat' }}></Box>
-              <Box className={styles.gridItem} sx={{ padding: '0 !important' }} style={{ gridArea: 'conf / conf / conf / conf' }}></Box>
-              <Box className={styles.gridItem} sx={{ padding: '0 !important' }} style={{ gridArea: 'job / job / job / job' }}></Box>
+              <Box className={clsx(styles.gridItem, styles.router)}>
+                <Typography variant="body1">我还偶尔骑行和跑步，为了督促自己，特意开发了一个展示跑步路线的页面，
+                  一年下来也积累了数条无锡这座城市非常适合跑步的路线。</Typography>
+                <Typography variant="body1"><Link to="/routes">足迹</Link></Typography>
+              </Box>
             </Box>
           </Grid>
         </Grid>

@@ -161,10 +161,12 @@ function SideProjects() {
               scrollButtons
               allowScrollButtonsMobile
               aria-label="full width tabs example"
-              sx={{ '& .MuiTabs-flexContainer': {justifyContent: 'center'} }}
+              sx={{
+                '& .MuiTabs-flexContainer': {justifyContent: 'center'},
+              }}
             >
               {PrjLst.map((el, index) => (
-                <Tab label={el.title} sx={{ minHeight: '48px', padding: '12px 30px' }} key={index} />    
+                <Tab label={el.title} sx={{ minHeight: '48px', padding: '12px 30px' }} key={index} disableRipple />    
               ))}
             </Tabs>
             {PrjLst.map((el, index) => (

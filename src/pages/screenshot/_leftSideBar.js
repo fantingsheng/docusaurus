@@ -74,8 +74,8 @@ export default function LeftSideBar({ children }) {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="模型" sx={{ minHeight: '48px' }} icon={<AirplayIcon fontSize='small' />} iconPosition="start" />            
-          <Tab label="框架" sx={{ minHeight: '48px' }} icon={<AspectRatioIcon fontSize='small' />} iconPosition="start" />
+          <Tab label="模型" sx={{ minHeight: '48px' }} icon={<AirplayIcon fontSize='small' />} iconPosition="start" disableRipple />            
+          <Tab label="框架" sx={{ minHeight: '48px' }} icon={<AspectRatioIcon fontSize='small' />} iconPosition="start" disableRipple />
         </Tabs>
         <TabPanel value={value} index={0}>
           <div className={styles.tabInner}>
