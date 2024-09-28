@@ -4,11 +4,14 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
-import { styled } from '@mui/material/styles';
 import ParallaxHoverTiltEffect from '@site/src/components/ParallaxHoverTiltEffect';
-import { Grid, Avatar, Paper, Box, Typography } from '@mui/material';
+import { Grid, Avatar, Button, Box, Typography } from '@mui/material';
 import styles from './style.module.scss';
 import { Player } from '@site/src/pages/player/index'
+import Lottie from 'react-lottie';
+import * as animateRun from '@site/static/json/run.json'
+import PinDropIcon from '@mui/icons-material/PinDrop';
+
 import clsx from 'clsx';
 
 export default function Main () {
@@ -169,9 +172,25 @@ export default function Main () {
                 </div>
               </Box>
               <Box className={clsx(styles.gridItem, styles.router)}>
-                <Typography variant="body1">我还偶尔骑行和跑步，为了督促自己，特意开发了一个展示跑步路线的页面，
-                  一年下来也积累了数条无锡这座城市非常适合跑步的路线。</Typography>
-                <Typography variant="body1"><Link to="/routes">足迹</Link></Typography>
+                <Box sx={{ display: 'flex', gap: '15px' }}>
+                  <Box sx={{ width: '70%' }}>
+                    <Typography variant="body2">我还偶尔骑行和跑步，为了督促自己，特意开发了一个展示跑步路线的页面，
+                      一年下来也积累了数条无锡这座城市非常适合跑步的路线。</Typography>
+                    <Button variant="text" sx={{ marginTop: '10px' }} href="/routes" startIcon={<PinDropIcon />}>足迹</Button>
+                  </Box>
+                  <Lottie
+                    options={{
+                      loop: true,
+                      autoplay: true,
+                      animationData: animateRun,
+                      rendererSettings: {
+                        preserveAspectRatio: 'xMidYMid slice'
+                      }
+                    }}
+                    height={140}
+                    width={140}
+                  />
+                </Box>
               </Box>
             </Box>
           </Grid>

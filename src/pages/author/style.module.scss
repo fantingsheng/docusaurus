@@ -92,8 +92,29 @@
 
 .list {
   ul {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
     list-style-type: circle;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+
+    li {
+      width: 48%;
+      margin-top: 5px;
+
+      a {
+        padding-bottom: .2%;
+        display: inline-block;
+        transition: background-size .6s ease-out;
+        background: linear-gradient(var(--ifm-color-primary-lightest),
+          var(--ifm-color-primary-lightest)) no-repeat left 123%/0 40%;
+
+        &:hover {
+          text-decoration: none;
+          background-size: 97% 40%;
+        }
+      }
+    }
   }
 }
