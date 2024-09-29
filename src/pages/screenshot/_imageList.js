@@ -59,7 +59,7 @@ export default function QuiltedImageList() {
   
   return (
     <ImageList
-      sx={{ width: '100%' }}
+      sx={{ width: '100%', '& li': {marginTop: '0 !important'} }}
       variant="quilted"
       cols={8}
       rowHeight={121}

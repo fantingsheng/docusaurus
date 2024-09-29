@@ -34,6 +34,7 @@ export default function RightSideBar() {
               <IconButton size="small"><CloseIcon sx={{ fontSize: '16px' }} /></IconButton>
             </div>
             <GoogleAdsBlock model='pureShow' height='100%' />
+            {/* <div className={styles.subAds}>广告投放</div> */}
           </div>
         </div>}
         {

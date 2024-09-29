@@ -58,6 +58,10 @@
   border-radius: 8px;
 }
 
+.layout {
+  box-shadow: -4px 4px 30px -20px rgba(0,0,0,.576);
+}
+
 .commandBar {
   border-radius: 11px;
   padding: 3px;
@@ -475,6 +479,7 @@
   justify-content: space-between;
   padding: 4px 4px 4px 8px;
   height: 44px;
+  box-shadow: 4px 2px 20px -14px rgba(0, 0, 0, 0.576);
 
   a {
     display: inline-block;
@@ -553,6 +558,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .subAds {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background-color: rgba(220,220,220,.8);
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 5px;
+    text-align: center;
+    color: #909399;
   }
 }
 
