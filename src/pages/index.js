@@ -11,6 +11,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import styles from './index.module.css';
 import Image from '@theme/IdealImage';
+import {useWindowSize} from '@docusaurus/theme-common';
+
 
 const PrjLst = [
   {
@@ -141,7 +143,8 @@ function TabPanel(props) {
 }
 
 function SideProjects() {
-  
+  const windowSize = useWindowSize();
+  const isMobile = windowSize === 'mobile';
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -162,7 +165,9 @@ function SideProjects() {
               allowScrollButtonsMobile
               aria-label="full width tabs example"
               sx={{
-                '& .MuiTabs-flexContainer': {justifyContent: 'center'},
+                '& .MuiTabs-flexContainer': {
+                  justifyContent: isMobile ? 'flex-start': 'center'
+                },
               }}
             >
               {PrjLst.map((el, index) => (
