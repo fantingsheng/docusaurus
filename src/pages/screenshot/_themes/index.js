@@ -40,7 +40,9 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/iphone16/style_default.png' },
         { name: 'white', title: 'White', thumail: '/screenshot/theme/iphone16/style_white.png' },
-        { name: 'ultramarine', title: 'Ultramarine', thumail: '/screenshot/theme/iphone16/style_ultramarine.png' }
+        { name: 'ultramarine', title: 'Ultramarine', thumail: '/screenshot/theme/iphone16/style_ultramarine.png' },
+        { name: 'pink', title: 'Pink', thumail: '/screenshot/theme/iphone16/style_pink.png' },
+        { name: 'teal', title: 'Teal', thumail: '/screenshot/theme/iphone16/style_teal.png' }
       ];
     case 'iphone15':
       return [
