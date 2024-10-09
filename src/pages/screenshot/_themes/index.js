@@ -39,6 +39,8 @@ export function ThemeStyle(theme) {
     case 'iphone16':
       return [
         { name: 'default', title: 'Default', thumail: '/screenshot/theme/iphone16/style_default.png' },
+        { name: 'white', title: 'White', thumail: '/screenshot/theme/iphone16/style_white.png' },
+        { name: 'ultramarine', title: 'Ultramarine', thumail: '/screenshot/theme/iphone16/style_ultramarine.png' }
       ];
     case 'iphone15':
       return [

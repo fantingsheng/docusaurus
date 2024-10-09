@@ -6,7 +6,7 @@ export default function Iphone16(props) {
   const { config } = {...props}
   return (
     <div className={clsx(styles.theme, styles.iphone16)} style={{ position: 'relative' }}>
-      <img crossOrigin="anonymous" className={styles.device} src="/screenshot/theme/iphone16/black.png" />
+      <img crossOrigin="anonymous" className={styles.device} src={`/screenshot/theme/iphone16/${config.mockup.style}.png`} />
       <UploadCard {...props} />
     </div>
   )
