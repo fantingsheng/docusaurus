@@ -40,7 +40,8 @@ export default function MockupTab() {
           <BorderRadius />
         </Box>
       }
-      {["screenshot", "browser", "iphone15", "pixel7Pro", "ipadPro13", 'ipadAir', 'iphone14', 'iphoneSe', "huaweiP40ProPlus", "minimalPhone"].includes(config.mockup.theme) && 
+      {["screenshot", "browser", "iphone15", "iphone16", "pixel7Pro", "ipadPro13", 'ipadAir', 'iphone14',
+        'iphoneSe', "huaweiP40ProPlus", "minimalPhone"].includes(config.mockup.theme) && 
       <Box className={styles.pannelCtrl}>
         <Typography className={styles.setTit} variant="h3">阴影</Typography>
         <BoxShadow />
