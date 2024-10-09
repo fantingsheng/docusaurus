@@ -30,6 +30,15 @@ export default function MockupModel({ open }) {
       previews: []
     },
     {
+      name: 'iphone16',
+      title: 'iPhone 16',
+      type: 'phone',
+      feature: true,
+      subtitle: '1179 x 2556',
+      thumbnail: '/screenshot/mockup/iphone16.png',
+      previews: []
+    },
+    {
       name: 'minimalPhone',
       title: 'Minimal Phone',
       type: '',

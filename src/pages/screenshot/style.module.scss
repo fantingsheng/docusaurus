@@ -289,6 +289,14 @@
     --drop-padding: 0;
     --drop-radius: unset;
   }
+
+  &.iphone16 {
+    --aspect-ratio: 1359/2736;
+    --shadow-inset: 2% 4%;
+    --shadow-radius: 7em;
+    --drop-padding: 6.6% 6.5%;
+    --drop-radius: 10px;
+  }
 }
 .devices {
   position: absolute;

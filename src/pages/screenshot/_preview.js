@@ -90,7 +90,7 @@ export default function Preview({ transform, showBtn }) {
                 {/* 阴影 */}
                 { config.shadowX &&
                   config.shadowY &&
-                  ['screenshot', 'browser', 'iphone15', 'ipadPro13', 'pixel7Pro', 'ipadAir', 'iphone14', 'iphoneSe', 'huaweiP40ProPlus', 'minimalPhone'].includes(config.mockup.theme) &&
+                  ['screenshot', 'browser', 'iphone15', 'iphone16', 'ipadPro13', 'pixel7Pro', 'ipadAir', 'iphone14', 'iphoneSe', 'huaweiP40ProPlus', 'minimalPhone'].includes(config.mockup.theme) &&
                   <div
                     className={styles.shadow}
                     style={{ 
