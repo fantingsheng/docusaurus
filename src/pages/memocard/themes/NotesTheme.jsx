@@ -21,7 +21,7 @@ export default function NotesTheme ({ config }) {
         style={{
           backgroundColor: dark ? `rgba(0, 0, 0, ${opacity})` : `rgba(255, 255, 255, 0.15)`,
           borderRadius: `0px`,
-          border: '2px solid #f8e3c5'
+          border: '3px double #f8e3c5'
         }}
       >
         <div className={clsx(styles.content, styles['font-' + font])} style={{ fontSize: fontSize + 'px' }}>
