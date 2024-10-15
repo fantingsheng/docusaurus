@@ -52,7 +52,7 @@ export function Main({ normal }) {
     fontSize: 14,
     bgColor: '#949ee5',
     content: '🤗 这是一款文字卡片制作工具，你可以输入文字生成精美的文字卡片，然后分享到社交网站或直接复制到聊天工具中。\r\n\r\n它支持不同背景色的设置，可以是纯色和渐变色。\r\n它还支持多个主题的切换。\r\n在这里写上你的文字试试效果吧。👨‍💻',
-    url: '',
+    url: 'https://spacexcode.com/memocard',
     gradientBgColor: '',
     icon: 'react',
     ratio: 0.5,
@@ -233,7 +233,7 @@ export function ContentForm ({ config, handleConfigChange }) {
           className={styles.sizeInput}
           multiline
           minRows={6}
-          maxRows={10}
+          maxRows={20}
           fullWidth
         />
       </Box>
