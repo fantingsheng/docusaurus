@@ -8,6 +8,10 @@ export default function ColorPicker({ defaultColor, onChange, inputWidth}) {
   const anchorRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
+  useEffect(() => {
+    setColor(defaultColor)
+  }, [defaultColor])
+
   const handleBgColorClick = (color) => {
     setColor(color);
     onChange(color);

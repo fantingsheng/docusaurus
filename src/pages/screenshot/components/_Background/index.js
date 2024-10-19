@@ -139,7 +139,8 @@ export default function Background() {
     }
     @grid: 14 / 100%;`,
     `:doodle {
-      background-image: linear-gradient(120deg,#84fab0,#8fd3f4)
+      background: rgb(238,174,202);
+      background-image: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     }
     @grid: 14 / 100%;`
   ]

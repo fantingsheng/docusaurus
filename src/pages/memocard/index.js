@@ -311,10 +311,6 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleVisible = () => {
-    setVisible((prevOpen) => !prevOpen);
-  };
-
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
@@ -322,12 +318,6 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
     setOpen(false);
   };
 
-  const handleVisibleClose = (event) => {
-    if (anchorRef1.current && anchorRef1.current.contains(event.target)) {
-      return;
-    }
-    setVisible(false);
-  };
   const handleMenuItemClick = (event, scale, format) => {
     downloadImage(scale, format);
     setOpen(false);
@@ -374,14 +364,14 @@ export function ConfigForm ({ config, handleConfigChange, downloadImage, handleC
       </Box>
       <Box className={styles.setItem}>
         <Typography variant="h5">背景</Typography>
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
           {bgColorOptions.map((el, index) => (
             <div className={clsx(styles.bgGradient, config.gradientBgColor === el ? styles.on : '')} style={{ backgroundImage: el }}
               onClick={() => handleBgGradientClick(el)} key={index}></div>
           ))}
           <MoreGradient handleConfigChange={handleConfigChange} />
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '5px' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '7px', marginTop: '5px' }}>
           <ColorPicker
             defaultColor={config.bgColor}
             onChange={(color) => handleBgColorClick(color)}
