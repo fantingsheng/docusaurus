@@ -9,7 +9,7 @@ const NotesTheme = () => {
         <div className={clsx(styles.theme, styles.normalTheme)} style={{ backgroundColor: 'rgba(255,255,255,1)' }}>
           <div
             className={styles.content} 
-            style={{ backgroundColor: 'rgba(255,255,255,.6)', border: '3px double rgba(0,0,0,.15)', borderRadius: 0 }}
+            style={{ backgroundColor: 'rgba(255,255,255,.6)', border: '4px double rgba(0,0,0,.15)', borderRadius: 0 }}
           ></div>
         </div>
       </Skeleton>

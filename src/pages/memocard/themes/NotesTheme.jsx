@@ -10,7 +10,8 @@ export default function NotesTheme ({ config }) {
   return (
     <div className={clsx(styles.theme, styles[theme + 'Theme'], dark ? styles.dark : '')}
       style={{ 
-        backgroundColor: '#fff',
+        backgroundColor: bgColor,
+        backgroundImage: bgImg ? `url(${bgImg})` :  gradientBgColor,
         width: width + 'px',
         boxShadow: '3px 3px 10px rgba(0,0,0,0.1)',
         padding: '20px'
@@ -21,7 +22,7 @@ export default function NotesTheme ({ config }) {
         style={{
           backgroundColor: dark ? `rgba(0, 0, 0, ${opacity})` : `rgba(255, 255, 255, 0.15)`,
           borderRadius: `0px`,
-          border: '3px double #f8e3c5'
+          border: '4px double #f8e3c5'
         }}
       >
         <div className={clsx(styles.content, styles['font-' + font])} style={{ fontSize: fontSize + 'px' }}>
