@@ -8,6 +8,7 @@ import CenterPreview from './_centerPreview';
 import CommandBar from './_commandBar';
 import HisDataBar from './_hisDataBar';
 import styles from "./style.module.scss";
+import clsx from 'clsx';
 
 import ExportButton from "./components/_ExportButton";
 import ExportSetting from "./components/_ExportSetting";
@@ -16,6 +17,7 @@ import { Box } from '@mui/material';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function () {
+  const [themeName, setThemeName] = useState("themePureColor");
   const { siteConfig } = useDocusaurusContext();
   const coverRef = useRef();
   const [fullScreen, setFullScreen] = useState(false);
@@ -32,10 +34,10 @@ export default function () {
         <meta name="keywords" content='手机套壳,模型,图片美化,封面,抖音封面,公众号封面,视频封面,封面制作' />
       </Head>
       <ConfigProvider>
-        <main className={styles.appMain}>
+        <main className={clsx(styles.appMain, styles[themeName])}>
           <div className={styles.sidebar}>
             {!fullScreen &&
-            <LeftSideBar>
+            <LeftSideBar themeName={themeName} changeTheme={setThemeName}>
               <Box sx={{ display: 'flex', gap: '8px' }}>
                 <ExportButton coverRef={coverRef} />
                 <ExportSetting />

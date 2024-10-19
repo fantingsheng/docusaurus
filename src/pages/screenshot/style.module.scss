@@ -6,13 +6,56 @@
   padding: 8px;
   width: 100vw;
   height: 100vh;
-  background: #f5f7fa;
   transition: transform .3s ease;
   overflow: hidden;
 
   *::-webkit-scrollbar {
     width: 0!important;
     height: 0!important;
+  }
+}
+
+.themePureColor {
+  background-color: rgb(247,245,243);
+}
+
+.themeYellowFitEye {
+  background-color: #f5f7fa;
+}
+
+.themeDotGrids {
+  position: relative;
+
+  &::after {
+    --mask-offset: 200px;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 16px 16px;
+    background-color: #f5f7fa;
+    background-image: radial-gradient(#00000025 1px,transparent 0);
+    mask: linear-gradient(to bottom,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent),linear-gradient(to right,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent);
+    -webkit-mask: linear-gradient(to bottom,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent),linear-gradient(to right,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in, xor;
+    z-index: -1;
+  }
+}
+
+.themeSetBox {
+  width: 140px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid rgba(240,240,240,1);
+
+  &.active {
+    outline-offset: 3px;
+    outline: solid 1.5px rgb(0, 0, 0) !important;
   }
 }
 
@@ -526,6 +569,7 @@
 
 .exportLayer {
   position: fixed;
+  transform: translateX(-200%);
 }
 // 右侧
 .cardsWrapper {

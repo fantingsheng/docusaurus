@@ -12,9 +12,9 @@ import ViewerSelect from "./components/_ViewerSelect";
 import Giscus from "@giscus/react";
 import AboutShot from "./_aboutDialog";
 
-import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle, DialogContent, Divider } from '@mui/material';
+import { Box, Tabs, Tab, IconButton, Drawer, Dialog, DialogTitle, DialogContent, Divider, Typography } from '@mui/material';
 
-export default function LeftSideBar({ children }) {
+export default function LeftSideBar({ themeName, changeTheme, children }) {
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -100,6 +100,24 @@ export default function LeftSideBar({ children }) {
       <Dialog onClose={() => setVisible(false)} maxWidth="md" open={visible}>
         <DialogTitle sx={{ backgroundColor: '#fff' }}>欢迎使用图片套壳美化工具</DialogTitle>
         <DialogContent sx={{ backgroundColor: '#fff' }}>
+          <Typography variant="body1" sx={{ fontWeight: '600', textAlign: 'center' }}>背景主题</Typography>
+          <Box sx={{ display: 'flex', gap: '15px', padding: '20px 0' }}>
+            <Box
+              className={clsx(styles.themeSetBox, styles.themePureColor, themeName === "themePureColor" ? styles.active : "")}
+              onClick={() => changeTheme("themePureColor")}></Box>
+            <Box
+              className={clsx(styles.themeSetBox, styles.themeYellowFitEye, themeName === "themeYellowFitEye" ? styles.active : "")}
+              onClick={() => changeTheme("themeYellowFitEye")}></Box>
+            <Box
+              className={clsx(styles.themeSetBox, styles.themeDotGrids, themeName === "themeDotGrids" ? styles.active : "")}
+              sx={{
+                '&::after': {
+                  zIndex: 0,
+                  '--mask-offset': '20px'
+                }
+              }}
+              onClick={() => changeTheme("themeDotGrids")}></Box>
+          </Box>
           <AboutShot />
         </DialogContent>
       </Dialog>

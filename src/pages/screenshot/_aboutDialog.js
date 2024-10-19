@@ -12,7 +12,8 @@ export default function AboutShot() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '40px' }}>
-      <Box>
+      <Box sx={{ marginTop: '20px'}}>
+        {/* <Typography variant="body1" sx={{ fontWeight: '600', marginBottom: '15px' }}>案例展示</Typography> */}
         <QuiltedImageList />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
