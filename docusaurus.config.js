@@ -108,6 +108,7 @@ const config = {
             { to: '/memocard', label: '文字卡片生成器' },
             { to: '/shapedivider', label: '分隔线工具' },
             { to: '/codeimage', label: '代码图片生成器' },
+            { to: '/cssGrid', label: 'CSS网格背景生成器' },
             { to: '/cssglass', label: '毛玻璃效果生成器' },
             { to: '/lifebalence', label: '高效的生物钟' },
             { to: '/progress', label: '年度进度图' },
@@ -139,10 +140,11 @@ const config = {
             items: [
               { label: '图片套壳美化工具', to: '/screenshot' },
               { label: '优美的分隔线', to: '/shapedivider' },
-              { label: '毛玻璃效果生成器', to: '/cssglass' },
               { label: '代码图片生成器', to: '/codeimage' },
               { label: '封面图生成器', to: '/coverview' },
-              { label: '文字卡片', to: '/memocard' },
+              { label: 'CSS网格背景生成器', to: '/cssGrid' },
+              { label: '毛玻璃效果生成器', to: '/cssglass' },
+              { label: '文字卡片生成器', to: '/memocard' },
               { label: '城市印象', to: '/photo' },
               { label: '音乐播放器', to: '/player' },
               { label: '我在用', to: '/uses' }
