@@ -226,7 +226,7 @@ export const DotGridLayout = () => {
 
 <DotGridLayout />
 
-## 拓展
+## 拓展知识
 
 另外关注一下这种模拟透明背景样式的实现原理，它同样可以使用在构建格子花纹的图案上。
 
@@ -258,3 +258,18 @@ export const TransBgLayout = () => {
 }
 
 <TransBgLayout />
+
+## 生成工具
+
+这里为了根据需要快速获得代码，做了一款生成工具：
+
+import { CssGrid } from '@site/src/pages/cssGrid';
+
+export const DemoPage = () => (
+  <div style={{ backgroundColor: '#F5F7FA', padding: '0 30px' }}>
+    <CssGrid />
+  </div>
+)
+
+<DemoPage />
+

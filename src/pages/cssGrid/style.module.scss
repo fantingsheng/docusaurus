@@ -49,3 +49,20 @@
     }
   }
 }
+.bgIcon {
+  width: 100%;
+  height: 56px;
+  background-size: 12px 12px;
+  background-position: center center;
+ 
+
+  &.gridBg {
+    background-image:
+      linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(203 213 225) 1px, transparent 1px);
+  }
+
+  &.dotBg {
+    background-image: radial-gradient(circle, rgb(203 213 225) 2px, transparent 2px);
+  }
+}

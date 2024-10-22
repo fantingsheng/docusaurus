@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { useState, useRef } from 'react';
 import styles from './style.module.scss';
-import { Grid, Select, Button, FormControlLabel, Switch, Paper, Box, Typography, Slider } from '@mui/material';
+import { Grid, Select, Button, FormControlLabel, Switch, ToggleButtonGroup, ToggleButton, Box, Typography, Slider } from '@mui/material';
 import CodeBlock from '@theme/CodeBlock';
 import ColorPicker from '@site/src/components/ColorPicker';
 import clsx from 'clsx';
@@ -33,7 +33,22 @@ function ConfigForm({ config, handleConfigChange }) {
 
   return (
     <>
-      <Box className={styles.setItem} sx={{ marginTop: 0 }}>
+      <ToggleButtonGroup
+        value={config.type}
+        exclusive
+        onChange={(e, val) => handleConfigChange(val, 'type')}
+        aria-label="网格类型"
+        size="small"
+        fullWidth
+      >
+        <ToggleButton value="grid" aria-label="网格" sx={{ padding: '4px 6px' }}>
+          <Box className={clsx(styles.bgIcon, styles.gridBg)} />
+        </ToggleButton>
+        <ToggleButton value="dot" aria-label="点阵" sx={{ padding: '4px' }}>
+          <Box className={clsx(styles.bgIcon, styles.dotBg)} />
+        </ToggleButton>
+      </ToggleButtonGroup>
+      <Box className={styles.setItem} sx={{ marginTop: '15px' }}>
         <Typography variant="h5">线条宽度</Typography>
         <Grid container spacing={1} alignItems="center">
           <Grid item>
@@ -143,6 +158,7 @@ function ConfigForm({ config, handleConfigChange }) {
 
 export function CssGrid({ normal }) {
   const [config, setConfig] = useState({
+    type: 'grid',
     lineColor: '#cbd5e1',
     lineWidth: 1,
     size: 20,
@@ -158,7 +174,11 @@ export function CssGrid({ normal }) {
     return Object.assign({
       backgroundSize: `${config.size}px ${config.size}px`,
       backgroundPosition: 'center center',
+    },
+    config.type === 'grid' ? {
       backgroundImage: `linear-gradient(to right, ${config.lineColor} ${config.lineWidth}px, transparent ${config.lineWidth}px), linear-gradient(to bottom, ${config.lineColor} ${config.lineWidth}px, transparent ${config.lineWidth}px)`
+    } : {
+      backgroundImage: `radial-gradient(circle, ${config.lineColor} ${config.lineWidth}px, #fff ${config.lineWidth}px)`
     },
     config.hasCover ? {
       webkitMaskImage: `linear-gradient(to bottom, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent), linear-gradient(to right, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent)`,
@@ -182,7 +202,7 @@ export function CssGrid({ normal }) {
           </Box>
         </Grid>
         {/* 配置 */}
-        <Grid item xs={12} md={normal ? 4 : 6}>
+        <Grid item xs={12} md={4}>
           <Box className={styles.card} sx={{ padding: '20px 20px 30px' }}>
             <ConfigForm config={config} handleConfigChange={handleConfigChange} />
           </Box>
@@ -200,7 +220,7 @@ export default function Main() {
       </Head>
       <div className={styles.page}>
         <div className="container">
-          <CssGrid normal={true} />
+          <CssGrid />
         </div>
       </div>
     </Layout>
