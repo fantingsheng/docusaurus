@@ -5,6 +5,7 @@ authors: [timfan]
 tags: [网格背景, 像素背景]
 enable_comment: true
 enable_donate: true
+hide_sidebar: true
 ---
 
 是不是在日常开发中经常遇到实现网格的需求，网格通常对网页中展示的元素能起到很好的定位和对齐作用。
@@ -35,7 +36,7 @@ enable_donate: true
 
 <br /><br />
 
-有了背景图片，我们对给定的区域设置背景
+有了背景图片，我们对给定的区域设置背景：
 
 ```css
 .grid {
@@ -51,7 +52,7 @@ enable_donate: true
 }
 ```
 
-默认情况下，背景图像会在垂直和水平方向上重复，这样实现的网格是40个像素。我们也可以通过 `background-size` 属性来自定义背景图的尺寸
+默认情况下，背景图像会在垂直和水平方向上重复，这样实现的网格是40个像素。我们也可以通过 `background-size` 属性来自定义背景图的尺寸。
 
 export const GridExample = ({ size }) => {
   const styleObj = {
@@ -75,6 +76,31 @@ export const GridExample = ({ size }) => {
 ```
 
 <GridExample size={20} />
+
+这里有个缺点，就是调节图片显示大小的时候，线条的宽度也会有变化。就会导致上面的40像素的网格和20像素的网格线条粗细不一致。
+
+或许最好的做法是改变 SVG 文件里的参数 `width` 和 `height` 来调整尺寸：
+
+```css
+.grid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='20' height='20' fill='%23fff' /%3E%3Crect x='50%' width='1' height='100%' fill='rgb(203 213 225)' /%3E%3Crect y='50%' width='100%' height='1' fill='rgb(203 213 225)' /%3E%3C/svg%3E%0A");
+}
+```
+
+export const GridSmallExample = () => {
+  const styleObj = {
+    width: '100%',
+    height: '200px',
+    marginBottom: '20px',
+    backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='20' height='20' fill='%23fff' /%3E%3Crect x='50%' width='1' height='100%' fill='rgb(203 213 225)' /%3E%3Crect y='50%' width='100%' height='1' fill='rgb(203 213 225)' /%3E%3C/svg%3E%0A\")",
+    backgroundSize: '20px'
+  }
+  return (
+    <div style={styleObj}></div>
+  )
+}
+
+<GridSmallExample />
 
 ## 使用线性渐变
 
@@ -116,7 +142,11 @@ export const GridBgImageExample = ({ style }) => {
 }
 ```
 
-最终的样式：
+<GridBgImageExample style={{ 
+  backgroundImage: 'linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px),linear-gradient(to bottom, rgb(203 213 225) 1px, transparent 1px)' 
+}} />
+
+完整的的样式代码如下：
 
 ```css
 .grid {
@@ -130,15 +160,12 @@ export const GridBgImageExample = ({ style }) => {
 }
 ```
 
-<GridBgImageExample style={{ 
-  backgroundImage: 'linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px),linear-gradient(to bottom, rgb(203 213 225) 1px, transparent 1px)' 
-}} />
-
 ## 边缘虚化
 
-还有一种场景需要将网格的边缘进行虚化，这时需要借助 `mask-image` 属性实现：
+还有一种场景需要将网格的边缘进行虚化，这时需要借助 `mask-image` 属性设置用作元素蒙版层的图像，它的值参见
+[文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/mask-image)，这里通过径向渐变的方式实现：
 
-```
+```css
 .grid {
   -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%,#000 70%,transparent 100%);
   mask-image: radial-gradient(ellipse 50% 50% at 50% 50%,#000 70%,transparent 100%);
@@ -149,6 +176,25 @@ export const GridBgImageExample = ({ style }) => {
   backgroundImage: 'linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px),linear-gradient(to bottom, rgb(203 213 225) 1px, transparent 1px)',
   webkitMaskImage: 'radial-gradient(ellipse 50% 50% at 50% 50%,#000 70%,transparent 100%)',
   maskImage: 'radial-gradient(ellipse 50% 50% at 50% 50%,#000 70%,transparent 100%)'
+}} />
+
+如果你想要四周线性渐变的遮罩效果，则使用如下的代码：
+
+```css
+.grid {
+  -webkit-mask-image: linear-gradient(to bottom,transparent,#fff 50px calc(100% - 50px),transparent),linear-gradient(to right,transparent,#fff 50px calc(100% - 50px),transparent);
+  mask-image: linear-gradient(to bottom,transparent,#fff 50px calc(100% - 50px),transparent),linear-gradient(to right,transparent,#fff 50px calc(100% - 50px),transparent);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in, xor;
+}
+```
+
+<GridBgImageExample style={{ 
+  backgroundImage: 'linear-gradient(to right, rgb(203 213 225) 1px, transparent 1px),linear-gradient(to bottom, rgb(203 213 225) 1px, transparent 1px)',
+  webkitMaskImage: 'linear-gradient(to bottom,transparent,#fff 50px calc(100% - 50px),transparent),linear-gradient(to right,transparent,#fff 50px calc(100% - 50px),transparent)',
+  maskImage: 'linear-gradient(to bottom,transparent,#fff 50px calc(100% - 50px),transparent),linear-gradient(to right,transparent,#fff 50px calc(100% - 50px),transparent)',
+  maskComposite: 'intersect',
+  webkitMaskComposite: 'source-in, xor'
 }} />
 
 ## 网状点阵背景
@@ -182,7 +228,7 @@ export const DotGridLayout = () => {
 
 ## 拓展
 
-另外关注一下这种模拟透明背景样式的实现原理：
+另外关注一下这种模拟透明背景样式的实现原理，它同样可以使用在构建格子花纹的图案上。
 
 ```css
 .grid {
