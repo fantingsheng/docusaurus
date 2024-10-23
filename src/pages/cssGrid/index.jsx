@@ -28,7 +28,7 @@ function CodeBlockBox({ cssObj }) {
 function ConfigForm({ config, handleConfigChange }) {
 
   const colorOptions = [
-    '#cbd5e1', '#ff924c', '#a0c4ff', '#ff595e', '#3fc95d', '#212529'
+    '#cbd5e1', '#ff924c', '#a0c4ff', '#ff595e', '#3fc95d', '#409EFF', '#909399', '#212529'
   ];
 
   return (
