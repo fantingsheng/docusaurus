@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import { useState, useRef } from 'react';
 import styles from './style.module.scss';
-import { Grid, Select, Button, FormControlLabel, Switch, ToggleButtonGroup, ToggleButton, Box, Typography, Slider } from '@mui/material';
+import { Grid, FormControlLabel, Switch, ToggleButtonGroup, ToggleButton, Box, Typography, Slider } from '@mui/material';
 import CodeBlock from '@theme/CodeBlock';
 import ColorPicker from '@site/src/components/ColorPicker';
 import clsx from 'clsx';
@@ -60,14 +60,14 @@ function ConfigForm({ config, handleConfigChange }) {
               aria-label='Default'
               min={1}
               step={1}
-              max={4}
+              max={10}
               size='small'
               valueLabelDisplay='auto'
               onChange={e => handleConfigChange(e.target.value, 'lineWidth')}
             />
           </Grid>
           <Grid item>
-            <Typography variant="caption">4px</Typography>
+            <Typography variant="caption">10px</Typography>
           </Grid>
         </Grid>
       </Box>
@@ -75,13 +75,13 @@ function ConfigForm({ config, handleConfigChange }) {
         <Typography variant="h5">网格大小</Typography>
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <Typography variant="caption">10px</Typography>
+            <Typography variant="caption">1px</Typography>
           </Grid>
           <Grid item xs sx={{ display: 'flex' }}>
             <Slider
               value={config.size}
               aria-label='Default'
-              min={10}
+              min={1}
               step={1}
               max={100}
               size='small'
