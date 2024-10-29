@@ -30,6 +30,15 @@ export default function MockupModel({ open }) {
       previews: []
     },
     {
+      name: 'paperWall',
+      title: 'Paper Wall',
+      type: '',
+      feature: true,
+      subtitle: '自适应大小',
+      thumbnail: '/screenshot/mockup/screenshot.png',
+      previews: []
+    },
+    {
       name: 'iphone16',
       title: 'iPhone 16',
       type: 'phone',

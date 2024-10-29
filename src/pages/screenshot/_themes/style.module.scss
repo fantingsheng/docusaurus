@@ -230,3 +230,37 @@
   }
 }
 
+.paperWall {
+  & > div {
+    transform: rotate(17.3deg) perspective(1000px) skewX(0.4deg) skewY(-5deg) rotateX(1.6deg) rotateY(-4deg) rotateZ(0deg);
+    transform-style: preserve-3d;
+    transform-origin: center center;
+  }
+
+  .topBar {
+    position: absolute;
+    top: 2%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .topNav {
+      position: absolute;
+      top: 6%;
+      left: 0;
+    }
+
+    .centerStatus {
+      width: 30%;
+      margin-top: 2%;
+    }
+  }
+
+  .bottomBar {
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+  }
+}
+

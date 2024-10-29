@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 
 import { useConfigContext } from '../../_configProvider';
 
-export default function UploadCard({ showBtn }) {
+export default function UploadCard({ showBtn, children }) {
   const { config, handleConfigChange } = useConfigContext();
 
   const VisuallyHiddenInput = styled('input')({
@@ -89,6 +89,7 @@ export default function UploadCard({ showBtn }) {
             accept="image/x-png,image/jpeg,image/webp,image/jpg"
             onChange={onFileInputChange}
           />}
+          {children}
       </Button>
     </Box>
   )

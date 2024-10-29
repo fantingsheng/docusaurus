@@ -340,6 +340,11 @@
     --drop-padding: 6.6% 6.5%;
     --drop-radius: 10px;
   }
+
+  &.paperWall {
+    --aspect-ratio: 1200/1600;
+    --drop-padding: 14.2% 22.05% 8.2% 26.05% ;
+  }
 }
 .devices {
   position: absolute;
