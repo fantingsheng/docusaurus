@@ -343,7 +343,13 @@
 
   &.wallPaper {
     --aspect-ratio: 1200/1600;
-    --drop-padding: 14.2% 22.05% 8.2% 26.05% ;
+    --shadow-inset: 2%;
+    --shadow-radius: 0.6em;
+    --drop-padding: 14.2% 22.05% 8.2% 26.05%;
+  }
+
+  &.wallPaper.handFemale {
+    --drop-padding: 14.2% 22.05% 14.2% 26.05% !important;
   }
 }
 .devices {

@@ -237,6 +237,10 @@
     transform-origin: center center;
   }
 
+  &.handFemale > div {
+    transform: none !important;
+  }
+
   .topBar {
     position: absolute;
     top: 2%;

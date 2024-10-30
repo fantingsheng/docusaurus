@@ -76,7 +76,10 @@ export default function Preview({ transform, showBtn }) {
         }
       </div>
       <div className={styles.displayContainer}>
-        <div className={clsx(styles.mockupModule, styles[config.mockup.theme])} style={{ transform: transform, display: config.hideMockup ? 'none' : 'block' }}>
+        <div
+          className={clsx(styles.mockupModule, styles[config.mockup.theme], styles[config.mockup.style])}
+          style={{ transform: transform, display: config.hideMockup ? 'none' : 'block' }}
+        >
           <div
             className={styles.devices}
             style={{
@@ -90,11 +93,11 @@ export default function Preview({ transform, showBtn }) {
                 {/* 阴影 */}
                 { config.shadowX &&
                   config.shadowY &&
-                  ['screenshot', 'browser', 'iphone15', 'iphone16', 'ipadPro13', 'pixel7Pro', 'ipadAir', 'iphone14', 'iphoneSe', 'huaweiP40ProPlus', 'minimalPhone'].includes(config.mockup.theme) &&
+                  ['screenshot', 'browser', 'iphone15', 'iphone16', 'ipadPro13', 'pixel7Pro', 'ipadAir', 'iphone14', 'iphoneSe', 'huaweiP40ProPlus', 'minimalPhone', 'wallPaper'].includes(config.mockup.theme) &&
                   <div
                     className={styles.shadow}
                     style={{ 
-                      borderRadius: config.mockup.theme === 'screenshot' ? 
+                      borderRadius: ['screenshot', 'wallPaper'].includes(config.mockup.theme) ? 
                         `${config.borderRadius / 8}em` : config.mockup.theme === 'minimalPhone' ?
                         `${config.borderRadius / 4}em` : '' }}
                   >

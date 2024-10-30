@@ -118,7 +118,8 @@ export function ThemeStyle(theme) {
       ]
     case 'wallPaper':
       return [
-        { name: 'default', title: '', thumail: '/screenshot/theme/minimalPhone/style_default.png' }
+        { name: 'default', title: '', thumail: '/screenshot/theme/wallPaper/style_default.png' },
+        { name: 'handFemale', title: '', thumail: '/screenshot/theme/wallPaper/style_handFemale.png' }
       ]
     default:
       return [];
