@@ -19,7 +19,7 @@ import SamsungGalaxyWatch4 from "./samsungGalaxyWatch4";
 import IMacPro from "./iMacPro";
 import MinimalPhone from "./minimalPhone";
 import Iphone16 from "./iphone16";
-import PaperWall from "./paperWall";
+import WallPaper from "./wallPaper";
 
 export function ThemeStyle(theme) {
   switch (theme) {
@@ -116,7 +116,7 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: '', thumail: '/screenshot/theme/minimalPhone/style_default.png' }
       ]
-    case 'paperWall':
+    case 'wallPaper':
       return [
         { name: 'default', title: '', thumail: '/screenshot/theme/minimalPhone/style_default.png' }
       ]
@@ -168,8 +168,8 @@ export default function CoverTheme (props) {
         return <MinimalPhone {...props} />
       case 'iphone16':
         return <Iphone16 {...props} />
-      case 'paperWall':
-        return <PaperWall {...props} />
+      case 'wallPaper':
+        return <WallPaper {...props} />
       default:
         return <></>;
 		}

@@ -30,12 +30,12 @@ export default function MockupModel({ open }) {
       previews: []
     },
     {
-      name: 'paperWall',
-      title: 'Paper Wall',
+      name: 'wallPaper',
+      title: 'Wall Paper',
       type: '',
       feature: true,
       subtitle: '自适应大小',
-      thumbnail: '/screenshot/mockup/screenshot.png',
+      thumbnail: '/screenshot/mockup/wallPaper.png',
       previews: []
     },
     {
