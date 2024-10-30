@@ -39,6 +39,15 @@ export default function SizeAndPosition() {
           </Box>
         ))}
       </Box>
+
+      <RangeSlider
+        minVal={-180}
+        maxVal={180}
+        step={1}
+        value={config.rotate}
+        label='Rotate'
+        onValueChange={val => handleConfigChange(val, "rotate")}
+      />
     </>
   )
 }

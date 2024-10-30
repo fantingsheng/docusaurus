@@ -35,6 +35,7 @@ export function ConfigProvider({ children }) {
     scale: 1,
     translateX: 0,
     translateY: 0,
+    rotate: 0,
     width: 1920,
     height: 1440,
     format: 'png',

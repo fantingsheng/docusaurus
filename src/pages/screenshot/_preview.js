@@ -83,7 +83,7 @@ export default function Preview({ transform, showBtn }) {
           <div
             className={styles.devices}
             style={{
-              transform: `scale(${config.scale}) translateX(${config.translateX}%) translateY(${config.translateY}%)`,
+              transform: `scale(${config.scale}) translateX(${config.translateX}%) translateY(${config.translateY}%) rotate(${config.rotate}deg)`,
               '--aspect-ratio': ['screenshot', 'browser'].includes(config.mockup.theme) ? config.picRatio : 'unset'
             }}
           >
