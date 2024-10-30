@@ -26,7 +26,7 @@ export default function () {
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM) {
       const data = window.localStorage.getItem("screenShotsTheme");
-      setThemeName(data);
+      setThemeName(data || "themePureColor");
     }
   });
 
