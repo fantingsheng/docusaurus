@@ -48,7 +48,7 @@ function OneDayTimeline ({ timeStr }) {
   const checkRight = (t) => {
     if (t) {
       const time = t.slice(0, t.length - 3);
-      if (timeStr.indexOf(time) > -1) {
+      if (timeStr.substr(0, 5).indexOf(time) > -1) {
         return true;
       }
     }
