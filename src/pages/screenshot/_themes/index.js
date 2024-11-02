@@ -120,7 +120,8 @@ export function ThemeStyle(theme) {
       return [
         { name: 'default', title: '', thumail: '/screenshot/theme/wallPaper/style_default.png' },
         { name: 'handFemale', title: '', thumail: '/screenshot/theme/wallPaper/style_handFemale.png' },
-        { name: 'sideways', title: '', thumail: '/screenshot/theme/wallPaper/style_sideways.png' }
+        { name: 'sideways', title: '', thumail: '/screenshot/theme/wallPaper/style_sideways.png' },
+        { name: 'liedown', title: '', thumail: '/screenshot/theme/wallPaper/style_liedown.png' }
       ]
     default:
       return [];

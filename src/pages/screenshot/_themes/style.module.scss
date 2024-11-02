@@ -246,6 +246,10 @@
     transform: rotate(0deg) perspective(none) skewX(0deg) skewY(-5.8deg) rotateX(0deg) rotateY(0deg) rotateZ(0deg)
   }
 
+  &.liedown > div {
+    transform: rotate(-42.5deg) perspective(1000px) skewX(0deg) skewY(24.5deg) rotateX(3deg) rotateY(4deg) rotateZ(0deg);
+  }
+
   .topBar {
     position: absolute;
     top: 2%;
