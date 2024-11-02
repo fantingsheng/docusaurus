@@ -235,10 +235,15 @@
     transform: rotate(17.3deg) perspective(1000px) skewX(0.4deg) skewY(-5deg) rotateX(1.6deg) rotateY(-4deg) rotateZ(0deg);
     transform-style: preserve-3d;
     transform-origin: center center;
+    transition: all .2s ease;
   }
 
   &.handFemale > div {
     transform: none !important;
+  }
+
+  &.sideways > div {
+    transform: rotate(0deg) perspective(none) skewX(0deg) skewY(-5.8deg) rotateX(0deg) rotateY(0deg) rotateZ(0deg)
   }
 
   .topBar {
@@ -256,8 +261,8 @@
     }
 
     .centerStatus {
-      width: 30%;
-      margin-top: 2%;
+      width: 25%;
+      margin-top: 1%;
     }
   }
 

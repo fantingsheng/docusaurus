@@ -119,7 +119,8 @@ export function ThemeStyle(theme) {
     case 'wallPaper':
       return [
         { name: 'default', title: '', thumail: '/screenshot/theme/wallPaper/style_default.png' },
-        { name: 'handFemale', title: '', thumail: '/screenshot/theme/wallPaper/style_handFemale.png' }
+        { name: 'handFemale', title: '', thumail: '/screenshot/theme/wallPaper/style_handFemale.png' },
+        { name: 'sideways', title: '', thumail: '/screenshot/theme/wallPaper/style_sideways.png' }
       ]
     default:
       return [];
