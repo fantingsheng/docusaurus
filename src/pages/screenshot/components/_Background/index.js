@@ -142,6 +142,11 @@ export default function Background() {
       background: rgb(238,174,202);
       background-image: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     }
+    @grid: 14 / 100%;`,
+    `:doodle {
+      background: #26004d;
+      background-image: radial-gradient(at 98% 31%,hsl(353,88%,56%) 0,hsla(353,88%,56%,0) 50%),radial-gradient(at 95% 37%,hsl(59,88%,67%) 0,hsla(59,88%,67%,0) 50%),radial-gradient(at 55% 74%,hsl(156,92%,53%) 0,hsla(156,92%,53%,0) 50%),radial-gradient(at 27% 55%,hsl(339,87%,56%) 0,hsla(339,87%,56%,0) 50%),radial-gradient(at 38% 25%,hsl(11,88%,60%) 0,hsla(11,88%,60%,0) 50%),radial-gradient(at 14% 1%,hsl(72,95%,70%) 0,hsla(72,95%,70%,0) 50%),radial-gradient(at 89% 41%,hsl(341,90%,53%) 0,hsla(341,90%,53%,0) 50%);
+    }
     @grid: 14 / 100%;`
   ]
 
