@@ -31,12 +31,17 @@ function ConfigForm({ config, handleConfigChange }) {
     '#cbd5e1', '#ff924c', '#a0c4ff', '#ff595e', '#3fc95d', '#409EFF', '#909399', '#212529'
   ];
 
+  const onChangeType = (val) => {
+    handleConfigChange(val, 'type');
+    handleConfigChange("#8d8b8b", 'lineColor')
+  }
+
   return (
     <>
       <ToggleButtonGroup
         value={config.type}
         exclusive
-        onChange={(e, val) => handleConfigChange(val, 'type')}
+        onChange={(e, val) => onChangeType(val)}
         aria-label="网格类型"
         size="small"
         fullWidth
@@ -47,7 +52,11 @@ function ConfigForm({ config, handleConfigChange }) {
         <ToggleButton value="dot" aria-label="点阵" sx={{ padding: '4px' }}>
           <Box className={clsx(styles.bgIcon, styles.dotBg)} />
         </ToggleButton>
+        <ToggleButton value="block" aria-label="方块" sx={{ padding: '4px' }}>
+          <Box className={clsx(styles.bgIcon, styles.blockBg)} />
+        </ToggleButton>
       </ToggleButtonGroup>
+      {config.type !== 'block' &&
       <Box className={styles.setItem} sx={{ marginTop: '15px' }}>
         <Typography variant="h5">线条宽度</Typography>
         <Grid container spacing={1} alignItems="center">
@@ -71,18 +80,19 @@ function ConfigForm({ config, handleConfigChange }) {
           </Grid>
         </Grid>
       </Box>
+      }
       <Box className={styles.setItem}>
         <Typography variant="h5">网格大小</Typography>
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <Typography variant="caption">1px</Typography>
+            <Typography variant="caption">{config.type === 'block' ? 2 : 1}px</Typography>
           </Grid>
           <Grid item xs sx={{ display: 'flex' }}>
             <Slider
               value={config.size}
               aria-label='Default'
-              min={1}
-              step={1}
+              min={config.type === 'block' ? 2 : 1}
+              step={config.type === 'block' ? 2 : 1}
               max={100}
               size='small'
               valueLabelDisplay='auto'
@@ -176,13 +186,26 @@ export function CssGrid({ normal }) {
       backgroundPosition: 'center center',
     },
     config.type === 'grid' ? {
-      backgroundImage: `linear-gradient(to right, ${config.lineColor} ${config.lineWidth}px, transparent ${config.lineWidth}px), linear-gradient(to bottom, ${config.lineColor} ${config.lineWidth}px, transparent ${config.lineWidth}px)`
-    } : {
+      backgroundImage: `
+    linear-gradient(to right, ${config.lineColor} ${config.lineWidth}px, transparent ${config.lineWidth}px),
+    linear-gradient(to bottom, ${config.lineColor} ${config.lineWidth}px, transparent ${config.lineWidth}px)`
+    } : config.type === 'dot' ? {
       backgroundImage: `radial-gradient(circle, ${config.lineColor} ${config.lineWidth}px, #fff ${config.lineWidth}px)`
+    } : {
+      backgroundImage: `
+    linear-gradient(45deg, ${config.lineColor} 25%, transparent 0),
+    linear-gradient(-45deg, ${config.lineColor} 25%, transparent 0),
+    linear-gradient(45deg, transparent 75%, ${config.lineColor} 0),
+    linear-gradient(-45deg, transparent 75%, ${config.lineColor} 0)`,
+      backgroundPosition: `0 0, 0 ${config.size/2}px, ${config.size/2}px -${config.size/2}px, -${config.size/2}px 0`
     },
     config.hasCover ? {
-      webkitMaskImage: `linear-gradient(to bottom, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent), linear-gradient(to right, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent)`,
-      maskImage: `linear-gradient(to bottom, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent), linear-gradient(to right, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent)`,
+      webkitMaskImage: `
+    linear-gradient(to bottom, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent),
+    linear-gradient(to right, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent)`,
+      maskImage: `
+    linear-gradient(to bottom, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent),
+    linear-gradient(to right, transparent, #fff ${config.gradientLen}px calc(100% - ${config.gradientLen}px), transparent)`,
       maskComposite: 'intersect',
       webkitMaskComposite: 'source-in, xor'
     } : {});

@@ -52,10 +52,9 @@
 }
 .bgIcon {
   width: 100%;
-  height: 56px;
+  height: 54px;
   background-size: 12px 12px;
   background-position: center center;
- 
 
   &.gridBg {
     background-image:
@@ -65,5 +64,14 @@
 
   &.dotBg {
     background-image: radial-gradient(circle, rgb(203 213 225) 2px, transparent 2px);
+  }
+
+  &.blockBg {
+    background-image:
+      linear-gradient(45deg, #8d8b8b 25%, transparent 0),
+      linear-gradient(-45deg, #8d8b8b 25%, transparent 0),
+      linear-gradient(45deg, transparent 75%, #8d8b8b 0),
+      linear-gradient(-45deg, transparent 75%, #8d8b8b 0);
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
   }
 }
