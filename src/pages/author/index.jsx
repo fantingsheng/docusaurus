@@ -187,8 +187,8 @@ export default function Main () {
                         preserveAspectRatio: 'xMidYMid slice'
                       }
                     }}
-                    height={140}
-                    width={140}
+                    height={100}
+                    width={100}
                   />
                 </Box>
               </Box>
