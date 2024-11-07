@@ -121,6 +121,8 @@ export default function Preview({ transform, showBtn }) {
 
 最后我们将 canvas 对象通过 toDataURL() 方法转化为图片数据编码显示在 img 标签中。
 
+`getDisplayMedia` 在不同浏览器下的兼容性处理：
+
 ```jsx showLineNumbers
 function getDisplayMedia(options) {
   if (navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia) {
@@ -137,7 +139,19 @@ function getDisplayMedia(options) {
   }
   throw new Error('getDisplayMedia is not defined');
 }
+```
 
+通过 `getDisplayMedia` 获取到媒体流，然后在 DOM 中手动创建 `video` 标签，将媒体流渲染到视频组件中。然后从视频组件中截获某个帧，渲染到 `canvas`
+中来，以 `drawImage` 接口的形式拿到最终的图片二进制文件。
+
+```mermaid
+flowchart LR;
+  media((getDisplayMedia)) -->video((video));
+  video((video)) -->canvas((canvas));
+  canvas((canvas)) -->image((image));
+```
+
+```jsx showLineNumbers
 async function takeScreenshotStream() {
   const width = screen.width * (window.devicePixelRatio || 1);
   const height = screen.height * (window.devicePixelRatio || 1);
@@ -196,7 +210,7 @@ async function takeScreenshotCanvas() {
 
 不过它有个小小的缺点，就是点击分享后会离开当前页面，导致整个操作不连贯。在用户不知道该特性的情况下使用的时候会有点迷惑。
 
-不过这个功能还是大大简化了当你需要在其它页面或者窗口中截图来美化时，需要先隐藏当前窗口，然后手动调起截屏，选取截屏区域，保存截图后额外再点击上传图片。有了该功能，瞬间流程简化了不少。
+不过这个功能还是大大简化了当你需要在其它页面或者窗口中截图来美化时，需要先隐藏当前窗口，然后手动调起截屏，选取截屏区域，保存截图后额外再点击上传图片。有了该功能，繁杂的流程简化了不少。
 
 欢迎大家将使用过程中的问题反馈出来，助力我将这个工具做的越来越好用。为有图片美化和设备套壳需求的人带来便利。
 
