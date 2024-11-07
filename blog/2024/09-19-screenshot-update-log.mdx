@@ -2,9 +2,9 @@
 slug: screenshot-update-log
 title: 更新了，图片美化工具迎来两大功能
 authors: [fants]
-tags: [截图, 拖拽放大,演示]
+tags: [截图, 拖拽放大,媒体流,视频流,canvas]
 image: https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1726725816225-4a1c1ecd-9d37-496e-a0e3-b348a387d4a9.png
-hide_table_of_contents: true
+hide_table_of_contents: false
 enable_comment: true
 enable_adsense: true
 hide_sidebar: true
@@ -14,6 +14,8 @@ hide_sidebar: true
 
 1. 直接操作图片的放大缩小
 2. 快速截图后上传图片（通过浏览器的 getDisplayMedia 接口）
+
+## 直接操作放大缩小
 
 **第一个功能**是为了方便操作，之前是在左侧通过滑动区块来调节图片区域的显示大小，不够直观或不方便实现更精细化的调节。
 
@@ -107,6 +109,7 @@ export default function Preview({ transform, showBtn }) {
   )
 }
 ```
+## 一键截图上传功能
 
 **第二个功能**是我从另一个工具上参考来的，因为我根本不知道浏览器上还能这么操作。
 
@@ -120,6 +123,13 @@ export default function Preview({ transform, showBtn }) {
 在 Web 中我们就可以通过创建 Video 标签将视频流渲染出来。最后怎么将视频转化为图片呢？熟悉 canvas 的不难，它有一个 drawImage 方法，可以将视频绘制在画布中。
 
 最后我们将 canvas 对象通过 toDataURL() 方法转化为图片数据编码显示在 img 标签中。
+
+原理就是这样，我们再来看下详细过程：
+
+### 媒体接口截获视频流
+
+通过 `getDisplayMedia` 获取到媒体流，然后在 DOM 中手动创建 `video` 标签，将媒体流渲染到视频组件中。然后从视频组件中截获某个帧，渲染到 `canvas`
+中来，以 `drawImage` 接口的形式拿到最终的图片二进制文件。
 
 `getDisplayMedia` 在不同浏览器下的兼容性处理：
 
@@ -141,15 +151,16 @@ function getDisplayMedia(options) {
 }
 ```
 
-通过 `getDisplayMedia` 获取到媒体流，然后在 DOM 中手动创建 `video` 标签，将媒体流渲染到视频组件中。然后从视频组件中截获某个帧，渲染到 `canvas`
-中来，以 `drawImage` 接口的形式拿到最终的图片二进制文件。
+看下 [MDN](https://developer.mozilla.org/) 上改方法的用法：
 
-```mermaid
-flowchart LR;
-  media((getDisplayMedia)) -->video((video));
-  video((video)) -->canvas((canvas));
-  canvas((canvas)) -->image((image));
+```js
+var promise = navigator.mediaDevices.getDisplayMedia(constraints);
 ```
+
+参数 `constraints` 的用法参考：  
+[https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getDisplayMedia](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getDisplayMedia)
+
+它的返回值是一个被解析为 MediaStream 的 Promise 对象，其中包含一个视频轨道。
 
 ```jsx showLineNumbers
 async function takeScreenshotStream() {
@@ -178,7 +189,16 @@ async function takeScreenshotStream() {
 
   return stream;
 }
+```
 
+这一步核心是配置参数，我们禁用音频，获取屏幕尺寸的和分辨率来设置视频的长宽。也就是最终捕获的图片的长宽。
+
+### 视频流转图片
+
+这里会主动向当前的文档中创建两个标签 `video` 和 `canvas` 标签，首先把上面获取到的视频流通过 video 标签渲染出来，视频数据加载出来后，再通过
+创建的 canvas 的 `drawImage` 接口绘制到画布中。最终就对 canvas 对象通过 toDataURL() 方法转化为图片数据编码渲染到 `img` 标签上。
+
+```jsx showLineNumbers {18-20}
 async function takeScreenshotCanvas() {
   const stream = await takeScreenshotStream();
   const video = document.createElement('video');
@@ -195,7 +215,7 @@ async function takeScreenshotCanvas() {
     }
     video.srcObject = stream;
   })
-
+  
   stream.getTracks().forEach(function (track) {
     track.stop();
   })
@@ -207,6 +227,20 @@ async function takeScreenshotCanvas() {
   return result;
 }
 ```
+
+这个方法中高亮的部分可能比较疑惑，它的作用是我们使用媒体流获取到当前的某个瞬间的视频流后，通过调用 `stop` 方法暂停所有轨道上数据的获取。其实我们截图
+就只需要视频里某一帧的数据就可以了。关闭通道以免造成资源浪费。
+
+通过流程图来解释就是这样：
+
+```mermaid
+flowchart LR;
+  media((MediaDevices)) -- getDisplayMedia() -->video((video));
+  video((video)) -- drawImage() -->canvas((canvas));
+  canvas((canvas)) -- toDataURL() -->image((image));
+```
+
+<br />
 
 不过它有个小小的缺点，就是点击分享后会离开当前页面，导致整个操作不连贯。在用户不知道该特性的情况下使用的时候会有点迷惑。
 
