@@ -87,17 +87,9 @@ export default function ExportSetting() {
                     </ToggleButtonGroup></Box>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '8px' }}>
-                    {/* <Typography variant="button">导出尺寸</Typography> */}
                     <Box sx={{ padding: '10px', backgroundColor: 'rgba(240,240,240,1)', borderRadius: '5px' }}>
                       <Typography variant="body2" sx={{ color: 'rgba(110,110,110,1)' }}>{`导出分辨率：${config.width * config.expScale} x ${config.height * config.expScale}`}</Typography>
                     </Box>
-                    {/* <TextField
-                      value={`分辨率：${config.width * config.expScale} x ${config.height * config.expScale}`}
-                      sx={{ '& input': { paddingTop: '10px', paddingBottom: '6px' } }}
-                      size="small"
-                      variant="filled"
-                      fullWidth
-                    /> */}
                   </Box>
                 </Box>
               </ClickAwayListener>

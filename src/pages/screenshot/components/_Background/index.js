@@ -79,7 +79,8 @@ export default function Background() {
     '/screenshot/bgImg/macos-big-sur-colorful-small.jpg',
     '/screenshot/bgImg/painted-whirl-small.png',
     '/screenshot/bgImg/painted-flow-small.png',
-    // '/screenshot/bgImg/slide-mac-small.png'
+    '/screenshot/bgImg/slide-mac-small.png',
+    '/screenshot/bgImg/wave-mac-small.png'
     // '/screenshot/bgImg/autumnal-peach-small.png',
     // '/screenshot/bgImg/blossom-2-small.png',
     // '/screenshot/bgImg/good-vibes-small.png'
