@@ -12,7 +12,7 @@ export default function RangeSlider({ minVal, maxVal, step, value, onValueChange
         sx={{
           height: 28,
           padding: '10px 0',
-          color: 'rgba(220,220,220,1)',
+          color: 'rgba(228,228,228,1)',
           '& .MuiSlider-thumb': {
             width: '2px',
             height: '20px',

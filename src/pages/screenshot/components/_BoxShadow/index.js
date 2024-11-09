@@ -63,20 +63,20 @@ export default function BoxShadow() {
         fullWidth
       >
         <ToggleButton value="none" aria-label="none">
-          <Box sx={{ padding: '10px 0' }}>
+          <Box sx={{ padding: '8px 0' }}>
             <BoxShadowIcon />
             {/* <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/none.png" /> */}
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">None</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value="hug" aria-label="hug">
-          <Box sx={{ padding: '10px 0' }}>
+          <Box sx={{ padding: '8px 0' }}>
             <BoxShadowIcon sx={{ '&::after': { boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Hug</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value="spread" aria-label="spread">
-          <Box sx={{ padding: '10px 0' }}>
+          <Box sx={{ padding: '8px 0' }}>
             <BoxShadowIcon sx={{ '&::after': { boxShadow: '5px 5px 8px rgba(0, 0, 0, 0.7)' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Spread</Typography> */}
           </Box>

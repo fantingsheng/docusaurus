@@ -49,19 +49,19 @@ export default function BorderRadius() {
         fullWidth
       >
         <ToggleButton value={0} aria-label="Sharp">
-          <Box sx={{ padding: '10px 0' }}>
+          <Box sx={{ padding: '8px 0' }}>
             <BorderRadiusIcon />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none', fontSize: '11px' }} variant="caption">直角</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value={20} aria-label="Curved">
-          <Box sx={{ padding: '10px 0' }}>
+          <Box sx={{ padding: '8px 0' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '8px' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Curved</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value={40} aria-label="Round">
-          <Box sx={{ padding: '10px 0' }}>
+          <Box sx={{ padding: '8px 0' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '12px' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Round</Typography> */}
           </Box>

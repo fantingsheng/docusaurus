@@ -15,7 +15,7 @@ export default function MockupTab() {
   return (
     <div className={styles.setPannel}>
       <Box className={styles.pannelCtrl}>
-        <Typography className={styles.setTit} variant="h3" sx={{ marginBottom: '10px' }}>样式</Typography>
+        <Typography className={styles.setTit} variant="h3" sx={{ marginBottom: '5px' }}>样式</Typography>
         <Box className={styles.pannelCtrlGrid}>
           <StyleButton />
         </Box>
@@ -36,19 +36,19 @@ export default function MockupTab() {
       }
       {["screenshot", "browser", "minimalPhone", "wallPaper"].includes(config.mockup.theme) && 
         <Box className={styles.pannelCtrl}>
-          <Typography className={styles.setTit} variant="h3">圆角</Typography>
+          <Typography className={styles.setTit} variant="h3" sx={{ marginBottom: '-5px' }}>圆角</Typography>
           <BorderRadius />
         </Box>
       }
       {["screenshot", "browser", "iphone15", "iphone16", "pixel7Pro", "ipadPro13", 'ipadAir', 'iphone14',
         'iphoneSe', "huaweiP40ProPlus", "minimalPhone", "wallPaper"].includes(config.mockup.theme) && 
       <Box className={styles.pannelCtrl}>
-        <Typography className={styles.setTit} variant="h3">阴影</Typography>
+        <Typography className={styles.setTit} variant="h3" sx={{ marginBottom: '-5px' }}>阴影</Typography>
         <BoxShadow />
       </Box>
       }
       <Box className={styles.pannelCtrl}>
-        <Typography className={styles.setTit} variant="h3">大小和位置</Typography>
+        <Typography className={styles.setTit} variant="h3" sx={{ marginBottom: '-5px' }}>大小和位置</Typography>
         <SizeAndPosition />
       </Box>
       {/* <Box className={styles.pannelCtrl}>

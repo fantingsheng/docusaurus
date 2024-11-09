@@ -21,7 +21,7 @@ export default function Frame() {
   return (
     <div className={styles.setPannel}>
       <Box className={styles.pannelCtrl}>
-        <Typography className={styles.setTit} variant="h5">遮罩</Typography>
+        <Typography className={styles.setTit} variant="h5" sx={{ marginBottom: '-5px' }}>遮罩</Typography>
         <RangeSlider
           minVal={0}
           maxVal={1}
@@ -46,7 +46,7 @@ export default function Frame() {
         </Box>
       </Box>
       <Box className={styles.pannelCtrl}>
-        <Typography className={styles.setTit} variant="h5">效果</Typography>
+        <Typography className={styles.setTit} variant="h5" sx={{ marginBottom: '-5px' }}>效果</Typography>
         <RangeSlider
           minVal={0}
           maxVal={100}
