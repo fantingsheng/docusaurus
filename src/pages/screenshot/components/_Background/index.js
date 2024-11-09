@@ -249,7 +249,7 @@ export default function Background() {
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Typography className={styles.title} variant="h4">渐变色</Typography>
           <IconButton aria-label="expand" size="small" onClick={() => setExpand2((val) => !val)}>
-            <KeyboardArrowDownIcon className={clsx(styles.slideBtn, expand1 && styles.up)} />
+            <KeyboardArrowDownIcon className={clsx(styles.slideBtn, expand2 && styles.up)} />
           </IconButton>
         </Box>
         <div className={styles.gridentColorList}>
