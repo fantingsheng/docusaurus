@@ -21,6 +21,8 @@ export function ConfigProvider({ children }) {
     picRatio: "1 / 1",
     bgImg: "",
     bgLayer: "",
+    overLayerImg: "",
+    overLayerOpacity: 0.4,
     borderRadius: 20,
     transparent: false, // 透明背景
     // style: "default", // 样式

@@ -75,6 +75,11 @@ export default function Preview({ transform, showBtn }) {
           <CssDoodle ref={cssDoodle} rule={config.bgLayer} cssDoodleChange={cssDoodleChange} />
         }
       </div>
+      {config.overLayerImg && 
+        <div className={styles.frameOverLayer} style={{ opacity: config.overLayerOpacity, filter: 'blur(0.8em)', transform: 'translate3d(0px, 0px, 0px)' }}>
+          <img src={config.overLayerImg} crossorigin="anonymous" alt="image" style={{ top: '-2.4em', left: '-2.4em', width: 'calc(100% + 4.8em)', height: 'calc(100% + 4.8em)', willChange: 'auto' }} />
+        </div>
+      }
       <div className={styles.displayContainer}>
         <div
           className={clsx(styles.mockupModule, styles[config.mockup.theme], styles[config.mockup.style])}
