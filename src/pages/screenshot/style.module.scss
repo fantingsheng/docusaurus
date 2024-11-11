@@ -580,14 +580,15 @@
   height: calc(100% - 48px);
   position: relative;
 }
-.tabInner {
+.leftTabInner {
   position: relative;
-  height: calc(100vh - 152px);
+  // height: calc(100vh - 152px);
+  height: calc(100vh - 82px);
 }
 .scrollView {
   height: 100%;
   width: 100%;
-  padding: 70px 10px 40px;
+  padding: 70px 10px 10px;
   overflow-y: auto;
 }
 
@@ -612,10 +613,14 @@
 // 右侧
 .cardsWrapper {
   height: max-content;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  gap: 10px;
+  // display: flex;
+  // flex-direction: column;
+  // padding: 10px;
+  // gap: 10px;
+}
+.rightTabInner {
+  position: relative;
+  height: calc(100vh - 48px);
 }
 .layoutItem {
   border-radius: 6px;

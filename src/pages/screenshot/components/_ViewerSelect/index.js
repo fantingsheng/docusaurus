@@ -65,7 +65,7 @@ export default function ViewerSelect({ openStyle }) {
           </div>
         </Box>
       </Box>
-      <Popper sx={{ zIndex: 5, borderRadius: '10px' }} open={open} placement="bottom-start" anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+      <Popper sx={{ zIndex: 5, borderRadius: '10px' }} open={open} placement={openStyle === "mockup" ? "bottom-start" : "bottom-end"} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps }) => (
           <Grow
             {...TransitionProps}

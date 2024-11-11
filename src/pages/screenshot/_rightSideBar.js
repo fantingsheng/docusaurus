@@ -3,12 +3,13 @@ import styles from "./style.module.scss";
 import Preview from "./_preview";
 import clsx from 'clsx';
 import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
-import { IconButton } from '@mui/material';
+import { IconButton, Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useConfigContext } from './_configProvider';
+import FrameTab from "./components/_FrameTab";
+import ViewerSelect from "./components/_ViewerSelect";
 
-
-export default function RightSideBar() {
+export default function RightSideBar({ children }) {
   const { config, handleConfigChange } = useConfigContext();
   const [showAds, setShowAds] = useState(false);
 
@@ -37,7 +38,18 @@ export default function RightSideBar() {
             {/* <div className={styles.subAds}>广告投放</div> */}
           </div>
         </div>}
-        {
+        <Box sx={{ padding: '8px 0'  }}>
+          <div className={styles.rightTabInner}>
+            <ViewerSelect openStyle="frame" />
+            <div className={styles.scrollView} style={{ paddingBottom: '40px' }}>
+              <FrameTab />
+            </div>
+          </div>
+        </Box>
+        <div className={styles.exportControls}>
+          { children }
+        </div>
+        {/* {
           transformLst.map((item, index) =>
             (<div
               className={clsx(styles.layoutItem, item === config.transform ? styles.active : '')}
@@ -49,7 +61,7 @@ export default function RightSideBar() {
               </div>
             </div>)
           )
-        }
+        } */}
       </div>
     </div>
   )

@@ -67,7 +67,7 @@ export default function LeftSideBar({ themeName, changeTheme, children }) {
         </Box>
       </div>
       <div className={clsx(styles.pannel)}>
-        <Tabs
+        {/* <Tabs
           value={value}
           onChange={handleChange}
           textColor="inherit"
@@ -76,26 +76,18 @@ export default function LeftSideBar({ themeName, changeTheme, children }) {
         >
           <Tab label="模型" sx={{ minHeight: '48px' }} icon={<AirplayIcon fontSize='small' />} iconPosition="start" disableRipple />            
           <Tab label="框架" sx={{ minHeight: '48px' }} icon={<AspectRatioIcon fontSize='small' />} iconPosition="start" disableRipple />
-        </Tabs>
-        <TabPanel value={value} index={0}>
-          <div className={styles.tabInner}>
+        </Tabs> */}
+        <Box sx={{ padding: '8px 0'  }}>
+          <div className={styles.leftTabInner}>
             <ViewerSelect openStyle="mockup" />
             <div className={styles.scrollView}>
               <MockupTab />
             </div>
           </div>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <div className={styles.tabInner}>
-            <ViewerSelect openStyle="frame" />
-            <div className={styles.scrollView}>
-              <FrameTab />
-            </div>
-          </div>
-        </TabPanel>
-        <div className={styles.exportControls}>
+        </Box>
+        {/* <div className={styles.exportControls}>
           { children }
-        </div>
+        </div> */}
       </div>
       <Dialog onClose={() => setVisible(false)} maxWidth="md" open={visible}>
         <DialogTitle sx={{ backgroundColor: '#fff' }}>欢迎使用图片套壳美化工具</DialogTitle>

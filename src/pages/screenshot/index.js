@@ -52,18 +52,20 @@ export default function () {
         <main className={clsx(styles.appMain, styles[themeName])}>
           <div className={styles.sidebar}>
             {!fullScreen &&
-            <LeftSideBar themeName={themeName} changeTheme={onChangeTheme}>
-              <Box sx={{ display: 'flex', gap: '8px' }}>
-                <ExportButton coverRef={coverRef} />
-                <ExportSetting />
-              </Box>
-            </LeftSideBar>}
+            <LeftSideBar themeName={themeName} changeTheme={onChangeTheme}></LeftSideBar>}
           </div>
           <div className={styles.canvas}>
             <CenterPreview />
           </div>
           <div className={styles.sidebar}>
-            {!fullScreen && <RightSideBar />}
+            {!fullScreen && 
+              <RightSideBar>
+                <Box sx={{ display: 'flex', gap: '8px' }}>
+                  <ExportButton coverRef={coverRef} />
+                  <ExportSetting />
+                </Box>
+              </RightSideBar>
+            }
           </div>
           <div className={styles.commandBar}>
             <CommandBar changeFullScreen={handleFullScreen} />
