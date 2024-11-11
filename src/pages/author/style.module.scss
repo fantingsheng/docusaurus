@@ -118,3 +118,18 @@
     }
   }
 }
+
+.typeCodeBlock {
+  --prism-background-color: transparent !important;
+  margin-bottom: 0 !important;
+  box-shadow: none !important;
+
+  pre {
+    background-color: transparent !important;
+  }
+
+  code {
+    background-color: transparent !important;
+    border: none !important;
+  }
+}
