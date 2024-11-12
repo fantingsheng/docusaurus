@@ -156,6 +156,7 @@ export default function FrameModel() {
             '& input': { padding: '5px 8px' }
           }} onClick={setCanvasSize}>设置</Button>
       </Box>
+      <Divider sx={{ margin: '0 0 10px', borderColor: 'rgba(0,0,0,.05)', backgroundColor: 'rgba(0,0,0,.05)' }} />
       {
         platSizeLst.map((item, id) => (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }} key={id}>

@@ -88,7 +88,10 @@ export default function ExportSetting() {
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '8px' }}>
                     <Box sx={{ padding: '10px', backgroundColor: 'rgba(240,240,240,1)', borderRadius: '5px' }}>
-                      <Typography variant="body2" sx={{ color: 'rgba(110,110,110,1)' }}>{`导出分辨率：${config.width * config.expScale} x ${config.height * config.expScale}`}</Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                        <span>导出分辨率：</span>
+                        <span style={{ color: 'rgba(110,110,110,1)', fontSize: '12px' }}>{`${config.width * config.expScale} x ${config.height * config.expScale}`}</span>
+                      </Typography>
                     </Box>
                   </Box>
                 </Box>
