@@ -86,13 +86,14 @@
 
 .layout {
   height: 100%;
-  min-width: 248px;
-  max-width: 248px;
+  // min-width: 248px;
+  // max-width: 248px;
   border-radius: 14px;
-  overflow: hidden;
   position: relative;
-  overflow-y: scroll;
-  z-index: 10;
+  // overflow: hidden;
+  // position: relative;
+  // overflow-y: scroll;
+  // z-index: 10;
 }
 
 .navbar, .layout, .pannel {
@@ -551,16 +552,6 @@
   }
 }
 
-.layout {
-  height: 100%;
-  min-width: 248px;
-  max-width: 248px;
-  overflow: hidden;
-  position: relative;
-  overflow-y: scroll;
-  z-index: 10;
-}
-
 .navbar {
   display: flex;
   align-items: center;
@@ -611,13 +602,13 @@
   transform: translateX(-200%);
 }
 // 右侧
-.cardsWrapper {
-  height: max-content;
-  // display: flex;
-  // flex-direction: column;
-  // padding: 10px;
-  // gap: 10px;
-}
+// .cardsWrapper {
+//   height: max-content;
+//   display: flex;
+//   flex-direction: column;
+//   padding: 10px;
+//   gap: 10px;
+// }
 .rightTabInner {
   position: relative;
   height: calc(100vh - 48px);

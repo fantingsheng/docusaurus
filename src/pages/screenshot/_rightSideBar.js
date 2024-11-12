@@ -28,41 +28,39 @@ export default function RightSideBar({ children }) {
 
   return (
     <div className={styles.layout}>
-      <div className={styles.cardsWrapper}>
-        {showAds && <div className={styles.layoutItem}>
-          <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto', position: 'relative' }}>
-            <div className={styles.closeBtn} onClick={() => onCloseAds()}>
-              <IconButton size="small"><CloseIcon sx={{ fontSize: '16px' }} /></IconButton>
-            </div>
-            <GoogleAdsBlock model='pureShow' height='100%' />
-            {/* <div className={styles.subAds}>广告投放</div> */}
+      {showAds && <div className={styles.layoutItem}>
+        <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto', position: 'relative' }}>
+          <div className={styles.closeBtn} onClick={() => onCloseAds()}>
+            <IconButton size="small"><CloseIcon sx={{ fontSize: '16px' }} /></IconButton>
           </div>
-        </div>}
-        <Box sx={{ padding: '8px 0'  }}>
-          <div className={styles.rightTabInner}>
-            <ViewerSelect openStyle="frame" />
-            <div className={styles.scrollView} style={{ paddingBottom: '40px' }}>
-              <FrameTab />
-            </div>
-          </div>
-        </Box>
-        <div className={styles.exportControls}>
-          { children }
+          <GoogleAdsBlock model='pureShow' height='100%' />
+          {/* <div className={styles.subAds}>广告投放</div> */}
         </div>
-        {/* {
-          transformLst.map((item, index) =>
-            (<div
-              className={clsx(styles.layoutItem, item === config.transform ? styles.active : '')}
-              key={index}
-              onClick={() => handleConfigChange(item, "transform")}
-            >
-              <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
-                <Preview transform={item} showBtn={false} />
-              </div>
-            </div>)
-          )
-        } */}
+      </div>}
+      <Box sx={{ padding: '8px 0'  }}>
+        <div className={styles.rightTabInner}>
+          <ViewerSelect openStyle="frame" />
+          <div className={styles.scrollView} style={{ paddingBottom: '40px' }}>
+            <FrameTab />
+          </div>
+        </div>
+      </Box>
+      <div className={styles.exportControls}>
+        { children }
       </div>
+      {/* {
+        transformLst.map((item, index) =>
+          (<div
+            className={clsx(styles.layoutItem, item === config.transform ? styles.active : '')}
+            key={index}
+            onClick={() => handleConfigChange(item, "transform")}
+          >
+            <div className={styles.frame} style={{ aspectRatio: '4/3', width: '100%', height: 'auto' }}>
+              <Preview transform={item} showBtn={false} />
+            </div>
+          </div>)
+        )
+      } */}
     </div>
   )
 }
