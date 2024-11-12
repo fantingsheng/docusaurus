@@ -75,7 +75,7 @@ export default function ViewerSelect({ openStyle }) {
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
-                <Box className={styles.popperBox} style={{ borderRadius: '10px' }}>
+                <Box className={styles.popperBox} style={{ borderRadius: '10px', minWidth: openStyle === 'mockup' ? '400px' : '340px' }}>
                   {
                     openStyle === "mockup" ? 
                       <MockupModel open={open} /> 

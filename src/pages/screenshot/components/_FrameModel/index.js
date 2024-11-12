@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Typography, Divider, TextField, Button } from '@mui/material';
+import { Box, Typography, Divider, TextField, Button, InputAdornment } from '@mui/material';
 import styles from "./style.module.scss";
 import clsx from "clsx";
 import { useConfigContext } from '../../_configProvider';
@@ -135,6 +135,9 @@ export default function FrameModel() {
           size='small'
           autoComplete='false'
           label='宽度'
+          sx={{
+            '& input': { padding: '5px 8px' }
+          }}
           fullWidth
         />
         <TextField
@@ -144,9 +147,14 @@ export default function FrameModel() {
           size='small'
           autoComplete='false'
           label='高度'
+          sx={{
+            '& input': { padding: '5px 8px' }
+          }}
           fullWidth
         />
-        <Button variant="contained" size='small' onClick={setCanvasSize}>设置</Button>
+        <Button variant="contained" size='small' sx={{
+            '& input': { padding: '5px 8px' }
+          }} onClick={setCanvasSize}>设置</Button>
       </Box>
       {
         platSizeLst.map((item, id) => (
