@@ -167,7 +167,7 @@ export default function Main () {
               </Box>
               <Box className={clsx(styles.gridItem, styles.weibo)}>
                 <div className={styles.gridBg}>
-                  <Typography variant="body1" sx={{ marginBottom: '2rem' }}>用智慧选择目标，用智能实现目标。</Typography>
+                  <Typography variant="body1" sx={{ marginBottom: '2rem' }}>用智慧选择目标，用智能实现目标。💫</Typography>
                   <Typography variant="caption" sx={{ textAlign: 'right', display: 'block' }}>-- Sam Altman</Typography>
                 </div>
               </Box>
@@ -201,7 +201,9 @@ export default function Main () {
               </ParallaxHoverTiltEffect>
               <Box className={clsx(styles.gridItem, styles.tool)} sx={{  }}>
                 <div className={styles.list}>
-                  <Typography variant="body1" sx={{ marginBottom: '0.2rem', fontWeight: '400' }}>由于经常分享和写作需要配图，便开发了几款图片导出工具：</Typography>
+                  <Typography variant="body1" sx={{ marginBottom: '0.8rem', fontWeight: '400' }}>
+                    由于经常分享和写作需要配图，便开发了几款图片导出工具，我的产品之路将从这些小工具开始。
+                  </Typography>
                   <ul>
                     <li><Link to="/screenshot">图片套壳美化</Link></li>
                     <li><Link to="/coverview">封面图生成</Link></li>
@@ -213,7 +215,7 @@ export default function Main () {
               <Box className={clsx(styles.gridItem, styles.router)}>
                 <Box sx={{ display: 'flex', gap: '15px' }}>
                   <Box sx={{ width: '70%' }}>
-                    <Typography variant="body2">我还偶尔骑行和跑步，为了督促自己，特意开发了一个展示跑步路线的页面，
+                    <Typography variant="body1">我还偶尔骑行和跑步，为了督促自己，特意开发了一个展示跑步路线的页面，
                       几年下来也积累了数条无锡这座城市非常适合跑步的路线。</Typography>
                     <Button variant="text" sx={{ marginTop: '10px' }} href="/routes" startIcon={<PinDropIcon />}>足迹</Button>
                   </Box>
@@ -226,8 +228,8 @@ export default function Main () {
                         preserveAspectRatio: 'xMidYMid slice'
                       }
                     }}
-                    height={100}
-                    width={100}
+                    height={120}
+                    width={120}
                   />
                 </Box>
               </Box>
