@@ -63,10 +63,10 @@ export default function Preview({ transform, showBtn }) {
   return (
     <div className={styles.frameContent}>
       <div className={styles.frameBackgroundDisplay}>
-        <div className={styles.frameBlur} style={{ backdropFilter: `blur(${config.blur * 0.04}em)`, transform: 'translate3d(0px, 0px, 0px)' }} />
+        <div className={styles.frameBlur} style={{ filter: `blur(${config.blur * 0.04}em)`, transform: 'translate3d(0px, 0px, 0px)' }} />
         <div className={styles.frameNoise} style={{ opacity: config.noise / 100 }} />
         { !config.transparent && config.bgImg &&
-          <img className={styles.frameBackground} src={config.bgImg} />
+          <img className={styles.frameBackground} src={config.bgImg} style={{ filter: `blur(${config.blur * 0.04}em)` }}/>
         }
         { !config.transparent && !config.bgImg && config.bg &&
           <div className={styles.frameBackground} style={{ background: config.bg, opacity: 1 }} />
@@ -77,7 +77,7 @@ export default function Preview({ transform, showBtn }) {
       </div>
       {config.overLayerImg && 
         <div className={styles.frameOverLayer} style={{ opacity: config.overLayerOpacity, filter: 'blur(0.8em)', transform: 'translate3d(0px, 0px, 0px)' }}>
-          <img src={config.overLayerImg} crossorigin="anonymous" alt="image" style={{ top: '-2.4em', left: '-2.4em', width: 'calc(100% + 4.8em)', height: 'calc(100% + 4.8em)', willChange: 'auto' }} />
+          <img src={config.overLayerImg} crossOrigin="anonymous" alt="image" style={{ top: '-2.4em', left: '-2.4em', width: 'calc(100% + 4.8em)', height: 'calc(100% + 4.8em)', willChange: 'auto' }} />
         </div>
       }
       <div className={styles.displayContainer}>
