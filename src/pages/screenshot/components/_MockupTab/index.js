@@ -6,6 +6,7 @@ import BoxShadow from "../_BoxShadow";
 import SizeAndPosition from "../_SizeAndPosition";
 import StyleButton from "../_StyleButton";
 import { useConfigContext } from '../../_configProvider';
+import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
 
 export default function MockupTab() {
   const { config, handleConfigChange } = useConfigContext();
@@ -64,6 +65,10 @@ export default function MockupTab() {
           </Box>
         </Box>
       </Box> */}
+      <div>
+        <div className={styles.adsTitle}>成为赞助商</div>
+        <GoogleAdsBlock model='pureShow' height='120px' />
+      </div>
     </div>
   )
 }
