@@ -89,7 +89,13 @@ export default function Background() {
   const cssDoodleList = [
     `:doodle {
       background-color: red;
-      background-image: radial-gradient(at 40% 20%,#ffb87a 0,transparent 50%),radial-gradient(at 80% 0,#1fddff 0,transparent 50%),radial-gradient(at 0 50%,#ffdbde 0,transparent 50%),radial-gradient(at 80% 50%,#ff85ad 0,transparent 50%),radial-gradient(at 0 100%,#ffb58a 0,transparent 50%),radial-gradient(at 80% 100%,#6b66ff 0,transparent 50%),radial-gradient(at 0 0,#ff85a7 0,transparent 50%);
+      background-image: radial-gradient(at 40% 20%,#ffb87a 0,transparent 50%),
+        radial-gradient(at 80% 0,#1fddff 0,transparent 50%),
+        radial-gradient(at 0 50%,#ffdbde 0,transparent 50%),
+        radial-gradient(at 80% 50%,#ff85ad 0,transparent 50%),
+        radial-gradient(at 0 100%,#ffb58a 0,transparent 50%),
+        radial-gradient(at 80% 100%,#6b66ff 0,transparent 50%),
+        radial-gradient(at 0 0,#ff85a7 0,transparent 50%);
     }
     @grid: 14 / 100%;
     @random {
@@ -97,26 +103,56 @@ export default function Background() {
     }`,
     `:doodle {
       background: #26004d;
-      background-image: radial-gradient(at 98% 31%,hsl(353,88%,56%) 0,hsla(353,88%,56%,0) 50%),radial-gradient(at 95% 37%,hsl(59,88%,67%) 0,hsla(59,88%,67%,0) 50%),radial-gradient(at 55% 74%,hsl(156,92%,53%) 0,hsla(156,92%,53%,0) 50%),radial-gradient(at 27% 55%,hsl(339,87%,56%) 0,hsla(339,87%,56%,0) 50%),radial-gradient(at 38% 25%,hsl(11,88%,60%) 0,hsla(11,88%,60%,0) 50%),radial-gradient(at 14% 1%,hsl(72,95%,70%) 0,hsla(72,95%,70%,0) 50%),radial-gradient(at 89% 41%,hsl(341,90%,53%) 0,hsla(341,90%,53%,0) 50%);
+      background-image: radial-gradient(at 98% 31%,hsl(353,88%,56%) 0,hsla(353,88%,56%,0) 50%),
+        radial-gradient(at 95% 37%,hsl(59,88%,67%) 0,hsla(59,88%,67%,0) 50%),
+        radial-gradient(at 55% 74%,hsl(156,92%,53%) 0,hsla(156,92%,53%,0) 50%),
+        radial-gradient(at 27% 55%,hsl(339,87%,56%) 0,hsla(339,87%,56%,0) 50%),
+        radial-gradient(at 38% 25%,hsl(11,88%,60%) 0,hsla(11,88%,60%,0) 50%),
+        radial-gradient(at 14% 1%,hsl(72,95%,70%) 0,hsla(72,95%,70%,0) 50%),
+        radial-gradient(at 89% 41%,hsl(341,90%,53%) 0,hsla(341,90%,53%,0) 50%);
     }
     @grid: 14 / 100%;`,
     `:doodle {
       background-color: #ffd500;
-      background-image: radial-gradient(circle at 30% 30%,#80ff80 0,transparent 70%),radial-gradient(circle at 70% 70%,#ff80bf 0,transparent 70%);
+      background-image: radial-gradient(circle at 30% 30%,#80ff80 0,transparent 70%),
+      radial-gradient(circle at 70% 70%,#ff80bf 0,transparent 70%);
     }
     @grid: 14 / 100%;`,
     `:doodle {
-      background-image: radial-gradient(at 50% 50%,#fff785 0,transparent 50%),radial-gradient(at 80% 30%,#f73 0,transparent 50%),linear-gradient(45deg,#ff4000,#ff0);
+      background-color:#9999ff;
+      background-image:
+        radial-gradient(at 92% 40%, hsla(303,65%,69%,1) 0px, transparent 50%),
+        radial-gradient(at 27% 77%, hsla(26,61%,63%,1) 0px, transparent 50%),
+        radial-gradient(at 41% 62%, hsla(342,71%,70%,1) 0px, transparent 50%),
+        radial-gradient(at 49% 29%, hsla(193,70%,62%,1) 0px, transparent 50%),
+        radial-gradient(at 32% 81%, hsla(15,98%,68%,1) 0px, transparent 50%),
+        radial-gradient(at 45% 18%, hsla(75,70%,60%,1) 0px, transparent 50%),
+        radial-gradient(at 24% 43%, hsla(332,81%,76%,1) 0px, transparent 50%);
     }
     @grid: 14 / 100%;`,
     `:doodle {
-      background-color: #ff9a9e;
-      background-image: radial-gradient(at 40% 20%,#fad0c4 0,transparent 50%),radial-gradient(at 80% 0,#fad0c4 0,transparent 50%),radial-gradient(at 0 50%,#ff9a9e 0,transparent 50%),radial-gradient(at 80% 50%,#fad0c4 0,transparent 50%),radial-gradient(at 0 100%,#fad0c4 0,transparent 50%),radial-gradient(at 80% 100%,#ff9a9e 0,transparent 50%),radial-gradient(at 0 0,#fad0c4 0,transparent 50%);
+      background-color:#99ebff;
+      background-image: radial-gradient(at 59% 98%, hsla(213,84%,72%,1) 0px, transparent 50%),
+        radial-gradient(at 17% 57%, hsla(142,93%,76%,1) 0px, transparent 50%),
+        radial-gradient(at 67% 5%, hsla(32,93%,71%,1) 0px, transparent 50%),
+        radial-gradient(at 68% 66%, hsla(205,61%,71%,1) 0px, transparent 50%),
+        radial-gradient(at 11% 78%, hsla(71,74%,74%,1) 0px, transparent 50%),
+        radial-gradient(at 25% 49%, hsla(28,85%,60%,1) 0px, transparent 50%),
+        radial-gradient(at 59% 61%, hsla(302,90%,72%,1) 0px, transparent 50%),
+        radial-gradient(at 18% 88%, hsla(10,90%,69%,1) 0px, transparent 50%),
+        radial-gradient(at 57% 92%, hsla(275,76%,75%,1) 0px, transparent 50%);
     }
     @grid: 14 / 100%;`,
     `:doodle {
-      background-color: #0080ff;
-      background-image: radial-gradient(at 70% 20%,#00d4ff 0,transparent 50%),radial-gradient(at 30% 80%,#66ffe5 0,transparent 50%);
+      background-color:#ff999c;
+      background-image:
+        radial-gradient(at 61% 46%, hsla(37,84%,69%,1) 0px, transparent 50%),
+        radial-gradient(at 92% 91%, hsla(205,71%,65%,1) 0px, transparent 50%),
+        radial-gradient(at 16% 74%, hsla(162,76%,73%,1) 0px, transparent 50%),
+        radial-gradient(at 47% 55%, hsla(69,98%,66%,1) 0px, transparent 50%),
+        radial-gradient(at 69% 61%, hsla(158,71%,77%,1) 0px, transparent 50%),
+        radial-gradient(at 0% 70%, hsla(264,80%,78%,1) 0px, transparent 50%),
+        radial-gradient(at 69% 86%, hsla(155,73%,64%,1) 0px, transparent 50%);
     }
     @grid: 14 / 100%;`
   ]
