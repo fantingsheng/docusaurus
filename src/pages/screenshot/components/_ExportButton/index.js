@@ -4,7 +4,7 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useState } from 'react';
 import { useConfigContext } from '../../_configProvider';
-import { toPng, toJpg, toBlob } from '@site/src/utils/image';
+import { toPng, toJpg, toBlob, toSvg } from '@site/src/utils/image';
 import { downloadByUrl } from '@site/src/utils';
 import toast from 'react-hot-toast';
 
@@ -29,7 +29,9 @@ export default function ExportButton({ coverRef }) {
     setLoading(true);
     const dataUrl = config.format === "png" ? await toPng(coverRef.current, {
       pixelRatio: config.expScale
-    }) : await toJpg(coverRef.current, {
+    }) : config.format === "jpg" ? await toJpg(coverRef.current, {
+      pixelRatio: config.expScale
+    }) : await toSvg(coverRef.current, {
       pixelRatio: config.expScale
     });
     const date = new Date()
@@ -53,14 +55,15 @@ export default function ExportButton({ coverRef }) {
     await navigator.clipboard.write(data)
       .then(
         () => {
-          console.log("复制成功!");
-          toast.success('复制成功', {position: 'bottom-center'});
+          toast.success('复制成功', { position: 'bottom-center' });
         },
         (err) => {
           console.error(err);
+          toast.error(err, { position: 'bottom-center' });
         }
       ).catch((err) => {
         console.error(err);
+        toast.error(err, { position: 'bottom-center' });
       }).finally(() => {
         setLoading(false);
       })

@@ -63,6 +63,9 @@ export default function ExportSetting() {
                       <ToggleButton value="png" aria-label="png">
                         PNG
                       </ToggleButton>
+                      <ToggleButton value="svg" aria-label="svg">
+                        SVG
+                      </ToggleButton>
                     </ToggleButtonGroup></Box>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
