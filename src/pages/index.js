@@ -198,7 +198,7 @@ export default function Home() {
   return (
     <Layout
       title={`欢迎来到${siteConfig.title}`}
-      description='分享硬核且有趣的前端编程知识，带你快速进入计算机Web的程序世界。'>
+      description='分享硬核且有趣的前端编程知识，带你快速进入计算机 Web 的程序世界。'>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
