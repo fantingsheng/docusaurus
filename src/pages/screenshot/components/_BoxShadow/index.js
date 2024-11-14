@@ -9,7 +9,7 @@ export const BoxShadowIcon = styled(Box)({
   height: '28px',
   backgroundColor: 'rgb(222, 226, 230)',
   borderRadius: '5px',
-  border: '1px solid rgb(222, 226, 230)',
+  border: '1px solid rgba(0,0,0,.12)',
   position: 'relative',
   overflow: 'hidden',
   '&::after': {
@@ -18,7 +18,7 @@ export const BoxShadowIcon = styled(Box)({
     width: '100px',
     height: '100px',
     bottom: '8px',
-    left: '8px',
+    right: '8px',
     backgroundColor: '#fff',
     borderRadius: '6px'
     // border: '2px solid rgba(0,0,0,1)'
@@ -71,13 +71,13 @@ export default function BoxShadow() {
         </ToggleButton>
         <ToggleButton value="hug" aria-label="hug">
           <Box sx={{ padding: '8px 0' }}>
-            <BoxShadowIcon sx={{ '&::after': { boxShadow: '2px 2px 6px rgba(0, 0, 0, 0.7)' } }} />
+            <BoxShadowIcon sx={{ '&::after': { boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Hug</Typography> */}
           </Box>
         </ToggleButton>
         <ToggleButton value="spread" aria-label="spread">
           <Box sx={{ padding: '8px 0' }}>
-            <BoxShadowIcon sx={{ '&::after': { boxShadow: '5px 5px 8px rgba(0, 0, 0, 0.7)' } }} />
+            <BoxShadowIcon sx={{ '&::after': { boxShadow: '4px 4px 6px rgba(0, 0, 0, 0.4)' } }} />
             {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Spread</Typography> */}
           </Box>
         </ToggleButton>
