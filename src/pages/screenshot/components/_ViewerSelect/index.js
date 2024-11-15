@@ -33,31 +33,32 @@ export default function ViewerSelect({ openStyle }) {
           sx={{
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'space-between',
             width: '100%',
             height: '54px',
             border: `1px solid #E4E7ED`,
             borderRadius: '8px',
             padding: '8px',
-            gap: '8px',
+            gap: '5px',
             cursor: 'pointer',
             userSelect: 'none'
           }}
           onClick={handleToggle}
         >
-          <Box
-            className={styles.grayModel}
-            sx={{ aspectRatio: config.ratio }}
-          >
-            {openStyle === 'mockup' ? <img src={config.mockup.thumbnail} style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
-              : <div className={styles.frameIcon} />
-            }
-          </Box> 
-          <div className={styles.line}>
-            <div className={styles.tit}>
-              {openStyle === 'mockup' ? config.mockup.title : `${config.frame.platform} ${config.frame.aspectRatio.replace('/', '')}`}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', height: '100%', width: 'calc(100% - 25px)', flexGrow: 0 }}>
+            <Box className={styles.grayModel}>
+              { openStyle === 'mockup' ? 
+                < img src={config.mockup.thumbnail} style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
+                : <div className={styles.frameIcon} style={{ aspectRatio: config.ratio }} />
+              }
+            </Box>
+            <div className={styles.line}>
+              <div className={styles.tit}>
+                {openStyle === 'mockup' ? config.mockup.title : `${config.frame.platform} ${config.frame.aspectRatio.replace('/', '')}`}
+              </div>
+              <span className={styles.small}>{openStyle === 'mockup' ? config.mockup.sizeInfo : config.frame.sizeInfo}</span>
             </div>
-            <span className={styles.small}>{openStyle === 'mockup' ? config.mockup.sizeInfo : config.frame.sizeInfo}</span>
-          </div>
+          </Box>
           <div className={styles.handler}>
             <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' className={clsx(styles.moreBtn, open ? styles.open : '')}>
               <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M9 5l7 7-7 7'></path>
