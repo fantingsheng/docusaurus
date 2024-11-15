@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { IconButton, Button, Dialog, DialogContent, DialogTitle, DialogActions, DialogContentText, TextField } from '@mui/material';
-import HideImageIcon from '@mui/icons-material/HideImage';
+import HideImageOutlinedIcon from '@mui/icons-material/HideImageOutlined';
+import OpenWithOutlinedIcon from '@mui/icons-material/OpenWithOutlined';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import LibraryAddOutlinedIcon from '@mui/icons-material/LibraryAddOutlined';
 import FilterCenterFocusIcon from '@mui/icons-material/FilterCenterFocus';
 import { useConfigContext } from './_configProvider';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
@@ -132,7 +133,7 @@ export default function CommandBar({ changeFullScreen }) {
         aria-label="hide"
         onClick={onChangeMockupDisplay}
       >
-        <HideImageIcon />
+        <HideImageOutlinedIcon />
         <span style={{ fontSize: '12px' }}>模型</span>
       </IconButton>
       <IconButton
@@ -140,7 +141,7 @@ export default function CommandBar({ changeFullScreen }) {
         aria-label="preview"
         onClick={changeFullScreen}
       >
-        <OpenInFullIcon />
+        <OpenWithOutlinedIcon />
         <span style={{ fontSize: '12px' }}>预览</span>
       </IconButton>
       <IconButton
@@ -164,7 +165,7 @@ export default function CommandBar({ changeFullScreen }) {
         aria-label="reset"
         onClick={handleClickSave}
       >
-        <LibraryAddIcon />
+        <LibraryAddOutlinedIcon />
         <span style={{ fontSize: '12px' }}>保存</span>
       </IconButton>
       <Dialog
