@@ -89,11 +89,14 @@ export default function LeftSideBar({ themeName, changeTheme, children }) {
           { children }
         </div> */}
       </div>
-      <Dialog onClose={() => setVisible(false)} maxWidth="md" open={visible}>
-        <DialogTitle sx={{ backgroundColor: '#fff' }}>欢迎使用图片套壳美化工具</DialogTitle>
+      <Dialog onClose={() => setVisible(false)} maxWidth="sm" open={visible}>
+        <DialogTitle sx={{ backgroundColor: '#fff' }}>图片套壳美化工具</DialogTitle>
         <DialogContent sx={{ backgroundColor: '#fff' }}>
           <Typography variant="body1" sx={{ fontWeight: '600', textAlign: 'center' }}>背景主题</Typography>
           <Box sx={{ display: 'flex', gap: '15px', padding: '20px 0' }}>
+            <Box
+              className={clsx(styles.themeSetBox, styles.themeWhiteColor, themeName === "themeWhiteColor" ? styles.active : "")}
+              onClick={() => changeTheme("themeWhiteColor")}></Box>
             <Box
               className={clsx(styles.themeSetBox, styles.themePureColor, themeName === "themePureColor" ? styles.active : "")}
               onClick={() => changeTheme("themePureColor")}></Box>

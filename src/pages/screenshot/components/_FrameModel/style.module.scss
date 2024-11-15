@@ -46,7 +46,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px;
+  padding: 10px;
 }
 .lineFrame {
   width: 100%;
@@ -65,10 +65,10 @@
 }
 .details {
   width: 100%;
-  padding: 0 12px;
+  padding: 0 10px;
 }
 .truncate {
-  letter-spacing: -0.4px;
+  // letter-spacing: -0.4px;
   font-size: 11px;
   line-height: 16px;
   max-width: 100%;
