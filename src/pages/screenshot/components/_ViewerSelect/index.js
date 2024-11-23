@@ -48,7 +48,7 @@ export default function ViewerSelect({ openStyle }) {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', height: '100%', width: 'calc(100% - 25px)', flexGrow: 0 }}>
             <Box className={styles.grayModel}>
               { openStyle === 'mockup' ? 
-                < img src={config.mockup.thumbnail} style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
+                <img src={config.mockup.thumbnail} style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
                 : <div className={styles.frameIcon} style={{ aspectRatio: config.ratio }} />
               }
             </Box>

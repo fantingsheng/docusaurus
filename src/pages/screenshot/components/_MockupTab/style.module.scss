@@ -1,7 +1,7 @@
 .setPannel {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 .pannelCtrl {
   display: flex;
@@ -83,7 +83,7 @@
 
 .details {
   background: rgba(0,0,0,0.04);
-  border-radius: 8px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   padding: 10px 12px;
@@ -103,6 +103,10 @@
       font: normal 11px/14px Inter,sans-serif;
       margin: 0;
     }
+
+    a {
+      text-decoration: none;
+    }
   }
 }
 
@@ -116,5 +120,5 @@
   letter-spacing: 0.05rem;
   color: rgba(60, 60, 60, 0.33);
   height: 34px;
-  margin-top: 10px;
+  margin-top: 0;
 }

@@ -77,8 +77,8 @@ export default function UploadCard({ showBtn, children }) {
         {config.picture ? 
           <img src={config.picture} className={styles.uploadImg} /> : 
           (showBtn && <>
-            <AddPhotoAlternateIcon fontSize="large" />
-            <Typography>上传图片</Typography>
+            <AddPhotoAlternateIcon fontSize="large" sx={{ fontSize: '4em' }} />
+            <Typography sx={{ marginTop: '10px'}}>上传图片</Typography>
             <Typography variant="caption">（PNG 或者 JPG）</Typography>
             </>
           )

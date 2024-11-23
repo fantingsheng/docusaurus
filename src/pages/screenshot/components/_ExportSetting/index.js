@@ -1,9 +1,26 @@
 import { useState, useRef } from 'react';
-import { Box, Button, Popper, ClickAwayListener, Paper, Grow, Typography,
+import { Box, Button, Popper, ClickAwayListener, Paper, Grow, Typography, styled,
   ToggleButtonGroup, ToggleButton, TextField } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 import { useConfigContext } from '../../_configProvider';
+
+export const CusToggleButton = styled(ToggleButton)({
+  border: 'none',
+  background: 'transparent',
+  borderRadius: '5px !important',
+  transition: 'all 0.2s ease',
+  textTransform: 'none',
+  '&.Mui-selected': {
+    background: '#fff',
+    '&:hover' : {
+      background: '#fff'
+    }
+  },
+  '&:hover': {
+    background: 'transparent'
+  }
+})
 
 export default function ExportSetting() {
   const { config, handleConfigChange } = useConfigContext();
@@ -49,45 +66,59 @@ export default function ExportSetting() {
                 <Box sx={{ background: '#fff', padding: '15px', display: 'flex', flexDirection: 'column', gap: '10px', borderRadius: '10px' }}>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">格式</Typography>
-                    <Box><ToggleButtonGroup
-                      value={config.format}
-                      exclusive
-                      onChange={(e, val) => handleConfigChange(val, "format")}
-                      aria-label="border radius switch"
-                      size="small"
-                      fullWidth
-                    >
-                      <ToggleButton value="jpg" aria-label="jpg">
-                        JPG
-                      </ToggleButton>
-                      <ToggleButton value="png" aria-label="png">
-                        PNG
-                      </ToggleButton>
-                      <ToggleButton value="svg" aria-label="svg">
-                        SVG
-                      </ToggleButton>
-                    </ToggleButtonGroup></Box>
+                    <Box>
+                      <ToggleButtonGroup
+                        value={config.format}
+                        exclusive
+                        onChange={(e, val) => handleConfigChange(val, "format")}
+                        aria-label="border radius switch"
+                        size="small"
+                        sx={{
+                          padding: '3px',
+                          background: 'rgba(220,220,220,0.55)',
+                          borderRadius: '5px'
+                        }}
+                        fullWidth
+                      >
+                        <CusToggleButton value="jpg" aria-label="jpg">
+                          JPG
+                        </CusToggleButton>
+                        <CusToggleButton value="png" aria-label="png">
+                          PNG
+                        </CusToggleButton>
+                        <CusToggleButton value="svg" aria-label="svg">
+                          SVG
+                        </CusToggleButton>
+                      </ToggleButtonGroup>
+                    </Box>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px'}}>
                     <Typography variant="button">分辨率</Typography>
-                    <Box><ToggleButtonGroup
-                      value={config.expScale}
-                      exclusive
-                      onChange={(e, val) => handleConfigChange(val, "expScale")}
-                      aria-label="border radius switch"
-                      size="small"
-                      fullWidth
-                    >
-                      <ToggleButton value={1} aria-label="1x">
-                        1x
-                      </ToggleButton>
-                      <ToggleButton value={2} aria-label="2x">
-                        2x
-                      </ToggleButton>
-                      <ToggleButton value={3} aria-label="3x">
-                        3x
-                      </ToggleButton>
-                    </ToggleButtonGroup></Box>
+                    <Box>
+                      <ToggleButtonGroup
+                        value={config.expScale}
+                        exclusive
+                        onChange={(e, val) => handleConfigChange(val, "expScale")}
+                        aria-label="border radius switch"
+                        size="small"
+                        sx={{
+                          padding: '3px',
+                          background: 'rgba(220,220,220,0.55)',
+                          borderRadius: '5px'
+                        }}
+                        fullWidth
+                      >
+                        <CusToggleButton value={1} aria-label="1x">
+                          1x
+                        </CusToggleButton>
+                        <CusToggleButton value={2} aria-label="2x">
+                          2x
+                        </CusToggleButton>
+                        <CusToggleButton value={3} aria-label="3x">
+                          3x
+                        </CusToggleButton>
+                      </ToggleButtonGroup>
+                    </Box>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '8px' }}>
                     <Box sx={{ padding: '10px', backgroundColor: 'rgba(240,240,240,1)', borderRadius: '5px' }}>

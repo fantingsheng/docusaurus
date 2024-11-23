@@ -25,6 +25,22 @@ export const BoxShadowIcon = styled(Box)({
   }
 })
 
+export const CusToggleButton = styled(ToggleButton)({
+  border: 'none',
+  background: 'transparent',
+  borderRadius: '5px !important',
+  transition: 'all 0.2s ease',
+  '&.Mui-selected': {
+    background: '#fff',
+    '&:hover' : {
+      background: '#fff'
+    }
+  },
+  '&:hover': {
+    background: 'transparent'
+  }
+})
+
 export default function BoxShadow() {
   const { config, handleConfigChange } = useConfigContext();
 
@@ -44,7 +60,7 @@ export default function BoxShadow() {
     }
   }
   return (
-    <>
+    <Box>
       <RangeSlider
         minVal={0.1}
         maxVal={0.7}
@@ -60,28 +76,29 @@ export default function BoxShadow() {
         onChange={(e, val) => onValueChange(val)}
         aria-label="border radius"
         size="small"
+        sx={{
+          padding: '3px',
+          background: 'rgba(220,220,220,0.55)',
+          borderRadius: '5px'
+        }}
         fullWidth
       >
-        <ToggleButton value="none" aria-label="none">
-          <Box sx={{ padding: '8px 0' }}>
+        <CusToggleButton value="none" aria-label="none" disableRipple>
+          <Box sx={{ padding: '5px 0' }}>
             <BoxShadowIcon />
-            {/* <Avatar sx={{ width: '28px', height: '28px', bgcolor: 'rgba(0,0,0,.14)' }} variant="rounded" src="/screenshot/shadow/none.png" /> */}
-            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">None</Typography> */}
           </Box>
-        </ToggleButton>
-        <ToggleButton value="hug" aria-label="hug">
-          <Box sx={{ padding: '8px 0' }}>
+        </CusToggleButton>
+        <CusToggleButton value="hug" aria-label="hug" disableRipple>
+          <Box sx={{ padding: '5px 0' }}>
             <BoxShadowIcon sx={{ '&::after': { boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.4)' } }} />
-            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Hug</Typography> */}
           </Box>
-        </ToggleButton>
-        <ToggleButton value="spread" aria-label="spread">
-          <Box sx={{ padding: '8px 0' }}>
+        </CusToggleButton>
+        <CusToggleButton value="spread" aria-label="spread" disableRipple>
+          <Box sx={{ padding: '5px 0' }}>
             <BoxShadowIcon sx={{ '&::after': { boxShadow: '4px 4px 6px rgba(0, 0, 0, 0.4)' } }} />
-            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Spread</Typography> */}
           </Box>
-        </ToggleButton>
+        </CusToggleButton>
       </ToggleButtonGroup>
-    </>
+    </Box>
   )
 }

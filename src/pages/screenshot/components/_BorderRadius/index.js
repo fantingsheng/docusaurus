@@ -22,6 +22,22 @@ export const BorderRadiusIcon = styled(Box)({
   }
 })
 
+export const CusToggleButton = styled(ToggleButton)({
+  border: 'none',
+  background: 'transparent',
+  borderRadius: '5px !important',
+  transition: 'all 0.2s ease',
+  '&.Mui-selected': {
+    background: '#fff',
+    '&:hover' : {
+      background: '#fff'
+    }
+  },
+  '&:hover': {
+    background: 'transparent'
+  }
+})
+
 export default function BorderRadius() {
   const { config, handleConfigChange } = useConfigContext();
 
@@ -31,7 +47,7 @@ export default function BorderRadius() {
   }
 
   return (
-    <>
+    <Box>
       <RangeSlider
         minVal={1}
         maxVal={40}
@@ -46,27 +62,29 @@ export default function BorderRadius() {
         onChange={(e, val) => onValueChange(val)}
         aria-label="border radius switch"
         size="small"
+        sx={{
+          padding: '3px',
+          background: 'rgba(220,220,220,0.55)',
+          borderRadius: '5px'
+        }}
         fullWidth
       >
-        <ToggleButton value={0} aria-label="Sharp">
-          <Box sx={{ padding: '8px 0' }}>
+        <CusToggleButton value={0} aria-label="Sharp" disableRipple>
+          <Box sx={{ padding: '5px 0' }}>
             <BorderRadiusIcon />
-            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none', fontSize: '11px' }} variant="caption">直角</Typography> */}
           </Box>
-        </ToggleButton>
-        <ToggleButton value={20} aria-label="Curved">
-          <Box sx={{ padding: '8px 0' }}>
+        </CusToggleButton>
+        <CusToggleButton value={20} aria-label="Curved" disableRipple>
+          <Box sx={{ padding: '5px 0' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '8px' } }} />
-            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Curved</Typography> */}
           </Box>
-        </ToggleButton>
-        <ToggleButton value={40} aria-label="Round">
-          <Box sx={{ padding: '8px 0' }}>
+        </CusToggleButton>
+        <CusToggleButton value={40} aria-label="Round" disableRipple>
+          <Box sx={{ padding: '5px 0' }}>
             <BorderRadiusIcon sx={{ '&::after': { borderRadius: '12px' } }} />
-            {/* <Typography sx={{ lineHeight: 1, color: 'rgba(0, 0, 0, 0.56)', textTransform: 'none' }} variant="caption">Round</Typography> */}
           </Box>
-        </ToggleButton>
+        </CusToggleButton>
       </ToggleButtonGroup>
-    </>
+    </Box>
   )
 }

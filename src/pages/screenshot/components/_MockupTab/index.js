@@ -1,6 +1,7 @@
 import styles from "./style.module.scss";
 import { Box, Typography, TextField } from '@mui/material';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import BorderRadius from "../_BorderRadius";
 import BoxShadow from "../_BoxShadow";
 import SizeAndPosition from "../_SizeAndPosition";
@@ -52,19 +53,13 @@ export default function MockupTab() {
         <Typography className={styles.setTit} variant="h3" sx={{ marginBottom: '-5px' }}>大小和位置</Typography>
         <SizeAndPosition />
       </Box>
-      {/* <Box className={styles.pannelCtrl}>
-        <Typography className={styles.setTit} variant="h3">详细信息</Typography>
+      <Box className={styles.pannelCtrl}>
         <Box className={styles.details}>
           <Box className={styles.row}>
-            <span>设备</span>
-            <p>{config.mockup.title}</p>
-          </Box>
-          <Box className={styles.row}>
-            <span>图片尺寸</span>
-            <p>{config.mockup.sizeInfo}</p>
+            <span>A side project by <Link to='/author'>Timfan</Link>.</span>
           </Box>
         </Box>
-      </Box> */}
+      </Box>
       <div>
         <div className={styles.adsTitle}>成为赞助商</div>
         <GoogleAdsBlock model='pureShow' height='120px' />

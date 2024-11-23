@@ -13,9 +13,10 @@ export default function Frame() {
     "/screenshot/overlayer/001-small.png",
     "/screenshot/overlayer/002-small.png",
     "/screenshot/overlayer/003-small.png",
-    "/screenshot/overlayer/004-small.png",
     "/screenshot/overlayer/005-small.png",
-    "/screenshot/overlayer/006-small.png"
+    "/screenshot/overlayer/006-small.png",
+    "/screenshot/overlayer/004-small.png",
+    "/screenshot/overlayer/007-small.png"
   ]
 
   return (
