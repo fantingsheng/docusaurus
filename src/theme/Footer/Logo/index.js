@@ -24,7 +24,7 @@ function LogoImage({logo}) {
 export default function FooterLogo({ logo }) {
   return (
     <div className={styles.btmLogo}>
-      <img className={styles.spaceCraft} src="/page/spacecraft.svg" width="300" />
+      {/* <img className={styles.spaceCraft} src="/page/spacecraft.svg" width="300" /> */}
       <span className={clsx('domain-text-gradient', styles.logoText)} >SPACEXCODE</span>
     </div>
   )
