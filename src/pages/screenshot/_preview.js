@@ -57,7 +57,20 @@ export default function Preview({ transform, showBtn }) {
       document.removeEventListener('mouseup', handleStopResize)
       document.removeEventListener('mousemove', handleResize)
     }
-  }, [handleStopResize, handleResize])
+  }, [handleStopResize, handleResize]);
+
+  const picRatioCalc = () => {
+    if (config.mockup.theme === 'screenshot') {
+      return config.picRatio;
+    }
+    if (config.mockup.theme === 'browser') {
+      if (config.picture) {
+        return config.picRatio;
+      }
+      return config.frame.aspectRatio;
+    }
+    return 'unset';
+  }
 
   
   return (
@@ -89,7 +102,7 @@ export default function Preview({ transform, showBtn }) {
             className={styles.devices}
             style={{
               transform: `scale(${config.scale}) translateX(${config.translateX}%) translateY(${config.translateY}%) rotate(${config.rotate}deg)`,
-              '--aspect-ratio': ['screenshot', 'browser'].includes(config.mockup.theme) ? config.picRatio : 'unset'
+              '--aspect-ratio': picRatioCalc()
             }}
           >
             <div className={styles.item}>

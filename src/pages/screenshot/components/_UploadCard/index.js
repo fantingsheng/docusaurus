@@ -6,6 +6,7 @@ import { useConfigContext } from '../../_configProvider';
 
 export default function UploadCard({ showBtn, children }) {
   const { config, handleConfigChange } = useConfigContext();
+  const bgColor = 'rgba(220,220,220,1)';
 
   const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -16,7 +17,7 @@ export default function UploadCard({ showBtn, children }) {
     bottom: 0,
     left: 0,
     whiteSpace: 'nowrap',
-    width: 1,
+    width: 1
   });
 
   const onFileInputChange = (e) => {
@@ -44,6 +45,16 @@ export default function UploadCard({ showBtn, children }) {
     }
   }
 
+  const uploadCardBg = () => {
+    if (config.mockup.theme === 'browser') {
+      if (config.picture && config.mockup.style.includes('Dark')) {
+        return '#121214';
+      }
+      return bgColor;
+    }
+    return 'transparent';
+  }
+
   return (
     <Box className="uploadWrap" 
       sx={{
@@ -51,6 +62,7 @@ export default function UploadCard({ showBtn, children }) {
         height: "100%",
         padding: 'var(--drop-padding)',
         borderRadius: calcBorderRadius(),
+        background: uploadCardBg(),
         overflow: ["screenshot", "minimalPhone"].includes(config.mockup.theme) ? 'hidden' : 'unset'
     }}>
       <Button
@@ -62,24 +74,25 @@ export default function UploadCard({ showBtn, children }) {
           width: "100%",
           height: "100%",
           minWidth: "100%",
-          background: "rgba(220,220,220,1)",
+          background: config.mockup.theme === 'browser' ? 'transparent' : bgColor,
           color: "rgba(0,0,0,.8)",
           borderRadius: 'var(--drop-radius)',
           '&:hover': {
-            background: "rgba(220,220,220,1)"
+            background: config.mockup.theme === 'browser' ? 'transparent' : bgColor
           },
           flexDirection: 'column',
           overflow: 'hidden',
           gap: '5px',
-          padding: 0
+          padding: 0,
+          zIndex: 2
         }}
       >
         {config.picture ? 
           <img src={config.picture} className={styles.uploadImg} /> : 
           (showBtn && <>
-            <AddPhotoAlternateIcon fontSize="large" sx={{ fontSize: '4em' }} />
-            <Typography sx={{ marginTop: '10px'}}>上传图片</Typography>
-            <Typography variant="caption">（PNG 或者 JPG）</Typography>
+            <AddPhotoAlternateIcon fontSize="large" sx={{ fontSize: '3.5em' }} />
+            <Typography sx={{ marginTop: '6px', fontSize: '1em' }}>上传图片</Typography>
+            <Typography variant="caption" sx={{ fontSize: '0.75em' }}>（PNG 或 JPG）</Typography>
             </>
           )
         }

@@ -1,7 +1,8 @@
 import styles from "./style.module.scss";
-import { Box, Typography, TextField } from '@mui/material';
+import { Box, Typography, TextField, InputAdornment } from '@mui/material';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
+import HttpIcon from '@mui/icons-material/Http';
 import BorderRadius from "../_BorderRadius";
 import BoxShadow from "../_BoxShadow";
 import SizeAndPosition from "../_SizeAndPosition";
@@ -26,11 +27,11 @@ export default function MockupTab() {
         <Box className={styles.pannelCtrl}>
           <Typography className={styles.setTit} variant="h3">地址栏</Typography>
           <TextField
-            error={!!config.url && !reg.test(config.url)}
             value={config.url}
             onChange={e => handleConfigChange(e.target.value, 'url')}
-            placeholder=''
+            placeholder='网址'
             size='small'
+            sx={{ '& input': { padding: '6px 8px' } }}
             autoComplete='false'
             fullWidth
           />

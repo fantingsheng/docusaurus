@@ -34,8 +34,10 @@ export function ThemeStyle(theme) {
       ];
     case 'browser':
       return [
-        { name: 'default', title: 'Default', thumail: '/screenshot/theme/browser/style_default.png' },
-        { name: 'dark', title: 'Dark', thumail: '/screenshot/theme/browser/style_dark.png' }
+        { name: 'default', title: 'Default', thumail: '/screenshot/theme/browser/safari-light.png' },
+        { name: 'safariDark', title: 'Safari Dark', thumail: '/screenshot/theme/browser/safari-dark.png' },
+        { name: 'chromeLight', title: 'Chrome Light', thumail: '/screenshot/theme/browser/chrome-light.png' },
+        { name: 'chromeDark', title: 'Chrome Dark', thumail: '/screenshot/theme/browser/chrome-dark.png' }
       ];
     case 'iphone16':
       return [

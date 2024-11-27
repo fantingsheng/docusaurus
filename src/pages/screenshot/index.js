@@ -16,12 +16,14 @@ import ExportSetting from "./components/_ExportSetting";
 import { ConfigProvider } from './_configProvider';
 import { Box } from '@mui/material';
 import { Toaster } from 'react-hot-toast';
+import { useLocation } from '@docusaurus/router';
 
 export default function () {
   const [themeName, setThemeName] = useState("themePureColor");
   const { siteConfig } = useDocusaurusContext();
   const coverRef = useRef();
   const [fullScreen, setFullScreen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     if (ExecutionEnvironment.canUseDOM) {
