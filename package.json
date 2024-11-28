@@ -29,7 +29,7 @@
     "@mdx-js/react": "^3.0.0",
     "@mui/icons-material": "^5.14.16",
     "@mui/lab": "^5.0.0-alpha.140",
-    "@mui/material": "^5.14.16",
+    "@mui/material": "^6.1.9",
     "@node-rs/jieba": "^1.7.2",
     "@node-rs/jieba-win32-x64-msvc": "^1.7.2",
     "@turf/length": "^6.5.0",
