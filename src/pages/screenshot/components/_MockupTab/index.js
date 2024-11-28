@@ -1,5 +1,6 @@
 import styles from "./style.module.scss";
-import { Box, Typography, TextField, InputAdornment } from '@mui/material';
+import { Box, Typography, TextField, InputAdornment, styled } from '@mui/material';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import HttpIcon from '@mui/icons-material/Http';
@@ -14,6 +15,18 @@ export default function MockupTab() {
   const { config, handleConfigChange } = useConfigContext();
 
   const reg = /^(?:(http|https):\/\/)?((?:[\w-]+\.)+[a-z0-9]+)((?:\/[^/?#]*)+)?(\?[^#]+)?(#.+)?$/i;
+
+  const HtmlTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+  }));
 
   return (
     <div className={styles.setPannel}>
@@ -31,8 +44,13 @@ export default function MockupTab() {
             onChange={e => handleConfigChange(e.target.value, 'url')}
             placeholder='网址'
             size='small'
-            sx={{ '& input': { padding: '6px 8px' } }}
             autoComplete='false'
+            sx={{ '& > div': { paddingLeft: '6px', '& input': { padding: '5px 8px 6px 0' } }}}
+            slotProps={{
+              input: {
+                startAdornment: <InputAdornment position="start">http://</InputAdornment>,
+              },
+            }}
             fullWidth
           />
         </Box>
@@ -62,7 +80,9 @@ export default function MockupTab() {
         </Box>
       </Box>
       <div>
-        <div className={styles.adsTitle}>成为赞助商</div>
+        <Tooltip title="fants0230@sina.com" placement="top" arrow>
+          <div className={styles.adsTitle}>成为赞助商</div>
+        </Tooltip>
         <GoogleAdsBlock model='pureShow' height='120px' />
       </div>
     </div>

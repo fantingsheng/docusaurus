@@ -184,7 +184,9 @@ export default function FrameModel() {
               ))
             }
           </Box>
-          <Divider sx={{ margin: '15px 0', borderColor: 'rgba(0,0,0,.05)', backgroundColor: 'rgba(0,0,0,.05)' }} />
+          {id < platSizeLst.length - 1 &&
+            <Divider sx={{ margin: '15px 0', borderColor: 'rgba(0,0,0,.05)', backgroundColor: 'rgba(0,0,0,.05)' }} />
+          }
         </Box>
         ))
       }

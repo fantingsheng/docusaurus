@@ -83,8 +83,7 @@ export default function UploadCard({ showBtn, children }) {
           flexDirection: 'column',
           overflow: 'hidden',
           gap: '5px',
-          padding: 0,
-          zIndex: 2
+          padding: 0
         }}
       >
         {config.picture ? 

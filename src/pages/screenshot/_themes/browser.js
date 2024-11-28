@@ -15,7 +15,6 @@ export default function Browser(props) {
 
   return (
     <>
-      <div className={styles.appBorder} style={{ borderRadius: `${config.borderRadius / 8}em`}} />
       <div className={clsx(styles.theme, styles.browser, config.mockup.style.includes('Dark') ? styles.dark : '')} style={{ borderRadius: `${config.borderRadius / 8}em`}}>
         <div className={styles.browserUI}>
           {['default', 'safariDark'].includes(config.mockup.style) &&
@@ -39,7 +38,7 @@ export default function Browser(props) {
             <div className={clsx(styles.chromeUI, styles[config.mockup.style])}>
               <div className={styles.top}>
                 <div className={styles.logoTitle}>
-                  <p>{config.url}</p>
+                  <p>{config.url.split('.')[0]}</p>
                 </div>
                 <img crossOrigin="anonymous" src={`/screenshot/theme/browser/chrome/tab-${config.mockup.style}.png`} loading="eager" />
               </div>
@@ -54,7 +53,9 @@ export default function Browser(props) {
             </div>
           } 
         </div>
-        <UploadCard {...props} />
+        <div className={styles.body} style={{ height: 'calc(100% - var(--ui-height))'}}>
+          <UploadCard {...props} />
+        </div>
       </div>
     </>
     // <div className={clsx(styles.theme, styles.browser)} style={{ borderRadius: `${config.borderRadius / 8}em`}}>

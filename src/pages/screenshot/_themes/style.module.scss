@@ -216,16 +216,13 @@
   }
 }
 
-.appBorder {
-  position: absolute;
-  z-index: 1;
+.browser {
+  --ui-height: 3.5em;
   inset: 0;
   border-radius: inherit;
   border: 0.2px solid rgba(0,0,0,.45);
   outline: 0.7px solid hsla(0,2%,88%,.3);
   outline-offset: -1px;
-}
-.browser {
   position: relative;
   overflow: hidden;
   min-height: 100%;
@@ -244,17 +241,12 @@
     flex-direction: column;
     
     .safariUI {
-      --ui-height: 3.5em;
       background: #fff;
       display: flex;
       justify-content: space-between;
       height: var(--ui-height);
       width: 100%;
       overflow: hidden;
-
-      &.safariDark {
-        background: #191c1f;
-      }
 
       img {
         height: 100%;
@@ -296,10 +288,23 @@
           }
         }
       }
+
+      &.safariDark {
+        background: #191c1f;
+
+        .centerDiv {
+          .addressBar {
+            .urlDiv {
+              p {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
     }
 
     .chromeUI {
-      --ui-height: 3.5em;
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -364,6 +369,12 @@
       &.chromeDark {
         .top {
           background: #202124;
+
+          .logoTitle {
+            p {
+              color: #fff;
+            }
+          }
         }
         .bottom {
           background: #35363a;
@@ -379,6 +390,10 @@
       }
     }
  
+  }
+
+  .body {
+    width: 100%;
   }
 }
 
