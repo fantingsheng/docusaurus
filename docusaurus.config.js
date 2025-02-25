@@ -179,7 +179,8 @@ const config = {
             items: [
               { label: 'Raycast', href: 'https://www.raycast.com/' },
               { label: 'Alan', href: 'https://www.alanwang.site/' },
-              { label: 'Macin', href: 'https://www.macin.org/' }
+              { label: 'Macin', href: 'https://www.macin.org/' },
+              { label: '阿图工具箱', href: 'https://rtool.cn/' }
             ]
           }
         ],
