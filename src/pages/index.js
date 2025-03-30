@@ -12,6 +12,7 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import styles from './index.module.css';
 import Image from '@theme/IdealImage';
 import {useWindowSize} from '@docusaurus/theme-common';
+import { translate } from '@docusaurus/Translate';
 
 
 const PrjLst = [
@@ -168,6 +169,18 @@ function SideProjects() {
                 '& .MuiTabs-flexContainer': {
                   justifyContent: isMobile ? 'flex-start': 'center'
                 },
+                '& .MuiTabs-indicator::before': {
+                  content: '""',
+                  width: 0,
+                  height: 0,
+                  position: 'absolute',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  bottom: 0,
+                  borderLeft: '7px solid transparent',
+                  borderRight: '7px solid transparent',
+                  borderBottom: '7px solid var(--mui-palette-primary-main)'
+                }
               }}
             >
               {PrjLst.map((el, index) => (
