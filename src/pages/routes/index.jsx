@@ -47,19 +47,19 @@ export default function ({ size = "default" }) {
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
   const routes = [
     { id: 1, slug: '10612773928.gpx', name: '上班路线高浪路+吴都路', type: '🛵', distance: 9.76, elevation: 68.6, color: '#a855f7',
-      intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道，横跨运河的高浪大桥，每天上下班时间穿梭着大量往来的人群。' },
+      intro: '这是横跨经开和新吴区的上班路线，途径高浪路和吴都路两条主干道，横跨运河的高浪大桥，每天上下班时间穿梭着大量往来的人群。', zoom: 14 },
     { id: 2, slug: '10839536771.gpx', name: '尚贤河市政府前段', type: '🏃', distance: 2.76, elevation: 16.6, color: '#409EFF',
-      intro: '位于无锡市市政府前的这段围绕着尚贤河的步道，风景异常美丽，宏伟的市政府大楼，前面倚着山，后面傍着水。视野出奇的好。尤其当清风拂面，掠过水面，波光粼粼。' },
+      intro: '位于无锡市市政府前的这段围绕着尚贤河的步道，风景异常美丽，宏伟的市政府大楼，前面倚着山，后面傍着水。视野出奇的好。尤其当清风拂面，掠过水面，波光粼粼。', zoom: 15 },
     { id: 3, slug: '10927881366.gpx', name: '周末骑行经开核心城区', type: '🚴‍♀️', distance: 11.48, elevation: 42.1, color: '#fc5200',
-      intro: '这是一段经开的核心城区，聚集了市区的众多重大基建设施，包括博览中心、国际会议中心、美术馆（在建）、奥体中心（在建）。沿途道路宽广景色优美，非常适合骑行。' },
+      intro: '这是一段经开的核心城区，聚集了市区的众多重大基建设施，包括博览中心、国际会议中心、美术馆（在建）、奥体中心（在建）。沿途道路宽广景色优美，非常适合骑行。', zoom: 14 },
     { id: 4, slug: '10935466900.gpx', name: '金匮公园越野跑', type: '🏃', distance: 3.74, elevation: 54.6, color: '#67C23A',
-      intro: '位于市政府前的金匮公园，人造的天然氧吧，高配置的跑步道，路径也十分的多样性，有一段是穿过山顶的路，海拔不过三四来米，一口气跑到山顶，酣畅淋漓。' },
+      intro: '位于市政府前的金匮公园，人造的天然氧吧，高配置的跑步道，路径也十分的多样性，有一段是穿过山顶的路，海拔不过三四来米，一口气跑到山顶，酣畅淋漓。', zoom: 15 },
     { id: 5, slug: '11251970009.gpx', name: '金城湾观光骑行', type: '🛵', distance: 4.55, elevation: 24, color: '#FFD000',
-      intro: '金城湾这一段环湖路景色优美，绿化也很 Nice ，周边更有金城湾公园，万象城，大剧院等建筑，绝对是无锡商业和湖景结合的最好的一处景观。很推荐徒步和慢跑。' },
+      intro: '金城湾这一段环湖路景色优美，绿化也很 Nice ，周边更有金城湾公园，万象城，大剧院等建筑，绝对是无锡商业和湖景结合的最好的一处景观。很推荐徒步和慢跑。', zoom: 15 },
     { id: 6, slug: '11367735355.gpx', name: '环太科园骑行', type: '🚴‍♀️', distance: 6.16, elevation: 45.7, color: '#635BFF',
-      intro: '环绕太科园附近骑行，记得2014年刚来无锡的时候，这片还是大片的空地，现在几乎都建成了园区的大楼。但依然可以看见少量的花海还保留着。' },
+      intro: '环绕太科园附近骑行，记得2014年刚来无锡的时候，这片还是大片的空地，现在几乎都建成了园区的大楼。但依然可以看见少量的花海还保留着。', zoom: 14 },
     { id: 7, slug: '11462026476.gpx', name: '傍晚来经开跑一次吧', type: '🏃', distance: 6.98, elevation: 38.8, color: '#ef32d9',
-      intro: '这里有无锡最美的湿地公园，有无锡最新最美的的城市建筑，在跑的过程中你仿佛在欣赏着这座城市的人文和美景。这个夏天的傍晚，来经开和我约次慢跑吧。' }
+      intro: '这里有无锡最美的湿地公园，有无锡最新最美的的城市建筑，在跑的过程中你仿佛在欣赏着这座城市的人文和美景。这个夏天的傍晚，来经开和我约次慢跑吧。', zoom: 15 }
   ];
 
   async function getRouteData (route) {
@@ -80,6 +80,10 @@ export default function ({ size = "default" }) {
 
   const getRouteIntro = () => {
     return routes.find(el => el.slug === curRoute).intro
+  }
+
+  const getRouteMapZoom = () => {
+    return routes.find(el => el.slug === curRoute).zoom
   }
 
   const getRouteList = () => {
@@ -172,7 +176,7 @@ export default function ({ size = "default" }) {
               </div>
             </aside>
             <div className={styles.rightMap}>
-              <MapContainer routeData={routeData} lineColor={getRouteColor()} />
+              <MapContainer routeData={routeData} lineColor={getRouteColor()} zoom={getRouteMapZoom()} />
             </div>
           </Main>
           <Drawer

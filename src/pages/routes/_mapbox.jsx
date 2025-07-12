@@ -5,7 +5,7 @@ import styles from './style.module.scss';
 import { Skeleton } from '@mui/material';
 import { useMapContext } from './_mapprovider';
 
-export default function MapContainer({ routeData, lineColor }) {
+export default function MapContainer({ routeData, lineColor, zoom }) {
   let map = null;
   const [amap, setAmap] = useState();
   const [mapImpl, setMapImpl] = useState();
@@ -87,7 +87,7 @@ export default function MapContainer({ routeData, lineColor }) {
     map.add(startMarker);
     map.add(endMarker);
     map.add(hoverPointMarker);
-    map.setZoom(14);
+    map.setZoom(zoom);
   }
 
   useEffect(() => {
