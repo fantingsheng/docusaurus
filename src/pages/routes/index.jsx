@@ -41,7 +41,7 @@ export default function ({ size = "default" }) {
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
-  const [curRoute, setCurRoute] = useState('11462026476.gpx');
+  const [curRoute, setCurRoute] = useState('11462026478.gpx');
   const [loading, setLoading] = useState(false);
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
@@ -59,7 +59,9 @@ export default function ({ size = "default" }) {
     { id: 6, slug: '11367735355.gpx', name: '环太科园骑行', type: '🚴‍♀️', distance: 6.16, elevation: 45.7, color: '#635BFF',
       intro: '环绕太科园附近骑行，记得2014年刚来无锡的时候，这片还是大片的空地，现在几乎都建成了园区的大楼。但依然可以看见少量的花海还保留着。', zoom: 14 },
     { id: 7, slug: '11462026476.gpx', name: '傍晚来经开跑一次吧', type: '🏃', distance: 6.98, elevation: 38.8, color: '#ef32d9',
-      intro: '这里有无锡最美的湿地公园，有无锡最新最美的的城市建筑，在跑的过程中你仿佛在欣赏着这座城市的人文和美景。这个夏天的傍晚，来经开和我约次慢跑吧。', zoom: 15 }
+      intro: '这里有无锡最美的湿地公园，有无锡最新最美的的城市建筑，在跑的过程中你仿佛在欣赏着这座城市的人文和美景。这个夏天的傍晚，来经开和我约次慢跑吧。', zoom: 15 },
+    { id: 8, slug: '11462026478.gpx', name: '傍晚金城湾蠡湖大桥万象城竞走', type: '🏃', distance: 9.01, elevation: 164.9, color: '#a855f7', 
+      intro: '傍晚沿着金城湾公园，沿着水边的小路一直走到蠡湖大桥，穿过大桥来到对面的万象城，这样可以形成一个闭环的路线。夕阳西下的时候，金色的阳光落到水面，穿过桥洞，绝美的意境。', zoom: 15 }
   ];
 
   async function getRouteData (route) {
