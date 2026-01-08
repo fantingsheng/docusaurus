@@ -184,7 +184,7 @@ function SideProjects() {
               }}
             >
               {PrjLst.map((el, index) => (
-                <Tab label={el.title} sx={{ minHeight: '48px', padding: '12px 30px' }} key={index} disableRipple />    
+                <Tab label={el.title} sx={{ minHeight: '48px', padding: '12px 30px', fontSize: '16px' }} key={index} disableRipple />    
               ))}
             </Tabs>
             {PrjLst.map((el, index) => (
