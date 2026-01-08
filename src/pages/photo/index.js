@@ -10,6 +10,8 @@ export default function AlbumGallery () {
   const windowSize = useWindowSize();
   const isMobile = windowSize === 'mobile';
   const itemData = [
+    { title: '蠡湖大桥公园', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1767886758370-618fb5f3-9b91-4f83-8b17-7308d29d0f0d.jpg' },
+    { title: '金城湾公园', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1767886651867-5da55392-826e-455d-8f2e-2f4ad1c9ec31.jpg' },
     { title: '蠡湖大桥公园', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1752332780483-76ad3fd1-5de2-4255-a29a-0211c0fdda9e.jpg' },
     { title: '宜兴竹海', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1752332785282-aa5255eb-1507-4668-9b12-9d5626d80ce0.jpg' },
     { title: '高浪大桥', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1752332790325-0767938a-6a60-4f6f-b07d-257b229c0498.jpg' },
