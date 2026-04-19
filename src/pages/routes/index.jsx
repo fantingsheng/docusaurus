@@ -41,7 +41,7 @@ export default function ({ size = "default" }) {
   const [open, setOpen] = useState(false);
   const [orderBy, setOrderBy] = useState("");
   const [routeData, setRouteData] = useState();
-  const [curRoute, setCurRoute] = useState('11462026478.gpx');
+  const [curRoute, setCurRoute] = useState('11462026579.gpx');
   const [loading, setLoading] = useState(false);
 
   // 电动车 🛵 自行车 🚴‍♀️ 跑步 🏃
@@ -61,7 +61,10 @@ export default function ({ size = "default" }) {
     { id: 7, slug: '11462026476.gpx', name: '傍晚来经开跑一次吧', type: '🏃', distance: 6.98, elevation: 38.8, color: '#ef32d9',
       intro: '这里有无锡最美的湿地公园，有无锡最新最美的的城市建筑，在跑的过程中你仿佛在欣赏着这座城市的人文和美景。这个夏天的傍晚，来经开和我约次慢跑吧。', zoom: 15 },
     { id: 8, slug: '11462026478.gpx', name: '傍晚金城湾蠡湖大桥万象城竞走', type: '🏃', distance: 9.01, elevation: 164.9, color: '#a855f7', 
-      intro: '傍晚沿着金城湾公园，沿着水边的小路一直走到蠡湖大桥，穿过大桥来到对面的万象城，这样可以形成一个闭环的路线。夕阳西下的时候，金色的阳光落到水面，穿过桥洞，绝美的意境。', zoom: 15 }
+      intro: '傍晚沿着金城湾公园，沿着水边的小路一直走到蠡湖大桥，穿过大桥来到对面的万象城，这样可以形成一个闭环的路线。夕阳西下的时候，金色的阳光落到水面，穿过桥洞，绝美的意境。', zoom: 15 },
+    { id: 9, slug: '11462026579.gpx', name: '2026无锡海澜之家半程马拉松', type: '🏃', distance: 22.36, elevation: 37, color: '#fc5200',
+      intro: '无锡马拉松的赛道在国内是出了名的景色美，尤其正好三月的时候赶上樱花盛开，仿佛全程在画中跑。这也是我跑的人生中的第二次半马，比上次快了不少。没想到年纪越大，体能更强了。会持续热爱跑步。', zoom: 13
+    }
   ];
 
   async function getRouteData (route) {
