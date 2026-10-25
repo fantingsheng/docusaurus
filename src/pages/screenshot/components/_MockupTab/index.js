@@ -80,7 +80,7 @@ export default function MockupTab() {
         </Box>
       </Box>
       <div>
-        <Tooltip title="fants0230@sina.com" placement="top" arrow>
+        <Tooltip title="合作联系：fants0230@sina.com" placement="top" arrow>
           <div className={styles.adsTitle}>成为赞助商</div>
         </Tooltip>
         <GoogleAdsBlock model='pureShow' height='120px' />

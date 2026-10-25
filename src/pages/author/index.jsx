@@ -202,7 +202,7 @@ export default function Main () {
               <Box className={clsx(styles.gridItem, styles.tool)} sx={{  }}>
                 <div className={styles.list}>
                   <Typography variant="body1" sx={{ marginBottom: '0.8rem', fontWeight: '400' }}>
-                    由于经常分享和写作需要配图，便开发了几款图片导出工具，我的产品之路将从这些小工具开始。
+                    由于经常分享和写作需要配图，便开发了几款图片导出工具，也由此开启了我的个人产品开发之路。
                   </Typography>
                   <ul>
                     <li><Link to="/screenshot">图片套壳美化</Link></li>
