@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import BlogSidebar from '@theme/BlogSidebar';
 import GoogleAdsBlock from '@site/src/components/GoogleAdsBlock';
+import Tooltip from '@mui/material/Tooltip';
 import styles from './styles.module.css';
 
 export default function BlogLayout(props) {
@@ -29,7 +30,9 @@ export default function BlogLayout(props) {
                 <div className={styles.sideBar}>
                   {toc}
                   <div className={styles.adsWrap}>
-                    <div className={styles.adsTitle}>成为赞助商</div>
+                    <Tooltip title="合作联系：fants0230@sina.com" placement="top" arrow>
+                      <div className={styles.adsTitle}>成为赞助商</div>
+                    </Tooltip>
                     <GoogleAdsBlock model='pureShow' height='120px' />
                   </div>
                 </div>

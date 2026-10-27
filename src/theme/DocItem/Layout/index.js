@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import {useWindowSize} from '@docusaurus/theme-common';
+import Tooltip from '@mui/material/Tooltip';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 import DocItemPaginator from '@theme/DocItem/Paginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
@@ -68,7 +69,9 @@ export default function DocItemLayout({children}) {
         <div className={styles.sideBar}>
           {docTOC.desktop}
           <div className={styles.adsWrap}>
-            <div className={styles.adsTitle}>成为赞助商</div>
+            <Tooltip title="合作联系：fants0230@sina.com" placement="top" arrow>
+              <div className={styles.adsTitle}>成为赞助商</div>
+            </Tooltip>
             <CustomToolAds />
             <GoogleAdsBlock model='pureShow' height='120px' />
           </div>
