@@ -296,7 +296,7 @@
 <p>而且相对于视频和 Gif 比较，它的文件格式小，动画的性能还高。</p>
 <!-- -->
 <!-- -->
-<div style="width:200px;height:200px;overflow:hidden;margin:0 auto;outline:none" role="button" aria-label="animation" tabindex="0"></div><div style="text-align:center;font-size:12px;color:#909399;margin-top:10px"><span>该动画由 Lottie 生成，下载 <a href="https://spacexcode.com/json/github.json" target="_blank">json 文件</a></span></div>
+<div style="width:200px;height:200px" aria-hidden="true"></div><div style="text-align:center;font-size:12px;color:#909399;margin-top:10px"><span>该动画由 Lottie 生成，下载 <a href="https://spacexcode.com/json/github.json" target="_blank">json 文件</a></span></div>
 <br>
 <p>在 React 中你可以通过 <code>react-lottie</code> 这个库来实现快速实现开发，首先安装：</p>
 <div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">npm</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--save</span><span class="token plain"> react-lottie</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
@@ -316,7 +316,7 @@
 <p>在开发端没有任何的使用心智负担，只要交给我们动画的 json 文件，就能轻易地渲染出来。</p>
 <!-- -->
 <!-- -->
-<div style="width:300px;height:300px;overflow:hidden;margin:0 auto;outline:none" role="button" aria-label="animation" tabindex="0"></div>
+<div style="width:300px;height:300px" aria-hidden="true"></div>
 <p>那么主流的 Lottie 动画制作工具有哪些呢？</p>
 <ul>
 <li><a href="https://www.adobe.com/products/aftereffects.html" target="_blank" rel="noopener noreferrer">Adobe After Effects</a>：最专业的设计工具当然还得是 Adobe</li>
@@ -793,7 +793,7 @@
 <p>我们给它增加一个场景：</p>
 <p>通常这种大树叶的绿植要么生长在热带雨林，要么被我们放在室内当做风景或者背景。</p>
 <!-- -->
-<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>23 : 51 : 19</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF" autoplay=""></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content>
+<div class="wall_Z8EM"><div class="videoBgTop_xL3n"><p>23 : 27 : 44</p></div><div class="container_RBco"><div><video controls="" src="https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp4/Safari_Stampede.mp4" class="video_OMEF" autoplay=""></video></div></div><svg width="800" height="200" viewBox="0 0 175 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M42 51.5L26 66H12V17.5H163V66H148.5L132 51.5V34H42V51.5Z" fill="#EAD4C1"></path><path d="M26 66L42 51.5V34M26 66H12V17.5H163V66H148.5M26 66V34H42M42 34H132M132 34V51.5L148.5 66M132 34H148.5V66" stroke="#EAD4C1"></path><path d="M42 51.5L26.5 65.5L26 35H42V51.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M148 65.5L132 51.5V35H148V65.5Z" fill="#E0A875" stroke="#E0A875"></path><path d="M26.1781 9L13 16.5H87V9H26.1781Z" fill="#E0A875" stroke="#E0A875"></path><path d="M87.5 9H148.587L155.044 12.75L161.5 16.5H87.5V9Z" fill="#E0A875" stroke="#E0A875"></path></svg></div>]]></content>
         <author>
             <name>编程范儿</name>
             <email>fants0230@sina.com</email>

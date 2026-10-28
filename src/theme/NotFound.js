@@ -2,7 +2,7 @@ import React from 'react';
 import Translate, {translate} from '@docusaurus/Translate';
 import {PageMetadata} from '@docusaurus/theme-common';
 import Layout from '@theme/Layout';
-import Lottie from 'react-lottie';
+import Lottie from '@site/src/components/Lottie';
 import * as animateGithub from '@site/static/json/404.json'
 
 export default function NotFound() {

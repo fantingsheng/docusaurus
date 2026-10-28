@@ -8,7 +8,7 @@ import ParallaxHoverTiltEffect from '@site/src/components/ParallaxHoverTiltEffec
 import { Grid, Avatar, Button, Box, Typography } from '@mui/material';
 import styles from './style.module.scss';
 import { Player } from '@site/src/pages/player/index'
-import Lottie from 'react-lottie';
+import Lottie from '@site/src/components/Lottie';
 import * as animateRun from '@site/static/json/run.json'
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import { RoughNotation } from 'react-rough-notation';
