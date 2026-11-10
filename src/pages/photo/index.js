@@ -10,6 +10,9 @@ export default function AlbumGallery () {
   const windowSize = useWindowSize();
   const isMobile = windowSize === 'mobile';
   const itemData = [
+    { title: '蠡湖大剧院', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1794323355941-bfc43f59-a7f0-4031-9129-6cdd7b230a87.jpg' },
+    { title: '惠山古镇夜景', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1794323262858-0fe028ac-c35a-43de-ba4d-3e5a695deea6.jpg' },
+    { title: '餐桌绿植', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1794323079122-e9c8c3a7-fc67-47d7-a608-7800ec404be0.jpg' },
     { title: '蠡湖大桥公园', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1767886758370-618fb5f3-9b91-4f83-8b17-7308d29d0f0d.jpg' },
     { title: '金城湾公园', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1767886651867-5da55392-826e-455d-8f2e-2f4ad1c9ec31.jpg' },
     { title: '蠡湖大桥公园', img: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1752332780483-76ad3fd1-5de2-4255-a29a-0211c0fdda9e.jpg' },
