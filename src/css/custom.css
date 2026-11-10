@@ -41,7 +41,8 @@
   padding: 0.8rem 0 0.6rem;
   border-bottom: 1px solid var(--ifm-color-primary-opacity);
 }
-.markdown > h2 {
+/* 博客页面不应用 h2/h3 自定义样式 */
+html:not(.blog-wrapper) .markdown > h2 {
   position: relative;
   padding: 0.2rem 0.6rem 0.34rem;
   width: -webkit-fit-content;
@@ -51,11 +52,11 @@
     var(--ifm-color-primary-opacity)) no-repeat left 123%/100% 48%;
   background-size: 100% 48%;
 }
-.markdown > h3 {
+html:not(.blog-wrapper) .markdown > h3 {
   position: relative;
   padding-left: 1.2rem;
 }
-.markdown > h3::before {
+html:not(.blog-wrapper) .markdown > h3::before {
   content: '';
   top: 50%;
   position: absolute;
