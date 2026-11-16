@@ -48,18 +48,18 @@ ReactDOM.render(<App />, mount);`;
 export default function Main () {
   const songList = [
     {
-      artists: '林俊杰',
-      name: '那女孩对我说',
-      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png',
-      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3',
-      lyric: '心很空 天很大 云很重 我很孤单'
-    },
-    {
       artists: '张靓颖',
       name: '终于等到你',
       avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697503257045-7a262b7d-0df0-4005-a69c-2a645ac24c27.png',
       link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/终于等到你-张靓颖.mp3',
       lyric: '到了某个年纪你就会知道 一个人的日子真的难熬'
+    },
+    {
+      artists: '林俊杰',
+      name: '那女孩对我说',
+      avatar: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/1697270523238-8b4b11a5-b5a3-4ac3-b6bd-1e264f526c76.png',
+      link: 'https://spacexcode.oss-cn-hangzhou.aliyuncs.com/mp3/那女孩对我说.mp3',
+      lyric: '心很空 天很大 云很重 我很孤单'
     },
     {
       artists: '张靓颖',
@@ -126,7 +126,7 @@ export default function Main () {
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
             <Box sx={{ }}>
-              <Avatar alt="Remy Sharp" sx={{ width: 184, height: 184, marginBottom: '2rem' }} src="/img/avatarLg.png" />
+              <Avatar alt="Timfan" sx={{ width: 184, height: 184, marginBottom: '2rem' }} src="/img/avatarLg.png" />
               <Typography variant="h3" sx={{ fontWeight: '700' }}>Timfan</Typography>
               <Typography variant="subtitle1" sx={{ fontWeight: '400' }}>前端开发工程师 👨&zwj;💻</Typography>
               <Typography variant="h6" sx={{ marginTop: '2rem' }}>常用技能</Typography>
