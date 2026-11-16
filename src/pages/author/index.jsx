@@ -129,10 +129,11 @@ export default function Main () {
               <Avatar alt="Remy Sharp" sx={{ width: 184, height: 184, marginBottom: '2rem' }} src="/img/avatarLg.png" />
               <Typography variant="h3" sx={{ fontWeight: '700' }}>Timfan</Typography>
               <Typography variant="subtitle1" sx={{ fontWeight: '400' }}>前端开发工程师 👨&zwj;💻</Typography>
-              <Typography variant="h6" sx={{ marginTop: '2rem' }}>Skills</Typography>
-              <Box sx={{ marginTop: '15px', display: 'flex', flexWrap: 'wrap' }}>
+              <Typography variant="h6" sx={{ marginTop: '2rem' }}>常用技能</Typography>
+              <Box sx={{ marginTop: '15px', marginBottom: '30px', display: 'flex', flexWrap: 'wrap' }}>
                 <img src="https://skillicons.dev/icons?i=js,css,typescript,jquery,vue,react,electron,nextjs,nodejs,nuxtjs,php,sass,webpack,vite,git,cs&theme=light&perline=6" alt="Personal Skills" />
               </Box>
+              <Typography variant="p" sx={{ marginTop: '4rem' }}>业余爱拍照，可以看我的摄影作品：<a href="/photo">相册</a></Typography>
             </Box>
           </Grid>
           <Grid item xs={12} md={8}>
